@@ -1,0 +1,17 @@
+{
+  "dataset_name": "General Social Survey (GSS Benchmark)",
+  "number_of_respondents": 1200,
+  "missing_value_code": -9,
+  "target_variable": "High_Institutional_Trust (Binary 1/0)",
+  "features": {
+    "Age_Group": "Demographic age brackets",
+    "Education_Degree": "Highest degree attained",
+    "Income_Quartile": "Family income quartile",
+    "Political_Views": "5-point ideological self-identification",
+    "General_Happiness": "Self-reported general happiness",
+    "Trust_Government": "1-5 Likert scale (-9 = Missing)",
+    "Trust_Press": "1-5 Likert scale (-9 = Missing)",
+    "Trust_Science": "1-5 Likert scale (-9 = Missing)",
+    "Survey_Weight": "GSS probability sampling weight"
+  }
+}

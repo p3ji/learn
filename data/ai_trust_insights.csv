@@ -1,0 +1,1201 @@
+Respondent_ID,Age_Group,Education_Level,Employment_Sector,Gender,Tech_Familiarity,Perceived_AI_Risk,Perceived_AI_Benefit,Ethical_Concern_Level,Privacy_Worry,Trust_Healthcare_AI,Trust_Workplace_AI,Trust_Financial_AI,Trust_Score_1_to_10,High_AI_Trust,Survey_Weight
+RESP_1000,30-44,Master's,Healthcare,Female,Novice,1,3,3,3,6,5,5,6.5,1,1.1843
+RESP_1001,60+,High School,Tech/Engineering,Male,Novice,1,4,3,4,8,8,5,6.4,1,0.8938
+RESP_1002,45-59,High School,Education,Female,Advanced,3,2,3,1,3,5,4,3.5,0,0.6453
+RESP_1003,30-44,Bachelor's,Healthcare,Female,Novice,5,4,1,3,-9,3,6,4.0,0,0.9639
+RESP_1004,18-29,Bachelor's,Finance,Female,Advanced,5,1,1,2,7,6,6,2.4,0,1.4856
+RESP_1005,18-29,Master's,Finance,Female,Intermediate,3,5,1,2,9,7,3,7.0,1,0.7641
+RESP_1006,18-29,Bachelor's,Healthcare,Male,Novice,4,4,1,4,7,3,9,4.1,0,1.0749
+RESP_1007,60+,Bachelor's,Healthcare,Female,Advanced,1,2,5,3,5,6,4,8.7,1,0.6077
+RESP_1008,45-59,Bachelor's,Other,Male,Novice,1,1,2,5,4,5,1,2.5,0,0.7098
+RESP_1009,45-59,PhD,Education,Non-Binary/Other,Advanced,3,4,5,3,5,6,4,9.3,1,1.1285
+RESP_1010,18-29,Bachelor's,Finance,Male,Novice,3,3,3,4,8,6,7,5.5,0,0.8677
+RESP_1011,60+,Bachelor's,Tech/Engineering,Female,Advanced,4,5,5,5,5,4,5,7.5,1,1.4151
+RESP_1012,45-59,High School,Education,Female,Novice,5,1,4,5,8,5,2,1.0,0,0.9656
+RESP_1013,18-29,Master's,Tech/Engineering,Male,Intermediate,2,-9,1,2,7,4,3,8.0,1,0.7872
+RESP_1014,18-29,Bachelor's,Education,Female,Intermediate,5,1,4,3,9,5,3,1.2,0,1.091
+RESP_1015,18-29,Bachelor's,Other,Female,Advanced,1,3,4,5,6,3,4,7.8,1,1.3155
+RESP_1016,30-44,High School,Healthcare,Male,Advanced,3,2,3,4,6,4,5,4.4,0,0.6175
+RESP_1017,30-44,Bachelor's,Tech/Engineering,Male,Advanced,4,4,1,2,8,4,6,5.3,0,1.055
+RESP_1018,30-44,Bachelor's,Tech/Engineering,Male,Advanced,5,1,4,5,4,6,6,3.3,0,1.2961
+RESP_1019,30-44,Bachelor's,Healthcare,Female,Novice,4,1,3,3,5,2,6,3.8,0,0.6932
+RESP_1020,45-59,PhD,Tech/Engineering,Male,Novice,5,1,1,2,3,5,9,2.6,0,1.4125
+RESP_1021,18-29,High School,Tech/Engineering,Female,Novice,1,2,2,3,3,3,7,6.3,1,0.8381
+RESP_1022,30-44,Bachelor's,Public Sector,Female,Intermediate,2,1,3,3,10,4,7,3.5,0,0.7535
+RESP_1023,30-44,PhD,Education,Male,Intermediate,4,5,5,3,7,4,1,7.1,1,1.1303
+RESP_1024,30-44,Bachelor's,Healthcare,Female,Intermediate,4,5,1,2,3,5,4,4.0,0,0.7575
+RESP_1025,45-59,Bachelor's,Other,Female,Novice,2,1,4,5,8,5,2,2.2,0,1.2117
+RESP_1026,18-29,Bachelor's,Tech/Engineering,Female,Intermediate,4,5,4,1,5,7,4,5.2,0,1.0411
+RESP_1027,30-44,Bachelor's,Other,Male,Novice,4,4,5,5,7,6,7,3.5,0,0.699
+RESP_1028,30-44,PhD,Healthcare,Male,Intermediate,5,5,5,2,7,2,4,5.1,0,1.4212
+RESP_1029,18-29,Bachelor's,Public Sector,Male,Intermediate,5,1,4,1,9,3,8,1.0,0,1.2059
+RESP_1030,45-59,Master's,Finance,Male,Intermediate,2,3,1,1,5,5,7,5.7,0,1.0914
+RESP_1031,18-29,Bachelor's,Public Sector,Female,Intermediate,-9,4,3,1,5,5,5,6.8,1,0.9369
+RESP_1032,18-29,Bachelor's,Other,Female,Intermediate,4,2,5,4,1,3,8,1.3,0,0.7214
+RESP_1033,60+,High School,Healthcare,Female,Novice,1,1,5,2,6,8,8,1.0,0,1.2368
+RESP_1034,60+,Bachelor's,Other,Female,Intermediate,2,2,5,4,7,7,6,2.4,0,1.3323
+RESP_1035,45-59,Bachelor's,Healthcare,Male,Novice,2,3,2,1,8,1,6,3.5,0,0.7132
+RESP_1036,30-44,Master's,Healthcare,Male,Intermediate,5,2,1,4,9,6,7,3.9,0,1.0451
+RESP_1037,18-29,Bachelor's,Healthcare,Female,Intermediate,4,1,1,4,7,5,2,1.9,0,1.0364
+RESP_1038,45-59,PhD,Education,Female,Novice,3,1,1,2,7,8,5,3.3,0,0.9149
+RESP_1039,30-44,High School,Tech/Engineering,Female,Novice,2,3,1,3,6,2,5,3.5,0,1.3104
+RESP_1040,18-29,Master's,Education,Female,Advanced,4,1,1,4,7,10,5,1.7,0,0.6896
+RESP_1041,30-44,Master's,Education,Male,Advanced,1,3,4,4,4,3,4,8.7,1,0.7845
+RESP_1042,18-29,Master's,Public Sector,Female,Intermediate,5,-9,5,1,3,6,7,5.5,0,0.6014
+RESP_1043,60+,Master's,Public Sector,Female,Novice,1,1,4,1,4,4,6,3.9,0,0.9357
+RESP_1044,30-44,Master's,Education,Male,Novice,2,5,2,1,6,4,6,6.9,1,0.8621
+RESP_1045,45-59,Bachelor's,Healthcare,Female,Intermediate,2,3,3,5,3,1,8,5.4,0,1.3803
+RESP_1046,30-44,High School,Healthcare,Male,Advanced,1,1,5,4,5,8,5,3.6,0,1.2712
+RESP_1047,30-44,High School,Tech/Engineering,Female,Novice,2,5,2,1,5,4,4,5.1,0,0.676
+RESP_1048,30-44,PhD,Tech/Engineering,Male,Intermediate,4,3,4,2,8,5,8,7.5,1,1.2669
+RESP_1049,18-29,Bachelor's,Healthcare,Non-Binary/Other,Novice,2,5,3,5,7,10,2,6.1,1,1.2079
+RESP_1050,60+,Master's,Healthcare,Male,Advanced,5,4,2,3,6,7,5,6.0,1,0.8536
+RESP_1051,45-59,Bachelor's,Other,Female,Intermediate,4,4,3,4,7,4,4,3.9,0,0.6139
+RESP_1052,60+,High School,Education,Male,Intermediate,3,5,2,4,7,4,6,5.2,0,0.7036
+RESP_1053,60+,High School,Healthcare,Female,Intermediate,2,3,4,2,5,6,7,5.6,0,0.8249
+RESP_1054,30-44,Bachelor's,Education,Female,Intermediate,2,1,3,3,5,7,7,2.7,0,1.335
+RESP_1055,60+,Bachelor's,Tech/Engineering,Female,Novice,5,2,2,3,9,9,7,3.5,0,1.0188
+RESP_1056,18-29,Bachelor's,Education,Female,Novice,5,1,4,5,1,1,5,1.0,0,1.4266
+RESP_1057,18-29,Bachelor's,Finance,Male,Advanced,1,2,5,4,5,7,5,5.4,0,1.3102
+RESP_1058,18-29,High School,Education,Male,Advanced,1,2,4,1,6,7,6,3.9,0,0.8584
+RESP_1059,30-44,Bachelor's,Education,Male,Advanced,1,3,4,2,7,3,7,8.6,1,1.3608
+RESP_1060,30-44,Bachelor's,Other,Male,Intermediate,5,5,5,2,8,4,3,4.8,0,0.7051
+RESP_1061,30-44,Master's,Public Sector,Male,Advanced,1,-9,4,2,10,1,6,7.4,1,0.6325
+RESP_1062,45-59,Bachelor's,Finance,Female,Novice,1,5,5,2,6,4,4,7.3,1,1.1477
+RESP_1063,30-44,Bachelor's,Education,Female,Intermediate,3,4,5,1,6,6,5,7.1,1,0.9076
+RESP_1064,30-44,High School,Finance,Male,Intermediate,-9,3,5,1,7,9,5,4.4,0,0.8965
+RESP_1065,30-44,High School,Healthcare,Female,Intermediate,2,3,2,5,5,9,4,6.2,1,1.2185
+RESP_1066,18-29,Bachelor's,Healthcare,Male,Intermediate,5,4,3,4,4,3,3,3.6,0,1.3651
+RESP_1067,45-59,Bachelor's,Tech/Engineering,Female,Novice,4,1,2,1,6,8,5,1.0,0,0.89
+RESP_1068,18-29,Bachelor's,Education,Female,Intermediate,3,4,5,5,7,1,6,5.7,0,0.8925
+RESP_1069,60+,Bachelor's,Education,Female,Advanced,5,1,3,3,6,4,4,1.8,0,1.0805
+RESP_1070,45-59,Bachelor's,Healthcare,Female,Intermediate,-9,2,3,4,7,4,8,4.6,0,1.1879
+RESP_1071,18-29,Master's,Other,Female,Novice,2,3,5,1,2,6,10,4.7,0,0.7826
+RESP_1072,18-29,Master's,Other,Male,Novice,1,1,3,3,6,-9,6,4.2,0,1.4214
+RESP_1073,45-59,High School,Finance,Female,Novice,2,5,3,5,-9,6,5,2.9,0,1.189
+RESP_1074,45-59,Bachelor's,Education,Male,Novice,1,-9,2,1,3,5,3,5.1,0,1.1626
+RESP_1075,45-59,High School,Public Sector,Female,Intermediate,1,3,3,1,-9,7,6,5.2,0,1.4138
+RESP_1076,45-59,Bachelor's,Tech/Engineering,Female,Intermediate,5,4,5,3,10,7,8,5.4,0,1.4165
+RESP_1077,18-29,PhD,Public Sector,Female,Intermediate,1,4,1,1,8,4,9,9.3,1,0.722
+RESP_1078,30-44,High School,Tech/Engineering,Male,Intermediate,3,-9,1,2,8,7,8,4.1,0,0.7306
+RESP_1079,18-29,Bachelor's,Public Sector,Female,Advanced,3,4,1,1,7,10,7,4.4,0,1.2858
+RESP_1080,60+,Bachelor's,Healthcare,Male,Novice,3,3,5,4,7,4,6,3.3,0,1.4612
+RESP_1081,45-59,Master's,Public Sector,Female,Intermediate,5,1,1,3,2,9,3,3.7,0,1.1999
+RESP_1082,30-44,Bachelor's,Other,Male,Advanced,-9,2,2,4,6,4,5,4.6,0,0.9702
+RESP_1083,18-29,High School,Tech/Engineering,Female,Novice,4,4,5,5,7,8,5,2.1,0,1.2151
+RESP_1084,30-44,Bachelor's,Education,Male,Novice,1,4,5,4,7,4,5,7.4,1,0.8059
+RESP_1085,30-44,Bachelor's,Other,Male,Advanced,4,1,5,2,9,-9,4,1.4,0,1.4982
+RESP_1086,45-59,High School,Education,Male,Intermediate,2,5,3,2,4,5,7,6.3,1,0.988
+RESP_1087,45-59,Bachelor's,Public Sector,Female,Intermediate,2,4,3,4,7,1,5,6.8,1,1.4385
+RESP_1088,60+,High School,Education,Female,Novice,5,3,3,5,4,9,5,2.1,0,0.9877
+RESP_1089,30-44,High School,Healthcare,Female,Intermediate,3,4,4,1,6,3,4,3.4,0,1.4353
+RESP_1090,18-29,Bachelor's,Healthcare,Male,Intermediate,3,2,2,2,6,2,6,2.7,0,0.9021
+RESP_1091,45-59,High School,Healthcare,Male,Novice,2,4,5,4,8,4,8,4.0,0,1.2845
+RESP_1092,45-59,Bachelor's,Public Sector,Male,Intermediate,5,5,5,4,7,10,5,5.7,0,1.4559
+RESP_1093,30-44,Bachelor's,Healthcare,Female,Novice,5,4,3,4,6,2,6,3.4,0,1.1814
+RESP_1094,45-59,Master's,Education,Female,Intermediate,1,1,5,1,2,5,9,4.6,0,1.2098
+RESP_1095,30-44,Bachelor's,Education,Female,Novice,3,4,5,3,7,3,8,5.1,0,0.6926
+RESP_1096,30-44,High School,Education,Non-Binary/Other,Novice,2,5,1,5,5,3,7,4.7,0,1.0268
+RESP_1097,30-44,High School,Public Sector,Male,Novice,4,1,5,3,9,1,6,1.9,0,1.3981
+RESP_1098,18-29,Bachelor's,Other,Male,Novice,3,3,4,5,8,6,4,4.3,0,0.8168
+RESP_1099,18-29,Master's,Education,Female,Advanced,1,-9,3,5,4,5,4,7.4,1,1.3095
+RESP_1100,18-29,High School,Public Sector,Male,Novice,5,2,2,4,7,3,6,1.0,0,1.2081
+RESP_1101,45-59,PhD,Public Sector,Male,Intermediate,2,1,2,2,7,7,6,4.8,0,0.8007
+RESP_1102,30-44,High School,Education,Female,Novice,3,3,1,4,7,7,4,4.5,0,0.8545
+RESP_1103,30-44,Bachelor's,Other,Male,Intermediate,4,4,2,1,7,6,7,5.0,0,0.9848
+RESP_1104,60+,Master's,Healthcare,Male,Advanced,1,1,2,5,7,8,5,5.8,0,0.7126
+RESP_1105,18-29,Master's,Tech/Engineering,Male,Novice,1,1,3,2,9,4,8,3.1,0,1.422
+RESP_1106,30-44,Master's,Public Sector,Male,Advanced,3,1,3,5,5,6,5,5.4,0,1.2654
+RESP_1107,45-59,Master's,Education,Female,Novice,4,1,4,5,4,4,5,2.9,0,0.9285
+RESP_1108,18-29,Bachelor's,Public Sector,Female,Intermediate,1,3,1,4,8,2,3,5.4,0,0.8697
+RESP_1109,18-29,Master's,Public Sector,Non-Binary/Other,Intermediate,2,5,2,2,2,5,4,7.1,1,1.2206
+RESP_1110,30-44,High School,Tech/Engineering,Female,Advanced,1,5,4,2,7,5,8,8.0,1,0.9818
+RESP_1111,18-29,Master's,Public Sector,Male,Intermediate,4,1,1,5,7,5,6,1.6,0,0.8064
+RESP_1112,60+,Bachelor's,Education,Male,Intermediate,5,3,2,2,1,-9,6,3.3,0,0.9871
+RESP_1113,45-59,Master's,Education,Male,Novice,5,3,2,2,5,8,9,1.1,0,1.3842
+RESP_1114,45-59,Bachelor's,Finance,Non-Binary/Other,Novice,3,1,3,4,9,5,3,1.0,0,0.6617
+RESP_1115,60+,Bachelor's,Other,Female,Advanced,4,2,5,3,3,3,7,3.5,0,0.9315
+RESP_1116,45-59,Bachelor's,Tech/Engineering,Female,Intermediate,1,1,1,1,6,4,2,3.6,0,1.4661
+RESP_1117,18-29,Master's,Education,Female,Intermediate,1,2,2,3,4,5,4,6.4,1,0.6133
+RESP_1118,60+,High School,Finance,Female,Intermediate,5,1,1,2,5,7,3,1.4,0,1.4016
+RESP_1119,30-44,High School,Finance,Female,Intermediate,5,2,4,5,10,5,7,3.6,0,0.9374
+RESP_1120,45-59,Bachelor's,Finance,Female,Advanced,2,2,4,1,6,2,1,5.6,0,0.7706
+RESP_1121,60+,High School,Tech/Engineering,Male,Intermediate,5,1,5,1,7,7,5,1.3,0,0.6135
+RESP_1122,30-44,Master's,Healthcare,Male,Intermediate,2,2,2,5,6,6,3,3.8,0,0.6635
+RESP_1123,18-29,Bachelor's,Healthcare,Female,Advanced,1,4,3,1,3,5,4,6.4,1,0.7547
+RESP_1124,18-29,PhD,Public Sector,Female,Novice,2,5,2,5,4,7,4,7.7,1,0.6229
+RESP_1125,30-44,Bachelor's,Healthcare,Male,Novice,2,3,1,1,8,7,8,4.6,0,0.9023
+RESP_1126,45-59,High School,Healthcare,Female,Intermediate,3,2,4,3,6,4,5,3.6,0,0.6404
+RESP_1127,60+,Master's,Other,Female,Novice,5,2,1,1,4,3,9,3.8,0,1.223
+RESP_1128,18-29,Bachelor's,Tech/Engineering,Female,Intermediate,2,3,5,4,6,5,9,4.0,0,1.337
+RESP_1129,30-44,Bachelor's,Other,Male,Advanced,1,2,4,5,7,6,10,8.2,1,1.3987
+RESP_1130,30-44,Bachelor's,Finance,Female,Intermediate,4,3,3,1,7,5,5,2.1,0,1.0942
+RESP_1131,18-29,Master's,Public Sector,Non-Binary/Other,Intermediate,2,1,4,5,4,3,6,4.8,0,1.4519
+RESP_1132,18-29,Bachelor's,Healthcare,Female,Advanced,5,4,2,4,3,5,6,3.5,0,0.6051
+RESP_1133,30-44,PhD,Tech/Engineering,Male,Intermediate,3,4,2,1,5,1,5,7.8,1,0.7206
+RESP_1134,60+,PhD,Finance,Female,Intermediate,1,5,4,1,8,4,6,7.3,1,0.8638
+RESP_1135,30-44,Bachelor's,Public Sector,Female,Intermediate,3,2,5,4,8,7,3,1.0,0,1.3101
+RESP_1136,30-44,High School,Finance,Male,Advanced,4,5,2,4,7,7,1,6.2,1,1.3969
+RESP_1137,45-59,Bachelor's,Tech/Engineering,Male,Intermediate,2,1,2,4,-9,1,7,3.6,0,1.1563
+RESP_1138,30-44,High School,Public Sector,Male,Intermediate,2,4,3,5,5,5,5,6.9,1,0.9449
+RESP_1139,60+,High School,Public Sector,Male,Advanced,5,1,4,4,6,6,3,2.2,0,1.1993
+RESP_1140,60+,Bachelor's,Finance,Male,Intermediate,2,1,2,5,8,2,4,2.8,0,0.7628
+RESP_1141,30-44,Bachelor's,Public Sector,Male,Intermediate,1,2,5,3,8,4,8,4.6,0,1.0121
+RESP_1142,30-44,Master's,Public Sector,Male,Advanced,4,1,1,1,5,8,6,7.9,1,1.0568
+RESP_1143,30-44,Master's,Finance,Female,Intermediate,3,4,4,1,10,4,2,5.1,0,0.6944
+RESP_1144,30-44,Master's,Tech/Engineering,Female,Intermediate,4,5,3,2,6,9,3,6.8,1,0.6305
+RESP_1145,18-29,Bachelor's,Education,Female,Advanced,2,4,2,3,5,3,5,7.6,1,1.2751
+RESP_1146,45-59,Bachelor's,Tech/Engineering,Male,Intermediate,3,2,5,4,9,8,6,4.5,0,1.0812
+RESP_1147,30-44,Bachelor's,Education,Female,Intermediate,5,4,4,4,2,5,4,4.6,0,0.899
+RESP_1148,18-29,PhD,Education,Female,Advanced,4,3,5,3,7,3,5,6.1,1,0.9935
+RESP_1149,30-44,High School,Tech/Engineering,Male,Advanced,3,5,5,4,6,8,6,4.6,0,1.4619
+RESP_1150,60+,Master's,Healthcare,Male,Intermediate,3,3,3,2,9,2,6,5.5,0,0.9464
+RESP_1151,18-29,Bachelor's,Tech/Engineering,Male,Novice,3,3,4,5,7,3,1,3.8,0,0.6931
+RESP_1152,18-29,Bachelor's,Public Sector,Female,Intermediate,1,2,2,1,6,6,6,5.3,0,1.0172
+RESP_1153,30-44,Master's,Other,Male,Intermediate,4,1,3,3,7,5,2,3.7,0,1.1832
+RESP_1154,60+,Bachelor's,Tech/Engineering,Female,Intermediate,3,3,2,1,4,6,5,4.1,0,0.6109
+RESP_1155,18-29,Master's,Other,Female,Intermediate,4,4,1,5,-9,4,4,4.7,0,0.8991
+RESP_1156,45-59,PhD,Education,Female,Intermediate,3,1,5,3,3,2,3,5.6,0,0.9542
+RESP_1157,45-59,Bachelor's,Healthcare,Female,Intermediate,5,4,1,5,7,4,7,3.6,0,1.0173
+RESP_1158,18-29,Bachelor's,Tech/Engineering,Female,Novice,5,4,5,4,6,8,3,2.6,0,0.8715
+RESP_1159,45-59,Bachelor's,Education,Male,Intermediate,5,1,3,4,2,2,4,1.0,0,1.2002
+RESP_1160,30-44,PhD,Public Sector,Female,Intermediate,2,1,2,4,6,9,7,5.9,0,1.4502
+RESP_1161,45-59,Bachelor's,Finance,Male,Novice,3,4,2,5,7,6,4,4.3,0,1.4226
+RESP_1162,45-59,Bachelor's,Tech/Engineering,Male,Novice,2,2,3,5,5,4,4,6.4,1,1.198
+RESP_1163,30-44,Bachelor's,Tech/Engineering,Female,Intermediate,4,5,4,5,4,1,5,5.6,0,1.0562
+RESP_1164,18-29,Master's,Education,Male,Intermediate,2,5,1,1,7,1,6,6.2,1,1.3432
+RESP_1165,45-59,High School,Healthcare,Female,Novice,-9,2,1,5,7,4,8,2.0,0,1.3523
+RESP_1166,30-44,Master's,Healthcare,Male,Advanced,4,1,2,4,-9,4,3,4.8,0,1.3466
+RESP_1167,18-29,PhD,Healthcare,Female,Intermediate,4,-9,2,2,-9,5,4,4.7,0,0.7421
+RESP_1168,18-29,High School,Public Sector,Female,Advanced,2,5,2,5,5,9,5,7.4,1,0.6229
+RESP_1169,30-44,Bachelor's,Other,Female,Intermediate,3,4,3,2,10,6,6,6.6,1,1.4849
+RESP_1170,45-59,PhD,Education,Male,Intermediate,2,2,4,4,5,5,4,7.4,1,1.4637
+RESP_1171,18-29,High School,Other,Male,Advanced,3,4,1,5,4,8,7,5.3,0,1.1079
+RESP_1172,30-44,Master's,Healthcare,Female,Intermediate,3,2,5,1,6,5,3,4.2,0,1.4938
+RESP_1173,18-29,Bachelor's,Education,Male,Intermediate,-9,1,3,1,6,9,1,3.1,0,1.2935
+RESP_1174,45-59,Bachelor's,Healthcare,Male,Novice,2,2,1,2,5,4,6,5.3,0,1.0656
+RESP_1175,18-29,Master's,Finance,Male,Intermediate,3,2,4,1,10,2,7,3.2,0,0.9504
+RESP_1176,45-59,Bachelor's,Other,Male,Novice,5,5,3,1,4,1,7,4.4,0,1.1336
+RESP_1177,30-44,Bachelor's,Finance,Male,Novice,3,4,1,1,6,5,1,4.7,0,1.0642
+RESP_1178,60+,Bachelor's,Healthcare,Male,Novice,-9,5,3,4,4,-9,4,4.3,0,1.4944
+RESP_1179,18-29,Bachelor's,Finance,Male,Novice,2,3,1,1,5,2,5,6.0,1,1.0414
+RESP_1180,30-44,High School,Tech/Engineering,Female,Advanced,2,2,1,3,9,-9,9,6.2,1,1.3523
+RESP_1181,18-29,Bachelor's,Public Sector,Female,Novice,2,3,4,5,7,1,5,6.3,1,1.3323
+RESP_1182,60+,PhD,Education,Female,Intermediate,3,5,5,1,7,5,2,9.1,1,0.6643
+RESP_1183,60+,Bachelor's,Education,Male,Advanced,1,4,4,1,4,5,6,7.8,1,0.6783
+RESP_1184,30-44,Bachelor's,Education,Male,Intermediate,3,5,1,1,5,5,8,6.9,1,1.1938
+RESP_1185,45-59,Bachelor's,Finance,Female,Novice,3,4,3,3,10,8,8,5.0,0,0.8332
+RESP_1186,45-59,Master's,Tech/Engineering,Male,Intermediate,4,4,4,1,7,3,6,4.3,0,1.1918
+RESP_1187,30-44,High School,Finance,Female,Intermediate,4,1,5,1,5,8,6,1.0,0,0.7302
+RESP_1188,30-44,PhD,Healthcare,Female,Intermediate,3,2,1,5,7,1,1,5.7,0,0.9574
+RESP_1189,18-29,Bachelor's,Finance,Non-Binary/Other,Intermediate,5,5,4,3,7,6,5,4.9,0,0.6922
+RESP_1190,18-29,Bachelor's,Public Sector,Female,Advanced,4,4,4,3,4,8,6,5.3,0,0.8539
+RESP_1191,60+,High School,Public Sector,Female,Intermediate,3,5,4,1,5,1,5,5.6,0,0.6795
+RESP_1192,60+,High School,Education,Male,Intermediate,1,5,4,3,10,5,7,9.2,1,1.4735
+RESP_1193,45-59,Bachelor's,Education,Male,Intermediate,5,4,3,2,7,5,5,1.4,0,0.9556
+RESP_1194,30-44,Bachelor's,Tech/Engineering,Female,Novice,2,3,5,3,3,5,5,5.3,0,1.4111
+RESP_1195,30-44,Master's,Public Sector,Male,Advanced,3,2,5,3,7,-9,7,6.5,1,1.4741
+RESP_1196,45-59,Bachelor's,Healthcare,Male,Novice,3,2,1,3,9,3,4,4.2,0,1.4186
+RESP_1197,60+,Bachelor's,Education,Female,Intermediate,5,1,2,4,-9,2,5,1.0,0,1.0095
+RESP_1198,60+,Bachelor's,Healthcare,Female,Advanced,4,1,3,4,5,5,7,2.9,0,1.301
+RESP_1199,45-59,Master's,Tech/Engineering,Male,Intermediate,4,1,1,4,9,-9,3,2.6,0,0.7383
+RESP_1200,45-59,High School,Finance,Female,Intermediate,4,2,1,3,6,6,3,3.0,0,0.6853
+RESP_1201,18-29,High School,Tech/Engineering,Male,Intermediate,2,3,4,2,6,5,8,3.4,0,1.3892
+RESP_1202,18-29,High School,Finance,Male,Advanced,5,2,2,3,3,4,4,3.4,0,0.628
+RESP_1203,60+,Master's,Healthcare,Non-Binary/Other,Intermediate,-9,2,2,1,8,1,7,3.4,0,1.4751
+RESP_1204,45-59,Bachelor's,Tech/Engineering,Female,Advanced,4,2,3,2,6,6,2,3.7,0,1.2049
+RESP_1205,18-29,Bachelor's,Education,Non-Binary/Other,Novice,4,2,2,4,2,7,1,3.9,0,0.9777
+RESP_1206,18-29,Master's,Tech/Engineering,Female,Intermediate,1,3,1,5,3,3,6,7.7,1,0.7272
+RESP_1207,45-59,Master's,Healthcare,Female,Advanced,1,1,2,2,5,4,5,6.2,1,1.2509
+RESP_1208,18-29,Bachelor's,Finance,Female,Novice,3,5,2,4,4,3,6,3.7,0,1.1068
+RESP_1209,18-29,Master's,Tech/Engineering,Female,Intermediate,3,-9,5,2,4,7,9,5.7,0,1.24
+RESP_1210,30-44,Bachelor's,Public Sector,Male,Novice,5,1,1,2,10,4,3,1.3,0,0.9761
+RESP_1211,45-59,High School,Tech/Engineering,Female,Intermediate,5,5,2,3,7,5,5,1.8,0,0.6596
+RESP_1212,45-59,Bachelor's,Healthcare,Female,Intermediate,2,2,2,1,1,6,8,4.9,0,0.8835
+RESP_1213,18-29,High School,Finance,Male,Intermediate,2,3,4,5,5,6,3,3.5,0,0.8835
+RESP_1214,45-59,Bachelor's,Healthcare,Female,Novice,1,3,2,4,6,6,4,3.4,0,0.6078
+RESP_1215,18-29,PhD,Tech/Engineering,Male,Novice,3,1,2,2,3,5,2,2.4,0,0.6086
+RESP_1216,30-44,High School,Healthcare,Female,Novice,1,5,5,5,7,5,10,3.7,0,0.8977
+RESP_1217,45-59,High School,Healthcare,Male,Intermediate,1,4,1,2,2,5,1,5.8,0,1.2549
+RESP_1218,45-59,Bachelor's,Public Sector,Male,Intermediate,-9,2,3,1,8,6,7,2.6,0,1.1616
+RESP_1219,45-59,PhD,Healthcare,Female,Advanced,-9,1,1,5,-9,6,3,6.9,1,0.8151
+RESP_1220,45-59,Bachelor's,Public Sector,Female,Intermediate,3,3,4,4,10,2,3,4.2,0,1.1425
+RESP_1221,30-44,Bachelor's,Public Sector,Female,Intermediate,4,5,1,2,3,4,8,4.6,0,1.1826
+RESP_1222,18-29,High School,Education,Male,Advanced,4,5,2,1,-9,5,4,4.1,0,1.0703
+RESP_1223,30-44,High School,Other,Female,Intermediate,4,1,4,5,7,6,7,1.3,0,1.0692
+RESP_1224,30-44,PhD,Healthcare,Female,Advanced,5,4,1,2,8,9,8,8.1,1,0.9328
+RESP_1225,18-29,PhD,Other,Female,Intermediate,2,3,4,2,-9,3,6,8.7,1,0.7111
+RESP_1226,60+,High School,Tech/Engineering,Female,Novice,2,1,3,4,8,7,7,2.0,0,0.9469
+RESP_1227,30-44,PhD,Finance,Male,Novice,5,4,1,1,-9,4,5,4.6,0,0.9108
+RESP_1228,60+,Bachelor's,Education,Male,Intermediate,1,5,2,3,6,8,6,8.4,1,1.1328
+RESP_1229,45-59,Master's,Healthcare,Female,Novice,4,2,4,2,6,9,4,1.8,0,1.3706
+RESP_1230,45-59,Bachelor's,Finance,Female,Intermediate,4,3,5,5,3,1,9,4.3,0,0.9378
+RESP_1231,30-44,Bachelor's,Finance,Male,Intermediate,1,3,4,4,5,4,7,8.8,1,1.2388
+RESP_1232,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,3,4,5,4,-9,1,6,6.3,1,1.3306
+RESP_1233,30-44,Bachelor's,Tech/Engineering,Female,Intermediate,3,1,2,2,4,1,7,3.9,0,0.7906
+RESP_1234,18-29,High School,Finance,Female,Novice,2,5,3,2,6,1,4,7.2,1,1.4115
+RESP_1235,45-59,High School,Finance,Female,Intermediate,5,4,5,2,4,6,7,4.6,0,0.6634
+RESP_1236,30-44,Bachelor's,Other,Male,Intermediate,2,2,3,3,8,6,9,4.2,0,1.4115
+RESP_1237,18-29,Master's,Public Sector,Female,Advanced,3,2,4,2,7,7,2,4.1,0,0.7473
+RESP_1238,45-59,Bachelor's,Other,Male,Intermediate,1,2,2,1,5,6,6,5.0,0,0.9035
+RESP_1239,18-29,Bachelor's,Finance,Male,Advanced,2,4,5,5,6,6,5,5.9,0,1.1447
+RESP_1240,60+,PhD,Healthcare,Male,Intermediate,4,5,4,2,4,5,4,6.7,1,1.4151
+RESP_1241,60+,High School,Tech/Engineering,Female,Intermediate,4,3,1,3,4,5,3,2.4,0,0.8301
+RESP_1242,60+,Bachelor's,Public Sector,Female,Novice,1,1,4,5,5,7,8,3.1,0,1.2872
+RESP_1243,30-44,Bachelor's,Finance,Female,Intermediate,3,3,3,4,6,5,6,2.8,0,1.2394
+RESP_1244,18-29,Master's,Tech/Engineering,Female,Intermediate,4,5,2,2,6,6,5,5.4,0,0.7437
+RESP_1245,60+,High School,Healthcare,Male,Intermediate,4,3,2,5,6,1,6,3.9,0,1.0315
+RESP_1246,30-44,Bachelor's,Other,Non-Binary/Other,Intermediate,5,4,4,4,3,2,5,4.8,0,1.0334
+RESP_1247,60+,Master's,Education,Male,Intermediate,2,2,1,3,6,7,4,5.7,0,0.8742
+RESP_1248,60+,PhD,Education,Male,Intermediate,3,5,3,1,4,4,6,7.2,1,1.3019
+RESP_1249,60+,Bachelor's,Education,Female,Intermediate,2,5,4,2,-9,2,5,7.0,1,1.4333
+RESP_1250,30-44,Bachelor's,Healthcare,Female,Novice,3,3,4,1,10,6,2,6.1,1,1.2449
+RESP_1251,30-44,Bachelor's,Healthcare,Female,Advanced,4,4,2,3,4,5,4,4.8,0,1.4757
+RESP_1252,60+,Master's,Healthcare,Male,Novice,5,3,3,5,5,4,3,5.0,0,0.6454
+RESP_1253,30-44,Bachelor's,Tech/Engineering,Male,Novice,2,3,1,5,3,8,2,2.8,0,0.6335
+RESP_1254,18-29,High School,Public Sector,Male,Intermediate,4,5,2,3,4,8,6,2.9,0,1.4045
+RESP_1255,30-44,PhD,Education,Female,Intermediate,3,3,4,3,6,5,4,5.9,0,1.408
+RESP_1256,60+,Bachelor's,Public Sector,Female,Intermediate,2,2,2,2,9,7,7,4.5,0,0.6964
+RESP_1257,45-59,Bachelor's,Public Sector,Male,Novice,2,3,2,4,6,1,1,3.1,0,0.9217
+RESP_1258,30-44,Bachelor's,Healthcare,Female,Intermediate,4,2,5,1,5,7,5,2.7,0,1.3519
+RESP_1259,18-29,Bachelor's,Finance,Male,Intermediate,2,5,2,1,8,3,4,7.4,1,0.7157
+RESP_1260,45-59,Bachelor's,Education,Male,Advanced,5,4,2,5,5,-9,2,3.8,0,0.8407
+RESP_1261,60+,Bachelor's,Public Sector,Male,Advanced,5,2,3,5,6,1,5,4.6,0,1.2129
+RESP_1262,18-29,High School,Healthcare,Female,Intermediate,4,4,2,2,4,1,2,5.6,0,1.4837
+RESP_1263,30-44,Bachelor's,Finance,Female,Intermediate,3,4,1,3,-9,7,6,6.9,1,1.3174
+RESP_1264,60+,PhD,Finance,Female,Intermediate,4,2,4,1,8,6,7,3.5,0,1.2996
+RESP_1265,45-59,High School,Healthcare,Female,Novice,5,5,3,2,6,3,6,2.6,0,0.9084
+RESP_1266,45-59,PhD,Tech/Engineering,Female,Intermediate,1,1,2,5,5,7,6,5.7,0,1.1952
+RESP_1267,45-59,Bachelor's,Finance,Male,Intermediate,1,4,1,5,6,4,7,6.5,1,0.7018
+RESP_1268,30-44,Master's,Finance,Male,Advanced,2,4,4,1,6,6,5,7.4,1,1.493
+RESP_1269,30-44,Master's,Healthcare,Female,Novice,2,5,3,5,-9,4,4,7.7,1,1.0325
+RESP_1270,45-59,Bachelor's,Finance,Female,Intermediate,1,5,1,5,-9,5,4,8.3,1,1.1749
+RESP_1271,45-59,Master's,Healthcare,Female,Intermediate,5,3,2,4,6,3,4,2.9,0,1.3886
+RESP_1272,60+,Master's,Finance,Female,Intermediate,2,5,5,3,10,3,3,6.2,1,0.6009
+RESP_1273,60+,Bachelor's,Tech/Engineering,Male,Novice,4,4,5,5,-9,6,7,2.4,0,1.4784
+RESP_1274,30-44,Bachelor's,Public Sector,Female,Advanced,4,-9,3,4,1,7,6,3.8,0,0.9232
+RESP_1275,30-44,Bachelor's,Healthcare,Female,Intermediate,5,1,1,2,3,4,2,2.6,0,0.9056
+RESP_1276,45-59,Master's,Healthcare,Female,Intermediate,2,3,4,5,2,2,4,6.2,1,0.7306
+RESP_1277,45-59,Master's,Tech/Engineering,Male,Novice,4,2,1,2,3,10,3,4.1,0,1.3724
+RESP_1278,45-59,Master's,Tech/Engineering,Male,Intermediate,2,-9,5,5,3,5,6,4.0,0,1.3838
+RESP_1279,45-59,Bachelor's,Education,Female,Intermediate,2,1,3,1,7,6,8,4.0,0,0.618
+RESP_1280,60+,Master's,Healthcare,Male,Novice,4,1,2,4,5,2,6,2.5,0,0.6502
+RESP_1281,30-44,High School,Public Sector,Male,Novice,1,2,1,4,-9,8,4,5.3,0,1.4265
+RESP_1282,30-44,Bachelor's,Tech/Engineering,Male,Advanced,4,3,5,1,6,8,5,4.4,0,0.7106
+RESP_1283,18-29,High School,Healthcare,Female,Novice,5,-9,4,3,6,1,2,1.3,0,1.1588
+RESP_1284,30-44,Bachelor's,Healthcare,Male,Novice,3,1,3,4,10,5,3,4.0,0,1.1577
+RESP_1285,18-29,Bachelor's,Tech/Engineering,Male,Intermediate,4,2,2,2,6,5,7,2.9,0,1.3828
+RESP_1286,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,2,1,1,4,6,10,8,3.9,0,1.1154
+RESP_1287,30-44,Bachelor's,Education,Male,Novice,2,5,4,3,4,8,4,6.7,1,0.9906
+RESP_1288,30-44,Bachelor's,Education,Male,Intermediate,4,3,2,2,4,2,5,1.9,0,1.4769
+RESP_1289,30-44,Bachelor's,Education,Female,Novice,3,4,5,2,8,3,7,4.6,0,0.8059
+RESP_1290,18-29,Bachelor's,Education,Male,Novice,4,1,5,1,7,3,2,1.0,0,0.8364
+RESP_1291,18-29,Bachelor's,Education,Male,Novice,3,5,4,5,9,6,3,5.3,0,0.6763
+RESP_1292,45-59,Bachelor's,Tech/Engineering,Male,Advanced,3,3,5,1,7,8,9,5.2,0,1.4778
+RESP_1293,30-44,High School,Education,Female,Novice,5,2,3,5,5,5,3,1.0,0,1.2357
+RESP_1294,18-29,Bachelor's,Other,Male,Novice,2,3,4,1,7,6,5,5.3,0,0.6109
+RESP_1295,30-44,Bachelor's,Education,Male,Intermediate,2,2,5,5,6,4,4,4.6,0,1.2339
+RESP_1296,45-59,Bachelor's,Finance,Female,Advanced,3,2,1,4,8,6,1,3.5,0,0.9637
+RESP_1297,18-29,Bachelor's,Healthcare,Male,Novice,2,1,5,2,9,4,5,1.6,0,1.4708
+RESP_1298,45-59,Bachelor's,Public Sector,Male,Intermediate,1,1,3,5,6,1,5,5.4,0,0.8496
+RESP_1299,18-29,Master's,Public Sector,Male,Novice,3,3,2,4,10,6,6,4.5,0,1.2393
+RESP_1300,18-29,Bachelor's,Education,Female,Intermediate,2,5,2,3,8,5,5,5.2,0,1.1647
+RESP_1301,30-44,Bachelor's,Other,Female,Intermediate,1,3,5,1,6,3,4,5.5,0,0.6108
+RESP_1302,30-44,High School,Tech/Engineering,Male,Intermediate,5,4,2,3,7,9,4,3.3,0,1.3967
+RESP_1303,45-59,Bachelor's,Tech/Engineering,Female,Intermediate,2,2,5,4,7,3,4,3.0,0,0.7257
+RESP_1304,45-59,Bachelor's,Public Sector,Male,Intermediate,1,2,3,3,6,6,3,4.4,0,1.1972
+RESP_1305,60+,Bachelor's,Public Sector,Male,Novice,4,1,2,3,10,4,4,2.6,0,1.298
+RESP_1306,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,4,5,1,4,7,8,3,8.5,1,1.1678
+RESP_1307,30-44,Bachelor's,Healthcare,Female,Novice,1,1,5,2,4,4,7,4.0,0,0.6874
+RESP_1308,45-59,Bachelor's,Tech/Engineering,Male,Intermediate,3,4,2,5,4,-9,6,3.8,0,1.4777
+RESP_1309,30-44,Master's,Healthcare,Female,Advanced,3,-9,3,1,4,7,5,6.0,1,0.8131
+RESP_1310,30-44,Master's,Public Sector,Female,Advanced,2,3,3,5,-9,8,9,7.1,1,1.1651
+RESP_1311,18-29,Master's,Education,Female,Advanced,4,5,1,1,-9,4,3,8.1,1,1.3175
+RESP_1312,18-29,PhD,Healthcare,Female,Intermediate,3,1,3,5,7,6,8,5.5,0,1.4453
+RESP_1313,60+,High School,Healthcare,Non-Binary/Other,Intermediate,3,1,3,3,8,5,5,4.1,0,1.1436
+RESP_1314,45-59,High School,Tech/Engineering,Non-Binary/Other,Novice,4,4,2,2,10,4,6,3.4,0,0.8331
+RESP_1315,45-59,High School,Healthcare,Female,Intermediate,5,3,5,3,5,7,7,2.7,0,1.353
+RESP_1316,30-44,Bachelor's,Finance,Male,Intermediate,3,1,4,2,3,3,4,1.0,0,0.7469
+RESP_1317,18-29,Master's,Other,Female,Intermediate,1,5,3,4,10,5,3,7.1,1,0.6201
+RESP_1318,18-29,Bachelor's,Public Sector,Male,Intermediate,2,3,3,1,3,6,3,3.7,0,1.4173
+RESP_1319,30-44,PhD,Tech/Engineering,Male,Novice,3,4,4,1,3,5,1,5.1,0,1.1179
+RESP_1320,30-44,High School,Public Sector,Male,Intermediate,3,5,3,4,10,3,7,4.3,0,0.6627
+RESP_1321,45-59,PhD,Public Sector,Female,Advanced,5,2,2,5,8,10,7,3.6,0,1.1218
+RESP_1322,45-59,Bachelor's,Public Sector,Male,Novice,1,4,2,4,7,8,9,7.3,1,0.7305
+RESP_1323,30-44,High School,Education,Female,Intermediate,2,5,4,4,6,7,6,4.1,0,0.6282
+RESP_1324,60+,Bachelor's,Healthcare,Non-Binary/Other,Advanced,-9,1,3,2,-9,8,7,3.8,0,0.7049
+RESP_1325,45-59,Bachelor's,Healthcare,Female,Intermediate,2,2,3,4,5,5,5,5.5,0,1.2976
+RESP_1326,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,4,4,5,1,5,4,6,4.3,0,1.2801
+RESP_1327,45-59,Bachelor's,Healthcare,Male,Novice,3,1,3,3,6,-9,8,3.8,0,1.1439
+RESP_1328,30-44,Master's,Healthcare,Male,Intermediate,3,2,2,2,3,3,6,3.8,0,0.7884
+RESP_1329,18-29,Bachelor's,Education,Female,Advanced,4,3,1,2,4,3,4,7.0,1,1.2651
+RESP_1330,30-44,Bachelor's,Finance,Male,Intermediate,5,1,1,5,2,4,5,1.0,0,0.9672
+RESP_1331,45-59,Bachelor's,Education,Female,Intermediate,3,5,1,3,6,6,7,7.8,1,1.0597
+RESP_1332,18-29,Master's,Tech/Engineering,Male,Novice,2,4,1,2,6,7,4,4.9,0,1.4079
+RESP_1333,18-29,Bachelor's,Other,Female,Novice,1,2,3,4,10,7,7,6.1,1,1.0121
+RESP_1334,18-29,Bachelor's,Other,Female,Advanced,2,1,3,2,7,2,9,4.1,0,1.1637
+RESP_1335,18-29,High School,Public Sector,Male,Intermediate,5,-9,5,2,5,7,7,4.0,0,1.4656
+RESP_1336,60+,High School,Other,Female,Intermediate,1,4,3,2,6,8,7,7.8,1,1.0063
+RESP_1337,45-59,Bachelor's,Education,Female,Novice,2,4,1,5,7,4,6,4.6,0,1.1047
+RESP_1338,30-44,High School,Other,Female,Intermediate,2,1,4,2,6,8,4,4.4,0,1.126
+RESP_1339,18-29,Bachelor's,Tech/Engineering,Female,Advanced,4,3,4,2,7,7,3,4.9,0,0.8166
+RESP_1340,30-44,Master's,Healthcare,Male,Intermediate,5,2,2,5,7,2,3,1.3,0,1.2632
+RESP_1341,30-44,High School,Healthcare,Male,Novice,4,1,2,3,5,10,6,1.6,0,1.254
+RESP_1342,18-29,Bachelor's,Tech/Engineering,Female,Intermediate,1,2,3,1,5,-9,4,4.0,0,0.7922
+RESP_1343,30-44,Bachelor's,Tech/Engineering,Female,Intermediate,4,4,4,5,5,7,5,3.9,0,0.612
+RESP_1344,30-44,PhD,Finance,Female,Intermediate,5,2,1,5,4,7,6,2.8,0,1.499
+RESP_1345,45-59,Bachelor's,Public Sector,Female,Advanced,3,3,1,2,4,2,4,6.1,1,1.1234
+RESP_1346,45-59,Master's,Education,Male,Intermediate,3,5,1,2,-9,5,4,5.7,0,0.7629
+RESP_1347,18-29,Bachelor's,Tech/Engineering,Male,Advanced,1,3,3,1,6,-9,6,5.5,0,0.8552
+RESP_1348,30-44,High School,Public Sector,Female,Intermediate,3,2,3,2,6,2,5,2.0,0,1.156
+RESP_1349,45-59,Bachelor's,Finance,Female,Novice,4,1,5,4,5,5,5,1.0,0,0.7239
+RESP_1350,30-44,PhD,Healthcare,Female,Intermediate,1,4,1,2,7,7,3,8.9,1,0.6336
+RESP_1351,60+,Bachelor's,Finance,Male,Novice,5,5,1,2,8,7,5,5.1,0,1.3186
+RESP_1352,45-59,Master's,Healthcare,Non-Binary/Other,Advanced,1,1,3,4,7,4,9,7.2,1,1.2443
+RESP_1353,18-29,Master's,Healthcare,Female,Intermediate,1,1,3,1,8,8,4,5.1,0,0.8786
+RESP_1354,18-29,Bachelor's,Other,Female,Intermediate,2,3,5,4,5,8,3,5.2,0,0.6526
+RESP_1355,45-59,Bachelor's,Healthcare,Male,Intermediate,2,2,5,5,6,6,7,4.3,0,1.0376
+RESP_1356,18-29,Bachelor's,Education,Male,Novice,1,3,2,4,5,4,6,5.7,0,0.8486
+RESP_1357,30-44,Bachelor's,Public Sector,Female,Intermediate,3,2,4,3,6,2,6,5.1,0,0.958
+RESP_1358,60+,Master's,Finance,Female,Intermediate,2,3,1,5,9,6,3,5.8,0,0.8466
+RESP_1359,30-44,PhD,Tech/Engineering,Female,Novice,5,1,1,2,7,8,3,2.9,0,0.7577
+RESP_1360,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,4,4,5,5,-9,5,2,3.2,0,0.9483
+RESP_1361,45-59,Bachelor's,Tech/Engineering,Female,Novice,2,2,5,1,5,3,6,4.7,0,1.4684
+RESP_1362,30-44,Master's,Finance,Female,Intermediate,1,5,2,1,4,7,7,8.6,1,0.8396
+RESP_1363,30-44,Bachelor's,Education,Male,Intermediate,3,5,4,4,7,5,6,5.0,0,0.9024
+RESP_1364,60+,Master's,Tech/Engineering,Female,Novice,4,1,2,5,6,6,9,3.5,0,0.8963
+RESP_1365,30-44,Bachelor's,Other,Male,Advanced,2,3,4,2,7,4,4,4.8,0,1.0323
+RESP_1366,60+,Bachelor's,Education,Female,Novice,3,3,1,1,6,4,5,1.1,0,1.3592
+RESP_1367,60+,High School,Healthcare,Female,Novice,3,1,2,2,5,4,6,2.7,0,0.9619
+RESP_1368,18-29,Bachelor's,Education,Male,Novice,-9,5,5,3,6,6,5,5.9,0,1.3255
+RESP_1369,18-29,Bachelor's,Finance,Female,Intermediate,1,5,2,1,8,4,6,6.1,1,0.7035
+RESP_1370,18-29,Bachelor's,Tech/Engineering,Non-Binary/Other,Intermediate,5,3,2,4,8,6,4,3.6,0,1.4054
+RESP_1371,18-29,High School,Healthcare,Male,Intermediate,3,2,1,3,5,4,2,4.7,0,0.7668
+RESP_1372,18-29,Master's,Public Sector,Female,Novice,4,4,5,5,6,6,2,4.9,0,0.6353
+RESP_1373,45-59,Master's,Education,Male,Novice,2,2,5,2,9,7,6,7.3,1,0.7425
+RESP_1374,18-29,Bachelor's,Education,Female,Intermediate,4,5,3,1,5,6,4,4.5,0,0.7717
+RESP_1375,30-44,High School,Education,Male,Advanced,1,2,3,3,-9,7,3,3.0,0,1.0577
+RESP_1376,45-59,High School,Tech/Engineering,Female,Advanced,1,4,3,3,8,4,4,5.6,0,1.0049
+RESP_1377,18-29,Bachelor's,Tech/Engineering,Male,Novice,4,2,1,1,7,7,9,1.0,0,1.2443
+RESP_1378,45-59,Bachelor's,Education,Female,Intermediate,5,2,2,5,-9,-9,3,5.0,0,0.6459
+RESP_1379,30-44,Bachelor's,Healthcare,Female,Advanced,1,2,5,5,3,-9,7,6.2,1,1.0479
+RESP_1380,18-29,Bachelor's,Tech/Engineering,Male,Intermediate,1,2,5,4,6,1,6,7.5,1,0.8992
+RESP_1381,45-59,Bachelor's,Public Sector,Male,Advanced,4,-9,2,5,5,1,8,4.5,0,1.1676
+RESP_1382,45-59,Bachelor's,Other,Female,Novice,1,5,5,4,3,1,5,5.7,0,0.6393
+RESP_1383,60+,Bachelor's,Public Sector,Female,Advanced,5,4,2,3,5,6,2,2.9,0,0.6314
+RESP_1384,45-59,PhD,Public Sector,Male,Intermediate,5,5,1,1,7,4,7,5.8,0,0.9845
+RESP_1385,45-59,High School,Healthcare,Male,Advanced,5,1,1,5,6,5,5,3.1,0,1.3302
+RESP_1386,30-44,Bachelor's,Other,Female,Intermediate,2,-9,1,4,9,5,8,5.0,0,1.204
+RESP_1387,18-29,Bachelor's,Tech/Engineering,Female,Intermediate,5,1,2,3,2,6,7,1.0,0,0.615
+RESP_1388,45-59,Bachelor's,Other,Female,Advanced,5,1,2,5,9,6,7,3.4,0,0.7606
+RESP_1389,45-59,Master's,Other,Male,Novice,2,2,4,2,5,5,10,5.4,0,0.8041
+RESP_1390,60+,Bachelor's,Finance,Female,Intermediate,3,5,5,3,5,5,6,5.6,0,0.9808
+RESP_1391,30-44,PhD,Other,Female,Intermediate,1,3,5,5,3,5,8,6.7,1,1.128
+RESP_1392,30-44,High School,Education,Male,Intermediate,5,4,4,3,7,8,4,1.4,0,0.7948
+RESP_1393,45-59,High School,Healthcare,Female,Advanced,1,1,4,1,2,1,6,5.7,0,0.9443
+RESP_1394,30-44,Master's,Education,Male,Novice,4,5,1,1,8,4,4,4.8,0,1.1255
+RESP_1395,60+,Bachelor's,Education,Female,Intermediate,1,1,4,1,3,7,6,1.2,0,0.9451
+RESP_1396,60+,Bachelor's,Tech/Engineering,Female,Intermediate,2,1,2,2,3,7,6,1.9,0,0.7289
+RESP_1397,30-44,High School,Finance,Female,Novice,1,1,3,1,-9,6,1,3.8,0,1.0425
+RESP_1398,45-59,High School,Other,Male,Intermediate,1,1,2,2,5,5,4,3.5,0,0.8916
+RESP_1399,45-59,Master's,Tech/Engineering,Female,Novice,1,1,4,1,8,9,6,2.9,0,1.3778
+RESP_1400,18-29,High School,Public Sector,Male,Intermediate,3,4,5,3,9,5,1,5.0,0,1.2981
+RESP_1401,60+,Bachelor's,Other,Male,Advanced,3,5,2,5,5,5,5,6.2,1,0.7712
+RESP_1402,30-44,Bachelor's,Other,Male,Intermediate,4,-9,5,5,6,8,7,3.1,0,0.7374
+RESP_1403,45-59,Bachelor's,Other,Female,Intermediate,2,1,2,1,7,6,8,3.4,0,0.9129
+RESP_1404,30-44,High School,Education,Female,Advanced,1,1,5,5,5,7,4,6.9,1,0.971
+RESP_1405,60+,Bachelor's,Other,Female,Intermediate,1,1,2,1,7,7,8,6.4,1,1.4388
+RESP_1406,30-44,High School,Public Sector,Female,Advanced,1,2,5,1,6,4,8,3.3,0,0.8715
+RESP_1407,18-29,Master's,Tech/Engineering,Female,Intermediate,1,-9,3,4,5,9,1,6.6,1,1.3808
+RESP_1408,60+,Bachelor's,Education,Male,Advanced,3,3,1,4,3,1,6,3.9,0,1.0548
+RESP_1409,18-29,Bachelor's,Finance,Female,Novice,4,1,2,4,6,1,6,1.0,0,1.3971
+RESP_1410,30-44,Master's,Healthcare,Female,Advanced,5,3,3,2,8,4,8,2.7,0,1.2318
+RESP_1411,60+,Bachelor's,Finance,Female,Novice,2,4,1,4,4,4,6,4.3,0,1.2376
+RESP_1412,60+,Bachelor's,Finance,Male,Intermediate,1,3,2,1,2,-9,8,4.6,0,1.0669
+RESP_1413,30-44,Bachelor's,Tech/Engineering,Female,Intermediate,4,5,3,3,5,-9,4,6.7,1,1.3563
+RESP_1414,45-59,Bachelor's,Education,Male,Intermediate,5,2,3,4,9,5,2,1.4,0,0.829
+RESP_1415,30-44,Bachelor's,Public Sector,Female,Intermediate,4,2,3,4,8,5,4,1.0,0,1.4166
+RESP_1416,30-44,PhD,Education,Male,Intermediate,3,1,4,3,5,9,9,4.5,0,1.1731
+RESP_1417,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,5,1,5,1,7,3,7,1.4,0,0.9948
+RESP_1418,45-59,Bachelor's,Tech/Engineering,Female,Novice,4,-9,1,2,7,1,10,2.8,0,1.484
+RESP_1419,45-59,Master's,Healthcare,Female,Novice,3,4,5,4,9,7,2,6.0,1,1.3758
+RESP_1420,45-59,Bachelor's,Other,Female,Novice,4,5,5,3,3,3,7,6.2,1,1.2948
+RESP_1421,45-59,High School,Healthcare,Female,Intermediate,4,1,5,1,4,5,7,1.5,0,0.8465
+RESP_1422,18-29,Bachelor's,Finance,Male,Novice,5,1,3,5,2,4,5,1.1,0,1.4764
+RESP_1423,30-44,PhD,Healthcare,Male,Intermediate,3,4,5,2,5,7,7,6.6,1,1.2687
+RESP_1424,18-29,High School,Healthcare,Male,Intermediate,1,4,4,3,8,2,6,6.9,1,1.1447
+RESP_1425,30-44,Bachelor's,Public Sector,Male,Novice,2,4,2,3,5,1,6,3.5,0,1.4296
+RESP_1426,30-44,Bachelor's,Finance,Female,Intermediate,5,2,3,3,3,8,7,3.1,0,0.746
+RESP_1427,60+,Bachelor's,Tech/Engineering,Female,Advanced,3,3,1,4,6,6,7,5.9,0,0.7251
+RESP_1428,30-44,High School,Education,Male,Novice,4,3,2,5,7,7,5,1.4,0,1.1073
+RESP_1429,18-29,Bachelor's,Tech/Engineering,Female,Intermediate,3,1,2,2,4,8,9,5.7,0,0.651
+RESP_1430,18-29,Master's,Education,Male,Intermediate,2,2,2,1,5,3,5,3.6,0,1.1976
+RESP_1431,45-59,Bachelor's,Finance,Female,Intermediate,2,4,5,1,6,5,9,6.5,1,0.8167
+RESP_1432,45-59,Bachelor's,Tech/Engineering,Female,Intermediate,-9,1,5,5,7,6,3,1.9,0,0.7071
+RESP_1433,18-29,Master's,Healthcare,Non-Binary/Other,Intermediate,1,2,3,3,5,5,3,6.6,1,0.9685
+RESP_1434,18-29,PhD,Healthcare,Female,Intermediate,2,5,5,3,4,4,3,10.0,1,1.0194
+RESP_1435,45-59,Bachelor's,Other,Non-Binary/Other,Novice,5,2,5,3,10,5,7,2.5,0,0.7534
+RESP_1436,18-29,Bachelor's,Other,Non-Binary/Other,Intermediate,5,1,5,3,5,7,4,1.5,0,0.6374
+RESP_1437,45-59,High School,Tech/Engineering,Male,Intermediate,4,3,3,3,6,4,8,4.5,0,0.9727
+RESP_1438,45-59,PhD,Public Sector,Male,Novice,1,4,3,5,7,6,4,6.8,1,1.2836
+RESP_1439,18-29,PhD,Healthcare,Male,Intermediate,4,5,4,4,2,6,6,7.6,1,1.3868
+RESP_1440,18-29,Bachelor's,Healthcare,Male,Advanced,-9,2,4,2,6,3,7,4.9,0,0.6878
+RESP_1441,60+,Master's,Public Sector,Female,Intermediate,2,1,4,3,3,6,3,2.9,0,1.0722
+RESP_1442,30-44,Bachelor's,Other,Female,Intermediate,5,1,4,4,6,2,2,3.7,0,0.8371
+RESP_1443,30-44,Bachelor's,Other,Male,Advanced,5,4,2,1,9,6,6,6.5,1,0.9372
+RESP_1444,45-59,High School,Education,Female,Intermediate,2,1,2,5,4,7,5,2.2,0,1.4401
+RESP_1445,60+,Master's,Healthcare,Female,Intermediate,4,1,4,4,3,7,6,4.2,0,0.9169
+RESP_1446,60+,High School,Public Sector,Female,Intermediate,4,4,4,3,10,3,2,2.8,0,0.9288
+RESP_1447,45-59,Master's,Healthcare,Male,Advanced,3,5,1,3,4,-9,5,8.5,1,0.7885
+RESP_1448,30-44,Master's,Education,Male,Intermediate,1,3,2,3,3,6,5,6.8,1,1.464
+RESP_1449,18-29,Master's,Healthcare,Female,Intermediate,4,3,1,4,9,4,1,6.6,1,1.0108
+RESP_1450,45-59,High School,Finance,Male,Intermediate,2,2,1,3,4,1,7,4.4,0,1.1134
+RESP_1451,30-44,Bachelor's,Healthcare,Male,Advanced,4,5,5,4,9,4,4,4.6,0,1.0079
+RESP_1452,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,5,2,3,3,7,6,8,3.6,0,0.8276
+RESP_1453,60+,Bachelor's,Other,Male,Novice,1,3,2,1,9,7,4,4.7,0,1.3294
+RESP_1454,18-29,High School,Tech/Engineering,Male,Advanced,3,4,4,1,6,9,4,5.3,0,0.6256
+RESP_1455,30-44,PhD,Education,Female,Intermediate,1,1,4,2,8,5,3,5.9,0,1.2212
+RESP_1456,18-29,Bachelor's,Healthcare,Male,Novice,5,3,3,3,4,6,8,1.7,0,1.1348
+RESP_1457,30-44,Bachelor's,Tech/Engineering,Female,Intermediate,5,5,2,3,5,7,6,7.0,1,0.7299
+RESP_1458,18-29,Bachelor's,Tech/Engineering,Male,Intermediate,5,3,4,4,2,1,8,4.2,0,0.7493
+RESP_1459,18-29,Bachelor's,Tech/Engineering,Non-Binary/Other,Advanced,5,5,4,4,-9,3,5,4.4,0,1.1933
+RESP_1460,18-29,Bachelor's,Public Sector,Female,Novice,2,5,5,3,7,5,5,5.2,0,0.8809
+RESP_1461,45-59,Bachelor's,Healthcare,Female,Advanced,3,5,1,2,4,8,2,5.6,0,0.8392
+RESP_1462,45-59,PhD,Other,Male,Intermediate,5,2,4,3,3,6,4,5.1,0,0.6532
+RESP_1463,30-44,Bachelor's,Education,Female,Novice,5,4,2,4,7,6,6,3.1,0,1.2898
+RESP_1464,60+,PhD,Education,Male,Advanced,4,3,3,3,9,4,6,5.2,0,1.3944
+RESP_1465,30-44,Master's,Education,Female,Intermediate,3,4,5,4,6,6,9,8.0,1,1.3379
+RESP_1466,30-44,Bachelor's,Education,Female,Novice,1,1,2,3,5,4,1,4.2,0,1.0194
+RESP_1467,60+,PhD,Public Sector,Non-Binary/Other,Intermediate,-9,3,5,5,4,3,6,6.3,1,1.0806
+RESP_1468,18-29,High School,Healthcare,Male,Advanced,3,4,1,4,8,3,5,6.1,1,0.818
+RESP_1469,60+,Master's,Healthcare,Male,Intermediate,3,4,4,2,4,8,5,4.5,0,0.7556
+RESP_1470,18-29,Bachelor's,Public Sector,Female,Novice,5,1,2,5,5,3,6,1.5,0,1.3407
+RESP_1471,60+,Master's,Other,Male,Novice,5,5,3,3,8,4,5,4.2,0,1.3185
+RESP_1472,18-29,Master's,Public Sector,Male,Novice,2,3,1,4,7,6,3,6.2,1,1.2996
+RESP_1473,60+,Master's,Education,Male,Intermediate,1,3,1,5,5,3,3,7.5,1,1.017
+RESP_1474,30-44,Master's,Public Sector,Male,Intermediate,4,1,5,2,5,5,5,2.9,0,1.3781
+RESP_1475,60+,Bachelor's,Education,Male,Novice,3,5,1,4,9,5,2,5.2,0,1.4336
+RESP_1476,18-29,High School,Education,Female,Novice,1,3,2,5,4,4,5,6.7,1,0.8955
+RESP_1477,30-44,Bachelor's,Healthcare,Female,Intermediate,1,3,5,5,6,4,5,4.4,0,0.8022
+RESP_1478,60+,High School,Education,Male,Advanced,2,3,1,5,3,3,1,5.1,0,1.0178
+RESP_1479,30-44,Bachelor's,Tech/Engineering,Female,Intermediate,4,5,3,1,8,8,9,6.9,1,0.7614
+RESP_1480,45-59,Bachelor's,Healthcare,Male,Advanced,3,1,2,3,5,6,5,5.8,0,1.3956
+RESP_1481,45-59,PhD,Public Sector,Female,Intermediate,4,3,3,4,5,3,1,5.2,0,0.9042
+RESP_1482,30-44,Bachelor's,Healthcare,Male,Novice,2,4,3,4,7,5,6,4.5,0,1.1186
+RESP_1483,45-59,Master's,Tech/Engineering,Male,Advanced,5,5,5,4,-9,5,5,5.7,0,1.1352
+RESP_1484,30-44,High School,Tech/Engineering,Female,Intermediate,1,-9,4,5,7,1,3,3.8,0,1.0635
+RESP_1485,60+,Master's,Other,Female,Intermediate,3,1,5,3,5,8,6,6.1,1,0.7409
+RESP_1486,18-29,PhD,Education,Female,Advanced,5,4,2,2,4,3,3,6.3,1,1.4919
+RESP_1487,30-44,Bachelor's,Education,Male,Novice,2,3,2,4,4,10,6,5.1,0,0.7553
+RESP_1488,60+,Bachelor's,Public Sector,Male,Novice,-9,2,5,3,5,7,4,3.6,0,1.2764
+RESP_1489,60+,Master's,Public Sector,Female,Intermediate,1,1,4,3,5,3,3,6.9,1,1.3122
+RESP_1490,30-44,High School,Healthcare,Male,Novice,3,5,5,1,4,4,5,4.4,0,0.7306
+RESP_1491,45-59,Bachelor's,Finance,Female,Novice,5,2,2,4,7,-9,2,1.2,0,1.4398
+RESP_1492,30-44,Bachelor's,Public Sector,Female,Novice,5,2,4,5,4,4,5,2.6,0,1.039
+RESP_1493,18-29,High School,Finance,Male,Novice,1,4,2,3,1,8,7,3.3,0,1.166
+RESP_1494,30-44,Bachelor's,Tech/Engineering,Female,Intermediate,4,1,4,3,10,4,8,4.1,0,1.178
+RESP_1495,30-44,High School,Public Sector,Female,Novice,2,4,4,2,6,5,8,6.9,1,1.0545
+RESP_1496,30-44,High School,Education,Female,Intermediate,4,4,5,1,10,7,8,4.5,0,0.7278
+RESP_1497,18-29,High School,Healthcare,Female,Intermediate,4,3,5,3,4,6,4,2.3,0,1.2766
+RESP_1498,60+,PhD,Education,Female,Intermediate,4,5,5,3,7,3,3,8.0,1,1.1236
+RESP_1499,60+,Bachelor's,Tech/Engineering,Female,Novice,1,2,4,5,8,6,7,4.2,0,0.7068
+RESP_1500,45-59,PhD,Tech/Engineering,Male,Intermediate,1,1,4,5,6,5,4,6.1,1,1.2303
+RESP_1501,30-44,Bachelor's,Public Sector,Female,Novice,2,5,2,2,-9,3,5,6.4,1,1.2325
+RESP_1502,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,4,5,3,2,5,2,7,4.7,0,1.0936
+RESP_1503,45-59,Bachelor's,Education,Female,Advanced,1,1,5,2,7,1,10,5.8,0,0.6815
+RESP_1504,45-59,Bachelor's,Education,Female,Intermediate,2,5,2,5,7,4,6,5.1,0,0.9174
+RESP_1505,18-29,High School,Tech/Engineering,Male,Intermediate,2,3,2,5,6,5,6,2.2,0,0.6458
+RESP_1506,60+,Bachelor's,Other,Non-Binary/Other,Intermediate,4,-9,1,1,8,6,3,4.3,0,1.0298
+RESP_1507,45-59,Bachelor's,Healthcare,Female,Intermediate,3,3,5,4,8,7,8,5.9,0,1.4158
+RESP_1508,60+,Bachelor's,Healthcare,Male,Advanced,4,2,2,4,5,4,6,3.5,0,0.602
+RESP_1509,45-59,Bachelor's,Healthcare,Male,Advanced,3,2,1,1,3,5,5,4.1,0,0.84
+RESP_1510,45-59,High School,Healthcare,Male,Intermediate,2,4,5,4,6,3,4,6.4,1,1.3199
+RESP_1511,30-44,High School,Tech/Engineering,Male,Intermediate,1,3,4,5,5,5,4,5.5,0,0.6089
+RESP_1512,60+,Master's,Finance,Female,Advanced,5,2,1,4,6,7,5,3.4,0,0.6092
+RESP_1513,60+,Bachelor's,Other,Female,Advanced,-9,5,4,5,9,5,2,7.6,1,1.1497
+RESP_1514,18-29,High School,Healthcare,Male,Intermediate,1,1,3,1,7,8,8,3.9,0,1.3103
+RESP_1515,18-29,PhD,Finance,Female,Intermediate,2,1,3,2,9,7,7,3.7,0,1.2989
+RESP_1516,30-44,High School,Finance,Male,Novice,4,3,3,1,4,8,5,2.5,0,1.3016
+RESP_1517,45-59,Bachelor's,Public Sector,Female,Advanced,3,4,3,4,8,5,4,6.6,1,0.9249
+RESP_1518,60+,PhD,Education,Female,Novice,2,5,2,5,9,4,5,7.0,1,1.3945
+RESP_1519,18-29,Bachelor's,Healthcare,Male,Intermediate,1,3,3,4,6,6,6,7.1,1,0.6116
+RESP_1520,30-44,High School,Healthcare,Female,Novice,4,1,2,4,10,4,5,1.6,0,0.881
+RESP_1521,30-44,High School,Finance,Male,Novice,5,3,2,2,4,6,7,1.6,0,0.9035
+RESP_1522,60+,Bachelor's,Public Sector,Male,Intermediate,4,5,5,4,5,4,2,5.7,0,0.749
+RESP_1523,45-59,High School,Tech/Engineering,Male,Advanced,3,2,2,2,7,3,4,3.8,0,0.9026
+RESP_1524,45-59,Bachelor's,Healthcare,Male,Novice,4,5,2,5,6,8,7,4.4,0,1.1273
+RESP_1525,30-44,High School,Other,Male,Intermediate,5,2,3,5,5,3,6,1.7,0,1.0683
+RESP_1526,30-44,Bachelor's,Public Sector,Male,Novice,1,-9,2,2,7,7,4,3.1,0,0.8875
+RESP_1527,30-44,PhD,Other,Male,Novice,2,2,4,1,7,6,6,5.2,0,1.2744
+RESP_1528,18-29,Master's,Public Sector,Female,Intermediate,3,3,3,5,5,5,4,5.7,0,1.2433
+RESP_1529,60+,Bachelor's,Healthcare,Female,Intermediate,5,1,1,1,6,1,5,4.6,0,0.8526
+RESP_1530,45-59,Bachelor's,Education,Female,Novice,3,3,3,5,-9,8,7,4.3,0,0.8909
+RESP_1531,60+,Bachelor's,Finance,Female,Intermediate,4,1,2,5,5,3,7,1.5,0,0.8588
+RESP_1532,60+,Bachelor's,Tech/Engineering,Male,Novice,3,5,4,3,7,7,6,3.4,0,0.716
+RESP_1533,30-44,Bachelor's,Education,Male,Intermediate,5,4,3,4,4,3,3,2.7,0,1.2775
+RESP_1534,45-59,High School,Finance,Male,Advanced,2,5,4,4,5,3,5,6.8,1,0.6416
+RESP_1535,60+,Master's,Tech/Engineering,Female,Advanced,2,3,1,1,8,6,6,6.4,1,0.7355
+RESP_1536,45-59,Bachelor's,Public Sector,Male,Intermediate,3,3,1,4,7,-9,8,4.3,0,0.6948
+RESP_1537,18-29,High School,Education,Female,Intermediate,1,1,5,1,2,2,2,3.4,0,1.3428
+RESP_1538,30-44,Bachelor's,Other,Male,Advanced,3,3,5,5,5,8,3,5.3,0,0.6396
+RESP_1539,18-29,Bachelor's,Tech/Engineering,Male,Novice,4,2,3,3,7,5,8,1.8,0,1.1982
+RESP_1540,60+,Master's,Healthcare,Female,Advanced,2,3,5,3,6,5,8,7.0,1,0.64
+RESP_1541,45-59,Master's,Finance,Female,Advanced,2,1,4,5,7,4,5,4.3,0,1.3078
+RESP_1542,18-29,Master's,Healthcare,Female,Novice,2,1,5,2,6,3,9,2.1,0,1.4214
+RESP_1543,45-59,High School,Finance,Male,Novice,1,2,4,2,6,7,4,3.6,0,1.0382
+RESP_1544,45-59,Bachelor's,Public Sector,Male,Advanced,1,-9,5,4,6,6,2,7.5,1,1.3241
+RESP_1545,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,5,4,5,1,8,3,7,2.7,0,1.2358
+RESP_1546,18-29,High School,Education,Female,Novice,3,5,5,3,7,7,8,4.2,0,1.3161
+RESP_1547,45-59,Bachelor's,Education,Female,Novice,3,3,2,4,7,5,8,3.6,0,1.2901
+RESP_1548,30-44,Master's,Healthcare,Male,Intermediate,4,4,2,5,6,5,3,5.2,0,0.7848
+RESP_1549,45-59,High School,Other,Male,Intermediate,2,3,5,3,5,9,6,5.7,0,1.0496
+RESP_1550,30-44,Bachelor's,Public Sector,Female,Intermediate,1,4,4,1,5,1,7,7.9,1,1.4644
+RESP_1551,60+,Bachelor's,Finance,Female,Advanced,4,3,3,1,8,1,6,5.2,0,0.9092
+RESP_1552,30-44,High School,Finance,Male,Novice,4,2,1,2,8,2,8,3.3,0,1.4734
+RESP_1553,30-44,Bachelor's,Education,Female,Intermediate,1,-9,2,4,5,6,4,5.6,0,1.1248
+RESP_1554,60+,PhD,Other,Female,Intermediate,3,1,5,5,-9,4,5,5.5,0,1.0155
+RESP_1555,30-44,Master's,Finance,Female,Intermediate,2,2,1,3,7,4,6,4.5,0,1.192
+RESP_1556,18-29,PhD,Finance,Male,Novice,3,4,2,1,7,3,7,6.5,1,1.3343
+RESP_1557,18-29,Bachelor's,Public Sector,Male,Advanced,4,5,3,3,7,9,5,7.3,1,0.9548
+RESP_1558,45-59,High School,Healthcare,Male,Advanced,2,4,4,5,4,9,7,6.7,1,0.6297
+RESP_1559,45-59,Bachelor's,Public Sector,Male,Intermediate,5,1,5,3,4,7,9,1.0,0,1.2379
+RESP_1560,45-59,Bachelor's,Tech/Engineering,Male,Intermediate,4,5,3,4,8,2,4,3.5,0,1.4606
+RESP_1561,18-29,Master's,Healthcare,Female,Novice,3,3,2,2,9,4,5,5.2,0,1.1625
+RESP_1562,18-29,High School,Healthcare,Male,Intermediate,3,5,5,3,3,7,7,5.4,0,0.7696
+RESP_1563,18-29,Bachelor's,Other,Female,Intermediate,3,4,1,2,6,5,9,5.2,0,0.8234
+RESP_1564,30-44,High School,Public Sector,Male,Intermediate,1,2,4,5,8,7,7,6.5,1,1.4188
+RESP_1565,30-44,Bachelor's,Finance,Female,Advanced,4,3,2,2,2,8,4,3.8,0,0.6122
+RESP_1566,30-44,Master's,Finance,Female,Intermediate,2,4,4,3,4,9,6,7.7,1,1.0939
+RESP_1567,30-44,Bachelor's,Education,Female,Intermediate,3,3,5,3,6,4,7,3.7,0,0.7428
+RESP_1568,60+,Bachelor's,Other,Female,Intermediate,3,5,3,1,5,5,4,6.0,1,0.8545
+RESP_1569,30-44,Bachelor's,Education,Female,Novice,1,1,4,3,6,-9,3,2.3,0,0.8763
+RESP_1570,30-44,Bachelor's,Healthcare,Female,Intermediate,2,4,1,2,9,1,5,5.2,0,0.7974
+RESP_1571,45-59,Master's,Tech/Engineering,Non-Binary/Other,Intermediate,4,2,2,1,4,7,7,4.3,0,1.3131
+RESP_1572,30-44,Master's,Public Sector,Female,Intermediate,5,5,1,3,6,6,2,7.1,1,0.899
+RESP_1573,45-59,PhD,Finance,Male,Intermediate,1,4,4,3,5,4,4,8.8,1,0.9109
+RESP_1574,60+,Master's,Healthcare,Male,Intermediate,4,2,3,5,6,1,6,4.2,0,1.0077
+RESP_1575,60+,Bachelor's,Tech/Engineering,Non-Binary/Other,Intermediate,5,4,3,1,6,4,8,7.1,1,1.4121
+RESP_1576,18-29,Bachelor's,Public Sector,Male,Intermediate,3,5,1,5,10,7,6,6.9,1,1.2194
+RESP_1577,60+,Bachelor's,Tech/Engineering,Male,Intermediate,-9,-9,5,5,9,8,6,3.5,0,0.6556
+RESP_1578,30-44,Bachelor's,Finance,Female,Advanced,2,3,5,5,3,3,7,4.3,0,0.6353
+RESP_1579,30-44,Master's,Other,Female,Novice,5,5,3,4,4,7,9,5.2,0,1.1098
+RESP_1580,30-44,High School,Education,Female,Novice,3,4,1,5,4,6,8,2.4,0,1.3984
+RESP_1581,60+,PhD,Healthcare,Male,Intermediate,3,1,1,2,4,6,1,3.3,0,0.8909
+RESP_1582,30-44,Bachelor's,Finance,Male,Novice,2,4,1,3,3,2,6,5.7,0,0.823
+RESP_1583,30-44,Bachelor's,Public Sector,Female,Novice,4,3,4,4,6,2,7,4.3,0,1.2734
+RESP_1584,45-59,Bachelor's,Education,Female,Intermediate,3,2,5,5,5,3,9,3.5,0,1.1419
+RESP_1585,18-29,Master's,Other,Male,Intermediate,1,2,5,3,4,4,7,4.5,0,1.1085
+RESP_1586,18-29,Bachelor's,Tech/Engineering,Female,Intermediate,1,2,4,1,10,9,3,5.0,0,0.7344
+RESP_1587,18-29,Bachelor's,Education,Male,Advanced,4,1,2,1,5,4,4,3.0,0,0.7584
+RESP_1588,18-29,High School,Finance,Male,Intermediate,5,3,4,3,5,7,4,2.8,0,0.8536
+RESP_1589,18-29,Bachelor's,Public Sector,Male,Advanced,2,5,1,2,7,4,6,6.5,1,0.7862
+RESP_1590,18-29,High School,Tech/Engineering,Male,Novice,1,2,4,3,5,6,4,2.9,0,1.4743
+RESP_1591,45-59,Master's,Public Sector,Male,Intermediate,1,3,1,3,4,5,1,7.9,1,0.6167
+RESP_1592,18-29,Bachelor's,Education,Male,Advanced,4,4,3,4,5,5,3,6.6,1,1.1635
+RESP_1593,30-44,Bachelor's,Healthcare,Male,Intermediate,5,1,1,1,10,6,4,3.0,0,1.0658
+RESP_1594,60+,High School,Tech/Engineering,Male,Intermediate,5,3,5,1,5,4,2,1.0,0,0.8909
+RESP_1595,30-44,High School,Public Sector,Female,Intermediate,4,3,4,5,4,6,3,2.3,0,1.3988
+RESP_1596,45-59,Master's,Tech/Engineering,Female,Novice,1,5,1,3,7,8,10,8.7,1,1.2031
+RESP_1597,18-29,High School,Healthcare,Female,Intermediate,2,3,2,3,5,3,5,5.5,0,1.4985
+RESP_1598,18-29,High School,Healthcare,Female,Intermediate,1,5,3,2,10,8,4,7.6,1,0.7518
+RESP_1599,18-29,High School,Public Sector,Male,Advanced,5,1,2,1,4,4,7,1.7,0,0.6791
+RESP_1600,18-29,PhD,Finance,Male,Novice,1,1,2,2,9,4,8,4.4,0,0.7255
+RESP_1601,30-44,Master's,Public Sector,Female,Advanced,2,4,2,4,8,7,10,7.8,1,0.8424
+RESP_1602,18-29,Bachelor's,Healthcare,Female,Advanced,3,5,3,5,5,4,9,6.7,1,0.9751
+RESP_1603,18-29,Bachelor's,Finance,Non-Binary/Other,Novice,1,5,3,2,6,-9,6,7.4,1,1.3763
+RESP_1604,18-29,Bachelor's,Education,Female,Intermediate,4,2,3,1,4,5,2,3.1,0,0.8552
+RESP_1605,30-44,Master's,Public Sector,Female,Advanced,-9,2,3,4,5,1,3,4.3,0,1.4237
+RESP_1606,18-29,Bachelor's,Other,Male,Advanced,4,4,2,3,5,6,4,6.5,1,1.0166
+RESP_1607,30-44,High School,Tech/Engineering,Male,Intermediate,4,1,5,4,6,2,6,3.3,0,1.1824
+RESP_1608,30-44,High School,Finance,Female,Intermediate,4,2,5,2,3,-9,5,4.2,0,0.838
+RESP_1609,45-59,High School,Tech/Engineering,Female,Intermediate,1,3,3,1,7,6,2,6.3,1,0.7404
+RESP_1610,18-29,Bachelor's,Education,Female,Intermediate,5,1,4,2,6,6,2,2.4,0,1.3825
+RESP_1611,45-59,Master's,Healthcare,Male,Novice,3,3,1,3,7,8,6,3.1,0,0.6986
+RESP_1612,45-59,Bachelor's,Healthcare,Male,Intermediate,2,5,4,3,7,3,6,6.1,1,1.2966
+RESP_1613,18-29,High School,Healthcare,Female,Novice,5,1,4,1,-9,3,5,1.0,0,1.1229
+RESP_1614,60+,High School,Finance,Male,Novice,1,4,4,5,7,6,6,6.2,1,1.375
+RESP_1615,60+,PhD,Healthcare,Male,Intermediate,4,5,5,4,6,8,8,6.3,1,1.246
+RESP_1616,18-29,Bachelor's,Finance,Female,Intermediate,2,5,1,4,7,5,6,6.5,1,0.8535
+RESP_1617,30-44,Master's,Education,Male,Intermediate,3,3,4,3,7,3,3,6.0,1,1.117
+RESP_1618,45-59,Bachelor's,Tech/Engineering,Male,Intermediate,-9,-9,3,2,6,8,9,4.8,0,0.6118
+RESP_1619,45-59,Bachelor's,Public Sector,Female,Intermediate,5,2,5,2,6,-9,5,2.8,0,1.0277
+RESP_1620,18-29,Bachelor's,Healthcare,Female,Novice,2,1,3,5,9,4,5,2.0,0,0.6774
+RESP_1621,18-29,High School,Education,Male,Intermediate,1,2,3,2,7,2,4,4.3,0,0.9861
+RESP_1622,30-44,Bachelor's,Finance,Male,Advanced,-9,3,4,4,3,7,3,5.0,0,0.6987
+RESP_1623,30-44,Master's,Healthcare,Male,Intermediate,2,3,3,2,5,7,3,6.0,1,1.4599
+RESP_1624,45-59,Bachelor's,Tech/Engineering,Male,Intermediate,4,1,1,5,6,3,3,1.8,0,1.0708
+RESP_1625,30-44,Bachelor's,Healthcare,Male,Intermediate,3,5,3,4,6,-9,1,5.5,0,1.4219
+RESP_1626,30-44,High School,Other,Female,Advanced,5,4,4,2,6,-9,5,4.7,0,0.6201
+RESP_1627,45-59,PhD,Finance,Male,Novice,2,3,3,4,4,6,8,8.5,1,1.1739
+RESP_1628,18-29,Master's,Finance,Female,Intermediate,5,1,5,3,6,5,3,3.0,0,0.8763
+RESP_1629,30-44,Bachelor's,Finance,Female,Intermediate,5,4,5,3,5,1,10,1.9,0,0.9886
+RESP_1630,45-59,PhD,Tech/Engineering,Male,Intermediate,5,5,5,3,8,6,8,6.7,1,1.3858
+RESP_1631,60+,Bachelor's,Education,Male,Novice,1,3,2,2,4,6,5,4.6,0,1.482
+RESP_1632,30-44,Bachelor's,Public Sector,Female,Intermediate,5,1,5,5,6,1,3,1.0,0,0.8218
+RESP_1633,30-44,Master's,Tech/Engineering,Male,Novice,4,1,5,4,5,8,2,3.0,0,1.4534
+RESP_1634,18-29,Master's,Healthcare,Female,Intermediate,4,1,2,1,10,6,5,3.1,0,1.2199
+RESP_1635,30-44,Bachelor's,Healthcare,Female,Intermediate,3,3,5,3,9,8,5,7.6,1,1.4563
+RESP_1636,30-44,High School,Education,Female,Novice,5,4,4,3,3,1,5,2.6,0,1.1061
+RESP_1637,18-29,Bachelor's,Other,Male,Advanced,5,1,5,1,4,4,8,2.3,0,1.4647
+RESP_1638,30-44,PhD,Tech/Engineering,Male,Novice,2,5,5,1,8,8,8,9.0,1,1.4032
+RESP_1639,30-44,Bachelor's,Education,Female,Advanced,1,1,2,2,7,2,6,5.4,0,0.7157
+RESP_1640,18-29,Bachelor's,Tech/Engineering,Male,Intermediate,3,4,4,4,7,4,6,4.1,0,0.8797
+RESP_1641,30-44,Bachelor's,Other,Female,Novice,5,3,3,3,6,6,5,1.3,0,0.8188
+RESP_1642,18-29,Bachelor's,Tech/Engineering,Male,Novice,2,1,1,5,8,1,5,2.5,0,1.1149
+RESP_1643,30-44,Bachelor's,Education,Female,Advanced,1,1,4,2,8,2,6,6.2,1,1.3225
+RESP_1644,18-29,PhD,Finance,Female,Novice,3,5,3,2,5,8,5,8.4,1,1.2835
+RESP_1645,60+,Bachelor's,Finance,Male,Novice,3,5,4,5,4,5,7,6.4,1,1.2541
+RESP_1646,30-44,High School,Education,Female,Intermediate,5,1,3,5,3,8,3,1.8,0,0.9377
+RESP_1647,45-59,High School,Healthcare,Female,Intermediate,3,1,3,5,6,5,4,3.8,0,0.7257
+RESP_1648,45-59,Master's,Healthcare,Male,Intermediate,2,5,4,1,2,10,3,8.3,1,0.7895
+RESP_1649,30-44,Bachelor's,Healthcare,Non-Binary/Other,Novice,3,4,2,3,7,6,4,3.5,0,1.2675
+RESP_1650,18-29,Bachelor's,Healthcare,Female,Novice,4,2,4,1,5,8,5,2.0,0,0.7328
+RESP_1651,30-44,Master's,Education,Female,Novice,2,2,4,3,10,4,7,3.8,0,0.8007
+RESP_1652,30-44,Master's,Healthcare,Female,Novice,1,1,3,1,7,5,5,5.8,0,0.9821
+RESP_1653,45-59,Master's,Healthcare,Male,Intermediate,1,5,1,4,6,-9,3,7.2,1,0.6649
+RESP_1654,30-44,PhD,Finance,Female,Intermediate,5,3,3,3,3,-9,2,3.6,0,0.7914
+RESP_1655,18-29,Bachelor's,Other,Male,Novice,5,3,5,2,-9,5,4,2.6,0,0.7348
+RESP_1656,30-44,Master's,Finance,Non-Binary/Other,Intermediate,4,2,4,3,-9,5,7,6.1,1,1.4562
+RESP_1657,30-44,Bachelor's,Tech/Engineering,Female,Intermediate,1,4,4,3,5,6,8,7.7,1,0.7724
+RESP_1658,45-59,Master's,Tech/Engineering,Female,Advanced,1,2,2,3,10,6,2,8.2,1,1.3756
+RESP_1659,30-44,Master's,Other,Female,Advanced,1,1,3,4,6,-9,6,4.8,0,0.7033
+RESP_1660,30-44,Master's,Healthcare,Female,Advanced,1,4,2,1,6,5,4,9.3,1,1.3827
+RESP_1661,60+,Bachelor's,Tech/Engineering,Male,Novice,3,3,4,2,3,6,5,2.5,0,1.1395
+RESP_1662,45-59,High School,Education,Female,Novice,2,5,3,1,8,3,3,6.5,1,1.3647
+RESP_1663,18-29,Bachelor's,Finance,Female,Intermediate,2,5,3,1,4,7,5,5.0,0,1.3806
+RESP_1664,18-29,PhD,Finance,Male,Novice,4,1,5,5,7,6,3,2.6,0,1.1367
+RESP_1665,18-29,PhD,Healthcare,Female,Intermediate,3,-9,5,4,8,10,5,3.6,0,1.4259
+RESP_1666,18-29,High School,Tech/Engineering,Male,Intermediate,1,1,1,5,6,5,8,2.8,0,1.1269
+RESP_1667,18-29,High School,Other,Female,Advanced,1,5,5,4,10,7,7,6.4,1,1.2413
+RESP_1668,18-29,High School,Healthcare,Male,Advanced,5,3,3,1,5,6,9,4.5,0,0.9745
+RESP_1669,30-44,Master's,Finance,Male,Intermediate,5,5,5,1,9,9,6,5.6,0,1.4227
+RESP_1670,18-29,Master's,Finance,Male,Intermediate,4,4,1,4,3,3,6,4.8,0,1.3417
+RESP_1671,60+,Bachelor's,Finance,Male,Intermediate,1,5,4,1,8,4,6,7.7,1,0.75
+RESP_1672,18-29,Bachelor's,Healthcare,Female,Novice,4,5,5,1,6,3,4,3.7,0,1.1187
+RESP_1673,30-44,Master's,Healthcare,Female,Intermediate,3,4,3,2,5,5,1,6.5,1,1.4071
+RESP_1674,30-44,Master's,Education,Male,Novice,2,2,4,5,3,3,7,4.3,0,1.3138
+RESP_1675,60+,Bachelor's,Public Sector,Male,Intermediate,1,5,3,5,5,2,2,10.0,1,1.4663
+RESP_1676,18-29,Bachelor's,Other,Female,Intermediate,3,1,4,5,5,1,8,5.0,0,0.8082
+RESP_1677,30-44,Bachelor's,Tech/Engineering,Female,Intermediate,1,5,3,3,6,1,7,8.7,1,0.9307
+RESP_1678,60+,Bachelor's,Tech/Engineering,Female,Intermediate,5,1,5,2,7,6,4,2.0,0,1.0565
+RESP_1679,60+,Bachelor's,Other,Female,Intermediate,4,4,5,5,4,4,4,5.2,0,0.8094
+RESP_1680,45-59,Bachelor's,Finance,Female,Advanced,5,5,1,5,10,2,5,7.3,1,0.9546
+RESP_1681,30-44,Master's,Public Sector,Male,Novice,2,-9,4,2,5,4,3,5.5,0,1.0838
+RESP_1682,18-29,Bachelor's,Healthcare,Female,Intermediate,5,4,1,1,7,4,6,4.4,0,0.7722
+RESP_1683,45-59,Master's,Education,Female,Intermediate,1,2,2,5,6,3,7,5.2,0,0.831
+RESP_1684,60+,High School,Finance,Male,Intermediate,5,5,5,1,6,9,2,3.5,0,0.7124
+RESP_1685,30-44,Bachelor's,Finance,Male,Advanced,1,1,4,5,6,8,4,5.3,0,1.242
+RESP_1686,30-44,High School,Education,Male,Novice,2,1,1,4,4,8,5,1.0,0,0.9254
+RESP_1687,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,5,5,1,3,5,5,8,4.8,0,0.7982
+RESP_1688,45-59,Master's,Education,Female,Intermediate,4,2,2,5,3,6,7,3.5,0,1.0566
+RESP_1689,18-29,PhD,Healthcare,Male,Advanced,4,2,1,4,5,4,1,6.7,1,0.6614
+RESP_1690,30-44,High School,Education,Male,Novice,4,2,3,2,5,3,5,3.3,0,1.4311
+RESP_1691,30-44,Bachelor's,Other,Female,Intermediate,5,1,5,4,8,5,6,4.7,0,0.865
+RESP_1692,30-44,Master's,Healthcare,Male,Intermediate,5,-9,1,2,5,-9,4,4.6,0,1.3978
+RESP_1693,18-29,Bachelor's,Public Sector,Male,Novice,5,2,1,5,5,8,3,1.8,0,1.0479
+RESP_1694,18-29,Bachelor's,Tech/Engineering,Female,Intermediate,1,1,2,2,6,4,4,3.7,0,1.3651
+RESP_1695,45-59,Master's,Finance,Female,Intermediate,2,1,3,4,6,2,5,3.1,0,0.8224
+RESP_1696,30-44,Bachelor's,Other,Female,Intermediate,4,4,1,3,5,7,3,5.8,0,0.7577
+RESP_1697,30-44,High School,Tech/Engineering,Female,Advanced,1,5,5,1,7,1,7,8.1,1,1.3645
+RESP_1698,18-29,Bachelor's,Tech/Engineering,Female,Intermediate,4,5,5,1,6,5,3,6.0,1,0.7916
+RESP_1699,30-44,Master's,Education,Male,Intermediate,1,2,1,3,5,5,3,5.9,0,1.2716
+RESP_1700,30-44,Bachelor's,Tech/Engineering,Female,Intermediate,5,2,3,1,5,4,4,2.5,0,0.9101
+RESP_1701,18-29,High School,Finance,Male,Novice,4,4,5,5,8,2,8,3.7,0,1.2734
+RESP_1702,30-44,Master's,Other,Male,Novice,5,2,5,5,5,4,6,2.8,0,1.4169
+RESP_1703,18-29,High School,Education,Male,Intermediate,4,-9,3,4,7,9,7,4.5,0,1.4835
+RESP_1704,18-29,Master's,Healthcare,Male,Intermediate,3,1,3,4,3,6,6,2.2,0,0.9238
+RESP_1705,60+,Bachelor's,Education,Female,Novice,1,2,1,2,8,8,3,5.1,0,0.9308
+RESP_1706,30-44,PhD,Finance,Female,Intermediate,3,1,4,4,5,2,4,3.0,0,1.4832
+RESP_1707,45-59,Bachelor's,Tech/Engineering,Male,Intermediate,1,3,2,5,7,6,4,6.8,1,1.3754
+RESP_1708,30-44,Bachelor's,Education,Male,Novice,2,4,4,4,5,5,8,5.7,0,0.6406
+RESP_1709,45-59,High School,Finance,Male,Intermediate,-9,3,4,1,7,5,6,4.0,0,1.1161
+RESP_1710,45-59,Bachelor's,Finance,Female,Novice,2,2,5,2,7,6,2,3.7,0,0.7631
+RESP_1711,30-44,Master's,Healthcare,Male,Advanced,2,-9,3,2,6,5,8,7.2,1,1.4946
+RESP_1712,30-44,PhD,Finance,Female,Advanced,1,2,5,5,2,2,5,9.0,1,0.725
+RESP_1713,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,3,3,2,4,8,6,7,5.8,0,1.1034
+RESP_1714,30-44,Bachelor's,Tech/Engineering,Non-Binary/Other,Novice,5,2,1,1,6,7,8,2.7,0,1.1987
+RESP_1715,60+,Master's,Public Sector,Female,Intermediate,1,5,2,4,7,8,1,6.7,1,1.4434
+RESP_1716,45-59,Master's,Finance,Male,Advanced,5,3,5,3,7,8,6,5.6,0,1.3625
+RESP_1717,60+,Bachelor's,Tech/Engineering,Female,Intermediate,2,2,5,4,-9,6,5,1.6,0,0.8212
+RESP_1718,18-29,Bachelor's,Healthcare,Female,Novice,5,1,5,5,7,2,1,1.0,0,1.1154
+RESP_1719,45-59,Bachelor's,Healthcare,Male,Intermediate,3,2,5,4,5,2,3,5.1,0,1.4582
+RESP_1720,60+,Bachelor's,Healthcare,Male,Advanced,1,1,4,2,7,5,4,3.7,0,1.2621
+RESP_1721,18-29,High School,Healthcare,Male,Intermediate,3,5,1,1,6,7,7,5.5,0,1.2195
+RESP_1722,18-29,Bachelor's,Tech/Engineering,Male,Intermediate,3,2,4,5,5,7,5,5.5,0,1.2794
+RESP_1723,45-59,Bachelor's,Education,Male,Intermediate,1,5,5,3,6,6,6,8.3,1,0.8903
+RESP_1724,30-44,Master's,Finance,Male,Intermediate,3,-9,3,1,4,-9,5,5.7,0,1.2563
+RESP_1725,45-59,High School,Finance,Male,Novice,4,1,4,1,7,9,8,1.0,0,0.8096
+RESP_1726,18-29,Bachelor's,Finance,Female,Intermediate,4,3,5,2,7,6,6,4.1,0,0.9853
+RESP_1727,45-59,Bachelor's,Tech/Engineering,Non-Binary/Other,Novice,4,1,5,2,7,5,6,1.0,0,1.4009
+RESP_1728,18-29,Bachelor's,Other,Female,Intermediate,5,5,1,2,9,4,3,4.2,0,0.6171
+RESP_1729,18-29,High School,Public Sector,Male,Novice,3,4,2,5,6,3,6,4.2,0,0.9729
+RESP_1730,18-29,Bachelor's,Public Sector,Female,Intermediate,1,2,4,4,6,3,10,5.5,0,0.8401
+RESP_1731,45-59,Bachelor's,Public Sector,Female,Novice,1,5,4,1,4,3,7,6.6,1,0.7787
+RESP_1732,45-59,Bachelor's,Other,Female,Intermediate,5,-9,4,4,9,6,4,1.0,0,1.3547
+RESP_1733,30-44,Bachelor's,Education,Male,Intermediate,1,1,5,4,3,5,9,6.3,1,1.2268
+RESP_1734,30-44,Bachelor's,Healthcare,Female,Novice,4,1,1,2,6,4,4,2.6,0,0.7014
+RESP_1735,60+,Master's,Finance,Female,Novice,3,1,5,4,5,7,7,2.7,0,1.045
+RESP_1736,30-44,Bachelor's,Finance,Male,Novice,1,2,5,1,6,9,5,5.6,0,1.0202
+RESP_1737,45-59,Master's,Finance,Male,Advanced,1,3,3,1,3,3,6,7.3,1,0.7283
+RESP_1738,30-44,Bachelor's,Education,Female,Intermediate,2,-9,1,3,8,4,6,5.7,0,1.3198
+RESP_1739,30-44,High School,Tech/Engineering,Female,Intermediate,2,2,4,5,4,1,5,1.7,0,0.93
+RESP_1740,30-44,High School,Healthcare,Female,Novice,2,1,2,4,8,5,4,2.7,0,1.2857
+RESP_1741,30-44,Bachelor's,Other,Female,Intermediate,3,2,4,5,4,5,3,3.5,0,0.7729
+RESP_1742,45-59,Master's,Education,Male,Advanced,4,5,5,5,8,7,3,7.5,1,0.8836
+RESP_1743,30-44,Master's,Education,Male,Advanced,4,1,1,5,4,5,6,6.1,1,0.6857
+RESP_1744,18-29,Master's,Healthcare,Male,Intermediate,4,4,1,5,5,4,4,5.4,0,0.7291
+RESP_1745,60+,Bachelor's,Healthcare,Female,Novice,3,1,1,1,6,-9,3,1.7,0,1.3949
+RESP_1746,30-44,Bachelor's,Public Sector,Male,Novice,3,4,3,4,4,6,10,4.1,0,0.6982
+RESP_1747,30-44,High School,Finance,Male,Novice,2,4,4,3,4,1,10,3.1,0,0.6862
+RESP_1748,60+,Bachelor's,Public Sector,Male,Novice,1,3,3,5,4,7,7,5.7,0,1.4463
+RESP_1749,45-59,Bachelor's,Education,Male,Novice,5,3,2,3,7,8,7,3.0,0,1.1813
+RESP_1750,18-29,High School,Finance,Male,Novice,5,2,5,1,6,6,4,1.2,0,0.6908
+RESP_1751,60+,Bachelor's,Healthcare,Male,Intermediate,1,2,3,1,6,3,3,6.3,1,1.4745
+RESP_1752,45-59,Bachelor's,Finance,Female,Advanced,2,4,3,2,5,4,5,8.2,1,0.7324
+RESP_1753,30-44,Master's,Education,Male,Intermediate,1,1,5,5,7,8,5,5.2,0,1.2897
+RESP_1754,18-29,PhD,Education,Male,Advanced,1,5,1,2,8,3,7,10.0,1,0.6314
+RESP_1755,45-59,PhD,Finance,Male,Intermediate,5,5,5,3,7,6,1,8.9,1,1.1621
+RESP_1756,45-59,Bachelor's,Other,Female,Novice,2,1,4,4,6,5,10,1.9,0,1.092
+RESP_1757,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,3,1,5,2,4,5,6,3.9,0,0.7872
+RESP_1758,60+,Bachelor's,Public Sector,Male,Novice,5,3,1,1,-9,3,2,2.5,0,1.1788
+RESP_1759,45-59,Master's,Healthcare,Female,Intermediate,3,5,5,5,6,6,6,8.2,1,1.1553
+RESP_1760,18-29,High School,Education,Female,Intermediate,2,4,3,3,2,6,3,4.6,0,1.3185
+RESP_1761,30-44,Bachelor's,Tech/Engineering,Male,Advanced,1,2,2,1,6,2,3,6.4,1,1.3883
+RESP_1762,18-29,Master's,Healthcare,Male,Novice,4,3,3,4,9,5,3,3.0,0,1.0591
+RESP_1763,45-59,Bachelor's,Education,Male,Novice,-9,5,2,5,4,6,5,3.3,0,1.0413
+RESP_1764,18-29,Bachelor's,Tech/Engineering,Female,Advanced,-9,-9,5,4,3,4,10,7.3,1,1.1594
+RESP_1765,30-44,Bachelor's,Education,Male,Novice,4,5,4,4,7,1,5,4.2,0,1.2563
+RESP_1766,45-59,High School,Other,Female,Intermediate,3,4,5,5,1,5,7,3.9,0,0.9206
+RESP_1767,60+,Bachelor's,Tech/Engineering,Female,Intermediate,4,3,1,5,7,8,7,3.2,0,1.0542
+RESP_1768,30-44,Bachelor's,Public Sector,Female,Advanced,2,1,5,4,9,4,5,6.9,1,1.1266
+RESP_1769,45-59,High School,Education,Female,Advanced,2,4,2,3,4,8,3,8.2,1,1.4895
+RESP_1770,18-29,High School,Finance,Female,Advanced,3,2,3,5,4,3,2,4.0,0,1.1289
+RESP_1771,45-59,Master's,Healthcare,Female,Novice,4,3,4,1,7,2,4,4.8,0,0.8018
+RESP_1772,18-29,Bachelor's,Tech/Engineering,Female,Advanced,4,4,5,2,4,-9,8,4.4,0,1.1292
+RESP_1773,30-44,Bachelor's,Tech/Engineering,Female,Intermediate,1,4,5,3,8,3,7,7.4,1,1.3375
+RESP_1774,45-59,Bachelor's,Tech/Engineering,Male,Intermediate,5,1,3,5,4,6,6,1.1,0,1.3717
+RESP_1775,18-29,PhD,Tech/Engineering,Male,Novice,2,2,4,5,10,4,6,5.7,0,1.3202
+RESP_1776,18-29,Bachelor's,Finance,Female,Intermediate,1,4,5,3,-9,8,5,5.2,0,1.3994
+RESP_1777,45-59,Bachelor's,Public Sector,Male,Advanced,2,3,5,2,6,4,4,5.6,0,0.9013
+RESP_1778,45-59,Master's,Public Sector,Female,Advanced,1,4,2,4,9,5,4,8.7,1,1.0568
+RESP_1779,45-59,Master's,Finance,Male,Intermediate,5,5,2,1,8,6,2,5.7,0,1.3016
+RESP_1780,45-59,High School,Tech/Engineering,Female,Novice,1,3,1,5,7,7,9,2.9,0,0.838
+RESP_1781,30-44,Master's,Healthcare,Female,Intermediate,2,3,3,2,2,8,6,4.8,0,0.9344
+RESP_1782,30-44,Bachelor's,Healthcare,Male,Advanced,4,4,4,1,5,4,4,6.2,1,1.348
+RESP_1783,30-44,Bachelor's,Healthcare,Male,Intermediate,2,1,5,3,8,4,9,4.1,0,1.2931
+RESP_1784,18-29,High School,Education,Male,Intermediate,3,3,5,5,3,1,10,4.9,0,1.4741
+RESP_1785,60+,High School,Education,Male,Novice,3,5,1,4,4,9,10,5.1,0,1.4964
+RESP_1786,30-44,Master's,Healthcare,Male,Intermediate,3,1,5,3,4,6,5,2.4,0,0.8167
+RESP_1787,30-44,Bachelor's,Healthcare,Female,Intermediate,3,1,3,5,7,7,6,2.6,0,1.4104
+RESP_1788,30-44,Bachelor's,Public Sector,Female,Advanced,5,1,1,2,8,6,7,3.2,0,0.6851
+RESP_1789,60+,Master's,Public Sector,Female,Intermediate,4,3,3,1,8,5,9,3.4,0,1.2388
+RESP_1790,18-29,Master's,Healthcare,Female,Intermediate,-9,1,1,1,4,6,5,2.3,0,0.7981
+RESP_1791,30-44,High School,Other,Male,Intermediate,2,4,5,5,7,4,3,5.2,0,0.8703
+RESP_1792,30-44,Bachelor's,Other,Male,Novice,1,1,1,3,4,4,4,3.9,0,1.4517
+RESP_1793,45-59,High School,Healthcare,Female,Advanced,2,5,2,4,6,3,8,5.2,0,0.8368
+RESP_1794,18-29,Master's,Healthcare,Male,Intermediate,2,2,4,2,7,8,7,4.9,0,1.2059
+RESP_1795,60+,Bachelor's,Education,Male,Intermediate,2,5,5,5,8,6,5,7.5,1,0.7603
+RESP_1796,60+,PhD,Other,Female,Intermediate,2,3,4,2,2,9,5,7.7,1,0.6841
+RESP_1797,30-44,High School,Public Sector,Female,Intermediate,4,1,5,1,6,10,5,1.0,0,0.9054
+RESP_1798,45-59,High School,Tech/Engineering,Female,Intermediate,1,1,4,4,9,2,8,4.3,0,1.1618
+RESP_1799,60+,Bachelor's,Healthcare,Female,Intermediate,2,4,2,2,6,7,4,7.3,1,0.8232
+RESP_1800,45-59,Bachelor's,Education,Female,Novice,4,1,4,5,6,-9,3,2.2,0,0.8702
+RESP_1801,18-29,Bachelor's,Education,Male,Intermediate,2,5,1,4,5,5,9,6.4,1,1.2379
+RESP_1802,30-44,PhD,Tech/Engineering,Female,Novice,3,3,4,3,9,6,5,2.4,0,0.6925
+RESP_1803,45-59,Bachelor's,Public Sector,Female,Intermediate,2,2,5,5,5,2,5,4.8,0,1.0022
+RESP_1804,30-44,Bachelor's,Finance,Non-Binary/Other,Novice,2,1,3,2,6,3,7,4.8,0,1.4476
+RESP_1805,45-59,Master's,Public Sector,Male,Intermediate,5,2,4,4,5,6,3,4.1,0,0.9573
+RESP_1806,60+,Bachelor's,Public Sector,Male,Advanced,3,1,4,5,6,5,7,4.9,0,0.9908
+RESP_1807,60+,Master's,Finance,Female,Advanced,1,3,4,4,9,-9,4,7.9,1,1.2644
+RESP_1808,30-44,High School,Education,Female,Intermediate,2,5,5,4,4,3,8,7.5,1,1.3011
+RESP_1809,18-29,Bachelor's,Finance,Male,Intermediate,1,3,4,4,6,2,2,6.4,1,1.2926
+RESP_1810,60+,High School,Tech/Engineering,Female,Novice,3,2,5,2,-9,2,6,1.0,0,1.4981
+RESP_1811,45-59,High School,Finance,Female,Intermediate,2,1,5,5,4,-9,5,4.3,0,0.6643
+RESP_1812,18-29,PhD,Tech/Engineering,Male,Advanced,5,2,3,1,6,7,4,3.9,0,1.484
+RESP_1813,60+,High School,Finance,Male,Novice,4,5,1,1,10,7,7,4.3,0,1.4552
+RESP_1814,60+,Bachelor's,Healthcare,Female,Intermediate,5,3,5,2,2,9,5,4.1,0,1.3669
+RESP_1815,30-44,Bachelor's,Tech/Engineering,Male,Advanced,5,2,2,2,5,6,6,2.5,0,1.0087
+RESP_1816,30-44,Bachelor's,Tech/Engineering,Female,Advanced,4,2,4,4,7,5,8,2.9,0,1.3838
+RESP_1817,30-44,Master's,Tech/Engineering,Female,Novice,4,5,2,5,5,6,7,6.0,1,0.7987
+RESP_1818,18-29,High School,Finance,Female,Intermediate,4,1,4,5,10,-9,3,1.0,0,1.3125
+RESP_1819,30-44,Bachelor's,Finance,Female,Novice,2,2,3,3,7,1,4,3.5,0,0.7667
+RESP_1820,45-59,PhD,Education,Female,Novice,1,5,5,3,4,9,6,9.7,1,1.3338
+RESP_1821,18-29,Bachelor's,Tech/Engineering,Male,Advanced,1,1,1,1,1,1,7,7.4,1,1.1531
+RESP_1822,30-44,PhD,Tech/Engineering,Male,Advanced,4,1,5,3,7,8,4,2.7,0,0.6882
+RESP_1823,30-44,High School,Tech/Engineering,Male,Intermediate,5,3,4,3,4,-9,6,2.4,0,1.4058
+RESP_1824,30-44,Bachelor's,Tech/Engineering,Female,Novice,3,5,1,1,9,3,6,6.9,1,1.1202
+RESP_1825,60+,Bachelor's,Public Sector,Female,Advanced,4,1,5,1,5,6,6,2.8,0,1.1906
+RESP_1826,30-44,Master's,Healthcare,Female,Intermediate,5,3,1,3,5,5,3,4.9,0,0.8552
+RESP_1827,30-44,PhD,Healthcare,Female,Intermediate,5,4,4,5,5,3,2,6.5,1,1.3845
+RESP_1828,45-59,Bachelor's,Tech/Engineering,Female,Intermediate,2,5,3,3,8,2,1,6.2,1,1.0907
+RESP_1829,30-44,Bachelor's,Healthcare,Male,Novice,2,4,3,4,7,2,6,5.8,0,0.979
+RESP_1830,18-29,High School,Education,Male,Intermediate,1,1,5,4,10,-9,2,4.5,0,1.0809
+RESP_1831,30-44,Bachelor's,Finance,Male,Intermediate,1,5,2,4,6,4,10,8.7,1,1.233
+RESP_1832,18-29,Bachelor's,Healthcare,Female,Novice,3,3,4,2,8,2,7,1.8,0,1.2255
+RESP_1833,18-29,PhD,Tech/Engineering,Male,Novice,3,1,5,4,8,5,3,5.3,0,0.9218
+RESP_1834,30-44,Bachelor's,Healthcare,Female,Novice,3,5,5,5,7,3,8,6.2,1,0.9467
+RESP_1835,30-44,Bachelor's,Healthcare,Female,Novice,3,5,3,2,5,6,8,4.0,0,1.106
+RESP_1836,60+,High School,Healthcare,Female,Intermediate,5,4,1,2,7,8,8,3.3,0,1.432
+RESP_1837,30-44,High School,Other,Male,Advanced,5,-9,4,4,6,6,4,4.7,0,1.2709
+RESP_1838,30-44,Bachelor's,Finance,Non-Binary/Other,Novice,1,3,1,3,6,5,7,3.9,0,0.9514
+RESP_1839,45-59,Bachelor's,Education,Female,Novice,2,3,4,1,4,4,8,3.4,0,0.9033
+RESP_1840,18-29,Master's,Education,Male,Intermediate,2,1,2,3,2,8,9,4.4,0,1.0713
+RESP_1841,45-59,Bachelor's,Education,Male,Advanced,4,1,3,3,8,5,2,2.8,0,1.383
+RESP_1842,18-29,Bachelor's,Education,Female,Intermediate,5,2,2,2,7,10,5,2.7,0,0.6078
+RESP_1843,60+,High School,Finance,Female,Intermediate,3,4,5,2,3,2,4,5.9,0,1.2394
+RESP_1844,18-29,Master's,Finance,Female,Intermediate,3,1,3,2,7,6,9,4.0,0,0.8651
+RESP_1845,30-44,Master's,Tech/Engineering,Non-Binary/Other,Novice,4,1,5,5,9,8,6,2.2,0,0.7876
+RESP_1846,18-29,High School,Education,Female,Novice,2,-9,2,5,8,3,7,5.0,0,0.6109
+RESP_1847,60+,Master's,Education,Male,Intermediate,3,2,4,1,4,4,6,4.4,0,1.4069
+RESP_1848,30-44,Bachelor's,Public Sector,Female,Intermediate,2,5,5,2,5,6,6,6.0,1,1.421
+RESP_1849,30-44,High School,Finance,Male,Intermediate,4,3,1,4,5,6,3,4.8,0,0.6553
+RESP_1850,18-29,Bachelor's,Education,Female,Intermediate,2,4,4,2,8,6,4,3.2,0,1.0696
+RESP_1851,45-59,Bachelor's,Tech/Engineering,Male,Intermediate,2,5,4,5,7,8,5,7.0,1,0.7373
+RESP_1852,18-29,High School,Finance,Male,Novice,2,1,2,2,10,4,4,2.0,0,1.2828
+RESP_1853,60+,PhD,Tech/Engineering,Male,Intermediate,3,2,2,5,3,8,4,4.2,0,1.1989
+RESP_1854,18-29,Master's,Healthcare,Male,Novice,1,3,3,2,-9,1,5,6.3,1,0.8674
+RESP_1855,18-29,Bachelor's,Tech/Engineering,Female,Novice,5,5,3,4,2,7,4,4.6,0,0.7053
+RESP_1856,18-29,Bachelor's,Finance,Male,Intermediate,2,3,1,1,7,8,5,4.3,0,1.3481
+RESP_1857,30-44,Bachelor's,Healthcare,Female,Advanced,2,2,4,4,8,3,4,3.8,0,1.2068
+RESP_1858,30-44,Bachelor's,Healthcare,Female,Advanced,2,5,1,5,9,2,4,6.3,1,0.6061
+RESP_1859,18-29,Bachelor's,Public Sector,Male,Intermediate,1,5,1,3,6,4,3,9.8,1,1.1651
+RESP_1860,45-59,High School,Healthcare,Female,Novice,4,3,2,4,2,6,5,4.9,0,1.3293
+RESP_1861,30-44,Bachelor's,Education,Male,Novice,3,2,1,2,6,4,7,3.0,0,1.1317
+RESP_1862,30-44,Master's,Education,Non-Binary/Other,Advanced,1,1,1,1,7,6,7,4.5,0,0.9822
+RESP_1863,30-44,Bachelor's,Tech/Engineering,Female,Intermediate,2,5,5,2,4,9,2,6.7,1,1.1255
+RESP_1864,30-44,High School,Public Sector,Male,Intermediate,1,1,3,2,5,2,7,1.3,0,1.1577
+RESP_1865,30-44,Master's,Tech/Engineering,Female,Intermediate,1,2,3,4,3,1,7,6.3,1,1.176
+RESP_1866,18-29,Bachelor's,Education,Female,Intermediate,1,5,4,1,5,5,7,6.4,1,1.4703
+RESP_1867,18-29,Bachelor's,Education,Female,Advanced,4,5,3,3,8,4,8,5.0,0,0.7608
+RESP_1868,60+,High School,Finance,Male,Novice,5,1,4,2,7,4,4,1.5,0,1.1608
+RESP_1869,60+,Bachelor's,Finance,Male,Intermediate,3,4,5,1,3,8,5,5.2,0,0.7692
+RESP_1870,30-44,Master's,Healthcare,Male,Advanced,4,1,3,3,5,5,9,5.0,0,0.789
+RESP_1871,30-44,Bachelor's,Tech/Engineering,Non-Binary/Other,Novice,4,1,5,2,6,5,9,2.9,0,1.2023
+RESP_1872,45-59,Bachelor's,Finance,Female,Intermediate,5,4,3,1,6,4,5,3.9,0,1.4244
+RESP_1873,30-44,Master's,Education,Female,Intermediate,4,2,3,4,5,5,7,3.8,0,0.7431
+RESP_1874,18-29,Master's,Public Sector,Male,Advanced,1,2,5,2,7,6,7,8.2,1,1.4662
+RESP_1875,18-29,Master's,Public Sector,Male,Novice,1,5,1,2,6,10,9,6.9,1,0.8874
+RESP_1876,45-59,Bachelor's,Public Sector,Female,Intermediate,2,3,1,1,1,6,6,6.7,1,0.9522
+RESP_1877,45-59,Bachelor's,Education,Female,Novice,4,3,1,2,5,8,3,1.0,0,0.7383
+RESP_1878,18-29,PhD,Healthcare,Male,Intermediate,2,5,1,3,5,5,4,8.0,1,1.1543
+RESP_1879,18-29,Master's,Public Sector,Male,Novice,-9,3,3,2,7,1,10,4.7,0,1.1368
+RESP_1880,18-29,High School,Education,Female,Novice,1,1,2,5,7,4,3,1.7,0,0.998
+RESP_1881,45-59,High School,Tech/Engineering,Female,Intermediate,3,1,5,3,3,6,5,2.9,0,1.0285
+RESP_1882,18-29,Bachelor's,Public Sector,Male,Advanced,5,4,2,1,7,7,10,5.2,0,1.1607
+RESP_1883,18-29,PhD,Public Sector,Male,Novice,1,-9,2,3,6,5,4,5.8,0,1.1251
+RESP_1884,45-59,Bachelor's,Education,Female,Novice,3,5,4,5,6,7,1,4.5,0,0.9368
+RESP_1885,18-29,Bachelor's,Tech/Engineering,Male,Intermediate,5,5,1,5,5,2,1,3.8,0,1.3957
+RESP_1886,45-59,High School,Healthcare,Female,Intermediate,3,5,3,2,6,5,4,3.8,0,1.2009
+RESP_1887,18-29,Bachelor's,Public Sector,Female,Advanced,5,1,1,2,8,8,2,4.5,0,0.7849
+RESP_1888,18-29,Master's,Other,Male,Novice,-9,3,1,4,6,3,7,4.2,0,0.8879
+RESP_1889,18-29,Bachelor's,Healthcare,Male,Intermediate,1,5,2,3,6,7,6,6.0,1,1.3091
+RESP_1890,45-59,Master's,Tech/Engineering,Female,Novice,2,5,4,4,5,7,1,6.7,1,0.6941
+RESP_1891,60+,PhD,Public Sector,Male,Novice,5,1,1,5,8,2,2,2.6,0,1.2752
+RESP_1892,45-59,Bachelor's,Healthcare,Male,Intermediate,5,1,5,2,3,6,8,1.0,0,0.923
+RESP_1893,30-44,Bachelor's,Education,Male,Intermediate,1,1,5,2,4,-9,6,4.0,0,1.0965
+RESP_1894,45-59,Bachelor's,Other,Male,Intermediate,2,3,1,2,3,5,8,6.9,1,0.8525
+RESP_1895,18-29,Master's,Tech/Engineering,Male,Intermediate,4,5,2,1,6,2,8,4.8,0,1.4878
+RESP_1896,30-44,Bachelor's,Finance,Male,Intermediate,4,2,2,5,8,4,3,2.4,0,1.4153
+RESP_1897,60+,Bachelor's,Tech/Engineering,Female,Intermediate,2,2,3,2,5,5,7,2.1,0,1.4356
+RESP_1898,18-29,Master's,Healthcare,Female,Advanced,3,-9,4,5,4,1,6,8.5,1,0.7663
+RESP_1899,18-29,Bachelor's,Public Sector,Female,Novice,-9,5,2,2,9,2,1,6.2,1,1.3575
+RESP_1900,18-29,PhD,Education,Male,Novice,2,5,3,3,7,3,2,7.5,1,1.0819
+RESP_1901,18-29,Bachelor's,Other,Male,Intermediate,4,5,5,5,7,3,10,4.6,0,1.2371
+RESP_1902,18-29,High School,Education,Female,Intermediate,5,3,5,4,6,6,3,1.8,0,0.7958
+RESP_1903,30-44,Bachelor's,Healthcare,Female,Novice,4,2,5,1,7,7,6,2.0,0,1.2408
+RESP_1904,30-44,Master's,Healthcare,Male,Advanced,-9,4,1,4,7,4,5,7.7,1,1.4228
+RESP_1905,60+,Bachelor's,Healthcare,Female,Novice,1,2,4,5,5,-9,6,3.1,0,0.8407
+RESP_1906,45-59,Master's,Healthcare,Male,Advanced,5,2,3,2,5,7,5,3.5,0,0.81
+RESP_1907,30-44,PhD,Tech/Engineering,Female,Novice,2,1,4,5,4,5,7,5.4,0,0.694
+RESP_1908,30-44,Bachelor's,Healthcare,Male,Intermediate,-9,5,1,1,4,6,7,8.1,1,0.8401
+RESP_1909,30-44,PhD,Education,Male,Advanced,3,5,3,5,5,5,6,9.4,1,1.0822
+RESP_1910,30-44,High School,Finance,Female,Novice,2,5,3,2,8,3,3,4.8,0,1.3494
+RESP_1911,30-44,Bachelor's,Finance,Female,Advanced,1,1,2,4,4,3,4,5.2,0,0.8509
+RESP_1912,45-59,High School,Finance,Female,Intermediate,2,3,4,3,8,6,2,5.3,0,1.159
+RESP_1913,30-44,Master's,Tech/Engineering,Male,Advanced,3,3,4,4,4,5,5,6.0,1,1.0316
+RESP_1914,30-44,Bachelor's,Healthcare,Male,Intermediate,1,4,2,2,2,7,2,7.7,1,0.8597
+RESP_1915,30-44,High School,Finance,Female,Intermediate,4,3,5,2,7,1,6,2.5,0,1.0593
+RESP_1916,30-44,Bachelor's,Education,Male,Novice,3,3,1,1,9,1,6,5.7,0,0.7512
+RESP_1917,60+,Bachelor's,Tech/Engineering,Male,Intermediate,1,5,4,5,4,2,7,7.5,1,1.1756
+RESP_1918,45-59,High School,Public Sector,Female,Novice,5,2,2,5,3,5,3,1.0,0,0.7041
+RESP_1919,18-29,Master's,Public Sector,Female,Novice,2,3,3,4,7,2,3,5.9,0,1.2579
+RESP_1920,60+,Master's,Education,Male,Novice,1,-9,2,3,4,6,9,4.7,0,0.7599
+RESP_1921,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,2,1,5,3,-9,7,2,3.9,0,1.4983
+RESP_1922,60+,PhD,Public Sector,Male,Intermediate,5,4,1,1,8,8,10,7.2,1,1.3413
+RESP_1923,45-59,Bachelor's,Education,Male,Novice,1,1,5,2,7,8,3,2.1,0,0.9095
+RESP_1924,30-44,PhD,Public Sector,Male,Novice,4,5,3,1,8,3,3,7.6,1,0.9836
+RESP_1925,18-29,Bachelor's,Public Sector,Female,Intermediate,3,-9,3,5,8,1,7,3.1,0,0.8333
+RESP_1926,30-44,Bachelor's,Public Sector,Male,Novice,1,4,3,2,8,4,6,7.0,1,1.2904
+RESP_1927,30-44,High School,Education,Male,Novice,5,1,3,1,6,7,9,1.0,0,0.9427
+RESP_1928,45-59,Master's,Tech/Engineering,Male,Novice,1,3,2,4,8,4,1,7.3,1,1.2797
+RESP_1929,30-44,Bachelor's,Finance,Female,Advanced,2,3,3,5,6,-9,6,5.6,0,0.6166
+RESP_1930,18-29,High School,Finance,Female,Advanced,1,4,3,3,7,4,5,6.9,1,0.7221
+RESP_1931,45-59,High School,Finance,Female,Intermediate,4,3,2,1,10,8,3,2.3,0,0.9285
+RESP_1932,60+,Bachelor's,Tech/Engineering,Female,Intermediate,1,1,3,5,6,3,9,1.5,0,0.698
+RESP_1933,30-44,Bachelor's,Tech/Engineering,Female,Intermediate,3,1,5,5,3,5,6,1.6,0,1.141
+RESP_1934,18-29,Master's,Public Sector,Male,Intermediate,1,3,5,3,6,7,5,4.7,0,0.6457
+RESP_1935,30-44,Master's,Finance,Male,Intermediate,2,3,4,3,5,9,6,3.5,0,1.3738
+RESP_1936,18-29,High School,Other,Female,Intermediate,1,5,5,3,5,3,2,7.5,1,1.2852
+RESP_1937,60+,Master's,Public Sector,Male,Novice,4,2,1,1,8,7,3,4.8,0,0.7946
+RESP_1938,18-29,High School,Education,Female,Novice,5,4,1,3,8,4,5,4.9,0,1.0354
+RESP_1939,30-44,Master's,Finance,Female,Intermediate,1,1,1,4,6,8,6,3.7,0,1.0066
+RESP_1940,30-44,Master's,Public Sector,Female,Advanced,1,4,2,5,3,9,8,8.4,1,1.2524
+RESP_1941,30-44,Bachelor's,Education,Male,Intermediate,3,5,5,3,6,3,3,7.6,1,0.9614
+RESP_1942,45-59,Master's,Finance,Female,Advanced,4,1,1,5,5,6,3,2.4,0,0.6296
+RESP_1943,45-59,Bachelor's,Tech/Engineering,Female,Advanced,5,5,4,2,6,7,6,7.2,1,0.8464
+RESP_1944,18-29,Bachelor's,Education,Female,Novice,2,-9,2,2,6,4,5,6.0,1,1.0196
+RESP_1945,18-29,Master's,Finance,Male,Intermediate,1,3,4,3,8,6,1,4.4,0,1.477
+RESP_1946,18-29,Bachelor's,Healthcare,Female,Intermediate,5,4,5,5,7,6,3,1.2,0,1.393
+RESP_1947,60+,Bachelor's,Healthcare,Male,Advanced,2,4,3,2,5,9,5,6.6,1,0.7633
+RESP_1948,60+,Bachelor's,Healthcare,Male,Advanced,4,3,4,3,3,1,5,6.0,1,1.2509
+RESP_1949,30-44,Master's,Healthcare,Male,Intermediate,4,4,3,5,6,5,5,3.6,0,1.4431
+RESP_1950,45-59,Bachelor's,Healthcare,Male,Novice,-9,3,2,3,6,2,3,1.4,0,0.6079
+RESP_1951,45-59,High School,Education,Female,Intermediate,2,1,4,5,5,5,5,3.3,0,1.2489
+RESP_1952,18-29,Master's,Other,Female,Novice,4,5,4,2,8,3,7,6.2,1,1.0134
+RESP_1953,60+,Master's,Education,Male,Intermediate,5,5,2,3,3,4,1,4.7,0,1.2122
+RESP_1954,30-44,High School,Tech/Engineering,Female,Advanced,4,4,2,2,4,-9,5,4.5,0,1.145
+RESP_1955,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,4,2,1,3,6,5,2,3.9,0,1.4862
+RESP_1956,30-44,High School,Finance,Male,Intermediate,4,5,5,1,5,7,5,4.0,0,0.8599
+RESP_1957,18-29,Bachelor's,Healthcare,Male,Intermediate,3,3,4,2,5,4,2,3.6,0,1.3075
+RESP_1958,18-29,Bachelor's,Public Sector,Male,Intermediate,2,2,4,2,6,8,6,4.8,0,0.8112
+RESP_1959,45-59,Master's,Finance,Non-Binary/Other,Intermediate,5,2,2,4,7,7,9,3.6,0,0.992
+RESP_1960,18-29,Bachelor's,Public Sector,Male,Intermediate,5,5,2,2,6,9,3,4.5,0,1.4778
+RESP_1961,45-59,Bachelor's,Healthcare,Female,Advanced,2,5,5,5,2,6,4,9.7,1,1.2895
+RESP_1962,18-29,Bachelor's,Finance,Male,Advanced,2,5,2,3,5,5,4,8.8,1,0.8842
+RESP_1963,30-44,Master's,Healthcare,Female,Novice,2,3,3,1,7,2,6,4.8,0,1.1574
+RESP_1964,30-44,Bachelor's,Other,Female,Advanced,2,2,3,5,8,3,3,4.0,0,0.6447
+RESP_1965,30-44,PhD,Finance,Male,Intermediate,1,4,3,5,8,5,5,9.5,1,0.8398
+RESP_1966,45-59,Bachelor's,Healthcare,Female,Novice,5,3,3,5,8,5,4,3.6,0,1.2466
+RESP_1967,30-44,High School,Healthcare,Female,Novice,1,1,5,5,6,10,4,3.0,0,1.1131
+RESP_1968,30-44,Bachelor's,Tech/Engineering,Female,Novice,4,5,4,1,7,5,6,5.0,0,1.0227
+RESP_1969,30-44,Bachelor's,Finance,Male,Advanced,4,2,3,4,4,1,6,4.9,0,1.2218
+RESP_1970,45-59,Bachelor's,Healthcare,Male,Intermediate,5,3,2,2,2,6,2,5.1,0,0.9586
+RESP_1971,60+,High School,Education,Male,Intermediate,4,1,3,5,3,6,6,2.9,0,0.6235
+RESP_1972,45-59,High School,Healthcare,Female,Novice,2,3,5,2,5,4,10,4.5,0,0.9969
+RESP_1973,18-29,Master's,Finance,Male,Intermediate,1,3,2,2,3,10,9,7.8,1,1.4119
+RESP_1974,18-29,Bachelor's,Public Sector,Male,Novice,2,4,3,5,5,1,4,6.7,1,1.371
+RESP_1975,30-44,Master's,Public Sector,Female,Intermediate,4,4,4,4,5,8,6,5.7,0,0.9681
+RESP_1976,30-44,Bachelor's,Public Sector,Female,Intermediate,-9,3,2,2,8,4,5,5.7,0,0.62
+RESP_1977,18-29,Bachelor's,Tech/Engineering,Female,Novice,2,1,2,3,4,3,6,2.1,0,1.1727
+RESP_1978,30-44,Bachelor's,Tech/Engineering,Non-Binary/Other,Advanced,5,2,4,2,-9,10,4,4.6,0,1.2671
+RESP_1979,30-44,Bachelor's,Finance,Male,Novice,2,2,2,5,5,7,5,2.9,0,0.8648
+RESP_1980,30-44,Bachelor's,Healthcare,Male,Intermediate,4,5,3,1,4,4,4,4.3,0,1.029
+RESP_1981,45-59,Bachelor's,Education,Female,Intermediate,1,5,2,2,5,4,8,7.4,1,1.4927
+RESP_1982,18-29,High School,Tech/Engineering,Male,Intermediate,5,2,3,4,2,6,6,1.0,0,1.1187
+RESP_1983,18-29,Bachelor's,Healthcare,Male,Novice,1,3,4,3,7,4,6,4.5,0,0.916
+RESP_1984,45-59,Bachelor's,Tech/Engineering,Male,Novice,5,3,1,3,9,8,8,2.9,0,1.1647
+RESP_1985,30-44,PhD,Public Sector,Non-Binary/Other,Advanced,1,4,4,1,5,5,8,9.6,1,0.762
+RESP_1986,45-59,Master's,Healthcare,Female,Novice,4,4,3,1,6,7,7,5.4,0,0.7793
+RESP_1987,30-44,Master's,Education,Female,Advanced,5,5,5,2,5,5,8,7.3,1,1.4324
+RESP_1988,18-29,Master's,Tech/Engineering,Male,Advanced,3,2,4,5,4,-9,9,5.9,0,0.8153
+RESP_1989,45-59,Bachelor's,Finance,Male,Novice,1,3,5,4,7,8,3,4.2,0,0.8797
+RESP_1990,45-59,Bachelor's,Healthcare,Male,Novice,1,2,5,3,7,9,5,5.5,0,1.0894
+RESP_1991,45-59,PhD,Public Sector,Female,Intermediate,2,1,3,1,1,6,7,5.1,0,1.4097
+RESP_1992,30-44,Bachelor's,Public Sector,Male,Advanced,5,2,3,4,4,3,3,3.7,0,1.3033
+RESP_1993,30-44,Bachelor's,Healthcare,Female,Advanced,3,1,1,5,2,5,5,4.1,0,0.6394
+RESP_1994,30-44,High School,Other,Female,Intermediate,4,4,2,3,9,5,6,6.1,1,1.2237
+RESP_1995,18-29,Bachelor's,Other,Male,Intermediate,2,-9,4,3,-9,4,5,3.9,0,1.0537
+RESP_1996,60+,Bachelor's,Public Sector,Male,Novice,3,5,3,5,6,3,5,5.0,0,1.028
+RESP_1997,18-29,Master's,Public Sector,Female,Advanced,5,2,4,3,5,5,3,4.7,0,1.2224
+RESP_1998,60+,Bachelor's,Healthcare,Female,Advanced,3,2,5,5,8,3,5,4.8,0,0.7766
+RESP_1999,30-44,Bachelor's,Education,Female,Novice,1,1,2,3,8,2,6,3.0,0,1.4833
+RESP_2000,18-29,PhD,Tech/Engineering,Female,Novice,1,4,1,2,6,1,9,5.2,0,1.1808
+RESP_2001,30-44,High School,Tech/Engineering,Male,Novice,2,1,4,5,9,6,5,2.1,0,0.9291
+RESP_2002,60+,Bachelor's,Other,Male,Novice,5,4,2,4,6,6,4,3.6,0,1.1402
+RESP_2003,45-59,High School,Healthcare,Female,Advanced,5,1,1,2,3,4,7,2.8,0,0.7948
+RESP_2004,45-59,Master's,Finance,Male,Intermediate,3,4,4,4,6,7,1,5.9,0,1.1705
+RESP_2005,45-59,PhD,Public Sector,Male,Novice,2,1,2,3,7,3,5,4.6,0,0.6254
+RESP_2006,45-59,Bachelor's,Public Sector,Male,Intermediate,5,4,3,4,6,6,4,2.6,0,0.9071
+RESP_2007,45-59,Master's,Other,Female,Advanced,-9,1,4,2,-9,5,6,5.2,0,1.2728
+RESP_2008,18-29,Bachelor's,Healthcare,Male,Intermediate,3,2,2,5,10,3,8,3.8,0,1.3272
+RESP_2009,30-44,PhD,Tech/Engineering,Female,Intermediate,4,5,1,1,4,4,9,7.2,1,0.8276
+RESP_2010,18-29,Master's,Education,Female,Novice,1,1,2,4,1,4,6,4.0,0,1.0855
+RESP_2011,60+,Master's,Tech/Engineering,Female,Advanced,-9,5,3,1,9,6,2,8.2,1,1.0756
+RESP_2012,60+,High School,Tech/Engineering,Male,Advanced,5,2,4,4,4,-9,4,3.7,0,0.9793
+RESP_2013,18-29,PhD,Healthcare,Female,Novice,1,2,4,4,5,4,4,6.2,1,0.8056
+RESP_2014,45-59,Master's,Public Sector,Female,Novice,4,4,4,5,5,3,6,2.4,0,1.2329
+RESP_2015,60+,Bachelor's,Education,Female,Novice,4,5,3,3,8,5,5,5.0,0,0.8271
+RESP_2016,18-29,Master's,Healthcare,Male,Novice,2,3,1,2,9,1,4,4.7,0,1.4199
+RESP_2017,30-44,Bachelor's,Finance,Male,Intermediate,1,4,4,2,3,-9,3,6.0,1,1.0757
+RESP_2018,60+,Master's,Healthcare,Female,Advanced,3,5,1,2,9,8,3,9.5,1,1.3834
+RESP_2019,18-29,High School,Tech/Engineering,Male,Intermediate,1,1,2,3,9,3,3,2.8,0,0.8617
+RESP_2020,45-59,Master's,Public Sector,Male,Advanced,4,1,1,1,6,5,9,3.0,0,1.3264
+RESP_2021,30-44,Bachelor's,Finance,Male,Intermediate,2,2,1,2,8,7,4,1.8,0,0.7023
+RESP_2022,60+,High School,Public Sector,Female,Intermediate,2,-9,4,1,8,7,5,6.5,1,1.2901
+RESP_2023,60+,Bachelor's,Tech/Engineering,Male,Intermediate,3,1,5,3,5,5,7,4.1,0,0.9483
+RESP_2024,60+,High School,Public Sector,Male,Novice,2,5,5,3,6,5,6,5.2,0,1.023
+RESP_2025,30-44,Bachelor's,Finance,Male,Intermediate,2,5,3,5,7,2,3,7.6,1,0.7501
+RESP_2026,60+,Bachelor's,Education,Female,Intermediate,2,1,3,2,3,-9,7,1.0,0,0.6168
+RESP_2027,45-59,Bachelor's,Finance,Male,Novice,2,5,5,5,5,2,6,6.7,1,1.1996
+RESP_2028,30-44,Bachelor's,Public Sector,Male,Intermediate,2,5,2,2,4,1,1,5.9,0,1.1289
+RESP_2029,45-59,Bachelor's,Education,Male,Intermediate,4,2,4,3,9,7,8,5.1,0,1.1602
+RESP_2030,18-29,Master's,Education,Female,Advanced,1,3,4,3,5,6,7,8.1,1,0.8295
+RESP_2031,30-44,High School,Other,Female,Intermediate,5,2,2,4,7,7,6,2.1,0,0.8153
+RESP_2032,18-29,PhD,Public Sector,Male,Advanced,2,3,2,4,6,3,9,6.8,1,1.3473
+RESP_2033,18-29,Master's,Education,Male,Intermediate,5,5,5,3,5,6,7,4.5,0,1.2851
+RESP_2034,18-29,Bachelor's,Finance,Female,Intermediate,5,3,3,3,6,4,8,3.9,0,0.9031
+RESP_2035,45-59,Bachelor's,Healthcare,Male,Intermediate,4,5,2,1,5,4,7,4.5,0,1.174
+RESP_2036,30-44,Master's,Healthcare,Female,Advanced,2,5,3,1,-9,7,7,7.6,1,1.3453
+RESP_2037,45-59,High School,Education,Male,Intermediate,5,2,1,5,6,5,2,3.6,0,1.3999
+RESP_2038,18-29,High School,Other,Male,Intermediate,2,2,4,4,5,3,2,4.3,0,0.6052
+RESP_2039,30-44,Bachelor's,Other,Male,Intermediate,3,4,5,4,7,2,7,4.1,0,1.3321
+RESP_2040,30-44,Master's,Healthcare,Male,Intermediate,3,1,4,3,-9,6,8,4.4,0,0.9154
+RESP_2041,45-59,High School,Education,Female,Novice,3,4,5,3,9,7,4,3.8,0,1.2465
+RESP_2042,30-44,Bachelor's,Healthcare,Male,Novice,5,4,1,5,7,3,3,1.1,0,0.9343
+RESP_2043,45-59,PhD,Other,Female,Novice,3,3,4,4,3,7,6,4.7,0,1.1456
+RESP_2044,60+,Master's,Other,Male,Advanced,4,5,1,1,7,3,2,5.9,0,1.1821
+RESP_2045,45-59,Bachelor's,Finance,Male,Novice,4,5,5,2,5,7,5,5.0,0,0.9645
+RESP_2046,18-29,High School,Public Sector,Male,Novice,5,5,2,5,6,5,5,2.7,0,1.0615
+RESP_2047,18-29,Master's,Finance,Female,Intermediate,-9,1,4,2,5,6,5,3.8,0,1.2537
+RESP_2048,60+,Bachelor's,Education,Male,Intermediate,1,3,1,1,2,3,9,6.8,1,1.0287
+RESP_2049,18-29,High School,Tech/Engineering,Female,Intermediate,2,3,4,1,6,6,4,7.6,1,0.6126
+RESP_2050,60+,High School,Education,Female,Novice,2,5,4,2,3,4,5,8.0,1,0.6116
+RESP_2051,30-44,PhD,Finance,Male,Advanced,2,4,4,5,7,4,3,8.9,1,1.1952
+RESP_2052,60+,Bachelor's,Finance,Female,Advanced,2,1,3,2,6,2,7,4.6,0,1.3625
+RESP_2053,45-59,Master's,Healthcare,Male,Advanced,1,4,1,5,5,3,5,7.8,1,1.3067
+RESP_2054,60+,Master's,Other,Female,Intermediate,3,2,1,5,10,4,8,2.5,0,0.8794
+RESP_2055,30-44,Bachelor's,Tech/Engineering,Female,Intermediate,2,3,4,3,4,6,1,2.6,0,1.024
+RESP_2056,45-59,Bachelor's,Education,Male,Novice,4,3,2,4,5,6,5,2.1,0,0.8107
+RESP_2057,30-44,Bachelor's,Finance,Male,Novice,5,4,4,4,4,4,6,5.2,0,1.4902
+RESP_2058,30-44,Bachelor's,Finance,Female,Novice,5,1,3,1,10,5,7,2.7,0,0.8345
+RESP_2059,45-59,Bachelor's,Finance,Male,Intermediate,4,3,5,3,9,9,4,4.0,0,0.9746
+RESP_2060,60+,Master's,Healthcare,Male,Intermediate,2,4,3,4,3,5,7,7.4,1,1.213
+RESP_2061,60+,Bachelor's,Tech/Engineering,Male,Intermediate,1,1,2,5,4,4,4,3.7,0,1.3884
+RESP_2062,45-59,Master's,Finance,Female,Novice,3,4,4,5,4,1,5,5.3,0,0.6463
+RESP_2063,30-44,Bachelor's,Education,Male,Intermediate,5,1,1,2,5,3,7,1.0,0,0.8709
+RESP_2064,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,3,5,4,2,4,3,3,5.3,0,1.1121
+RESP_2065,45-59,Bachelor's,Finance,Male,Intermediate,1,1,2,5,5,9,7,5.1,0,1.1565
+RESP_2066,18-29,Bachelor's,Education,Female,Intermediate,5,2,1,5,8,3,6,1.7,0,0.663
+RESP_2067,18-29,Master's,Finance,Male,Novice,3,5,3,2,10,5,5,6.7,1,1.1977
+RESP_2068,30-44,Bachelor's,Public Sector,Male,Advanced,1,4,5,4,3,6,4,7.6,1,1.0753
+RESP_2069,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,3,5,5,1,4,7,1,7.9,1,1.3449
+RESP_2070,30-44,High School,Tech/Engineering,Female,Novice,2,5,4,2,6,5,5,6.3,1,0.8
+RESP_2071,18-29,Bachelor's,Public Sector,Male,Novice,1,4,3,4,3,4,5,6.3,1,0.7755
+RESP_2072,18-29,Bachelor's,Finance,Male,Intermediate,3,4,2,4,6,4,7,3.7,0,1.314
+RESP_2073,18-29,Bachelor's,Finance,Female,Advanced,2,2,5,4,7,6,6,4.9,0,1.2335
+RESP_2074,60+,PhD,Public Sector,Female,Intermediate,2,4,3,3,7,3,8,7.5,1,1.3125
+RESP_2075,30-44,Bachelor's,Public Sector,Male,Novice,1,3,4,3,7,3,8,5.3,0,1.3037
+RESP_2076,30-44,Master's,Other,Female,Advanced,-9,3,1,4,-9,4,10,7.1,1,0.6936
+RESP_2077,45-59,Bachelor's,Education,Non-Binary/Other,Intermediate,5,2,4,5,6,2,6,2.6,0,0.8507
+RESP_2078,18-29,Bachelor's,Education,Male,Intermediate,1,1,4,3,4,9,3,3.2,0,0.8341
+RESP_2079,60+,High School,Education,Male,Intermediate,2,1,3,2,7,6,7,3.9,0,1.4411
+RESP_2080,45-59,Bachelor's,Tech/Engineering,Female,Novice,2,3,5,3,9,9,9,3.9,0,1.0387
+RESP_2081,18-29,Bachelor's,Education,Female,Intermediate,1,4,3,5,7,6,6,6.0,1,0.7
+RESP_2082,30-44,Bachelor's,Healthcare,Male,Intermediate,4,2,1,1,5,8,1,1.8,0,0.8606
+RESP_2083,60+,High School,Other,Female,Advanced,5,1,3,3,8,6,6,1.7,0,1.3847
+RESP_2084,60+,High School,Education,Male,Intermediate,3,1,2,4,10,7,4,1.8,0,1.3624
+RESP_2085,30-44,Bachelor's,Education,Female,Intermediate,1,5,4,4,6,1,3,9.0,1,1.4103
+RESP_2086,45-59,PhD,Healthcare,Female,Intermediate,5,3,5,4,7,3,6,4.4,0,0.9497
+RESP_2087,18-29,Bachelor's,Tech/Engineering,Female,Advanced,5,4,1,1,7,5,2,5.6,0,1.1772
+RESP_2088,60+,Bachelor's,Tech/Engineering,Male,Advanced,2,2,4,5,3,5,7,3.3,0,0.8504
+RESP_2089,18-29,High School,Education,Non-Binary/Other,Intermediate,3,1,3,2,5,5,7,3.4,0,0.7627
+RESP_2090,60+,Bachelor's,Tech/Engineering,Female,Intermediate,1,5,2,5,5,6,5,8.4,1,0.6197
+RESP_2091,45-59,Bachelor's,Finance,Female,Intermediate,2,3,3,1,8,6,4,3.6,0,0.8011
+RESP_2092,45-59,Bachelor's,Public Sector,Female,Intermediate,2,3,4,4,7,7,5,4.3,0,1.1439
+RESP_2093,30-44,Bachelor's,Public Sector,Male,Novice,4,2,1,5,6,6,3,1.5,0,1.4138
+RESP_2094,18-29,High School,Finance,Female,Intermediate,5,1,5,2,5,8,5,1.0,0,0.7201
+RESP_2095,18-29,High School,Healthcare,Male,Novice,1,2,4,4,3,8,1,3.1,0,1.4262
+RESP_2096,18-29,Bachelor's,Public Sector,Male,Advanced,1,2,1,2,-9,5,5,5.9,0,0.9108
+RESP_2097,18-29,High School,Public Sector,Male,Intermediate,1,5,4,3,4,10,6,7.9,1,0.9841
+RESP_2098,45-59,High School,Tech/Engineering,Female,Advanced,2,3,2,2,4,8,7,5.1,0,0.9285
+RESP_2099,30-44,Bachelor's,Finance,Non-Binary/Other,Intermediate,4,4,3,4,8,3,6,5.1,0,0.9677
+RESP_2100,18-29,Master's,Healthcare,Female,Intermediate,3,3,5,3,8,6,7,5.5,0,0.8333
+RESP_2101,60+,Bachelor's,Public Sector,Female,Intermediate,2,3,1,4,5,1,6,1.8,0,1.2287
+RESP_2102,60+,Bachelor's,Other,Male,Novice,3,5,5,4,3,1,7,4.4,0,1.2824
+RESP_2103,60+,Bachelor's,Tech/Engineering,Male,Intermediate,4,4,5,3,4,4,10,5.9,0,1.3408
+RESP_2104,60+,PhD,Public Sector,Female,Novice,5,1,5,2,8,3,6,1.2,0,0.9072
+RESP_2105,18-29,Bachelor's,Finance,Female,Intermediate,1,4,1,1,7,4,6,5.5,0,1.2882
+RESP_2106,30-44,High School,Other,Male,Intermediate,3,1,1,1,5,-9,8,3.7,0,1.1739
+RESP_2107,45-59,Bachelor's,Education,Female,Intermediate,2,4,5,1,6,8,4,6.3,1,1.4621
+RESP_2108,45-59,High School,Public Sector,Male,Novice,3,2,3,1,2,8,5,4.2,0,0.9823
+RESP_2109,18-29,Bachelor's,Tech/Engineering,Male,Novice,5,-9,4,5,2,6,6,1.8,0,1.4931
+RESP_2110,45-59,Bachelor's,Healthcare,Female,Intermediate,1,5,5,1,10,3,5,9.0,1,1.2664
+RESP_2111,18-29,Master's,Tech/Engineering,Female,Advanced,3,1,2,3,7,4,5,3.6,0,1.2986
+RESP_2112,18-29,Bachelor's,Other,Female,Intermediate,5,3,5,1,6,6,7,1.0,0,0.6231
+RESP_2113,30-44,Master's,Public Sector,Male,Intermediate,2,5,1,4,5,3,2,8.4,1,1.0477
+RESP_2114,30-44,PhD,Public Sector,Male,Intermediate,4,1,4,1,2,2,10,4.5,0,1.0755
+RESP_2115,30-44,High School,Other,Female,Novice,2,1,2,2,8,6,6,3.2,0,0.6365
+RESP_2116,18-29,Bachelor's,Tech/Engineering,Male,Advanced,1,3,4,3,4,5,4,6.8,1,0.8809
+RESP_2117,60+,Bachelor's,Healthcare,Non-Binary/Other,Intermediate,2,2,4,3,7,5,9,6.3,1,1.4601
+RESP_2118,30-44,Bachelor's,Tech/Engineering,Female,Novice,2,5,2,5,6,7,6,7.1,1,0.9835
+RESP_2119,18-29,Bachelor's,Healthcare,Male,Intermediate,2,3,5,4,6,7,6,6.3,1,0.768
+RESP_2120,60+,PhD,Healthcare,Female,Novice,2,3,5,3,3,9,5,6.1,1,1.062
+RESP_2121,60+,Master's,Education,Female,Advanced,1,2,5,2,3,4,8,5.3,0,0.6304
+RESP_2122,60+,Bachelor's,Healthcare,Female,Novice,5,5,3,1,-9,6,5,4.1,0,1.0644
+RESP_2123,45-59,Bachelor's,Tech/Engineering,Female,Intermediate,3,3,5,3,6,5,4,5.0,0,1.1348
+RESP_2124,45-59,Master's,Tech/Engineering,Female,Novice,4,2,2,2,6,6,7,5.4,0,0.9219
+RESP_2125,30-44,PhD,Tech/Engineering,Female,Intermediate,3,5,3,1,7,3,8,8.0,1,1.2863
+RESP_2126,18-29,Master's,Other,Male,Intermediate,3,4,5,5,2,2,9,4.8,0,0.7221
+RESP_2127,30-44,High School,Public Sector,Male,Intermediate,4,1,3,3,8,5,7,2.4,0,1.3904
+RESP_2128,30-44,Bachelor's,Other,Male,Intermediate,1,2,2,3,5,3,8,6.7,1,1.4599
+RESP_2129,30-44,High School,Education,Female,Advanced,4,1,5,2,8,7,5,4.9,0,0.6011
+RESP_2130,45-59,Bachelor's,Healthcare,Female,Novice,1,4,1,4,2,2,7,5.9,0,1.3584
+RESP_2131,30-44,High School,Public Sector,Female,Intermediate,3,3,2,5,7,2,7,3.9,0,1.0555
+RESP_2132,18-29,Bachelor's,Healthcare,Male,Novice,1,3,4,4,7,4,6,3.5,0,1.0153
+RESP_2133,18-29,Bachelor's,Healthcare,Male,Advanced,5,5,4,3,-9,2,2,5.1,0,0.8148
+RESP_2134,45-59,High School,Healthcare,Female,Intermediate,4,2,2,4,5,9,4,3.1,0,1.0026
+RESP_2135,18-29,Bachelor's,Tech/Engineering,Female,Intermediate,5,2,4,1,4,5,5,1.0,0,1.4554
+RESP_2136,60+,Bachelor's,Healthcare,Male,Intermediate,3,5,2,5,8,4,6,8.7,1,0.7897
+RESP_2137,30-44,Bachelor's,Healthcare,Female,Novice,4,1,1,4,7,6,10,1.1,0,0.7611
+RESP_2138,30-44,High School,Finance,Female,Novice,3,3,2,1,9,7,7,3.4,0,0.8177
+RESP_2139,30-44,Bachelor's,Tech/Engineering,Male,Novice,5,3,5,2,6,5,4,2.8,0,1.0967
+RESP_2140,45-59,Master's,Healthcare,Male,Intermediate,3,2,5,4,7,5,4,5.9,0,1.4373
+RESP_2141,30-44,High School,Public Sector,Female,Novice,4,2,3,5,8,3,8,2.1,0,1.1165
+RESP_2142,45-59,High School,Tech/Engineering,Female,Novice,4,5,4,1,7,6,4,2.9,0,0.8191
+RESP_2143,30-44,Bachelor's,Healthcare,Non-Binary/Other,Advanced,3,4,4,4,5,8,7,6.9,1,0.9964
+RESP_2144,30-44,PhD,Public Sector,Female,Advanced,4,1,2,2,5,5,6,6.2,1,0.9514
+RESP_2145,60+,Bachelor's,Tech/Engineering,Female,Intermediate,4,4,4,4,6,3,5,3.6,0,0.6419
+RESP_2146,45-59,Bachelor's,Tech/Engineering,Female,Intermediate,3,4,5,1,8,5,4,6.4,1,1.0596
+RESP_2147,45-59,Bachelor's,Education,Female,Novice,5,2,1,4,4,5,1,1.9,0,0.7134
+RESP_2148,60+,Bachelor's,Healthcare,Female,Intermediate,4,2,2,5,7,2,6,3.2,0,1.358
+RESP_2149,60+,High School,Education,Male,Advanced,4,2,4,3,-9,-9,3,2.8,0,1.0941
+RESP_2150,45-59,Bachelor's,Public Sector,Female,Novice,4,4,5,1,3,9,2,3.6,0,1.3601
+RESP_2151,45-59,PhD,Tech/Engineering,Female,Novice,-9,1,3,1,7,2,6,4.2,0,1.4604
+RESP_2152,45-59,Bachelor's,Education,Male,Intermediate,3,2,4,1,6,3,7,3.3,0,1.4489
+RESP_2153,45-59,Master's,Education,Male,Intermediate,5,3,1,1,5,3,2,2.7,0,0.6904
+RESP_2154,45-59,Master's,Tech/Engineering,Male,Novice,5,1,1,4,6,3,7,1.0,0,1.4503
+RESP_2155,45-59,High School,Finance,Male,Intermediate,-9,3,4,5,5,4,3,4.4,0,1.3162
+RESP_2156,18-29,PhD,Healthcare,Female,Intermediate,4,1,4,2,6,6,7,4.4,0,1.2999
+RESP_2157,60+,High School,Education,Male,Intermediate,4,2,5,5,6,8,7,2.5,0,0.6811
+RESP_2158,60+,Bachelor's,Tech/Engineering,Female,Intermediate,1,5,4,1,3,5,5,9.8,1,0.7616
+RESP_2159,18-29,High School,Education,Non-Binary/Other,Advanced,5,2,3,4,6,3,5,1.0,0,1.4776
+RESP_2160,45-59,High School,Healthcare,Male,Intermediate,2,4,5,4,5,8,4,6.1,1,0.792
+RESP_2161,18-29,Bachelor's,Public Sector,Non-Binary/Other,Advanced,2,4,2,1,7,1,6,4.9,0,0.7521
+RESP_2162,30-44,Bachelor's,Tech/Engineering,Male,Intermediate,5,1,3,4,8,6,6,1.5,0,0.9261
+RESP_2163,45-59,Bachelor's,Education,Female,Intermediate,4,4,5,1,5,3,3,5.0,0,1.422
+RESP_2164,18-29,Bachelor's,Education,Male,Intermediate,2,2,5,5,-9,5,2,4.3,0,1.0286
+RESP_2165,45-59,High School,Finance,Non-Binary/Other,Advanced,3,3,1,3,3,6,7,2.8,0,1.4285
+RESP_2166,45-59,High School,Education,Male,Advanced,3,2,5,4,4,1,6,4.2,0,0.9009
+RESP_2167,30-44,Bachelor's,Finance,Female,Novice,1,1,3,1,5,5,7,3.6,0,0.8039
+RESP_2168,18-29,Bachelor's,Public Sector,Male,Advanced,5,4,4,1,3,-9,4,6.1,1,1.0457
+RESP_2169,30-44,Master's,Public Sector,Female,Advanced,5,3,3,4,8,8,4,3.2,0,1.1539
+RESP_2170,45-59,Bachelor's,Healthcare,Female,Intermediate,2,5,2,2,7,10,3,8.6,1,0.9523
+RESP_2171,60+,Master's,Education,Female,Novice,4,3,5,1,6,2,5,1.0,0,0.9114
+RESP_2172,45-59,Bachelor's,Public Sector,Female,Advanced,5,3,5,4,6,8,6,2.6,0,0.7963
+RESP_2173,30-44,Bachelor's,Other,Male,Advanced,2,2,5,1,7,5,4,5.7,0,0.8475
+RESP_2174,45-59,Bachelor's,Public Sector,Female,Novice,2,5,5,2,7,3,9,6.5,1,1.2058
+RESP_2175,30-44,Bachelor's,Healthcare,Male,Advanced,5,1,1,3,8,6,4,4.4,0,0.9329
+RESP_2176,45-59,Bachelor's,Tech/Engineering,Female,Novice,2,1,1,2,-9,2,6,3.1,0,0.6718
+RESP_2177,18-29,Master's,Education,Female,Novice,1,3,4,5,6,2,3,5.8,0,0.7243
+RESP_2178,45-59,Bachelor's,Finance,Female,Intermediate,1,3,5,4,6,1,4,6.5,1,0.9351
+RESP_2179,30-44,Master's,Education,Female,Intermediate,5,4,2,2,6,6,5,1.9,0,1.4321
+RESP_2180,60+,Master's,Education,Female,Intermediate,4,5,4,3,8,6,4,5.0,0,0.9411
+RESP_2181,30-44,Master's,Public Sector,Female,Novice,1,3,5,1,8,3,5,4.5,0,0.6546
+RESP_2182,45-59,PhD,Healthcare,Male,Advanced,1,4,1,4,7,8,6,10.0,1,0.9762
+RESP_2183,60+,Bachelor's,Public Sector,Female,Novice,5,5,2,2,4,-9,8,5.6,0,1.2019
+RESP_2184,18-29,Bachelor's,Education,Female,Novice,3,1,4,3,7,8,3,4.4,0,1.1342
+RESP_2185,60+,Bachelor's,Healthcare,Female,Novice,2,4,2,2,7,5,6,6.0,1,0.8509
+RESP_2186,45-59,Bachelor's,Education,Male,Intermediate,1,5,5,5,4,4,5,8.7,1,1.2193
+RESP_2187,18-29,Bachelor's,Public Sector,Male,Advanced,3,4,3,4,7,5,1,6.5,1,1.1676
+RESP_2188,30-44,Master's,Tech/Engineering,Male,Intermediate,4,3,2,1,5,2,3,4.0,0,0.755
+RESP_2189,45-59,Bachelor's,Tech/Engineering,Female,Advanced,3,2,2,3,7,5,6,3.5,0,0.7459
+RESP_2190,18-29,Bachelor's,Other,Female,Novice,5,1,1,2,7,5,2,1.0,0,1.0925
+RESP_2191,30-44,High School,Tech/Engineering,Male,Intermediate,4,3,5,4,6,6,5,1.8,0,1.1935
+RESP_2192,30-44,Bachelor's,Education,Female,Intermediate,4,3,2,2,6,7,1,4.8,0,1.4657
+RESP_2193,45-59,High School,Education,Female,Intermediate,3,5,5,4,2,5,5,5.2,0,0.9797
+RESP_2194,18-29,Master's,Education,Female,Novice,5,4,1,5,4,2,1,3.0,0,1.2884
+RESP_2195,60+,Bachelor's,Finance,Female,Intermediate,1,1,5,2,6,7,4,2.0,0,0.7049
+RESP_2196,60+,High School,Healthcare,Female,Intermediate,3,3,1,5,9,-9,4,3.0,0,1.4006
+RESP_2197,60+,High School,Education,Male,Intermediate,1,5,1,3,-9,1,6,6.8,1,1.1698
+RESP_2198,45-59,Bachelor's,Healthcare,Female,Intermediate,3,1,4,5,10,6,5,1.2,0,1.1661
+RESP_2199,18-29,Bachelor's,Finance,Male,Novice,1,4,5,4,6,6,3,9.2,1,0.7282

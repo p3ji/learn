@@ -1,0 +1,1201 @@
+Respondent_ID,Age_Group,Education_Degree,Income_Quartile,Political_Views,General_Happiness,Trust_Government,Trust_Press,Trust_Science,High_Institutional_Trust,Survey_Weight
+GSS_2000,30-44,High School,Q4 (High),Liberal,Very Happy,4,2,3,1,0.7038
+GSS_2001,45-59,Graduate,Q2 (Mid-Low),Moderate,Very Happy,1,1,2,0,1.5323
+GSS_2002,18-29,High School,Q4 (High),Moderate,Pretty Happy,1,2,2,0,0.7926
+GSS_2003,18-29,Junior College,Q3 (Mid-High),Moderate,Pretty Happy,4,1,5,1,0.6768
+GSS_2004,45-59,High School,Q4 (High),Moderate,Not Too Happy,4,3,5,1,0.7467
+GSS_2005,60+,Lt High School,Q1 (Low),Extremely Conservative,Not Too Happy,2,4,3,0,0.949
+GSS_2006,30-44,Lt High School,Q4 (High),Extremely Liberal,Pretty Happy,1,2,-9,0,0.5984
+GSS_2007,60+,Graduate,Q1 (Low),Liberal,Pretty Happy,4,-9,2,0,0.8742
+GSS_2008,45-59,Graduate,Q1 (Low),Extremely Conservative,Very Happy,3,5,1,0,0.8887
+GSS_2009,18-29,High School,Q3 (Mid-High),Liberal,Not Too Happy,-9,1,3,0,1.0623
+GSS_2010,45-59,Bachelor,Q2 (Mid-Low),Moderate,Very Happy,3,2,1,0,0.9136
+GSS_2011,30-44,Junior College,Q3 (Mid-High),Extremely Liberal,Pretty Happy,-9,2,-9,0,1.1457
+GSS_2012,18-29,High School,Q4 (High),Moderate,Pretty Happy,3,3,4,1,0.8945
+GSS_2013,45-59,Bachelor,Q2 (Mid-Low),Conservative,Pretty Happy,2,5,1,0,0.5553
+GSS_2014,60+,High School,Q4 (High),Liberal,Very Happy,1,2,2,0,1.1047
+GSS_2015,30-44,Lt High School,Q1 (Low),Moderate,Pretty Happy,3,1,2,0,1.1996
+GSS_2016,18-29,High School,Q1 (Low),Conservative,Very Happy,5,2,-9,1,1.34
+GSS_2017,45-59,Graduate,Q1 (Low),Liberal,Very Happy,2,1,2,0,0.5026
+GSS_2018,45-59,Lt High School,Q2 (Mid-Low),Liberal,Pretty Happy,5,3,4,1,0.6922
+GSS_2019,30-44,Lt High School,Q4 (High),Extremely Liberal,Pretty Happy,5,-9,2,1,0.7887
+GSS_2020,45-59,High School,Q1 (Low),Extremely Conservative,Very Happy,3,1,1,0,0.6791
+GSS_2021,30-44,High School,Q4 (High),Extremely Conservative,Pretty Happy,2,2,5,1,0.7563
+GSS_2022,18-29,High School,Q4 (High),Moderate,Pretty Happy,4,1,5,1,0.7842
+GSS_2023,18-29,Bachelor,Q1 (Low),Conservative,Pretty Happy,4,4,5,1,0.8483
+GSS_2024,18-29,High School,Q2 (Mid-Low),Liberal,Very Happy,1,2,2,0,1.4211
+GSS_2025,60+,Junior College,Q3 (Mid-High),Extremely Liberal,Not Too Happy,-9,1,5,1,1.4822
+GSS_2026,30-44,Junior College,Q3 (Mid-High),Conservative,Not Too Happy,1,3,1,0,1.0092
+GSS_2027,45-59,High School,Q3 (Mid-High),Conservative,Not Too Happy,4,1,1,0,0.7609
+GSS_2028,45-59,High School,Q1 (Low),Moderate,Very Happy,3,4,5,1,1.1624
+GSS_2029,30-44,High School,Q2 (Mid-Low),Liberal,Pretty Happy,-9,4,5,1,1.3391
+GSS_2030,60+,High School,Q3 (Mid-High),Conservative,Pretty Happy,2,1,5,1,1.0155
+GSS_2031,45-59,High School,Q4 (High),Conservative,Pretty Happy,5,3,3,1,0.6006
+GSS_2032,30-44,High School,Q3 (Mid-High),Conservative,Not Too Happy,1,3,3,0,0.8471
+GSS_2033,30-44,Lt High School,Q2 (Mid-Low),Conservative,Pretty Happy,5,2,3,1,1.4828
+GSS_2034,60+,High School,Q4 (High),Extremely Liberal,Pretty Happy,4,4,2,0,0.5067
+GSS_2035,30-44,High School,Q3 (Mid-High),Extremely Liberal,Very Happy,2,5,5,1,1.4327
+GSS_2036,60+,Bachelor,Q4 (High),Liberal,Very Happy,3,5,5,1,1.3005
+GSS_2037,60+,Graduate,Q1 (Low),Extremely Conservative,Pretty Happy,3,1,4,1,1.1613
+GSS_2038,30-44,Bachelor,Q4 (High),Liberal,Not Too Happy,5,5,4,1,1.354
+GSS_2039,60+,Graduate,Q1 (Low),Conservative,Pretty Happy,5,5,4,1,0.5394
+GSS_2040,18-29,High School,Q1 (Low),Liberal,Pretty Happy,3,5,-9,0,0.9134
+GSS_2041,18-29,High School,Q2 (Mid-Low),Conservative,Not Too Happy,5,3,5,1,0.8454
+GSS_2042,45-59,High School,Q1 (Low),Moderate,Pretty Happy,-9,4,2,0,0.8095
+GSS_2043,60+,High School,Q4 (High),Conservative,Pretty Happy,2,3,5,1,0.7669
+GSS_2044,18-29,Graduate,Q4 (High),Liberal,Very Happy,1,5,3,0,1.1839
+GSS_2045,30-44,Bachelor,Q3 (Mid-High),Conservative,Pretty Happy,1,3,4,0,0.9843
+GSS_2046,45-59,High School,Q3 (Mid-High),Extremely Conservative,Pretty Happy,1,4,4,0,1.5534
+GSS_2047,18-29,Graduate,Q2 (Mid-Low),Moderate,Pretty Happy,1,2,5,0,0.7143
+GSS_2048,45-59,Bachelor,Q3 (Mid-High),Extremely Liberal,Very Happy,4,1,5,1,0.8582
+GSS_2049,30-44,Lt High School,Q4 (High),Moderate,Pretty Happy,1,4,4,0,1.2132
+GSS_2050,45-59,Graduate,Q1 (Low),Moderate,Pretty Happy,1,4,5,0,0.8758
+GSS_2051,30-44,Bachelor,Q3 (Mid-High),Moderate,Pretty Happy,4,3,3,1,0.8703
+GSS_2052,18-29,Bachelor,Q2 (Mid-Low),Liberal,Not Too Happy,5,1,5,1,0.5617
+GSS_2053,30-44,High School,Q1 (Low),Moderate,Pretty Happy,2,3,5,1,0.5994
+GSS_2054,45-59,High School,Q3 (Mid-High),Extremely Liberal,Pretty Happy,3,2,3,0,0.5379
+GSS_2055,18-29,Junior College,Q3 (Mid-High),Liberal,Very Happy,3,4,1,0,0.521
+GSS_2056,30-44,High School,Q4 (High),Extremely Conservative,Pretty Happy,3,3,1,0,0.7232
+GSS_2057,18-29,High School,Q2 (Mid-Low),Conservative,Not Too Happy,-9,4,5,1,0.6343
+GSS_2058,18-29,High School,Q4 (High),Liberal,Pretty Happy,5,4,4,1,0.8035
+GSS_2059,18-29,Bachelor,Q4 (High),Liberal,Not Too Happy,4,-9,4,1,0.6128
+GSS_2060,30-44,High School,Q2 (Mid-Low),Moderate,Pretty Happy,5,4,1,0,1.3158
+GSS_2061,60+,Bachelor,Q3 (Mid-High),Conservative,Very Happy,3,1,4,1,0.5342
+GSS_2062,60+,High School,Q3 (Mid-High),Moderate,Very Happy,5,3,1,0,1.4715
+GSS_2063,30-44,High School,Q1 (Low),Conservative,Very Happy,4,3,5,1,0.958
+GSS_2064,30-44,High School,Q3 (Mid-High),Extremely Liberal,Very Happy,5,1,4,1,0.8347
+GSS_2065,45-59,High School,Q3 (Mid-High),Liberal,Pretty Happy,4,2,4,1,0.5034
+GSS_2066,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,3,3,3,0,1.3034
+GSS_2067,18-29,Junior College,Q3 (Mid-High),Moderate,Pretty Happy,1,1,2,0,0.648
+GSS_2068,18-29,Lt High School,Q4 (High),Extremely Conservative,Very Happy,3,2,5,1,0.7341
+GSS_2069,45-59,Lt High School,Q3 (Mid-High),Extremely Conservative,Pretty Happy,2,1,-9,0,1.5084
+GSS_2070,45-59,Graduate,Q2 (Mid-Low),Moderate,Pretty Happy,3,1,3,0,1.0513
+GSS_2071,45-59,High School,Q1 (Low),Liberal,Very Happy,1,5,4,0,1.4833
+GSS_2072,45-59,Lt High School,Q3 (Mid-High),Liberal,Pretty Happy,2,3,4,0,0.8349
+GSS_2073,30-44,High School,Q4 (High),Extremely Conservative,Pretty Happy,4,1,1,0,1.4466
+GSS_2074,45-59,Graduate,Q4 (High),Conservative,Very Happy,5,4,4,1,1.4599
+GSS_2075,18-29,High School,Q1 (Low),Conservative,Very Happy,1,4,4,0,1.3456
+GSS_2076,45-59,Lt High School,Q2 (Mid-Low),Conservative,Pretty Happy,4,1,4,1,1.1528
+GSS_2077,30-44,High School,Q2 (Mid-Low),Moderate,Very Happy,2,1,2,0,0.8984
+GSS_2078,45-59,Bachelor,Q4 (High),Conservative,Very Happy,4,-9,3,1,1.1349
+GSS_2079,18-29,Lt High School,Q3 (Mid-High),Extremely Liberal,Pretty Happy,1,5,1,0,1.0694
+GSS_2080,45-59,High School,Q1 (Low),Conservative,Very Happy,3,2,1,0,0.751
+GSS_2081,45-59,Graduate,Q3 (Mid-High),Moderate,Pretty Happy,2,1,5,1,1.0564
+GSS_2082,45-59,High School,Q2 (Mid-Low),Conservative,Pretty Happy,4,2,5,1,1.1959
+GSS_2083,30-44,Graduate,Q2 (Mid-Low),Conservative,Pretty Happy,2,2,3,0,0.9387
+GSS_2084,60+,Bachelor,Q4 (High),Liberal,Very Happy,-9,5,4,1,0.7993
+GSS_2085,18-29,High School,Q2 (Mid-Low),Moderate,Pretty Happy,5,4,1,0,1.1077
+GSS_2086,30-44,High School,Q3 (Mid-High),Conservative,Not Too Happy,2,3,3,0,1.1474
+GSS_2087,30-44,Lt High School,Q2 (Mid-Low),Moderate,Pretty Happy,4,5,1,0,1.5414
+GSS_2088,18-29,Bachelor,Q2 (Mid-Low),Moderate,Pretty Happy,1,4,3,0,0.8983
+GSS_2089,60+,High School,Q4 (High),Liberal,Pretty Happy,1,1,2,0,0.5115
+GSS_2090,18-29,Graduate,Q3 (Mid-High),Moderate,Very Happy,4,1,2,0,0.576
+GSS_2091,45-59,High School,Q4 (High),Moderate,Very Happy,1,4,3,0,0.5222
+GSS_2092,45-59,High School,Q4 (High),Liberal,Not Too Happy,3,1,5,1,1.391
+GSS_2093,30-44,High School,Q4 (High),Conservative,Very Happy,2,5,2,0,0.6297
+GSS_2094,18-29,Junior College,Q4 (High),Moderate,Pretty Happy,3,2,3,0,1.4561
+GSS_2095,60+,Junior College,Q4 (High),Conservative,Very Happy,5,4,4,1,1.4057
+GSS_2096,30-44,High School,Q4 (High),Liberal,Pretty Happy,1,1,3,0,1.3418
+GSS_2097,45-59,Bachelor,Q1 (Low),Extremely Conservative,Very Happy,2,2,5,1,0.9535
+GSS_2098,45-59,High School,Q4 (High),Moderate,Pretty Happy,3,3,1,0,1.5314
+GSS_2099,45-59,High School,Q2 (Mid-Low),Conservative,Very Happy,3,2,5,1,1.3636
+GSS_2100,45-59,Bachelor,Q3 (Mid-High),Extremely Liberal,Pretty Happy,3,1,2,0,1.5072
+GSS_2101,30-44,High School,Q1 (Low),Moderate,Not Too Happy,1,2,2,0,1.1411
+GSS_2102,30-44,High School,Q1 (Low),Moderate,Pretty Happy,3,5,3,0,1.3254
+GSS_2103,30-44,High School,Q4 (High),Conservative,Very Happy,1,5,3,0,0.8984
+GSS_2104,60+,Lt High School,Q1 (Low),Liberal,Pretty Happy,5,-9,1,0,0.8847
+GSS_2105,30-44,Lt High School,Q4 (High),Liberal,Very Happy,3,-9,5,1,1.3628
+GSS_2106,18-29,High School,Q1 (Low),Extremely Liberal,Not Too Happy,5,4,2,1,0.8759
+GSS_2107,18-29,High School,Q3 (Mid-High),Liberal,Pretty Happy,1,2,1,0,0.8819
+GSS_2108,60+,High School,Q4 (High),Extremely Conservative,Very Happy,5,3,-9,1,1.4459
+GSS_2109,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,1,5,4,0,1.2541
+GSS_2110,45-59,High School,Q1 (Low),Conservative,Pretty Happy,3,4,3,0,1.0915
+GSS_2111,60+,High School,Q3 (Mid-High),Conservative,Pretty Happy,4,4,1,0,1.0203
+GSS_2112,45-59,High School,Q2 (Mid-Low),Extremely Conservative,Not Too Happy,2,5,3,0,1.2095
+GSS_2113,30-44,Bachelor,Q4 (High),Liberal,Very Happy,5,2,4,1,1.2984
+GSS_2114,60+,Lt High School,Q3 (Mid-High),Moderate,Very Happy,4,-9,1,0,0.8717
+GSS_2115,45-59,Bachelor,Q4 (High),Moderate,Not Too Happy,5,2,3,1,0.8819
+GSS_2116,30-44,Lt High School,Q4 (High),Moderate,Very Happy,4,2,3,1,0.8456
+GSS_2117,60+,High School,Q2 (Mid-Low),Conservative,Very Happy,-9,5,5,1,0.6928
+GSS_2118,45-59,Lt High School,Q1 (Low),Extremely Liberal,Very Happy,-9,5,2,0,0.6844
+GSS_2119,30-44,High School,Q1 (Low),Extremely Liberal,Very Happy,2,3,4,0,1.5773
+GSS_2120,18-29,High School,Q2 (Mid-Low),Liberal,Pretty Happy,4,4,1,0,1.1247
+GSS_2121,45-59,High School,Q3 (Mid-High),Extremely Liberal,Very Happy,3,1,4,1,1.1044
+GSS_2122,60+,Bachelor,Q3 (Mid-High),Extremely Conservative,Pretty Happy,5,4,4,1,1.3921
+GSS_2123,30-44,High School,Q4 (High),Conservative,Pretty Happy,5,1,5,1,0.691
+GSS_2124,30-44,High School,Q4 (High),Moderate,Pretty Happy,2,-9,4,0,0.9647
+GSS_2125,30-44,High School,Q3 (Mid-High),Liberal,Pretty Happy,4,3,2,0,0.6454
+GSS_2126,30-44,High School,Q2 (Mid-Low),Extremely Liberal,Pretty Happy,2,3,5,1,0.9064
+GSS_2127,45-59,Bachelor,Q1 (Low),Extremely Conservative,Pretty Happy,3,5,4,1,1.0044
+GSS_2128,30-44,Lt High School,Q4 (High),Extremely Conservative,Very Happy,2,2,1,0,0.5936
+GSS_2129,45-59,High School,Q1 (Low),Extremely Conservative,Not Too Happy,4,5,4,1,1.4075
+GSS_2130,30-44,High School,Q2 (Mid-Low),Liberal,Pretty Happy,4,3,2,0,0.6036
+GSS_2131,30-44,Bachelor,Q1 (Low),Moderate,Pretty Happy,2,-9,3,0,1.4734
+GSS_2132,18-29,High School,Q3 (Mid-High),Extremely Conservative,Pretty Happy,-9,4,-9,0,0.5946
+GSS_2133,60+,High School,Q1 (Low),Moderate,Very Happy,5,4,3,1,1.2373
+GSS_2134,18-29,Bachelor,Q4 (High),Conservative,Pretty Happy,3,3,3,0,1.1149
+GSS_2135,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,4,1,2,0,1.5608
+GSS_2136,45-59,Junior College,Q1 (Low),Moderate,Not Too Happy,4,4,2,0,1.4327
+GSS_2137,18-29,Bachelor,Q2 (Mid-Low),Liberal,Very Happy,2,4,3,0,1.2418
+GSS_2138,60+,High School,Q4 (High),Liberal,Not Too Happy,5,2,3,1,0.8738
+GSS_2139,18-29,Lt High School,Q2 (Mid-Low),Liberal,Pretty Happy,3,5,3,0,0.5081
+GSS_2140,45-59,Bachelor,Q2 (Mid-Low),Moderate,Pretty Happy,1,4,5,0,1.4303
+GSS_2141,18-29,Lt High School,Q3 (Mid-High),Moderate,Not Too Happy,1,2,5,0,0.7961
+GSS_2142,45-59,High School,Q3 (Mid-High),Extremely Liberal,Very Happy,1,1,5,0,1.31
+GSS_2143,60+,Junior College,Q3 (Mid-High),Moderate,Pretty Happy,1,1,1,0,1.5426
+GSS_2144,45-59,Bachelor,Q2 (Mid-Low),Moderate,Very Happy,2,5,3,0,0.6194
+GSS_2145,30-44,High School,Q2 (Mid-Low),Moderate,Very Happy,4,2,2,0,0.6838
+GSS_2146,60+,Bachelor,Q2 (Mid-Low),Conservative,Pretty Happy,3,1,4,1,1.4851
+GSS_2147,45-59,Lt High School,Q1 (Low),Moderate,Very Happy,1,3,1,0,1.188
+GSS_2148,30-44,High School,Q2 (Mid-Low),Moderate,Very Happy,2,3,1,0,0.7797
+GSS_2149,60+,Junior College,Q3 (Mid-High),Moderate,Pretty Happy,3,4,5,1,1.5996
+GSS_2150,30-44,Bachelor,Q3 (Mid-High),Moderate,Pretty Happy,2,3,3,0,1.4333
+GSS_2151,45-59,High School,Q3 (Mid-High),Extremely Conservative,Not Too Happy,4,5,5,1,0.6848
+GSS_2152,18-29,High School,Q4 (High),Extremely Liberal,Pretty Happy,1,1,4,0,1.2798
+GSS_2153,60+,Bachelor,Q1 (Low),Liberal,Pretty Happy,4,1,5,1,0.736
+GSS_2154,30-44,Lt High School,Q4 (High),Moderate,Pretty Happy,3,2,2,0,0.9303
+GSS_2155,45-59,Bachelor,Q2 (Mid-Low),Conservative,Pretty Happy,1,1,3,0,1.1892
+GSS_2156,60+,Junior College,Q4 (High),Conservative,Pretty Happy,5,5,4,1,0.5379
+GSS_2157,60+,Bachelor,Q2 (Mid-Low),Extremely Conservative,Pretty Happy,4,3,3,1,0.5002
+GSS_2158,18-29,Bachelor,Q3 (Mid-High),Moderate,Very Happy,5,3,5,1,0.8993
+GSS_2159,60+,Lt High School,Q2 (Mid-Low),Liberal,Very Happy,2,3,5,1,0.6216
+GSS_2160,30-44,Junior College,Q4 (High),Extremely Conservative,Not Too Happy,5,1,1,0,0.8447
+GSS_2161,60+,High School,Q1 (Low),Moderate,Very Happy,1,5,4,0,1.5038
+GSS_2162,30-44,High School,Q3 (Mid-High),Moderate,Very Happy,1,1,4,0,1.4922
+GSS_2163,30-44,Lt High School,Q1 (Low),Liberal,Not Too Happy,2,5,3,0,1.4988
+GSS_2164,45-59,High School,Q3 (Mid-High),Extremely Conservative,Pretty Happy,1,3,3,0,1.3567
+GSS_2165,30-44,High School,Q1 (Low),Extremely Liberal,Not Too Happy,1,5,5,0,0.8302
+GSS_2166,45-59,Lt High School,Q4 (High),Liberal,Very Happy,4,2,1,0,1.3464
+GSS_2167,30-44,Graduate,Q1 (Low),Conservative,Very Happy,-9,2,5,1,1.047
+GSS_2168,30-44,High School,Q3 (Mid-High),Conservative,Pretty Happy,2,1,1,0,0.8607
+GSS_2169,45-59,High School,Q3 (Mid-High),Moderate,Pretty Happy,2,5,5,1,0.9162
+GSS_2170,45-59,High School,Q3 (Mid-High),Conservative,Pretty Happy,5,4,2,1,1.0909
+GSS_2171,60+,Bachelor,Q1 (Low),Extremely Conservative,Not Too Happy,2,3,2,0,1.4438
+GSS_2172,30-44,High School,Q2 (Mid-Low),Conservative,Very Happy,4,5,-9,1,1.2135
+GSS_2173,45-59,Bachelor,Q3 (Mid-High),Moderate,Pretty Happy,1,1,5,0,0.5756
+GSS_2174,18-29,High School,Q4 (High),Moderate,Not Too Happy,4,5,4,1,0.9595
+GSS_2175,30-44,Bachelor,Q4 (High),Extremely Conservative,Not Too Happy,1,1,1,0,0.577
+GSS_2176,45-59,High School,Q2 (Mid-Low),Moderate,Very Happy,-9,3,1,0,1.2566
+GSS_2177,60+,High School,Q2 (Mid-Low),Liberal,Pretty Happy,4,4,3,1,0.7987
+GSS_2178,60+,High School,Q3 (Mid-High),Liberal,Very Happy,5,4,4,1,1.0178
+GSS_2179,45-59,High School,Q4 (High),Conservative,Very Happy,4,3,4,1,0.7554
+GSS_2180,60+,Bachelor,Q1 (Low),Moderate,Very Happy,5,5,1,0,0.5213
+GSS_2181,30-44,Bachelor,Q2 (Mid-Low),Conservative,Not Too Happy,5,4,1,0,1.4439
+GSS_2182,18-29,High School,Q3 (Mid-High),Conservative,Pretty Happy,2,2,5,1,1.1841
+GSS_2183,18-29,Lt High School,Q2 (Mid-Low),Moderate,Pretty Happy,5,-9,-9,1,1.5639
+GSS_2184,30-44,High School,Q4 (High),Moderate,Pretty Happy,2,2,2,0,0.6256
+GSS_2185,18-29,High School,Q2 (Mid-Low),Moderate,Pretty Happy,1,5,4,0,0.5393
+GSS_2186,30-44,High School,Q4 (High),Liberal,Pretty Happy,3,1,1,0,0.6126
+GSS_2187,60+,High School,Q4 (High),Moderate,Very Happy,5,4,2,1,1.3969
+GSS_2188,45-59,High School,Q1 (Low),Moderate,Pretty Happy,2,4,4,0,1.3264
+GSS_2189,60+,Bachelor,Q1 (Low),Moderate,Pretty Happy,1,5,1,0,1.5844
+GSS_2190,45-59,Graduate,Q3 (Mid-High),Extremely Conservative,Pretty Happy,5,1,3,1,1.554
+GSS_2191,30-44,High School,Q2 (Mid-Low),Moderate,Pretty Happy,5,5,4,1,0.8306
+GSS_2192,30-44,Bachelor,Q2 (Mid-Low),Conservative,Not Too Happy,3,5,3,0,0.8658
+GSS_2193,30-44,High School,Q3 (Mid-High),Conservative,Pretty Happy,1,1,3,0,0.8046
+GSS_2194,45-59,High School,Q4 (High),Moderate,Very Happy,3,1,5,1,0.8467
+GSS_2195,45-59,High School,Q4 (High),Liberal,Pretty Happy,4,2,2,0,0.8253
+GSS_2196,18-29,High School,Q3 (Mid-High),Moderate,Pretty Happy,3,1,-9,0,1.07
+GSS_2197,45-59,High School,Q2 (Mid-Low),Conservative,Pretty Happy,1,2,5,0,1.3205
+GSS_2198,18-29,High School,Q2 (Mid-Low),Moderate,Very Happy,5,2,5,1,0.8702
+GSS_2199,45-59,Bachelor,Q2 (Mid-Low),Conservative,Pretty Happy,5,2,1,0,0.5903
+GSS_2200,30-44,Lt High School,Q3 (Mid-High),Moderate,Very Happy,5,3,3,1,0.6096
+GSS_2201,18-29,High School,Q3 (Mid-High),Conservative,Very Happy,5,2,5,1,1.0774
+GSS_2202,45-59,Graduate,Q4 (High),Liberal,Very Happy,5,5,1,0,0.9126
+GSS_2203,18-29,High School,Q1 (Low),Moderate,Pretty Happy,4,4,5,1,1.3543
+GSS_2204,60+,Bachelor,Q4 (High),Moderate,Very Happy,3,5,3,0,1.4316
+GSS_2205,30-44,Bachelor,Q1 (Low),Moderate,Pretty Happy,5,4,1,0,1.3463
+GSS_2206,30-44,Bachelor,Q4 (High),Moderate,Not Too Happy,4,4,3,1,1.1567
+GSS_2207,30-44,High School,Q3 (Mid-High),Extremely Conservative,Very Happy,4,4,5,1,0.9058
+GSS_2208,30-44,Lt High School,Q2 (Mid-Low),Conservative,Pretty Happy,2,5,5,1,0.8817
+GSS_2209,30-44,High School,Q3 (Mid-High),Extremely Conservative,Not Too Happy,3,3,5,1,1.1114
+GSS_2210,60+,High School,Q2 (Mid-Low),Extremely Conservative,Not Too Happy,3,4,4,1,0.9124
+GSS_2211,45-59,High School,Q2 (Mid-Low),Extremely Conservative,Very Happy,4,1,5,1,0.6867
+GSS_2212,30-44,Graduate,Q1 (Low),Moderate,Pretty Happy,2,5,-9,0,1.4693
+GSS_2213,30-44,Junior College,Q4 (High),Liberal,Pretty Happy,4,2,5,1,1.3505
+GSS_2214,18-29,Graduate,Q3 (Mid-High),Extremely Liberal,Pretty Happy,1,4,2,0,0.8343
+GSS_2215,45-59,Graduate,Q4 (High),Moderate,Pretty Happy,2,4,5,1,1.2228
+GSS_2216,45-59,High School,Q3 (Mid-High),Conservative,Very Happy,4,4,2,0,1.0023
+GSS_2217,30-44,Lt High School,Q3 (Mid-High),Liberal,Pretty Happy,3,5,1,0,1.5176
+GSS_2218,45-59,Bachelor,Q4 (High),Liberal,Pretty Happy,3,4,5,1,1.042
+GSS_2219,45-59,Bachelor,Q4 (High),Conservative,Very Happy,5,4,4,1,1.1937
+GSS_2220,18-29,High School,Q2 (Mid-Low),Extremely Liberal,Pretty Happy,3,3,3,0,1.4756
+GSS_2221,45-59,Bachelor,Q3 (Mid-High),Conservative,Very Happy,1,1,1,0,0.8425
+GSS_2222,60+,High School,Q1 (Low),Liberal,Not Too Happy,4,2,4,1,1.5419
+GSS_2223,18-29,Graduate,Q2 (Mid-Low),Moderate,Pretty Happy,4,4,2,0,1.0514
+GSS_2224,45-59,High School,Q3 (Mid-High),Moderate,Very Happy,5,2,5,1,0.5698
+GSS_2225,60+,Junior College,Q3 (Mid-High),Conservative,Pretty Happy,1,5,2,0,0.6734
+GSS_2226,18-29,Bachelor,Q1 (Low),Liberal,Very Happy,5,3,1,0,1.3976
+GSS_2227,30-44,Junior College,Q3 (Mid-High),Conservative,Not Too Happy,5,2,5,1,1.1483
+GSS_2228,30-44,High School,Q3 (Mid-High),Conservative,Pretty Happy,5,5,5,1,1.2025
+GSS_2229,45-59,Bachelor,Q3 (Mid-High),Liberal,Very Happy,1,1,1,0,0.8786
+GSS_2230,30-44,High School,Q1 (Low),Moderate,Very Happy,5,5,2,1,1.5241
+GSS_2231,30-44,High School,Q2 (Mid-Low),Extremely Conservative,Pretty Happy,2,4,1,0,0.939
+GSS_2232,30-44,High School,Q1 (Low),Extremely Conservative,Very Happy,1,5,3,0,1.3625
+GSS_2233,45-59,High School,Q4 (High),Conservative,Very Happy,1,5,2,0,1.2062
+GSS_2234,18-29,High School,Q1 (Low),Moderate,Very Happy,3,1,2,0,1.0524
+GSS_2235,60+,High School,Q1 (Low),Extremely Conservative,Very Happy,2,-9,4,0,1.4323
+GSS_2236,60+,Bachelor,Q1 (Low),Extremely Conservative,Pretty Happy,1,2,2,0,1.2735
+GSS_2237,18-29,Junior College,Q2 (Mid-Low),Liberal,Pretty Happy,2,2,4,0,0.9032
+GSS_2238,45-59,Graduate,Q1 (Low),Liberal,Pretty Happy,1,1,3,0,1.1639
+GSS_2239,60+,Lt High School,Q2 (Mid-Low),Liberal,Pretty Happy,5,2,2,1,1.2391
+GSS_2240,45-59,Bachelor,Q2 (Mid-Low),Liberal,Very Happy,2,3,2,0,1.5491
+GSS_2241,30-44,High School,Q2 (Mid-Low),Moderate,Pretty Happy,3,5,2,0,0.5977
+GSS_2242,45-59,Graduate,Q2 (Mid-Low),Moderate,Pretty Happy,4,3,2,0,0.9451
+GSS_2243,18-29,High School,Q3 (Mid-High),Conservative,Very Happy,3,5,4,1,1.1327
+GSS_2244,30-44,High School,Q2 (Mid-Low),Extremely Conservative,Not Too Happy,3,2,2,0,0.9538
+GSS_2245,30-44,Lt High School,Q2 (Mid-Low),Extremely Conservative,Pretty Happy,3,4,5,1,0.9637
+GSS_2246,30-44,Junior College,Q4 (High),Conservative,Pretty Happy,4,1,5,1,1.4196
+GSS_2247,45-59,Bachelor,Q4 (High),Moderate,Pretty Happy,1,2,1,0,1.1056
+GSS_2248,60+,High School,Q2 (Mid-Low),Moderate,Pretty Happy,3,4,3,0,1.5797
+GSS_2249,30-44,Bachelor,Q1 (Low),Liberal,Pretty Happy,1,5,4,0,1.0449
+GSS_2250,18-29,Graduate,Q4 (High),Extremely Liberal,Not Too Happy,4,5,3,1,0.7569
+GSS_2251,45-59,Bachelor,Q3 (Mid-High),Extremely Conservative,Pretty Happy,2,5,2,0,0.741
+GSS_2252,30-44,Junior College,Q3 (Mid-High),Conservative,Pretty Happy,5,3,4,1,0.8227
+GSS_2253,30-44,Bachelor,Q3 (Mid-High),Moderate,Very Happy,4,5,3,1,0.9306
+GSS_2254,18-29,Bachelor,Q2 (Mid-Low),Extremely Liberal,Very Happy,3,4,5,1,0.879
+GSS_2255,30-44,Graduate,Q1 (Low),Extremely Conservative,Very Happy,-9,2,1,0,1.5723
+GSS_2256,60+,Bachelor,Q1 (Low),Moderate,Very Happy,5,4,1,0,0.5296
+GSS_2257,30-44,Lt High School,Q4 (High),Conservative,Pretty Happy,1,5,2,0,1.5409
+GSS_2258,45-59,High School,Q4 (High),Conservative,Not Too Happy,3,2,3,0,0.9678
+GSS_2259,45-59,High School,Q3 (Mid-High),Liberal,Very Happy,5,5,4,1,1.3615
+GSS_2260,60+,Bachelor,Q4 (High),Liberal,Pretty Happy,5,4,2,1,0.7881
+GSS_2261,60+,Lt High School,Q1 (Low),Extremely Conservative,Very Happy,2,3,4,0,0.9894
+GSS_2262,45-59,High School,Q4 (High),Conservative,Pretty Happy,4,4,-9,1,1.585
+GSS_2263,30-44,Lt High School,Q2 (Mid-Low),Extremely Conservative,Not Too Happy,1,5,4,0,1.1125
+GSS_2264,30-44,High School,Q4 (High),Extremely Conservative,Very Happy,3,3,5,1,0.911
+GSS_2265,60+,High School,Q4 (High),Conservative,Pretty Happy,4,5,5,1,0.8838
+GSS_2266,45-59,High School,Q4 (High),Moderate,Pretty Happy,1,5,1,0,1.129
+GSS_2267,30-44,Bachelor,Q4 (High),Extremely Conservative,Pretty Happy,2,1,1,0,1.1711
+GSS_2268,18-29,Bachelor,Q4 (High),Moderate,Very Happy,2,1,2,0,0.6873
+GSS_2269,30-44,High School,Q4 (High),Moderate,Not Too Happy,-9,-9,3,0,1.0371
+GSS_2270,30-44,High School,Q4 (High),Extremely Liberal,Pretty Happy,1,2,3,0,1.2477
+GSS_2271,45-59,Junior College,Q3 (Mid-High),Extremely Conservative,Pretty Happy,1,1,4,0,1.0227
+GSS_2272,60+,High School,Q2 (Mid-Low),Moderate,Pretty Happy,3,1,5,1,1.4939
+GSS_2273,45-59,High School,Q2 (Mid-Low),Moderate,Not Too Happy,3,3,4,1,1.2516
+GSS_2274,45-59,Bachelor,Q2 (Mid-Low),Liberal,Not Too Happy,5,1,2,1,1.413
+GSS_2275,60+,Bachelor,Q2 (Mid-Low),Moderate,Not Too Happy,5,3,4,1,0.9532
+GSS_2276,18-29,Bachelor,Q3 (Mid-High),Moderate,Pretty Happy,1,5,1,0,1.4017
+GSS_2277,45-59,Junior College,Q1 (Low),Extremely Conservative,Not Too Happy,5,3,2,1,1.1381
+GSS_2278,18-29,High School,Q1 (Low),Extremely Conservative,Pretty Happy,3,2,1,0,1.2345
+GSS_2279,18-29,Lt High School,Q1 (Low),Moderate,Pretty Happy,5,3,3,1,0.5712
+GSS_2280,45-59,Lt High School,Q4 (High),Moderate,Very Happy,1,3,4,0,1.5816
+GSS_2281,30-44,High School,Q2 (Mid-Low),Conservative,Pretty Happy,3,5,2,0,1.4639
+GSS_2282,30-44,Graduate,Q1 (Low),Liberal,Very Happy,1,3,5,0,0.8137
+GSS_2283,18-29,Bachelor,Q1 (Low),Moderate,Very Happy,2,1,4,0,0.7095
+GSS_2284,18-29,Bachelor,Q2 (Mid-Low),Extremely Conservative,Very Happy,5,4,1,0,0.6487
+GSS_2285,18-29,High School,Q4 (High),Conservative,Pretty Happy,2,4,4,0,1.5683
+GSS_2286,30-44,High School,Q2 (Mid-Low),Conservative,Pretty Happy,3,1,2,0,1.1411
+GSS_2287,45-59,Bachelor,Q4 (High),Conservative,Very Happy,-9,5,1,0,0.6482
+GSS_2288,18-29,Graduate,Q1 (Low),Liberal,Not Too Happy,-9,3,3,0,1.3684
+GSS_2289,60+,High School,Q3 (Mid-High),Liberal,Not Too Happy,2,2,1,0,1.1202
+GSS_2290,30-44,Bachelor,Q2 (Mid-Low),Extremely Conservative,Pretty Happy,1,3,5,0,1.2572
+GSS_2291,45-59,Graduate,Q3 (Mid-High),Extremely Liberal,Pretty Happy,3,4,2,0,0.9193
+GSS_2292,45-59,High School,Q2 (Mid-Low),Conservative,Pretty Happy,1,3,4,0,0.878
+GSS_2293,60+,Bachelor,Q3 (Mid-High),Extremely Liberal,Very Happy,3,2,1,0,1.1464
+GSS_2294,45-59,Graduate,Q3 (Mid-High),Extremely Conservative,Pretty Happy,4,5,1,0,1.1167
+GSS_2295,30-44,High School,Q3 (Mid-High),Extremely Liberal,Not Too Happy,2,3,4,0,1.3722
+GSS_2296,30-44,Bachelor,Q4 (High),Conservative,Not Too Happy,2,3,5,1,0.6628
+GSS_2297,45-59,High School,Q2 (Mid-Low),Moderate,Very Happy,2,1,1,0,0.54
+GSS_2298,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,5,4,3,1,1.1243
+GSS_2299,30-44,Bachelor,Q4 (High),Liberal,Not Too Happy,3,2,1,0,0.7243
+GSS_2300,45-59,Graduate,Q3 (Mid-High),Extremely Liberal,Pretty Happy,4,4,3,1,0.9024
+GSS_2301,30-44,High School,Q3 (Mid-High),Extremely Conservative,Not Too Happy,5,1,4,1,0.5497
+GSS_2302,18-29,High School,Q4 (High),Moderate,Pretty Happy,5,-9,2,1,1.3671
+GSS_2303,45-59,High School,Q3 (Mid-High),Extremely Conservative,Not Too Happy,2,5,3,0,1.0551
+GSS_2304,18-29,Junior College,Q4 (High),Moderate,Very Happy,2,1,5,1,0.8973
+GSS_2305,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,-9,1,5,1,1.5623
+GSS_2306,60+,Bachelor,Q4 (High),Moderate,Pretty Happy,3,5,3,0,1.4467
+GSS_2307,30-44,High School,Q4 (High),Moderate,Very Happy,2,3,1,0,1.4305
+GSS_2308,45-59,High School,Q4 (High),Conservative,Very Happy,2,5,5,1,1.1762
+GSS_2309,30-44,High School,Q2 (Mid-Low),Liberal,Pretty Happy,4,5,1,0,0.9678
+GSS_2310,45-59,High School,Q2 (Mid-Low),Moderate,Not Too Happy,4,1,5,1,0.9593
+GSS_2311,45-59,Junior College,Q3 (Mid-High),Extremely Conservative,Very Happy,2,1,2,0,1.1179
+GSS_2312,60+,Lt High School,Q2 (Mid-Low),Moderate,Pretty Happy,5,4,2,1,1.0929
+GSS_2313,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,3,4,2,0,1.0773
+GSS_2314,30-44,Bachelor,Q4 (High),Moderate,Pretty Happy,5,2,2,1,0.5808
+GSS_2315,30-44,Graduate,Q4 (High),Conservative,Pretty Happy,5,1,2,1,0.8899
+GSS_2316,30-44,Lt High School,Q3 (Mid-High),Moderate,Pretty Happy,4,1,4,1,0.5817
+GSS_2317,45-59,Bachelor,Q1 (Low),Moderate,Very Happy,2,1,2,0,1.4505
+GSS_2318,60+,Lt High School,Q1 (Low),Extremely Conservative,Not Too Happy,4,3,3,1,0.6582
+GSS_2319,60+,Lt High School,Q2 (Mid-Low),Moderate,Very Happy,2,3,2,0,1.1331
+GSS_2320,30-44,High School,Q3 (Mid-High),Liberal,Not Too Happy,4,-9,5,1,0.982
+GSS_2321,18-29,Lt High School,Q2 (Mid-Low),Moderate,Very Happy,4,1,5,1,1.2252
+GSS_2322,60+,Bachelor,Q1 (Low),Extremely Liberal,Pretty Happy,5,1,2,1,1.2403
+GSS_2323,30-44,High School,Q2 (Mid-Low),Conservative,Pretty Happy,1,5,4,0,0.5035
+GSS_2324,45-59,High School,Q1 (Low),Moderate,Very Happy,4,1,1,0,1.5624
+GSS_2325,45-59,Bachelor,Q3 (Mid-High),Liberal,Not Too Happy,1,1,1,0,1.455
+GSS_2326,45-59,High School,Q4 (High),Liberal,Very Happy,4,5,3,1,0.826
+GSS_2327,60+,Lt High School,Q1 (Low),Liberal,Pretty Happy,4,4,2,0,0.5492
+GSS_2328,30-44,High School,Q1 (Low),Conservative,Not Too Happy,3,5,2,0,1.2675
+GSS_2329,18-29,Bachelor,Q1 (Low),Moderate,Not Too Happy,2,4,4,0,1.4033
+GSS_2330,18-29,High School,Q3 (Mid-High),Moderate,Not Too Happy,1,3,5,0,1.4418
+GSS_2331,60+,Bachelor,Q2 (Mid-Low),Moderate,Not Too Happy,3,1,-9,0,0.9022
+GSS_2332,30-44,Lt High School,Q4 (High),Conservative,Not Too Happy,4,5,5,1,0.7448
+GSS_2333,30-44,High School,Q4 (High),Liberal,Very Happy,2,1,3,0,0.7745
+GSS_2334,45-59,Junior College,Q1 (Low),Liberal,Pretty Happy,4,3,4,1,1.36
+GSS_2335,30-44,Bachelor,Q3 (Mid-High),Moderate,Very Happy,2,1,3,0,0.5392
+GSS_2336,45-59,High School,Q4 (High),Conservative,Very Happy,4,3,3,1,0.9757
+GSS_2337,45-59,Graduate,Q1 (Low),Moderate,Pretty Happy,3,2,5,1,1.5834
+GSS_2338,30-44,Bachelor,Q4 (High),Extremely Liberal,Pretty Happy,1,5,5,0,0.9559
+GSS_2339,18-29,Bachelor,Q3 (Mid-High),Moderate,Not Too Happy,-9,3,3,0,1.2087
+GSS_2340,60+,Bachelor,Q3 (Mid-High),Extremely Conservative,Not Too Happy,3,3,2,0,0.6773
+GSS_2341,18-29,Graduate,Q2 (Mid-Low),Moderate,Pretty Happy,-9,2,1,0,1.291
+GSS_2342,30-44,Lt High School,Q2 (Mid-Low),Conservative,Pretty Happy,4,5,3,1,0.6317
+GSS_2343,60+,Junior College,Q1 (Low),Moderate,Very Happy,3,5,5,1,1.1894
+GSS_2344,60+,Graduate,Q3 (Mid-High),Conservative,Pretty Happy,3,3,1,0,0.9216
+GSS_2345,45-59,High School,Q4 (High),Conservative,Pretty Happy,4,2,5,1,1.1041
+GSS_2346,60+,High School,Q3 (Mid-High),Liberal,Pretty Happy,1,2,4,0,1.1845
+GSS_2347,45-59,High School,Q4 (High),Extremely Liberal,Pretty Happy,4,4,4,1,1.0185
+GSS_2348,30-44,Bachelor,Q2 (Mid-Low),Extremely Conservative,Pretty Happy,5,2,1,0,0.6656
+GSS_2349,30-44,Lt High School,Q1 (Low),Moderate,Pretty Happy,3,5,2,0,1.2034
+GSS_2350,18-29,High School,Q2 (Mid-Low),Extremely Liberal,Very Happy,3,4,2,0,0.6171
+GSS_2351,30-44,High School,Q4 (High),Liberal,Not Too Happy,3,2,5,1,0.611
+GSS_2352,30-44,High School,Q4 (High),Conservative,Not Too Happy,3,4,5,1,0.6172
+GSS_2353,30-44,Bachelor,Q2 (Mid-Low),Conservative,Pretty Happy,2,2,2,0,1.417
+GSS_2354,30-44,Lt High School,Q1 (Low),Moderate,Very Happy,2,1,3,0,1.1193
+GSS_2355,60+,Graduate,Q1 (Low),Extremely Conservative,Very Happy,2,4,2,0,0.6015
+GSS_2356,18-29,High School,Q1 (Low),Conservative,Not Too Happy,4,2,-9,1,1.54
+GSS_2357,18-29,High School,Q4 (High),Moderate,Pretty Happy,3,2,3,0,1.5214
+GSS_2358,45-59,Bachelor,Q1 (Low),Extremely Liberal,Pretty Happy,2,-9,1,0,1.1295
+GSS_2359,30-44,High School,Q1 (Low),Conservative,Pretty Happy,4,1,3,1,1.4419
+GSS_2360,60+,Graduate,Q3 (Mid-High),Extremely Liberal,Pretty Happy,5,-9,4,1,1.1103
+GSS_2361,30-44,Bachelor,Q2 (Mid-Low),Liberal,Pretty Happy,1,-9,-9,0,0.8627
+GSS_2362,60+,High School,Q3 (Mid-High),Extremely Liberal,Pretty Happy,4,5,1,0,0.6216
+GSS_2363,18-29,Bachelor,Q1 (Low),Extremely Liberal,Very Happy,4,4,2,0,1.1728
+GSS_2364,60+,Bachelor,Q3 (Mid-High),Liberal,Pretty Happy,5,3,4,1,0.5982
+GSS_2365,60+,Bachelor,Q1 (Low),Liberal,Very Happy,5,4,2,1,1.5333
+GSS_2366,60+,Bachelor,Q4 (High),Liberal,Not Too Happy,1,5,3,0,0.8683
+GSS_2367,18-29,Graduate,Q2 (Mid-Low),Conservative,Pretty Happy,1,5,-9,0,1.0123
+GSS_2368,60+,Lt High School,Q4 (High),Conservative,Pretty Happy,3,1,4,1,1.0383
+GSS_2369,45-59,Lt High School,Q1 (Low),Conservative,Very Happy,3,2,3,0,0.5763
+GSS_2370,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,3,2,1,0,1.2753
+GSS_2371,30-44,Bachelor,Q2 (Mid-Low),Conservative,Pretty Happy,5,2,5,1,0.9734
+GSS_2372,60+,High School,Q4 (High),Conservative,Very Happy,1,1,-9,0,1.1214
+GSS_2373,18-29,Bachelor,Q3 (Mid-High),Conservative,Very Happy,1,2,3,0,1.2032
+GSS_2374,60+,High School,Q3 (Mid-High),Extremely Liberal,Not Too Happy,5,5,1,0,1.4601
+GSS_2375,30-44,Junior College,Q4 (High),Liberal,Pretty Happy,5,2,5,1,1.5626
+GSS_2376,30-44,High School,Q2 (Mid-Low),Liberal,Pretty Happy,4,2,1,0,1.3021
+GSS_2377,30-44,High School,Q1 (Low),Conservative,Pretty Happy,1,3,3,0,1.4735
+GSS_2378,60+,High School,Q3 (Mid-High),Moderate,Pretty Happy,3,4,3,0,0.5077
+GSS_2379,18-29,High School,Q2 (Mid-Low),Moderate,Pretty Happy,4,2,5,1,1.5197
+GSS_2380,60+,Junior College,Q4 (High),Extremely Liberal,Pretty Happy,4,1,4,1,1.3122
+GSS_2381,18-29,High School,Q4 (High),Liberal,Pretty Happy,3,4,2,0,1.1799
+GSS_2382,60+,Lt High School,Q2 (Mid-Low),Liberal,Pretty Happy,3,1,1,0,1.4369
+GSS_2383,60+,High School,Q4 (High),Liberal,Pretty Happy,4,5,2,0,1.0131
+GSS_2384,45-59,Graduate,Q1 (Low),Extremely Conservative,Pretty Happy,4,4,5,1,0.8786
+GSS_2385,18-29,Junior College,Q2 (Mid-Low),Moderate,Not Too Happy,2,3,-9,0,1.382
+GSS_2386,30-44,High School,Q1 (Low),Moderate,Very Happy,3,1,4,1,0.5391
+GSS_2387,45-59,High School,Q2 (Mid-Low),Moderate,Pretty Happy,1,2,2,0,0.7717
+GSS_2388,18-29,High School,Q3 (Mid-High),Liberal,Pretty Happy,1,3,2,0,0.5119
+GSS_2389,60+,Lt High School,Q1 (Low),Conservative,Very Happy,5,4,2,1,1.0139
+GSS_2390,18-29,Lt High School,Q2 (Mid-Low),Moderate,Pretty Happy,1,4,5,0,0.907
+GSS_2391,45-59,Lt High School,Q3 (Mid-High),Extremely Conservative,Not Too Happy,2,3,3,0,0.9321
+GSS_2392,45-59,High School,Q3 (Mid-High),Conservative,Not Too Happy,2,3,-9,0,0.6156
+GSS_2393,18-29,High School,Q2 (Mid-Low),Moderate,Pretty Happy,5,1,5,1,1.0255
+GSS_2394,45-59,High School,Q4 (High),Conservative,Very Happy,2,2,4,0,0.6196
+GSS_2395,60+,High School,Q1 (Low),Liberal,Not Too Happy,3,4,-9,0,1.2816
+GSS_2396,45-59,Bachelor,Q3 (Mid-High),Moderate,Pretty Happy,5,2,4,1,0.5138
+GSS_2397,45-59,High School,Q1 (Low),Conservative,Very Happy,1,5,-9,0,0.5125
+GSS_2398,45-59,Bachelor,Q4 (High),Moderate,Pretty Happy,3,1,4,1,1.3783
+GSS_2399,30-44,High School,Q2 (Mid-Low),Conservative,Pretty Happy,2,1,-9,0,1.0926
+GSS_2400,30-44,High School,Q2 (Mid-Low),Conservative,Not Too Happy,5,3,4,1,1.372
+GSS_2401,18-29,High School,Q4 (High),Moderate,Pretty Happy,4,5,5,1,0.6871
+GSS_2402,18-29,High School,Q4 (High),Liberal,Pretty Happy,4,2,4,1,1.2892
+GSS_2403,30-44,High School,Q4 (High),Extremely Conservative,Very Happy,5,5,5,1,1.319
+GSS_2404,45-59,Junior College,Q3 (Mid-High),Liberal,Very Happy,4,3,5,1,1.0711
+GSS_2405,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,4,4,3,1,1.234
+GSS_2406,45-59,High School,Q4 (High),Extremely Conservative,Pretty Happy,1,4,2,0,1.2831
+GSS_2407,45-59,Bachelor,Q2 (Mid-Low),Conservative,Pretty Happy,2,-9,4,0,0.5921
+GSS_2408,18-29,High School,Q1 (Low),Moderate,Pretty Happy,3,2,3,0,0.9781
+GSS_2409,45-59,Graduate,Q2 (Mid-Low),Moderate,Very Happy,1,2,4,0,1.2847
+GSS_2410,60+,High School,Q3 (Mid-High),Liberal,Not Too Happy,3,3,4,1,0.7007
+GSS_2411,45-59,Bachelor,Q4 (High),Extremely Conservative,Pretty Happy,2,1,4,0,0.8595
+GSS_2412,18-29,Graduate,Q4 (High),Moderate,Pretty Happy,3,3,5,1,0.5545
+GSS_2413,30-44,Graduate,Q2 (Mid-Low),Conservative,Pretty Happy,5,4,1,0,0.9441
+GSS_2414,30-44,Bachelor,Q3 (Mid-High),Liberal,Pretty Happy,3,4,3,0,0.923
+GSS_2415,30-44,Bachelor,Q3 (Mid-High),Moderate,Pretty Happy,1,5,5,0,0.6214
+GSS_2416,18-29,High School,Q3 (Mid-High),Liberal,Pretty Happy,2,1,4,0,0.7218
+GSS_2417,60+,High School,Q4 (High),Liberal,Very Happy,-9,5,1,0,0.8033
+GSS_2418,60+,Lt High School,Q2 (Mid-Low),Moderate,Pretty Happy,2,1,2,0,0.698
+GSS_2419,18-29,High School,Q3 (Mid-High),Moderate,Very Happy,5,4,4,1,1.3577
+GSS_2420,30-44,High School,Q1 (Low),Conservative,Pretty Happy,4,1,1,0,0.9744
+GSS_2421,18-29,High School,Q2 (Mid-Low),Moderate,Not Too Happy,5,3,4,1,0.6275
+GSS_2422,30-44,Junior College,Q1 (Low),Moderate,Not Too Happy,4,3,-9,1,1.3087
+GSS_2423,45-59,High School,Q2 (Mid-Low),Moderate,Very Happy,4,5,4,1,0.9877
+GSS_2424,30-44,High School,Q3 (Mid-High),Moderate,Very Happy,2,5,5,1,1.5069
+GSS_2425,30-44,Bachelor,Q3 (Mid-High),Conservative,Pretty Happy,3,4,2,0,0.8154
+GSS_2426,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,4,-9,1,0,1.5219
+GSS_2427,30-44,Bachelor,Q1 (Low),Liberal,Not Too Happy,5,3,3,1,1.095
+GSS_2428,60+,High School,Q2 (Mid-Low),Conservative,Pretty Happy,5,1,-9,1,1.4867
+GSS_2429,18-29,High School,Q4 (High),Moderate,Pretty Happy,1,1,4,0,1.0292
+GSS_2430,30-44,High School,Q4 (High),Moderate,Pretty Happy,2,3,3,0,1.0438
+GSS_2431,18-29,Bachelor,Q3 (Mid-High),Extremely Liberal,Very Happy,3,3,4,1,1.2777
+GSS_2432,30-44,High School,Q2 (Mid-Low),Liberal,Pretty Happy,4,4,4,1,0.6566
+GSS_2433,45-59,High School,Q1 (Low),Moderate,Pretty Happy,2,4,1,0,0.8886
+GSS_2434,60+,Lt High School,Q4 (High),Extremely Liberal,Very Happy,2,4,1,0,0.8579
+GSS_2435,60+,High School,Q3 (Mid-High),Liberal,Pretty Happy,3,4,3,0,1.0029
+GSS_2436,30-44,High School,Q3 (Mid-High),Conservative,Pretty Happy,3,4,3,0,0.8745
+GSS_2437,30-44,Graduate,Q1 (Low),Liberal,Pretty Happy,1,4,2,0,0.8608
+GSS_2438,60+,Graduate,Q4 (High),Moderate,Pretty Happy,3,3,3,0,0.8951
+GSS_2439,45-59,Lt High School,Q2 (Mid-Low),Conservative,Pretty Happy,-9,2,2,0,1.2868
+GSS_2440,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,1,2,3,0,0.8431
+GSS_2441,45-59,Lt High School,Q3 (Mid-High),Moderate,Very Happy,4,-9,2,0,1.5868
+GSS_2442,60+,High School,Q4 (High),Moderate,Pretty Happy,2,3,1,0,1.092
+GSS_2443,18-29,Bachelor,Q4 (High),Liberal,Not Too Happy,5,3,5,1,0.6626
+GSS_2444,45-59,Lt High School,Q4 (High),Liberal,Pretty Happy,3,3,2,0,1.1348
+GSS_2445,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,5,4,1,0,1.1124
+GSS_2446,30-44,High School,Q2 (Mid-Low),Liberal,Very Happy,3,5,3,0,1.0192
+GSS_2447,60+,Bachelor,Q2 (Mid-Low),Liberal,Pretty Happy,-9,5,5,1,1.4622
+GSS_2448,30-44,High School,Q2 (Mid-Low),Moderate,Pretty Happy,5,1,2,1,0.759
+GSS_2449,60+,Bachelor,Q3 (Mid-High),Moderate,Pretty Happy,-9,5,1,0,1.2091
+GSS_2450,45-59,High School,Q3 (Mid-High),Moderate,Pretty Happy,1,1,2,0,0.6294
+GSS_2451,45-59,High School,Q3 (Mid-High),Moderate,Pretty Happy,5,4,3,1,1.5987
+GSS_2452,60+,Bachelor,Q2 (Mid-Low),Moderate,Pretty Happy,4,2,1,0,1.562
+GSS_2453,30-44,Graduate,Q2 (Mid-Low),Conservative,Pretty Happy,3,4,5,1,1.1774
+GSS_2454,18-29,Bachelor,Q2 (Mid-Low),Liberal,Pretty Happy,4,1,3,1,0.8553
+GSS_2455,18-29,High School,Q2 (Mid-Low),Moderate,Pretty Happy,1,1,1,0,1.3655
+GSS_2456,60+,High School,Q2 (Mid-Low),Liberal,Not Too Happy,2,4,3,0,1.2802
+GSS_2457,45-59,High School,Q3 (Mid-High),Conservative,Pretty Happy,5,2,4,1,1.4319
+GSS_2458,45-59,High School,Q4 (High),Extremely Conservative,Very Happy,5,3,4,1,0.5933
+GSS_2459,45-59,Bachelor,Q3 (Mid-High),Extremely Liberal,Very Happy,1,5,3,0,0.8062
+GSS_2460,45-59,High School,Q4 (High),Moderate,Pretty Happy,1,1,1,0,0.8691
+GSS_2461,18-29,High School,Q2 (Mid-Low),Moderate,Pretty Happy,2,3,5,1,1.0433
+GSS_2462,30-44,Lt High School,Q3 (Mid-High),Liberal,Very Happy,3,5,1,0,1.2781
+GSS_2463,30-44,High School,Q1 (Low),Moderate,Pretty Happy,2,3,1,0,1.5683
+GSS_2464,30-44,Graduate,Q2 (Mid-Low),Liberal,Pretty Happy,1,2,4,0,1.5515
+GSS_2465,45-59,High School,Q4 (High),Conservative,Pretty Happy,1,4,1,0,0.6481
+GSS_2466,18-29,Bachelor,Q3 (Mid-High),Liberal,Pretty Happy,2,1,2,0,0.5772
+GSS_2467,60+,High School,Q3 (Mid-High),Conservative,Pretty Happy,1,1,3,0,1.0206
+GSS_2468,45-59,High School,Q1 (Low),Extremely Conservative,Pretty Happy,5,5,2,1,0.8736
+GSS_2469,30-44,High School,Q3 (Mid-High),Conservative,Very Happy,3,1,1,0,1.0736
+GSS_2470,60+,Bachelor,Q3 (Mid-High),Liberal,Pretty Happy,3,4,-9,0,0.9906
+GSS_2471,30-44,High School,Q1 (Low),Conservative,Very Happy,5,2,5,1,0.6911
+GSS_2472,30-44,Lt High School,Q1 (Low),Extremely Liberal,Pretty Happy,5,1,5,1,0.8613
+GSS_2473,60+,Junior College,Q1 (Low),Extremely Liberal,Not Too Happy,5,5,2,1,0.9464
+GSS_2474,30-44,Graduate,Q2 (Mid-Low),Moderate,Pretty Happy,2,3,3,0,1.0373
+GSS_2475,45-59,Junior College,Q1 (Low),Liberal,Pretty Happy,5,2,1,0,1.5111
+GSS_2476,18-29,High School,Q4 (High),Moderate,Pretty Happy,4,5,5,1,1.3024
+GSS_2477,45-59,Lt High School,Q3 (Mid-High),Conservative,Pretty Happy,2,4,-9,0,0.7998
+GSS_2478,18-29,Graduate,Q4 (High),Liberal,Very Happy,4,2,5,1,0.92
+GSS_2479,30-44,Bachelor,Q2 (Mid-Low),Liberal,Pretty Happy,5,4,5,1,1.2923
+GSS_2480,30-44,High School,Q3 (Mid-High),Conservative,Pretty Happy,4,3,3,1,0.775
+GSS_2481,18-29,High School,Q2 (Mid-Low),Liberal,Pretty Happy,4,1,3,1,1.1788
+GSS_2482,30-44,Junior College,Q3 (Mid-High),Moderate,Pretty Happy,5,-9,2,1,1.4788
+GSS_2483,60+,High School,Q1 (Low),Moderate,Very Happy,3,4,2,0,1.161
+GSS_2484,45-59,Graduate,Q2 (Mid-Low),Liberal,Very Happy,4,4,3,1,1.1542
+GSS_2485,60+,High School,Q1 (Low),Liberal,Pretty Happy,5,2,5,1,1.2173
+GSS_2486,18-29,Lt High School,Q3 (Mid-High),Conservative,Not Too Happy,4,3,1,0,1.1786
+GSS_2487,30-44,Bachelor,Q1 (Low),Extremely Conservative,Pretty Happy,3,1,2,0,0.8373
+GSS_2488,30-44,Bachelor,Q1 (Low),Moderate,Pretty Happy,4,1,2,0,0.7373
+GSS_2489,18-29,Lt High School,Q2 (Mid-Low),Conservative,Not Too Happy,4,1,1,0,1.3072
+GSS_2490,60+,Lt High School,Q1 (Low),Liberal,Pretty Happy,2,-9,3,0,1.2642
+GSS_2491,18-29,High School,Q3 (Mid-High),Moderate,Not Too Happy,2,1,4,0,1.0243
+GSS_2492,18-29,High School,Q1 (Low),Extremely Conservative,Pretty Happy,4,3,-9,1,0.7302
+GSS_2493,30-44,Bachelor,Q3 (Mid-High),Conservative,Pretty Happy,1,2,3,0,0.6923
+GSS_2494,60+,Bachelor,Q3 (Mid-High),Moderate,Not Too Happy,4,3,3,1,1.4874
+GSS_2495,18-29,Bachelor,Q2 (Mid-Low),Extremely Liberal,Very Happy,2,5,3,0,0.7693
+GSS_2496,45-59,High School,Q1 (Low),Moderate,Not Too Happy,-9,3,3,0,0.7248
+GSS_2497,30-44,High School,Q1 (Low),Moderate,Not Too Happy,3,5,4,1,1.2447
+GSS_2498,45-59,Junior College,Q2 (Mid-Low),Conservative,Pretty Happy,5,4,3,1,1.3722
+GSS_2499,18-29,Bachelor,Q1 (Low),Conservative,Pretty Happy,3,-9,3,0,0.638
+GSS_2500,45-59,High School,Q1 (Low),Moderate,Very Happy,1,5,2,0,1.1609
+GSS_2501,30-44,Lt High School,Q1 (Low),Moderate,Very Happy,2,4,1,0,1.3188
+GSS_2502,45-59,Graduate,Q4 (High),Moderate,Not Too Happy,5,1,-9,1,1.565
+GSS_2503,45-59,High School,Q4 (High),Moderate,Pretty Happy,-9,1,3,0,1.532
+GSS_2504,60+,Bachelor,Q3 (Mid-High),Extremely Conservative,Very Happy,2,2,3,0,1.2634
+GSS_2505,45-59,High School,Q2 (Mid-Low),Conservative,Very Happy,2,5,3,0,1.5711
+GSS_2506,18-29,Bachelor,Q1 (Low),Extremely Liberal,Pretty Happy,4,4,2,0,1.096
+GSS_2507,30-44,Bachelor,Q1 (Low),Moderate,Not Too Happy,3,2,3,0,1.1327
+GSS_2508,30-44,High School,Q3 (Mid-High),Extremely Liberal,Very Happy,1,5,1,0,0.5757
+GSS_2509,45-59,High School,Q3 (Mid-High),Extremely Liberal,Pretty Happy,2,3,2,0,0.7003
+GSS_2510,45-59,Junior College,Q1 (Low),Liberal,Very Happy,-9,2,4,1,1.0587
+GSS_2511,45-59,High School,Q3 (Mid-High),Conservative,Not Too Happy,-9,3,2,0,0.9569
+GSS_2512,30-44,High School,Q4 (High),Moderate,Pretty Happy,-9,3,2,0,1.3613
+GSS_2513,18-29,High School,Q4 (High),Extremely Liberal,Not Too Happy,4,2,4,1,1.5106
+GSS_2514,30-44,High School,Q1 (Low),Moderate,Pretty Happy,4,5,4,1,0.7719
+GSS_2515,30-44,Graduate,Q3 (Mid-High),Conservative,Pretty Happy,4,3,4,1,0.864
+GSS_2516,45-59,Bachelor,Q2 (Mid-Low),Conservative,Very Happy,5,-9,1,0,0.6087
+GSS_2517,18-29,High School,Q1 (Low),Extremely Liberal,Not Too Happy,1,1,3,0,1.3114
+GSS_2518,45-59,Junior College,Q2 (Mid-Low),Liberal,Pretty Happy,1,4,4,0,1.1415
+GSS_2519,30-44,High School,Q2 (Mid-Low),Moderate,Not Too Happy,5,4,1,0,0.9256
+GSS_2520,45-59,Bachelor,Q4 (High),Moderate,Pretty Happy,3,1,4,1,0.5112
+GSS_2521,45-59,High School,Q3 (Mid-High),Moderate,Very Happy,5,4,5,1,1.4988
+GSS_2522,30-44,Graduate,Q4 (High),Conservative,Very Happy,5,4,3,1,1.1727
+GSS_2523,45-59,High School,Q4 (High),Liberal,Very Happy,3,2,4,1,0.63
+GSS_2524,45-59,Lt High School,Q1 (Low),Conservative,Very Happy,-9,5,4,1,1.1615
+GSS_2525,60+,High School,Q4 (High),Liberal,Very Happy,3,-9,2,0,1.0752
+GSS_2526,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,4,5,4,1,0.8625
+GSS_2527,30-44,High School,Q2 (Mid-Low),Conservative,Pretty Happy,3,2,5,1,0.7444
+GSS_2528,30-44,High School,Q1 (Low),Conservative,Pretty Happy,2,2,5,1,1.4369
+GSS_2529,30-44,Lt High School,Q4 (High),Extremely Liberal,Very Happy,1,2,1,0,1.5806
+GSS_2530,60+,Junior College,Q2 (Mid-Low),Liberal,Pretty Happy,4,5,3,1,1.2083
+GSS_2531,18-29,High School,Q1 (Low),Conservative,Not Too Happy,3,1,3,0,1.4278
+GSS_2532,60+,Lt High School,Q2 (Mid-Low),Moderate,Pretty Happy,2,3,3,0,0.7232
+GSS_2533,18-29,High School,Q2 (Mid-Low),Moderate,Very Happy,4,3,4,1,1.1694
+GSS_2534,30-44,High School,Q2 (Mid-Low),Conservative,Not Too Happy,2,1,2,0,1.2777
+GSS_2535,45-59,High School,Q4 (High),Moderate,Pretty Happy,2,2,5,1,1.2053
+GSS_2536,18-29,High School,Q2 (Mid-Low),Moderate,Not Too Happy,3,5,5,1,0.8146
+GSS_2537,18-29,High School,Q3 (Mid-High),Moderate,Pretty Happy,2,2,2,0,1.252
+GSS_2538,45-59,Lt High School,Q2 (Mid-Low),Liberal,Pretty Happy,5,3,5,1,0.875
+GSS_2539,45-59,Bachelor,Q2 (Mid-Low),Moderate,Very Happy,4,-9,1,0,1.523
+GSS_2540,30-44,High School,Q3 (Mid-High),Extremely Liberal,Not Too Happy,1,4,4,0,0.8015
+GSS_2541,18-29,High School,Q3 (Mid-High),Extremely Liberal,Not Too Happy,1,5,2,0,1.4196
+GSS_2542,18-29,Graduate,Q4 (High),Liberal,Pretty Happy,5,3,2,1,0.599
+GSS_2543,30-44,High School,Q2 (Mid-Low),Conservative,Pretty Happy,3,1,4,1,1.5105
+GSS_2544,30-44,Bachelor,Q3 (Mid-High),Conservative,Very Happy,2,2,1,0,0.9523
+GSS_2545,18-29,High School,Q2 (Mid-Low),Conservative,Not Too Happy,4,2,1,0,0.709
+GSS_2546,60+,High School,Q2 (Mid-Low),Liberal,Pretty Happy,2,5,2,0,0.681
+GSS_2547,18-29,High School,Q1 (Low),Moderate,Very Happy,5,2,5,1,0.8068
+GSS_2548,45-59,High School,Q4 (High),Conservative,Very Happy,5,5,1,0,1.2401
+GSS_2549,45-59,Junior College,Q1 (Low),Moderate,Very Happy,-9,3,4,1,1.2225
+GSS_2550,30-44,Bachelor,Q2 (Mid-Low),Conservative,Pretty Happy,5,4,4,1,1.4758
+GSS_2551,18-29,Graduate,Q2 (Mid-Low),Liberal,Not Too Happy,5,3,5,1,0.8538
+GSS_2552,30-44,Bachelor,Q3 (Mid-High),Conservative,Pretty Happy,2,4,5,1,1.3114
+GSS_2553,18-29,Junior College,Q1 (Low),Extremely Liberal,Pretty Happy,5,1,4,1,0.7719
+GSS_2554,18-29,High School,Q1 (Low),Liberal,Pretty Happy,3,4,1,0,1.2152
+GSS_2555,60+,Bachelor,Q1 (Low),Conservative,Pretty Happy,4,2,2,0,1.0515
+GSS_2556,18-29,Bachelor,Q3 (Mid-High),Conservative,Not Too Happy,5,2,5,1,1.0019
+GSS_2557,18-29,High School,Q1 (Low),Moderate,Pretty Happy,4,2,1,0,1.5947
+GSS_2558,18-29,Bachelor,Q4 (High),Extremely Liberal,Pretty Happy,1,3,1,0,0.7382
+GSS_2559,45-59,High School,Q2 (Mid-Low),Liberal,Not Too Happy,5,4,4,1,1.5344
+GSS_2560,60+,Junior College,Q1 (Low),Extremely Liberal,Not Too Happy,2,-9,3,0,1.0529
+GSS_2561,60+,Junior College,Q1 (Low),Extremely Liberal,Very Happy,2,1,4,0,0.7534
+GSS_2562,18-29,Graduate,Q1 (Low),Conservative,Very Happy,5,1,1,0,1.5706
+GSS_2563,45-59,Lt High School,Q1 (Low),Moderate,Pretty Happy,3,4,5,1,0.5788
+GSS_2564,45-59,High School,Q3 (Mid-High),Moderate,Pretty Happy,-9,1,4,1,1.1757
+GSS_2565,45-59,Bachelor,Q3 (Mid-High),Conservative,Pretty Happy,1,5,2,0,1.3447
+GSS_2566,45-59,Bachelor,Q3 (Mid-High),Conservative,Pretty Happy,4,2,2,0,1.159
+GSS_2567,30-44,High School,Q4 (High),Moderate,Pretty Happy,2,4,4,0,1.2382
+GSS_2568,30-44,Graduate,Q2 (Mid-Low),Moderate,Pretty Happy,-9,1,-9,0,0.8885
+GSS_2569,30-44,Graduate,Q4 (High),Extremely Liberal,Pretty Happy,5,5,2,1,1.3122
+GSS_2570,45-59,High School,Q2 (Mid-Low),Moderate,Pretty Happy,3,5,1,0,1.0753
+GSS_2571,45-59,Junior College,Q4 (High),Liberal,Very Happy,3,4,3,0,0.5052
+GSS_2572,30-44,Graduate,Q2 (Mid-Low),Conservative,Very Happy,2,3,5,1,1.4925
+GSS_2573,60+,High School,Q3 (Mid-High),Liberal,Very Happy,2,4,3,0,0.8194
+GSS_2574,45-59,High School,Q2 (Mid-Low),Conservative,Pretty Happy,4,1,2,0,0.9353
+GSS_2575,45-59,High School,Q2 (Mid-Low),Moderate,Not Too Happy,5,4,3,1,1.3213
+GSS_2576,30-44,High School,Q4 (High),Conservative,Very Happy,2,3,1,0,0.6752
+GSS_2577,45-59,High School,Q1 (Low),Extremely Conservative,Pretty Happy,4,2,1,0,1.1629
+GSS_2578,30-44,High School,Q2 (Mid-Low),Moderate,Very Happy,5,4,4,1,0.7148
+GSS_2579,60+,High School,Q2 (Mid-Low),Moderate,Pretty Happy,2,4,4,0,0.8553
+GSS_2580,30-44,High School,Q1 (Low),Liberal,Pretty Happy,1,4,5,0,0.9811
+GSS_2581,45-59,High School,Q2 (Mid-Low),Moderate,Pretty Happy,5,5,4,1,1.0946
+GSS_2582,18-29,High School,Q4 (High),Conservative,Pretty Happy,3,4,3,0,1.0296
+GSS_2583,18-29,High School,Q4 (High),Conservative,Pretty Happy,2,3,2,0,1.5018
+GSS_2584,18-29,Graduate,Q1 (Low),Moderate,Pretty Happy,4,4,5,1,0.6336
+GSS_2585,30-44,High School,Q4 (High),Moderate,Pretty Happy,5,3,1,0,1.0318
+GSS_2586,30-44,Bachelor,Q2 (Mid-Low),Liberal,Very Happy,4,1,5,1,1.4263
+GSS_2587,18-29,High School,Q4 (High),Extremely Liberal,Very Happy,1,1,4,0,1.5817
+GSS_2588,30-44,High School,Q3 (Mid-High),Liberal,Very Happy,-9,1,3,0,1.217
+GSS_2589,18-29,High School,Q4 (High),Moderate,Not Too Happy,3,3,2,0,0.5311
+GSS_2590,60+,Graduate,Q1 (Low),Conservative,Very Happy,2,2,-9,0,1.5908
+GSS_2591,60+,Junior College,Q2 (Mid-Low),Liberal,Pretty Happy,5,2,1,0,1.2775
+GSS_2592,60+,High School,Q3 (Mid-High),Liberal,Very Happy,3,2,2,0,0.5818
+GSS_2593,30-44,Bachelor,Q2 (Mid-Low),Extremely Liberal,Pretty Happy,3,1,2,0,1.0699
+GSS_2594,60+,Bachelor,Q3 (Mid-High),Liberal,Very Happy,4,1,-9,1,1.0474
+GSS_2595,30-44,High School,Q1 (Low),Conservative,Very Happy,1,1,3,0,1.2472
+GSS_2596,30-44,High School,Q1 (Low),Liberal,Pretty Happy,4,2,1,0,0.5946
+GSS_2597,30-44,High School,Q3 (Mid-High),Extremely Liberal,Very Happy,2,2,3,0,0.7706
+GSS_2598,60+,Bachelor,Q3 (Mid-High),Conservative,Very Happy,3,4,2,0,1.4149
+GSS_2599,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,5,4,1,0,1.5636
+GSS_2600,30-44,Graduate,Q4 (High),Extremely Liberal,Very Happy,5,3,5,1,0.7706
+GSS_2601,45-59,High School,Q4 (High),Conservative,Pretty Happy,2,2,3,0,1.3953
+GSS_2602,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,4,5,3,1,0.8382
+GSS_2603,45-59,Graduate,Q4 (High),Extremely Liberal,Pretty Happy,1,-9,1,0,1.2309
+GSS_2604,30-44,High School,Q4 (High),Extremely Conservative,Pretty Happy,5,1,4,1,1.0682
+GSS_2605,45-59,Bachelor,Q3 (Mid-High),Liberal,Not Too Happy,4,4,3,1,1.1077
+GSS_2606,45-59,Lt High School,Q1 (Low),Extremely Liberal,Very Happy,5,1,4,1,0.5371
+GSS_2607,60+,High School,Q2 (Mid-Low),Liberal,Very Happy,2,4,2,0,1.0917
+GSS_2608,30-44,High School,Q2 (Mid-Low),Conservative,Not Too Happy,1,5,1,0,0.9526
+GSS_2609,18-29,Graduate,Q3 (Mid-High),Moderate,Pretty Happy,4,5,3,1,1.3014
+GSS_2610,60+,Lt High School,Q1 (Low),Conservative,Very Happy,-9,5,5,1,1.4163
+GSS_2611,30-44,Graduate,Q1 (Low),Extremely Conservative,Very Happy,2,2,2,0,0.9775
+GSS_2612,60+,High School,Q4 (High),Moderate,Very Happy,-9,1,2,0,0.5429
+GSS_2613,60+,Graduate,Q1 (Low),Moderate,Very Happy,1,5,5,0,1.1015
+GSS_2614,30-44,High School,Q3 (Mid-High),Liberal,Pretty Happy,4,2,2,0,1.1935
+GSS_2615,30-44,Lt High School,Q2 (Mid-Low),Conservative,Pretty Happy,2,4,1,0,1.2706
+GSS_2616,30-44,High School,Q4 (High),Conservative,Pretty Happy,2,3,4,0,1.391
+GSS_2617,30-44,Graduate,Q2 (Mid-Low),Moderate,Pretty Happy,5,3,5,1,1.2571
+GSS_2618,45-59,High School,Q1 (Low),Extremely Liberal,Not Too Happy,1,5,3,0,1.2401
+GSS_2619,30-44,High School,Q4 (High),Conservative,Pretty Happy,1,4,-9,0,0.8054
+GSS_2620,60+,Graduate,Q3 (Mid-High),Moderate,Pretty Happy,-9,-9,4,1,1.3161
+GSS_2621,18-29,High School,Q1 (Low),Conservative,Very Happy,4,-9,1,0,0.5906
+GSS_2622,18-29,Graduate,Q4 (High),Moderate,Very Happy,3,3,4,1,1.1719
+GSS_2623,45-59,High School,Q3 (Mid-High),Extremely Conservative,Very Happy,5,2,4,1,0.6781
+GSS_2624,60+,Bachelor,Q1 (Low),Conservative,Very Happy,3,5,2,0,0.692
+GSS_2625,60+,Lt High School,Q2 (Mid-Low),Moderate,Pretty Happy,2,1,4,0,0.661
+GSS_2626,30-44,Lt High School,Q1 (Low),Extremely Conservative,Pretty Happy,2,3,3,0,1.0386
+GSS_2627,60+,High School,Q4 (High),Conservative,Pretty Happy,1,4,1,0,1.2877
+GSS_2628,45-59,High School,Q2 (Mid-Low),Moderate,Pretty Happy,5,5,2,1,1.4198
+GSS_2629,18-29,Lt High School,Q1 (Low),Liberal,Very Happy,-9,5,3,0,0.8707
+GSS_2630,60+,Bachelor,Q3 (Mid-High),Extremely Conservative,Pretty Happy,-9,1,5,1,1.574
+GSS_2631,18-29,High School,Q1 (Low),Moderate,Very Happy,2,2,4,0,0.7701
+GSS_2632,30-44,Lt High School,Q3 (Mid-High),Extremely Liberal,Pretty Happy,5,5,5,1,1.3693
+GSS_2633,45-59,Lt High School,Q2 (Mid-Low),Extremely Conservative,Pretty Happy,4,2,5,1,1.2225
+GSS_2634,45-59,High School,Q1 (Low),Extremely Liberal,Not Too Happy,5,-9,1,0,1.0711
+GSS_2635,60+,Graduate,Q2 (Mid-Low),Moderate,Not Too Happy,3,4,4,1,1.2978
+GSS_2636,18-29,High School,Q2 (Mid-Low),Moderate,Pretty Happy,3,2,3,0,0.5437
+GSS_2637,45-59,High School,Q4 (High),Moderate,Pretty Happy,2,1,2,0,0.9245
+GSS_2638,30-44,Bachelor,Q2 (Mid-Low),Conservative,Very Happy,3,5,2,0,0.7484
+GSS_2639,30-44,High School,Q2 (Mid-Low),Conservative,Very Happy,2,-9,3,0,1.4066
+GSS_2640,30-44,Junior College,Q3 (Mid-High),Moderate,Pretty Happy,3,5,5,1,0.6923
+GSS_2641,60+,High School,Q3 (Mid-High),Moderate,Pretty Happy,1,5,4,0,0.5566
+GSS_2642,60+,High School,Q3 (Mid-High),Extremely Conservative,Pretty Happy,2,3,3,0,0.8937
+GSS_2643,30-44,High School,Q1 (Low),Extremely Conservative,Very Happy,5,2,4,1,0.6974
+GSS_2644,30-44,Graduate,Q3 (Mid-High),Extremely Conservative,Very Happy,5,1,5,1,0.8295
+GSS_2645,45-59,Graduate,Q2 (Mid-Low),Conservative,Very Happy,3,2,5,1,1.2612
+GSS_2646,30-44,Junior College,Q4 (High),Extremely Liberal,Pretty Happy,4,2,3,1,0.6491
+GSS_2647,30-44,Bachelor,Q2 (Mid-Low),Conservative,Very Happy,4,5,1,0,1.1878
+GSS_2648,60+,High School,Q4 (High),Liberal,Very Happy,2,5,3,0,0.9444
+GSS_2649,45-59,Graduate,Q4 (High),Moderate,Pretty Happy,3,2,3,0,1.518
+GSS_2650,30-44,Bachelor,Q3 (Mid-High),Extremely Conservative,Pretty Happy,-9,2,4,1,0.835
+GSS_2651,30-44,High School,Q3 (Mid-High),Extremely Liberal,Pretty Happy,3,3,1,0,1.3504
+GSS_2652,30-44,Bachelor,Q3 (Mid-High),Moderate,Pretty Happy,3,1,1,0,0.8402
+GSS_2653,45-59,High School,Q4 (High),Extremely Conservative,Pretty Happy,2,4,3,0,0.5744
+GSS_2654,30-44,Graduate,Q4 (High),Moderate,Pretty Happy,1,4,5,0,1.3103
+GSS_2655,60+,Graduate,Q2 (Mid-Low),Moderate,Pretty Happy,5,2,3,1,1.2059
+GSS_2656,60+,High School,Q4 (High),Conservative,Pretty Happy,1,3,3,0,1.2193
+GSS_2657,30-44,Bachelor,Q1 (Low),Moderate,Pretty Happy,1,2,3,0,1.5152
+GSS_2658,30-44,High School,Q3 (Mid-High),Extremely Liberal,Pretty Happy,3,2,1,0,0.7978
+GSS_2659,45-59,Bachelor,Q2 (Mid-Low),Extremely Conservative,Pretty Happy,4,5,4,1,0.8092
+GSS_2660,30-44,Graduate,Q3 (Mid-High),Moderate,Pretty Happy,2,1,5,1,1.5087
+GSS_2661,30-44,High School,Q2 (Mid-Low),Moderate,Very Happy,3,5,2,0,0.6868
+GSS_2662,45-59,Lt High School,Q3 (Mid-High),Liberal,Pretty Happy,5,2,1,0,0.6106
+GSS_2663,60+,Bachelor,Q1 (Low),Moderate,Pretty Happy,3,1,2,0,0.7724
+GSS_2664,60+,High School,Q2 (Mid-Low),Liberal,Pretty Happy,3,4,5,1,1.3236
+GSS_2665,45-59,High School,Q1 (Low),Moderate,Very Happy,5,5,2,1,0.8925
+GSS_2666,30-44,Lt High School,Q3 (Mid-High),Extremely Liberal,Pretty Happy,5,5,4,1,0.9495
+GSS_2667,60+,High School,Q1 (Low),Extremely Liberal,Not Too Happy,2,3,1,0,1.2329
+GSS_2668,30-44,Graduate,Q1 (Low),Extremely Liberal,Very Happy,5,3,3,1,1.424
+GSS_2669,30-44,Junior College,Q2 (Mid-Low),Conservative,Pretty Happy,5,4,3,1,1.1117
+GSS_2670,30-44,High School,Q3 (Mid-High),Moderate,Very Happy,1,3,3,0,1.3249
+GSS_2671,45-59,Junior College,Q4 (High),Moderate,Very Happy,5,5,1,0,0.895
+GSS_2672,60+,Graduate,Q3 (Mid-High),Moderate,Pretty Happy,1,4,5,0,0.8205
+GSS_2673,18-29,Graduate,Q3 (Mid-High),Moderate,Very Happy,4,4,4,1,0.7728
+GSS_2674,45-59,High School,Q1 (Low),Moderate,Very Happy,3,4,4,1,1.065
+GSS_2675,45-59,Lt High School,Q1 (Low),Liberal,Pretty Happy,5,2,2,1,1.3968
+GSS_2676,30-44,High School,Q3 (Mid-High),Liberal,Pretty Happy,2,5,2,0,1.2949
+GSS_2677,45-59,Bachelor,Q2 (Mid-Low),Moderate,Not Too Happy,3,5,4,1,1.1816
+GSS_2678,30-44,High School,Q4 (High),Moderate,Pretty Happy,4,1,5,1,1.0875
+GSS_2679,30-44,High School,Q3 (Mid-High),Extremely Conservative,Very Happy,5,2,1,0,0.5576
+GSS_2680,18-29,Junior College,Q3 (Mid-High),Conservative,Very Happy,2,1,3,0,0.7834
+GSS_2681,45-59,Lt High School,Q3 (Mid-High),Extremely Conservative,Not Too Happy,2,-9,-9,0,0.9635
+GSS_2682,30-44,High School,Q1 (Low),Moderate,Pretty Happy,2,2,5,1,1.1331
+GSS_2683,45-59,High School,Q4 (High),Liberal,Very Happy,1,4,2,0,0.6461
+GSS_2684,30-44,High School,Q2 (Mid-Low),Liberal,Very Happy,3,4,1,0,0.9112
+GSS_2685,18-29,High School,Q1 (Low),Extremely Conservative,Not Too Happy,5,4,3,1,1.0078
+GSS_2686,30-44,Junior College,Q3 (Mid-High),Moderate,Pretty Happy,2,5,1,0,1.309
+GSS_2687,60+,Bachelor,Q1 (Low),Liberal,Not Too Happy,1,1,2,0,1.2807
+GSS_2688,30-44,High School,Q2 (Mid-Low),Liberal,Not Too Happy,1,3,3,0,1.2688
+GSS_2689,45-59,High School,Q3 (Mid-High),Moderate,Pretty Happy,2,4,3,0,0.6835
+GSS_2690,30-44,Lt High School,Q4 (High),Extremely Liberal,Pretty Happy,2,3,-9,0,1.2604
+GSS_2691,30-44,Lt High School,Q2 (Mid-Low),Extremely Liberal,Very Happy,5,3,4,1,1.4633
+GSS_2692,45-59,Junior College,Q1 (Low),Liberal,Pretty Happy,3,3,1,0,0.5686
+GSS_2693,45-59,Bachelor,Q1 (Low),Extremely Liberal,Pretty Happy,4,1,3,1,1.0259
+GSS_2694,18-29,Lt High School,Q3 (Mid-High),Conservative,Pretty Happy,3,2,4,1,0.8535
+GSS_2695,18-29,High School,Q1 (Low),Extremely Liberal,Very Happy,4,4,3,1,0.804
+GSS_2696,18-29,High School,Q3 (Mid-High),Extremely Liberal,Pretty Happy,-9,4,1,0,0.5723
+GSS_2697,30-44,Graduate,Q1 (Low),Liberal,Very Happy,2,1,5,1,0.8734
+GSS_2698,45-59,High School,Q1 (Low),Moderate,Pretty Happy,3,5,5,1,0.5168
+GSS_2699,30-44,High School,Q2 (Mid-Low),Conservative,Pretty Happy,1,1,3,0,1.1657
+GSS_2700,45-59,Graduate,Q4 (High),Moderate,Pretty Happy,4,4,1,0,0.6078
+GSS_2701,45-59,Junior College,Q1 (Low),Moderate,Very Happy,4,5,1,0,1.4002
+GSS_2702,45-59,Bachelor,Q1 (Low),Liberal,Pretty Happy,3,3,3,0,1.2643
+GSS_2703,30-44,Bachelor,Q4 (High),Liberal,Very Happy,5,3,5,1,1.4411
+GSS_2704,18-29,High School,Q2 (Mid-Low),Extremely Liberal,Not Too Happy,3,3,5,1,0.5113
+GSS_2705,30-44,High School,Q1 (Low),Conservative,Very Happy,5,5,5,1,0.5033
+GSS_2706,45-59,Junior College,Q1 (Low),Extremely Conservative,Pretty Happy,-9,2,2,0,0.6219
+GSS_2707,18-29,High School,Q1 (Low),Conservative,Pretty Happy,1,3,4,0,1.0608
+GSS_2708,45-59,High School,Q2 (Mid-Low),Liberal,Very Happy,2,3,1,0,0.6335
+GSS_2709,30-44,Bachelor,Q4 (High),Conservative,Pretty Happy,-9,1,5,1,1.0353
+GSS_2710,30-44,High School,Q4 (High),Liberal,Pretty Happy,5,3,3,1,1.452
+GSS_2711,18-29,Lt High School,Q1 (Low),Moderate,Very Happy,-9,5,3,0,1.089
+GSS_2712,30-44,High School,Q4 (High),Conservative,Pretty Happy,4,5,5,1,1.0554
+GSS_2713,18-29,High School,Q1 (Low),Conservative,Pretty Happy,2,4,-9,0,0.7179
+GSS_2714,30-44,High School,Q3 (Mid-High),Extremely Conservative,Very Happy,-9,4,4,1,1.0606
+GSS_2715,45-59,Graduate,Q1 (Low),Moderate,Very Happy,2,5,4,0,1.2392
+GSS_2716,30-44,High School,Q3 (Mid-High),Moderate,Very Happy,3,5,5,1,0.5492
+GSS_2717,30-44,Junior College,Q1 (Low),Liberal,Very Happy,3,-9,4,1,0.5912
+GSS_2718,18-29,Junior College,Q1 (Low),Conservative,Pretty Happy,3,4,5,1,1.058
+GSS_2719,30-44,High School,Q3 (Mid-High),Liberal,Pretty Happy,5,3,4,1,0.6029
+GSS_2720,60+,Bachelor,Q2 (Mid-Low),Liberal,Pretty Happy,2,1,1,0,0.6383
+GSS_2721,45-59,High School,Q4 (High),Moderate,Very Happy,3,4,1,0,1.3207
+GSS_2722,30-44,High School,Q3 (Mid-High),Conservative,Pretty Happy,2,3,3,0,1.2765
+GSS_2723,45-59,High School,Q3 (Mid-High),Moderate,Pretty Happy,1,-9,2,0,1.0299
+GSS_2724,30-44,High School,Q3 (Mid-High),Liberal,Very Happy,4,3,5,1,1.4657
+GSS_2725,45-59,Graduate,Q1 (Low),Liberal,Very Happy,3,4,5,1,1.4442
+GSS_2726,45-59,High School,Q4 (High),Conservative,Pretty Happy,5,4,5,1,1.2839
+GSS_2727,18-29,Lt High School,Q4 (High),Extremely Liberal,Pretty Happy,5,4,3,1,0.6466
+GSS_2728,45-59,Graduate,Q4 (High),Conservative,Very Happy,-9,4,3,0,0.7915
+GSS_2729,45-59,Lt High School,Q4 (High),Liberal,Not Too Happy,5,5,5,1,0.9177
+GSS_2730,45-59,Junior College,Q1 (Low),Liberal,Pretty Happy,4,1,-9,1,1.5779
+GSS_2731,60+,Lt High School,Q1 (Low),Liberal,Very Happy,5,1,2,1,1.0918
+GSS_2732,30-44,High School,Q2 (Mid-Low),Liberal,Very Happy,4,-9,4,1,0.8466
+GSS_2733,45-59,High School,Q2 (Mid-Low),Conservative,Pretty Happy,3,3,5,1,0.885
+GSS_2734,30-44,Junior College,Q4 (High),Moderate,Pretty Happy,4,5,3,1,0.9058
+GSS_2735,18-29,Bachelor,Q4 (High),Liberal,Pretty Happy,-9,2,5,1,1.2342
+GSS_2736,30-44,Lt High School,Q2 (Mid-Low),Liberal,Not Too Happy,3,2,4,1,1.3773
+GSS_2737,30-44,Lt High School,Q3 (Mid-High),Extremely Liberal,Pretty Happy,4,2,3,1,1.3727
+GSS_2738,30-44,Junior College,Q2 (Mid-Low),Conservative,Pretty Happy,1,5,4,0,1.5117
+GSS_2739,45-59,Graduate,Q4 (High),Conservative,Pretty Happy,1,2,5,0,1.2677
+GSS_2740,30-44,Bachelor,Q2 (Mid-Low),Conservative,Pretty Happy,2,-9,2,0,1.042
+GSS_2741,45-59,Graduate,Q4 (High),Moderate,Very Happy,1,1,4,0,1.0992
+GSS_2742,30-44,High School,Q3 (Mid-High),Conservative,Pretty Happy,1,2,2,0,0.9995
+GSS_2743,30-44,Junior College,Q4 (High),Liberal,Pretty Happy,1,5,1,0,1.153
+GSS_2744,30-44,Bachelor,Q4 (High),Extremely Liberal,Not Too Happy,-9,5,4,1,0.8436
+GSS_2745,45-59,High School,Q4 (High),Liberal,Very Happy,2,4,2,0,1.2294
+GSS_2746,30-44,High School,Q1 (Low),Moderate,Pretty Happy,5,3,-9,1,1.5592
+GSS_2747,60+,Junior College,Q1 (Low),Moderate,Pretty Happy,1,4,2,0,1.4223
+GSS_2748,45-59,Lt High School,Q4 (High),Conservative,Pretty Happy,3,3,2,0,1.4379
+GSS_2749,30-44,Bachelor,Q1 (Low),Liberal,Pretty Happy,2,1,5,1,1.419
+GSS_2750,30-44,High School,Q4 (High),Conservative,Very Happy,3,2,5,1,1.1204
+GSS_2751,60+,Lt High School,Q3 (Mid-High),Liberal,Very Happy,5,5,1,0,0.8796
+GSS_2752,60+,Bachelor,Q4 (High),Conservative,Very Happy,3,4,3,0,0.5575
+GSS_2753,45-59,High School,Q1 (Low),Extremely Conservative,Pretty Happy,4,5,5,1,0.7004
+GSS_2754,18-29,High School,Q4 (High),Extremely Conservative,Very Happy,1,-9,3,0,1.2848
+GSS_2755,60+,Junior College,Q4 (High),Liberal,Pretty Happy,2,1,2,0,1.2894
+GSS_2756,60+,High School,Q2 (Mid-Low),Extremely Liberal,Pretty Happy,3,-9,3,0,1.3485
+GSS_2757,30-44,Lt High School,Q1 (Low),Moderate,Not Too Happy,3,4,2,0,0.7786
+GSS_2758,30-44,High School,Q1 (Low),Conservative,Very Happy,3,3,4,1,1.2402
+GSS_2759,45-59,High School,Q1 (Low),Extremely Conservative,Not Too Happy,3,-9,2,0,1.315
+GSS_2760,18-29,High School,Q4 (High),Moderate,Pretty Happy,5,3,3,1,0.9012
+GSS_2761,60+,High School,Q2 (Mid-Low),Liberal,Very Happy,4,5,1,0,1.5733
+GSS_2762,45-59,Lt High School,Q2 (Mid-Low),Moderate,Very Happy,4,5,4,1,0.5731
+GSS_2763,18-29,High School,Q4 (High),Conservative,Very Happy,4,2,5,1,1.5347
+GSS_2764,45-59,Bachelor,Q2 (Mid-Low),Conservative,Pretty Happy,5,5,2,1,0.7825
+GSS_2765,18-29,High School,Q3 (Mid-High),Liberal,Pretty Happy,5,3,5,1,0.6454
+GSS_2766,60+,Junior College,Q1 (Low),Extremely Conservative,Pretty Happy,4,3,5,1,1.2624
+GSS_2767,60+,Bachelor,Q2 (Mid-Low),Moderate,Pretty Happy,1,2,5,0,1.1698
+GSS_2768,45-59,Graduate,Q3 (Mid-High),Conservative,Pretty Happy,2,4,5,1,1.5739
+GSS_2769,18-29,High School,Q1 (Low),Liberal,Pretty Happy,1,-9,3,0,1.5132
+GSS_2770,30-44,High School,Q3 (Mid-High),Liberal,Very Happy,3,4,4,1,0.5915
+GSS_2771,18-29,Graduate,Q1 (Low),Moderate,Pretty Happy,4,2,3,1,0.5437
+GSS_2772,60+,Lt High School,Q3 (Mid-High),Moderate,Pretty Happy,2,3,2,0,1.4668
+GSS_2773,30-44,High School,Q2 (Mid-Low),Moderate,Not Too Happy,5,4,1,0,0.7033
+GSS_2774,45-59,Junior College,Q2 (Mid-Low),Conservative,Pretty Happy,1,1,4,0,0.6161
+GSS_2775,45-59,Lt High School,Q3 (Mid-High),Moderate,Very Happy,4,4,4,1,1.2894
+GSS_2776,18-29,Bachelor,Q1 (Low),Liberal,Very Happy,4,5,3,1,0.6304
+GSS_2777,18-29,Lt High School,Q2 (Mid-Low),Moderate,Pretty Happy,5,3,4,1,0.9147
+GSS_2778,45-59,High School,Q2 (Mid-Low),Conservative,Pretty Happy,4,3,2,0,1.1479
+GSS_2779,45-59,High School,Q4 (High),Liberal,Pretty Happy,5,4,4,1,1.3959
+GSS_2780,18-29,High School,Q3 (Mid-High),Conservative,Pretty Happy,1,4,4,0,1.3095
+GSS_2781,30-44,Bachelor,Q2 (Mid-Low),Conservative,Pretty Happy,-9,5,3,0,1.3517
+GSS_2782,45-59,Lt High School,Q2 (Mid-Low),Conservative,Not Too Happy,2,4,2,0,1.2424
+GSS_2783,45-59,High School,Q4 (High),Conservative,Very Happy,1,2,4,0,0.8895
+GSS_2784,30-44,High School,Q3 (Mid-High),Conservative,Very Happy,4,2,2,0,1.3573
+GSS_2785,60+,High School,Q4 (High),Liberal,Very Happy,4,1,4,1,0.5772
+GSS_2786,45-59,High School,Q2 (Mid-Low),Moderate,Very Happy,3,3,1,0,0.7631
+GSS_2787,30-44,Bachelor,Q2 (Mid-Low),Liberal,Very Happy,5,4,5,1,0.5401
+GSS_2788,30-44,Lt High School,Q1 (Low),Liberal,Very Happy,5,2,1,0,1.1154
+GSS_2789,30-44,Graduate,Q3 (Mid-High),Conservative,Pretty Happy,1,3,4,0,1.2024
+GSS_2790,30-44,Lt High School,Q2 (Mid-Low),Moderate,Not Too Happy,3,-9,3,0,1.2932
+GSS_2791,30-44,High School,Q1 (Low),Moderate,Pretty Happy,1,5,2,0,1.2434
+GSS_2792,18-29,High School,Q4 (High),Moderate,Very Happy,3,4,3,0,1.0251
+GSS_2793,18-29,Bachelor,Q2 (Mid-Low),Extremely Conservative,Pretty Happy,2,4,4,0,1.4965
+GSS_2794,60+,Bachelor,Q4 (High),Moderate,Pretty Happy,5,4,2,1,0.7516
+GSS_2795,60+,High School,Q3 (Mid-High),Liberal,Pretty Happy,-9,1,2,0,0.7269
+GSS_2796,30-44,Lt High School,Q4 (High),Moderate,Pretty Happy,5,4,5,1,1.438
+GSS_2797,18-29,Lt High School,Q1 (Low),Moderate,Very Happy,4,1,4,1,0.5458
+GSS_2798,18-29,Bachelor,Q1 (Low),Extremely Conservative,Very Happy,1,5,3,0,0.5905
+GSS_2799,45-59,High School,Q4 (High),Liberal,Not Too Happy,1,1,2,0,1.2373
+GSS_2800,45-59,Lt High School,Q2 (Mid-Low),Conservative,Pretty Happy,2,1,4,0,1.3455
+GSS_2801,18-29,Junior College,Q3 (Mid-High),Liberal,Pretty Happy,-9,2,3,0,1.4087
+GSS_2802,30-44,Bachelor,Q3 (Mid-High),Liberal,Pretty Happy,4,5,3,1,0.884
+GSS_2803,18-29,Bachelor,Q3 (Mid-High),Moderate,Pretty Happy,2,4,5,1,1.4705
+GSS_2804,18-29,High School,Q4 (High),Extremely Liberal,Not Too Happy,1,2,4,0,1.5818
+GSS_2805,60+,High School,Q3 (Mid-High),Moderate,Pretty Happy,3,4,2,0,1.4757
+GSS_2806,18-29,High School,Q3 (Mid-High),Liberal,Not Too Happy,1,4,3,0,1.5569
+GSS_2807,18-29,High School,Q2 (Mid-Low),Moderate,Pretty Happy,1,2,2,0,0.6649
+GSS_2808,30-44,Graduate,Q1 (Low),Moderate,Pretty Happy,3,3,5,1,0.8055
+GSS_2809,60+,Bachelor,Q1 (Low),Liberal,Pretty Happy,1,3,4,0,1.2451
+GSS_2810,60+,Junior College,Q3 (Mid-High),Conservative,Pretty Happy,4,1,1,0,1.1455
+GSS_2811,18-29,High School,Q4 (High),Liberal,Pretty Happy,5,-9,5,1,1.3945
+GSS_2812,30-44,High School,Q2 (Mid-Low),Liberal,Pretty Happy,5,1,2,1,1.2767
+GSS_2813,45-59,High School,Q1 (Low),Extremely Liberal,Very Happy,3,3,2,0,1.1891
+GSS_2814,18-29,Graduate,Q1 (Low),Liberal,Very Happy,3,2,-9,0,0.7864
+GSS_2815,18-29,High School,Q4 (High),Conservative,Very Happy,4,2,1,0,0.9003
+GSS_2816,45-59,High School,Q1 (Low),Liberal,Not Too Happy,4,3,1,0,1.3049
+GSS_2817,18-29,Bachelor,Q3 (Mid-High),Conservative,Very Happy,2,1,-9,0,1.4592
+GSS_2818,30-44,Junior College,Q1 (Low),Moderate,Very Happy,3,4,1,0,0.9423
+GSS_2819,18-29,High School,Q3 (Mid-High),Extremely Liberal,Pretty Happy,2,5,4,0,0.7267
+GSS_2820,45-59,Junior College,Q3 (Mid-High),Liberal,Pretty Happy,5,3,5,1,0.9566
+GSS_2821,30-44,High School,Q3 (Mid-High),Moderate,Very Happy,-9,3,3,0,1.5633
+GSS_2822,30-44,High School,Q3 (Mid-High),Moderate,Very Happy,3,3,2,0,0.5577
+GSS_2823,30-44,High School,Q2 (Mid-Low),Moderate,Very Happy,4,4,5,1,1.0732
+GSS_2824,60+,Graduate,Q4 (High),Moderate,Pretty Happy,1,2,1,0,1.5097
+GSS_2825,18-29,High School,Q4 (High),Extremely Liberal,Pretty Happy,1,-9,5,0,1.1714
+GSS_2826,45-59,High School,Q3 (Mid-High),Conservative,Very Happy,1,5,1,0,1.0231
+GSS_2827,60+,High School,Q4 (High),Extremely Liberal,Very Happy,-9,4,2,0,1.0347
+GSS_2828,60+,Graduate,Q2 (Mid-Low),Conservative,Pretty Happy,3,4,4,1,1.465
+GSS_2829,30-44,Junior College,Q2 (Mid-Low),Moderate,Pretty Happy,5,4,1,0,1.4548
+GSS_2830,18-29,High School,Q1 (Low),Conservative,Pretty Happy,5,5,3,1,0.6997
+GSS_2831,60+,Junior College,Q2 (Mid-Low),Liberal,Pretty Happy,4,3,3,1,0.7379
+GSS_2832,45-59,Bachelor,Q4 (High),Moderate,Pretty Happy,5,3,-9,1,0.5256
+GSS_2833,18-29,Bachelor,Q4 (High),Moderate,Pretty Happy,3,4,2,0,0.6952
+GSS_2834,30-44,Bachelor,Q2 (Mid-Low),Conservative,Pretty Happy,5,1,4,1,0.7211
+GSS_2835,30-44,Graduate,Q2 (Mid-Low),Extremely Conservative,Not Too Happy,1,5,5,0,1.138
+GSS_2836,30-44,High School,Q4 (High),Conservative,Pretty Happy,3,5,2,0,0.7714
+GSS_2837,60+,Bachelor,Q4 (High),Liberal,Pretty Happy,1,1,1,0,0.508
+GSS_2838,30-44,High School,Q2 (Mid-Low),Liberal,Pretty Happy,1,2,4,0,0.6365
+GSS_2839,18-29,Junior College,Q1 (Low),Liberal,Not Too Happy,1,2,2,0,0.9669
+GSS_2840,60+,High School,Q4 (High),Moderate,Pretty Happy,5,1,5,1,1.0244
+GSS_2841,18-29,Lt High School,Q3 (Mid-High),Conservative,Pretty Happy,3,3,3,0,0.8695
+GSS_2842,18-29,High School,Q4 (High),Conservative,Pretty Happy,2,3,5,1,0.9689
+GSS_2843,30-44,Lt High School,Q3 (Mid-High),Liberal,Pretty Happy,1,2,5,0,1.2908
+GSS_2844,45-59,Bachelor,Q4 (High),Conservative,Pretty Happy,2,2,3,0,0.508
+GSS_2845,60+,Graduate,Q2 (Mid-Low),Moderate,Pretty Happy,4,1,1,0,1.2401
+GSS_2846,60+,Bachelor,Q4 (High),Extremely Conservative,Pretty Happy,5,2,2,1,0.9487
+GSS_2847,18-29,Bachelor,Q2 (Mid-Low),Liberal,Not Too Happy,1,2,3,0,0.9407
+GSS_2848,60+,High School,Q4 (High),Liberal,Pretty Happy,-9,3,4,1,1.2145
+GSS_2849,30-44,High School,Q3 (Mid-High),Liberal,Pretty Happy,5,2,5,1,1.4702
+GSS_2850,30-44,High School,Q4 (High),Liberal,Pretty Happy,3,5,5,1,1.1821
+GSS_2851,45-59,Lt High School,Q2 (Mid-Low),Extremely Liberal,Pretty Happy,5,1,4,1,0.6899
+GSS_2852,45-59,Graduate,Q4 (High),Conservative,Not Too Happy,4,3,3,1,0.5465
+GSS_2853,60+,Lt High School,Q1 (Low),Conservative,Not Too Happy,-9,3,5,1,0.8055
+GSS_2854,60+,Graduate,Q2 (Mid-Low),Liberal,Not Too Happy,2,2,2,0,1.3999
+GSS_2855,45-59,Bachelor,Q4 (High),Moderate,Very Happy,2,1,2,0,0.8926
+GSS_2856,45-59,Bachelor,Q2 (Mid-Low),Liberal,Very Happy,5,1,5,1,0.9717
+GSS_2857,45-59,High School,Q2 (Mid-Low),Conservative,Pretty Happy,2,5,2,0,1.1674
+GSS_2858,30-44,Bachelor,Q4 (High),Moderate,Not Too Happy,2,4,1,0,1.5745
+GSS_2859,18-29,High School,Q1 (Low),Moderate,Very Happy,4,2,2,0,0.6196
+GSS_2860,30-44,High School,Q4 (High),Moderate,Pretty Happy,3,1,3,0,0.9546
+GSS_2861,60+,High School,Q2 (Mid-Low),Extremely Conservative,Pretty Happy,5,4,3,1,1.4457
+GSS_2862,18-29,High School,Q1 (Low),Liberal,Very Happy,5,1,4,1,1.5859
+GSS_2863,18-29,High School,Q3 (Mid-High),Extremely Conservative,Pretty Happy,1,4,1,0,0.6667
+GSS_2864,60+,Bachelor,Q4 (High),Liberal,Pretty Happy,1,-9,2,0,0.9417
+GSS_2865,18-29,Lt High School,Q3 (Mid-High),Conservative,Pretty Happy,2,4,4,0,1.1068
+GSS_2866,18-29,High School,Q4 (High),Liberal,Not Too Happy,3,3,4,1,0.733
+GSS_2867,30-44,High School,Q1 (Low),Conservative,Very Happy,4,3,1,0,0.7359
+GSS_2868,30-44,Bachelor,Q4 (High),Moderate,Very Happy,1,2,5,0,0.77
+GSS_2869,45-59,High School,Q4 (High),Conservative,Pretty Happy,2,2,1,0,1.505
+GSS_2870,30-44,Graduate,Q1 (Low),Liberal,Very Happy,4,1,5,1,0.5539
+GSS_2871,60+,Bachelor,Q4 (High),Liberal,Not Too Happy,5,1,3,1,0.9842
+GSS_2872,18-29,High School,Q4 (High),Conservative,Pretty Happy,5,3,3,1,1.3165
+GSS_2873,30-44,Lt High School,Q2 (Mid-Low),Liberal,Pretty Happy,5,2,5,1,0.9505
+GSS_2874,45-59,High School,Q4 (High),Extremely Conservative,Pretty Happy,1,4,3,0,0.7972
+GSS_2875,45-59,Bachelor,Q1 (Low),Liberal,Very Happy,3,3,5,1,1.3092
+GSS_2876,18-29,High School,Q3 (Mid-High),Conservative,Pretty Happy,-9,3,4,1,1.1394
+GSS_2877,45-59,High School,Q3 (Mid-High),Conservative,Pretty Happy,3,2,5,1,1.0646
+GSS_2878,45-59,Bachelor,Q4 (High),Liberal,Not Too Happy,2,1,1,0,1.4168
+GSS_2879,60+,Lt High School,Q2 (Mid-Low),Liberal,Pretty Happy,1,5,1,0,0.5842
+GSS_2880,45-59,High School,Q1 (Low),Liberal,Not Too Happy,4,5,5,1,1.3216
+GSS_2881,60+,Lt High School,Q4 (High),Liberal,Pretty Happy,1,5,5,0,1.196
+GSS_2882,18-29,High School,Q1 (Low),Conservative,Pretty Happy,3,3,2,0,0.8839
+GSS_2883,18-29,Lt High School,Q4 (High),Moderate,Not Too Happy,5,3,4,1,0.5548
+GSS_2884,30-44,High School,Q2 (Mid-Low),Conservative,Very Happy,4,1,4,1,0.6254
+GSS_2885,30-44,Graduate,Q4 (High),Moderate,Pretty Happy,1,1,3,0,0.6318
+GSS_2886,18-29,High School,Q3 (Mid-High),Extremely Liberal,Not Too Happy,4,5,4,1,0.7222
+GSS_2887,30-44,Lt High School,Q2 (Mid-Low),Conservative,Not Too Happy,2,3,1,0,0.8506
+GSS_2888,45-59,Bachelor,Q3 (Mid-High),Extremely Liberal,Pretty Happy,4,5,2,0,0.741
+GSS_2889,30-44,High School,Q1 (Low),Moderate,Very Happy,1,2,2,0,1.5481
+GSS_2890,45-59,High School,Q2 (Mid-Low),Liberal,Not Too Happy,2,1,2,0,0.6428
+GSS_2891,18-29,High School,Q2 (Mid-Low),Moderate,Pretty Happy,-9,4,5,1,1.3023
+GSS_2892,18-29,High School,Q2 (Mid-Low),Extremely Conservative,Pretty Happy,4,1,-9,1,1.1267
+GSS_2893,18-29,High School,Q2 (Mid-Low),Extremely Conservative,Pretty Happy,1,2,5,0,1.4936
+GSS_2894,60+,Junior College,Q1 (Low),Liberal,Not Too Happy,5,1,-9,1,1.1668
+GSS_2895,18-29,High School,Q2 (Mid-Low),Conservative,Pretty Happy,1,4,5,0,1.5376
+GSS_2896,45-59,Bachelor,Q1 (Low),Moderate,Very Happy,5,3,1,0,0.8884
+GSS_2897,30-44,Bachelor,Q4 (High),Liberal,Very Happy,3,1,4,1,0.9357
+GSS_2898,18-29,High School,Q1 (Low),Liberal,Very Happy,1,2,-9,0,0.7374
+GSS_2899,45-59,Bachelor,Q2 (Mid-Low),Moderate,Very Happy,5,1,1,0,0.7822
+GSS_2900,18-29,Lt High School,Q1 (Low),Conservative,Very Happy,1,2,4,0,1.5577
+GSS_2901,18-29,High School,Q2 (Mid-Low),Extremely Conservative,Pretty Happy,1,1,5,0,0.6744
+GSS_2902,30-44,High School,Q1 (Low),Extremely Liberal,Pretty Happy,3,3,1,0,0.8496
+GSS_2903,30-44,Lt High School,Q3 (Mid-High),Extremely Liberal,Pretty Happy,5,2,-9,1,0.881
+GSS_2904,30-44,High School,Q1 (Low),Moderate,Not Too Happy,4,4,1,0,0.7254
+GSS_2905,18-29,Lt High School,Q1 (Low),Liberal,Pretty Happy,3,4,4,1,1.4653
+GSS_2906,45-59,High School,Q3 (Mid-High),Conservative,Pretty Happy,1,4,2,0,1.0875
+GSS_2907,60+,Lt High School,Q1 (Low),Liberal,Not Too Happy,1,2,5,0,0.7073
+GSS_2908,60+,Bachelor,Q4 (High),Moderate,Not Too Happy,4,5,1,0,1.3935
+GSS_2909,30-44,High School,Q2 (Mid-Low),Conservative,Very Happy,5,2,1,0,1.5473
+GSS_2910,45-59,Bachelor,Q1 (Low),Extremely Liberal,Pretty Happy,4,2,-9,1,1.3032
+GSS_2911,18-29,Junior College,Q2 (Mid-Low),Conservative,Pretty Happy,3,4,1,0,0.8839
+GSS_2912,60+,Junior College,Q2 (Mid-Low),Moderate,Very Happy,4,1,3,1,0.869
+GSS_2913,30-44,Bachelor,Q3 (Mid-High),Extremely Conservative,Pretty Happy,4,2,5,1,1.0732
+GSS_2914,30-44,High School,Q4 (High),Extremely Conservative,Pretty Happy,3,2,1,0,1.3902
+GSS_2915,60+,High School,Q3 (Mid-High),Extremely Conservative,Not Too Happy,5,2,-9,1,1.4126
+GSS_2916,45-59,Lt High School,Q2 (Mid-Low),Moderate,Pretty Happy,4,4,4,1,1.3634
+GSS_2917,30-44,High School,Q1 (Low),Moderate,Very Happy,3,2,5,1,0.5486
+GSS_2918,18-29,High School,Q2 (Mid-Low),Conservative,Pretty Happy,5,2,1,0,1.0945
+GSS_2919,30-44,Bachelor,Q1 (Low),Liberal,Pretty Happy,1,4,1,0,0.9528
+GSS_2920,18-29,High School,Q3 (Mid-High),Moderate,Pretty Happy,4,2,2,0,0.6773
+GSS_2921,60+,High School,Q4 (High),Moderate,Pretty Happy,1,2,5,0,1.5107
+GSS_2922,45-59,High School,Q1 (Low),Conservative,Pretty Happy,5,4,4,1,1.1398
+GSS_2923,18-29,Lt High School,Q1 (Low),Moderate,Pretty Happy,5,4,4,1,1.0709
+GSS_2924,30-44,High School,Q1 (Low),Extremely Liberal,Pretty Happy,4,4,2,0,1.3733
+GSS_2925,30-44,Lt High School,Q1 (Low),Liberal,Very Happy,3,4,4,1,1.5951
+GSS_2926,60+,Bachelor,Q3 (Mid-High),Moderate,Pretty Happy,1,1,5,0,0.8309
+GSS_2927,18-29,Bachelor,Q1 (Low),Extremely Conservative,Not Too Happy,4,5,2,0,0.7891
+GSS_2928,30-44,Lt High School,Q4 (High),Conservative,Not Too Happy,3,2,2,0,1.256
+GSS_2929,30-44,Bachelor,Q1 (Low),Extremely Conservative,Very Happy,4,2,2,0,0.5469
+GSS_2930,45-59,Bachelor,Q1 (Low),Conservative,Not Too Happy,4,4,3,1,0.6144
+GSS_2931,60+,High School,Q4 (High),Extremely Liberal,Very Happy,2,1,5,1,1.1963
+GSS_2932,45-59,High School,Q3 (Mid-High),Extremely Liberal,Very Happy,5,3,5,1,1.1141
+GSS_2933,30-44,Lt High School,Q3 (Mid-High),Liberal,Very Happy,4,2,2,0,0.913
+GSS_2934,18-29,Lt High School,Q1 (Low),Extremely Liberal,Pretty Happy,3,2,3,0,0.8249
+GSS_2935,45-59,Bachelor,Q3 (Mid-High),Extremely Conservative,Pretty Happy,2,4,2,0,0.7029
+GSS_2936,30-44,Bachelor,Q2 (Mid-Low),Moderate,Pretty Happy,-9,2,4,1,0.6553
+GSS_2937,30-44,Junior College,Q3 (Mid-High),Moderate,Very Happy,5,5,1,0,0.9539
+GSS_2938,30-44,Junior College,Q3 (Mid-High),Extremely Liberal,Very Happy,1,3,3,0,0.7731
+GSS_2939,18-29,Graduate,Q1 (Low),Moderate,Pretty Happy,5,1,3,1,0.7776
+GSS_2940,30-44,High School,Q1 (Low),Liberal,Pretty Happy,2,4,-9,0,0.7769
+GSS_2941,60+,High School,Q4 (High),Conservative,Pretty Happy,5,1,4,1,1.4267
+GSS_2942,18-29,High School,Q4 (High),Liberal,Very Happy,3,-9,2,0,0.7466
+GSS_2943,60+,High School,Q1 (Low),Conservative,Pretty Happy,2,1,4,0,0.5154
+GSS_2944,18-29,High School,Q1 (Low),Moderate,Pretty Happy,1,3,5,0,0.7658
+GSS_2945,60+,Junior College,Q1 (Low),Moderate,Very Happy,3,3,5,1,1.3167
+GSS_2946,45-59,Bachelor,Q4 (High),Liberal,Very Happy,3,3,5,1,0.573
+GSS_2947,30-44,High School,Q4 (High),Extremely Liberal,Very Happy,5,5,3,1,0.8364
+GSS_2948,18-29,High School,Q2 (Mid-Low),Extremely Liberal,Pretty Happy,1,2,3,0,1.0038
+GSS_2949,30-44,Graduate,Q2 (Mid-Low),Moderate,Very Happy,3,4,5,1,1.0042
+GSS_2950,45-59,Lt High School,Q4 (High),Liberal,Very Happy,5,4,2,1,1.116
+GSS_2951,30-44,Graduate,Q4 (High),Extremely Conservative,Pretty Happy,5,5,4,1,0.5283
+GSS_2952,45-59,High School,Q3 (Mid-High),Liberal,Pretty Happy,5,2,5,1,1.09
+GSS_2953,45-59,High School,Q4 (High),Liberal,Very Happy,4,2,1,0,1.5345
+GSS_2954,30-44,Graduate,Q3 (Mid-High),Liberal,Very Happy,3,4,4,1,1.3266
+GSS_2955,45-59,Bachelor,Q3 (Mid-High),Moderate,Very Happy,2,2,3,0,1.1297
+GSS_2956,30-44,Bachelor,Q1 (Low),Conservative,Very Happy,1,4,5,0,1.2708
+GSS_2957,45-59,Lt High School,Q2 (Mid-Low),Conservative,Not Too Happy,3,1,4,1,0.5152
+GSS_2958,18-29,High School,Q4 (High),Extremely Liberal,Pretty Happy,3,1,4,1,0.8021
+GSS_2959,30-44,High School,Q3 (Mid-High),Liberal,Not Too Happy,2,3,5,1,0.9848
+GSS_2960,30-44,High School,Q4 (High),Conservative,Not Too Happy,5,2,-9,1,0.6577
+GSS_2961,30-44,High School,Q2 (Mid-Low),Moderate,Very Happy,4,2,5,1,1.1736
+GSS_2962,30-44,Bachelor,Q2 (Mid-Low),Conservative,Not Too Happy,2,-9,5,1,0.9914
+GSS_2963,45-59,High School,Q3 (Mid-High),Conservative,Very Happy,5,1,3,1,1.2028
+GSS_2964,30-44,High School,Q2 (Mid-Low),Liberal,Pretty Happy,3,1,2,0,0.831
+GSS_2965,30-44,High School,Q1 (Low),Moderate,Pretty Happy,3,5,3,0,0.7635
+GSS_2966,45-59,High School,Q3 (Mid-High),Liberal,Pretty Happy,2,3,3,0,1.4558
+GSS_2967,45-59,High School,Q4 (High),Conservative,Pretty Happy,-9,1,3,0,0.6251
+GSS_2968,30-44,High School,Q1 (Low),Extremely Liberal,Very Happy,-9,1,2,0,0.8114
+GSS_2969,30-44,Bachelor,Q3 (Mid-High),Extremely Liberal,Very Happy,3,5,1,0,0.741
+GSS_2970,30-44,High School,Q4 (High),Extremely Liberal,Pretty Happy,3,3,4,1,0.787
+GSS_2971,30-44,Bachelor,Q4 (High),Liberal,Pretty Happy,3,4,2,0,0.515
+GSS_2972,45-59,Bachelor,Q2 (Mid-Low),Moderate,Not Too Happy,1,5,4,0,1.1002
+GSS_2973,60+,High School,Q1 (Low),Liberal,Pretty Happy,5,2,3,1,0.8298
+GSS_2974,30-44,Bachelor,Q2 (Mid-Low),Liberal,Pretty Happy,5,-9,4,1,1.2232
+GSS_2975,45-59,High School,Q2 (Mid-Low),Liberal,Pretty Happy,5,3,4,1,1.3064
+GSS_2976,30-44,Bachelor,Q3 (Mid-High),Extremely Liberal,Pretty Happy,2,1,2,0,1.486
+GSS_2977,45-59,High School,Q4 (High),Moderate,Pretty Happy,3,-9,3,0,0.6311
+GSS_2978,18-29,Bachelor,Q2 (Mid-Low),Extremely Conservative,Pretty Happy,3,1,1,0,0.6582
+GSS_2979,45-59,Lt High School,Q4 (High),Moderate,Very Happy,1,-9,4,0,1.3013
+GSS_2980,60+,Lt High School,Q1 (Low),Liberal,Very Happy,1,3,5,0,1.3786
+GSS_2981,18-29,Lt High School,Q3 (Mid-High),Conservative,Very Happy,3,4,-9,0,1.2123
+GSS_2982,60+,High School,Q2 (Mid-Low),Liberal,Pretty Happy,4,5,4,1,1.3746
+GSS_2983,30-44,High School,Q2 (Mid-Low),Liberal,Not Too Happy,5,2,2,1,0.5393
+GSS_2984,30-44,High School,Q2 (Mid-Low),Moderate,Pretty Happy,1,1,3,0,1.2483
+GSS_2985,30-44,Bachelor,Q1 (Low),Liberal,Not Too Happy,3,5,-9,0,0.5294
+GSS_2986,18-29,Bachelor,Q1 (Low),Extremely Liberal,Pretty Happy,-9,1,1,0,0.6573
+GSS_2987,18-29,High School,Q3 (Mid-High),Liberal,Not Too Happy,1,5,1,0,0.5465
+GSS_2988,45-59,Graduate,Q2 (Mid-Low),Extremely Conservative,Pretty Happy,3,3,1,0,0.965
+GSS_2989,45-59,Junior College,Q2 (Mid-Low),Conservative,Not Too Happy,3,5,4,1,1.1527
+GSS_2990,60+,High School,Q3 (Mid-High),Extremely Liberal,Pretty Happy,5,5,3,1,1.1619
+GSS_2991,45-59,Lt High School,Q3 (Mid-High),Extremely Liberal,Very Happy,1,3,1,0,0.7046
+GSS_2992,45-59,Bachelor,Q4 (High),Moderate,Pretty Happy,2,4,3,0,0.5607
+GSS_2993,18-29,Bachelor,Q2 (Mid-Low),Liberal,Not Too Happy,3,-9,1,0,0.8606
+GSS_2994,30-44,Bachelor,Q3 (Mid-High),Conservative,Pretty Happy,4,2,4,1,0.5798
+GSS_2995,18-29,High School,Q4 (High),Moderate,Pretty Happy,4,2,-9,1,1.3501
+GSS_2996,30-44,Graduate,Q3 (Mid-High),Moderate,Very Happy,3,3,4,1,0.7651
+GSS_2997,30-44,Bachelor,Q4 (High),Extremely Liberal,Pretty Happy,1,5,1,0,1.3924
+GSS_2998,45-59,Bachelor,Q1 (Low),Liberal,Pretty Happy,4,3,3,1,0.9114
+GSS_2999,30-44,Junior College,Q4 (High),Moderate,Pretty Happy,1,1,2,0,1.0951
+GSS_3000,45-59,Graduate,Q3 (Mid-High),Liberal,Very Happy,5,4,4,1,0.7923
+GSS_3001,60+,Lt High School,Q3 (Mid-High),Liberal,Not Too Happy,3,2,5,1,1.2929
+GSS_3002,30-44,Bachelor,Q3 (Mid-High),Liberal,Pretty Happy,5,4,4,1,1.3408
+GSS_3003,30-44,Bachelor,Q1 (Low),Liberal,Pretty Happy,2,3,2,0,0.7888
+GSS_3004,60+,High School,Q3 (Mid-High),Liberal,Pretty Happy,3,5,1,0,1.3819
+GSS_3005,18-29,High School,Q3 (Mid-High),Conservative,Very Happy,5,1,1,0,0.6142
+GSS_3006,30-44,Junior College,Q2 (Mid-Low),Liberal,Very Happy,4,5,1,0,1.4621
+GSS_3007,30-44,Graduate,Q1 (Low),Extremely Liberal,Pretty Happy,4,3,1,0,0.5256
+GSS_3008,30-44,Junior College,Q2 (Mid-Low),Extremely Liberal,Pretty Happy,4,3,4,1,1.051
+GSS_3009,45-59,Bachelor,Q4 (High),Moderate,Pretty Happy,2,5,2,0,1.4225
+GSS_3010,30-44,Graduate,Q2 (Mid-Low),Moderate,Very Happy,5,3,2,1,0.5018
+GSS_3011,30-44,Lt High School,Q4 (High),Liberal,Very Happy,5,3,4,1,1.2016
+GSS_3012,60+,Lt High School,Q3 (Mid-High),Moderate,Pretty Happy,3,2,2,0,0.6419
+GSS_3013,30-44,Lt High School,Q2 (Mid-Low),Moderate,Pretty Happy,4,4,1,0,1.4506
+GSS_3014,60+,High School,Q4 (High),Moderate,Not Too Happy,3,4,2,0,0.8731
+GSS_3015,30-44,Bachelor,Q2 (Mid-Low),Moderate,Pretty Happy,1,2,4,0,0.6136
+GSS_3016,30-44,Bachelor,Q4 (High),Moderate,Pretty Happy,2,5,4,0,1.0808
+GSS_3017,60+,Lt High School,Q4 (High),Liberal,Pretty Happy,3,4,3,0,1.1722
+GSS_3018,30-44,Bachelor,Q4 (High),Conservative,Pretty Happy,1,1,2,0,1.0258
+GSS_3019,60+,High School,Q2 (Mid-Low),Liberal,Very Happy,1,5,4,0,1.4602
+GSS_3020,18-29,Bachelor,Q4 (High),Liberal,Pretty Happy,2,5,2,0,1.5646
+GSS_3021,30-44,Graduate,Q3 (Mid-High),Extremely Conservative,Very Happy,4,4,4,1,1.5348
+GSS_3022,60+,Lt High School,Q4 (High),Liberal,Pretty Happy,1,4,-9,0,1.0863
+GSS_3023,30-44,Lt High School,Q4 (High),Moderate,Very Happy,4,1,2,0,0.6316
+GSS_3024,30-44,High School,Q3 (Mid-High),Liberal,Pretty Happy,-9,1,4,1,0.5649
+GSS_3025,60+,Junior College,Q1 (Low),Conservative,Pretty Happy,2,3,1,0,0.6845
+GSS_3026,60+,High School,Q1 (Low),Moderate,Pretty Happy,4,1,1,0,1.2818
+GSS_3027,18-29,Bachelor,Q3 (Mid-High),Extremely Liberal,Very Happy,4,2,4,1,0.9905
+GSS_3028,30-44,Junior College,Q2 (Mid-Low),Conservative,Pretty Happy,1,4,3,0,0.8653
+GSS_3029,45-59,Bachelor,Q4 (High),Extremely Liberal,Pretty Happy,1,1,2,0,0.7836
+GSS_3030,18-29,High School,Q2 (Mid-Low),Moderate,Pretty Happy,-9,2,4,1,0.8397
+GSS_3031,30-44,High School,Q1 (Low),Conservative,Very Happy,3,5,4,1,1.5616
+GSS_3032,30-44,Bachelor,Q4 (High),Moderate,Pretty Happy,2,5,3,0,1.2746
+GSS_3033,60+,High School,Q1 (Low),Moderate,Not Too Happy,2,2,2,0,0.6867
+GSS_3034,45-59,High School,Q3 (Mid-High),Extremely Liberal,Not Too Happy,1,5,5,0,0.7989
+GSS_3035,60+,High School,Q3 (Mid-High),Conservative,Pretty Happy,4,3,1,0,0.6389
+GSS_3036,30-44,Lt High School,Q4 (High),Extremely Liberal,Very Happy,3,5,1,0,0.7018
+GSS_3037,60+,High School,Q2 (Mid-Low),Conservative,Not Too Happy,2,4,4,0,0.8103
+GSS_3038,60+,Junior College,Q4 (High),Moderate,Pretty Happy,1,3,5,0,1.2314
+GSS_3039,30-44,Junior College,Q4 (High),Extremely Liberal,Pretty Happy,5,4,3,1,1.3649
+GSS_3040,30-44,High School,Q1 (Low),Liberal,Pretty Happy,3,3,5,1,0.9007
+GSS_3041,60+,Bachelor,Q1 (Low),Liberal,Very Happy,5,-9,2,1,1.2009
+GSS_3042,60+,High School,Q2 (Mid-Low),Moderate,Pretty Happy,4,2,1,0,1.5045
+GSS_3043,60+,Graduate,Q2 (Mid-Low),Liberal,Pretty Happy,4,3,4,1,0.731
+GSS_3044,60+,Junior College,Q4 (High),Extremely Liberal,Pretty Happy,3,3,2,0,1.2672
+GSS_3045,30-44,High School,Q4 (High),Conservative,Not Too Happy,1,2,3,0,1.0407
+GSS_3046,60+,Bachelor,Q3 (Mid-High),Conservative,Pretty Happy,4,5,2,0,1.2392
+GSS_3047,18-29,Bachelor,Q4 (High),Conservative,Pretty Happy,1,4,3,0,1.3082
+GSS_3048,45-59,Graduate,Q1 (Low),Moderate,Pretty Happy,1,3,1,0,0.6552
+GSS_3049,60+,High School,Q4 (High),Liberal,Very Happy,2,3,2,0,1.2016
+GSS_3050,60+,Bachelor,Q4 (High),Liberal,Pretty Happy,3,5,1,0,0.6799
+GSS_3051,60+,High School,Q2 (Mid-Low),Moderate,Very Happy,2,5,2,0,1.5216
+GSS_3052,30-44,Lt High School,Q1 (Low),Moderate,Very Happy,5,1,3,1,1.5022
+GSS_3053,60+,Lt High School,Q2 (Mid-Low),Extremely Liberal,Pretty Happy,2,1,4,0,0.5847
+GSS_3054,45-59,High School,Q1 (Low),Extremely Liberal,Pretty Happy,2,2,1,0,1.1358
+GSS_3055,45-59,Lt High School,Q1 (Low),Moderate,Pretty Happy,4,1,3,1,1.2645
+GSS_3056,30-44,Graduate,Q3 (Mid-High),Liberal,Pretty Happy,5,4,4,1,1.1111
+GSS_3057,18-29,High School,Q3 (Mid-High),Liberal,Pretty Happy,3,1,4,1,1.3071
+GSS_3058,30-44,High School,Q4 (High),Conservative,Pretty Happy,4,3,2,0,1.4848
+GSS_3059,30-44,Graduate,Q1 (Low),Liberal,Pretty Happy,1,1,3,0,1.4877
+GSS_3060,45-59,High School,Q4 (High),Moderate,Very Happy,2,3,1,0,1.5818
+GSS_3061,30-44,Lt High School,Q4 (High),Conservative,Very Happy,2,1,1,0,1.4065
+GSS_3062,30-44,High School,Q2 (Mid-Low),Moderate,Pretty Happy,3,2,2,0,0.5061
+GSS_3063,60+,High School,Q3 (Mid-High),Moderate,Pretty Happy,5,-9,2,1,1.0123
+GSS_3064,60+,Bachelor,Q4 (High),Moderate,Not Too Happy,5,4,3,1,0.6916
+GSS_3065,45-59,Bachelor,Q2 (Mid-Low),Liberal,Pretty Happy,2,2,4,0,0.7547
+GSS_3066,45-59,Lt High School,Q2 (Mid-Low),Moderate,Pretty Happy,2,5,5,1,0.8719
+GSS_3067,45-59,Lt High School,Q1 (Low),Moderate,Pretty Happy,3,2,3,0,0.7954
+GSS_3068,45-59,Graduate,Q1 (Low),Liberal,Very Happy,5,2,1,0,0.8153
+GSS_3069,45-59,High School,Q4 (High),Conservative,Pretty Happy,1,4,1,0,0.5836
+GSS_3070,30-44,High School,Q4 (High),Extremely Liberal,Very Happy,5,5,3,1,1.2571
+GSS_3071,30-44,Graduate,Q2 (Mid-Low),Liberal,Very Happy,4,2,5,1,1.5993
+GSS_3072,18-29,High School,Q1 (Low),Liberal,Not Too Happy,4,1,2,0,0.8175
+GSS_3073,60+,High School,Q3 (Mid-High),Liberal,Pretty Happy,3,1,2,0,1.2577
+GSS_3074,30-44,Junior College,Q2 (Mid-Low),Moderate,Pretty Happy,4,2,2,0,0.9689
+GSS_3075,60+,High School,Q4 (High),Moderate,Pretty Happy,5,1,2,1,1.2262
+GSS_3076,30-44,Junior College,Q2 (Mid-Low),Extremely Liberal,Very Happy,-9,1,4,1,1.0023
+GSS_3077,30-44,Lt High School,Q4 (High),Conservative,Very Happy,4,3,-9,1,0.5867
+GSS_3078,45-59,Bachelor,Q1 (Low),Moderate,Pretty Happy,1,2,4,0,1.4324
+GSS_3079,60+,High School,Q3 (Mid-High),Moderate,Pretty Happy,2,2,4,0,0.5659
+GSS_3080,60+,Bachelor,Q4 (High),Extremely Liberal,Not Too Happy,1,4,1,0,0.533
+GSS_3081,60+,High School,Q4 (High),Conservative,Pretty Happy,5,5,3,1,1.183
+GSS_3082,60+,High School,Q3 (Mid-High),Moderate,Pretty Happy,4,3,2,0,0.6549
+GSS_3083,18-29,Graduate,Q1 (Low),Conservative,Pretty Happy,3,5,5,1,0.7302
+GSS_3084,30-44,High School,Q3 (Mid-High),Moderate,Pretty Happy,2,3,3,0,1.1795
+GSS_3085,30-44,High School,Q1 (Low),Liberal,Pretty Happy,1,3,2,0,0.7293
+GSS_3086,60+,Graduate,Q3 (Mid-High),Conservative,Very Happy,2,3,3,0,0.6319
+GSS_3087,30-44,High School,Q1 (Low),Extremely Liberal,Pretty Happy,1,3,1,0,1.3277
+GSS_3088,45-59,Lt High School,Q1 (Low),Extremely Conservative,Not Too Happy,4,-9,3,1,1.4248
+GSS_3089,45-59,Bachelor,Q2 (Mid-Low),Moderate,Pretty Happy,-9,3,4,1,0.7701
+GSS_3090,18-29,Junior College,Q3 (Mid-High),Extremely Conservative,Pretty Happy,2,3,4,0,1.2181
+GSS_3091,45-59,Lt High School,Q4 (High),Liberal,Pretty Happy,1,3,2,0,1.1725
+GSS_3092,30-44,High School,Q1 (Low),Moderate,Not Too Happy,4,5,2,0,1.2063
+GSS_3093,60+,Lt High School,Q3 (Mid-High),Moderate,Very Happy,5,2,4,1,1.2986
+GSS_3094,45-59,Bachelor,Q3 (Mid-High),Liberal,Very Happy,2,4,2,0,0.5457
+GSS_3095,18-29,High School,Q3 (Mid-High),Moderate,Pretty Happy,3,4,4,1,1.181
+GSS_3096,45-59,High School,Q1 (Low),Moderate,Pretty Happy,1,5,4,0,0.7809
+GSS_3097,45-59,Lt High School,Q1 (Low),Extremely Conservative,Not Too Happy,3,4,2,0,0.8487
+GSS_3098,18-29,High School,Q3 (Mid-High),Moderate,Pretty Happy,3,1,1,0,1.0256
+GSS_3099,45-59,High School,Q3 (Mid-High),Liberal,Pretty Happy,2,2,4,0,1.5193
+GSS_3100,45-59,Graduate,Q4 (High),Liberal,Pretty Happy,1,5,1,0,1.5367
+GSS_3101,45-59,High School,Q3 (Mid-High),Extremely Conservative,Very Happy,3,3,1,0,1.1902
+GSS_3102,45-59,Lt High School,Q3 (Mid-High),Liberal,Not Too Happy,3,5,3,0,0.7266
+GSS_3103,45-59,High School,Q4 (High),Conservative,Not Too Happy,2,5,1,0,1.4508
+GSS_3104,45-59,High School,Q3 (Mid-High),Extremely Conservative,Pretty Happy,-9,4,4,1,0.626
+GSS_3105,30-44,Lt High School,Q2 (Mid-Low),Moderate,Very Happy,2,1,5,1,0.7029
+GSS_3106,30-44,Junior College,Q4 (High),Conservative,Not Too Happy,4,3,3,1,0.9312
+GSS_3107,45-59,Junior College,Q2 (Mid-Low),Liberal,Pretty Happy,4,5,5,1,1.3419
+GSS_3108,18-29,High School,Q2 (Mid-Low),Liberal,Pretty Happy,3,2,1,0,0.9773
+GSS_3109,45-59,Junior College,Q4 (High),Extremely Liberal,Very Happy,2,2,1,0,0.552
+GSS_3110,45-59,High School,Q1 (Low),Conservative,Very Happy,5,3,1,0,0.7365
+GSS_3111,30-44,High School,Q3 (Mid-High),Liberal,Very Happy,3,2,1,0,1.3989
+GSS_3112,30-44,High School,Q3 (Mid-High),Moderate,Very Happy,5,1,4,1,0.5914
+GSS_3113,18-29,High School,Q4 (High),Moderate,Pretty Happy,4,2,3,1,1.0348
+GSS_3114,30-44,High School,Q1 (Low),Extremely Conservative,Pretty Happy,5,3,1,0,0.7847
+GSS_3115,60+,High School,Q2 (Mid-Low),Liberal,Pretty Happy,3,2,3,0,1.4673
+GSS_3116,18-29,High School,Q1 (Low),Conservative,Pretty Happy,2,4,4,0,0.9392
+GSS_3117,45-59,High School,Q3 (Mid-High),Conservative,Very Happy,4,5,1,0,1.0119
+GSS_3118,30-44,High School,Q1 (Low),Extremely Liberal,Not Too Happy,4,5,5,1,0.7341
+GSS_3119,60+,High School,Q4 (High),Moderate,Pretty Happy,2,5,4,0,1.4333
+GSS_3120,30-44,High School,Q2 (Mid-Low),Extremely Liberal,Very Happy,4,2,2,0,1.1483
+GSS_3121,18-29,High School,Q1 (Low),Extremely Conservative,Pretty Happy,3,1,3,0,1.1576
+GSS_3122,30-44,High School,Q2 (Mid-Low),Extremely Liberal,Pretty Happy,1,2,4,0,1.2859
+GSS_3123,45-59,High School,Q2 (Mid-Low),Liberal,Not Too Happy,5,3,1,0,1.5829
+GSS_3124,30-44,Junior College,Q1 (Low),Liberal,Very Happy,3,2,2,0,0.9695
+GSS_3125,60+,Graduate,Q2 (Mid-Low),Moderate,Pretty Happy,5,2,2,1,0.7356
+GSS_3126,60+,Junior College,Q4 (High),Moderate,Pretty Happy,2,1,3,0,0.6444
+GSS_3127,18-29,High School,Q4 (High),Conservative,Very Happy,5,4,1,0,0.7742
+GSS_3128,45-59,Junior College,Q4 (High),Moderate,Very Happy,5,4,5,1,0.9117
+GSS_3129,45-59,Graduate,Q3 (Mid-High),Liberal,Very Happy,4,4,2,0,0.5016
+GSS_3130,18-29,High School,Q2 (Mid-Low),Moderate,Very Happy,5,4,1,0,0.8863
+GSS_3131,18-29,High School,Q3 (Mid-High),Moderate,Pretty Happy,2,2,4,0,1.0936
+GSS_3132,60+,High School,Q1 (Low),Moderate,Pretty Happy,3,3,-9,0,1.2061
+GSS_3133,45-59,Lt High School,Q4 (High),Moderate,Very Happy,3,4,3,0,0.8174
+GSS_3134,45-59,Graduate,Q1 (Low),Liberal,Not Too Happy,2,4,2,0,1.2387
+GSS_3135,18-29,Lt High School,Q2 (Mid-Low),Liberal,Pretty Happy,4,3,2,0,1.4058
+GSS_3136,18-29,High School,Q3 (Mid-High),Liberal,Pretty Happy,1,4,5,0,1.2058
+GSS_3137,30-44,High School,Q3 (Mid-High),Liberal,Very Happy,4,4,2,0,1.4245
+GSS_3138,30-44,Graduate,Q4 (High),Extremely Liberal,Pretty Happy,4,3,1,0,1.4953
+GSS_3139,60+,Graduate,Q3 (Mid-High),Conservative,Pretty Happy,1,-9,4,0,1.2373
+GSS_3140,45-59,High School,Q1 (Low),Conservative,Pretty Happy,4,3,4,1,1.3941
+GSS_3141,45-59,Bachelor,Q3 (Mid-High),Liberal,Pretty Happy,2,1,5,1,1.4912
+GSS_3142,30-44,Bachelor,Q4 (High),Moderate,Pretty Happy,3,4,3,0,1.464
+GSS_3143,18-29,Lt High School,Q1 (Low),Conservative,Pretty Happy,1,2,4,0,0.6767
+GSS_3144,18-29,High School,Q1 (Low),Liberal,Not Too Happy,4,2,3,1,0.7268
+GSS_3145,18-29,High School,Q4 (High),Moderate,Very Happy,1,1,3,0,1.298
+GSS_3146,60+,High School,Q3 (Mid-High),Moderate,Pretty Happy,4,3,2,0,1.4661
+GSS_3147,18-29,High School,Q3 (Mid-High),Moderate,Pretty Happy,2,4,5,1,0.5698
+GSS_3148,30-44,High School,Q3 (Mid-High),Liberal,Very Happy,2,5,3,0,0.855
+GSS_3149,60+,High School,Q4 (High),Conservative,Very Happy,3,5,1,0,0.8292
+GSS_3150,30-44,High School,Q4 (High),Liberal,Pretty Happy,1,2,2,0,1.4745
+GSS_3151,45-59,High School,Q4 (High),Liberal,Pretty Happy,2,-9,3,0,1.1783
+GSS_3152,30-44,Bachelor,Q1 (Low),Moderate,Very Happy,1,5,5,0,1.0798
+GSS_3153,30-44,Junior College,Q3 (Mid-High),Moderate,Not Too Happy,5,-9,5,1,0.851
+GSS_3154,60+,High School,Q2 (Mid-Low),Liberal,Pretty Happy,2,-9,1,0,1.0592
+GSS_3155,60+,Bachelor,Q3 (Mid-High),Conservative,Pretty Happy,5,2,4,1,0.5539
+GSS_3156,30-44,High School,Q1 (Low),Conservative,Pretty Happy,5,1,1,0,1.0331
+GSS_3157,30-44,High School,Q1 (Low),Conservative,Very Happy,1,1,2,0,1.483
+GSS_3158,60+,High School,Q1 (Low),Moderate,Pretty Happy,2,2,3,0,1.1263
+GSS_3159,45-59,High School,Q2 (Mid-Low),Moderate,Very Happy,1,2,1,0,1.3643
+GSS_3160,45-59,High School,Q3 (Mid-High),Liberal,Very Happy,3,1,2,0,0.9531
+GSS_3161,18-29,Junior College,Q2 (Mid-Low),Moderate,Pretty Happy,5,3,3,1,1.33
+GSS_3162,30-44,High School,Q4 (High),Conservative,Pretty Happy,1,-9,2,0,1.5834
+GSS_3163,45-59,High School,Q4 (High),Liberal,Pretty Happy,5,1,5,1,0.6969
+GSS_3164,45-59,High School,Q4 (High),Moderate,Pretty Happy,1,1,3,0,0.9828
+GSS_3165,45-59,High School,Q2 (Mid-Low),Conservative,Very Happy,1,1,1,0,0.7337
+GSS_3166,30-44,Junior College,Q4 (High),Liberal,Pretty Happy,3,4,2,0,0.6917
+GSS_3167,45-59,Lt High School,Q2 (Mid-Low),Moderate,Pretty Happy,2,-9,3,0,0.8141
+GSS_3168,30-44,Lt High School,Q4 (High),Moderate,Pretty Happy,5,1,1,0,0.9891
+GSS_3169,60+,Junior College,Q4 (High),Moderate,Pretty Happy,4,5,1,0,0.5589
+GSS_3170,45-59,Bachelor,Q3 (Mid-High),Liberal,Very Happy,3,4,2,0,1.4391
+GSS_3171,45-59,High School,Q4 (High),Liberal,Pretty Happy,1,4,3,0,0.7676
+GSS_3172,45-59,High School,Q4 (High),Conservative,Very Happy,4,4,4,1,0.877
+GSS_3173,30-44,Graduate,Q4 (High),Liberal,Very Happy,4,5,4,1,0.9563
+GSS_3174,45-59,High School,Q1 (Low),Conservative,Pretty Happy,4,2,5,1,0.6103
+GSS_3175,18-29,Bachelor,Q2 (Mid-Low),Liberal,Very Happy,3,1,2,0,1.4278
+GSS_3176,30-44,Bachelor,Q4 (High),Moderate,Pretty Happy,4,5,4,1,0.737
+GSS_3177,18-29,High School,Q3 (Mid-High),Moderate,Pretty Happy,5,4,2,1,0.7119
+GSS_3178,30-44,High School,Q2 (Mid-Low),Moderate,Pretty Happy,3,4,4,1,0.8457
+GSS_3179,45-59,Bachelor,Q3 (Mid-High),Moderate,Not Too Happy,1,5,3,0,0.5415
+GSS_3180,60+,Lt High School,Q2 (Mid-Low),Conservative,Pretty Happy,5,4,3,1,1.5485
+GSS_3181,45-59,Bachelor,Q3 (Mid-High),Moderate,Pretty Happy,3,2,4,1,1.2666
+GSS_3182,60+,High School,Q4 (High),Conservative,Very Happy,3,4,2,0,0.8848
+GSS_3183,30-44,High School,Q1 (Low),Liberal,Not Too Happy,4,4,1,0,1.4197
+GSS_3184,18-29,Bachelor,Q2 (Mid-Low),Liberal,Pretty Happy,3,3,3,0,1.5553
+GSS_3185,45-59,High School,Q4 (High),Moderate,Very Happy,2,1,2,0,0.7714
+GSS_3186,45-59,Lt High School,Q1 (Low),Moderate,Pretty Happy,3,1,4,1,0.5182
+GSS_3187,18-29,High School,Q1 (Low),Extremely Liberal,Pretty Happy,1,5,1,0,1.5764
+GSS_3188,30-44,High School,Q2 (Mid-Low),Moderate,Not Too Happy,3,3,2,0,0.895
+GSS_3189,30-44,Junior College,Q3 (Mid-High),Moderate,Pretty Happy,4,2,2,0,1.3296
+GSS_3190,18-29,Bachelor,Q4 (High),Conservative,Very Happy,1,4,3,0,1.3708
+GSS_3191,45-59,Bachelor,Q2 (Mid-Low),Moderate,Pretty Happy,3,5,5,1,1.5017
+GSS_3192,18-29,Bachelor,Q1 (Low),Liberal,Very Happy,5,2,5,1,1.5829
+GSS_3193,30-44,High School,Q2 (Mid-Low),Conservative,Very Happy,3,4,3,0,1.5382
+GSS_3194,45-59,Bachelor,Q4 (High),Moderate,Pretty Happy,3,5,3,0,1.0494
+GSS_3195,45-59,High School,Q3 (Mid-High),Extremely Conservative,Pretty Happy,1,2,3,0,0.6465
+GSS_3196,45-59,High School,Q4 (High),Conservative,Not Too Happy,1,3,2,0,0.8328
+GSS_3197,60+,Bachelor,Q2 (Mid-Low),Conservative,Pretty Happy,1,2,5,0,1.2664
+GSS_3198,18-29,Graduate,Q3 (Mid-High),Moderate,Very Happy,4,2,2,0,0.9772
+GSS_3199,30-44,High School,Q4 (High),Moderate,Pretty Happy,3,1,-9,0,1.3558

@@ -1,0 +1,24 @@
+{
+  "dataset_name": "Kaggle AI Trust Insights (Sociological Survey)",
+  "number_of_respondents": 1200,
+  "missing_value_code": -9,
+  "target_variables": {
+    "High_AI_Trust": "Binary classification target (1 = High Trust >= 6.0, 0 = Low/Skeptical Trust)",
+    "Trust_Score_1_to_10": "Continuous composite trust score from 1.0 to 10.0"
+  },
+  "features": {
+    "Age_Group": "Categorical: 18-29, 30-44, 45-59, 60+",
+    "Education_Level": "Categorical: High School, Bachelor's, Master's, PhD",
+    "Employment_Sector": "Categorical: Tech/Engineering, Healthcare, Education, Finance, Public Sector, Other",
+    "Gender": "Categorical: Female, Male, Non-Binary/Other",
+    "Tech_Familiarity": "Ordinal: Novice, Intermediate, Advanced",
+    "Perceived_AI_Risk": "Likert Scale 1-5 (1=Very Low, 5=Very High, -9=Missing/Refused)",
+    "Perceived_AI_Benefit": "Likert Scale 1-5 (1=Very Low, 5=Very High, -9=Missing/Refused)",
+    "Ethical_Concern_Level": "Likert Scale 1-5 (1=Not Concerned, 5=Extremely Concerned)",
+    "Privacy_Worry": "Likert Scale 1-5 (1=Unconcerned, 5=High Worry)",
+    "Trust_Healthcare_AI": "Score 1-10 (-9=Missing)",
+    "Trust_Workplace_AI": "Score 1-10 (-9=Missing)",
+    "Trust_Financial_AI": "Score 1-10",
+    "Survey_Weight": "Probability sampling weight"
+  }
+}
