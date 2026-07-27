@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philosopher's Quest & Mental Models Arcade | Kids Learning Suite</title>
+    <meta name="description" content="Interactive philosophy, mental models, and logical fallacy games designed for kids aged 8 to 12.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/kids_styles.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="kids-header">
+        <div class="container kids-header-container">
+            <div class="kids-logo-group">
+                <a href="../../index.html" style="text-decoration:none;" class="kids-logo-group">
+                    <div class="kids-logo-badge">LEARN</div>
+                    <div class="kids-logo-title">Philosopher's <span class="gold-star-text">Quest</span></div>
+                </a>
+            </div>
+
+            <nav class="kids-nav-links">
+                <a href="../../index.html" class="kids-nav-item">🏠 Suite Home</a>
+                <a href="#thinkers" class="kids-nav-item active">🏛️ Thinkers</a>
+                <a href="#mental_models" class="kids-nav-item">🔮 Mental Models</a>
+                <a href="#experiments" class="kids-nav-item">🌀 Thought Experiments</a>
+                <a href="#fallacies" class="kids-nav-item">🕵️ Monster Spotter</a>
+                <a href="../watspeed_ai/index.html" class="kids-nav-item" style="color: var(--gold-star);">🎓 WatSPEED AI (Adults)</a>
+            </nav>
+
+            <div class="xp-pill">
+                <span class="xp-level-badge" id="xpLevelBadge">Level 1: Young Thinker</span>
+                <div class="xp-bar-outer">
+                    <div class="xp-bar-inner" id="xpBarFill" style="width: 25%;"></div>
+                </div>
+                <span class="xp-text" id="xpTextDisplay">150 XP</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Hero Card -->
+        <section class="kids-hero">
+            <div class="kids-hero-badge">Designed for Curious Minds Aged 8 to 12</div>
+            <h1 class="kids-hero-title">Unlock Your Brain's <span class="purple-glow-text">Superpowers!</span></h1>
+            <p class="kids-hero-desc">
+                Welcome to Philosopher's Quest! Explore big ideas with history's greatest thinkers, solve mind-bending thought experiments, master mental model superpowers, and defeat logical fallacy argument monsters!
+            </p>
+
+            <!-- Badge Trophy Showcase -->
+            <div class="badge-showcase">
+                <span class="badge-showcase-title">🏆 Trophy Showcase:</span>
+                <div class="badge-item unlocked" data-badge-id="young_thinker">🌱 Young Thinker</div>
+                <div class="badge-item" data-badge-id="socratic_master">🦉 Socratic Master</div>
+                <div class="badge-item" data-badge-id="first_principles">⚡ First Principles</div>
+                <div class="badge-item" data-badge-id="occams_razor">🗡️ Razor Sharp</div>
+                <div class="badge-item" data-badge-id="cave_explorer">☀️ Cave Explorer</div>
+                <div class="badge-item" data-badge-id="fallacy_detective">🕵️ Fallacy Detective</div>
+            </div>
+        </section>
+
+        <!-- Zone 1: Philosopher Trading Cards & Socratic Simulator -->
+        <section id="thinkers" class="kids-section">
+            <div class="kids-section-header">
+                <h2 class="kids-section-title">🏛️ Philosopher Trading Cards</h2>
+                <p class="kids-section-subtitle">Click any philosopher card to start a <strong>Socratic Questioning Challenge</strong>!</p>
+            </div>
+
+            <div class="thinkers-grid" id="thinkersGrid">
+                <!-- Dynamically rendered by js/thinkers.js -->
+            </div>
+        </section>
+
+        <!-- Zone 2: Mental Model Superpowers -->
+        <section id="mental_models" class="kids-section">
+            <div class="kids-section-header">
+                <h2 class="kids-section-title">🔮 Mental Model Superpowers</h2>
+                <p class="kids-section-subtitle">Learn how smart thinkers break down problems, solve mysteries, and test theories!</p>
+            </div>
+
+            <div class="arcade-container">
+                <div class="arcade-tabs">
+                    <button class="arcade-tab-btn active" onclick="renderMentalModelArcade('first_principles')">⚡ 1. First Principles Lego Dismantler</button>
+                    <button class="arcade-tab-btn" onclick="renderMentalModelArcade('occams_razor')">🗡️ 2. Occam's Razor Trimmer</button>
+                    <button class="arcade-tab-btn" onclick="renderMentalModelArcade('black_swan')">🦢 3. Karl Popper's Black Swan Hunter</button>
+                    <button class="arcade-tab-btn" onclick="renderMentalModelArcade('map_territory')">🗺️ 4. Map vs. Territory</button>
+                </div>
+
+                <div class="arcade-stage" id="arcadeStage">
+                    <!-- Dynamically rendered by js/mental_models.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Zone 3: Interactive Thought Experiment Arcade -->
+        <section id="experiments" class="kids-section">
+            <div class="kids-section-header">
+                <h2 class="kids-section-title">🌀 Interactive Thought Experiment Arcade</h2>
+                <p class="kids-section-subtitle">Test your mind with history's most famous philosophical riddles!</p>
+            </div>
+
+            <div class="arcade-container">
+                <div class="arcade-tabs">
+                    <button class="arcade-tab-btn active" onclick="renderThoughtExperiment('platos_cave')">🌌 Plato's Cave (Shadows vs Sun)</button>
+                    <button class="arcade-tab-btn" onclick="renderThoughtExperiment('ship_theseus')">⛵ Ship of Theseus Planks Puzzle</button>
+                </div>
+
+                <div class="arcade-stage" id="thoughtStage">
+                    <!-- Dynamically rendered by js/thought_experiments.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Zone 4: Logical Fallacy Monster Spotter -->
+        <section id="fallacies" class="kids-section">
+            <div class="kids-section-header">
+                <h2 class="kids-section-title">🕵️ Logical Fallacy Monster Spotter</h2>
+                <p class="kids-section-subtitle">Spot the trick arguments and defeat the fallacy monsters with logic shields!</p>
+            </div>
+
+            <div id="fallacyGameBox">
+                <!-- Dynamically rendered by js/fallacy_detective.js -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="kids-footer">
+        <div class="container">
+            <p>Philosopher's Quest & Mental Models Arcade | Part of the Learning Tools Suite</p>
+            <p style="margin-top: 4px;">Empowering Young Thinkers Aged 8 to 12</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/quest_app.js"></script>
+    <script src="js/thinkers.js"></script>
+    <script src="js/mental_models.js"></script>
+    <script src="js/thought_experiments.js"></script>
+    <script src="js/fallacy_detective.js"></script>
+</body>
+</html>
