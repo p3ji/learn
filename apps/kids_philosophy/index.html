@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <!-- Header Navigation -->
+    <!-- Header Navigation with RTS Account Login -->
     <header class="kids-header">
         <div class="container kids-header-container">
             <div class="kids-logo-group">
@@ -32,12 +32,18 @@
                 <a href="../watspeed_ai/index.html" class="kids-nav-item" style="color: var(--gold-star);">🎓 WatSPEED AI (Adults)</a>
             </nav>
 
-            <div class="xp-pill">
-                <span class="xp-level-badge" id="xpLevelBadge">Level 1: Young Thinker</span>
-                <div class="xp-bar-outer">
-                    <div class="xp-bar-inner" id="xpBarFill" style="width: 25%;"></div>
+            <!-- RTS Commander Profile & Login -->
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="xp-pill" onclick="openAccountLoginModal()" style="cursor: pointer;">
+                    <span id="rtsUserAvatar" style="font-size: 1.2rem;">🦉</span>
+                    <span id="rtsUserName" style="font-weight: 800; color: #FFF; font-size: 0.9rem;">Cadet Thinker</span>
+                    <span class="xp-level-badge" id="xpLevelBadge">Lvl 1: Cadet</span>
+                    <div class="xp-bar-outer">
+                        <div class="xp-bar-inner" id="xpBarFill" style="width: 25%;"></div>
+                    </div>
+                    <span class="xp-text" id="xpTextDisplay">150 XP</span>
                 </div>
-                <span class="xp-text" id="xpTextDisplay">150 XP</span>
+                <button class="fb-action-btn gold" onclick="openAccountLoginModal()" style="padding: 6px 12px; font-size: 0.82rem;">👤 Account</button>
             </div>
         </div>
     </header>
@@ -50,7 +56,10 @@
             <div class="kids-hero-badge">Designed for Curious Minds Aged 8 to 12</div>
             <h1 class="kids-hero-title">Unlock Your Brain's <span class="purple-glow-text">Superpowers!</span></h1>
             <p class="kids-hero-desc">
-                Welcome to Philosopher's Quest! Explore big ideas with history's greatest thinkers, solve mind-bending thought experiments, master mental model superpowers, and defeat logical fallacy argument monsters!
+                Welcome to Philosopher's Quest! Every topic follows a structured <strong>3-Step Learning Flow</strong>: 
+                <span style="color: var(--gold-star); font-weight:700;">1) Concept Intro</span> ➔ 
+                <span style="color: var(--cyan-magic); font-weight:700;">2) Example & Video (&lt;10m)</span> ➔ 
+                <span style="color: var(--purple-glow); font-weight:700;">3) Interactive Activity!</span>
             </p>
 
             <!-- Badge Trophy Showcase -->
@@ -69,7 +78,7 @@
         <section id="thinkers" class="kids-section">
             <div class="kids-section-header">
                 <h2 class="kids-section-title">🏛️ Philosopher Trading Cards</h2>
-                <p class="kids-section-subtitle">Click any philosopher card to start a <strong>Socratic Questioning Challenge</strong>!</p>
+                <p class="kids-section-subtitle">Click any thinker to launch their <strong>3-Step Wisdom Quest</strong>!</p>
             </div>
 
             <div class="thinkers-grid" id="thinkersGrid">
@@ -81,15 +90,15 @@
         <section id="mental_models" class="kids-section">
             <div class="kids-section-header">
                 <h2 class="kids-section-title">🔮 Mental Model Superpowers</h2>
-                <p class="kids-section-subtitle">Learn how smart thinkers break down problems, solve mysteries, and test theories!</p>
+                <p class="kids-section-subtitle">Follow the 3-step flow (Intro ➔ Short Video ➔ Interactive Activity) for each mental model!</p>
             </div>
 
             <div class="arcade-container">
                 <div class="arcade-tabs">
-                    <button class="arcade-tab-btn active" onclick="renderMentalModelArcade('first_principles')">⚡ 1. First Principles Lego Dismantler</button>
-                    <button class="arcade-tab-btn" onclick="renderMentalModelArcade('occams_razor')">🗡️ 2. Occam's Razor Trimmer</button>
-                    <button class="arcade-tab-btn" onclick="renderMentalModelArcade('black_swan')">🦢 3. Karl Popper's Black Swan Hunter</button>
-                    <button class="arcade-tab-btn" onclick="renderMentalModelArcade('map_territory')">🗺️ 4. Map vs. Territory</button>
+                    <button class="arcade-tab-btn mm-tab-btn active" onclick="renderMentalModelArcade('first_principles')">⚡ 1. First Principles Lego Dismantler</button>
+                    <button class="arcade-tab-btn mm-tab-btn" onclick="renderMentalModelArcade('occams_razor')">🗡️ 2. Occam's Razor Trimmer</button>
+                    <button class="arcade-tab-btn mm-tab-btn" onclick="renderMentalModelArcade('black_swan')">🦢 3. Karl Popper's Black Swan Hunter</button>
+                    <button class="arcade-tab-btn mm-tab-btn" onclick="renderMentalModelArcade('map_territory')">🗺️ 4. Map vs. Territory</button>
                 </div>
 
                 <div class="arcade-stage" id="arcadeStage">
@@ -107,8 +116,8 @@
 
             <div class="arcade-container">
                 <div class="arcade-tabs">
-                    <button class="arcade-tab-btn active" onclick="renderThoughtExperiment('platos_cave')">🌌 Plato's Cave (Shadows vs Sun)</button>
-                    <button class="arcade-tab-btn" onclick="renderThoughtExperiment('ship_theseus')">⛵ Ship of Theseus Planks Puzzle</button>
+                    <button class="arcade-tab-btn exp-tab-btn active" onclick="renderThoughtExperiment('platos_cave')">🌌 Plato's Cave (Shadows vs Sun)</button>
+                    <button class="arcade-tab-btn exp-tab-btn" onclick="renderThoughtExperiment('ship_theseus')">⛵ Ship of Theseus Planks Puzzle</button>
                 </div>
 
                 <div class="arcade-stage" id="thoughtStage">
@@ -140,6 +149,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="js/profile.js"></script>
     <script src="js/quest_app.js"></script>
     <script src="js/thinkers.js"></script>
     <script src="js/mental_models.js"></script>
