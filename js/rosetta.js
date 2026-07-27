@@ -1,4 +1,4 @@
-// Rosetta Stone comparative matrix with Stata View Toggle
+// Rosetta Stone comparative matrix with Detailed Explanations, Key Differences & Transition Tips
 const rosettaData = {
     data: {
         title: "1. SAS DATA Step / Stata Recode ➔ Pandas & Pydantic Schemas",
@@ -22,6 +22,22 @@ df['High_Risk'] = (df['Perceived_AI_Risk_Clean'] >= 4).astype(int)
 class SurveyRespondent(BaseModel):
     respondent_id: str
     high_risk: bool`,
+        explanation: `
+            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 Code & Execution Breakdown:</h4>
+            <ul style="color: var(--text-muted); font-size: 0.88rem; padding-left: 18px; margin-bottom: 12px;">
+                <li><strong>SAS DATA Step:</strong> Reads data row-by-row in an implicit data loop on disk. Conditional statements (<code>if/then</code>) modify individual observations sequentially.</li>
+                <li><strong>Pandas <code>.replace(-9, None)</code>:</strong> Operates in a single vectorized C-memory pass across the entire column simultaneously rather than row-by-row.</li>
+                <li><strong><code>(df['Perceived_AI_Risk_Clean'] >= 4).astype(int)</code>:</strong> In SAS, boolean expressions automatically evaluate to numeric <code>1</code> or <code>0</code>. In Python, logical comparisons produce boolean <code>True/False</code>, so <code>.astype(int)</code> explicitly converts them into <code>1</code> or <code>0</code>.</li>
+            </ul>
+
+            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Key Differences SAS vs Python Pandas:</h4>
+            <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
+                <p><strong>1. Missing Value Representation:</strong> SAS uses a period (<code>.</code>) for missing numbers. Python uses <code>None</code> or <code>np.nan</code>. <em>Watch out:</em> In Python, <code>np.nan == np.nan</code> evaluates to <code>False</code>!</p>
+                <p style="margin-top:6px;"><strong>2. Memory Model:</strong> SAS processes disk files line-by-line (can handle 100GB files easily). Pandas loads the whole DataFrame into RAM (ultra-fast, but requires sufficient RAM).</p>
+                <p style="margin-top:6px;"><strong>3. Indexing:</strong> SAS is 1-indexed (Observation 1). Python is 0-indexed (Row 0).</p>
+            </div>
+        `,
+        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Always use Pydantic <code>BaseModel</code> when passing survey rows into Agentic LLM functions. Pydantic acts as your 'PROC CONTENTS' bouncer, guaranteeing data types match before the AI processes them!",
         agenticNote: "In Agentic AI, strict Pydantic schemas prevent hallucinations when LLMs process survey rows or parse function tool inputs."
     },
     ml: {
@@ -43,6 +59,20 @@ def fit_logistic(X_train, y_train, sample_weight=None):
     clf = LogisticRegression()
     clf.fit(X_train, y_train, sample_weight=sample_weight)
     return {"roc_auc": clf.score(X_test, y_test)}`,
+        explanation: `
+            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 Code & Execution Breakdown:</h4>
+            <ul style="color: var(--text-muted); font-size: 0.88rem; padding-left: 18px; margin-bottom: 12px;">
+                <li><strong>SAS PROC LOGISTIC:</strong> Handles categorical dummy coding automatically inside the <code>class</code> statement, fits the model, and outputs comprehensive statistical tables (coefficients, standard errors, Wald Chi-Square p-values, odds ratios, AIC/SBC).</li>
+                <li><strong>Scikit-Learn <code>LogisticRegression().fit()</code>:</strong> Requires explicit numerical matrix inputs (e.g. via <code>pd.get_dummies()</code>). It prioritizes prediction performance on out-of-sample test data.</li>
+            </ul>
+
+            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Key Differences SAS vs Scikit-Learn:</h4>
+            <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
+                <p><strong>1. Inference vs Prediction:</strong> SAS focuses on statistical inference & p-values on full sample data. Scikit-Learn focuses on out-of-sample generalization (Train/Test 80/20 splits & ROC-AUC curves).</p>
+                <p style="margin-top:6px;"><strong>2. Survey Weights:</strong> SAS uses <code>weight Survey_Weight;</code>. Scikit-Learn passes <code>sample_weight=df['Survey_Weight']</code> into the <code>.fit()</code> function.</p>
+            </div>
+        `,
+        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Wrap Scikit-Learn model fitting inside a <code>@tool</code> wrapper function so your LangGraph agent can call PROC LOGISTIC style regression tools directly from plain English user requests!",
         agenticNote: "Agent tools wrapper (@tool) allow autonomous LLM agents to call PROC LOGISTIC style regression tools from natural language prompts."
     },
     tabfm: {
@@ -57,10 +87,24 @@ from tabfm import TabFMClassifier
 tabfm = TabFMClassifier()
 tabfm.fit(train_df, 'High_AI_Trust')  # In-context context loading
 preds = tabfm.predict_proba(test_df) # Instant forward-pass prediction`,
+        explanation: `
+            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 Code & Execution Breakdown:</h4>
+            <ul style="color: var(--text-muted); font-size: 0.88rem; padding-left: 18px; margin-bottom: 12px;">
+                <li><strong>Traditional SAS / ML:</strong> Requires iterative parameter optimization (gradient descent / maximum likelihood) and manual feature engineering on every new dataset.</li>
+                <li><strong>Google TabFM (Tabular Foundation Model):</strong> Uses Transformer-based <strong>In-Context Learning (ICL)</strong>. It receives training survey rows as context and predicts test labels in a single forward pass without gradient fine-tuning!</li>
+            </ul>
+
+            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Key Advantages of TabFM for Survey Research:</h4>
+            <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
+                <p><strong>1. Handles Raw Survey Strings Natively:</strong> No need to create manual dummy variables for Likert scales or demographic text columns.</p>
+                <p style="margin-top:6px;"><strong>2. Zero Training Delay:</strong> Instant predictions allow autonomous conversational agents to evaluate models during real-time user chat.</p>
+            </div>
+        `,
+        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Use TabFM zero-shot prediction as a rapid benchmark to compare against traditional SAS PROC LOGISTIC or Random Forests!",
         agenticNote: "Google TabFM allows survey agents to predict labels on raw categorical survey columns in a single forward pass without manual one-hot recoding or long training loops."
     },
     graph: {
-        title: "4. Stata .do File ➔ LangGraph State Machines (StateGraph)",
+        title: "4. Stata .do File / SAS Macros ➔ LangGraph State Machines (StateGraph)",
         sas: `/* SAS Macro Chain */
 %macro run_survey_pipeline();
     %clean_data();
@@ -80,6 +124,20 @@ builder.add_node("tabfm", node_run_tabfm)
 builder.add_node("report", node_draft_report)
 builder.add_edge("clean", "tabfm")
 builder.add_edge("tabfm", "report")`,
+        explanation: `
+            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 Code & Execution Breakdown:</h4>
+            <ul style="color: var(--text-muted); font-size: 0.88rem; padding-left: 18px; margin-bottom: 12px;">
+                <li><strong>SAS Macros / Stata .do Files:</strong> Linear script execution. If a step fails or accuracy is too low, the entire script halts.</li>
+                <li><strong>LangGraph <code>StateGraph</code>:</strong> Cyclic state graph. Nodes are pure Python functions, edges handle decision logic, and State (<code>TypedDict</code>) retains execution history and data memory.</li>
+            </ul>
+
+            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Key Differences:</h4>
+            <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
+                <p><strong>1. Cyclic Loops & Self-Correction:</strong> LangGraph nodes can inspect their own outputs (e.g. check ROC-AUC score) and loop back to re-code features automatically if quality targets aren't met.</p>
+                <p style="margin-top:6px;"><strong>2. Human-in-the-Loop Interrupts:</strong> LangGraph allows pausing execution before publishing a sociological report to request human approval.</p>
+            </div>
+        `,
+        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Think of LangGraph nodes as individual SAS macros (%clean, %fit), but connected by smart conditional decision logic instead of static linear scripts!",
         agenticNote: "LangGraph provides state persistence, cyclic execution loops, conditional node branching, and memory — perfect for multi-step survey analysis."
     },
     mcp: {
@@ -102,6 +160,20 @@ def get_codebook():
 @app.call_tool("crosstab")
 def run_crosstab(var1, var2):
     return pd.crosstab(df[var1], df[var2]).to_dict()`,
+        explanation: `
+            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 Code & Execution Breakdown:</h4>
+            <ul style="color: var(--text-muted); font-size: 0.88rem; padding-left: 18px; margin-bottom: 12px;">
+                <li><strong>SAS <code>LIBNAME</code>:</strong> Internal SAS directory handle that allows SAS procedures to access datasets on a local or server disk.</li>
+                <li><strong>Model Context Protocol (MCP):</strong> Open JSON-RPC API standard that allows external LLM models (Claude Desktop, VS Code, Web Apps) to inspect local survey codebooks (<code>Resources</code>) and run statistical procedures (<code>Tools</code>).</li>
+            </ul>
+
+            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Key Differences:</h4>
+            <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
+                <p><strong>1. Universal Interoperability:</strong> MCP is vendor-agnostic. Once built, any MCP-compatible AI client can query your survey dataset without custom adapter code.</p>
+                <p style="margin-top:6px;"><strong>2. Security & Control:</strong> You explicitly declare which dataset columns or tools are exposed through the MCP Server interface.</p>
+            </div>
+        `,
+        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> MCP Resources are like 'PROC CONTENTS' metadata, while MCP Tools are like SAS 'PROCs' that the AI assistant can execute remotely!",
         agenticNote: "MCP is the open standard that connects LLM clients (Claude, GPT, Gemini) directly to your local survey datasets, codebooks, and statistical tools."
     }
 };
@@ -158,6 +230,12 @@ function renderRosettaContent(key) {
         <div style="margin-bottom: 16px;">
             <h4 style="font-size: 0.85rem; color: var(--gold-primary); margin-bottom: 6px;">Python & Agentic AI Equivalent</h4>
             <pre style="background: #000; padding: 14px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem; overflow-x: auto; color: #4ADE80; border: 1px solid rgba(74, 222, 128, 0.2);">${escapeHtml(item.python)}</pre>
+        </div>
+
+        <!-- NEW: Detailed Syntax Breakdown & Key Differences -->
+        <div style="background: rgba(18, 24, 38, 0.8); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 12px; padding: 18px; margin-bottom: 16px;">
+            ${item.explanation}
+            <div style="margin-top: 10px; font-size: 0.88rem; color: var(--gold-primary);">${item.proTip}</div>
         </div>
 
         <div style="background: rgba(255, 199, 44, 0.08); border-left: 4px solid var(--gold-primary); padding: 12px 16px; border-radius: 4px; font-size: 0.88rem; color: var(--text-main);">
