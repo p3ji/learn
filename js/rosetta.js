@@ -1,45 +1,59 @@
-// Rosetta Stone comparative matrix with Detailed Explanations, Key Differences & Transition Tips
+// Rosetta Stone comparative matrix with Detailed Explanations, SAS Equivalents & Key Differences
 const rosettaData = {
     data: {
         title: "1. SAS DATA Step / Stata Recode ➔ Pandas & Pydantic Schemas",
-        sas: `/* SAS DATA Step */
+        sas: `/* SAS DATA Step + PROC FORMAT Validation (Pydantic Equivalent in SAS) */
+proc format;
+    value risk_chk 1-5 = 'Valid' other = 'Invalid';
+run;
+
 data clean_survey;
     set ai_trust_insights;
     if Perceived_AI_Risk = -9 then Perceived_AI_Risk = .;
+    
+    /* SAS Pydantic-style Validation Trap */
+    if not missing(Perceived_AI_Risk) and put(Perceived_AI_Risk, risk_chk.) = 'Invalid' then do;
+        put "ERROR: [Pydantic Validation Trap] Invalid Likert score: " Perceived_AI_Risk;
+        _error_ = 1;
+    end;
+    
     High_Risk = (Perceived_AI_Risk >= 4);
 run;`,
         stata: `* Stata .do Recode
 use "ai_trust_insights.dta", clear
 mvdecode Perceived_AI_Risk, mv(-9)
 gen High_Risk = (Perceived_AI_Risk >= 4) if !missing(Perceived_AI_Risk)`,
-        python: `# Python Pandas & Pydantic Model
+        python: `# Python Pandas & Pydantic Model (Pydantic is a Python Data Validation Library)
 import pandas as pd
-from pydantic import BaseModel  # Pydantic is a popular Python Data Validation Library!
+from pydantic import BaseModel, Field
+from typing import Optional
 
 df['Perceived_AI_Risk_Clean'] = df['Perceived_AI_Risk'].replace(-9, None)
 df['High_Risk'] = (df['Perceived_AI_Risk_Clean'] >= 4).astype(int)
 
-# Pydantic Schema: Enforces data types for LLM agent tools
+# Pydantic Schema: Replaces ~30 lines of SAS DATA step validation & PROC FORMAT!
 class SurveyRespondent(BaseModel):
     respondent_id: str
-    high_risk: bool`,
+    perceived_risk: Optional[int] = Field(default=None, ge=1, le=5)
+    high_ai_trust: bool`,
         explanation: `
-            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 Code & Execution Breakdown:</h4>
-            <ul style="color: var(--text-muted); font-size: 0.88rem; padding-left: 18px; margin-bottom: 12px;">
-                <li><strong>What is Pydantic?</strong> Pydantic is Python's #1 data validation and type enforcement library (installed via <code>pip install pydantic</code>).</li>
-                <li><strong>SAS DATA Step:</strong> Reads data row-by-row in an implicit data loop on disk. Conditional statements (<code>if/then</code>) modify individual observations sequentially.</li>
-                <li><strong>Pandas <code>.replace(-9, None)</code>:</strong> Operates in a single vectorized C-memory pass across the entire column simultaneously rather than row-by-row.</li>
-                <li><strong><code>(df['Perceived_AI_Risk_Clean'] >= 4).astype(int)</code>:</strong> In SAS, boolean expressions automatically evaluate to numeric <code>1</code> or <code>0</code>. In Python, logical comparisons produce boolean <code>True/False</code>, so <code>.astype(int)</code> explicitly converts them into <code>1</code> or <code>0</code>.</li>
-            </ul>
+            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 How to do Pydantic Validation in SAS:</h4>
+            <div style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 12px;">
+                <p>To replicate what Pydantic does for an LLM in SAS, you would need to write:</p>
+                <ol style="padding-left: 20px; margin-top: 6px;">
+                    <li><strong>Outbound Schema (JSON Creation):</strong> Use <code>PROC JSON</code> or a SAS macro to construct an explicit JSON Schema definition string to send in your <code>PROC HTTP</code> API request payload to tell the LLM how to format its output.</li>
+                    <li><strong>Inbound Parsing:</strong> Read the raw LLM JSON response using <code>LIBNAME JSON</code>.</li>
+                    <li><strong>Validation & Range Checks:</strong> Write a 20-30 line SAS <code>DATA</code> step with <code>PROC FORMAT</code> value checks, <code>PUT</code> log error statements, and <code>_error_ = 1</code> flags to abort execution if the AI returns out-of-bounds data.</li>
+                </ol>
+            </div>
 
-            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Key Differences SAS vs Python Pandas & Pydantic:</h4>
+            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Why Pydantic is a Game-Changer vs SAS:</h4>
             <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
-                <p><strong>1. Schema Enforcement (Pydantic):</strong> In SAS, PROC CONTENTS and DATA step column definitions restrict column types. Python dictionaries accept anything unless validated by a Pydantic <code>BaseModel</code> class.</p>
-                <p style="margin-top:6px;"><strong>2. Missing Value Representation:</strong> SAS uses a period (<code>.</code>) for missing numbers. Python uses <code>None</code> or <code>np.nan</code>. <em>Watch out:</em> In Python, <code>np.nan == np.nan</code> evaluates to <code>False</code>!</p>
-                <p style="margin-top:6px;"><strong>3. Memory Model:</strong> SAS processes disk files line-by-line (can handle 100GB files easily). Pandas loads the whole DataFrame into RAM (ultra-fast, but requires sufficient RAM).</p>
+                <p><strong>1. Dual-Action (Schema Gen + Validation):</strong> Pydantic automatically exports the JSON Schema for the LLM prompt (via <code>Model.model_json_schema()</code>) AND validates the inbound response in 4 lines of Python code!</p>
+                <p style="margin-top:6px;"><strong>2. Type Coercion:</strong> If an LLM returns a numeric string <code>"4"</code>, Pydantic automatically coerces it into integer <code>4</code> while enforcing the boundary rule (<code>1 <= risk <= 5</code>).</p>
             </div>
         `,
-        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Pydantic is a Python library used by OpenAI & LangChain to enforce LLM tool inputs. Use Pydantic <code>BaseModel</code> to catch bad AI data before it touches your statistical code!",
+        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Pydantic collapses 30 lines of SAS PROC FORMAT checks and DATA step error-handling macros into a clean 4-line Python class definition!",
         agenticNote: "In Agentic AI, strict Pydantic schemas prevent hallucinations when LLMs process survey rows or parse function tool inputs."
     },
     ml: {
@@ -223,14 +237,14 @@ function renderRosettaContent(key) {
         
         <div style="display: grid; grid-template-columns: ${gridColumns}; gap: 16px; margin-bottom: 16px;">
             <div>
-                <h4 style="font-size: 0.85rem; color: var(--accent-blue); margin-bottom: 6px;">SAS Command (Primary)</h4>
+                <h4 style="font-size: 0.85rem; color: var(--accent-blue); margin-bottom: 6px;">SAS Command + PROC FORMAT Check (Pydantic Equivalent in SAS)</h4>
                 <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem; overflow-x: auto; color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.2);">${escapeHtml(item.sas)}</pre>
             </div>
             ${stataBlockHtml}
         </div>
 
         <div style="margin-bottom: 16px;">
-            <h4 style="font-size: 0.85rem; color: var(--gold-primary); margin-bottom: 6px;">Python & Agentic AI Equivalent (Pydantic is a Python Library)</h4>
+            <h4 style="font-size: 0.85rem; color: var(--gold-primary); margin-bottom: 6px;">Python & Agentic AI Equivalent (Pydantic Class Model)</h4>
             <pre style="background: #000; padding: 14px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem; overflow-x: auto; color: #4ADE80; border: 1px solid rgba(74, 222, 128, 0.2);">${escapeHtml(item.python)}</pre>
         </div>
 
