@@ -14,30 +14,32 @@ mvdecode Perceived_AI_Risk, mv(-9)
 gen High_Risk = (Perceived_AI_Risk >= 4) if !missing(Perceived_AI_Risk)`,
         python: `# Python Pandas & Pydantic Model
 import pandas as pd
-from pydantic import BaseModel
+from pydantic import BaseModel  # Pydantic is a popular Python Data Validation Library!
 
 df['Perceived_AI_Risk_Clean'] = df['Perceived_AI_Risk'].replace(-9, None)
 df['High_Risk'] = (df['Perceived_AI_Risk_Clean'] >= 4).astype(int)
 
+# Pydantic Schema: Enforces data types for LLM agent tools
 class SurveyRespondent(BaseModel):
     respondent_id: str
     high_risk: bool`,
         explanation: `
             <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 Code & Execution Breakdown:</h4>
             <ul style="color: var(--text-muted); font-size: 0.88rem; padding-left: 18px; margin-bottom: 12px;">
+                <li><strong>What is Pydantic?</strong> Pydantic is Python's #1 data validation and type enforcement library (installed via <code>pip install pydantic</code>).</li>
                 <li><strong>SAS DATA Step:</strong> Reads data row-by-row in an implicit data loop on disk. Conditional statements (<code>if/then</code>) modify individual observations sequentially.</li>
                 <li><strong>Pandas <code>.replace(-9, None)</code>:</strong> Operates in a single vectorized C-memory pass across the entire column simultaneously rather than row-by-row.</li>
                 <li><strong><code>(df['Perceived_AI_Risk_Clean'] >= 4).astype(int)</code>:</strong> In SAS, boolean expressions automatically evaluate to numeric <code>1</code> or <code>0</code>. In Python, logical comparisons produce boolean <code>True/False</code>, so <code>.astype(int)</code> explicitly converts them into <code>1</code> or <code>0</code>.</li>
             </ul>
 
-            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Key Differences SAS vs Python Pandas:</h4>
+            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Key Differences SAS vs Python Pandas & Pydantic:</h4>
             <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
-                <p><strong>1. Missing Value Representation:</strong> SAS uses a period (<code>.</code>) for missing numbers. Python uses <code>None</code> or <code>np.nan</code>. <em>Watch out:</em> In Python, <code>np.nan == np.nan</code> evaluates to <code>False</code>!</p>
-                <p style="margin-top:6px;"><strong>2. Memory Model:</strong> SAS processes disk files line-by-line (can handle 100GB files easily). Pandas loads the whole DataFrame into RAM (ultra-fast, but requires sufficient RAM).</p>
-                <p style="margin-top:6px;"><strong>3. Indexing:</strong> SAS is 1-indexed (Observation 1). Python is 0-indexed (Row 0).</p>
+                <p><strong>1. Schema Enforcement (Pydantic):</strong> In SAS, PROC CONTENTS and DATA step column definitions restrict column types. Python dictionaries accept anything unless validated by a Pydantic <code>BaseModel</code> class.</p>
+                <p style="margin-top:6px;"><strong>2. Missing Value Representation:</strong> SAS uses a period (<code>.</code>) for missing numbers. Python uses <code>None</code> or <code>np.nan</code>. <em>Watch out:</em> In Python, <code>np.nan == np.nan</code> evaluates to <code>False</code>!</p>
+                <p style="margin-top:6px;"><strong>3. Memory Model:</strong> SAS processes disk files line-by-line (can handle 100GB files easily). Pandas loads the whole DataFrame into RAM (ultra-fast, but requires sufficient RAM).</p>
             </div>
         `,
-        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Always use Pydantic <code>BaseModel</code> when passing survey rows into Agentic LLM functions. Pydantic acts as your 'PROC CONTENTS' bouncer, guaranteeing data types match before the AI processes them!",
+        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Pydantic is a Python library used by OpenAI & LangChain to enforce LLM tool inputs. Use Pydantic <code>BaseModel</code> to catch bad AI data before it touches your statistical code!",
         agenticNote: "In Agentic AI, strict Pydantic schemas prevent hallucinations when LLMs process survey rows or parse function tool inputs."
     },
     ml: {
@@ -228,11 +230,11 @@ function renderRosettaContent(key) {
         </div>
 
         <div style="margin-bottom: 16px;">
-            <h4 style="font-size: 0.85rem; color: var(--gold-primary); margin-bottom: 6px;">Python & Agentic AI Equivalent</h4>
+            <h4 style="font-size: 0.85rem; color: var(--gold-primary); margin-bottom: 6px;">Python & Agentic AI Equivalent (Pydantic is a Python Library)</h4>
             <pre style="background: #000; padding: 14px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem; overflow-x: auto; color: #4ADE80; border: 1px solid rgba(74, 222, 128, 0.2);">${escapeHtml(item.python)}</pre>
         </div>
 
-        <!-- NEW: Detailed Syntax Breakdown & Key Differences -->
+        <!-- Detailed Syntax Breakdown & Key Differences -->
         <div style="background: rgba(18, 24, 38, 0.8); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 12px; padding: 18px; margin-bottom: 16px;">
             ${item.explanation}
             <div style="margin-top: 10px; font-size: 0.88rem; color: var(--gold-primary);">${item.proTip}</div>
