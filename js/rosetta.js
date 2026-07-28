@@ -121,39 +121,52 @@ preds = tabfm.predict_proba(test_df) # Instant forward-pass prediction`,
     },
     graph: {
         title: "4. Stata .do File / SAS Macros ➔ LangGraph State Machines (StateGraph)",
-        sas: `/* SAS Macro Chain */
+        sas: `/* SAS Macro Chain with Conditional Logic */
 %macro run_survey_pipeline();
     %clean_data();
     %fit_models();
-    %export_report();
+    
+    /* SAS Macro Conditional Logic (%IF / %ELSE) */
+    %if &SYSERR. = 0 %then %do;
+        %export_report();
+    %end;
+    %else %do;
+        %log_error();
+    %end;
 %mend;`,
-        stata: `* Stata Sequential Execution
+        stata: `* Stata Sequential Execution with if/else
 do "01_clean.do"
-do "02_models.do"
-do "03_report.do"`,
-        python: `# LangGraph State Machine (StateGraph)
-from langgraph.graph import StateGraph
+if _rc == 0 {
+    do "02_models.do"
+}`,
+        python: `# LangGraph State Machine (StateGraph) with Dynamic Router Edges
+from langgraph.graph import StateGraph, END
+
+def router_node(state):
+    if state["accuracy"] >= 0.85:
+        return "report"
+    return "re_engineer_features" # Cyclic self-correction loop!
 
 builder = StateGraph(SurveyState)
 builder.add_node("clean", node_clean_data)
 builder.add_node("tabfm", node_run_tabfm)
 builder.add_node("report", node_draft_report)
-builder.add_edge("clean", "tabfm")
-builder.add_edge("tabfm", "report")`,
+builder.add_conditional_edges("tabfm", router_node)`,
         explanation: `
             <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 Code & Execution Breakdown:</h4>
             <ul style="color: var(--text-muted); font-size: 0.88rem; padding-left: 18px; margin-bottom: 12px;">
-                <li><strong>SAS Macros / Stata .do Files:</strong> Linear script execution. If a step fails or accuracy is too low, the entire script halts.</li>
-                <li><strong>LangGraph <code>StateGraph</code>:</strong> Cyclic state graph. Nodes are pure Python functions, edges handle decision logic, and State (<code>TypedDict</code>) retains execution history and data memory.</li>
+                <li><strong>SAS Macro Conditional Logic (%IF / %ELSE):</strong> Evaluates macro variables (e.g. <code>&SYSERR.</code> or <code>&syscc.</code>) or macro expressions to determine which macro block to run next.</li>
+                <li><strong>LangGraph State Machine:</strong> Uses Python router functions acting on a shared <code>State</code> dictionary. Unlike linear SAS macros, LangGraph nodes can make <strong>non-deterministic AI decisions</strong>, loop back cyclically to previous nodes, or pause for Human-in-the-Loop review.</li>
             </ul>
 
-            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Key Differences:</h4>
+            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Key Differences: SAS Macro %IF vs LangGraph Router Edges:</h4>
             <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
-                <p><strong>1. Cyclic Loops & Self-Correction:</strong> LangGraph nodes can inspect their own outputs (e.g. check ROC-AUC score) and loop back to re-code features automatically if quality targets aren't met.</p>
-                <p style="margin-top:6px;"><strong>2. Human-in-the-Loop Interrupts:</strong> LangGraph allows pausing execution before publishing a sociological report to request human approval.</p>
+                <p><strong>1. State Dictionary Memory:</strong> SAS macros rely on global macro variables (<code>&var.</code>). LangGraph passes a centralized <code>State</code> object containing full message history, data tables, and agent memory across graph nodes.</p>
+                <p style="margin-top:6px;"><strong>2. Dynamic Agent Routing:</strong> In LangGraph, the conditional edge can ask an LLM agent to inspect model output errors and dynamically decide which tool node to execute next.</p>
+                <p style="margin-top:6px;"><strong>3. Built-in Checkpointing:</strong> LangGraph can pause execution (e.g. waiting for human sociological approval), save graph state to a database, and resume seamlessly.</p>
             </div>
         `,
-        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Think of LangGraph nodes as individual SAS macros (%clean, %fit), but connected by smart conditional decision logic instead of static linear scripts!",
+        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Just as SAS Macros use %IF/%THEN to direct flow based on macro variables, LangGraph uses conditional router edges—but with full state persistence, cyclic self-correction loops, and LLM-driven decision making!",
         agenticNote: "LangGraph provides state persistence, cyclic execution loops, conditional node branching, and memory — perfect for multi-step survey analysis."
     },
     mcp: {
@@ -237,14 +250,14 @@ function renderRosettaContent(key) {
         
         <div style="display: grid; grid-template-columns: ${gridColumns}; gap: 16px; margin-bottom: 16px;">
             <div>
-                <h4 style="font-size: 0.85rem; color: var(--accent-blue); margin-bottom: 6px;">SAS Command + PROC FORMAT Check (Pydantic Equivalent in SAS)</h4>
+                <h4 style="font-size: 0.85rem; color: var(--accent-blue); margin-bottom: 6px;">SAS Command (Primary)</h4>
                 <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem; overflow-x: auto; color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.2);">${escapeHtml(item.sas)}</pre>
             </div>
             ${stataBlockHtml}
         </div>
 
         <div style="margin-bottom: 16px;">
-            <h4 style="font-size: 0.85rem; color: var(--gold-primary); margin-bottom: 6px;">Python & Agentic AI Equivalent (Pydantic Class Model)</h4>
+            <h4 style="font-size: 0.85rem; color: var(--gold-primary); margin-bottom: 6px;">Python & Agentic AI Equivalent</h4>
             <pre style="background: #000; padding: 14px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem; overflow-x: auto; color: #4ADE80; border: 1px solid rgba(74, 222, 128, 0.2);">${escapeHtml(item.python)}</pre>
         </div>
 
