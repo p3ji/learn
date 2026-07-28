@@ -558,3 +558,19 @@ function closeInteractiveLabModal() {
     if (modal) modal.style.display = 'none';
 }
 
+// ─── Self-test: confirm this script loaded ────────────────────────────────────
+console.log('[interactive_notebook.js] ✅ Loaded. openInteractiveLabModal is', typeof openInteractiveLabModal);
+
+// ─── Delegated click listener: fallback for dynamically rendered buttons ──────
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-lab-idx]');
+    if (btn) {
+        const idx = parseInt(btn.dataset.labIdx, 10);
+        if (!isNaN(idx)) openInteractiveLabModal(idx);
+    }
+});
+
+// Close modal on backdrop click
+document.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'labModal') closeInteractiveLabModal();
+});

@@ -582,8 +582,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            showStage(1);
-            loadPyodideEngine();
+            try { showStage(1); } catch(e) { console.error('showStage(1) error:', e); }
         });
     </script>
 </body>
