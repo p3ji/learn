@@ -1,4 +1,4 @@
-// Data Science Interactive Workbench & Activity Suite with Step-by-Step Hand-Holding & Data Dictionary
+// Data Science Interactive Workbench & Activity Suite with Target Container Support & Safe Event Handling
 
 const sampleSurveyData = [
     { id: 1, age_group: '30-44', edu: 'Master', ai_risk: 4, tech_fam: 5, ai_trust: 1, weight: 1.25 },
@@ -13,11 +13,14 @@ const sampleSurveyData = [
     { id: 10, age_group: '30-44', edu: 'PhD', ai_risk: 2, tech_fam: 5, ai_trust: 1, weight: 1.00 }
 ];
 
-let activeDsTab = 'guide';
+let activeDsTab = 'feature_engineering';
 
-function renderDsActivitySuite(tabKey, evt) {
-    activeDsTab = tabKey || 'guide';
-    const stage = document.getElementById('dsStage');
+function renderDsActivitySuite(tabKey, targetContainerId, evt) {
+    activeDsTab = tabKey || 'feature_engineering';
+    
+    // Support stage-specific containers: dsStage1, dsStage2, dsStage3, or default dsStage
+    const targetId = targetContainerId || (activeDsTab === 'feature_engineering' ? 'dsStage1' : activeDsTab === 'ml_comparison' ? 'dsStage2' : 'dsStage3');
+    const stage = document.getElementById(targetId) || document.getElementById('dsStage1') || document.getElementById('dsStage');
     if (!stage) return;
 
     document.querySelectorAll('.ds-tab-btn').forEach(b => b.classList.remove('active'));
@@ -89,7 +92,7 @@ function renderDsActivitySuite(tabKey, evt) {
                 </div>
 
                 <div style="text-align: center;">
-                    <button class="fb-action-btn gold" onclick="renderDsActivitySuite('feature_engineering')">Start Activity 1: Feature Engineering Lab ➔</button>
+                    <button class="fb-action-btn gold" onclick="renderDsActivitySuite('feature_engineering', '${targetId}')">Start Activity 1: Feature Engineering Lab ➔</button>
                 </div>
             </div>
         `;
@@ -381,5 +384,5 @@ function runHypothesisTest() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderDsActivitySuite('guide');
+    renderDsActivitySuite('feature_engineering', 'dsStage1');
 });

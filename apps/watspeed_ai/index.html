@@ -539,10 +539,10 @@
             if (targetStage) targetStage.classList.add('active');
             if (targetItem) targetItem.classList.add('active');
 
-            // Render specific components inside stage
+            // Render specific components inside stage with explicit container IDs
             if (stageNum === 1) {
                 renderRosettaContent('data', 'rosettaContentCard1');
-                renderDsActivitySuite('guide', 'dsStage1');
+                renderDsActivitySuite('feature_engineering', 'dsStage1');
             } else if (stageNum === 2) {
                 renderRosettaContent('ml', 'rosettaContentCard2');
                 renderDsActivitySuite('ml_comparison', 'dsStage2');
