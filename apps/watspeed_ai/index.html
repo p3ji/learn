@@ -165,18 +165,6 @@
                 <div id="dsStage1" style="background: rgba(15, 23, 42, 0.9); border: 2px solid var(--gold-primary); border-radius: 20px; padding: 24px;"></div>
             </section>
 
-            <!-- Stage 1 Component D: Reproducible Analytical Pipeline (RAP) Bridge Module -->
-            <section class="section-card">
-                <div class="section-header">
-                    <div>
-                        <h3 class="section-title">📦 From Folder Clutter to Reproducible Analytical Pipelines (RAP)</h3>
-                        <p class="section-subtitle">Step-by-step guide to moving from loose scripts to locked environments, DAG tasks, schema assertions, and CI/CD.</p>
-                    </div>
-                    <button class="fb-launch-btn" onclick="openSectionFeedback('RAP Pipeline Module')">📝 Notes &amp; AI Assistant</button>
-                </div>
-                <div id="rapModuleCard"></div>
-            </section>
-
             <div class="stage-nav-footer">
                 <div></div>
                 <button class="fb-action-btn gold" onclick="showStage(2)">Proceed to Stage 2: Statistics &amp; Inference ➔</button>
@@ -383,6 +371,18 @@
                     <button class="fb-launch-btn" onclick="openSectionFeedback('LangGraph Rosetta Stone')">📝 Notes &amp; AI Assistant</button>
                 </div>
                 <div id="rosettaContentCard5" class="rosetta-card"></div>
+            </section>
+
+            <!-- Stage 5 Component B: Reproducible Analytical Pipeline (RAP) Bridge Module -->
+            <section class="section-card">
+                <div class="section-header">
+                    <div>
+                        <h3 class="section-title">📦 From Folder Clutter to Reproducible Analytical Pipelines (RAP)</h3>
+                        <p class="section-subtitle">Step-by-step guide to moving from loose scripts to locked environments, DAG tasks, schema assertions, and CI/CD.</p>
+                    </div>
+                    <button class="fb-launch-btn" onclick="openSectionFeedback('RAP Pipeline Module')">📝 Notes &amp; AI Assistant</button>
+                </div>
+                <div id="rapModuleCard"></div>
             </section>
 
 
@@ -594,7 +594,6 @@
                 renderDataDictionary('dataDictionary');
                 renderRosettaContent('data', 'rosettaContentCard1');
                 renderDsActivitySuite('feature_engineering', 'dsStage1');
-                renderRapModuleCard('rapModuleCard');
             } else if (stageNum === 2) {
                 renderRosettaContent('ml', 'rosettaContentCard2');
                 renderDsActivitySuite('hypothesis_testing', 'dsStage2');
@@ -603,8 +602,9 @@
             } else if (stageNum === 4) {
                 // Stage 4: Agentic Tools, Pydantic & ReAct Sandbox
             } else if (stageNum === 5) {
-                // Stage 5: LangGraph State Machines & 9 Notebooks
+                // Stage 5: LangGraph State Machines, RAP Pipelines & 9 Notebooks
                 renderRosettaContent('graph', 'rosettaContentCard5');
+                renderRapModuleCard('rapModuleCard');
             }
 
             window.scrollTo({ top: 250, behavior: 'smooth' });
