@@ -1,197 +1,416 @@
-// Interactive In-Browser Python & Jupyter Notebook Execution Lab (Pyodide & Client-Side Execution Engine)
+﻿// Interactive In-Browser Python Execution Lab
+// Engine: Skulpt (real Python interpreter in JS) with Pyodide WASM upgrade path
 
+// â”€â”€â”€ Lab Scripts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const defaultLabNotebooks = {
     1: {
         title: "Lab 01: Python Data Essentials & Pydantic Recoding",
-        subtitle: "Modify Pandas recoding logic and Pydantic validation rules. Click 'Run Code' to execute live!",
-        initialCode: `# Notebook 01: Interactive Pandas & Pydantic Survey Recoding
-import pandas as pd
+        subtitle: "Modify Pandas recoding logic and Pydantic validation rules. Click 'Run Code' or press Shift+Enter to execute!",
+        initialCode: `# Lab 01 â€” Survey Data Recoding
+# Try changing recode_cutoff to 3 or 5 and re-running!
 
-# 1. Sample Survey Dataset
 data = [
-    {"id": "RESP_01", "age_group": "30-44", "edu": "Master's", "ai_risk": 4, "tech_fam": 5, "ai_trust": 1, "weight": 1.25},
-    {"id": "RESP_02", "age_group": "18-29", "edu": "Bachelor's", "ai_risk": -9, "tech_fam": 4, "ai_trust": 1, "weight": 0.95},
-    {"id": "RESP_03", "age_group": "45-60", "edu": "High School", "ai_risk": 5, "tech_fam": 2, "ai_trust": 0, "weight": 1.10},
-    {"id": "RESP_04", "age_group": "60+", "edu": "PhD", "ai_risk": 4, "tech_fam": 3, "ai_trust": 0, "weight": 1.40},
-    {"id": "RESP_05", "age_group": "18-29", "edu": "Master's", "ai_risk": 1, "tech_fam": 5, "ai_trust": 1, "weight": 0.88}
+    {"id": "RESP_01", "age_group": "30-44", "ai_risk": 4,  "ai_trust": 1, "weight": 1.25},
+    {"id": "RESP_02", "age_group": "18-29", "ai_risk": -9, "ai_trust": 1, "weight": 0.95},
+    {"id": "RESP_03", "age_group": "45-60", "ai_risk": 5,  "ai_trust": 0, "weight": 1.10},
+    {"id": "RESP_04", "age_group": "60+",   "ai_risk": 4,  "ai_trust": 0, "weight": 1.40},
+    {"id": "RESP_05", "age_group": "18-29", "ai_risk": 1,  "ai_trust": 1, "weight": 0.88},
 ]
 
-df = pd.DataFrame(data)
+# --- EDIT THESE VALUES ---
+recode_cutoff = 4    # Change to 3 or 5 and re-run!
+missing_code  = -9   # SAS equivalent: missing = .
 
-# 2. Try modifying the cutoff threshold or missing value code below!
-recode_cutoff = 4
-missing_code = -9
+# Recode missing values and create high-risk flag
+total_w = 0.0
+weighted_sum = 0.0
 
-# Clean missing values (-9 -> None)
-df['ai_risk_clean'] = df['ai_risk'].apply(lambda x: None if x == missing_code else x)
+print("id        age_group  ai_risk  cleaned   high_risk")
+print("-" * 50)
 
-# Create binary High Risk Flag (1/0)
-df['high_risk_flag'] = (df['ai_risk_clean'] >= recode_cutoff).astype(int)
+for row in data:
+    raw = row["ai_risk"]
+    cleaned = None if raw == missing_code else raw
+    flag = 1 if (cleaned is not None and cleaned >= recode_cutoff) else 0
+    row["ai_risk_clean"] = cleaned
+    row["high_risk_flag"] = flag
+    cleaned_str = str(cleaned) if cleaned is not None else "NaN"
+    print(row["id"] + "  " + row["age_group"] + "  " + str(raw) + "  " + cleaned_str + "  " + str(flag))
+    if cleaned is not None:
+        weighted_sum += cleaned * row["weight"]
+        total_w += row["weight"]
 
-# Calculate weighted risk mean
-weighted_mean = (df['ai_risk_clean'].dropna() * df['weight']).sum() / df['weight'].sum()
-
-print("--- RECODED SURVEY DATAFRAME ---")
-print(df[['id', 'age_group', 'ai_risk', 'ai_risk_clean', 'high_risk_flag']])
-print(f"\\nPopulation Weighted Risk Mean: {weighted_mean:.2f} / 5.0")
+weighted_mean = weighted_sum / total_w if total_w > 0 else 0
+print("")
+print("Population Weighted Risk Mean: " + str(round(weighted_mean, 2)) + " / 5.0")
+print("(Recode Cutoff >= " + str(recode_cutoff) + ")")
 `
     },
     2: {
         title: "Lab 02: Supervised ML & PROC LOGISTIC Bridge",
-        subtitle: "Tune Train/Test split ratio or Logistic Regression parameters and execute live predictions!",
-        initialCode: `# Notebook 02: Scikit-Learn Supervised ML & PROC LOGISTIC Bridge
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, roc_auc_score
+        subtitle: "Tune train/test split ratio or decision threshold and see accuracy change live!",
+        initialCode: `# Lab 02 â€” Logistic Regression (no sklearn needed)
+# Simulates a trained model with adjustable decision threshold
 
-# Try tweaking hyper-parameters:
-test_ratio = 0.20
-random_state = 42
+# --- EDIT THESE VALUES ---
+test_ratio = 0.20       # Fraction for test set (try 0.30 or 0.10)
+decision_threshold = 0.5  # Probability cutoff for High Trust (try 0.4 or 0.6)
 
-# Simulated Features & Targets
-X = [[4, 5], [2, 4], [5, 2], [4, 3], [1, 5], [3, 3], [4, 4], [2, 4], [5, 1], [2, 5]]
-y = [1, 1, 0, 0, 1, 0, 0, 1, 0, 1]
-weights = [1.25, 0.95, 1.10, 1.40, 0.88, 1.05, 1.15, 0.92, 1.35, 1.00]
+# Simulated predicted probabilities [feature: ai_risk, tech_fam]
+respondents = [
+    {"id": "RESP_01", "ai_risk": 4, "tech_fam": 5, "actual": 1},
+    {"id": "RESP_02", "ai_risk": 2, "tech_fam": 4, "actual": 1},
+    {"id": "RESP_03", "ai_risk": 5, "tech_fam": 2, "actual": 0},
+    {"id": "RESP_04", "ai_risk": 4, "tech_fam": 3, "actual": 0},
+    {"id": "RESP_05", "ai_risk": 1, "tech_fam": 5, "actual": 1},
+    {"id": "RESP_06", "ai_risk": 3, "tech_fam": 3, "actual": 0},
+    {"id": "RESP_07", "ai_risk": 4, "tech_fam": 4, "actual": 0},
+    {"id": "RESP_08", "ai_risk": 2, "tech_fam": 4, "actual": 1},
+    {"id": "RESP_09", "ai_risk": 5, "tech_fam": 1, "actual": 0},
+    {"id": "RESP_10", "ai_risk": 2, "tech_fam": 5, "actual": 1},
+]
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_ratio, random_state=random_state)
+# Simple logistic probability: p = 1 / (1 + exp(2*risk - 3*tech))
+import math
 
-clf = LogisticRegression()
-clf.fit(X_train, y_train)
+n_test = int(len(respondents) * test_ratio)
+test_set = respondents[-n_test:] if n_test > 0 else respondents
 
-preds = clf.predict(X_test)
-probs = clf.predict_proba(X_test)[:, 1]
+correct = 0
+print("id        prob    predicted  actual  correct?")
+print("-" * 50)
+for r in test_set:
+    logit = 2.5 - 0.6 * r["ai_risk"] + 0.5 * r["tech_fam"]
+    prob = 1.0 / (1.0 + math.exp(-logit))
+    predicted = 1 if prob >= decision_threshold else 0
+    ok = predicted == r["actual"]
+    if ok:
+        correct += 1
+    print(r["id"] + "  " + str(round(prob, 3)) + "  " + str(predicted) + "  " + str(r["actual"]) + "  " + ("âœ“" if ok else "âœ—"))
 
-print("--- MODEL ACCURACY METRICS ---")
-print(f"Test Accuracy: {accuracy_score(y_test, preds) * 100:.1f}%")
-print(f"ROC-AUC Score: {roc_auc_score(y_test, probs):.3f}")
-print("SAS PROC LOGISTIC Equivalent Fit Converged Successfully!")
+accuracy = correct / len(test_set) * 100
+print("")
+print("Test Set Size:  " + str(len(test_set)) + " respondents")
+print("Threshold:      " + str(decision_threshold))
+print("Test Accuracy:  " + str(round(accuracy, 1)) + "%")
 `
     },
     3: {
         title: "Lab 03: Google TabFM Zero-Shot Survey Classifier",
-        subtitle: "Test TabFM zero-shot classification directly on un-coded raw string text columns!",
-        initialCode: `# Notebook 03: Google TabFM Zero-Shot Classification Lab
-# TabFM reads raw text categories directly into In-Context Transformer Memory
+        subtitle: "Test how TabFM classifies respondents without manual dummy coding!",
+        initialCode: `# Lab 03 â€” Google TabFM Zero-Shot Simulation
+# Demonstrates why TabFM doesn't need one-hot encoding
 
-in_context_memory_rows = 128
-target_column = "High_AI_Trust"
-
-test_respondent = {
-    "Age_Group": "18-29",
-    "Education_Level": "Master's",
-    "Perceived_AI_Risk": "Very Low",
-    "Tech_Familiarity": "Expert"
+# --- EDIT THE RESPONDENT PROFILE BELOW ---
+respondent = {
+    "Age_Group":       "18-29",      # try: "30-44", "45-60", "60+"
+    "Education_Level": "Master's",   # try: "High School", "Bachelor's", "PhD"
+    "Perceived_AI_Risk": "Low",      # try: "Low", "Medium", "High", "Very High"
+    "Tech_Familiarity":  "Expert"    # try: "Novice", "Intermediate", "Expert"
 }
 
-# Zero-Shot Context Prediction Simulation
-print("--- GOOGLE TabFM ZERO-SHOT CLASSIFICATION ---")
-print(f"In-Context Memory: {in_context_memory_rows} rows loaded")
-print(f"Target Outcome: {target_column}")
-print(f"Predicting for Respondent: {test_respondent}")
-print("\\nZero-Shot Output Probability:")
-print("-> High_AI_Trust = 1: 91.4% Confidence")
-print("-> High_AI_Trust = 0: 8.6% Confidence")
-print("ZERO manual one-hot dummy encoding required!")
+in_context_rows = 128  # Try changing to 64 or 256
+
+# Lookup table (simulates TabFM in-context attention weights)
+risk_scores = {"Very Low": 0.05, "Low": 0.20, "Medium": 0.50, "High": 0.78, "Very High": 0.92}
+age_mod     = {"18-29": -0.15, "30-44": 0.0, "45-60": 0.20, "60+": 0.35}
+edu_mod     = {"High School": 0.10, "Bachelor's": 0.0, "Master's": -0.05, "PhD": -0.10}
+tech_mod    = {"Novice": 0.20, "Intermediate": 0.0, "Expert": -0.20}
+
+base = risk_scores.get(respondent["Perceived_AI_Risk"], 0.50)
+base += age_mod.get(respondent["Age_Group"], 0)
+base += edu_mod.get(respondent["Education_Level"], 0)
+base += tech_mod.get(respondent["Tech_Familiarity"], 0)
+base = max(0.01, min(0.99, base))
+
+p_low_trust  = round(base, 3)
+p_high_trust = round(1 - base, 3)
+
+print("=== GOOGLE TabFM ZERO-SHOT CLASSIFICATION ===")
+print("In-Context Memory: " + str(in_context_rows) + " rows loaded")
+print("")
+print("Respondent Profile:")
+for k, v in respondent.items():
+    print("  " + k + ": " + v)
+print("")
+print("Prediction (no dummy encoding required!):")
+print("  High_AI_Trust = 1: " + str(round(p_high_trust * 100, 1)) + "% confidence")
+print("  High_AI_Trust = 0: " + str(round(p_low_trust  * 100, 1)) + "% confidence")
+predicted = "HIGH TRUST" if p_high_trust > 0.5 else "LOW TRUST"
+print("")
+print("Final Classification: " + predicted)
 `
     },
     4: {
         title: "Lab 04: LangChain & Tool Calling for Survey Analysis",
-        subtitle: "Edit the @tool function and test how LLMs invoke Python functions with JSON parameters!",
-        initialCode: `# Notebook 04: LangChain @tool Function Calling Lab
+        subtitle: "Edit the @tool function and watch an LLM decide which tool to call!",
+        initialCode: `# Lab 04 â€” LangChain @tool Function Calling Simulation
+# In real LangChain, the LLM reads your tool docstrings and
+# calls the right function with JSON parameters automatically.
 
-def run_survey_crosstab(row_var, col_var):
-    """Calculates cross-tabulation percentages between two survey variables."""
-    results = {
-        "18-29": {"High Trust": "67.0%", "Low Trust": "33.0%"},
-        "30-44": {"High Trust": "50.0%", "Low Trust": "50.0%"},
-        "45-60": {"High Trust": "25.0%", "Low Trust": "75.0%"},
-        "60+":   {"High Trust": "12.0%", "Low Trust": "88.0%"}
+def run_crosstab(row_var, col_var):
+    """Calculates cross-tabulation between two survey variables."""
+    table = {
+        "18-29": {"High Trust": 67.0, "Low Trust": 33.0},
+        "30-44": {"High Trust": 50.0, "Low Trust": 50.0},
+        "45-60": {"High Trust": 25.0, "Low Trust": 75.0},
+        "60+":   {"High Trust": 12.0, "Low Trust": 88.0},
     }
-    return f"Crosstab Result for {row_var} vs {col_var}:\\n" + str(results)
+    print("Crosstab: " + row_var + " vs " + col_var)
+    print("-" * 40)
+    for group, counts in table.items():
+        print(group + ":")
+        for label, pct in counts.items():
+            print("  " + label + ": " + str(pct) + "%")
 
-# Try testing tool invocation below!
-requested_row = "Age_Group"
-requested_col = "High_AI_Trust"
+def fit_logistic(target, predictors):
+    """Fits a logistic regression model."""
+    print("Fitting model: " + target + " ~ " + " + ".join(predictors))
+    print("  Accuracy:  88.2%")
+    print("  ROC-AUC:   0.912")
+    print("  Converged: Yes")
 
-output = run_survey_crosstab(requested_row, requested_col)
-print("--- LLM TOOL CALL INVOCATION ---")
-print(output)
+# --- EDIT: Try calling a different tool below ---
+user_request = "I want to understand AI trust by age group"
+
+# Simulate LLM tool selection logic
+print("User: " + user_request)
+print("")
+print("LLM thinking: The user wants a breakdown by age group...")
+print("LLM selects tool: run_crosstab")
+print("")
+
+run_crosstab("Age_Group", "High_AI_Trust")
 `
     },
     5: {
         title: "Lab 05: LangGraph State Machines for Survey Pipelines",
-        subtitle: "Modify conditional graph router logic and test cyclic state transitions!",
-        initialCode: `# Notebook 05: LangGraph State Machine & Router Logic
+        subtitle: "Modify the router threshold and trace state transitions!",
+        initialCode: `# Lab 05 â€” LangGraph State Machine Router
+# LangGraph adds cyclic edges so agents can RETRY if accuracy is too low
 
 state = {
     "current_step": "fit_model",
-    "accuracy": 0.88,
-    "target_accuracy": 0.85,
-    "retry_count": 0
+    "accuracy": 0.84,        # Try changing this value
+    "target_accuracy": 0.85, # Try changing this threshold
+    "retry_count": 0,
+    "max_retries": 3,
 }
 
-def router_node(state):
-    """LangGraph Router Edge Logic"""
-    if state["accuracy"] >= state["target_accuracy"]:
-        return "draft_final_report"
+def fit_model_node(s):
+    print("Node: fit_model")
+    print("  Accuracy = " + str(s["accuracy"]))
+    return s
+
+def re_engineer_features_node(s):
+    s["retry_count"] += 1
+    s["accuracy"] = min(0.99, s["accuracy"] + 0.03)  # simulate improvement
+    print("Node: re_engineer_features (retry #" + str(s["retry_count"]) + ")")
+    print("  Accuracy improved to " + str(round(s["accuracy"], 3)))
+    return s
+
+def router_edge(s):
+    if s["accuracy"] >= s["target_accuracy"]:
+        return "draft_report"
+    elif s["retry_count"] >= s["max_retries"]:
+        return "draft_report"  # give up after max retries
     else:
-        return "re_engineer_features" # Cyclic self-correction loop!
+        return "re_engineer_features"
 
-next_step = router_node(state)
+print("=== LANGGRAPH STATE MACHINE EXECUTION ===")
+print("Target Accuracy: " + str(state["target_accuracy"]))
+print("")
 
-print("--- LANGGRAPH STATE MACHINE EXECUTION ---")
-print(f"Current Model Accuracy: {state['accuracy'] * 100}% (Threshold: {state['target_accuracy'] * 100}%)")
-print(f"Routing to Next Node: ---> [{next_step}]")
+state = fit_model_node(state)
+while True:
+    next_node = router_edge(state)
+    print("Router -> " + next_node)
+    if next_node == "draft_report":
+        break
+    state = re_engineer_features_node(state)
+
+print("")
+print("Final Node: draft_report")
+print("Final Accuracy: " + str(round(state["accuracy"], 3)))
 `
     },
     6: {
         title: "Lab 06: WatSPEED Capstone Autonomous Survey Assistant",
-        subtitle: "Modify the autonomous survey request prompt and generate executive sociological summaries!",
-        initialCode: `# Notebook 06: WatSPEED Capstone Multi-Agent Executive Assistant
+        subtitle: "Modify the user prompt and adjust report thresholds!",
+        initialCode: `# Lab 06 â€” WatSPEED Capstone Agent
+# Simulates an autonomous multi-agent survey analysis system
 
-user_prompt = "Analyze AI Trust across Age groups, run Logistic Regression, and generate policy advice."
+# --- EDIT THESE ---
+user_prompt = "Analyze AI Trust across Age groups and generate policy advice."
+significance_threshold = 0.05   # Try 0.01 for stricter p-value cutoff
+tabfm_accuracy = 0.894           # Simulated TabFM accuracy
 
-def run_capstone_agent(prompt):
-    return f"""
-===================================================================
-WATSPEED CAPSTONE EXECUTIVE REPORT
-===================================================================
-User Prompt: "{prompt}"
+# Simulated findings from the agentic pipeline
+findings = [
+    {"age": "18-29", "trust_pct": 67.0, "n": 312, "p_value": 0.0004},
+    {"age": "30-44", "trust_pct": 50.0, "n": 418, "p_value": 0.0210},
+    {"age": "45-60", "trust_pct": 25.0, "n": 287, "p_value": 0.0001},
+    {"age": "60+",   "trust_pct": 12.0, "n": 183, "p_value": 0.00003},
+]
 
-KEY SOCIOLOGICAL FINDINGS:
-1. Generational Divide: Respondents aged 60+ exhibit 4.2x higher perceived AI risk compared to 18-29 year olds (p = 0.00035).
-2. Model Benchmarks:
-   - SAS PROC LOGISTIC / Scikit-Learn: 84.2% Test Accuracy (AUC = 0.865)
-   - Google TabFM Zero-Shot: 89.4% Test Accuracy (AUC = 0.928)
+print("=" * 60)
+print("WATSPEED CAPSTONE EXECUTIVE REPORT")
+print("=" * 60)
+print("User Prompt: " + user_prompt)
+print("")
+print("KEY SOCIOLOGICAL FINDINGS:")
+for f in findings:
+    sig = "***" if f["p_value"] < significance_threshold else "(ns)"
+    print("  " + f["age"] + ": " + str(f["trust_pct"]) + "% High Trust  n=" + str(f["n"]) + "  p=" + str(f["p_value"]) + " " + sig)
 
-POLICY RECOMMENDATIONS:
-- Target digital literacy & AI trust workshops specifically at older demographic cohorts.
-===================================================================
-"""
+print("")
+print("MODEL BENCHMARKS:")
+print("  SAS PROC LOGISTIC:     84.2% accuracy (AUC = 0.865)")
+print("  Google TabFM Zero-Shot: " + str(tabfm_accuracy * 100) + "% accuracy (AUC = 0.928)")
 
-print(run_capstone_agent(user_prompt))
+print("")
+print("POLICY RECOMMENDATIONS:")
+print("  Target digital literacy workshops at 45+ demographic cohorts.")
+print("  Generational trust gap is statistically significant (p < " + str(significance_threshold) + ").")
+print("=" * 60)
 `
     }
 };
 
+// â”€â”€â”€ Python Engine â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+// Track initialization promises to avoid duplicate loads
+let _skulptLoaded = null;
+let _pyodideLoading = null;
+
+function updateStatusBadge(text, color) {
+    const badge = document.getElementById('pyStatusBadge');
+    if (badge) {
+        badge.textContent = text;
+        badge.style.color = color;
+    }
+}
+
+async function ensureSkulpt() {
+    if (_skulptLoaded) return _skulptLoaded;
+    _skulptLoaded = new Promise((resolve) => {
+        // Check if already on page
+        if (window.Sk) { resolve(true); return; }
+        // Dynamically inject Skulpt scripts
+        const s1 = document.createElement('script');
+        s1.src = 'https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js';
+        s1.onload = () => {
+            const s2 = document.createElement('script');
+            s2.src = 'https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js';
+            s2.onload = () => resolve(true);
+            s2.onerror = () => resolve(false);
+            document.head.appendChild(s2);
+        };
+        s1.onerror = () => resolve(false);
+        document.head.appendChild(s1);
+    });
+    return _skulptLoaded;
+}
+
+// Optional: also try to load Pyodide in background for heavier libs
 async function loadPyodideEngine() {
     if (window.pyodide) return window.pyodide;
-    try {
-        if (typeof loadPyodide !== 'undefined') {
-            const statusBadge = document.getElementById('pyStatusBadge');
-            if (statusBadge) { statusBadge.textContent = 'Loading Python Engine...'; statusBadge.style.color = '#FBBF24'; }
-            window.pyodide = await loadPyodide();
-            await window.pyodide.loadPackage(['pandas', 'scikit-learn', 'micropip']);
-            console.log('Pyodide CPython 3.11 WebAssembly Engine Ready!');
-            if (statusBadge) { statusBadge.textContent = '✅ Python 3.11 WASM Ready'; statusBadge.style.color = '#4ADE80'; }
+    if (_pyodideLoading) return _pyodideLoading;
+    _pyodideLoading = (async () => {
+        try {
+            if (typeof loadPyodide !== 'undefined') {
+                window.pyodide = await loadPyodide();
+                await window.pyodide.loadPackage(['pandas', 'scikit-learn', 'micropip']);
+                return window.pyodide;
+            }
+        } catch (e) {
+            console.warn('Pyodide unavailable, using Skulpt.', e);
         }
-    } catch (e) {
-        console.warn('Pyodide WebAssembly engine fallback to instant client-side execution.', e);
-        const statusBadge = document.getElementById('pyStatusBadge');
-        if (statusBadge) { statusBadge.textContent = '⚡ Simulation Mode'; statusBadge.style.color = '#FBBF24'; }
-    }
-    return window.pyodide;
+        return null;
+    })();
+    return _pyodideLoading;
 }
+
+// â”€â”€â”€ Run Python via Skulpt â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+async function executeLabCode() {
+    const editor  = document.getElementById('labCodeEditor');
+    const outArea = document.getElementById('labOutputArea');
+    if (!editor || !outArea) return;
+
+    const code = editor.value;
+    outArea.style.color = '#FFF';
+    outArea.innerText = 'â³ Running Python...';
+
+    // â”€â”€ Path 1: Pyodide (real CPython WASM) if already loaded â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    if (window.pyodide) {
+        try {
+            await window.pyodide.runPythonAsync(`
+import sys, io
+_buf = io.StringIO()
+sys.stdout = _buf
+`);
+            await window.pyodide.runPythonAsync(code);
+            const out = await window.pyodide.runPythonAsync('_buf.getvalue()');
+            outArea.style.color = '#FFF';
+            outArea.innerText = out || '(script ran with no output)';
+        } catch (err) {
+            outArea.style.color = '#EF4444';
+            outArea.innerText = 'ðŸ”´ Python Error:\n' + String(err);
+        } finally {
+            try { await window.pyodide.runPythonAsync('sys.stdout = sys.__stdout__'); } catch(_){}
+        }
+        return;
+    }
+
+    // â”€â”€ Path 2: Skulpt (real Python interpreter, no WASM download needed) â”€â”€â”€â”€
+    updateStatusBadge('â³ Loading Python...', '#FBBF24');
+    const skulptOk = await ensureSkulpt();
+
+    if (!skulptOk || !window.Sk) {
+        outArea.style.color = '#EF4444';
+        outArea.innerText = 'âŒ Could not load Python engine (Skulpt CDN unreachable).\nPlease check your internet connection.';
+        updateStatusBadge('âŒ Engine Error', '#EF4444');
+        return;
+    }
+
+    updateStatusBadge('ðŸ Skulpt Python Ready', '#4ADE80');
+
+    let outputLines = [];
+
+    Sk.configure({
+        output: (text) => { outputLines.push(text); },
+        read: (x) => {
+            if (Sk.builtinFiles && Sk.builtinFiles["files"][x]) {
+                return Sk.builtinFiles["files"][x];
+            }
+            // Stub missing C-extension modules so import doesn't crash
+            if (x.endsWith('.py') || x.includes('pandas') || x.includes('sklearn')) {
+                return '';
+            }
+            throw new Error("Module not found: " + x);
+        },
+        __future__: Sk.python3,
+    });
+
+    try {
+        await Sk.misceval.asyncToPromise(() =>
+            Sk.importMainWithBody('<lab>', false, code, true)
+        );
+        const output = outputLines.join('');
+        outArea.style.color = '#FFF';
+        outArea.innerText = output || '(script ran with no output)';
+    } catch (err) {
+        // Skulpt throws real SyntaxError / NameError / TypeError etc.
+        outArea.style.color = '#EF4444';
+        const msg = err.toString();
+        // Extract clean traceback if available
+        const friendly = msg.replace('RangeError: Maximum call stack size exceeded', 'RecursionError: maximum recursion depth exceeded');
+        outArea.innerText = 'ðŸ”´ Python Error:\n' + friendly;
+    }
+}
+
+// â”€â”€â”€ Modal UI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function openInteractiveLabModal(nbIdx) {
     const lab = defaultLabNotebooks[nbIdx] || defaultLabNotebooks[1];
@@ -204,54 +423,75 @@ function openInteractiveLabModal(nbIdx) {
         document.body.appendChild(modal);
     }
 
+    // Escape HTML entities in code to prevent XSS via template literal
+    const escapedCode = lab.initialCode
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+
     modal.innerHTML = `
-        <div class="concept-modal-card" style="max-width: 920px; width: 95%;">
+        <div class="concept-modal-card" style="max-width:960px;width:95%;">
             <button class="concept-modal-close" onclick="closeInteractiveLabModal()">&times;</button>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                <div class="concept-badge-tag" style="background:var(--gold-primary); color:#000;">⚡ INTERACTIVE HANDS-ON LAB</div>
-                <span id="pyStatusBadge" class="nb-badge" style="background:rgba(56,189,248,0.15); color:#38BDF8;">Python 3.11 Engine Ready</span>
-            </div>
-            
-            <h2 class="concept-title" style="margin-bottom: 4px;">${lab.title}</h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 18px;">${lab.subtitle}</p>
 
-            <!-- Code Editor Box -->
-            <div style="background: #090D16; border: 1.5px solid var(--gold-primary); border-radius: 16px; padding: 16px; margin-bottom: 16px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
-                    <span style="font-family: var(--font-mono); font-size:0.82rem; color:var(--gold-primary); font-weight:700;">In [1]: Editable Python Script</span>
-                    <button class="fb-action-btn gold" style="padding: 6px 14px; font-size:0.85rem;" onclick="resetLabCode(${nbIdx})">↺ Reset Code</button>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+                <div class="concept-badge-tag" style="background:var(--gold-primary);color:#000;">âš¡ INTERACTIVE HANDS-ON LAB</div>
+                <span id="pyStatusBadge" style="font-family:var(--font-mono);font-size:0.8rem;padding:4px 12px;border-radius:20px;background:rgba(56,189,248,0.12);color:#38BDF8;border:1px solid rgba(56,189,248,0.3);">
+                    ðŸ Initializing Python Engine...
+                </span>
+            </div>
+
+            <h2 class="concept-title" style="margin-bottom:4px;">${lab.title}</h2>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:18px;">${lab.subtitle}</p>
+
+            <!-- Editor -->
+            <div style="background:#090D16;border:1.5px solid var(--gold-primary);border-radius:14px;padding:14px;margin-bottom:14px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                    <span style="font-family:var(--font-mono);font-size:0.8rem;color:var(--gold-primary);font-weight:700;">In [1]: Editable Python (Skulpt 1.2)</span>
+                    <button class="fb-action-btn gold" style="padding:5px 12px;font-size:0.82rem;" onclick="resetLabCode(${nbIdx})">â†º Reset</button>
                 </div>
-                <textarea id="labCodeEditor" class="sandbox-input" style="font-family: var(--font-mono); font-size: 0.88rem; height: 260px; color: #38BDF8; background: #000; border: 1px solid rgba(56,189,248,0.3); line-height: 1.5;" spellcheck="false">${lab.initialCode}</textarea>
+                <textarea id="labCodeEditor"
+                    style="font-family:var(--font-mono);font-size:0.86rem;height:280px;color:#e2e8f0;background:#000;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px;width:100%;box-sizing:border-box;resize:vertical;line-height:1.55;outline:none;"
+                    spellcheck="false">${escapedCode}</textarea>
             </div>
 
-            <!-- Run Button Bar -->
-            <div style="display:flex; gap:12px; margin-bottom:16px;">
-                <button class="fb-action-btn gold" style="flex:1; padding: 12px; font-size: 1rem; font-weight:900;" onclick="executeLabCode()">▶ Run Python Code (Shift+Enter)</button>
-            </div>
+            <!-- Run button -->
+            <button class="fb-action-btn gold" style="width:100%;padding:13px;font-size:1rem;font-weight:900;margin-bottom:14px;" onclick="executeLabCode()">
+                â–¶  Run Python Code &nbsp;&nbsp;(or press Shift+Enter)
+            </button>
 
-            <!-- Output Box -->
-            <div style="background: #000; border: 1.5px solid rgba(74, 222, 128, 0.4); border-radius: 14px; padding: 16px;">
-                <div style="font-family: var(--font-mono); font-size: 0.82rem; color: #4ADE80; font-weight: 700; margin-bottom: 6px;">Out [1]: Live Terminal Output</div>
-                <pre id="labOutputArea" style="font-family: var(--font-mono); font-size: 0.85rem; color: #FFF; white-space: pre-wrap; margin:0; max-height: 220px; overflow-y: auto;">Click 'Run Python Code' above to execute your modifications live!</pre>
+            <!-- Output terminal -->
+            <div style="background:#000;border:1.5px solid rgba(74,222,128,0.4);border-radius:12px;padding:14px;">
+                <div style="font-family:var(--font-mono);font-size:0.78rem;color:#4ADE80;font-weight:700;margin-bottom:6px;">Out [1]: Terminal Output</div>
+                <pre id="labOutputArea"
+                    style="font-family:var(--font-mono);font-size:0.84rem;color:#e2e8f0;white-space:pre-wrap;word-break:break-word;margin:0;max-height:260px;overflow-y:auto;line-height:1.5;">
+Press â–¶ Run Python Code to execute.</pre>
             </div>
         </div>
     `;
 
     modal.style.display = 'flex';
 
-    // Keyboard shortcut Shift+Enter
-    const editor = document.getElementById('labCodeEditor');
-    if (editor) {
-        editor.addEventListener('keydown', (e) => {
-            if (e.shiftKey && e.key === 'Enter') {
-                e.preventDefault();
+    // Shift+Enter shortcut
+    setTimeout(() => {
+        const editor = document.getElementById('labCodeEditor');
+        if (editor) {
+            editor.addEventListener('keydown', (e) => {
+                if (e.shiftKey && e.key === 'Enter') { e.preventDefault(); executeLabCode(); }
+            });
+            // Restore textarea value from unescaped original (innerHTML decodes entities)
+            editor.value = lab.initialCode;
+        }
+
+        // Pre-load Skulpt silently; run initial script once loaded
+        ensureSkulpt().then((ok) => {
+            if (ok) {
+                updateStatusBadge('ðŸ Skulpt Python Ready', '#4ADE80');
                 executeLabCode();
+            } else {
+                updateStatusBadge('âŒ Engine Error (no internet?)', '#EF4444');
             }
         });
-    }
-
-    // Auto-run initial script
-    setTimeout(executeLabCode, 200);
+    }, 50);
 }
 
 function resetLabCode(nbIdx) {
@@ -263,119 +503,8 @@ function resetLabCode(nbIdx) {
     }
 }
 
-async function executeLabCode() {
-    const editor = document.getElementById('labCodeEditor');
-    const outArea = document.getElementById('labOutputArea');
-    if (!editor || !outArea) return;
-
-    const code = editor.value;
-    outArea.style.color = '#FFF';
-    outArea.innerText = 'Executing Python code...';
-
-    // Check if Pyodide loaded — use sys.stdout redirect to capture all print() output
-    if (window.pyodide) {
-        try {
-            // Redirect Python stdout into a JS-accessible string buffer
-            await window.pyodide.runPythonAsync(`
-import sys, io
-_stdout_buf = io.StringIO()
-sys.stdout = _stdout_buf
-`);
-            await window.pyodide.runPythonAsync(code);
-            const captured = await window.pyodide.runPythonAsync(`_stdout_buf.getvalue()`);
-            outArea.style.color = '#FFF';
-            outArea.innerText = captured || '(no output)';
-            return;
-        } catch (err) {
-            outArea.style.color = '#EF4444';
-            outArea.innerText = 'Python Execution Error:\n' + err;
-            return;
-        } finally {
-            // Restore sys.stdout
-            try { await window.pyodide.runPythonAsync('sys.stdout = sys.__stdout__'); } catch(_) {}
-        }
-    }
-
-    // Instant Fallback Client Execution Engine
-    try {
-        let logs = [];
-        const customConsole = {
-            log: (...args) => logs.push(args.join(' ')),
-            error: (...args) => logs.push("ERROR: " + args.join(' '))
-        };
-
-        // Simulated Python Execution in JS Environment
-        let jsCode = code
-            .replace(/import pandas as pd/g, '// pandas import')
-            .replace(/from sklearn[^\n]+/g, '// sklearn import')
-            .replace(/from pydantic[^\n]+/g, '// pydantic import')
-            .replace(/print\((.*)\)/g, 'customConsole.log($1)')
-            .replace(/True/g, 'true')
-            .replace(/False/g, 'false')
-            .replace(/None/g, 'null')
-            .replace(/f"(.*)"/g, (match, p1) => '`' + p1.replace(/\{/g, '${') + '`');
-
-        const runFn = new Function('customConsole', jsCode);
-        runFn(customConsole);
-
-        outArea.innerText = logs.join('\n');
-    } catch (err) {
-        // Fallback Output Evaluator
-        outArea.innerText = "--- EXECUTED TERMINAL OUTPUT ---\n" + simulatePythonOutput(code);
-    }
-}
-
-function simulatePythonOutput(code) {
-    if (code.includes('recode_cutoff')) {
-        const cutoffMatch = code.match(/recode_cutoff\s*=\s*(\d+)/);
-        const cutoff = cutoffMatch ? cutoffMatch[1] : 4;
-        return `--- RECODED SURVEY DATAFRAME ---
-  id age_group  ai_risk  ai_risk_clean  high_risk_flag
-0 RESP_01    30-44        4            4.0               ${cutoff <= 4 ? 1 : 0}
-1 RESP_02    18-29       -9            NaN               0
-2 RESP_03    45-60        5            5.0               1
-3 RESP_04      60+        4            4.0               ${cutoff <= 4 ? 1 : 0}
-4 RESP_05    18-29        1            1.0               0
-
-Population Weighted Risk Mean: 3.42 / 5.0 (Recode Cutoff >= ${cutoff})`;
-    } else if (code.includes('test_ratio')) {
-        const ratioMatch = code.match(/test_ratio\s*=\s*([0-9.]+)/);
-        const ratio = ratioMatch ? parseFloat(ratioMatch[1]) : 0.20;
-        return `--- MODEL ACCURACY METRICS ---
-Train/Test Split: ${((1 - ratio) * 100).toFixed(0)}% Train / ${(ratio * 100).toFixed(0)}% Test
-Test Accuracy: 88.7%
-ROC-AUC Score: 0.912
-SAS PROC LOGISTIC Equivalent Fit Converged Successfully!`;
-    } else if (code.includes('TabFM')) {
-        return `--- GOOGLE TabFM ZERO-SHOT CLASSIFICATION ---
-In-Context Memory: 128 rows loaded
-Target Outcome: High_AI_Trust
-Zero-Shot Output Probability:
--> High_AI_Trust = 1: 91.4% Confidence
--> High_AI_Trust = 0: 8.6% Confidence
-ZERO manual one-hot dummy encoding required!`;
-    } else if (code.includes('crosstab')) {
-        return `--- LLM TOOL CALL INVOCATION ---
-Crosstab Result for Age_Group vs High_AI_Trust:
-{'18-29': {'High Trust': '67.0%', 'Low Trust': '33.0%'}, '30-44': {'High Trust': '50.0%', 'Low Trust': '50.0%'}, '45-60': {'High Trust': '25.0%', 'Low Trust': '75.0%'}, '60+': {'High Trust': '12.0%', 'Low Trust': '88.0%'}}`;
-    } else if (code.includes('router_node')) {
-        return `--- LANGGRAPH STATE MACHINE EXECUTION ---
-Current Model Accuracy: 88.0% (Threshold: 85.0%)
-Routing to Next Node: ---> [draft_final_report]`;
-    } else {
-        return `===================================================================
-WATSPEED CAPSTONE EXECUTIVE REPORT
-===================================================================
-KEY SOCIOLOGICAL FINDINGS:
-1. Generational Divide: Respondents aged 60+ exhibit 4.2x higher perceived AI risk compared to 18-29 year olds (p = 0.00035).
-2. Model Benchmarks:
-   - SAS PROC LOGISTIC / Scikit-Learn: 84.2% Test Accuracy (AUC = 0.865)
-   - Google TabFM Zero-Shot: 89.4% Test Accuracy (AUC = 0.928)
-===================================================================`;
-    }
-}
-
 function closeInteractiveLabModal() {
     const modal = document.getElementById('labModal');
     if (modal) modal.style.display = 'none';
 }
+
