@@ -146,13 +146,19 @@ function renderRapModuleCard(targetContainerId) {
     const container = document.getElementById(targetContainerId || 'rapModuleCard');
     if (!container) return;
 
-    const step = rapSteps[currentRapStep - 1];
+    const shortTitles = [
+        "Level 1: Script Folder",
+        "Level 2: Project Layout",
+        "Level 3: Pipeline DAG",
+        "Level 4: Quality Assertions",
+        "Level 5: CI/CD Automation"
+    ];
 
     let stepNavHtml = rapSteps.map(s => `
         <button class="viz-step-btn ${s.level === currentRapStep ? 'active' : ''}" 
                 onclick="setRapStep(${s.level})" 
                 style="padding: 8px 14px; font-size: 0.82rem;">
-            Level ${s.level}: ${s.title.split(':')[0]}
+            ${shortTitles[s.level - 1]}
         </button>
     `).join('');
 
