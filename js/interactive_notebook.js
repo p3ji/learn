@@ -1,4 +1,4 @@
-﻿// Interactive In-Browser Python Execution Lab
+// Interactive In-Browser Python Execution Lab
 // Engine: Skulpt (real Python interpreter in JS) with Pyodide WASM upgrade path
 
 // â”€â”€â”€ Lab Scripts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -404,18 +404,68 @@ sys.stdout = _buf
         // Skulpt throws real SyntaxError / NameError / TypeError etc.
         outArea.style.color = '#EF4444';
         const msg = err.toString();
-        // Extract clean traceback if available
         const friendly = msg.replace('RangeError: Maximum call stack size exceeded', 'RecursionError: maximum recursion depth exceeded');
-        outArea.innerText = 'ðŸ”´ Python Error:\n' + friendly;
+        outArea.innerText = '🔴 Python Error:\n' + friendly;
     }
 }
 
-// â”€â”€â”€ Modal UI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Lab Metadata ──────────────────────────────────────────────────────────────
+const labMeta = {
+    1: {
+        title: 'Lab 01: Survey Data Recoding',
+        stage: 'Stage 1 — Data & SAS Bridge',
+        description: 'Handle missing values (-9 → NaN), recode Likert scales, compute population-weighted means, and validate data with Pydantic schemas.',
+        topics: ['pandas', 'numpy', 'pydantic', 'survey weighting'],
+        notebookFile: 'lab_01_data_recoding.ipynb',
+    },
+    2: {
+        title: 'Lab 02: Supervised ML & PROC LOGISTIC Bridge',
+        stage: 'Stage 2 — ML & Google TabFM',
+        description: 'Encode categorical variables, train/test split, fit LogisticRegression with survey weights, and interpret Odds Ratios — Python equivalent of SAS PROC LOGISTIC.',
+        topics: ['scikit-learn', 'pandas', 'train/test split', 'LogisticRegression', 'ROC-AUC'],
+        notebookFile: 'lab_02_supervised_ml.ipynb',
+    },
+    3: {
+        title: 'Lab 03: Google TabFM Zero-Shot Classifier',
+        stage: 'Stage 2 — ML & Google TabFM',
+        description: 'See how a Tabular Foundation Model classifies survey respondents using raw categorical text — no dummy coding required.',
+        topics: ['TabFM', 'zero-shot', 'in-context learning'],
+        notebookFile: '03_the_agent_loop_react.ipynb',
+    },
+    4: {
+        title: 'Lab 04: LangChain & Tool Calling',
+        stage: 'Stage 3 — Agentic AI & LangGraph',
+        description: 'Wrap Python survey analysis functions as @tool callables. Watch an LLM agent invoke the right function with JSON parameters.',
+        topics: ['LangChain', '@tool', 'function calling', 'JSON schema'],
+        notebookFile: '02_tools_and_function_calling.ipynb',
+    },
+    5: {
+        title: 'Lab 05: LangGraph State Machines',
+        stage: 'Stage 3 — Agentic AI & LangGraph',
+        description: 'Build a cyclic LangGraph StateGraph with router edges that retry feature engineering when model accuracy is below threshold.',
+        topics: ['LangGraph', 'StateGraph', 'router edges', 'self-correcting agents'],
+        notebookFile: '06_langgraph_state_machines.ipynb',
+    },
+    6: {
+        title: 'Lab 06: WatSPEED Capstone — Autonomous Survey Assistant',
+        stage: 'Stage 4 — Capstone',
+        description: 'End-to-end multi-agent pipeline: data cleaning → model fitting → executive report generation, all orchestrated autonomously.',
+        topics: ['multi-agent', 'LangGraph', 'executive reporting', 'sociological analysis'],
+        notebookFile: '09_capstone_survey_assistant.ipynb',
+    },
+};
+
+const GITHUB_BLOB = 'https://github.com/p3ji/learn/blob/main/notebooks/';
+const COLAB_BASE  = 'https://colab.research.google.com/github/p3ji/learn/blob/main/notebooks/';
+
+// ─── Modal UI ──────────────────────────────────────────────────────────────────
+
 
 function openInteractiveLabModal(nbIdx) {
-    const lab = defaultLabNotebooks[nbIdx] || defaultLabNotebooks[1];
-    let modal = document.getElementById('labModal');
+    const lab  = labMeta[nbIdx]  || labMeta[1];
+    const code = (defaultLabNotebooks[nbIdx] || defaultLabNotebooks[1]).initialCode;
 
+    let modal = document.getElementById('labModal');
     if (!modal) {
         modal = document.createElement('div');
         modal.id = 'labModal';
