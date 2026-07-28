@@ -130,6 +130,16 @@ jobs:
     }
 ];
 
+function rapEscapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
 let currentRapStep = 1;
 
 function renderRapModuleCard(targetContainerId) {
@@ -142,7 +152,7 @@ function renderRapModuleCard(targetContainerId) {
         <button class="viz-step-btn ${s.level === currentRapStep ? 'active' : ''}" 
                 onclick="setRapStep(${s.level})" 
                 style="padding: 8px 14px; font-size: 0.82rem;">
-            Level ${s.level}
+            Level ${s.level}: ${s.title.split(':')[0]}
         </button>
     `).join('');
 
@@ -152,11 +162,11 @@ function renderRapModuleCard(targetContainerId) {
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
                 <div>
                     <h4 style="font-size: 0.82rem; color: #EF4444; margin-bottom: 6px;">❌ Legacy SAS / Stata Script</h4>
-                    <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #F87171; overflow-x: auto; border: 1px solid rgba(239,68,68,0.3);">${escapeHtml(step.sasExample)}</pre>
+                    <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #F87171; overflow-x: auto; border: 1px solid rgba(239,68,68,0.3);">${rapEscapeHtml(step.sasExample)}</pre>
                 </div>
                 <div>
                     <h4 style="font-size: 0.82rem; color: #EF4444; margin-bottom: 6px;">❌ Loose Python Script</h4>
-                    <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #F87171; overflow-x: auto; border: 1px solid rgba(239,68,68,0.3);">${escapeHtml(step.pythonExample)}</pre>
+                    <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #F87171; overflow-x: auto; border: 1px solid rgba(239,68,68,0.3);">${rapEscapeHtml(step.pythonExample)}</pre>
                 </div>
             </div>`;
     } else if (step.level === 2) {
@@ -164,30 +174,30 @@ function renderRapModuleCard(targetContainerId) {
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
                 <div>
                     <h4 style="font-size: 0.82rem; color: var(--gold-primary); margin-bottom: 6px;">📁 Standard Directory Structure</h4>
-                    <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #FBBF24; overflow-x: auto; border: 1px solid rgba(251,191,36,0.3);">${escapeHtml(step.structure)}</pre>
+                    <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #FBBF24; overflow-x: auto; border: 1px solid rgba(251,191,36,0.3);">${rapEscapeHtml(step.structure)}</pre>
                 </div>
                 <div>
                     <h4 style="font-size: 0.82rem; color: #38BDF8; margin-bottom: 6px;">🔒 pyproject.toml Version Locking</h4>
-                    <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #38BDF8; overflow-x: auto; border: 1px solid rgba(56,189,248,0.3);">${escapeHtml(step.pythonExample)}</pre>
+                    <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #38BDF8; overflow-x: auto; border: 1px solid rgba(56,189,248,0.3);">${rapEscapeHtml(step.pythonExample)}</pre>
                 </div>
             </div>`;
     } else if (step.level === 3) {
         codeBlockHtml = `
             <div style="margin-bottom: 16px;">
                 <h4 style="font-size: 0.82rem; color: #38BDF8; margin-bottom: 6px;">⚡ Pipeline Task Orchestration (Prefect / Snakemake)</h4>
-                <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: #38BDF8; overflow-x: auto; border: 1px solid rgba(56,189,248,0.3);">${escapeHtml(step.pythonExample)}</pre>
+                <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: #38BDF8; overflow-x: auto; border: 1px solid rgba(56,189,248,0.3);">${rapEscapeHtml(step.pythonExample)}</pre>
             </div>`;
     } else if (step.level === 4) {
         codeBlockHtml = `
             <div style="margin-bottom: 16px;">
                 <h4 style="font-size: 0.82rem; color: #10B981; margin-bottom: 6px;">🛡️ Automated Schema & Quality Assertions (pytest)</h4>
-                <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: #4ADE80; overflow-x: auto; border: 1px solid rgba(74,222,128,0.3);">${escapeHtml(step.pythonExample)}</pre>
+                <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: #4ADE80; overflow-x: auto; border: 1px solid rgba(74,222,128,0.3);">${rapEscapeHtml(step.pythonExample)}</pre>
             </div>`;
     } else if (step.level === 5) {
         codeBlockHtml = `
             <div style="margin-bottom: 16px;">
                 <h4 style="font-size: 0.82rem; color: #C084FC; margin-bottom: 6px;">🚀 GitHub Actions CI/CD Automated Execution</h4>
-                <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: #C084FC; overflow-x: auto; border: 1px solid rgba(192,132,252,0.3);">${escapeHtml(step.githubActionExample)}</pre>
+                <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: #C084FC; overflow-x: auto; border: 1px solid rgba(192,132,252,0.3);">${rapEscapeHtml(step.githubActionExample)}</pre>
             </div>`;
     }
 
@@ -224,4 +234,9 @@ function renderRapModuleCard(targetContainerId) {
 function setRapStep(stepNum) {
     currentRapStep = stepNum;
     renderRapModuleCard('rapModuleCard');
+    const card = document.getElementById('rapModuleCard');
+    if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
+
