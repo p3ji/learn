@@ -1,0 +1,10 @@
+[project]
+name = "rap-survey-pipeline"
+version = "1.0.0"
+description = "A fully functioning Reproducible Analytical Pipeline (RAP) example."
+requires-python = ">=3.9"
+dependencies = [
+    "pandas>=2.0.0",
+    "pytest>=8.0.0",
+    "statsmodels>=0.14.0",
+]

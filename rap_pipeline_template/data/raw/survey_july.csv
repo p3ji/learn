@@ -1,0 +1,11 @@
+respondent_id,age,department,ai_trust_score,ai_risk_score
+101,34,Marketing,4,2
+102,45,Engineering,5,1
+103,28,HR,3,4
+104,52,Sales,4,3
+105,-5,Finance,2,5
+106,41,Engineering,5,2
+107,39,Marketing,3,3
+108,22,HR,1,5
+109,31,Sales,4,2
+110,48,Engineering,5,1
