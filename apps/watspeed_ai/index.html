@@ -10,8 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/styles.css">
-    <!-- Pyodide Python 3.11 WebAssembly Engine -->
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js" async></script>
+    <!-- Pyodide Python 3.11 WebAssembly Engine.
+         NOT async: interactive_notebook.js calls loadPyodide() and must find it defined.
+         `defer` keeps it non-blocking while guaranteeing it runs before our scripts. -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js" defer></script>
     <style>
         .ds-tab-btn {
             background: rgba(255,255,255,0.05);
@@ -49,10 +51,10 @@
 
             <nav class="nav-links">
                 <a href="../../index.html" class="nav-item">🏠 Suite Home</a>
-                <a href="javascript:showStage(1)" class="nav-item">Stage 1: Data & SAS</a>
-                <a href="javascript:showStage(2)" class="nav-item">Stage 2: ML & TabFM</a>
-                <a href="javascript:showStage(3)" class="nav-item">Stage 3: Agentic AI</a>
-                <a href="javascript:showStage(4)" class="nav-item">Stage 4: Notebooks</a>
+                <a href="#stage1" class="nav-item" onclick="showStage(1); return false;">Stage 1: Data &amp; SAS</a>
+                <a href="#stage2" class="nav-item" onclick="showStage(2); return false;">Stage 2: ML &amp; TabFM</a>
+                <a href="#stage3" class="nav-item" onclick="showStage(3); return false;">Stage 3: Agentic AI</a>
+                <a href="#stage4" class="nav-item" onclick="showStage(4); return false;">Stage 4: Notebooks</a>
             </nav>
         </div>
     </header>
@@ -128,61 +130,11 @@
                     </div>
                 </div>
 
-                <div style="background: rgba(255,199,44,0.08); border-left: 4px solid var(--gold-primary); padding: 16px; border-radius: 12px; margin-bottom: 20px;">
-                    <strong>What dataset is this?</strong> We are working with the <strong>Kaggle AI Trust Insights Dataset</strong> (1,200 survey respondents). 
-                    Each row represents <strong>one human survey respondent</strong> answering questions about their age, education, perceived AI risk, and trust in AI.
-                </div>
+                <!-- Provenance blurb — rendered from js/dataset_config.js -->
+                <div id="datasetProvenance" style="background: rgba(255,199,44,0.08); border-left: 4px solid var(--gold-primary); padding: 16px; border-radius: 12px; margin-bottom: 20px;"></div>
 
-                <div style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; overflow-x: auto; margin-bottom: 20px;">
-                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
-                        <thead>
-                            <tr style="background: rgba(255,199,44,0.15); color: var(--gold-primary); border-bottom: 1px solid rgba(255,255,255,0.2);">
-                                <th style="padding: 12px;">Column Name</th>
-                                <th style="padding: 12px;">Data Type</th>
-                                <th style="padding: 12px;">Allowed Values & Meaning</th>
-                                <th style="padding: 12px;">SAS vs Python Note</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
-                                <td style="padding: 10px; font-family: var(--font-mono); color: #38BDF8;">Respondent_ID</td>
-                                <td style="padding: 10px;">String / Text</td>
-                                <td style="padding: 10px;">Unique ID (e.g. <code>"RESP_00101"</code>)</td>
-                                <td style="padding: 10px; color: var(--text-muted);">SAS Character <code>$10.</code></td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
-                                <td style="padding: 10px; font-family: var(--font-mono); color: #38BDF8;">Age_Group</td>
-                                <td style="padding: 10px;">Categorical</td>
-                                <td style="padding: 10px;"><code>"18-29"</code>, <code>"30-44"</code>, <code>"45-60"</code>, <code>"60+"</code></td>
-                                <td style="padding: 10px; color: var(--text-muted);">Demographic predictor</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
-                                <td style="padding: 10px; font-family: var(--font-mono); color: #38BDF8;">Education_Level</td>
-                                <td style="padding: 10px;">Categorical</td>
-                                <td style="padding: 10px;"><code>"High School"</code>, <code>"Bachelor's"</code>, <code>"Master's"</code>, <code>"PhD"</code></td>
-                                <td style="padding: 10px; color: var(--text-muted);">SAS <code>CLASS</code> variable</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
-                                <td style="padding: 10px; font-family: var(--font-mono); color: #38BDF8;">Perceived_AI_Risk</td>
-                                <td style="padding: 10px;">Numeric (Likert)</td>
-                                <td style="padding: 10px;">Scale <code>1</code> (Very Low) to <code>5</code> (Extreme). Missing = <code>-9</code></td>
-                                <td style="padding: 10px; color: var(--text-muted);">SAS missing is <code>.</code></td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
-                                <td style="padding: 10px; font-family: var(--font-mono); color: #38BDF8;">High_AI_Trust</td>
-                                <td style="padding: 10px;">Binary Target (1/0)</td>
-                                <td style="padding: 10px;"><code>1</code> = High Trust in AI, <code>0</code> = Low/No Trust</td>
-                                <td style="padding: 10px; color: var(--text-muted);">Primary Y Outcome</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 10px; font-family: var(--font-mono); color: #38BDF8;">Survey_Weight</td>
-                                <td style="padding: 10px;">Numeric Float</td>
-                                <td style="padding: 10px;">Sampling weight factor (e.g. <code>1.25</code>)</td>
-                                <td style="padding: 10px; color: var(--text-muted);">SAS <code>WEIGHT</code> statement</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <!-- Data dictionary — rendered from js/dataset_config.js -->
+                <div id="dataDictionary" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; overflow-x: auto; margin-bottom: 20px;"></div>
             </section>
 
             <!-- Stage 1 Component B: SAS DATA Step Rosetta Stone -->
@@ -256,11 +208,14 @@
                 <div style="background: rgba(255, 199, 44, 0.08); border: 1.5px solid var(--gold-primary); border-radius: 16px; padding: 20px;">
                     <h3 style="color: var(--gold-primary); font-size: 1.15rem; margin-bottom: 8px;">🤔 Why Google TabFM? (Connecting Traditional ML to Agentic AI)</h3>
                     <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.6; margin-bottom: 12px;">
-                        <strong>In Traditional SAS or Python ML:</strong> Before fitting a model, you must write manual code to clean missing values, convert text columns (like <code>"Master's"</code>) into numerical 0/1 dummy matrices, split data into 80/20 train/test sets, and run iterative fitting loops.
+                        <strong>In Traditional SAS or Python ML:</strong> Before fitting a model, you must write code to convert text columns (like <code>"Master's"</code>) into numerical 0/1 dummy matrices, split data into 80/20 train/test sets, and run iterative gradient descent fitting loops.
                     </p>
-                    <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.6;">
-                        <strong>Why Google TabFM changes the game for AI Agents:</strong> Google TabFM is a <strong>Tabular Foundation Model</strong>. It takes <strong>raw, un-coded survey CSV files with text columns</strong> and predicts classification targets in a single forward pass—without manual one-hot encoding or gradient training delays! This allows autonomous conversational AI agents to classify survey respondents in real-time.
+                    <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.6; margin-bottom: 12px;">
+                        <strong>What Google TabFM changes:</strong> As a <strong>Tabular Foundation Model</strong>, TabFM reads <strong>raw text categories directly as transformer context memory</strong> in a single forward pass—eliminating manual 0/1 dummy encoding and training loops.
                     </p>
+                    <div style="background: rgba(56, 189, 248, 0.1); border-left: 4px solid var(--accent-blue); padding: 12px 16px; border-radius: 6px; font-size: 0.88rem; color: var(--text-main); margin-top: 10px;">
+                        <strong>💡 Crucial Survey Data Nuance:</strong> Does TabFM eliminate survey data cleaning? <strong>No!</strong> You still need to map numeric survey codes like <code>-9</code> or <code>99</code> into clear text strings like <code>"Don't Know"</code>, <code>"Not Applicable"</code>, or <code>"Valid Skip"</code>. TabFM then uses its language model tokenization to treat <code>"Valid Skip"</code> as a distinct, meaningful semantic category automatically!
+                    </div>
                 </div>
             </section>
 
@@ -593,6 +548,7 @@
     </div>
 
     <!-- JavaScript Files -->
+    <script src="../../js/dataset_config.js"></script>
     <script src="../../js/glossary.js"></script>
     <script src="../../js/feedback.js"></script>
     <script src="../../js/rosetta.js"></script>
@@ -616,6 +572,8 @@
 
             // Render specific components inside stage with explicit container IDs
             if (stageNum === 1) {
+                renderDatasetProvenance('datasetProvenance');
+                renderDataDictionary('dataDictionary');
                 renderRosettaContent('data', 'rosettaContentCard1');
                 renderDsActivitySuite('feature_engineering', 'dsStage1');
             } else if (stageNum === 2) {
