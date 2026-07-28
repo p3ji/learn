@@ -67,58 +67,65 @@ run;`,
         stata: `* Stata Logistic Regression
 svyset [pw=Survey_Weight]
 svy: logit High_AI_Trust i.Education_Level i.Tech_Familiarity Perceived_AI_Risk`,
-        python: `# Step 1: Encode categoricals (SAS CLASS does this automatically!)
+        python: `# --- USE CASE A: SOCIOLOGIST / INFERENCE PATH (statsmodels) ---
+# Goal: p-values, Odds Ratios, standard errors, survey weights for academic research
+import statsmodels.formula.api as smf
+
+model_soc = smf.logit("High_AI_Trust ~ Age_Group + C(Education_Level) + Perceived_AI_Risk", 
+                      data=df).fit()
+print(model_soc.summary())  # Exact SAS PROC LOGISTIC output table!
+
+# --- USE CASE B: DATA SCIENTIST / AI AGENT PATH (scikit-learn) ---
+# Goal: Out-of-sample prediction accuracy (ROC-AUC), L2 regularization, agent @tool
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score
 
-# YOUR DATA — equivalent to SAS 'data=clean_survey'
-df = pd.read_csv("survey_data.csv")
+X = pd.get_dummies(df[["Age_Group", "Education_Level", "Perceived_AI_Risk"]], drop_first=True)
+y = df["High_AI_Trust"]
 
-# Replace missing codes (-9) with NaN first
-df["Perceived_AI_Risk"] = df["Perceived_AI_Risk"].replace(-9, pd.NA)
-
-# Define X (predictors) and y (outcome) — SAS MODEL statement does this
-X = pd.get_dummies(df[["Age_Group", "Education_Level", "Perceived_AI_Risk"]],
-                   drop_first=True)  # creates 0/1 dummy columns like SAS CLASS
-y = df["High_AI_Trust"]                # outcome variable (0/1)
-w = df["Survey_Weight"]                # sample weights (SAS: weight Survey_Weight;)
-
-# Step 2: Train/Test split (80% train, 20% test) — no SAS equivalent
-X_train, X_test, y_train, y_test, w_train, w_test = train_test_split(
-    X, y, w, test_size=0.2, random_state=42)
-
-# Step 3: Fit model with survey weights
-clf = LogisticRegression()
-clf.fit(X_train, y_train, sample_weight=w_train)
-
-# Step 4: Evaluate (SAS shows AIC/p-values; sklearn shows predictive accuracy)
-roc_auc = roc_auc_score(y_test, clf.predict_proba(X_test)[:, 1])
-print(f"ROC-AUC: {roc_auc:.3f}")`,
+X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.2, random_state=42)
+clf = LogisticRegression(penalty="l2").fit(X_tr, y_tr)
+print(f"Agent Test ROC-AUC: {roc_auc_score(y_te, clf.predict_proba(X_te)[:, 1]):.3f}")`,
         explanation: `
-            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 Why Python Needs More Setup Than SAS:</h4>
-            <ul style="color: var(--text-muted); font-size: 0.88rem; padding-left: 18px; margin-bottom: 12px;">
-                <li><strong>SAS <code>CLASS</code> statement:</strong> SAS automatically converts text variables like <code>Education_Level</code> into 0/1 dummy columns behind the scenes. You just list them and SAS handles it.</li>
-                <li><strong>SAS <code>MODEL y = x1 x2;</code>:</strong> SAS reads which columns are X (predictors) and y (outcome) directly from the MODEL statement — no separate extraction step needed.</li>
-                <li><strong>Python <code>pd.get_dummies()</code>:</strong> You must explicitly create the dummy columns yourself. This is the step SAS hides — it's the same math, just visible.</li>
-                <li><strong>Python X/y split:</strong> You explicitly define <code>X</code> (the predictor matrix) and <code>y</code> (the outcome column) before fitting. SAS infers these from the MODEL formula.</li>
-                <li><strong>Train/Test split:</strong> SAS fits on the full dataset and reports inference stats (p-values, AIC). Sklearn prioritises out-of-sample prediction — so you hold 20% back as a test set and measure ROC-AUC.</li>
-            </ul>
+            <h4 style="color: var(--gold-primary); font-size: 1rem; margin-bottom: 10px;">🌉 The Explicit Method Bridge: Sociologist vs. Data Scientist</h4>
 
-            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Do SAS and Scikit-Learn Give the Exact Same Results?</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                <!-- Column 1: Sociologist -->
+                <div style="background: rgba(56, 189, 248, 0.08); border: 1.5px solid var(--accent-blue); border-radius: 12px; padding: 14px;">
+                    <h5 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 6px; font-weight: 800;">🏛️ 1. Sociologist / Research Path</h5>
+                    <p style="font-size: 0.83rem; color: var(--text-muted); margin-bottom: 8px;"><strong>Goal:</strong> Explanation & Hypothesis Testing (<em>Why</em> do people trust AI?)</p>
+                    <ul style="font-size: 0.82rem; color: var(--text-main); padding-left: 16px; margin: 0; line-height: 1.5;">
+                        <li><strong>SAS Tool:</strong> <code>PROC LOGISTIC</code> / <code>PROC SURVEYLOGISTIC</code></li>
+                        <li><strong>Python Tool:</strong> <code>statsmodels.formula.api.logit</code></li>
+                        <li><strong>Outputs:</strong> Odds Ratios, 95% CIs, Wald $\chi^2$ $p$-values, AIC.</li>
+                        <li><strong>Data Prep:</strong> Formulas handle categoricals via <code>C(var)</code> syntax.</li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Data Scientist / Agent -->
+                <div style="background: rgba(255, 199, 44, 0.08); border: 1.5px solid var(--gold-primary); border-radius: 12px; padding: 14px;">
+                    <h5 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 6px; font-weight: 800;">🤖 2. Data Scientist / AI Agent Path</h5>
+                    <p style="font-size: 0.83rem; color: var(--text-muted); margin-bottom: 8px;"><strong>Goal:</strong> Out-of-Sample Prediction (<em>Will this new respondent</em> trust AI?)</p>
+                    <ul style="font-size: 0.82rem; color: var(--text-main); padding-left: 16px; margin: 0; line-height: 1.5;">
+                        <li><strong>SAS Tool:</strong> <code>PROC HPLOGISTIC</code> (with <code>partition</code>)</li>
+                        <li><strong>Python Tool:</strong> <code>scikit-learn LogisticRegression</code></li>
+                        <li><strong>Outputs:</strong> Train/Test split, ROC-AUC, confusion matrices.</li>
+                        <li><strong>Data Prep:</strong> Explicit <code>pd.get_dummies()</code> 0/1 matrices.</li>
+                    </ul>
+                </div>
+            </div>
+
             <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
-                <p><strong>Out-of-the-box? NO!</strong> They differ by default for 3 main reasons:</p>
-                <ol style="padding-left: 18px; margin: 6px 0; line-height: 1.5;">
-                    <li><strong>Regularization:</strong> Scikit-Learn applies <code>L2 regularization</code> penalty by default (shrinking coefficients to prevent overfitting). SAS <code>PROC LOGISTIC</code> uses unregularized Maximum Likelihood Estimation (MLE). Pass <code>penalty=None</code> in Python to turn it off.</li>
-                    <li><strong>Reference Category:</strong> SAS drops the <em>last</em> level by default; <code>pd.get_dummies(drop_first=True)</code> drops the <em>first</em> level.</li>
-                    <li><strong>P-values vs Accuracy:</strong> Scikit-Learn does NOT calculate p-values or Odds Ratio 95% CIs — it calculates predictive accuracy/ROC-AUC.</li>
-                </ol>
-                <p style="margin-top:6px; color: var(--gold-primary);"><strong>💡 Need exact SAS-style p-values & Odds Ratios in Python?</strong> Use <code>statsmodels</code> instead of <code>sklearn</code>: <br><code>import statsmodels.formula.api as smf; model = smf.logit("High_AI_Trust ~ C(Education_Level) + Perceived_AI_Risk", data=df).fit()</code> — this gives the exact SAS PROC LOGISTIC output table!</p>
+                <strong>🔍 Why the Code Syntax Differs:</strong><br>
+                When moving from SAS to Python, you choose your package based on your goal:
+                <br>• If you want a formula string like SAS (e.g. <code>"y ~ x1 + C(x2)"</code>) with $p$-value tables, use <strong><code>statsmodels</code></strong>.
+                <br>• If you want to train an ML model for an AI Agent tool call (e.g. <code>@tool</code>), use <strong><code>scikit-learn</code></strong>.
             </div>
         `,
-        proTip: "💡 <strong>Sociologist Pro-Tip:</strong> Use <code>scikit-learn</code> when building machine learning pipelines & AI agents (prediction). Use <code>statsmodels</code> when writing journal papers needing p-values & odds ratio confidence intervals (inference).",
-        agenticNote: "An agentic AI can run scikit-learn for machine learning classification or statsmodels for academic reporting, depending on what the user asks for in plain English."
+        proTip: "💡 <strong>Sociological AI Pro-Tip:</strong> The ultimate AI Agent combines both! It uses <code>statsmodels</code> to draft the academic baseline findings for your survey report, and <code>scikit-learn</code> to deploy the automated real-time classifier.",
+        agenticNote: "An agentic survey assistant can invoke statsmodels when asked 'Are education levels statistically significant?' and scikit-learn when asked 'Classify these 50 new incoming survey rows'."
     },
     graph: {
         title: "4. Stata .do File / SAS Macros ➔ LangGraph State Machines (StateGraph)",
