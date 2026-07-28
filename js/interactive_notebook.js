@@ -174,20 +174,23 @@ print(run_capstone_agent(user_prompt))
     }
 };
 
-let pyodideInstance = null;
-
 async function loadPyodideEngine() {
-    if (pyodideInstance) return pyodideInstance;
+    if (window.pyodide) return window.pyodide;
     try {
         if (typeof loadPyodide !== 'undefined') {
-            pyodideInstance = await loadPyodide();
-            await pyodideInstance.loadPackage(['pandas', 'scikit-learn']);
-            console.log("Pyodide CPython 3.11 WebAssembly Engine Ready!");
+            const statusBadge = document.getElementById('pyStatusBadge');
+            if (statusBadge) { statusBadge.textContent = 'Loading Python Engine...'; statusBadge.style.color = '#FBBF24'; }
+            window.pyodide = await loadPyodide();
+            await window.pyodide.loadPackage(['pandas', 'scikit-learn', 'micropip']);
+            console.log('Pyodide CPython 3.11 WebAssembly Engine Ready!');
+            if (statusBadge) { statusBadge.textContent = '✅ Python 3.11 WASM Ready'; statusBadge.style.color = '#4ADE80'; }
         }
     } catch (e) {
-        console.warn("Pyodide WebAssembly engine fallback to instant client-side execution.", e);
+        console.warn('Pyodide WebAssembly engine fallback to instant client-side execution.', e);
+        const statusBadge = document.getElementById('pyStatusBadge');
+        if (statusBadge) { statusBadge.textContent = '⚡ Simulation Mode'; statusBadge.style.color = '#FBBF24'; }
     }
-    return pyodideInstance;
+    return window.pyodide;
 }
 
 function openInteractiveLabModal(nbIdx) {
@@ -269,19 +272,27 @@ async function executeLabCode() {
     outArea.style.color = '#FFF';
     outArea.innerText = 'Executing Python code...';
 
-    // Check if Pyodide loaded
+    // Check if Pyodide loaded — use sys.stdout redirect to capture all print() output
     if (window.pyodide) {
         try {
-            window.pyodide.setStdout({ write: (str) => { outArea.innerText = str; } });
-            const result = await window.pyodide.runPythonAsync(code);
-            if (result !== undefined && result !== null) {
-                outArea.innerText += "\n" + String(result);
-            }
+            // Redirect Python stdout into a JS-accessible string buffer
+            await window.pyodide.runPythonAsync(`
+import sys, io
+_stdout_buf = io.StringIO()
+sys.stdout = _stdout_buf
+`);
+            await window.pyodide.runPythonAsync(code);
+            const captured = await window.pyodide.runPythonAsync(`_stdout_buf.getvalue()`);
+            outArea.style.color = '#FFF';
+            outArea.innerText = captured || '(no output)';
             return;
         } catch (err) {
             outArea.style.color = '#EF4444';
-            outArea.innerText = "Python Execution Error:\n" + err;
+            outArea.innerText = 'Python Execution Error:\n' + err;
             return;
+        } finally {
+            // Restore sys.stdout
+            try { await window.pyodide.runPythonAsync('sys.stdout = sys.__stdout__'); } catch(_) {}
         }
     }
 
