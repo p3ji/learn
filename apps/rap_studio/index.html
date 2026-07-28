@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproducible Analytical Pipelines (RAP) Studio | Learning Suite</title>
+    <meta name="description" content="Step-by-step accelerator bridging script folder clutter to modern production reproducible analytical pipelines (RAP).">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo-group">
+                <a href="../../index.html" class="logo-badge" style="text-decoration:none;">SUITE HOME</a>
+                <div class="logo-text">
+                    <span class="logo-title">RAP <span class="gold-text">Studio</span></span>
+                    <span class="logo-subtitle">Reproducible Analytical Pipelines Accelerator</span>
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="../../index.html" class="nav-item">🏠 Suite Portal Home</a>
+                <a href="../watspeed_ai/index.html" class="nav-item">🎓 WatSPEED AI Hub</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="container">
+
+        <!-- Hero Section -->
+        <section class="hero-card" style="margin-top: 40px;">
+            <div class="hero-glow"></div>
+            <div class="hero-badge">Modern Data Engineering &amp; RAP Maturity Model</div>
+            <h1 class="hero-title">From Loose Script Folders to <span class="gold-gradient">Reproducible Analytical Pipelines</span></h1>
+            <p class="hero-desc">
+                Stop managing <code>clean_v2_FINAL.sas</code> or loose <code>.py</code> scripts in a Downloads folder! Master the 5 levels of Reproducible Analytical Pipelines (RAP) — from project layouts to locked environments, DAG workflows, schema testing, and CI/CD.
+            </p>
+        </section>
+
+        <!-- RAP Interactive Studio App Card -->
+        <section class="section-card">
+            <div class="section-header">
+                <div>
+                    <h3 class="section-title">📦 Interactive RAP Maturity Visualizer</h3>
+                    <p class="section-subtitle">Select a level to explore the code transformation, directory layout, and key friction points.</p>
+                </div>
+            </div>
+
+            <div id="rapStudioCard"></div>
+        </section>
+
+        <!-- RAP Interactive Generators Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 40px;">
+            
+            <!-- Tool 1: pyproject.toml Generator -->
+            <section class="section-card" style="margin-bottom:0;">
+                <h3 style="color: var(--gold-primary); font-size: 1.1rem; margin-bottom: 8px;">🔒 Level 2: Environment Lock Generator</h3>
+                <p style="color: var(--text-muted); font-size: 0.86rem; margin-bottom: 14px;">Generate a production <code>pyproject.toml</code> with pinned dependency versions for survey analysis.</p>
+                
+                <div style="background:#000; padding:14px; border-radius:10px; font-family:var(--font-mono); font-size:0.8rem; color:#38BDF8; overflow-x:auto; border:1px solid rgba(56,189,248,0.2);">
+                    [project]<br>
+                    name = "survey-rap-pipeline"<br>
+                    version = "1.0.0"<br>
+                    dependencies = [<br>
+                    &nbsp;&nbsp;"pandas==2.2.1",<br>
+                    &nbsp;&nbsp;"statsmodels==0.14.1",<br>
+                    &nbsp;&nbsp;"scikit-learn==1.4.1",<br>
+                    &nbsp;&nbsp;"pydantic==2.6.4",<br>
+                    &nbsp;&nbsp;"pytest==8.0.2"<br>
+                    ]
+                </div>
+            </section>
+
+            <!-- Tool 2: CI/CD Workflow Generator -->
+            <section class="section-card" style="margin-bottom:0;">
+                <h3 style="color: #C084FC; font-size: 1.1rem; margin-bottom: 8px;">🚀 Level 5: GitHub Actions CI/CD Workflow</h3>
+                <p style="color: var(--text-muted); font-size: 0.86rem; margin-bottom: 14px;">Automated pipeline execution on every git push or weekly schedule.</p>
+                
+                <div style="background:#000; padding:14px; border-radius:10px; font-family:var(--font-mono); font-size:0.8rem; color:#C084FC; overflow-x:auto; border:1px solid rgba(192,132,252,0.2);">
+                    name: RAP Automated Execution<br>
+                    on:<br>
+                    &nbsp;&nbsp;push: { branches: ["main"] }<br>
+                    jobs:<br>
+                    &nbsp;&nbsp;pipeline:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;runs-on: ubuntu-latest<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;steps:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uses: actions/checkout@v4<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- run: uv run python src/run_pipeline.py
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>RAP Studio | Part of the Learning Tools Suite</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../../js/rap_module.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderRapModuleCard('rapStudioCard');
+        });
+    </script>
+</body>
+</html>
