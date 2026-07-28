@@ -3,312 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WatSPEED Agentic AI Prep Hub | SAS, Stata, TabFM & LangGraph</title>
-    <meta name="description" content="Personalized preparation hub for University of Waterloo WatSPEED Agentic AI course, bridging SAS/Stata survey research to LangGraph, MCP, and Google TabFM.">
+    <title>WatSPEED Agentic AI Prep Hub | Python, ML & SAS Bridge</title>
+    <meta name="description" content="Interactive learning hub preparing students for University of Waterloo's WatSPEED Agentic AI certificate course. Bridge SAS experience to Python, Supervised ML, Google TabFM, and LangGraph.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        .ds-tab-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: var(--text-muted);
+            padding: 10px 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+        .ds-tab-btn:hover, .ds-tab-btn.active {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
+            color: #000;
+            border-color: var(--gold-primary);
+            box-shadow: 0 4px 14px rgba(255, 199, 44, 0.4);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Suite Header Navigation -->
+    <!-- Header Navigation -->
     <header class="header">
         <div class="container header-container">
             <div class="logo-group">
-                <a href="../../index.html" style="text-decoration:none; color:inherit;" class="logo-group">
+                <a href="../../index.html" style="text-decoration:none;" class="logo-group">
                     <div class="logo-badge">LEARN</div>
                     <div class="logo-text">
-                        <span class="logo-title">WatSPEED<span class="gold-text"> AI Prep Hub</span></span>
-                        <span class="logo-subtitle">Part of the Learning Tools Suite</span>
+                        <span class="logo-title">WatSPEED <span class="gold-text">AI Prep Hub</span></span>
+                        <span class="logo-subtitle">SAS ➔ Agentic AI & Survey Machine Learning</span>
                     </div>
                 </a>
             </div>
-            
+
             <nav class="nav-links">
                 <a href="../../index.html" class="nav-item">🏠 Suite Home</a>
-                <a href="#rosetta" class="nav-item active">Rosetta Stone</a>
-                <a href="#visualizer" class="nav-item">Pipeline Visualizer</a>
-                <a href="#sandbox" class="nav-item">Agent Sandbox</a>
-                <a href="#notebooks" class="nav-item">Notebooks</a>
-                <a href="#glossary" class="nav-item">Glossary</a>
-                <a href="../kids_philosophy/index.html" class="nav-item" style="color: var(--accent-purple); font-weight:700;">🚀 Kids Arcade (8-12)</a>
+                <a href="#rosetta" class="nav-item">SAS Rosetta Stone</a>
+                <a href="#ds_workbench" class="nav-item" style="color: var(--gold-primary);">🧪 DS Activities</a>
+                <a href="#ml_tabfm" class="nav-item">ML & Google TabFM</a>
+                <a href="#sandbox" class="nav-item">Agentic Sandbox</a>
+                <a href="#notebooks" class="nav-item">Jupyter Notebooks</a>
             </nav>
-
-            <div class="progress-pill" id="overallProgress">
-                <span class="progress-label">Prep Readiness</span>
-                <div class="progress-bar-container">
-                    <div class="progress-bar-fill" id="progressFill" style="width: 15%;"></div>
-                </div>
-                <span class="progress-percent" id="progressPercent">15%</span>
-            </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container main-content">
+    <!-- Main Workspace Container -->
+    <main class="container">
 
-        <!-- Hero Banner -->
+        <!-- Hero Section -->
         <section class="hero-card">
             <div class="hero-glow"></div>
-            <div class="hero-badge">Tailored for Sociologists & Survey Research Experts</div>
-            <h1 class="hero-title">From <span class="gold-gradient">SAS & Stata</span> to <span class="accent-gradient">Agentic AI & Google TabFM</span></h1>
+            <div class="hero-badge">Tailored for Sociologists & SAS/Stata Veterans</div>
+            <h1 class="hero-title">Bridge SAS Experience to <span class="gold-gradient">Agentic AI</span> & <span class="accent-gradient">Supervised ML</span></h1>
             <p class="hero-desc">
-                Prepare for University of Waterloo's WatSPEED Agentic AI course. Master modern Python, Scikit-Learn Supervised ML, <span class="concept-term" onclick="openConceptDeepDive('tabfm')">Google TabFM</span> zero-shot learning, LangChain, <span class="concept-term" onclick="openConceptDeepDive('langgraph')">LangGraph</span> state graphs, and the <span class="concept-term" onclick="openConceptDeepDive('mcp')">Model Context Protocol (MCP)</span> using real sociological datasets.
+                Accelerate your readiness for University of Waterloo's WatSPEED Agentic AI Certificate course. Master Python survey data wrangling, Scikit-Learn Supervised ML, Google TabFM zero-shot foundation models, and LangGraph agent pipelines.
             </p>
+        </section>
 
-            <div class="tip-banner">
-                💡 <strong>Interactive Learning Tip:</strong> Click any dotted term (e.g. <span class="concept-term" onclick="openConceptDeepDive('pydantic')">Pydantic</span>, <span class="concept-term" onclick="openConceptDeepDive('react')">ReAct</span>) for concept deep-dives. Click <strong>📝 Notes & AI Assistant</strong> in any section to ask questions, suggest additions, or save personal study notes!
+        <!-- Section 1: SAS Rosetta Stone comparative matrix -->
+        <section id="rosetta" class="section-card">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">⚡ SAS & Stata ➔ Agentic AI Rosetta Stone</h2>
+                    <p class="section-subtitle">Comparative syntax matrix mapping SAS routines to Python, Pandas, Pydantic, and Agentic AI.</p>
+                </div>
+                <button class="fb-launch-btn" onclick="openSectionFeedback('SAS Rosetta Stone')">📝 Notes & AI Assistant</button>
             </div>
 
-            <div class="dataset-switcher" style="margin-top: 20px;">
-                <span class="switcher-label">Active Dataset:</span>
-                <button class="dataset-btn active" id="btnAiTrust" onclick="switchDataset('ai_trust')">Kaggle AI Trust Insights</button>
-                <button class="dataset-btn" id="btnGss" onclick="switchDataset('gss')">GSS Social Survey</button>
+            <div class="rosetta-tabs">
+                <button class="rosetta-tab active" onclick="showRosettaTab('data')">1. SAS DATA / Stata Recode</button>
+                <button class="rosetta-tab" onclick="showRosettaTab('ml')">2. PROC LOGISTIC / ML Fit</button>
+                <button class="rosetta-tab" onclick="showRosettaTab('tabfm')">3. Google TabFM Zero-Shot</button>
+                <button class="rosetta-tab" onclick="showRosettaTab('graph')">4. .do File / LangGraph Flow</button>
+                <button class="rosetta-tab" onclick="showRosettaTab('mcp')">5. SAS Libs / MCP Endpoints</button>
+            </div>
+
+            <div id="rosettaContentCard" class="rosetta-card">
+                <!-- Content dynamically injected by js/rosetta.js -->
             </div>
         </section>
 
-        <!-- Section 1: SAS/Stata Rosetta Stone -->
-        <section id="rosetta" class="section-block">
+        <!-- Section 2: NEW Data Science Interactive Workbench & Activity Suite -->
+        <section id="ds_workbench" class="section-card">
             <div class="section-header">
                 <div>
-                    <h2 class="section-title">SAS & Stata ➔ Agentic AI Rosetta Stone</h2>
-                    <p class="section-subtitle">Translate familiar survey analysis workflows directly into modern Agentic paradigms.</p>
+                    <h2 class="section-title">🧪 Data Science Interactive Workbench & Activities</h2>
+                    <p class="section-subtitle">Hands-on interactive labs for feature engineering, ML model benchmarking, and statistical hypothesis testing.</p>
                 </div>
-                <button class="section-action-btn" onclick="openSectionFeedback('SAS Rosetta Stone')">📝 Notes & AI Assistant</button>
+                <button class="fb-launch-btn" onclick="openSectionFeedback('Data Science Activities Suite')">📝 Notes & AI Assistant</button>
             </div>
 
-            <div class="rosetta-grid">
-                <div class="rosetta-sidebar">
-                    <button class="rosetta-tab active" onclick="showRosettaTab('data')">1. SAS DATA / Stata Recode</button>
-                    <button class="rosetta-tab" onclick="showRosettaTab('ml')">2. PROC LOGISTIC / ML Fit</button>
-                    <button class="rosetta-tab" onclick="showRosettaTab('tabfm')">3. Google TabFM Zero-Shot</button>
-                    <button class="rosetta-tab" onclick="showRosettaTab('graph')">4. .do File / LangGraph Flow</button>
-                    <button class="rosetta-tab" onclick="showRosettaTab('mcp')">5. SAS Libs / MCP Endpoints</button>
-                </div>
+            <div style="display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;">
+                <button class="ds-tab-btn active" onclick="renderDsActivitySuite('feature_engineering')">📊 Activity 1: Feature Engineering & Imputation</button>
+                <button class="ds-tab-btn" onclick="renderDsActivitySuite('ml_comparison')">🤖 Activity 2: Supervised ML Model Comparison</button>
+                <button class="ds-tab-btn" onclick="renderDsActivitySuite('hypothesis_testing')">🔬 Activity 3: Sociological Hypothesis & Crosstabs</button>
+            </div>
 
-                <div class="rosetta-content-card" id="rosettaContentCard">
-                    <!-- Dynamic Content -->
-                </div>
+            <div id="dsStage" style="background: rgba(15, 23, 42, 0.9); border: 2px solid var(--gold-primary); border-radius: 20px; padding: 28px;">
+                <!-- Content dynamically injected by js/ds_activities.js -->
             </div>
         </section>
 
-        <!-- Section 2: Interactive Supervised ML & TabFM Visualizer -->
-        <section id="visualizer" class="section-block">
+        <!-- Section 3: Interactive Supervised ML & Google TabFM Visualizer -->
+        <section id="ml_tabfm" class="section-card">
             <div class="section-header">
                 <div>
-                    <h2 class="section-title">Interactive Agent Pipeline & TabFM Visualizer</h2>
-                    <p class="section-subtitle">Simulate how autonomous agents split survey data, train Scikit-Learn models, call <span class="concept-term" onclick="openConceptDeepDive('tabfm')">Google TabFM</span>, and execute <span class="concept-term" onclick="openConceptDeepDive('langgraph')">LangGraph</span> state loops.</p>
+                    <h2 class="section-title">📊 Supervised ML & Google TabFM Visualizer</h2>
+                    <p class="section-subtitle">Compare traditional Scikit-Learn Logistic Regression against Google TabFM in-context zero-shot classification.</p>
                 </div>
-                <button class="section-action-btn" onclick="openSectionFeedback('Pipeline Visualizer')">📝 Notes & AI Assistant</button>
+                <button class="fb-launch-btn" onclick="openSectionFeedback('Supervised ML & Google TabFM')">📝 Notes & AI Assistant</button>
             </div>
 
-            <div class="visualizer-container">
+            <div class="viz-container">
                 <div class="viz-controls">
-                    <button class="viz-step-btn active" onclick="runVizStep(1)">Step 1: Data Ingestion & Split</button>
-                    <button class="viz-step-btn" onclick="runVizStep(2)">Step 2: Scikit-Learn Model Fit</button>
-                    <button class="viz-step-btn" onclick="runVizStep(3)">Step 3: Google TabFM Zero-Shot</button>
-                    <button class="viz-step-btn" onclick="runVizStep(4)">Step 4: LangGraph State Decision</button>
+                    <button class="viz-step-btn active" id="vizStepBtn1" onclick="setVizStep(1)">Step 1: Raw Survey Input</button>
+                    <button class="viz-step-btn" id="vizStepBtn2" onclick="setVizStep(2)">Step 2: Recoding & Encoding</button>
+                    <button class="viz-step-btn" id="vizStepBtn3" onclick="setVizStep(3)">Step 3: Scikit-Learn Model</button>
+                    <button class="viz-step-btn" id="vizStepBtn4" onclick="setVizStep(4)">Step 4: Google TabFM Zero-Shot</button>
                 </div>
 
-                <div class="viz-canvas" id="vizCanvas">
-                    <!-- Dynamic Interactive Diagram -->
+                <div id="vizStage" class="viz-stage">
+                    <!-- Content dynamically injected by js/visualizers.js -->
                 </div>
             </div>
         </section>
 
-        <!-- Section 3: Interactive Agent & Tool Sandbox -->
-        <section id="sandbox" class="section-block">
+        <!-- Section 4: Interactive ReAct Tool Calling Agent Sandbox -->
+        <section id="sandbox" class="section-card">
             <div class="section-header">
                 <div>
-                    <h2 class="section-title">Interactive AI Trust Agent Sandbox</h2>
-                    <p class="section-subtitle">Test natural language prompt queries against survey tool-calling algorithms directly in browser using the <span class="concept-term" onclick="openConceptDeepDive('react')">ReAct Loop</span>.</p>
+                    <h2 class="section-title">🤖 Interactive Agent Sandbox (ReAct Tool Loop)</h2>
+                    <p class="section-subtitle">Watch an autonomous LLM agent process survey prompts, select Python tools, and formulate answers.</p>
                 </div>
-                <button class="section-action-btn" onclick="openSectionFeedback('Agent Sandbox')">📝 Notes & AI Assistant</button>
+                <button class="fb-launch-btn" onclick="openSectionFeedback('Interactive Agent Sandbox')">📝 Notes & AI Assistant</button>
             </div>
 
-            <div class="sandbox-card">
-                <div class="sandbox-input-group">
-                    <label for="sandboxQuery" class="sandbox-label">Ask the Survey Agent:</label>
-                    <div class="sandbox-row">
-                        <input type="text" id="sandboxQuery" class="sandbox-input" value="Compare Logistic Regression, Random Forest, and Google TabFM Zero-Shot for predicting high trust in AI among survey respondents.">
-                        <button class="sandbox-btn" onclick="executeSandboxQuery()">Run Agent Loop</button>
+            <div class="sandbox-container">
+                <div class="sandbox-sidebar">
+                    <h3 style="font-size: 1rem; color: var(--gold-primary); margin-bottom: 12px;">Sample Prompts</h3>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <button class="sandbox-preset-btn" onclick="loadSandboxPreset(0)">"Find which age group has highest perceived AI risk and fit regression model."</button>
+                        <button class="sandbox-preset-btn" onclick="loadSandboxPreset(1)">"Run zero-shot TabFM classification on tech familiarity vs AI trust."</button>
+                        <button class="sandbox-preset-btn" onclick="loadSandboxPreset(2)">"Check for missing values (-9) and export Pydantic validated summary."</button>
+                    </div>
+
+                    <h3 style="font-size: 1rem; color: var(--gold-primary); margin: 20px 0 12px;">Agent Settings</h3>
+                    <div class="sandbox-input-group">
+                        <label class="sandbox-label">Select LLM Engine:</label>
+                        <select id="agentEngine" class="sandbox-select">
+                            <option value="claude-3-5-sonnet">Claude 3.5 Sonnet (Anthropic)</option>
+                            <option value="gemini-1-5-pro">Gemini 1.5 Pro (Google)</option>
+                            <option value="gpt-4o">GPT-4o (OpenAI)</option>
+                        </select>
                     </div>
                 </div>
 
-                <div class="sandbox-output-terminal" id="sandboxOutput">
-                    <div class="terminal-line muted">[System]: Ready for prompt query... Click 'Run Agent Loop' to simulate ReAct execution.</div>
+                <div class="sandbox-main">
+                    <div class="sandbox-chat-history" id="sandboxChatHistory">
+                        <div class="sandbox-msg agent">
+                            <strong>Agent Assistant:</strong> Welcome! Enter a natural language request to see how an Agentic LLM selects Python survey tools and builds analysis pipelines.
+                        </div>
+                    </div>
+
+                    <div class="sandbox-input-bar">
+                        <input type="text" id="sandboxInput" class="sandbox-input" placeholder="Type a natural language survey request (e.g. 'Fit a logistic model on AI trust')...">
+                        <button class="sandbox-send-btn" onclick="runSandboxAgent()">Run Agent ➔</button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 4: Jupyter Notebook Suite -->
-        <section id="notebooks" class="section-block">
+        <!-- Section 5: Executable Jupyter Notebooks Library -->
+        <section id="notebooks" class="section-card">
             <div class="section-header">
                 <div>
-                    <h2 class="section-title">Executable Jupyter Notebook Suite</h2>
-                    <p class="section-subtitle">6 hands-on notebooks located in <code>notebooks/</code>. Complete each module to track your WatSPEED course readiness!</p>
+                    <h2 class="section-title">📘 Executable Jupyter Notebooks Library</h2>
+                    <p class="section-subtitle">6 complete executable notebooks tailored for SAS/Stata survey researchers moving to Agentic AI.</p>
                 </div>
-                <button class="section-action-btn" onclick="openSectionFeedback('Jupyter Notebooks')">📝 Notes & AI Assistant</button>
+                <button class="fb-launch-btn" onclick="openSectionFeedback('Jupyter Notebooks Library')">📝 Notes & AI Assistant</button>
             </div>
 
             <div class="notebooks-grid">
-                <!-- Card 1 -->
-                <div class="nb-card" id="card-nb1">
-                    <div class="nb-header">
-                        <span class="nb-badge">Module 1</span>
-                        <label class="nb-check-container">
-                            <input type="checkbox" id="check-nb1" onchange="toggleModuleCheck(1)">
-                            <span class="nb-checkmark"></span>
-                        </label>
-                    </div>
-                    <h3 class="nb-title">01_python_for_sas_stata_users.ipynb</h3>
-                    <p class="nb-desc">SAS DATA steps & Stata recode -> Pandas DataFrame, missing value imputation (-9), <span class="concept-term" onclick="openConceptDeepDive('pydantic')">Pydantic</span> schemas & <span class="concept-term" onclick="openConceptDeepDive('asyncio')">Asyncio</span> LLM APIs.</p>
-                    <div class="nb-tags">
-                        <span class="tag">Pandas</span>
-                        <span class="tag">Pydantic</span>
-                        <span class="tag">Asyncio</span>
-                    </div>
-                    <div class="nb-footer">
-                        <span class="nb-file">notebooks/01_python_for_sas_stata_users.ipynb</span>
-                    </div>
+                <div class="nb-card">
+                    <div class="nb-badge">Notebook 01</div>
+                    <h3 class="nb-title">Python Data Essentials for SAS & Stata Users</h3>
+                    <p class="nb-desc">Pandas recoding, handling missing values (-9 ➔ None), survey weighting, and Pydantic schema validation.</p>
+                    <a href="../../notebooks/01_python_for_sas_stata_users.ipynb" class="nb-link">View Notebook 01 ➔</a>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="nb-card" id="card-nb2">
-                    <div class="nb-header">
-                        <span class="nb-badge">Module 2</span>
-                        <label class="nb-check-container">
-                            <input type="checkbox" id="check-nb2" onchange="toggleModuleCheck(2)">
-                            <span class="nb-checkmark"></span>
-                        </label>
-                    </div>
-                    <h3 class="nb-title">02_survey_tools_and_react_prompting.ipynb</h3>
-                    <p class="nb-desc">Supervised ML tools (@tool), Scikit-Learn LogisticReg vs <span class="concept-term" onclick="openConceptDeepDive('tabfm')">Google TabFM</span> Zero-Shot Classifier in a <span class="concept-term" onclick="openConceptDeepDive('react')">ReAct Agent</span> loop.</p>
-                    <div class="nb-tags">
-                        <span class="tag">ReAct</span>
-                        <span class="tag">Google TabFM</span>
-                        <span class="tag">Supervised ML</span>
-                    </div>
-                    <div class="nb-footer">
-                        <span class="nb-file">notebooks/02_survey_tools_and_react_prompting.ipynb</span>
-                    </div>
+                <div class="nb-card">
+                    <div class="nb-badge">Notebook 02</div>
+                    <h3 class="nb-title">Supervised ML & PROC LOGISTIC Bridge</h3>
+                    <p class="nb-desc">Scikit-learn LogisticRegression, Train/Test splitting, confusion matrices, and ROC-AUC curves on survey datasets.</p>
+                    <a href="../../notebooks/02_supervised_ml_proc_logistic.ipynb" class="nb-link">View Notebook 02 ➔</a>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="nb-card" id="card-nb3">
-                    <div class="nb-header">
-                        <span class="nb-badge">Module 3</span>
-                        <label class="nb-check-container">
-                            <input type="checkbox" id="check-nb3" onchange="toggleModuleCheck(3)">
-                            <span class="nb-checkmark"></span>
-                        </label>
-                    </div>
-                    <h3 class="nb-title">03_langgraph_for_survey_workflows.ipynb</h3>
-                    <p class="nb-desc">Building cyclic state machines with <span class="concept-term" onclick="openConceptDeepDive('langgraph')">LangGraph</span> (StateGraph, Nodes, Edges) for multi-step survey modeling pipelines.</p>
-                    <div class="nb-tags">
-                        <span class="tag">LangGraph</span>
-                        <span class="tag">StateGraph</span>
-                        <span class="tag">Workflows</span>
-                    </div>
-                    <div class="nb-footer">
-                        <span class="nb-file">notebooks/03_langgraph_for_survey_workflows.ipynb</span>
-                    </div>
+                <div class="nb-card">
+                    <div class="nb-badge">Notebook 03</div>
+                    <h3 class="nb-title">Google TabFM Zero-Shot Survey Classifier</h3>
+                    <p class="nb-desc">In-context zero-shot classification on raw categorical survey columns without manual one-hot recoding.</p>
+                    <a href="../../notebooks/03_google_tabfm_zero_shot.ipynb" class="nb-link">View Notebook 03 ➔</a>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="nb-card" id="card-nb4">
-                    <div class="nb-header">
-                        <span class="nb-badge">Module 4</span>
-                        <label class="nb-check-container">
-                            <input type="checkbox" id="check-nb4" onchange="toggleModuleCheck(4)">
-                            <span class="nb-checkmark"></span>
-                        </label>
-                    </div>
-                    <h3 class="nb-title">04_model_context_protocol_mcp.ipynb</h3>
-                    <p class="nb-desc"><span class="concept-term" onclick="openConceptDeepDive('mcp')">Model Context Protocol (MCP)</span> server & client architecture exposing survey data dictionaries, codebooks, and ML tools.</p>
-                    <div class="nb-tags">
-                        <span class="tag">MCP Server</span>
-                        <span class="tag">Anthropic Standard</span>
-                        <span class="tag">Resources</span>
-                    </div>
-                    <div class="nb-footer">
-                        <span class="nb-file">notebooks/04_model_context_protocol_mcp.ipynb</span>
-                    </div>
+                <div class="nb-card">
+                    <div class="nb-badge">Notebook 04</div>
+                    <h3 class="nb-title">LangChain & Tool Calling for Survey Analysis</h3>
+                    <p class="nb-desc">Wrapping Scikit-learn models and Pandas crosstabs as AI tools (@tool) callable by LLMs.</p>
+                    <a href="../../notebooks/04_langchain_tool_calling_survey.ipynb" class="nb-link">View Notebook 04 ➔</a>
                 </div>
 
-                <!-- Card 5 -->
-                <div class="nb-card" id="card-nb5">
-                    <div class="nb-header">
-                        <span class="nb-badge">Module 5</span>
-                        <label class="nb-check-container">
-                            <input type="checkbox" id="check-nb5" onchange="toggleModuleCheck(5)">
-                            <span class="nb-checkmark"></span>
-                        </label>
-                    </div>
-                    <h3 class="nb-title">05_multi_agent_sociological_researchers.ipynb</h3>
-                    <p class="nb-desc">Supervisor Agent coordinating specialized sub-agents: Data Engineer, ML & TabFM Specialist, and Sociological Analyst.</p>
-                    <div class="nb-tags">
-                        <span class="tag">Multi-Agent</span>
-                        <span class="tag">Supervisor Pattern</span>
-                        <span class="tag">Sociology</span>
-                    </div>
-                    <div class="nb-footer">
-                        <span class="nb-file">notebooks/05_multi_agent_sociological_researchers.ipynb</span>
-                    </div>
+                <div class="nb-card">
+                    <div class="nb-badge">Notebook 05</div>
+                    <h3 class="nb-title">LangGraph State Machines for Survey Pipelines</h3>
+                    <p class="nb-desc">Building cyclic state graphs with memory persistence, error correction loops, and human-in-the-loop approvals.</p>
+                    <a href="../../notebooks/05_langgraph_survey_state_machine.ipynb" class="nb-link">View Notebook 05 ➔</a>
                 </div>
 
-                <!-- Card 6 -->
-                <div class="nb-card" id="card-nb6">
-                    <div class="nb-header">
-                        <span class="nb-badge">Capstone</span>
-                        <label class="nb-check-container">
-                            <input type="checkbox" id="check-nb6" onchange="toggleModuleCheck(6)">
-                            <span class="nb-checkmark"></span>
-                        </label>
-                    </div>
-                    <h3 class="nb-title">06_watspeed_capstone_survey_assistant.ipynb</h3>
-                    <p class="nb-desc">End-to-end Autonomous Research Assistant that ingests survey data, fits zero-shot TabFM vs ML, and generates capstone research reports.</p>
-                    <div class="nb-tags">
-                        <span class="tag">Capstone</span>
-                        <span class="tag">Autonomous Agent</span>
-                        <span class="tag">Full Stack</span>
-                    </div>
-                    <div class="nb-footer">
-                        <span class="nb-file">notebooks/06_watspeed_capstone_survey_assistant.ipynb</span>
-                    </div>
+                <div class="nb-card">
+                    <div class="nb-badge">Notebook 06</div>
+                    <h3 class="nb-title">WatSPEED Capstone: Autonomous Survey Assistant</h3>
+                    <p class="nb-desc">End-to-end multi-agent system analyzing the Kaggle AI Trust Insights dataset and drafting sociological summaries.</p>
+                    <a href="../../notebooks/06_watspeed_capstone_survey_assistant.ipynb" class="nb-link">View Notebook 06 ➔</a>
                 </div>
-            </div>
-        </section>
-
-        <!-- Section 5: Interactive Concept Glossary -->
-        <section id="glossary" class="section-block">
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title">Interactive Concept Glossary</h2>
-                    <p class="section-subtitle">Click any term below for a comprehensive deep-dive explanation, SAS analogy, practical code syntax, and use cases.</p>
-                </div>
-                <button class="section-action-btn" onclick="openSectionFeedback('Concept Glossary')">📝 Notes & AI Assistant</button>
-            </div>
-
-            <div class="glossary-grid" id="glossaryGrid">
-                <!-- Dynamically populated -->
-            </div>
-        </section>
-
-        <!-- Section 6: Personal Study Notes -->
-        <section id="mynotes" class="section-block">
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title">My Study Notes & Notebook Highlights</h2>
-                    <p class="section-subtitle">Organized study log saved locally for review and exportable as Markdown files.</p>
-                </div>
-                <button class="fb-action-btn gold" onclick="exportStudyNotesMarkdown()">Export All Notes (.md)</button>
-            </div>
-
-            <div class="sandbox-card" id="userNotesWidgetList">
-                <!-- Dynamically populated -->
             </div>
         </section>
 
@@ -317,17 +242,66 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-content">
-            <p>Designed for WatSPEED Agentic AI Course Preparation | University of Waterloo</p>
-            <p class="muted">Datasets: Kaggle AI Trust Insights & GSS Social Survey Benchmark</p>
+            <p>WatSPEED Agentic AI Prep Hub | Part of the Learning Tools Suite</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="../../js/rosetta.js"></script>
-    <script src="../../js/visualizers.js"></script>
-    <script src="../../js/sandbox.js"></script>
+    <!-- Concept Deep-Dive Modal System -->
+    <div id="glossaryModal" class="concept-modal-overlay">
+        <div class="concept-modal-card">
+            <button class="concept-modal-close" onclick="closeConceptModal()">&times;</button>
+            <div id="glossaryModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Section Feedback & AI Assistant Modal -->
+    <div id="feedbackModal" class="concept-modal-overlay">
+        <div class="concept-modal-card">
+            <button class="concept-modal-close" onclick="closeFeedbackModal()">&times;</button>
+            <div class="concept-badge-tag">📝 NOTES & AI ASSISTANT</div>
+            <h2 class="concept-title" id="fbSectionTitle">Section Assistant</h2>
+            
+            <div class="viz-controls" style="margin-bottom: 20px;">
+                <button class="viz-step-btn active" id="fbTabBtn1" onclick="switchFbTab(1)">1. Ask Question</button>
+                <button class="viz-step-btn" id="fbTabBtn2" onclick="switchFbTab(2)">2. Request Addition</button>
+                <button class="viz-step-btn" id="fbTabBtn3" onclick="switchFbTab(3)">3. My Personal Notes</button>
+            </div>
+
+            <!-- Tab 1: Ask Question -->
+            <div id="fbTabContent1" class="fb-tab-content">
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Type a question about terms in this section (e.g. <em>"What is Pydantic?"</em> or <em>"How does Google TabFM work?"</em>):</p>
+                <textarea id="fbQuestionInput" class="sandbox-input" style="height: 100px; margin-bottom: 12px;" placeholder="Ask your question here..."></textarea>
+                <button class="fb-action-btn gold" onclick="generateAiQuestionPrompt()">Generate AI Prompt ➔</button>
+                <div id="fbQuestionPromptOut" class="fb-prompt-box" style="display:none;"></div>
+            </div>
+
+            <!-- Tab 2: Suggest Additions -->
+            <div id="fbTabContent2" class="fb-tab-content" style="display:none;">
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Suggest a feature, dataset, or topic addition you'd like built into this app:</p>
+                <textarea id="fbAdditionInput" class="sandbox-input" style="height: 100px; margin-bottom: 12px;" placeholder="Describe what you want added..."></textarea>
+                <button class="fb-action-btn gold" onclick="generateAiAdditionPrompt()">Generate Feature Request Prompt ➔</button>
+                <div id="fbAdditionPromptOut" class="fb-prompt-box" style="display:none;"></div>
+            </div>
+
+            <!-- Tab 3: Personal Notes Manager -->
+            <div id="fbTabContent3" class="fb-tab-content" style="display:none;">
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Save personal study notes for this section. Notes are saved to your browser storage and can be exported as a markdown study guide!</p>
+                <textarea id="fbNoteInput" class="sandbox-input" style="height: 120px; margin-bottom: 12px;" placeholder="Type your personal study notes here..."></textarea>
+                <div style="display: flex; gap: 10px;">
+                    <button class="fb-action-btn gold" onclick="savePersonalNote()">Save Note</button>
+                    <button class="fb-action-btn outline" onclick="exportNotesToMarkdown()">Export Study Guide (.md)</button>
+                </div>
+                <div id="fbSavedNotesList" style="margin-top: 16px; font-size: 0.85rem; color: var(--text-main);"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
     <script src="../../js/glossary.js"></script>
     <script src="../../js/feedback.js"></script>
-    <script src="../../js/app.js"></script>
+    <script src="../../js/rosetta.js"></script>
+    <script src="../../js/ds_activities.js"></script>
+    <script src="../../js/visualizers.js"></script>
+    <script src="../../js/sandbox.js"></script>
 </body>
 </html>
