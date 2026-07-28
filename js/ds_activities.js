@@ -1,6 +1,5 @@
-// Data Science Interactive Workbench & Activity Suite for WatSPEED Prep Hub
+// Data Science Interactive Workbench & Activity Suite with Safe Event Handling
 
-// Real dataset samples loaded in memory for interactive DS activities
 const sampleSurveyData = [
     { id: 1, age_group: '30-44', edu: 'Master', ai_risk: 4, tech_fam: 5, ai_trust: 1, weight: 1.25 },
     { id: 2, age_group: '18-29', edu: 'Bachelor', ai_risk: 2, tech_fam: 4, ai_trust: 1, weight: 0.95 },
@@ -16,13 +15,17 @@ const sampleSurveyData = [
 
 let activeDsTab = 'feature_engineering';
 
-function renderDsActivitySuite(tabKey) {
+function renderDsActivitySuite(tabKey, evt) {
     activeDsTab = tabKey || 'feature_engineering';
     const stage = document.getElementById('dsStage');
     if (!stage) return;
 
     document.querySelectorAll('.ds-tab-btn').forEach(b => b.classList.remove('active'));
-    if (event && event.target) event.target.classList.add('active');
+    
+    const target = (evt && evt.currentTarget) ? evt.currentTarget : (typeof window !== 'undefined' && window.event && window.event.target ? window.event.target : null);
+    if (target && target.classList) {
+        target.classList.add('active');
+    }
 
     if (activeDsTab === 'feature_engineering') {
         stage.innerHTML = `
@@ -178,8 +181,12 @@ function renderDsActivitySuite(tabKey) {
 }
 
 function runFeatureRecode() {
-    const cutoff = parseInt(document.getElementById('recodeCutoff').value);
-    const impute = document.getElementById('imputeStrategy').value;
+    const cutoffEl = document.getElementById('recodeCutoff');
+    const imputeEl = document.getElementById('imputeStrategy');
+    if (!cutoffEl || !imputeEl) return;
+
+    const cutoff = parseInt(cutoffEl.value);
+    const impute = imputeEl.value;
     const statsOut = document.getElementById('recodeStatsOutput');
     const codeOut = document.getElementById('recodeCodeSnippet');
 
@@ -194,7 +201,6 @@ function runFeatureRecode() {
     const highRiskCount = processed.filter(d => d.ai_risk >= cutoff).length;
     const pct = Math.round((highRiskCount / processed.length) * 100);
 
-    // Weighted mean calculation
     const totalWeight = processed.reduce((sum, d) => sum + d.weight, 0);
     const weightedRiskSum = processed.reduce((sum, d) => sum + (d.ai_risk * d.weight), 0);
     const weightedAvgRisk = (weightedRiskSum / totalWeight).toFixed(2);
@@ -217,9 +223,15 @@ weighted_mean = (df['AI_Risk_Clean'] * df['Survey_Weight']).sum() / df['Survey_W
 }
 
 function runMlModelBenchmark() {
-    const split = document.getElementById('splitRatio').value;
-    const trees = document.getElementById('rfTrees').value;
-    const tabfmRows = document.getElementById('tabfmRows').value;
+    const splitEl = document.getElementById('splitRatio');
+    const treesEl = document.getElementById('rfTrees');
+    const tabfmRowsEl = document.getElementById('tabfmRows');
+
+    if (!splitEl || !treesEl || !tabfmRowsEl) return;
+
+    const split = splitEl.value;
+    const trees = treesEl.value;
+    const tabfmRows = tabfmRowsEl.value;
 
     const logEl = document.getElementById('logisticStats');
     const rfEl = document.getElementById('rfStats');
@@ -257,11 +269,14 @@ function runMlModelBenchmark() {
 }
 
 function runHypothesisTest() {
-    const rowVar = document.getElementById('hypoRowVar').value;
-    const colVar = document.getElementById('hypoColVar').value;
+    const rowVarEl = document.getElementById('hypoRowVar');
+    const colVarEl = document.getElementById('hypoColVar');
     const out = document.getElementById('hypoResultsOutput');
 
-    if (!out) return;
+    if (!rowVarEl || !colVarEl || !out) return;
+
+    const rowVar = rowVarEl.value;
+    const colVar = colVarEl.value;
 
     if (rowVar === 'age_group' && colVar === 'ai_trust') {
         out.innerHTML = `

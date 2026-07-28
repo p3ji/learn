@@ -1,4 +1,4 @@
-// Interactive Mental Models Arcade with Structured 3-Step Flow (Intro -> Video -> Activity)
+// Interactive Mental Models Arcade with Safe Event Handling
 
 const mentalModelsData = {
     first_principles: {
@@ -33,13 +33,17 @@ const mentalModelsData = {
 
 let activeMMKey = 'first_principles';
 
-function renderMentalModelArcade(modelKey) {
+function renderMentalModelArcade(modelKey, evt) {
     activeMMKey = modelKey;
     const stage = document.getElementById('arcadeStage');
     if (!stage) return;
 
     document.querySelectorAll('.mm-tab-btn').forEach(b => b.classList.remove('active'));
-    if (event && event.target) event.target.classList.add('active');
+    
+    const target = (evt && evt.currentTarget) ? evt.currentTarget : (typeof window !== 'undefined' && window.event && window.event.target ? window.event.target : null);
+    if (target && target.classList) {
+        target.classList.add('active');
+    }
 
     const mm = mentalModelsData[modelKey];
 
@@ -48,7 +52,7 @@ function renderMentalModelArcade(modelKey) {
             <!-- 3-Step Flow Controls -->
             <div class="viz-controls" style="margin-bottom: 20px;">
                 <button class="viz-step-btn active" id="mmStepBtn1" onclick="switchMMStep(1)">Step 1: Concept Intro</button>
-                <button class="viz-step-btn" id="mmStepBtn2" onclick="switchMMStep(2)">Step 2: Video (<10m) & Example</button>
+                <button class="viz-step-btn" id="mmStepBtn2" onclick="switchMMStep(2)">Step 2: Video (&lt;10m) & Example</button>
                 <button class="viz-step-btn" id="mmStepBtn3" onclick="switchMMStep(3)">Step 3: Interactive Activity</button>
             </div>
 
@@ -68,7 +72,10 @@ function renderMentalModelArcade(modelKey) {
                     <iframe src="https://www.youtube.com/embed/${mm.videoId}" style="position: absolute; top:0; left:0; width:100%; height:100%; border:none;" allowfullscreen></iframe>
                 </div>
 
-                <button class="fb-action-btn gold" onclick="switchMMStep(3)">Continue to Step 3: Interactive Activity ➔</button>
+                <div style="display: flex; gap: 12px; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <a href="https://www.youtube.com/watch?v=${mm.videoId}" target="_blank" class="fb-action-btn outline" style="text-decoration:none;">▶ Open Video on YouTube</a>
+                    <button class="fb-action-btn gold" onclick="switchMMStep(3)">Continue to Step 3: Interactive Activity ➔</button>
+                </div>
             </div>
 
             <!-- Step 3: Activity -->
@@ -126,19 +133,24 @@ function renderMentalModelArcade(modelKey) {
     `;
 }
 
-function switchMMStep(stepNum) {
+function switchMMStep(stepNum, evt) {
     document.querySelectorAll('#arcadeStage .flow-content-block').forEach(b => b.style.display = 'none');
     document.querySelectorAll('#arcadeStage .viz-step-btn').forEach(b => b.classList.remove('active'));
 
+    const target = (evt && evt.currentTarget) ? evt.currentTarget : (typeof window !== 'undefined' && window.event && window.event.target ? window.event.target : null);
     const btn = document.getElementById(`mmStepBtn${stepNum}`);
     const content = document.getElementById(`mmContent${stepNum}`);
 
-    if (btn) btn.classList.add('active');
+    if (target && target.classList) target.classList.add('active');
+    else if (btn) btn.classList.add('active');
+
     if (content) content.style.display = 'block';
 }
 
 function dismantleObject(objType) {
     const out = document.getElementById('legoDismantleOutput');
+    if (!out) return;
+
     if (objType === 'rocket') {
         out.innerHTML = `
             🚀 <strong>Space Rocket First Principles Breakdown:</strong><br>
@@ -162,6 +174,8 @@ function dismantleObject(objType) {
 
 function applyOccamsRazor(isCorrect) {
     const res = document.getElementById('razorResult');
+    if (!res) return;
+
     res.style.display = 'block';
     if (isCorrect) {
         res.style.background = 'rgba(16, 185, 129, 0.2)';
@@ -182,14 +196,18 @@ function huntBlackSwan() {
     const lake = document.getElementById('swanLake');
     const res = document.getElementById('swanResult');
 
-    lake.innerHTML = `
-        <span style="font-size: 3rem;">🦢</span>
-        <span style="font-size: 3rem;">🦢</span>
-        <span style="font-size: 3rem; transform: scale(1.2);">🖤</span>
-        <span style="font-size: 3rem;">🦢</span>
-    `;
+    if (lake) {
+        lake.innerHTML = `
+            <span style="font-size: 3rem;">🦢</span>
+            <span style="font-size: 3rem;">🦢</span>
+            <span style="font-size: 3rem; transform: scale(1.2);">🖤</span>
+            <span style="font-size: 3rem;">🦢</span>
+        `;
+    }
 
-    res.innerHTML = `<span style="color: var(--pink-energy); font-size: 1.1rem;">🖤 YOU FOUND A BLACK SWAN!</span><br>The theory "All swans are white" is now FALSIFIED! This is how real scientific progress happens (+75 XP)!`;
+    if (res) {
+        res.innerHTML = `<span style="color: var(--pink-energy); font-size: 1.1rem;">🖤 YOU FOUND A BLACK SWAN!</span><br>The theory "All swans are white" is now FALSIFIED! This is how real scientific progress happens (+75 XP)!`;
+    }
     addXP(75);
 }
 

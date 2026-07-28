@@ -1,70 +1,17 @@
-// Feedback, AI Prompts & Personal Study Notes Manager
+// Section Feedback, AI Assistant Prompt Generator & Personal Notes Manager
 
-let currentFeedbackSection = "General App";
+let activeSectionTitle = "General Section";
 
 function openSectionFeedback(sectionName) {
-    currentFeedbackSection = sectionName;
-    
-    let modal = document.getElementById('feedbackModal');
-    if (!modal) {
-        modal = document.createElement('div');
-        modal.id = 'feedbackModal';
-        modal.className = 'feedback-modal-overlay';
-        document.body.appendChild(modal);
-    }
+    activeSectionTitle = sectionName || "General Section";
+    const modal = document.getElementById('feedbackModal');
+    const titleEl = document.getElementById('fbSectionTitle');
 
-    modal.innerHTML = `
-        <div class="feedback-modal-card">
-            <button class="feedback-modal-close" onclick="closeFeedbackModal()">&times;</button>
-            <div class="feedback-badge">Interactive Learning Assistant</div>
-            <h2 class="feedback-title" id="feedbackSectionTitle">${escapeHtml(sectionName)}: Notes & Prompts</h2>
-            
-            <div class="feedback-tabs">
-                <button class="fb-tab active" onclick="switchFbTab('question')">❓ Ask Question</button>
-                <button class="fb-tab" onclick="switchFbTab('suggestion')">💡 Suggest Addition</button>
-                <button class="fb-tab" onclick="switchFbTab('note')">📌 My Study Notes</button>
-            </div>
+    if (titleEl) titleEl.innerText = `Assistant: ${activeSectionTitle}`;
+    if (modal) modal.style.display = 'flex';
 
-            <!-- Tab 1: Ask Question -->
-            <div class="fb-tab-content active" id="fbTabQuestion">
-                <p class="fb-desc">Have a question about SAS syntax, TabFM, or LangGraph? Type it below to generate a formatted prompt to paste directly into our chat!</p>
-                <textarea id="fbQuestionText" class="fb-textarea" placeholder="e.g. Can you explain why we replace -9 with None in Pydantic models before passing to LLM tools?"></textarea>
-                <div style="display: flex; gap: 12px; margin-top: 12px;">
-                    <button class="fb-action-btn" onclick="generateAiPrompt('question')">Generate & Copy AI Prompt</button>
-                </div>
-                <div id="fbQuestionPromptOutput" class="fb-output-box" style="display: none;"></div>
-            </div>
-
-            <!-- Tab 2: Suggest Addition -->
-            <div class="fb-tab-content" id="fbTabSuggestion">
-                <p class="fb-desc">Want to add a new tool, dataset feature, or visualization? Type your idea to generate a structured AI Feature Request prompt!</p>
-                <textarea id="fbSuggestionText" class="fb-textarea" placeholder="e.g. Add a Likert scale distribution chart for Perceived_AI_Risk in the Visualizer section."></textarea>
-                <div style="display: flex; gap: 12px; margin-top: 12px;">
-                    <button class="fb-action-btn" onclick="generateAiPrompt('suggestion')">Generate & Copy Feature Request</button>
-                </div>
-                <div id="fbSuggestionPromptOutput" class="fb-output-box" style="display: none;"></div>
-            </div>
-
-            <!-- Tab 3: Study Notes -->
-            <div class="fb-tab-content" id="fbTabNote">
-                <p class="fb-desc">Organize and save personal study notes for this section. Notes are saved to your study log and can be exported as a Markdown file!</p>
-                <textarea id="fbNoteText" class="fb-textarea" placeholder="e.g. Key takeaway: TabFM is zero-shot so it doesn't need fit() training like Scikit-Learn. Useful for small survey sub-samples."></textarea>
-                <div style="display: flex; gap: 12px; margin-top: 12px;">
-                    <button class="fb-action-btn gold" onclick="saveStudyNote()">Save Study Note</button>
-                    <button class="fb-action-btn outline" onclick="exportStudyNotesMarkdown()">Export All Notes (.md)</button>
-                </div>
-                <div id="fbNoteSavedMsg" style="color: var(--accent-green); font-size: 0.85rem; margin-top: 8px; display: none;">✓ Note saved to your study log!</div>
-
-                <div style="margin-top: 20px;">
-                    <h4 style="font-size: 0.9rem; color: var(--gold-primary); margin-bottom: 8px;">Saved Notes for ${escapeHtml(sectionName)}:</h4>
-                    <div id="savedNotesList" class="saved-notes-list"></div>
-                </div>
-            </div>
-        </div>
-    `;
-
-    modal.style.display = 'flex';
-    loadSavedNotesForSection(sectionName);
+    switchFbTab(1);
+    loadSavedNotes();
 }
 
 function closeFeedbackModal() {
@@ -72,154 +19,137 @@ function closeFeedbackModal() {
     if (modal) modal.style.display = 'none';
 }
 
-function switchFbTab(tabName) {
-    document.querySelectorAll('.fb-tab').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.fb-tab-content').forEach(c => c.classList.remove('active'));
+function switchFbTab(tabNum, evt) {
+    document.querySelectorAll('.fb-tab-content').forEach(c => c.style.display = 'none');
+    document.querySelectorAll('#feedbackModal .viz-step-btn').forEach(b => b.classList.remove('active'));
 
-    event.target.classList.add('active');
-    if (tabName === 'question') document.getElementById('fbTabQuestion').classList.add('active');
-    if (tabName === 'suggestion') document.getElementById('fbTabSuggestion').classList.add('active');
-    if (tabName === 'note') document.getElementById('fbTabNote').classList.add('active');
-}
+    const btn = document.getElementById(`fbTabBtn${tabNum}`);
+    const content = document.getElementById(`fbTabContent${tabNum}`);
 
-function generateAiPrompt(type) {
-    let inputText = "";
-    let outputBox = null;
-    let headerText = "";
-
-    if (type === 'question') {
-        inputText = document.getElementById('fbQuestionText').value.trim();
-        outputBox = document.getElementById('fbQuestionPromptOutput');
-        headerText = `[AI QUESTION / CLARIFICATION REQUEST]`;
-    } else {
-        inputText = document.getElementById('fbSuggestionText').value.trim();
-        outputBox = document.getElementById('fbSuggestionPromptOutput');
-        headerText = `[AI FEATURE REQUEST / ADDITION]`;
+    const target = (evt && evt.currentTarget) ? evt.currentTarget : (typeof window !== 'undefined' && window.event && window.event.target ? window.event.target : null);
+    if (target && target.classList) {
+        target.classList.add('active');
+    } else if (btn) {
+        btn.classList.add('active');
     }
 
-    if (!inputText) return;
+    if (content) content.style.display = 'block';
+}
 
-    const formattedPrompt = `${headerText}\nSection: ${currentFeedbackSection}\nUser Query: "${inputText}"\nInstruction: Please explain this concept thoroughly or update the WatSPEED Prep Hub codebase to incorporate this request.`;
+function generateAiQuestionPrompt() {
+    const qInput = document.getElementById('fbQuestionInput');
+    const out = document.getElementById('fbQuestionPromptOut');
 
-    outputBox.style.display = 'block';
-    outputBox.innerHTML = `
-        <div style="font-size: 0.75rem; color: var(--gold-primary); margin-bottom: 4px;">✓ Copy & paste this prompt into chat:</div>
-        <pre style="white-space: pre-wrap; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-green);">${escapeHtml(formattedPrompt)}</pre>
-        <button onclick="copyToClipboard('${escapeJsString(formattedPrompt)}')" style="margin-top: 8px; background: var(--gold-primary); color: #000; border: none; padding: 4px 12px; border-radius: 4px; font-weight: 700; cursor: pointer;">Copy Prompt to Clipboard</button>
+    if (!qInput || !out) return;
+    const qText = qInput.value.trim();
+
+    if (!qText) {
+        alert("Please enter a question or topic first!");
+        return;
+    }
+
+    const promptStr = `[AI QUESTION / CLARIFICATION REQUEST]\nSection: ${activeSectionTitle}\nUser Query: "${qText}"\nInstruction: Please explain this concept thoroughly or update the WatSPEED Prep Hub codebase to incorporate this request.`;
+
+    out.style.display = 'block';
+    out.innerHTML = `
+        <strong>Generated AI Prompt (Click to Copy):</strong>
+        <textarea style="width:100%; height:100px; background:#000; color:#4ADE80; border:1px solid #4ADE80; margin-top:8px; padding:8px; border-radius:6px;" readonly>${escapeHtml(promptStr)}</textarea>
     `;
-
-    copyToClipboard(formattedPrompt);
 }
 
-function saveStudyNote() {
-    const text = document.getElementById('fbNoteText').value.trim();
-    if (!text) return;
+function generateAiAdditionPrompt() {
+    const aInput = document.getElementById('fbAdditionInput');
+    const out = document.getElementById('fbAdditionPromptOut');
 
-    let notes = JSON.parse(localStorage.getItem('user_study_notes') || '[]');
-    const newNote = {
-        id: Date.now(),
-        section: currentFeedbackSection,
+    if (!aInput || !out) return;
+    const aText = aInput.value.trim();
+
+    if (!aText) {
+        alert("Please describe what you would like added first!");
+        return;
+    }
+
+    const promptStr = `[AI FEATURE / ADDITION REQUEST]\nSection: ${activeSectionTitle}\nUser Suggestion: "${aText}"\nInstruction: Please build this feature, dataset, or visualization into the WatSPEED Prep Hub codebase.`;
+
+    out.style.display = 'block';
+    out.innerHTML = `
+        <strong>Generated Feature Request Prompt (Click to Copy):</strong>
+        <textarea style="width:100%; height:100px; background:#000; color:#4ADE80; border:1px solid #4ADE80; margin-top:8px; padding:8px; border-radius:6px;" readonly>${escapeHtml(promptStr)}</textarea>
+    `;
+}
+
+function savePersonalNote() {
+    const nInput = document.getElementById('fbNoteInput');
+    if (!nInput) return;
+    const nText = nInput.value.trim();
+
+    if (!nText) {
+        alert("Please type a note first!");
+        return;
+    }
+
+    let allNotes = JSON.parse(localStorage.getItem('watspeed_user_study_notes') || '[]');
+    allNotes.push({
+        section: activeSectionTitle,
         timestamp: new Date().toLocaleString(),
-        content: text
-    };
-    notes.unshift(newNote);
-    localStorage.setItem('user_study_notes', JSON.stringify(notes));
-
-    document.getElementById('fbNoteText').value = '';
-    const msg = document.getElementById('fbNoteSavedMsg');
-    msg.style.display = 'block';
-    setTimeout(() => { msg.style.display = 'none'; }, 2000);
-
-    loadSavedNotesForSection(currentFeedbackSection);
-    renderStudyNotesWidget();
-}
-
-function loadSavedNotesForSection(sectionName) {
-    const container = document.getElementById('savedNotesList');
-    if (!container) return;
-
-    let notes = JSON.parse(localStorage.getItem('user_study_notes') || '[]');
-    let sectionNotes = notes.filter(n => n.section === sectionName);
-
-    if (sectionNotes.length === 0) {
-        container.innerHTML = `<div style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">No saved notes for this section yet. Write your first note above!</div>`;
-        return;
-    }
-
-    container.innerHTML = sectionNotes.map(n => `
-        <div style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px; margin-bottom: 8px;">
-            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px;">
-                <span>${n.timestamp}</span>
-                <span style="color: var(--gold-primary); cursor: pointer;" onclick="deleteStudyNote(${n.id})">Delete</span>
-            </div>
-            <div style="font-size: 0.85rem; color: var(--text-main); white-space: pre-wrap;">${escapeHtml(n.content)}</div>
-        </div>
-    `).join('');
-}
-
-function deleteStudyNote(id) {
-    let notes = JSON.parse(localStorage.getItem('user_study_notes') || '[]');
-    notes = notes.filter(n => n.id !== id);
-    localStorage.setItem('user_study_notes', JSON.stringify(notes));
-    loadSavedNotesForSection(currentFeedbackSection);
-    renderStudyNotesWidget();
-}
-
-function exportStudyNotesMarkdown() {
-    let notes = JSON.parse(localStorage.getItem('user_study_notes') || '[]');
-    if (notes.length === 0) {
-        alert("No study notes saved yet!");
-        return;
-    }
-
-    let md = `# WatSPEED Agentic AI Study Notes & Highlights\n\n`;
-    notes.forEach(n => {
-        md += `### [${n.section}] - ${n.timestamp}\n${n.content}\n\n---\n\n`;
+        content: nText
     });
 
-    const blob = new Blob([md], { type: 'text/markdown' });
+    localStorage.setItem('watspeed_user_study_notes', JSON.stringify(allNotes));
+    nInput.value = '';
+    loadSavedNotes();
+    alert("Note saved to browser study storage!");
+}
+
+function loadSavedNotes() {
+    const container = document.getElementById('fbSavedNotesList');
+    if (!container) return;
+
+    let allNotes = JSON.parse(localStorage.getItem('watspeed_user_study_notes') || '[]');
+    const sectionNotes = allNotes.filter(n => n.section === activeSectionTitle);
+
+    if (sectionNotes.length === 0) {
+        container.innerHTML = `<em>No notes saved for ${activeSectionTitle} yet.</em>`;
+        return;
+    }
+
+    container.innerHTML = `
+        <strong>Saved Notes for ${activeSectionTitle}:</strong>
+        <ul style="padding-left: 20px; margin-top: 8px;">
+            ${sectionNotes.map(n => `
+                <li style="margin-bottom: 8px;">
+                    <span style="color: var(--gold-primary); font-size: 0.75rem;">[${n.timestamp}]</span>: ${escapeHtml(n.content)}
+                </li>
+            `).join('')}
+        </ul>
+    `;
+}
+
+function exportNotesToMarkdown() {
+    let allNotes = JSON.parse(localStorage.getItem('watspeed_user_study_notes') || '[]');
+    if (allNotes.length === 0) {
+        alert("No study notes to export yet! Type and save some notes first.");
+        return;
+    }
+
+    let mdStr = `# WatSPEED Agentic AI Study Guide & Personal Notes\n\n`;
+    allNotes.forEach((n, idx) => {
+        mdStr += `### Note ${idx + 1}: ${n.section}\n`;
+        mdStr += `**Date:** ${n.timestamp}\n\n`;
+        mdStr += `${n.content}\n\n---\n\n`;
+    });
+
+    const blob = new Blob([mdStr], { type: 'text/markdown' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `watspeed_study_notes_${Date.now()}.md`;
+    a.download = `user_study_notes_${new Date().toISOString().slice(0, 10)}.md`;
+    document.body.appendChild(a);
     a.click();
-}
-
-function renderStudyNotesWidget() {
-    const listContainer = document.getElementById('userNotesWidgetList');
-    if (!listContainer) return;
-
-    let notes = JSON.parse(localStorage.getItem('user_study_notes') || '[]');
-    if (notes.length === 0) {
-        listContainer.innerHTML = `<p style="color: var(--text-muted); font-size: 0.88rem;">No personal study notes recorded yet. Use the 📝 button in any section to add notes!</p>`;
-        return;
-    }
-
-    listContainer.innerHTML = notes.map(n => `
-        <div style="background: rgba(3, 7, 18, 0.7); border: 1px solid rgba(255, 199, 44, 0.2); border-radius: 10px; padding: 14px; margin-bottom: 12px;">
-            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 6px;">
-                <span class="nb-badge">${escapeHtml(n.section)}</span>
-                <span style="color: var(--text-muted);">${n.timestamp}</span>
-            </div>
-            <div style="font-size: 0.9rem; color: var(--text-main); white-space: pre-wrap;">${escapeHtml(n.content)}</div>
-        </div>
-    `).join('');
-}
-
-function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        alert("Copied prompt to clipboard! Paste it into chat to interact with the AI assistant.");
-    });
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 }
 
 function escapeHtml(text) {
     return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
-
-function escapeJsString(text) {
-    return text.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, '\\n');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    renderStudyNotesWidget();
-});

@@ -1,4 +1,4 @@
-// Rosetta Stone comparative matrix with Detailed Explanations, SAS Equivalents & Key Differences
+// Rosetta Stone comparative matrix with Safe Event Handling & Detailed Breakdown
 const rosettaData = {
     data: {
         title: "1. SAS DATA Step / Stata Recode ➔ Pandas & Pydantic Schemas",
@@ -215,12 +215,16 @@ function toggleStataView() {
     renderRosettaContent(currentRosettaKey);
 }
 
-function showRosettaTab(key) {
+function showRosettaTab(key, evt) {
     currentRosettaKey = key;
     document.querySelectorAll('.rosetta-tab').forEach(b => b.classList.remove('active'));
-    if (event && event.target) {
-        event.target.classList.add('active');
+    
+    // Safe event element selection
+    const target = (evt && evt.currentTarget) ? evt.currentTarget : (typeof window !== 'undefined' && window.event && window.event.target ? window.event.target : null);
+    if (target) {
+        target.classList.add('active');
     }
+    
     renderRosettaContent(key);
 }
 
