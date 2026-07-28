@@ -141,10 +141,17 @@ function rapEscapeHtml(str) {
 }
 
 let currentRapStep = 1;
+let activeRapContainerId = 'rapStudioCard';
 
 function renderRapModuleCard(targetContainerId) {
-    const container = document.getElementById(targetContainerId || 'rapModuleCard');
+    if (targetContainerId) {
+        activeRapContainerId = targetContainerId;
+    }
+    const container = document.getElementById(activeRapContainerId) || 
+                      document.getElementById('rapStudioCard') || 
+                      document.getElementById('rapModuleCard');
     if (!container) return;
+    activeRapContainerId = container.id;
 
     const shortTitles = [
         "Level 1: Script Folder",
@@ -239,8 +246,8 @@ function renderRapModuleCard(targetContainerId) {
 
 function setRapStep(stepNum) {
     currentRapStep = stepNum;
-    renderRapModuleCard('rapModuleCard');
-    const card = document.getElementById('rapModuleCard');
+    renderRapModuleCard(activeRapContainerId);
+    const card = document.getElementById(activeRapContainerId);
     if (card) {
         card.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
