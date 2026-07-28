@@ -106,14 +106,19 @@ print(f"ROC-AUC: {roc_auc:.3f}")`,
                 <li><strong>Train/Test split:</strong> SAS fits on the full dataset and reports inference stats (p-values, AIC). Sklearn prioritises out-of-sample prediction — so you hold 20% back as a test set and measure ROC-AUC.</li>
             </ul>
 
-            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Inference (SAS) vs Prediction (sklearn):</h4>
+            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Do SAS and Scikit-Learn Give the Exact Same Results?</h4>
             <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
-                <p><strong>SAS PROC LOGISTIC</strong> is built for <em>explaining</em> relationships — it reports odds ratios, standard errors, p-values, AIC/SBC on the whole dataset. The sociologist's traditional tool.</p>
-                <p style="margin-top:6px;"><strong>sklearn LogisticRegression</strong> is built for <em>predicting</em> new cases — it reports ROC-AUC and accuracy on the held-out test set. Survey weights are passed via <code>sample_weight=</code> in <code>.fit()</code>.</p>
+                <p><strong>Out-of-the-box? NO!</strong> They differ by default for 3 main reasons:</p>
+                <ol style="padding-left: 18px; margin: 6px 0; line-height: 1.5;">
+                    <li><strong>Regularization:</strong> Scikit-Learn applies <code>L2 regularization</code> penalty by default (shrinking coefficients to prevent overfitting). SAS <code>PROC LOGISTIC</code> uses unregularized Maximum Likelihood Estimation (MLE). Pass <code>penalty=None</code> in Python to turn it off.</li>
+                    <li><strong>Reference Category:</strong> SAS drops the <em>last</em> level by default; <code>pd.get_dummies(drop_first=True)</code> drops the <em>first</em> level.</li>
+                    <li><strong>P-values vs Accuracy:</strong> Scikit-Learn does NOT calculate p-values or Odds Ratio 95% CIs — it calculates predictive accuracy/ROC-AUC.</li>
+                </ol>
+                <p style="margin-top:6px; color: var(--gold-primary);"><strong>💡 Need exact SAS-style p-values & Odds Ratios in Python?</strong> Use <code>statsmodels</code> instead of <code>sklearn</code>: <br><code>import statsmodels.formula.api as smf; model = smf.logit("High_AI_Trust ~ C(Education_Level) + Perceived_AI_Risk", data=df).fit()</code> — this gives the exact SAS PROC LOGISTIC output table!</p>
             </div>
         `,
-        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> The most surprising thing for SAS users is that <code>pd.get_dummies(drop_first=True)</code> is just what SAS's <code>CLASS</code> statement does internally. Once you see that, the rest of sklearn feels familiar.",
-        agenticNote: "An agentic AI can call the full pipeline above as a @tool — the LLM specifies which columns are X predictors and which is y, then the Python function runs get_dummies, splits, fits, and returns ROC-AUC, all in one natural language instruction."
+        proTip: "💡 <strong>Sociologist Pro-Tip:</strong> Use <code>scikit-learn</code> when building machine learning pipelines & AI agents (prediction). Use <code>statsmodels</code> when writing journal papers needing p-values & odds ratio confidence intervals (inference).",
+        agenticNote: "An agentic AI can run scikit-learn for machine learning classification or statsmodels for academic reporting, depending on what the user asks for in plain English."
     },
     graph: {
         title: "4. Stata .do File / SAS Macros ➔ LangGraph State Machines (StateGraph)",
