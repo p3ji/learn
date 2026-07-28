@@ -1,4 +1,4 @@
-// Rosetta Stone comparative matrix with Safe Event Handling & Detailed Breakdown
+// Rosetta Stone comparative matrix with Stage-Targeted Rendering & Safe Event Handling
 const rosettaData = {
     data: {
         title: "1. SAS DATA Step / Stata Recode ➔ Pandas & Pydantic Schemas",
@@ -91,34 +91,6 @@ def fit_logistic(X_train, y_train, sample_weight=None):
         proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Wrap Scikit-Learn model fitting inside a <code>@tool</code> wrapper function so your LangGraph agent can call PROC LOGISTIC style regression tools directly from plain English user requests!",
         agenticNote: "Agent tools wrapper (@tool) allow autonomous LLM agents to call PROC LOGISTIC style regression tools from natural language prompts."
     },
-    tabfm: {
-        title: "3. Traditional Model Fitting ➔ Google TabFM Zero-Shot Foundation Model",
-        sas: `/* Traditional ML requires explicit model fitting & hyperparameter search */
-/* No native SAS equivalency for Zero-Shot Tabular Transformers */`,
-        stata: `* Requires fitting parameters on training subset first`,
-        python: `# Google TabFM (Tabular Foundation Model) Zero-Shot
-from tabfm import TabFMClassifier
-
-# Zero-shot inference directly from in-context training rows!
-tabfm = TabFMClassifier()
-tabfm.fit(train_df, 'High_AI_Trust')  # In-context context loading
-preds = tabfm.predict_proba(test_df) # Instant forward-pass prediction`,
-        explanation: `
-            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 Code & Execution Breakdown:</h4>
-            <ul style="color: var(--text-muted); font-size: 0.88rem; padding-left: 18px; margin-bottom: 12px;">
-                <li><strong>Traditional SAS / ML:</strong> Requires iterative parameter optimization (gradient descent / maximum likelihood) and manual feature engineering on every new dataset.</li>
-                <li><strong>Google TabFM (Tabular Foundation Model):</strong> Uses Transformer-based <strong>In-Context Learning (ICL)</strong>. It receives training survey rows as context and predicts test labels in a single forward pass without gradient fine-tuning!</li>
-            </ul>
-
-            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Key Advantages of TabFM for Survey Research:</h4>
-            <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
-                <p><strong>1. Handles Raw Survey Strings Natively:</strong> No need to create manual dummy variables for Likert scales or demographic text columns.</p>
-                <p style="margin-top:6px;"><strong>2. Zero Training Delay:</strong> Instant predictions allow autonomous conversational agents to evaluate models during real-time user chat.</p>
-            </div>
-        `,
-        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Use TabFM zero-shot prediction as a rapid benchmark to compare against traditional SAS PROC LOGISTIC or Random Forests!",
-        agenticNote: "Google TabFM allows survey agents to predict labels on raw categorical survey columns in a single forward pass without manual one-hot recoding or long training loops."
-    },
     graph: {
         title: "4. Stata .do File / SAS Macros ➔ LangGraph State Machines (StateGraph)",
         sas: `/* SAS Macro Chain with Conditional Logic */
@@ -168,69 +140,21 @@ builder.add_conditional_edges("tabfm", router_node)`,
         `,
         proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Just as SAS Macros use %IF/%THEN to direct flow based on macro variables, LangGraph uses conditional router edges—but with full state persistence, cyclic self-correction loops, and LLM-driven decision making!",
         agenticNote: "LangGraph provides state persistence, cyclic execution loops, conditional node branching, and memory — perfect for multi-step survey analysis."
-    },
-    mcp: {
-        title: "5. SAS Libnames ➔ Model Context Protocol (MCP) Endpoints",
-        sas: `/* SAS Library Handle */
-libname survey "C:\\data\\ai_trust";
-proc contents data=survey._all_; run;`,
-        stata: `* Stata Data Directory
-cd "C:\\data\\ai_trust"
-describe using "survey_data.dta"`,
-        python: `# Anthropic Model Context Protocol (MCP) Server
-from mcp.server import Server
-
-app = Server("survey-mcp")
-
-@app.read_resource("survey://codebook")
-def get_codebook():
-    return open("ai_trust_codebook.json").read()
-
-@app.call_tool("crosstab")
-def run_crosstab(var1, var2):
-    return pd.crosstab(df[var1], df[var2]).to_dict()`,
-        explanation: `
-            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 Code & Execution Breakdown:</h4>
-            <ul style="color: var(--text-muted); font-size: 0.88rem; padding-left: 18px; margin-bottom: 12px;">
-                <li><strong>SAS <code>LIBNAME</code>:</strong> Internal SAS directory handle that allows SAS procedures to access datasets on a local or server disk.</li>
-                <li><strong>Model Context Protocol (MCP):</strong> Open JSON-RPC API standard that allows external LLM models (Claude Desktop, VS Code, Web Apps) to inspect local survey codebooks (<code>Resources</code>) and run statistical procedures (<code>Tools</code>).</li>
-            </ul>
-
-            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Key Differences:</h4>
-            <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
-                <p><strong>1. Universal Interoperability:</strong> MCP is vendor-agnostic. Once built, any MCP-compatible AI client can query your survey dataset without custom adapter code.</p>
-                <p style="margin-top:6px;"><strong>2. Security & Control:</strong> You explicitly declare which dataset columns or tools are exposed through the MCP Server interface.</p>
-            </div>
-        `,
-        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> MCP Resources are like 'PROC CONTENTS' metadata, while MCP Tools are like SAS 'PROCs' that the AI assistant can execute remotely!",
-        agenticNote: "MCP is the open standard that connects LLM clients (Claude, GPT, Gemini) directly to your local survey datasets, codebooks, and statistical tools."
     }
 };
 
-let currentRosettaKey = 'data';
 let showStataView = false;
 
 function toggleStataView() {
     showStataView = !showStataView;
-    renderRosettaContent(currentRosettaKey);
+    renderRosettaContent('data', 'rosettaContentCard1');
+    renderRosettaContent('ml', 'rosettaContentCard2');
+    renderRosettaContent('graph', 'rosettaContentCard3');
 }
 
-function showRosettaTab(key, evt) {
-    currentRosettaKey = key;
-    document.querySelectorAll('.rosetta-tab').forEach(b => b.classList.remove('active'));
-    
-    // Safe event element selection
-    const target = (evt && evt.currentTarget) ? evt.currentTarget : (typeof window !== 'undefined' && window.event && window.event.target ? window.event.target : null);
-    if (target) {
-        target.classList.add('active');
-    }
-    
-    renderRosettaContent(key);
-}
-
-function renderRosettaContent(key) {
+function renderRosettaContent(key, targetContainerId) {
     const item = rosettaData[key];
-    const container = document.getElementById('rosettaContentCard');
+    const container = document.getElementById(targetContainerId || 'rosettaContentCard1');
     if (!container || !item) return;
 
     const gridColumns = showStataView ? "1fr 1fr" : "1fr";
@@ -280,7 +204,3 @@ function renderRosettaContent(key) {
 function escapeHtml(text) {
     return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    showRosettaTab('data');
-});
