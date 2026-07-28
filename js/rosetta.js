@@ -67,29 +67,53 @@ run;`,
         stata: `* Stata Logistic Regression
 svyset [pw=Survey_Weight]
 svy: logit High_AI_Trust i.Education_Level i.Tech_Familiarity Perceived_AI_Risk`,
-        python: `# Scikit-Learn Supervised ML Tool (@tool)
+        python: `# Step 1: Encode categoricals (SAS CLASS does this automatically!)
+import pandas as pd
 from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import roc_auc_score
 
-@tool
-def fit_logistic(X_train, y_train, sample_weight=None):
-    clf = LogisticRegression()
-    clf.fit(X_train, y_train, sample_weight=sample_weight)
-    return {"roc_auc": clf.score(X_test, y_test)}`,
+# YOUR DATA — equivalent to SAS 'data=clean_survey'
+df = pd.read_csv("survey_data.csv")
+
+# Replace missing codes (-9) with NaN first
+df["Perceived_AI_Risk"] = df["Perceived_AI_Risk"].replace(-9, pd.NA)
+
+# Define X (predictors) and y (outcome) — SAS MODEL statement does this
+X = pd.get_dummies(df[["Age_Group", "Education_Level", "Perceived_AI_Risk"]],
+                   drop_first=True)  # creates 0/1 dummy columns like SAS CLASS
+y = df["High_AI_Trust"]                # outcome variable (0/1)
+w = df["Survey_Weight"]                # sample weights (SAS: weight Survey_Weight;)
+
+# Step 2: Train/Test split (80% train, 20% test) — no SAS equivalent
+X_train, X_test, y_train, y_test, w_train, w_test = train_test_split(
+    X, y, w, test_size=0.2, random_state=42)
+
+# Step 3: Fit model with survey weights
+clf = LogisticRegression()
+clf.fit(X_train, y_train, sample_weight=w_train)
+
+# Step 4: Evaluate (SAS shows AIC/p-values; sklearn shows predictive accuracy)
+roc_auc = roc_auc_score(y_test, clf.predict_proba(X_test)[:, 1])
+print(f"ROC-AUC: {roc_auc:.3f}")`,
         explanation: `
-            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 Code & Execution Breakdown:</h4>
+            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 Why Python Needs More Setup Than SAS:</h4>
             <ul style="color: var(--text-muted); font-size: 0.88rem; padding-left: 18px; margin-bottom: 12px;">
-                <li><strong>SAS PROC LOGISTIC:</strong> Handles categorical dummy coding automatically inside the <code>class</code> statement, fits the model, and outputs comprehensive statistical tables (coefficients, standard errors, Wald Chi-Square p-values, odds ratios, AIC/SBC).</li>
-                <li><strong>Scikit-Learn <code>LogisticRegression().fit()</code>:</strong> Requires explicit numerical matrix inputs (e.g. via <code>pd.get_dummies()</code>). It prioritizes prediction performance on out-of-sample test data.</li>
+                <li><strong>SAS <code>CLASS</code> statement:</strong> SAS automatically converts text variables like <code>Education_Level</code> into 0/1 dummy columns behind the scenes. You just list them and SAS handles it.</li>
+                <li><strong>SAS <code>MODEL y = x1 x2;</code>:</strong> SAS reads which columns are X (predictors) and y (outcome) directly from the MODEL statement — no separate extraction step needed.</li>
+                <li><strong>Python <code>pd.get_dummies()</code>:</strong> You must explicitly create the dummy columns yourself. This is the step SAS hides — it's the same math, just visible.</li>
+                <li><strong>Python X/y split:</strong> You explicitly define <code>X</code> (the predictor matrix) and <code>y</code> (the outcome column) before fitting. SAS infers these from the MODEL formula.</li>
+                <li><strong>Train/Test split:</strong> SAS fits on the full dataset and reports inference stats (p-values, AIC). Sklearn prioritises out-of-sample prediction — so you hold 20% back as a test set and measure ROC-AUC.</li>
             </ul>
 
-            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Key Differences SAS vs Scikit-Learn:</h4>
+            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Inference (SAS) vs Prediction (sklearn):</h4>
             <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
-                <p><strong>1. Inference vs Prediction:</strong> SAS focuses on statistical inference & p-values on full sample data. Scikit-Learn focuses on out-of-sample generalization (Train/Test 80/20 splits & ROC-AUC curves).</p>
-                <p style="margin-top:6px;"><strong>2. Survey Weights:</strong> SAS uses <code>weight Survey_Weight;</code>. Scikit-Learn passes <code>sample_weight=df['Survey_Weight']</code> into the <code>.fit()</code> function.</p>
+                <p><strong>SAS PROC LOGISTIC</strong> is built for <em>explaining</em> relationships — it reports odds ratios, standard errors, p-values, AIC/SBC on the whole dataset. The sociologist's traditional tool.</p>
+                <p style="margin-top:6px;"><strong>sklearn LogisticRegression</strong> is built for <em>predicting</em> new cases — it reports ROC-AUC and accuracy on the held-out test set. Survey weights are passed via <code>sample_weight=</code> in <code>.fit()</code>.</p>
             </div>
         `,
-        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Wrap Scikit-Learn model fitting inside a <code>@tool</code> wrapper function so your LangGraph agent can call PROC LOGISTIC style regression tools directly from plain English user requests!",
-        agenticNote: "Agent tools wrapper (@tool) allow autonomous LLM agents to call PROC LOGISTIC style regression tools from natural language prompts."
+        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> The most surprising thing for SAS users is that <code>pd.get_dummies(drop_first=True)</code> is just what SAS's <code>CLASS</code> statement does internally. Once you see that, the rest of sklearn feels familiar.",
+        agenticNote: "An agentic AI can call the full pipeline above as a @tool — the LLM specifies which columns are X predictors and which is y, then the Python function runs get_dummies, splits, fits, and returns ROC-AUC, all in one natural language instruction."
     },
     graph: {
         title: "4. Stata .do File / SAS Macros ➔ LangGraph State Machines (StateGraph)",
