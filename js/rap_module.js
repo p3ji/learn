@@ -5,7 +5,7 @@ const rapSteps = [
     {
         level: 1,
         title: "Level 1: Unorganized Folder & Path Clutter",
-        badge: "⚠️ Level 1 Lesson",
+        badge: "📂 Pillar 1: Project Layout",
         badgeColor: "#EF4444",
         problem: "Multiple unversioned scripts (clean_v2.do, analysis_final_FINAL.sas) with hardcoded absolute file paths like C:\\Users\\Name\\Downloads. No dependency tracking, no version control.",
         lessonTitle: "📖 Lesson 1: From Loose Script Folders to Relative Paths",
@@ -34,7 +34,7 @@ df = pd.read_csv(RAW_DATA_PATH)</pre>
     {
         level: 2,
         title: "Level 2: Structured Project Layout & Virtual Environment",
-        badge: "📁 Level 2 Lesson",
+        badge: "🔒 Pillar 2: Env Locking",
         badgeColor: "#F59E0B",
         problem: "Package version drift ('Works on my laptop, crashes on server because pandas 2.0 vs 1.4 handles NA differently').",
         lessonTitle: "📖 Lesson 2: Environment Isolation & pyproject.toml Version Locking",
@@ -76,7 +76,7 @@ dependencies = [
     {
         level: 3,
         title: "Level 3: Declarative Data Pipelines & Cloud Orchestration",
-        badge: "⚡ Level 3 Lesson",
+        badge: "⚡ Pillar 3: Orchestration",
         badgeColor: "#38BDF8",
         problem: "Executing scripts sequentially by hand or relying on single-server SAS Enterprise Guide Process Flows that don't scale to modern cloud platforms (Argo, Databricks, Microsoft Fabric).",
         lessonTitle: "📖 Lesson 3: Orchestrating Pipelines with DAGs (SAS EG ➔ Cloud Platforms)",
@@ -130,7 +130,7 @@ def main():
     {
         level: 4,
         title: "Level 4: Automated Data Quality & Schema Assertions",
-        badge: "🛡️ Level 4 Lesson",
+        badge: "🛡️ Pillar 4: Testing",
         badgeColor: "#10B981",
         problem: "Bad data (e.g. a new survey batch with missing age columns or out-of-range Likert scores) silently corrupting downstream regression models.",
         lessonTitle: "📖 Lesson 4: Defensive Data Science & Automated Testing with pytest",
@@ -160,7 +160,7 @@ def test_survey_data_quality():
     {
         level: 5,
         title: "Level 5: Continuous Integration (CI/CD) & Automated Reports",
-        badge: "🚀 Level 5 Lesson",
+        badge: "🚀 Pillar 5: CI/CD",
         badgeColor: "#A855F7",
         problem: "Manual email reports that take hours to run every time new survey waves are released.",
         lessonTitle: "📖 Lesson 5: Automated Cloud Pipelines & GitHub Actions CI/CD",

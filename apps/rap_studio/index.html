@@ -45,6 +45,75 @@
             </p>
         </section>
 
+        <!-- What is a RAP & Value Proposition -->
+        <section class="section-card" style="margin-bottom: 24px; border-color: rgba(56, 189, 248, 0.3);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <!-- What is it? -->
+                <div>
+                    <h2 style="color: var(--cyan-magic); font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 12px;">What is a RAP?</h2>
+                    <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.7; margin-bottom: 16px;">
+                        A <strong>Reproducible Analytical Pipeline (RAP)</strong> is a methodology that treats data analysis like software engineering. Instead of relying on manual clicks, loose scripts, and human memory to run weekly reports or statistical models, a RAP is a fully automated, version-controlled, and tested pipeline.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+                        If you hand your RAP to a colleague—or if they download it 5 years from now—they can execute it with a single command and get <em>exactly</em> the same numbers.
+                    </p>
+                </div>
+                <!-- Why do it? -->
+                <div>
+                    <h2 style="color: var(--gold-primary); font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 12px;">Why Build RAPs?</h2>
+                    <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-main); font-size: 0.9rem; line-height: 1.6;">
+                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
+                            <span style="font-size: 1.2rem;">⏱️</span>
+                            <div><strong>Save Hours of Manual Work:</strong> Stop copying data manually into Excel or running 5 scripts in a specific order every month.</div>
+                        </li>
+                        <li style="margin-bottom: 12px; display: flex; gap: 10px;">
+                            <span style="font-size: 1.2rem;">🛡️</span>
+                            <div><strong>Prevent Embarrassing Errors:</strong> Automated schema tests catch bad data (like out-of-range survey scores) <em>before</em> they pollute your final report.</div>
+                        </li>
+                        <li style="display: flex; gap: 10px;">
+                            <span style="font-size: 1.2rem;">🤝</span>
+                            <div><strong>Painless Handovers:</strong> Eliminate the "it works on my machine" problem. Dependencies are locked, and execution is automated.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Components -->
+        <section class="section-card" style="margin-bottom: 40px; background: rgba(255, 255, 255, 0.02);">
+            <h2 style="color: #FFF; font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 8px; text-align: center;">Is it just syntax? No. The 5 Pillars of RAP</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; text-align: center; margin-bottom: 24px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Transitioning to RAP isn't just about writing Python instead of SAS. It requires adopting a system of tools that work together to guarantee reproducibility.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px;">
+                <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); padding: 16px; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 8px;">📂</div>
+                    <strong style="color: #F87171; display: block; margin-bottom: 4px;">1. Project Layout</strong>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Standardized folders, relative paths, no hardcoded C: drives.</span>
+                </div>
+                <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); padding: 16px; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 8px;">🔒</div>
+                    <strong style="color: #FBBF24; display: block; margin-bottom: 4px;">2. Env Locking</strong>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Virtual environments (uv, poetry) to freeze package versions.</span>
+                </div>
+                <div style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); padding: 16px; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 8px;">⚡</div>
+                    <strong style="color: #38BDF8; display: block; margin-bottom: 4px;">3. Orchestration</strong>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">DAGs (Prefect, Airflow) instead of manual script sequencing.</span>
+                </div>
+                <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); padding: 16px; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 8px;">🛡️</div>
+                    <strong style="color: #10B981; display: block; margin-bottom: 4px;">4. Testing</strong>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">pytest suites to validate data schema automatically.</span>
+                </div>
+                <div style="background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.3); padding: 16px; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 8px;">🚀</div>
+                    <strong style="color: #C084FC; display: block; margin-bottom: 4px;">5. CI/CD</strong>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">Cloud execution via GitHub Actions on every code push.</span>
+                </div>
+            </div>
+        </section>
+
         <!-- RAP Interactive Studio App Card -->
         <section class="section-card">
             <div class="section-header">
