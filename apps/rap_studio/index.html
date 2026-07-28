@@ -79,6 +79,47 @@
             </div>
         </section>
 
+        <!-- A Tale of Two Workflows: Monthly Survey Report -->
+        <section class="section-card" style="margin-bottom: 24px; border-color: rgba(255, 255, 255, 0.1);">
+            <h2 style="color: #FFF; font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 16px; text-align: center;">A Tale of Two Workflows: The Monthly Survey Report</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                
+                <!-- The Legacy Way -->
+                <div style="background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); padding: 20px; border-radius: 14px;">
+                    <h3 style="color: #F87171; font-size: 1.2rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                        <span>⚠️</span> The Old Way (Manual & Fragile)
+                    </h3>
+                    <ol style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; padding-left: 20px; margin: 0 0 16px;">
+                        <li style="margin-bottom: 8px;"><strong>Receive Data:</strong> Download <code>survey_july.csv</code> to your <code>C:\Downloads\</code> folder.</li>
+                        <li style="margin-bottom: 8px;"><strong>Manual Execution:</strong> Open SAS and manually run <code>01_clean.sas</code>.</li>
+                        <li style="margin-bottom: 8px;"><strong style="color: #F87171;">Silent Failure:</strong> The new data has negative age values. The script runs anyway, silently corrupting the dataset.</li>
+                        <li style="margin-bottom: 8px;"><strong>Modeling:</strong> Run <code>02_model_v3.sas</code> on the bad data.</li>
+                        <li style="margin-bottom: 8px;"><strong>Reporting:</strong> Copy/paste summary stats into a Word doc.</li>
+                    </ol>
+                    <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid #F87171; font-size: 0.85rem;">
+                        <strong>Result:</strong> 4 hours of tedious work. If you go on vacation, nobody else knows the exact sequence of clicks to generate the report.
+                    </div>
+                </div>
+
+                <!-- The RAP Way -->
+                <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 20px; border-radius: 14px;">
+                    <h3 style="color: #10B981; font-size: 1.2rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                        <span>✅</span> The RAP Way (Automated & Tested)
+                    </h3>
+                    <ol style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; padding-left: 20px; margin: 0 0 16px;">
+                        <li style="margin-bottom: 8px;"><strong>Receive Data:</strong> Save the CSV into <code>data/raw/</code> in your version-controlled project.</li>
+                        <li style="margin-bottom: 8px;"><strong style="color: #10B981;">Automated Testing:</strong> Run <code>pytest</code>. The system catches the negative age values and halts the pipeline <em>before</em> the model is corrupted.</li>
+                        <li style="margin-bottom: 8px;"><strong>Orchestration:</strong> Fix the data, then type <code>prefect run</code>. The DAG automatically runs all cleaning and modeling steps in order.</li>
+                        <li style="margin-bottom: 8px;"><strong>CI/CD Delivery:</strong> You commit your code. GitHub Actions automatically executes the pipeline and publishes an HTML dashboard.</li>
+                    </ol>
+                    <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid #10B981; font-size: 0.85rem;">
+                        <strong>Result:</strong> 5 minutes of work. 100% reproducible. If you go on vacation, your colleague just types <code>prefect run</code>.
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <!-- Core Components -->
         <section class="section-card" style="margin-bottom: 40px; background: rgba(255, 255, 255, 0.02);">
             <h2 style="color: #FFF; font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 8px; text-align: center;">Is it just syntax? No. The 5 Pillars of RAP</h2>
