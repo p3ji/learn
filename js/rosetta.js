@@ -23,38 +23,57 @@ run;`,
 use "ai_trust_insights.dta", clear
 mvdecode Perceived_AI_Risk, mv(-9)
 gen High_Risk = (Perceived_AI_Risk >= 4) if !missing(Perceived_AI_Risk)`,
-        python: `# Python Pandas & Pydantic Model (Pydantic is a Python Data Validation Library)
+        python: `# --- PATH A: SOCIOLOGICAL SURVEY RECODING (Pandas) ---
+# Purpose: Recode missing codes (-9 -> NaN), create binary indicators, calculate weighted means
 import pandas as pd
+import numpy as np
+
+df['risk_clean'] = df['Perceived_AI_Risk'].replace(-9, np.nan)
+df['high_risk']  = (df['risk_clean'] >= 4).astype(int)
+
+# --- PATH B: AGENTIC SCHEMA VALIDATION & API CONTRACTS (Pydantic) ---
+# Purpose: Prevent LLM hallucinations, enforce strict data boundaries when parsing JSON
 from pydantic import BaseModel, Field
 from typing import Optional
 
-df['Perceived_AI_Risk_Clean'] = df['Perceived_AI_Risk'].replace(-9, None)
-df['High_Risk'] = (df['Perceived_AI_Risk_Clean'] >= 4).astype(int)
-
-# Pydantic Schema: Replaces ~30 lines of SAS DATA step validation & PROC FORMAT!
-class SurveyRespondent(BaseModel):
+class SurveyRespondentSchema(BaseModel):
     respondent_id: str
     perceived_risk: Optional[int] = Field(default=None, ge=1, le=5)
     high_ai_trust: bool`,
         explanation: `
-            <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 How to do Pydantic Validation in SAS:</h4>
-            <div style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 12px;">
-                <p>To replicate what Pydantic does for an LLM in SAS, you would need to write:</p>
-                <ol style="padding-left: 20px; margin-top: 6px;">
-                    <li><strong>Outbound Schema (JSON Creation):</strong> Use <code>PROC JSON</code> or a SAS macro to construct an explicit JSON Schema definition string to send in your <code>PROC HTTP</code> API request payload to tell the LLM how to format its output.</li>
-                    <li><strong>Inbound Parsing:</strong> Read the raw LLM JSON response using <code>LIBNAME JSON</code>.</li>
-                    <li><strong>Validation & Range Checks:</strong> Write a 20-30 line SAS <code>DATA</code> step with <code>PROC FORMAT</code> value checks, <code>PUT</code> log error statements, and <code>_error_ = 1</code> flags to abort execution if the AI returns out-of-bounds data.</li>
-                </ol>
+            <h4 style="color: var(--gold-primary); font-size: 1rem; margin-bottom: 10px;">🌉 The Explicit Method Bridge: Survey Recoding vs. Schema Validation</h4>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                <!-- Column 1: Survey Recoding -->
+                <div style="background: rgba(56, 189, 248, 0.08); border: 1.5px solid var(--accent-blue); border-radius: 12px; padding: 14px;">
+                    <h5 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 6px; font-weight: 800;">🏛️ 1. Survey Data Recoding</h5>
+                    <p style="font-size: 0.83rem; color: var(--text-muted); margin-bottom: 8px;"><strong>Goal:</strong> Vectorized variable transformation on dataframes.</p>
+                    <ul style="font-size: 0.82rem; color: var(--text-main); padding-left: 16px; margin: 0; line-height: 1.5;">
+                        <li><strong>SAS Tool:</strong> <code>DATA</code> step (<code>SET</code>, <code>IF/THEN</code>, missing <code>.</code>)</li>
+                        <li><strong>Python Tool:</strong> <code>pandas</code> (<code>.replace()</code>, <code>.astype()</code>)</li>
+                        <li><strong>Method Purpose:</strong> Preparing columns for statistical analysis.</li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Pydantic Validation -->
+                <div style="background: rgba(255, 199, 44, 0.08); border: 1.5px solid var(--gold-primary); border-radius: 12px; padding: 14px;">
+                    <h5 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 6px; font-weight: 800;">🤖 2. Agentic Schema Validation</h5>
+                    <p style="font-size: 0.83rem; color: var(--text-muted); margin-bottom: 8px;"><strong>Goal:</strong> Enforcing strict boundaries on LLM JSON outputs.</p>
+                    <ul style="font-size: 0.82rem; color: var(--text-main); padding-left: 16px; margin: 0; line-height: 1.5;">
+                        <li><strong>SAS Tool:</strong> <code>PROC FORMAT</code> + custom validation macros</li>
+                        <li><strong>Python Tool:</strong> <code>pydantic</code> classes (<code>BaseModel</code>)</li>
+                        <li><strong>Method Purpose:</strong> Catching hallucinated or out-of-bounds LLM responses.</li>
+                    </ul>
+                </div>
             </div>
 
-            <h4 style="color: var(--accent-blue); font-size: 0.95rem; margin-bottom: 8px;">⚖️ Why Pydantic is a Game-Changer vs SAS:</h4>
             <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
-                <p><strong>1. Dual-Action (Schema Gen + Validation):</strong> Pydantic automatically exports the JSON Schema for the LLM prompt (via <code>Model.model_json_schema()</code>) AND validates the inbound response in 4 lines of Python code!</p>
-                <p style="margin-top:6px;"><strong>2. Type Coercion:</strong> If an LLM returns a numeric string <code>"4"</code>, Pydantic automatically coerces it into integer <code>4</code> while enforcing the boundary rule (<code>1 <= risk <= 5</code>).</p>
+                <strong>🔍 Key Method Distinction:</strong><br>
+                Pandas handles <em>batch data transformation</em> across thousands of survey rows. Pydantic handles <em>single-record structural validation</em> to ensure an AI agent or API returns valid data before it enters your pipeline.
             </div>
         `,
-        proTip: "💡 <strong>SAS Veteran Pro-Tip:</strong> Pydantic collapses 30 lines of SAS PROC FORMAT checks and DATA step error-handling macros into a clean 4-line Python class definition!",
-        agenticNote: "In Agentic AI, strict Pydantic schemas prevent hallucinations when LLMs process survey rows or parse function tool inputs."
+        proTip: "💡 <strong>Sociologist Pro-Tip:</strong> Think of Pandas as your SAS DATA step for cleaning survey CSVs, and Pydantic as your automated data auditor for AI agents!",
+        agenticNote: "In Agentic AI, Pydantic schemas prevent LLMs from returning invalid survey categories or hallucinating out-of-range Likert scores."
     },
     ml: {
         title: "2. SAS PROC LOGISTIC ➔ Scikit-Learn Supervised ML Tools",
