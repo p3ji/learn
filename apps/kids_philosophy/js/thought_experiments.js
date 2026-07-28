@@ -1,169 +1,295 @@
-// Visually Impressive Interactive Thought Experiments (Plato's Cave & Ship of Theseus)
+// Visually Impressive Interactive Thought Experiments - Single Topic Renderer with 15-Minute Tab Depth
 
 const experimentData = {
     platos_cave: {
+        id: "platos_cave",
+        name: "Plato's Cave",
         title: "🌌 Plato's Cave (Shadows vs Reality)",
+        avatar: "🌌",
         intro: "Plato imagined people trapped inside a dark cave, facing a blank wall. Behind them, a fire burns and puppets cast flickering shadows on the wall. The prisoners think the shadows ARE real life, until someone escapes outside into the real sunlight!",
+        storyScenes: [
+            {
+                title: "Scene 1: The Dark Cave",
+                heading: "Facing the Stone Wall",
+                imageEmoji: "🔥",
+                text: "Prisoners sit inside a dark cave, chained facing a blank wall. Behind them, puppet masters hold shapes in front of a fire, casting flickering 2D shadows on the wall."
+            },
+            {
+                title: "Scene 2: Stepping Outside",
+                heading: "Entering the Sunlight",
+                imageEmoji: "☀️",
+                text: "One prisoner escapes outside! At first, the bright sunlight hurts his eyes. But as his eyes adjust, he discovers 3D trees, colorful flowers, birds, and the real sun!"
+            },
+            {
+                title: "Scene 3: Returning to Share Wisdom",
+                heading: "Bringing Truth Back",
+                imageEmoji: "🌈",
+                text: "The freed prisoner returns to tell his friends that the shadows were just 2D projections. True education is leaving the dark cave of illusions to step into the sunlight of truth!"
+            }
+        ],
+        vocabCards: [
+            { term: "Allegory", icon: "🌌", definition: "A story, poem, or picture that can be interpreted to reveal a hidden moral or philosophical meaning." },
+            { term: "Illusion", icon: "👥", definition: "A false appearance or belief that misrepresents real physical reality." },
+            { term: "Enlightenment", icon: "☀️", definition: "Gaining deep understanding, knowledge, and freedom from optical or mental illusions." }
+        ],
+        inDepth: {
+            history: "Plato wrote this allegory in Book VII of 'The Republic' to explain how education frees the human mind from illusion to see true reality.",
+            whyItMatters: "It reminds us not to confuse 2D screens, gossip, or simple surface appearances with full 3D reality.",
+            funFact: "The movie 'The Matrix' is heavily based on Plato's Cave! Neo escaping the Matrix is like stepping outside the cave into the sun."
+        },
         example: "Watching a CGI movie of a dragon on TV is like looking at cave shadows. The movie is a 2D projection, but real life has 3D physics, weather, and real animals!",
-        videoId: "1RWOpQXTltA", // TED-Ed: Plato's Allegory of the Cave (4 min)
-        activityTitle: "Step 3: Interactive Cave Light Switch & Sunlight Escape"
+        videoId: "1RWOpQXTltA",
+        videoQuiz: [
+            { question: "What do the dark flickering shadows represent in Plato's Cave?", options: [{ text: "Surface illusions and 2D projections of reality", correct: true }, { text: "Real 3D animals", correct: false }] }
+        ],
+        p4cInquiry: [
+            {
+                title: "Shadows vs Real World",
+                shortTitle: "Escaping the Cave",
+                dilemma: "If someone has spent their whole life watching screen videos of nature, why is stepping into a real forest with fresh air and real weather different?",
+                perspectives: {
+                    a: { name: "Full 3D Senses", argument: "Real nature engages all 5 senses (smell, touch, weather) in ways no 2D screen can copy." },
+                    b: { name: "Digital Convenience", argument: "Videos allow you to explore mountains in far-away countries safely from home." },
+                    c: { name: "Both Together", argument: "Use videos to learn map facts first, then explore real nature with your own eyes." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "When has learning the truth changed how you see something?", context: "Talk about discovering how a magic trick works or how an invention is made." }
+        ]
     },
     ship_theseus: {
-        title: "⛵ The Ship of Theseus (Identity Puzzle)",
-        intro: "Theseus sailed a famous wooden ship. Over 20 years, every single rotten wooden plank, sail, mast, and wheel was replaced one by one until 100% of the ship was new. Is it still the SAME ship, or a brand new one?",
+        id: "ship_theseus",
+        name: "Ship of Theseus",
+        title: "⛵ Ship of Theseus (Identity & Change)",
+        avatar: "⛵",
+        intro: "If a wooden ship has every single wooden plank replaced one by one over 10 years, is it still the exact same original ship?",
+        storyScenes: [
+            {
+                title: "Scene 1: Rebuilding the Ship",
+                heading: "Plank by Plank",
+                imageEmoji: "⛵",
+                text: "Theseus sailed home on a proud wooden ship. To preserve it in the harbor, citizens replaced old rotten wooden planks one by one every year."
+            },
+            {
+                title: "Scene 2: The 100% Replacement Paradox",
+                heading: "Every Single Plank Replaced",
+                imageEmoji: "🔨",
+                text: "After 20 years, every single plank, sail, mast, and nail had been replaced. 100% of its physical raw materials were brand new!"
+            }
+        ],
+        vocabCards: [
+            { term: "Identity", icon: "⛵", definition: "The fact of being who or what a person or thing is over time." },
+            { term: "Material Cause", icon: "🪵", definition: "The raw physical matter something is made of (e.g. wood, steel, atoms)." },
+            { term: "Formal Cause", icon: "✨", definition: "The design, structure, and continuous identity form of an object." }
+        ],
+        inDepth: {
+            history: "Plutarch recorded this ancient paradox, which was debated by Heraclitus, Socrates, and Aristotle regarding identity over time.",
+            whyItMatters: "It helps us understand how things (and people!) retain their identity even as their physical parts change over time.",
+            funFact: "Your human body replaces almost all of its cells every 7 to 10 years! You are physically made of completely different material than when you were born!"
+        },
         example: "Your body replaces almost all its skin cells every month! Are you still the same person as when you were 5 years old? Yes, because your form, memory, and consciousness continue!",
-        videoId: "UHwVyplU3Pg", // TED-Ed: Who am I? A philosophical inquiry - Ship of Theseus (5 min)
-        activityTitle: "Step 3: Interactive Ship Rebuilder & Aristotle's 4 Causes"
+        videoId: "UHwVyplU3Pg", // TED-Ed Ship of Theseus
+        videoQuiz: [
+            { question: "Why are you still the same person even though your human cells replace themselves every 7 years?", options: [{ text: "Because your consciousness, memory, and structural form continue over time", correct: true }, { text: "Because you never change", correct: false }] }
+        ],
+        caseStudies: [
+            { title: "Grandfather's Axe", text: "You replace the wooden handle twice and the metal head once. Is it still 'Grandfather's Axe'? It carries the same family history and design form!" }
+        ],
+        multiLevelGame: [
+            {
+                shortName: "Level 1: Novice",
+                levelTitle: "Plank Rebuilder",
+                scenario: "Replace 100% of the wooden planks with golden materials. Is it still Theseus' Ship?",
+                options: [
+                    { text: "⛵ Yes! Its identity is defined by its continuous history, form, and purpose!", correct: true, feedback: "Identity Paradox understood!" },
+                    { text: "❌ It instantly disappeared into nothingness", correct: false, feedback: "It is still a ship." }
+                ]
+            },
+            {
+                shortName: "Level 2: Scholar",
+                levelTitle: "Human Body Paradox",
+                scenario: "Your body replaces almost all skin and bone cells every 7 years. Are you still you?",
+                options: [
+                    { text: "🧠 Yes, because your consciousness, memories, and form continue seamlessly!", correct: true, feedback: "Human Identity Master!" },
+                    { text: "❌ No, you become a completely different stranger", correct: false, feedback: "Your memory and mind continue." }
+                ]
+            },
+            {
+                shortName: "Level 3: Master",
+                levelTitle: "Grand Master Aristotle 4 Causes",
+                scenario: "What gives an object its true identity according to Aristotle?",
+                options: [
+                    { text: "📜 Its Formal Cause (Design) & Final Cause (Purpose), not just raw materials!", correct: true, feedback: "ARISTOTLE 4 CAUSES MASTER!" },
+                    { text: "❌ Only its raw wooden atoms", correct: false, feedback: "Raw matter changes, form stays!" }
+                ]
+            }
+        ],
+        chatResponses: [
+            { prompt: "What is the Ship of Theseus paradox?", answer: "If every single plank of a ship is replaced over time, is it still the same ship or a brand new one?" }
+        ]
+    },
+    trolley_problem: {
+        id: "trolley_problem",
+        name: "The Trolley Problem",
+        title: "🚃 The Trolley Problem (Moral Dilemma)",
+        avatar: "🚃",
+        intro: "A runaway train trolley is speeding down the tracks toward 5 people. You stand next to a lever. If you pull the lever, the trolley switches to a side track where 1 person is standing. Do you pull the lever?",
+        storyScenes: [
+            { title: "Scene 1: The Runaway Trolley", heading: "5 People on the Track", imageEmoji: "🚃", text: "A trolley has lost its brakes and is heading toward 5 workers who cannot hear it coming." },
+            { title: "Scene 2: The Lever Choice", heading: "Utilitarianism vs Moral Rules", imageEmoji: "🕹️", text: "Utilitarianism (Jeremy Bentham) says: Save 5 lives by sacrificing 1 (5 > 1). Kantian Ethics says: Actively causing harm to an innocent person is morally wrong!" }
+        ],
+        vocabCards: [
+            { term: "Utilitarianism", icon: "📊", definition: "An ethical theory stating that the best action is the one that maximizes overall happiness for the greatest number." },
+            { term: "Deontology", icon: "⚖️", definition: "An ethical theory based on strict moral duties and rules, regardless of consequences." }
+        ],
+        inDepth: { history: "Formulated by Philippa Foot in 1967 and expanded by Judith Jarvis Thomson, it is the world's most famous ethics thought experiment.", whyItMatters: "Self-driving AI cars face this exact programming dilemma today when designing collision avoidance systems!", funFact: "Modern moral psychologists study the Trolley Problem using fMRI brain scans to see how emotions vs logic compete in decision-making!" },
+        videoId: "bOpf6KcWYyw", videoQuiz: [{ question: "Why do AI self-driving car engineers study the Trolley Problem?", options: [{ text: "To program emergency collision avoidance logic in impossible scenarios", correct: true }, { text: "To teach cars how to play soccer", correct: false }] }],
+        caseStudies: [{ title: "Autonomous Vehicle Design", text: "If a self-driving car faces an unavoidable obstacle, should it protect its passenger or pedestrians? Engineers use ethical models to decide!" }],
+        multiLevelGame: [{ shortName: "Level 1: Novice", levelTitle: "Ethical Analyzer", scenario: "What does Utilitarianism suggest in the Trolley Dilemma?", options: [{ text: "📊 Pull the lever to save 5 lives instead of 1 (greater good math)", correct: true, feedback: "Utilitarian logic analyzed!" }, { text: "❌ Run away without thinking", correct: false, feedback: "Ethics requires reflection." }] }],
+        chatResponses: [{ prompt: "Why is the Trolley Problem so famous?", answer: "Because it pits Utilitarian math (greatest good for greatest number) against Kantian moral rules!" }]
+    },
+    experience_machine: {
+        id: "experience_machine",
+        name: "The Experience Machine",
+        title: "🔮 The Experience Machine (Pleasure vs Real Meaning)",
+        avatar: "🔮",
+        intro: "Philosopher Robert Nozick imagined a virtual reality machine that can simulate any happy experience you want (winning Oscars, flying, eating feast after feast) while floating in a tank. Would you plug in for life?",
+        storyScenes: [
+            { title: "Scene 1: The Perfect Virtual Reality", heading: "100% Happy Simulations", imageEmoji: "🔮", text: "The machine gives you 100% simulated pleasure and success. But you will never do anything real or connect with real people." }
+        ],
+        vocabCards: [
+            { term: "Hedonism", icon: "🍩", definition: "The belief that pleasure is the ultimate and only goal in life." },
+            { term: "Authenticity", icon: "🌟", definition: "Living a genuine, real life with real actions, real struggles, and real accomplishments." }
+        ],
+        inDepth: { history: "Robert Nozick proposed this thought experiment in 1974 to challenge Hedonism.", whyItMatters: "Most people refuse to plug in for life because we value REALLY doing things and REALLY being connected to real people!", funFact: "This thought experiment inspired the plot of 'The Matrix' (Red Pill vs Blue Pill)!" },
+        videoId: "1RWOpQXTltA", videoQuiz: [{ question: "Why do most people refuse to plug into the Experience Machine for life?", options: [{ text: "Because we value real accomplishments, real relationships, and authentic living", correct: true }, { text: "Because electricity is expensive", correct: false }] }],
+        caseStudies: [{ title: "Video Games vs Real Life", text: "Winning a trophy in a video game feels fun, but scoring a goal in a real match with real teammates carries deep real-world meaning!" }],
+        multiLevelGame: [{ shortName: "Level 1: Novice", levelTitle: "Authenticity Choice", scenario: "Would you plug into a VR tank forever to feel fake happiness?", options: [{ text: "🌟 No! I choose real life with real struggles, real friends, and authentic success!", correct: true, feedback: "Authenticity Master!" }, { text: "🔮 Plug in forever", correct: false, feedback: "You miss out on real human connection." }] }],
+        chatResponses: [{ prompt: "What does the Experience Machine teach us?", answer: "It proves that life is about more than just feeling pleasure—we want to REALLY do things and connect with real people!" }]
     }
 };
 
-let activeExpKey = 'platos_cave';
+function renderSingleExperimentTopic(expKey) {
+    const exp = experimentData[expKey] || experimentData['platos_cave'];
 
-function renderThoughtExperiment(expKey) {
-    activeExpKey = expKey;
-    const stage = document.getElementById('thoughtStage');
-    if (!stage) return;
-
-    document.querySelectorAll('.exp-tab-btn').forEach(b => b.classList.remove('active'));
-    if (event && event.target) event.target.classList.add('active');
-
-    const exp = experimentData[expKey];
-
-    stage.innerHTML = `
-        <div>
-            <!-- 3-Step Flow Indicator Controls -->
-            <div class="viz-controls" style="margin-bottom: 20px;">
-                <button class="viz-step-btn active" id="expStepBtn1" onclick="switchExpStep(1)">Step 1: Concept Intro</button>
-                <button class="viz-step-btn" id="expStepBtn2" onclick="switchExpStep(2)">Step 2: Video (&lt;10m) & Example</button>
-                <button class="viz-step-btn" id="expStepBtn3" onclick="switchExpStep(3)">Step 3: Interactive Game</button>
+    return `
+        <div class="spotlight-card">
+            <!-- Header Banner -->
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <div class="thinker-avatar" style="width:70px; height:70px; font-size:2.2rem; margin:0;">${exp.avatar}</div>
+                    <div>
+                        <h2 style="font-family: var(--font-heading); color: var(--gold-star); font-size: 1.8rem; font-weight: 900; margin:0;">${exp.title}</h2>
+                        <span style="color: var(--cyan-magic); font-weight:700; font-size:0.9rem;">Thought Experiment Riddle</span>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                    <button class="fb-action-btn outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="exportStudentWorksheet('${escapeJsString(exp.name)}')">📄 Download Study Worksheet</button>
+                    <div class="nb-badge" style="font-size:0.85rem; padding: 6px 14px;">🌀 Thought Experiment</div>
+                </div>
             </div>
 
-            <!-- Step 1: Intro -->
-            <div id="expContent1" class="flow-content-block">
-                <h3 style="font-family: var(--font-heading); color: var(--gold-star); font-size: 1.6rem; margin-bottom: 8px;">${exp.title}</h3>
-                <p style="color: var(--text-main); font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px; background: rgba(255,255,255,0.03); padding: 18px; border-radius: 12px; border-left: 4px solid var(--purple-primary);">${exp.intro}</p>
-                <button class="fb-action-btn gold" onclick="switchExpStep(2)">Continue to Step 2: Watch Short Video ➔</button>
+            <!-- 4-Step Flow Controls -->
+            <div class="viz-controls" style="margin-bottom: 24px;">
+                <button class="viz-step-btn active" id="topicTabBtn1" onclick="switchTopicTab(1)">1. Story & Flashcards</button>
+                <button class="viz-step-btn" id="topicTabBtn2" onclick="switchTopicTab(2)">2. Video & Case Studies</button>
+                <button class="viz-step-btn" id="topicTabBtn3" onclick="switchTopicTab(3)">3. Open P4C Inquiry</button>
+                <button class="viz-step-btn" id="topicTabBtn4" onclick="switchTopicTab(4)">4. Socratic Journal & Vault</button>
             </div>
 
-            <!-- Step 2: Video & Example -->
-            <div id="expContent2" class="flow-content-block" style="display:none;">
-                <h3 style="font-family: var(--font-heading); color: var(--cyan-magic); font-size: 1.4rem; margin-bottom: 8px;">Real-World Example & TED-Ed Video Lesson</h3>
-                <p style="color: var(--text-main); font-size: 1rem; margin-bottom: 16px; background: rgba(6, 182, 212, 0.1); padding: 14px; border-radius: 10px; border: 1px solid var(--cyan-magic);"><strong>Real Example:</strong> ${exp.example}</p>
+            <!-- Tab 1: Storybook & Flashcards -->
+            <div id="topicTabContent1" class="flow-content-block">
+                ${renderStorybookReader(exp.id, exp.storyScenes)}
+                ${renderVocabularyFlashcards(exp.id, exp.vocabCards)}
+                <div style="margin-top: 24px;">
+                    <button class="fb-action-btn gold" onclick="switchTopicTab(2)">Continue to Step 2: In-Depth Video & Case Studies ➔</button>
+                </div>
+            </div>
 
+            <!-- Tab 2: Video & Case Studies -->
+            <div id="topicTabContent2" class="flow-content-block" style="display:none;">
+                <h3 style="color: var(--cyan-magic); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 14px;">Real-World Example & Video Lesson</h3>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+                    <div style="background: rgba(6, 182, 212, 0.08); padding: 16px; border-radius: 12px; border: 1px solid var(--cyan-magic);">
+                        <h4 style="color: var(--cyan-magic); margin-bottom: 6px;">📜 Historical Origins</h4>
+                        <p style="font-size: 0.92rem; color: var(--text-main); margin:0;">${exp.inDepth.history}</p>
+                    </div>
+                    <div style="background: rgba(139, 92, 246, 0.08); padding: 16px; border-radius: 12px; border: 1px solid var(--purple-primary);">
+                        <h4 style="color: var(--purple-glow); margin-bottom: 6px;">💡 Why It Matters Today</h4>
+                        <p style="font-size: 0.92rem; color: var(--text-main); margin:0;">${exp.inDepth.whyItMatters}</p>
+                    </div>
+                </div>
+
+                <!-- Case Studies Showcase -->
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: var(--gold-star); font-size: 1.05rem; margin-bottom: 10px;">🔍 Real-World Case Scenarios:</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;">
+                        ${(exp.caseStudies || []).map(cs => `
+                            <div style="background: rgba(255,255,255,0.04); border-left: 3px solid var(--gold-star); padding: 14px; border-radius: 10px;">
+                                <div style="font-weight: 800; color: var(--gold-star); font-size: 0.95rem; margin-bottom: 4px;">${cs.title}</div>
+                                <div style="font-size: 0.88rem; color: var(--text-main);">${cs.text}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Responsive Embedded YouTube Player -->
                 <div style="background: #000; border-radius: 16px; overflow: hidden; margin-bottom: 16px; position: relative; padding-top: 56.25%; border: 2px solid var(--purple-primary); box-shadow: 0 8px 24px rgba(0,0,0,0.6);">
-                    <iframe src="https://www.youtube.com/embed/${exp.videoId}" title="${exp.title}" style="position: absolute; top:0; left:0; width:100%; height:100%; border:none;" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/${exp.videoId}?rel=0" title="${exp.title}" style="position: absolute; top:0; left:0; width:100%; height:100%; border:none;" allowfullscreen></iframe>
                 </div>
 
-                <div style="display: flex; gap: 12px; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                    <a href="https://www.youtube.com/watch?v=${exp.videoId}" target="_blank" class="fb-action-btn outline" style="text-decoration:none;">▶ Open Video on YouTube</a>
-                    <button class="fb-action-btn gold" onclick="switchExpStep(3)">Continue to Step 3: Play Interactive Game ➔</button>
+                ${renderVideoQuizComponent(exp.id, exp.videoQuiz)}
+
+                <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: 20px;">
+                    <a href="https://www.youtube.com/watch?v=${exp.videoId}" target="_blank" class="fb-action-btn outline" style="text-decoration:none;">▶ Watch Full Lesson Video on YouTube (New Tab)</a>
+                    <button class="fb-action-btn gold" onclick="switchTopicTab(3)">Continue to Step 3: Try Open P4C Inquiry ➔</button>
                 </div>
             </div>
 
-            <!-- Step 3: Interactive Game -->
-            <div id="expContent3" class="flow-content-block" style="display:none;">
-                <h3 style="font-family: var(--font-heading); color: var(--accent-purple); font-size: 1.4rem; margin-bottom: 16px;">${exp.activityTitle}</h3>
-                
-                ${expKey === 'platos_cave' ? `
-                    <div id="caveDisplay" class="cave-interactive-arena">
-                        <div id="caveFireGlow" class="cave-fire-glow"></div>
-                        <div id="caveVisual" class="cave-visual-shadows">🔥 👤 🐕 🌳</div>
-                        <div id="caveText" class="cave-status-text">🔥 Cave Mode: You are looking at dark, flickering shadows cast by firelight on a stone wall!</div>
+            <!-- Tab 3: Open P4C Dialectic Inquiry -->
+            <div id="topicTabContent3" class="flow-content-block" style="display:none;">
+                ${typeof renderP4CInquiryEngine === 'function' ? renderP4CInquiryEngine(exp.id, exp.p4cInquiry || [
+                    {
+                        title: "Open Paradox Dialectic",
+                        shortTitle: "P4C Inquiry",
+                        dilemma: "Is identity defined by physical material atoms over time, or by continuous form, memory, and purpose?",
+                        perspectives: {
+                            a: { name: "Material Atomism", argument: "An object is defined strictly by its physical constituent parts." },
+                            b: { name: "Formal & Continuous Purpose", argument: "An object is defined by its ongoing structure, continuous design, and functional role." }
+                        }
+                    }
+                ]) : ''}
+            </div>
+
+            <!-- Tab 4: Socratic Discussion Journal & Upgrade Vault -->
+            <div id="topicTabContent4" class="flow-content-block" style="display:none;">
+                ${typeof renderSocraticDiscussionJournal === 'function' ? renderSocraticDiscussionJournal(exp.id, exp.name, exp.avatar, exp.discussionPrompts || [
+                    { prompt: "Why are thought experiments so powerful?", context: "Discuss how imaginary paradoxes help us discover what we truly value." }
+                ]) : ''}
+
+                <h3 style="color: var(--pink-energy); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 8px;">Ask a Question or Suggest an Upgrade</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">Have a question about ${exp.name} or an idea to upgrade this app? Submit it below!</p>
+
+                <div style="background: rgba(0,0,0,0.4); border: 1.5px solid var(--pink-energy); border-radius: 16px; padding: 20px; margin-bottom: 20px;">
+                    <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+                        <select id="feedbackType_${exp.id}" class="sandbox-input" style="max-width: 180px;">
+                            <option value="question">❓ Ask a Question</option>
+                            <option value="suggestion">💡 Upgrade Idea</option>
+                        </select>
+                        <input type="text" id="feedbackInput_${exp.id}" class="sandbox-input" placeholder="Type your question or suggestion here..." style="flex:1;">
                     </div>
+                    <button class="fb-action-btn gold" style="width: 100%;" onclick="submitTopicFeedback('${exp.id}', '${exp.name}', '${exp.avatar}')">Submit to Upgrade Vault</button>
+                    
+                    <div id="feedbackResult_${exp.id}" style="display:none; margin-top: 14px; padding: 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--green-hero); color: #FFF;"></div>
+                </div>
 
-                    <div style="display: flex; justify-content: center; gap: 16px; margin-top: 20px;">
-                        <button class="fb-action-btn gold" style="font-size: 1.05rem; padding: 12px 24px;" onclick="toggleCaveLight(true)">☀️ Turn On The Sun & Step Outside!</button>
-                        <button class="fb-action-btn outline" style="padding: 12px 24px;" onclick="toggleCaveLight(false)">🔥 Go Back Inside Cave</button>
-                    </div>
-                ` : `
-                    <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid var(--purple-primary); border-radius: 20px; padding: 24px; text-align: center;">
-                        <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; font-size: 3.5rem;" id="theseusVisualParts">
-                            <span id="partHull" title="Hull">🪵</span>
-                            <span id="partMast" title="Mast">⛵</span>
-                            <span id="partSails" title="Sails">🌬️</span>
-                            <span id="partWheel" title="Wheel">☸️</span>
-                        </div>
-
-                        <div id="shipPlankCount" style="font-size: 1.2rem; font-weight:800; color: var(--gold-star); margin-bottom: 16px;">Ship Transformation: 0% New Golden Materials</div>
-
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 20px;">
-                            <button class="fallacy-opt-btn" onclick="replacePart('Hull')">🔨 Replace Wooden Hull (25%)</button>
-                            <button class="fallacy-opt-btn" onclick="replacePart('Mast')">🔨 Replace Wooden Mast (25%)</button>
-                            <button class="fallacy-opt-btn" onclick="replacePart('Sails')">🔨 Replace Canvas Sails (25%)</button>
-                            <button class="fallacy-opt-btn" onclick="replacePart('Wheel')">🔨 Replace Steering Wheel (25%)</button>
-                        </div>
-
-                        <div id="shipResult" style="padding: 16px; border-radius: 12px; font-weight:700; background: rgba(255,255,255,0.03);">
-                            Click the buttons above to replace old wooden parts with brand new golden components!
-                        </div>
-                    </div>
-                `}
+                <h4 style="color: var(--gold-star); font-size: 1rem; margin-bottom: 10px;">Saved Entries for ${exp.name}:</h4>
+                <div id="savedFeedbackList_${exp.id}">
+                    <!-- Dynamically populated by feedback_vault.js -->
+                </div>
             </div>
         </div>
     `;
 }
-
-function switchExpStep(stepNum) {
-    document.querySelectorAll('#thoughtStage .flow-content-block').forEach(b => b.style.display = 'none');
-    document.querySelectorAll('#thoughtStage .viz-step-btn').forEach(b => b.classList.remove('active'));
-
-    const btn = document.getElementById(`expStepBtn${stepNum}`);
-    const content = document.getElementById(`expContent${stepNum}`);
-
-    if (btn) btn.classList.add('active');
-    if (content) content.style.display = 'block';
-}
-
-function toggleCaveLight(showSun) {
-    const visual = document.getElementById('caveVisual');
-    const text = document.getElementById('caveText');
-    const fire = document.getElementById('caveFireGlow');
-
-    if (showSun) {
-        visual.style.filter = 'brightness(1) blur(0px)';
-        visual.innerHTML = '☀️ 👤 🐕 🌳 🌈 (REAL WORLD!)';
-        if (fire) fire.style.background = 'radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, transparent 70%)';
-        text.style.color = 'var(--gold-star)';
-        text.innerHTML = '☀️ SUNLIGHT REALITY: You stepped outside! The dark shadows were just a small reflection of the real, colorful world! (+100 XP)';
-        addXP(100);
-        unlockBadge('cave_explorer');
-    } else {
-        visual.style.filter = 'brightness(0.2) blur(2px)';
-        visual.innerHTML = '🔥 👤 🐕 🌳';
-        if (fire) fire.style.background = 'radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%)';
-        text.style.color = 'var(--text-muted)';
-        text.innerHTML = '🔥 Cave Mode: You are looking at dark, flickering shadows cast by firelight on a stone wall!';
-    }
-}
-
-let replacedParts = { Hull: false, Mast: false, Sails: false, Wheel: false };
-
-function replacePart(partName) {
-    replacedParts[partName] = true;
-    
-    if (partName === 'Hull') document.getElementById('partHull').innerText = '✨✨';
-    if (partName === 'Mast') document.getElementById('partMast').innerText = '🚀';
-    if (partName === 'Sails') document.getElementById('partSails').innerText = '⚡';
-    if (partName === 'Wheel') document.getElementById('partWheel').innerText = '👑';
-
-    const count = Object.values(replacedParts).filter(Boolean).length;
-    const percent = count * 25;
-
-    document.getElementById('shipPlankCount').innerText = `Ship Transformation: ${percent}% New Golden Materials`;
-
-    const res = document.getElementById('shipResult');
-    if (percent === 100) {
-        res.style.background = 'rgba(16, 185, 129, 0.2)';
-        res.style.border = '1.5px solid var(--green-hero)';
-        res.style.color = 'var(--green-hero)';
-        res.innerHTML = `🎉 100% OF PARTS REPLACED! Is it the same ship or a new ship? (Aristotle's Answer: Its identity is defined by its Form & Purpose, not just raw materials!) (+100 XP)`;
-        addXP(100);
-    } else {
-        res.style.color = 'var(--gold-star)';
-        res.innerHTML = `Replaced ${partName}! The ship is now ${percent}% transformed!`;
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    renderThoughtExperiment('platos_cave');
-});

@@ -1,14 +1,33 @@
-pandas>=2.0.0
-numpy>=1.24.0
-scikit-learn>=1.3.0
-pydantic>=2.0.0
-langchain>=0.1.0
-langchain-core>=0.1.0
-langgraph>=0.0.25
-mcp>=1.0.0
-jupyter>=1.0.0
-matplotlib>=3.7.0
-seaborn>=0.12.0
-openai>=1.0.0
-anthropic>=0.18.0
-scipy>=1.10.0
+# WatSPEED Agentic AI prep notebooks
+#
+# Notebooks 02-09 run with ONLY the "core" block below - no API key, no network.
+# The rest is for porting each notebook to the real framework the course teaches.
+
+# --- core: required to run every notebook offline -------------------------
+jupyterlab>=4.0
+nbformat>=5.9
+nbclient>=0.9
+ipykernel>=6.29
+pydantic>=2.0
+
+# --- notebook 01 (pandas / SAS bridge) ------------------------------------
+pandas>=2.0
+numpy>=1.24
+
+# --- course frameworks: needed only for the "the real thing" cells --------
+# Each notebook guards these imports, so it still runs if they are absent.
+langchain>=0.2
+langchain-core>=0.2
+langchain-openai>=0.1
+langgraph>=0.1
+mcp>=1.0
+pyautogen>=0.2
+
+# --- optional: swap the stub model for a real one -------------------------
+openai>=1.0
+anthropic>=0.18
+
+# --- optional: notebook 01 extensions and your own analysis ---------------
+scikit-learn>=1.3
+scipy>=1.10
+matplotlib>=3.7

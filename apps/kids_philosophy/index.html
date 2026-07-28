@@ -25,15 +25,16 @@
 
             <nav class="kids-nav-links">
                 <a href="../../index.html" class="kids-nav-item">🏠 Suite Home</a>
-                <a href="#thinkers" class="kids-nav-item active">🏛️ Thinkers</a>
-                <a href="#mental_models" class="kids-nav-item">🔮 Mental Models</a>
-                <a href="#experiments" class="kids-nav-item">🌀 Thought Experiments</a>
-                <a href="#fallacies" class="kids-nav-item">🕵️ Monster Spotter</a>
-                <a href="../watspeed_ai/index.html" class="kids-nav-item" style="color: var(--gold-star);">🎓 WatSPEED AI (Adults)</a>
+                <button onclick="selectCategory('thinkers')" class="kids-nav-item" style="background:none; border:none; cursor:pointer;">🏛️ Thinkers</button>
+                <button onclick="selectCategory('mental_models')" class="kids-nav-item" style="background:none; border:none; cursor:pointer;">🔮 Mental Models</button>
+                <button onclick="selectCategory('experiments')" class="kids-nav-item" style="background:none; border:none; cursor:pointer;">🌀 Thought Experiments</button>
+                <button onclick="selectCategory('fallacies')" class="kids-nav-item" style="background:none; border:none; cursor:pointer;">🕵️ Monster Spotter</button>
+                <a href="../watspeed_ai/index.html" class="kids-nav-item" style="color: var(--gold-star);">🎓 WatSPEED AI</a>
             </nav>
 
             <!-- RTS Commander Profile & Login -->
-            <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <button class="fb-action-btn outline" onclick="openFeedbackVaultModal()" style="padding: 6px 12px; font-size: 0.82rem;">📥 Upgrade Vault</button>
                 <div class="xp-pill" onclick="openAccountLoginModal()" style="cursor: pointer;">
                     <span id="rtsUserAvatar" style="font-size: 1.2rem;">🦉</span>
                     <span id="rtsUserName" style="font-weight: 800; color: #FFF; font-size: 0.9rem;">Cadet Thinker</span>
@@ -43,7 +44,8 @@
                     </div>
                     <span class="xp-text" id="xpTextDisplay">150 XP</span>
                 </div>
-                <button class="fb-action-btn gold" onclick="openAccountLoginModal()" style="padding: 6px 12px; font-size: 0.82rem;">👤 Account</button>
+                <button class="fb-action-btn gold" onclick="openGoldenCertificateModal()" style="padding: 6px 12px; font-size: 0.82rem; margin-right: 8px;">🎓 Certificate</button>
+                <button class="fb-action-btn outline" onclick="openAccountLoginModal()" style="padding: 6px 12px; font-size: 0.82rem;">👤 Account</button>
             </div>
         </div>
     </header>
@@ -56,10 +58,11 @@
             <div class="kids-hero-badge">Designed for Curious Minds Aged 8 to 12</div>
             <h1 class="kids-hero-title">Unlock Your Brain's <span class="purple-glow-text">Superpowers!</span></h1>
             <p class="kids-hero-desc">
-                Welcome to Philosopher's Quest! Every topic follows a structured <strong>3-Step Learning Flow</strong>: 
-                <span style="color: var(--gold-star); font-weight:700;">1) Concept Intro</span> ➔ 
-                <span style="color: var(--cyan-magic); font-weight:700;">2) Example & Video (&lt;10m)</span> ➔ 
-                <span style="color: var(--purple-glow); font-weight:700;">3) Interactive Challenge!</span>
+                Welcome to Philosopher's Quest! Select any topic below to dive into a focused <strong>4-Part Deep-Dive Experience</strong>: 
+                <span style="color: var(--gold-star); font-weight:700;">1) Concept Story</span> ➔ 
+                <span style="color: var(--cyan-magic); font-weight:700;">2) In-Depth Video & Context</span> ➔ 
+                <span style="color: var(--purple-glow); font-weight:700;">3) Related Game</span> ➔ 
+                <span style="color: var(--pink-energy); font-weight:700;">4) Q&A & Upgrade Vault!</span>
             </p>
 
             <!-- Badge Trophy Showcase -->
@@ -74,73 +77,26 @@
             </div>
         </section>
 
-        <!-- Zone 1: Philosopher Trading Cards & Inline Spotlight Stage -->
-        <section id="thinkers" class="kids-section">
-            <div class="kids-section-header">
-                <h2 class="kids-section-title">🏛️ Philosopher Trading Cards</h2>
-                <p class="kids-section-subtitle">Click any thinker card below to load their <strong>3-Step Wisdom Spotlight & Video Stage</strong> directly beneath!</p>
+        <!-- Master Category Navigation Tabs -->
+        <div class="master-cat-nav">
+            <button class="cat-nav-btn active" data-cat="thinkers" onclick="selectCategory('thinkers')">🏛️ Thinkers <span class="cat-count-badge" style="font-size:0.85rem; opacity:0.8;">(11)</span></button>
+            <button class="cat-nav-btn" data-cat="mental_models" onclick="selectCategory('mental_models')">🔮 Mental Models <span class="cat-count-badge" style="font-size:0.85rem; opacity:0.8;">(10)</span></button>
+            <button class="cat-nav-btn" data-cat="experiments" onclick="selectCategory('experiments')">🌀 Thought Experiments <span class="cat-count-badge" style="font-size:0.85rem; opacity:0.8;">(4)</span></button>
+            <button class="cat-nav-btn" data-cat="fallacies" onclick="selectCategory('fallacies')">🕵️ Fallacy Monsters <span class="cat-count-badge" style="font-size:0.85rem; opacity:0.8;">(1)</span></button>
+        </div>
+
+        <!-- Topic Items Bar Carousel with Scroll Controls -->
+        <div class="carousel-wrapper">
+            <button class="carousel-scroll-btn" onclick="scrollCarousel('left')" title="Scroll Left">◀</button>
+            <div class="topic-carousel-bar" id="topicCarouselBar" style="flex: 1; margin-bottom: 0;">
+                <!-- Dynamically populated by app_controller.js -->
             </div>
+            <button class="carousel-scroll-btn" onclick="scrollCarousel('right')" title="Scroll Right">▶</button>
+        </div>
 
-            <div class="thinkers-grid" id="thinkersGrid">
-                <!-- Dynamically rendered by js/thinkers.js -->
-            </div>
-
-            <!-- Dedicated Inline Thinker Spotlight & 3-Step Quest Stage -->
-            <div id="thinkerSpotlightStage" style="margin-top: 32px;">
-                <!-- Dynamically rendered by js/thinkers.js -->
-            </div>
-        </section>
-
-        <!-- Zone 2: Mental Model Superpowers -->
-        <section id="mental_models" class="kids-section">
-            <div class="kids-section-header">
-                <h2 class="kids-section-title">🔮 Mental Model Superpowers</h2>
-                <p class="kids-section-subtitle">Follow the 3-step flow (Intro ➔ Short Video ➔ Interactive Activity) for each mental model!</p>
-            </div>
-
-            <div class="arcade-container">
-                <div class="arcade-tabs">
-                    <button class="arcade-tab-btn mm-tab-btn active" onclick="renderMentalModelArcade('first_principles')">⚡ 1. First Principles Lego Dismantler</button>
-                    <button class="arcade-tab-btn mm-tab-btn" onclick="renderMentalModelArcade('occams_razor')">🗡️ 2. Occam's Razor Trimmer</button>
-                    <button class="arcade-tab-btn mm-tab-btn" onclick="renderMentalModelArcade('black_swan')">🦢 3. Karl Popper's Black Swan Hunter</button>
-                    <button class="arcade-tab-btn mm-tab-btn" onclick="renderMentalModelArcade('map_territory')">🗺️ 4. Map vs. Territory</button>
-                </div>
-
-                <div class="arcade-stage" id="arcadeStage">
-                    <!-- Dynamically rendered by js/mental_models.js -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Zone 3: Interactive Thought Experiment Arcade -->
-        <section id="experiments" class="kids-section">
-            <div class="kids-section-header">
-                <h2 class="kids-section-title">🌀 Interactive Thought Experiment Arcade</h2>
-                <p class="kids-section-subtitle">Test your mind with history's most famous philosophical riddles!</p>
-            </div>
-
-            <div class="arcade-container">
-                <div class="arcade-tabs">
-                    <button class="arcade-tab-btn exp-tab-btn active" onclick="renderThoughtExperiment('platos_cave')">🌌 Plato's Cave (Shadows vs Sun)</button>
-                    <button class="arcade-tab-btn exp-tab-btn" onclick="renderThoughtExperiment('ship_theseus')">⛵ Ship of Theseus Planks Puzzle</button>
-                </div>
-
-                <div class="arcade-stage" id="thoughtStage">
-                    <!-- Dynamically rendered by js/thought_experiments.js -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Zone 4: Logical Fallacy Monster Spotter -->
-        <section id="fallacies" class="kids-section">
-            <div class="kids-section-header">
-                <h2 class="kids-section-title">🕵️ Logical Fallacy Monster Spotter</h2>
-                <p class="kids-section-subtitle">Spot the trick arguments and defeat the fallacy monsters with logic shields!</p>
-            </div>
-
-            <div id="fallacyGameBox">
-                <!-- Dynamically rendered by js/fallacy_detective.js -->
-            </div>
+        <!-- UNIFIED SINGLE-TOPIC FOCUS STAGE -->
+        <section id="unifiedFocusStage">
+            <!-- Dynamically rendered single active topic view -->
         </section>
 
     </main>
@@ -156,9 +112,13 @@
     <!-- Scripts -->
     <script src="js/profile.js"></script>
     <script src="js/quest_app.js"></script>
+    <script src="js/feedback_vault.js"></script>
+    <script src="js/duolingo_engine.js"></script>
+    <script src="js/interactive_modules.js"></script>
     <script src="js/thinkers.js"></script>
     <script src="js/mental_models.js"></script>
     <script src="js/thought_experiments.js"></script>
     <script src="js/fallacy_detective.js"></script>
+    <script src="js/app_controller.js"></script>
 </body>
 </html>

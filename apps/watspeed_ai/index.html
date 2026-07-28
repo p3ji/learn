@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/styles.css">
+    <!-- Pyodide Python 3.11 WebAssembly Engine -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js" async></script>
     <style>
         .ds-tab-btn {
             background: rgba(255,255,255,0.05);
@@ -61,10 +63,10 @@
         <!-- Hero Section & Stepper -->
         <section class="hero-card">
             <div class="hero-glow"></div>
-            <div class="hero-badge">Guided Sequential Learning Path</div>
+            <div class="hero-badge">Guided Sequential Learning Path & In-Browser Python Lab</div>
             <h1 class="hero-title">Bridge SAS Experience to <span class="gold-gradient">Agentic AI</span> & <span class="accent-gradient">Supervised ML</span></h1>
             <p class="hero-desc">
-                Follow this step-by-step 4-stage learning path to prepare for Waterloo's WatSPEED Agentic AI course. Master Python survey data wrangling, Scikit-Learn ML, Google TabFM zero-shot foundation models, and LangGraph agent pipelines.
+                Follow this step-by-step 4-stage learning path with <strong>interactive in-browser Python labs</strong>. Modify code, tweak parameters, and run live machine learning models directly inside your browser!
             </p>
 
             <!-- 4-Stage Learning Path Progress Stepper -->
@@ -111,7 +113,10 @@
                     <h2 class="stage-header-title">📊 Stage 1: Data Essentials & SAS Bridge</h2>
                     <p class="stage-header-desc">Understand the Kaggle AI Trust dataset, map SAS DATA steps to Pandas, and perform survey feature engineering.</p>
                 </div>
-                <button class="fb-action-btn gold" onclick="showStage(2)">Next: Stage 2 - ML & TabFM ➔</button>
+                <div style="display:flex; gap:10px;">
+                    <button class="fb-action-btn gold" onclick="openInteractiveLabModal(1)">⚡ Run Live Code Lab 1 ➔</button>
+                    <button class="fb-action-btn outline" onclick="showStage(2)">Next: Stage 2 ➔</button>
+                </div>
             </div>
 
             <!-- Stage 1 Component A: Step-by-Step Data Guide & Dictionary -->
@@ -202,7 +207,7 @@
                         <h3 class="section-title">📊 Activity 1: Feature Engineering & Imputation Lab</h3>
                         <p class="section-subtitle">Recode Likert scales, handle missing values (-9 ➔ None), and apply population weights.</p>
                     </div>
-                    <button class="fb-launch-btn" onclick="openSectionFeedback('Activity 1: Feature Engineering')">📝 Notes & AI Assistant</button>
+                    <button class="fb-action-btn gold" onclick="openInteractiveLabModal(1)">⚡ Run Live Code Lab 1 ➔</button>
                 </div>
 
                 <div id="dsStage1" style="background: rgba(15, 23, 42, 0.9); border: 2px solid var(--gold-primary); border-radius: 20px; padding: 24px;">
@@ -225,8 +230,9 @@
                     <p class="stage-header-desc">Compare traditional SAS PROC LOGISTIC and Scikit-Learn against zero-shot Tabular Foundation Models.</p>
                 </div>
                 <div style="display:flex; gap:10px;">
+                    <button class="fb-action-btn gold" onclick="openInteractiveLabModal(2)">⚡ Run Live Code Lab 2 ➔</button>
                     <button class="fb-action-btn outline" onclick="showStage(1)">◄ Stage 1</button>
-                    <button class="fb-action-btn gold" onclick="showStage(3)">Next: Stage 3 - Agentic AI ➔</button>
+                    <button class="fb-action-btn gold" onclick="showStage(3)">Next: Stage 3 ➔</button>
                 </div>
             </div>
 
@@ -265,7 +271,7 @@
                         <h3 class="section-title">🤖 Activity 2: Supervised ML Model Comparison Lab</h3>
                         <p class="section-subtitle">Benchmark SAS PROC LOGISTIC vs Scikit-Learn Random Forest vs Google TabFM Zero-Shot.</p>
                     </div>
-                    <button class="fb-launch-btn" onclick="openSectionFeedback('Activity 2: ML Comparison')">📝 Notes & AI Assistant</button>
+                    <button class="fb-action-btn gold" onclick="openInteractiveLabModal(2)">⚡ Run Live Code Lab 2 ➔</button>
                 </div>
 
                 <div id="dsStage2" style="background: rgba(15, 23, 42, 0.9); border: 2px solid var(--gold-primary); border-radius: 20px; padding: 24px;">
@@ -311,8 +317,9 @@
                     <p class="stage-header-desc">Wrap Python routines as AI tools (@tool), build LangGraph state machines, and run the ReAct Sandbox.</p>
                 </div>
                 <div style="display:flex; gap:10px;">
+                    <button class="fb-action-btn gold" onclick="openInteractiveLabModal(4)">⚡ Run Live Code Lab 4 ➔</button>
                     <button class="fb-action-btn outline" onclick="showStage(2)">◄ Stage 2</button>
-                    <button class="fb-action-btn gold" onclick="showStage(4)">Next: Stage 4 - Notebooks ➔</button>
+                    <button class="fb-action-btn gold" onclick="showStage(4)">Next: Stage 4 ➔</button>
                 </div>
             </div>
 
@@ -338,7 +345,7 @@
                         <h3 class="section-title">🔬 Activity 3: Sociological Hypothesis & Crosstab Lab</h3>
                         <p class="section-subtitle">Run Pearson Chi-Square ($\chi^2$) tests and relative Odds Ratios across demographic groups.</p>
                     </div>
-                    <button class="fb-launch-btn" onclick="openSectionFeedback('Activity 3: Hypothesis Testing')">📝 Notes & AI Assistant</button>
+                    <button class="fb-action-btn gold" onclick="openInteractiveLabModal(4)">⚡ Run Live Code Lab 4 ➔</button>
                 </div>
 
                 <div id="dsStage3" style="background: rgba(15, 23, 42, 0.9); border: 2px solid var(--gold-primary); border-radius: 20px; padding: 24px;">
@@ -403,7 +410,7 @@
                 <div>
                     <div style="color: var(--cyan-magic); font-weight:800; font-size:0.85rem; text-transform:uppercase;">STAGE 4 OF 4</div>
                     <h2 class="stage-header-title">📘 Stage 4: Executable Jupyter Notebooks & Capstone</h2>
-                    <p class="stage-header-desc">6 complete executable notebooks mapping 1-to-1 with Stages 1–3 + WatSPEED Capstone Assistant.</p>
+                    <p class="stage-header-desc">6 complete executable notebooks with interactive in-browser Python execution & code editing!</p>
                 </div>
                 <button class="fb-action-btn outline" onclick="showStage(3)">◄ Back to Stage 3</button>
             </div>
@@ -414,42 +421,60 @@
                         <div class="nb-badge">Notebook 01 (Stage 1)</div>
                         <h3 class="nb-title">Python Data Essentials for SAS & Stata Users</h3>
                         <p class="nb-desc">Pandas recoding, handling missing values (-9 ➔ None), survey weighting, and Pydantic schema validation.</p>
-                        <button onclick="openNotebookViewer(1)" class="fb-action-btn gold" style="width:100%; text-align:center;">Interactive Viewer / Launch ➔</button>
+                        <div style="display:flex; flex-direction:column; gap:8px;">
+                            <button onclick="openInteractiveLabModal(1)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Run Live Code Lab 1 ➔</button>
+                            <button onclick="openNotebookViewer(1)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cell Preview</button>
+                        </div>
                     </div>
 
                     <div class="nb-card">
                         <div class="nb-badge">Notebook 02 (Stage 2)</div>
                         <h3 class="nb-title">Supervised ML & PROC LOGISTIC Bridge</h3>
                         <p class="nb-desc">Scikit-learn LogisticRegression, Train/Test splitting, confusion matrices, and ROC-AUC curves on survey datasets.</p>
-                        <button onclick="openNotebookViewer(2)" class="fb-action-btn gold" style="width:100%; text-align:center;">Interactive Viewer / Launch ➔</button>
+                        <div style="display:flex; flex-direction:column; gap:8px;">
+                            <button onclick="openInteractiveLabModal(2)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Run Live Code Lab 2 ➔</button>
+                            <button onclick="openNotebookViewer(2)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cell Preview</button>
+                        </div>
                     </div>
 
                     <div class="nb-card">
                         <div class="nb-badge">Notebook 03 (Stage 2)</div>
                         <h3 class="nb-title">Google TabFM Zero-Shot Survey Classifier</h3>
                         <p class="nb-desc">In-context zero-shot classification on raw categorical survey columns without manual one-hot recoding.</p>
-                        <button onclick="openNotebookViewer(3)" class="fb-action-btn gold" style="width:100%; text-align:center;">Interactive Viewer / Launch ➔</button>
+                        <div style="display:flex; flex-direction:column; gap:8px;">
+                            <button onclick="openInteractiveLabModal(3)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Run Live Code Lab 3 ➔</button>
+                            <button onclick="openNotebookViewer(3)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cell Preview</button>
+                        </div>
                     </div>
 
                     <div class="nb-card">
                         <div class="nb-badge">Notebook 04 (Stage 3)</div>
                         <h3 class="nb-title">LangChain & Tool Calling for Survey Analysis</h3>
                         <p class="nb-desc">Wrapping Scikit-learn models and Pandas crosstabs as AI tools (@tool) callable by LLMs.</p>
-                        <button onclick="openNotebookViewer(4)" class="fb-action-btn gold" style="width:100%; text-align:center;">Interactive Viewer / Launch ➔</button>
+                        <div style="display:flex; flex-direction:column; gap:8px;">
+                            <button onclick="openInteractiveLabModal(4)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Run Live Code Lab 4 ➔</button>
+                            <button onclick="openNotebookViewer(4)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cell Preview</button>
+                        </div>
                     </div>
 
                     <div class="nb-card">
                         <div class="nb-badge">Notebook 05 (Stage 3)</div>
                         <h3 class="nb-title">LangGraph State Machines for Survey Pipelines</h3>
                         <p class="nb-desc">Building cyclic state graphs with memory persistence, error correction loops, and human-in-the-loop approvals.</p>
-                        <button onclick="openNotebookViewer(5)" class="fb-action-btn gold" style="width:100%; text-align:center;">Interactive Viewer / Launch ➔</button>
+                        <div style="display:flex; flex-direction:column; gap:8px;">
+                            <button onclick="openInteractiveLabModal(5)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Run Live Code Lab 5 ➔</button>
+                            <button onclick="openNotebookViewer(5)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cell Preview</button>
+                        </div>
                     </div>
 
                     <div class="nb-card">
                         <div class="nb-badge">Notebook 06 (Capstone)</div>
                         <h3 class="nb-title">WatSPEED Capstone: Autonomous Survey Assistant</h3>
                         <p class="nb-desc">End-to-end multi-agent system analyzing the Kaggle AI Trust Insights dataset and drafting sociological summaries.</p>
-                        <button onclick="openNotebookViewer(6)" class="fb-action-btn gold" style="width:100%; text-align:center;">Interactive Viewer / Launch ➔</button>
+                        <div style="display:flex; flex-direction:column; gap:8px;">
+                            <button onclick="openInteractiveLabModal(6)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Run Live Code Lab 6 ➔</button>
+                            <button onclick="openNotebookViewer(6)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cell Preview</button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -527,6 +552,7 @@
     <script src="../../js/visualizers.js"></script>
     <script src="../../js/sandbox.js"></script>
     <script src="../../js/notebook_viewer.js"></script>
+    <script src="../../js/interactive_notebook.js"></script>
 
     <!-- Stage Navigation Controller Script -->
     <script>
@@ -557,6 +583,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             showStage(1);
+            loadPyodideEngine();
         });
     </script>
 </body>
