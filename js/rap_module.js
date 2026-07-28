@@ -4,118 +4,172 @@
 const rapSteps = [
     {
         level: 1,
-        title: "Level 1: Unorganized Folder (Legacy SAS/Stata Workflow)",
-        badge: "⚠️ Legacy / Fragile",
+        title: "Level 1: Unorganized Folder & Path Clutter",
+        badge: "⚠️ Level 1 Lesson",
         badgeColor: "#EF4444",
         problem: "Multiple unversioned scripts (clean_v2.do, analysis_final_FINAL.sas) with hardcoded absolute file paths like C:\\Users\\Name\\Downloads. No dependency tracking, no version control.",
-        sasExample: `/* Hardcoded path, no dependency management */
-LIBNAME mydata "C:\\Users\\pushp\\Downloads\\survey_data";
+        lessonTitle: "📖 Lesson 1: From Loose Script Folders to Relative Paths",
+        lessonBody: `
+            <div style="color: var(--text-main); font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px;">
+                <p>In traditional SAS or Stata workflows, code is often scattered across loose files with hardcoded machine paths like <code>C:\\Users\\pushp\\Downloads\\survey_data</code>. When shared with a colleague or moved to a server, the script crashes immediately because the local folder path doesn't exist.</p>
 
-data clean_v2;
-    set mydata.ai_trust;
-    if age = . then delete;
-run;
-/* Must manually remember to run clean_v2.sas before analysis_july.sas! */`,
-        pythonExample: `# Hardcoded paths, no environment isolation
+                <h4 style="color: #F87171; font-size: 0.95rem; margin: 14px 0 6px;">❌ The Legacy SAS / Stata Code Anti-Pattern:</h4>
+                <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #F87171; overflow-x: auto; border: 1px solid rgba(239,68,68,0.3);">/* Hardcoded absolute path — breaks on any other computer! */
+LIBNAME mydata "C:\\Users\\pushp\\Downloads\\survey_data";
+data clean_v2; set mydata.ai_trust; if age = . then delete; run;</pre>
+
+                <h4 style="color: #4ADE80; font-size: 0.95rem; margin: 14px 0 6px;">✅ The Modern Python RAP Solution (pathlib):</h4>
+                <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #4ADE80; overflow-x: auto; border: 1px solid rgba(74,222,128,0.3);"># Clean project-relative pathing using Python's standard pathlib
+from pathlib import Path
 import pandas as pd
-df = pd.read_csv("C:/Users/pushp/Downloads/ai_trust_insights.csv")
-df_clean = df.dropna()
-df_clean.to_csv("C:/Users/pushp/Downloads/clean_output_v2.csv")`,
-        rapUpgrade: "Move all code out of loose scripts and organize into a standardized project directory with relative file paths."
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+RAW_DATA_PATH = PROJECT_ROOT / "data" / "raw" / "survey_insights.csv"
+
+df = pd.read_csv(RAW_DATA_PATH)</pre>
+            </div>
+        `,
+        rapUpgrade: "Organize code into standard project folders and replace all absolute hardcoded paths with pathlib relative paths."
     },
     {
         level: 2,
         title: "Level 2: Structured Project Layout & Virtual Environment",
-        badge: "📁 Standardized Setup",
+        badge: "📁 Level 2 Lesson",
         badgeColor: "#F59E0B",
         problem: "Package version drift ('Works on my laptop, crashes on server because pandas 2.0 vs 1.4 handles NA differently').",
-        structure: `my_survey_project/
+        lessonTitle: "📖 Lesson 2: Environment Isolation & pyproject.toml Version Locking",
+        lessonBody: `
+            <div style="color: var(--text-main); font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px;">
+                <p>When running SAS, all scripts execute against a single globally installed SAS system. In Python, different packages (e.g. <code>pandas</code>, <code>scikit-learn</code>) update frequently. If you don't lock your package versions, your survey analysis may produce different results next year when packages update.</p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0;">
+                    <div>
+                        <h4 style="color: var(--gold-primary); font-size: 0.88rem; margin-bottom: 6px;">📁 Standard Directory Structure</h4>
+                        <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #FBBF24; overflow-x: auto; border: 1px solid rgba(251,191,36,0.3);">my_survey_project/
 ├── data/
-│   ├── raw/          <-- Immutable original CSV (read-only!)
-│   └── processed/    <-- Cleaned datasets produced by pipeline
+│   ├── raw/          <-- Read-only original CSV
+│   └── processed/    <-- Cleaned pipeline datasets
 ├── src/
-│   ├── data_clean.py <-- Modular Python functions
-│   └── models.py     <-- Analysis & modeling logic
-├── notebooks/        <-- Exploratory Analysis (.ipynb)
-├── pyproject.toml    <-- Locked package dependencies (uv / poetry)
-└── README.md         <-- Execution instructions`,
-        pythonExample: `# pyproject.toml (Locks exact package versions for 100% reproducibility)
-[project]
-name = "ai-trust-survey-rap"
+│   ├── data_clean.py <-- Modular Python routines
+│   └── models.py     <-- Statistical logic
+├── pyproject.toml    <-- Locked package versions
+└── README.md</pre>
+                    </div>
+                    <div>
+                        <h4 style="color: #38BDF8; font-size: 0.88rem; margin-bottom: 6px;">🔒 pyproject.toml Version Locking</h4>
+                        <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #38BDF8; overflow-x: auto; border: 1px solid rgba(56,189,248,0.3);">[project]
+name = "survey-rap-pipeline"
 version = "1.0.0"
+requires-python = ">=3.11"
 dependencies = [
     "pandas==2.2.1",
     "statsmodels==0.14.1",
-    "pydantic==2.6.4",
     "scikit-learn==1.4.1",
-]`,
-        rapUpgrade: "Lock your Python environment using pyproject.toml (or uv/poetry) so identical results are produced 5 years later."
+    "pydantic==2.6.4"
+]</pre>
+                    </div>
+                </div>
+            </div>
+        `,
+        rapUpgrade: "Lock your Python virtual environment using pyproject.toml (or uv/poetry) so identical results are produced 5 years later."
     },
     {
         level: 3,
-        title: "Level 3: Declarative Data Pipeline (DAG Dependency Graph & Cloud Orchestration)",
-        badge: "⚡ Pipeline DAG & Cloud Orchestrators",
+        title: "Level 3: Declarative Data Pipelines & Cloud Orchestration",
+        badge: "⚡ Level 3 Lesson",
         badgeColor: "#38BDF8",
         problem: "Executing scripts sequentially by hand or relying on single-server SAS Enterprise Guide Process Flows that don't scale to modern cloud platforms (Argo, Databricks, Microsoft Fabric).",
-        explanation: "In SAS Enterprise Guide, you draw visual node graphs. In modern cloud engineering, DAGs (Directed Acyclic Graphs) define task dependencies across distributed engines. If raw data hasn't changed, cached step results are reused automatically!",
-        orchestrationMatrix: [
-            { tool: "SAS Enterprise Guide / Miner", mechanism: "Visual Process Flow GUI", storage: "SAS Working Libraries", Execution: "Single SAS Server Session Memory" },
-            { tool: "Argo Workflows (Kubernetes)", mechanism: "YAML / Hera Python SDK DAGs", storage: "Container Volumes & S3/GCS", Execution: "Container-native distributed K8s pods" },
-            { tool: "Databricks Workflows / Jobs", mechanism: "Notebook Jobs & DLT Pipelines", storage: "Delta Lake / DBFS / S3", Execution: "Distributed Apache Spark Clusters" },
-            { tool: "Microsoft Fabric Data Factory", mechanism: "Drag & Drop Pipelines + PySpark", storage: "OneLake / Synapse Lakehouse", Execution: "Fabric Compute Engines & PySpark" },
-            { tool: "Prefect / Airflow (Python Native)", mechanism: "@task & @flow Python Decorators", storage: "DataFrame Memory / S3", Execution: "Distributed Python Workers" }
-        ],
-        pythonExample: `# Prefect / Airflow Python DAG (Equivalent to SAS Enterprise Guide Process Flow)
-from prefect import task, flow
+        lessonTitle: "📖 Lesson 3: Orchestrating Pipelines with DAGs (SAS EG ➔ Cloud Platforms)",
+        lessonBody: `
+            <div style="color: var(--text-main); font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px;">
+                <p>In SAS Enterprise Guide, you draw a <strong>Process Flow GUI</strong> to link programs. In modern cloud engineering, workflows are represented as <strong>DAGs (Directed Acyclic Graphs)</strong> where tasks track inputs/outputs, auto-retry on network stutters, and cache intermediate results.</p>
+
+                <h4 style="color: var(--cyan-magic); font-size: 0.9rem; margin: 14px 0 6px;">🌉 Orchestration Bridge Matrix: SAS EG ➔ Modern Cloud Platforms</h4>
+                <div style="overflow-x: auto; margin-bottom: 14px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;">
+                    <table style="width: 100%; font-size: 0.78rem; text-align: left; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: rgba(255,255,255,0.05); color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.15);">
+                                <th style="padding: 8px 10px;">Platform</th>
+                                <th style="padding: 8px 10px;">Orchestration Mechanism</th>
+                                <th style="padding: 8px 10px;">Data Storage</th>
+                                <th style="padding: 8px 10px;">Execution Engine</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding:8px 10px; font-weight:700; color:var(--gold-primary);">SAS Enterprise Guide</td><td style="padding:8px 10px; color:var(--cyan-magic);">Visual Process Flow GUI</td><td style="padding:8px 10px;">SAS Working Libraries</td><td style="padding:8px 10px; color:var(--text-muted);">Single SAS Server Session</td></tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding:8px 10px; font-weight:700; color:var(--gold-primary);">Argo Workflows (K8s)</td><td style="padding:8px 10px; color:var(--cyan-magic);">YAML / Hera Python SDK DAGs</td><td style="padding:8px 10px;">Container Volumes & S3/GCS</td><td style="padding:8px 10px; color:var(--text-muted);">Distributed K8s Pod Containers</td></tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding:8px 10px; font-weight:700; color:var(--gold-primary);">Databricks Workflows</td><td style="padding:8px 10px; color:var(--cyan-magic);">Notebook Jobs & DLT Pipelines</td><td style="padding:8px 10px;">Delta Lake / S3 / DBFS</td><td style="padding:8px 10px; color:var(--text-muted);">Distributed Apache Spark Cluster</td></tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding:8px 10px; font-weight:700; color:var(--gold-primary);">Microsoft Fabric Data Factory</td><td style="padding:8px 10px; color:var(--cyan-magic);">Drag & Drop Pipelines + PySpark</td><td style="padding:8px 10px;">OneLake / Synapse Lakehouse</td><td style="padding:8px 10px; color:var(--text-muted);">Fabric Compute Engines</td></tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding:8px 10px; font-weight:700; color:var(--gold-primary);">Prefect / Airflow (Python)</td><td style="padding:8px 10px; color:var(--cyan-magic);">@task & @flow Python Decorators</td><td style="padding:8px 10px;">DataFrame Memory / S3</td><td style="padding:8px 10px; color:var(--text-muted);">Distributed Python Workers</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4 style="color: #38BDF8; font-size: 0.88rem; margin: 14px 0 6px;">⚡ Python Pipeline DAG Code (Prefect Syntax):</h4>
+                <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #38BDF8; overflow-x: auto; border: 1px solid rgba(56,189,248,0.3);">from prefect import task, flow
 import pandas as pd
 
-@task(retries=2)  # Auto-retry node if raw data source stutters
-def load_and_clean_survey(raw_path: str) -> pd.DataFrame:
-    df = pd.read_csv(raw_path)
-    return df.replace(-9, None)
+@task(retries=2)  # Auto-retry node if data load stutters
+def load_and_clean(raw_path: str) -> pd.DataFrame:
+    return pd.read_csv(raw_path).replace(-9, None)
 
 @task
-def fit_survey_model(df_clean: pd.DataFrame):
+def fit_model(df_clean: pd.DataFrame):
     import statsmodels.formula.api as smf
     return smf.logit("High_AI_Trust ~ Perceived_AI_Risk", data=df_clean).fit()
 
-@flow(name="Survey RAP Orchestration DAG")
-def run_full_pipeline():
-    df_clean = load_and_clean_survey("data/raw/survey.csv")
-    model = fit_survey_model(df_clean)
-    print(model.summary())`,
+@flow(name="Survey RAP Pipeline")
+def main():
+    df = load_and_clean("data/raw/survey.csv")
+    model = fit_model(df)
+    print(model.summary())</pre>
+            </div>
+        `,
         rapUpgrade: "Use DAG orchestrators (Databricks Workflows, Microsoft Fabric, Argo, or Prefect) to automate execution order, retries, and smart caching."
     },
     {
         level: 4,
         title: "Level 4: Automated Data Quality & Schema Assertions",
-        badge: "🛡️ Automated Quality",
+        badge: "🛡️ Level 4 Lesson",
         badgeColor: "#10B981",
         problem: "Bad data (e.g. a new survey batch with missing age columns or out-of-range Likert scores) silently corrupting downstream regression models.",
-        pythonExample: `# Data Quality assertions with pytest & Pydantic
-import pytest
+        lessonTitle: "📖 Lesson 4: Defensive Data Science & Automated Testing with pytest",
+        lessonBody: `
+            <div style="color: var(--text-main); font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px;">
+                <p>In legacy SAS, researchers check log files manually for missing value dots (<code>.</code>). In modern RAP data pipelines, we write automated test suites using <code>pytest</code> and <code>Pydantic</code> that automatically halt execution if a new survey dataset fails quality assertions.</p>
+
+                <h4 style="color: #4ADE80; font-size: 0.88rem; margin: 14px 0 6px;">🛡️ Automated Quality Suite (tests/test_survey.py):</h4>
+                <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #4ADE80; overflow-x: auto; border: 1px solid rgba(74,222,128,0.3);">import pytest
+import pandas as pd
 
 def test_survey_data_quality():
     df = pd.read_csv("data/processed/clean_survey.csv")
     
-    # Assertion 1: No missing respondent IDs
+    # Assertion 1: Zero missing respondent IDs
     assert df["respondent_id"].isnull().sum() == 0, "Missing IDs found!"
     
     # Assertion 2: Likert scores strictly between 1 and 5
     assert df["perceived_risk"].between(1, 5).all(), "Invalid Likert scores!"
     
-    # Assertion 3: Column count matches expected schema
-    assert len(df.columns) == 12, "Schema drift detected!"`,
+    # Assertion 3: Column count matches expected schema (No schema drift)
+    assert len(df.columns) == 12, "Schema drift detected!"</pre>
+            </div>
+        `,
         rapUpgrade: "Add automated tests (pytest) that halt pipeline execution if incoming survey data violates quality contracts."
     },
     {
         level: 5,
         title: "Level 5: Continuous Integration (CI/CD) & Automated Reports",
-        badge: "🚀 Production RAP",
+        badge: "🚀 Level 5 Lesson",
         badgeColor: "#A855F7",
         problem: "Manual email reports that take hours to run every time new survey waves are released.",
-        githubActionExample: `# .github/workflows/run_pipeline.yml
-name: Execute Reproducible Analytical Pipeline
+        lessonTitle: "📖 Lesson 5: Automated Cloud Pipelines & GitHub Actions CI/CD",
+        lessonBody: `
+            <div style="color: var(--text-main); font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px;">
+                <p>Level 5 is the ultimate RAP maturity level. Instead of running analysis scripts manually on your local laptop, a <strong>GitHub Actions CI/CD workflow</strong> triggers automatically whenever code is pushed to <code>main</code> or on a weekly schedule. It runs all quality tests, executes the pipeline, and publishes an updated HTML executive report.</p>
+
+                <h4 style="color: #C084FC; font-size: 0.88rem; margin: 14px 0 6px;">🚀 GitHub Actions Workflow (.github/workflows/run_pipeline.yml):</h4>
+                <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #C084FC; overflow-x: auto; border: 1px solid rgba(192,132,252,0.3);">name: Execute Reproducible Analytical Pipeline
 
 on:
   push:
@@ -132,8 +186,9 @@ jobs:
       - name: Run Pipeline & Generate HTML Report
         run: |
           uv run python src/run_pipeline.py
-          uv run pytest tests/
-`,
+          uv run pytest tests/</pre>
+            </div>
+        `,
         rapUpgrade: "Deploy GitHub Actions to run tests, execute the pipeline, and publish executive survey reports automatically on every git commit!"
     }
 ];
@@ -161,6 +216,8 @@ function renderRapModuleCard(targetContainerId) {
     if (!container) return;
     activeRapContainerId = container.id;
 
+    const step = rapSteps[currentRapStep - 1];
+
     const shortTitles = [
         "Level 1: Script Folder",
         "Level 2: Project Layout",
@@ -172,108 +229,49 @@ function renderRapModuleCard(targetContainerId) {
     let stepNavHtml = rapSteps.map(s => `
         <button class="viz-step-btn ${s.level === currentRapStep ? 'active' : ''}" 
                 onclick="setRapStep(${s.level})" 
-                style="padding: 8px 14px; font-size: 0.82rem;">
+                style="padding: 10px 16px; font-size: 0.86rem; border-radius: 10px; cursor: pointer; transition: all 0.2s;">
             ${shortTitles[s.level - 1]}
         </button>
     `).join('');
 
-    let codeBlockHtml = '';
-    if (step.level === 1) {
-        codeBlockHtml = `
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
-                <div>
-                    <h4 style="font-size: 0.82rem; color: #EF4444; margin-bottom: 6px;">❌ Legacy SAS / Stata Script</h4>
-                    <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #F87171; overflow-x: auto; border: 1px solid rgba(239,68,68,0.3);">${rapEscapeHtml(step.sasExample)}</pre>
-                </div>
-                <div>
-                    <h4 style="font-size: 0.82rem; color: #EF4444; margin-bottom: 6px;">❌ Loose Python Script</h4>
-                    <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #F87171; overflow-x: auto; border: 1px solid rgba(239,68,68,0.3);">${rapEscapeHtml(step.pythonExample)}</pre>
-                </div>
-            </div>`;
-    } else if (step.level === 2) {
-        codeBlockHtml = `
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
-                <div>
-                    <h4 style="font-size: 0.82rem; color: var(--gold-primary); margin-bottom: 6px;">📁 Standard Directory Structure</h4>
-                    <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #FBBF24; overflow-x: auto; border: 1px solid rgba(251,191,36,0.3);">${rapEscapeHtml(step.structure)}</pre>
-                </div>
-                <div>
-                    <h4 style="font-size: 0.82rem; color: #38BDF8; margin-bottom: 6px;">🔒 pyproject.toml Version Locking</h4>
-                    <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.78rem; color: #38BDF8; overflow-x: auto; border: 1px solid rgba(56,189,248,0.3);">${rapEscapeHtml(step.pythonExample)}</pre>
-                </div>
-            </div>`;
-    } else if (step.level === 3) {
-        let matrixRows = step.orchestrationMatrix.map(m => `
-            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
-                <td style="padding: 8px 10px; font-weight:700; color: var(--gold-primary);">${rapEscapeHtml(m.tool)}</td>
-                <td style="padding: 8px 10px; color: var(--cyan-magic);">${rapEscapeHtml(m.mechanism)}</td>
-                <td style="padding: 8px 10px; color: var(--text-main);">${rapEscapeHtml(m.storage)}</td>
-                <td style="padding: 8px 10px; color: var(--text-muted);">${rapEscapeHtml(m.Execution)}</td>
-            </tr>
-        `).join('');
-
-        codeBlockHtml = `
-            <div style="margin-bottom: 16px;">
-                <h4 style="font-size: 0.88rem; color: var(--cyan-magic); margin-bottom: 8px;">🌉 Orchestration Bridge Matrix: SAS EG ➔ Modern Cloud Platforms</h4>
-                <div style="overflow-x: auto; margin-bottom: 14px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;">
-                    <table style="width: 100%; font-size: 0.78rem; text-align: left; border-collapse: collapse;">
-                        <thead>
-                            <tr style="background: rgba(255,255,255,0.05); color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.15);">
-                                <th style="padding: 8px 10px;">Platform / Engine</th>
-                                <th style="padding: 8px 10px;">Orchestration Mechanism</th>
-                                <th style="padding: 8px 10px;">Data Storage</th>
-                                <th style="padding: 8px 10px;">Execution Engine</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${matrixRows}
-                        </tbody>
-                    </table>
-                </div>
-
-                <h4 style="font-size: 0.82rem; color: #38BDF8; margin-bottom: 6px;">⚡ Python Pipeline DAG Example (Prefect / Airflow Syntax)</h4>
-                <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: #38BDF8; overflow-x: auto; border: 1px solid rgba(56,189,248,0.3);">${rapEscapeHtml(step.pythonExample)}</pre>
-            </div>`;
-    } else if (step.level === 4) {
-        codeBlockHtml = `
-            <div style="margin-bottom: 16px;">
-                <h4 style="font-size: 0.82rem; color: #10B981; margin-bottom: 6px;">🛡️ Automated Schema & Quality Assertions (pytest)</h4>
-                <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: #4ADE80; overflow-x: auto; border: 1px solid rgba(74,222,128,0.3);">${rapEscapeHtml(step.pythonExample)}</pre>
-            </div>`;
-    } else if (step.level === 5) {
-        codeBlockHtml = `
-            <div style="margin-bottom: 16px;">
-                <h4 style="font-size: 0.82rem; color: #C084FC; margin-bottom: 6px;">🚀 GitHub Actions CI/CD Automated Execution</h4>
-                <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: #C084FC; overflow-x: auto; border: 1px solid rgba(192,132,252,0.3);">${rapEscapeHtml(step.githubActionExample)}</pre>
-            </div>`;
-    }
-
     container.innerHTML = `
-        <div style="background: rgba(15, 23, 42, 0.95); border: 2px solid var(--gold-primary); border-radius: 20px; padding: 24px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+        <div style="background: rgba(15, 23, 42, 0.95); border: 2px solid var(--gold-primary); border-radius: 20px; padding: 28px; box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
+            
+            <!-- Header Bar -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
                 <div>
-                    <span style="background: ${step.badgeColor}; color: #000; font-weight: 900; font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; text-transform: uppercase;">${step.badge}</span>
-                    <h3 style="color: var(--gold-primary); font-family: var(--font-heading); margin: 6px 0 0; font-size: 1.25rem;">${step.title}</h3>
+                    <span style="background: ${step.badgeColor}; color: #000; font-weight: 900; font-size: 0.78rem; padding: 4px 12px; border-radius: 12px; text-transform: uppercase;">${step.badge}</span>
+                    <h3 style="color: var(--gold-primary); font-family: var(--font-heading); margin: 8px 0 0; font-size: 1.35rem;">${step.title}</h3>
                 </div>
-                <div style="font-size: 0.85rem; color: var(--text-muted);">Step ${currentRapStep} of 5</div>
+                <button onclick="openRapGeneratorModal(${step.level})" style="background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); color: #000; font-weight: 800; padding: 10px 18px; border-radius: 10px; border: none; cursor: pointer; font-size: 0.88rem; box-shadow: 0 4px 15px rgba(255, 199, 44, 0.3);">
+                    ⚡ Launch Level ${step.level} Interactive Generator ➔
+                </button>
             </div>
 
-            <!-- Stepper Buttons -->
-            <div class="viz-controls" style="margin-bottom: 18px; display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px;">
+            <!-- Stepper Navigation Tabs -->
+            <div class="viz-controls" style="margin-bottom: 22px; display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px;">
                 ${stepNavHtml}
             </div>
 
-            <!-- Problem / Context Box -->
-            <div style="background: rgba(255,255,255,0.04); border-left: 4px solid ${step.badgeColor}; padding: 14px 16px; border-radius: 6px; font-size: 0.88rem; color: var(--text-main); margin-bottom: 16px; line-height: 1.6;">
-                <strong>Key Friction Point:</strong> ${step.problem}
+            <!-- Key Friction Point Alert -->
+            <div style="background: rgba(255,255,255,0.04); border-left: 4px solid ${step.badgeColor}; padding: 14px 18px; border-radius: 8px; font-size: 0.9rem; color: var(--text-main); margin-bottom: 20px; line-height: 1.6;">
+                <strong>⚠️ Key Friction Point:</strong> ${step.problem}
             </div>
 
-            <!-- Code Comparison / Diagram -->
-            ${codeBlockHtml}
+            <!-- Full Lesson Title & Body -->
+            <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 22px; margin-bottom: 20px;">
+                <h3 style="color: var(--cyan-magic); font-size: 1.15rem; margin-top: 0; margin-bottom: 12px;">${step.lessonTitle}</h3>
+                ${step.lessonBody}
+            </div>
 
             <!-- Upgrade Takeaway Box -->
-            <div style="background: rgba(255, 199, 44, 0.1); border: 1px solid var(--gold-primary); padding: 12px 16px; border-radius: 10px; font-size: 0.88rem; color: var(--text-main);">
-                <strong>💡 Modern RAP Upgrade:</strong> ${step.rapUpgrade}
+            <div style="background: rgba(255, 199, 44, 0.1); border: 1px solid var(--gold-primary); padding: 14px 18px; border-radius: 12px; font-size: 0.9rem; color: var(--text-main); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                <div>
+                    <strong>💡 Modern RAP Upgrade:</strong> ${step.rapUpgrade}
+                </div>
+                <button onclick="openRapGeneratorModal(${step.level})" style="background: var(--cyan-magic); color: #000; font-weight: 800; padding: 8px 14px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.82rem;">
+                    Try Tool ➔
+                </button>
             </div>
         </div>`;
 }
