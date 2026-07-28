@@ -53,15 +53,23 @@ dependencies = [
     },
     {
         level: 3,
-        title: "Level 3: Declarative Data Pipeline (DAG Dependency Graph)",
-        badge: "⚡ Pipeline DAG",
+        title: "Level 3: Declarative Data Pipeline (DAG Dependency Graph & Cloud Orchestration)",
+        badge: "⚡ Pipeline DAG & Cloud Orchestrators",
         badgeColor: "#38BDF8",
-        problem: "Running a 3-hour data cleaning script when only the report formatting script was edited.",
-        explanation: "Instead of running scripts manually in order, a Pipeline DAG (Directed Acyclic Graph) tracks inputs and outputs. If raw data hasn't changed, the pipeline reuses cached results instantly!",
-        pythonExample: `# Example using Prefect / Snakemake pipeline syntax
+        problem: "Executing scripts sequentially by hand or relying on single-server SAS Enterprise Guide Process Flows that don't scale to modern cloud platforms (Argo, Databricks, Microsoft Fabric).",
+        explanation: "In SAS Enterprise Guide, you draw visual node graphs. In modern cloud engineering, DAGs (Directed Acyclic Graphs) define task dependencies across distributed engines. If raw data hasn't changed, cached step results are reused automatically!",
+        orchestrationMatrix: [
+            { tool: "SAS Enterprise Guide / Miner", mechanism: "Visual Process Flow GUI", storage: "SAS Working Libraries", Execution: "Single SAS Server Session Memory" },
+            { tool: "Argo Workflows (Kubernetes)", mechanism: "YAML / Hera Python SDK DAGs", storage: "Container Volumes & S3/GCS", Execution: "Container-native distributed K8s pods" },
+            { tool: "Databricks Workflows / Jobs", mechanism: "Notebook Jobs & DLT Pipelines", storage: "Delta Lake / DBFS / S3", Execution: "Distributed Apache Spark Clusters" },
+            { tool: "Microsoft Fabric Data Factory", mechanism: "Drag & Drop Pipelines + PySpark", storage: "OneLake / Synapse Lakehouse", Execution: "Fabric Compute Engines & PySpark" },
+            { tool: "Prefect / Airflow (Python Native)", mechanism: "@task & @flow Python Decorators", storage: "DataFrame Memory / S3", Execution: "Distributed Python Workers" }
+        ],
+        pythonExample: `# Prefect / Airflow Python DAG (Equivalent to SAS Enterprise Guide Process Flow)
 from prefect import task, flow
+import pandas as pd
 
-@task(retries=2)
+@task(retries=2)  # Auto-retry node if raw data source stutters
 def load_and_clean_survey(raw_path: str) -> pd.DataFrame:
     df = pd.read_csv(raw_path)
     return df.replace(-9, None)
@@ -71,12 +79,12 @@ def fit_survey_model(df_clean: pd.DataFrame):
     import statsmodels.formula.api as smf
     return smf.logit("High_AI_Trust ~ Perceived_AI_Risk", data=df_clean).fit()
 
-@flow(name="Survey RAP Pipeline")
+@flow(name="Survey RAP Orchestration DAG")
 def run_full_pipeline():
     df_clean = load_and_clean_survey("data/raw/survey.csv")
     model = fit_survey_model(df_clean)
     print(model.summary())`,
-        rapUpgrade: "Use pipeline orchestration (Prefect, Snakemake, or DVC) to automate execution order and smart caching."
+        rapUpgrade: "Use DAG orchestrators (Databricks Workflows, Microsoft Fabric, Argo, or Prefect) to automate execution order, retries, and smart caching."
     },
     {
         level: 4,
@@ -195,9 +203,35 @@ function renderRapModuleCard(targetContainerId) {
                 </div>
             </div>`;
     } else if (step.level === 3) {
+        let matrixRows = step.orchestrationMatrix.map(m => `
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+                <td style="padding: 8px 10px; font-weight:700; color: var(--gold-primary);">${rapEscapeHtml(m.tool)}</td>
+                <td style="padding: 8px 10px; color: var(--cyan-magic);">${rapEscapeHtml(m.mechanism)}</td>
+                <td style="padding: 8px 10px; color: var(--text-main);">${rapEscapeHtml(m.storage)}</td>
+                <td style="padding: 8px 10px; color: var(--text-muted);">${rapEscapeHtml(m.Execution)}</td>
+            </tr>
+        `).join('');
+
         codeBlockHtml = `
             <div style="margin-bottom: 16px;">
-                <h4 style="font-size: 0.82rem; color: #38BDF8; margin-bottom: 6px;">⚡ Pipeline Task Orchestration (Prefect / Snakemake)</h4>
+                <h4 style="font-size: 0.88rem; color: var(--cyan-magic); margin-bottom: 8px;">🌉 Orchestration Bridge Matrix: SAS EG ➔ Modern Cloud Platforms</h4>
+                <div style="overflow-x: auto; margin-bottom: 14px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;">
+                    <table style="width: 100%; font-size: 0.78rem; text-align: left; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: rgba(255,255,255,0.05); color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.15);">
+                                <th style="padding: 8px 10px;">Platform / Engine</th>
+                                <th style="padding: 8px 10px;">Orchestration Mechanism</th>
+                                <th style="padding: 8px 10px;">Data Storage</th>
+                                <th style="padding: 8px 10px;">Execution Engine</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${matrixRows}
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4 style="font-size: 0.82rem; color: #38BDF8; margin-bottom: 6px;">⚡ Python Pipeline DAG Example (Prefect / Airflow Syntax)</h4>
                 <pre style="background: #000; padding: 12px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.8rem; color: #38BDF8; overflow-x: auto; border: 1px solid rgba(56,189,248,0.3);">${rapEscapeHtml(step.pythonExample)}</pre>
             </div>`;
     } else if (step.level === 4) {
