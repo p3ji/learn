@@ -1,4 +1,4 @@
-// Data Science Interactive Workbench & Activity Suite with Safe Event Handling
+// Data Science Interactive Workbench & Activity Suite with Step-by-Step Hand-Holding & Data Dictionary
 
 const sampleSurveyData = [
     { id: 1, age_group: '30-44', edu: 'Master', ai_risk: 4, tech_fam: 5, ai_trust: 1, weight: 1.25 },
@@ -13,10 +13,10 @@ const sampleSurveyData = [
     { id: 10, age_group: '30-44', edu: 'PhD', ai_risk: 2, tech_fam: 5, ai_trust: 1, weight: 1.00 }
 ];
 
-let activeDsTab = 'feature_engineering';
+let activeDsTab = 'guide';
 
 function renderDsActivitySuite(tabKey, evt) {
-    activeDsTab = tabKey || 'feature_engineering';
+    activeDsTab = tabKey || 'guide';
     const stage = document.getElementById('dsStage');
     if (!stage) return;
 
@@ -27,11 +27,81 @@ function renderDsActivitySuite(tabKey, evt) {
         target.classList.add('active');
     }
 
-    if (activeDsTab === 'feature_engineering') {
+    if (activeDsTab === 'guide') {
         stage.innerHTML = `
             <div>
+                <h3 style="color: var(--gold-primary); font-family: var(--font-heading); margin-bottom: 8px;">📋 Step-by-Step Data Guide & Dictionary</h3>
+                <p style="color: var(--text-main); font-size: 1rem; line-height: 1.6; margin-bottom: 20px; background: rgba(255,199,44,0.08); padding: 16px; border-radius: 12px; border-left: 4px solid var(--gold-primary);">
+                    <strong>What dataset is this?</strong> We are working with the <strong>Kaggle AI Trust Insights Dataset</strong> (1,200 survey respondents). 
+                    Each row represents <strong>one human survey respondent</strong> answering questions about their age, education, perceived AI risk, and trust in AI technology.
+                </p>
+
+                <!-- Data Dictionary Table -->
+                <div style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; overflow-x: auto; margin-bottom: 20px;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+                        <thead>
+                            <tr style="background: rgba(255,199,44,0.15); color: var(--gold-primary); border-bottom: 1px solid rgba(255,255,255,0.2);">
+                                <th style="padding: 12px;">Column Name</th>
+                                <th style="padding: 12px;">Data Type</th>
+                                <th style="padding: 12px;">Allowed Values & Meaning</th>
+                                <th style="padding: 12px;">SAS vs Python Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+                                <td style="padding: 10px; font-family: var(--font-mono); color: #38BDF8;">Respondent_ID</td>
+                                <td style="padding: 10px;">String / Text</td>
+                                <td style="padding: 10px;">Unique ID (e.g. <code>"RESP_00101"</code>)</td>
+                                <td style="padding: 10px; color: var(--text-muted);">SAS Character <code>$10.</code></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+                                <td style="padding: 10px; font-family: var(--font-mono); color: #38BDF8;">Age_Group</td>
+                                <td style="padding: 10px;">Categorical</td>
+                                <td style="padding: 10px;"><code>"18-29"</code>, <code>"30-44"</code>, <code>"45-60"</code>, <code>"60+"</code></td>
+                                <td style="padding: 10px; color: var(--text-muted);">Demographic predictor</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+                                <td style="padding: 10px; font-family: var(--font-mono); color: #38BDF8;">Education_Level</td>
+                                <td style="padding: 10px;">Categorical</td>
+                                <td style="padding: 10px;"><code>"High School"</code>, <code>"Bachelor's"</code>, <code>"Master's"</code>, <code>"PhD"</code></td>
+                                <td style="padding: 10px; color: var(--text-muted);">SAS <code>CLASS</code> variable</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+                                <td style="padding: 10px; font-family: var(--font-mono); color: #38BDF8;">Perceived_AI_Risk</td>
+                                <td style="padding: 10px;">Numeric (Likert)</td>
+                                <td style="padding: 10px;">Scale <code>1</code> (Very Low) to <code>5</code> (Extreme). Missing = <code>-9</code></td>
+                                <td style="padding: 10px; color: var(--text-muted);">SAS missing is <code>.</code></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+                                <td style="padding: 10px; font-family: var(--font-mono); color: #38BDF8;">High_AI_Trust</td>
+                                <td style="padding: 10px;">Binary Target (1/0)</td>
+                                <td style="padding: 10px;"><code>1</code> = High Trust in AI, <code>0</code> = Low/No Trust</td>
+                                <td style="padding: 10px; color: var(--text-muted);">Primary Y Outcome</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; font-family: var(--font-mono); color: #38BDF8;">Survey_Weight</td>
+                                <td style="padding: 10px;">Numeric Float</td>
+                                <td style="padding: 10px;">Sampling weight factor (e.g. <code>1.25</code>)</td>
+                                <td style="padding: 10px; color: var(--text-muted);">SAS <code>WEIGHT</code> statement</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="text-align: center;">
+                    <button class="fb-action-btn gold" onclick="renderDsActivitySuite('feature_engineering')">Start Activity 1: Feature Engineering Lab ➔</button>
+                </div>
+            </div>
+        `;
+    } else if (activeDsTab === 'feature_engineering') {
+        stage.innerHTML = `
+            <div>
+                <div style="background: rgba(6, 182, 212, 0.1); border-left: 4px solid var(--cyan-magic); padding: 14px; border-radius: 8px; margin-bottom: 20px;">
+                    <strong style="color: var(--cyan-magic);">🎯 What We Are Trying To Do:</strong> We take raw survey answers (containing <code>-9</code> missing codes and Likert 1-5 scales) and clean them into binary 1/0 indicator flags.<br>
+                    <strong style="color: var(--gold-primary);">❓ Why We Do It:</strong> Machine learning algorithms and SAS PROC LOGISTIC need clean 1/0 indicator columns to fit regression equations!
+                </div>
+
                 <h3 style="color: var(--gold-primary); font-family: var(--font-heading); margin-bottom: 8px;">📊 Activity 1: Survey Feature Engineering & Imputation Lab</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">Experiment with recoding Likert scales, handling missing values, and applying survey population weights.</p>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                     <!-- Recode Controls -->
@@ -74,8 +144,12 @@ function renderDsActivitySuite(tabKey, evt) {
     } else if (activeDsTab === 'ml_comparison') {
         stage.innerHTML = `
             <div>
+                <div style="background: rgba(139, 92, 246, 0.15); border-left: 4px solid var(--purple-primary); padding: 14px; border-radius: 8px; margin-bottom: 20px;">
+                    <strong style="color: var(--purple-glow);">🎯 What We Are Trying To Do:</strong> We fit 3 different models to predict whether a respondent trusts AI (<code>High_AI_Trust = 1</code>) based on their age, education, and risk perception.<br>
+                    <strong style="color: var(--gold-primary);">❓ Why We Do It:</strong> We want to compare traditional SAS PROC LOGISTIC (p-values & regression odds ratios) against modern Machine Learning (Random Forests) and cutting-edge Google TabFM (Zero-Shot Tabular Transformers)!
+                </div>
+
                 <h3 style="color: var(--gold-primary); font-family: var(--font-heading); margin-bottom: 8px;">🤖 Activity 2: Supervised ML Model Comparison Lab</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">Compare **SAS PROC LOGISTIC**, **Scikit-Learn Random Forest**, and **Google TabFM Zero-Shot** on survey classification!</p>
 
                 <!-- Model Tuning Controls -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 20px;">
@@ -143,15 +217,19 @@ function renderDsActivitySuite(tabKey, evt) {
     } else if (activeDsTab === 'hypothesis_testing') {
         stage.innerHTML = `
             <div>
+                <div style="background: rgba(16, 185, 129, 0.15); border-left: 4px solid var(--green-hero); padding: 14px; border-radius: 8px; margin-bottom: 20px;">
+                    <strong style="color: var(--green-hero);">🎯 What We Are Trying To Do:</strong> We test whether there is a statistically significant relationship between demographic variables (Age / Education) and High AI Trust.<br>
+                    <strong style="color: var(--gold-primary);">❓ Why We Do It:</strong> Sociologists need Chi-Square ($\chi^2$) p-values and relative Odds Ratios to prove whether generational differences in AI trust are real or just random chance!
+                </div>
+
                 <h3 style="color: var(--gold-primary); font-family: var(--font-heading); margin-bottom: 8px;">🔬 Activity 3: Sociological Hypothesis & Crosstab Lab</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">Run statistical Chi-Square tests of independence and calculate weighted odds ratios across demographic groups.</p>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                     <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 20px;">
                         <h4 style="color: var(--accent-blue); font-size: 1rem; margin-bottom: 12px;">Select Survey Variables:</h4>
                         
                         <div class="sandbox-input-group">
-                            <label class="sandbox-label">Row Variable (X):</label>
+                            <label class="sandbox-label">Row Variable (X Predictor):</label>
                             <select id="hypoRowVar" class="sandbox-select" onchange="runHypothesisTest()">
                                 <option value="age_group" selected>Age Group</option>
                                 <option value="edu">Education Level</option>
@@ -303,5 +381,5 @@ function runHypothesisTest() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderDsActivitySuite('feature_engineering');
+    renderDsActivitySuite('guide');
 });

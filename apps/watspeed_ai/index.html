@@ -92,18 +92,19 @@
             </div>
         </section>
 
-        <!-- Section 2: NEW Data Science Interactive Workbench & Activity Suite -->
+        <!-- Section 2: Data Science Interactive Workbench & Activity Suite -->
         <section id="ds_workbench" class="section-card">
             <div class="section-header">
                 <div>
                     <h2 class="section-title">🧪 Data Science Interactive Workbench & Activities</h2>
-                    <p class="section-subtitle">Hands-on interactive labs for feature engineering, ML model benchmarking, and statistical hypothesis testing.</p>
+                    <p class="section-subtitle">Step-by-step guidance: dataset dictionary, column definitions, objectives, and interactive labs.</p>
                 </div>
                 <button class="fb-launch-btn" onclick="openSectionFeedback('Data Science Activities Suite')">📝 Notes & AI Assistant</button>
             </div>
 
             <div style="display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;">
-                <button class="ds-tab-btn active" onclick="renderDsActivitySuite('feature_engineering')">📊 Activity 1: Feature Engineering & Imputation</button>
+                <button class="ds-tab-btn active" onclick="renderDsActivitySuite('guide')">📋 Step-by-Step Data Guide</button>
+                <button class="ds-tab-btn" onclick="renderDsActivitySuite('feature_engineering')">📊 Activity 1: Feature Engineering & Imputation</button>
                 <button class="ds-tab-btn" onclick="renderDsActivitySuite('ml_comparison')">🤖 Activity 2: Supervised ML Model Comparison</button>
                 <button class="ds-tab-btn" onclick="renderDsActivitySuite('hypothesis_testing')">🔬 Activity 3: Sociological Hypothesis & Crosstabs</button>
             </div>

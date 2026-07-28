@@ -5,28 +5,28 @@ const mentalModelsData = {
         title: "⚡ First Principles Thinking (The Lego Dismantler)",
         intro: "First Principles Thinking means breaking a complex idea or object down to its most basic, unbreakable truths (raw materials/atoms), and then building up from there instead of copying what others do!",
         example: "Instead of buying a $2,000 electric bicycle because that's the market price, an engineer breaks the bicycle down into raw lithium battery cells ($80), steel tubes ($30), and electric wire ($20) to realize it only costs $130 in raw materials!",
-        videoId: "g3q-W5FjW9M", // Sprouts: First Principles Thinking (5 min)
+        videoId: "kG7B89W_G6g", // Sprouts: First Principles Thinking - How to Think for Yourself (5 min)
         activityTitle: "Step 3: Interactive Object Lego Dismantler"
     },
     occams_razor: {
         title: "🗡️ Occam's Razor (The Mystery Trimmer)",
         intro: "Occam's Razor states that when you have competing explanations for a mystery, the simplest explanation with the fewest wild assumptions is almost always the correct one!",
         example: "If you find your trash can knocked over, option A is 'A raccoon knocked it over', option B is 'Aliens landed, searched for batteries, and flew to Mars'. Occam's Razor trims away the alien theory!",
-        videoId: "0t9yY59-Vls", // Sprouts: Occam's Razor (4 min)
+        videoId: "S-tS45R13oQ", // Explified: Occam's Razor Explained (4 min)
         activityTitle: "Step 3: Trim the Mystery Game"
     },
     black_swan: {
         title: "🦢 Karl Popper's Black Swan Hunter (Falsification)",
         intro: "Scientist Karl Popper showed that true science doesn't just look for clues that agree with us. To test a theory, we must hunt for counter-examples ('black swans') that could prove it wrong!",
         example: "Seeing 1,000 white swans doesn't prove all swans are white. Discovering just ONE black swan instantly proves the old rule wrong!",
-        videoId: "k0Z4dJ9Vw6k",
+        videoId: "fM2J525Vn-U", // BBC Radio 4 / Open University: Karl Popper's Falsification (2 min)
         activityTitle: "Step 3: Black Swan Counter-Example Hunter"
     },
     map_territory: {
         title: "🗺️ Map vs. Territory (The Reality Check)",
         intro: "Mental models and drawings are like maps: they simplify reality so we can understand it. But remember: THE MAP IS NOT THE TERRITORY! The real world is always richer and more complex than our model.",
         example: "A simplified map of a zoo shows 3 animal icons, but the real zoo has 400 animals, sounds, smells, and zookeepers!",
-        videoId: "1RWgn9wjRVs",
+        videoId: "kS2LQSpZTDE", // Mental Models: The Map is Not the Territory (4 min)
         activityTitle: "Step 3: Map vs Territory Interactive Inspector"
     }
 };

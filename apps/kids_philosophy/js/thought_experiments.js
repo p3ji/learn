@@ -5,14 +5,14 @@ const experimentData = {
         title: "🌌 Plato's Cave (Shadows vs Reality)",
         intro: "Plato imagined people trapped inside a dark cave, facing a blank wall. Behind them, a fire burns and puppets cast flickering shadows on the wall. The prisoners think the shadows ARE real life, until someone escapes outside into the real sunlight!",
         example: "Watching a CGI movie of a dragon on TV is like looking at cave shadows. The movie is a 2D projection, but real life has 3D physics, weather, and real animals!",
-        videoId: "1RWgn9wjRVs", // TED-Ed Plato's Cave (4 min)
+        videoId: "1RWOpQXTltA", // TED-Ed: Plato's Allegory of the Cave (4 min)
         activityTitle: "Step 3: Interactive Cave Light Switch & Sunlight Escape"
     },
     ship_theseus: {
         title: "⛵ The Ship of Theseus (Identity Puzzle)",
         intro: "Theseus sailed a famous wooden ship. Over 20 years, every single rotten wooden plank, sail, mast, and wheel was replaced one by one until 100% of the ship was new. Is it still the SAME ship, or a brand new one?",
         example: "Your body replaces almost all its skin cells every month! Are you still the same person as when you were 5 years old? Yes, because your form, memory, and consciousness continue!",
-        videoId: "k0Z4dJ9Vw6k", // TED-Ed Ship of Theseus (5 min)
+        videoId: "UHwVyplU3Pg", // TED-Ed: Who am I? A philosophical inquiry - Ship of Theseus (5 min)
         activityTitle: "Step 3: Interactive Ship Rebuilder & Aristotle's 4 Causes"
     }
 };

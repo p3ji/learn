@@ -9,7 +9,7 @@ const thinkersData = [
         superpower: "The Socratic Questioning Method",
         conceptIntro: "Socrates believed that true wisdom begins when we admit we don't know everything. Instead of giving boring lectures, he asked deep 'Why?' questions to help people discover truth themselves!",
         example: "Imagine a friend says 'Cheating in video games is bad.' A Socratic thinker asks: 'Why is it bad?' ➔ 'Because it makes it unfair!' ➔ 'Why is fairness important?' ➔ Reaching first principles!",
-        videoId: "bJYe5P3uJic", // Wireless Philosophy / TED-Ed Socratic Method (4 min)
+        videoId: "yW6hL9dD7Vw", // TED-Ed: This tool will help improve your critical thinking (Socratic Method) (5 min)
         activity: {
             title: "Socratic Questioning Challenge",
             question: "Why do people need rules in society?",
@@ -34,7 +34,7 @@ const thinkersData = [
         superpower: "Mathematical Truth & Clear Evidence",
         conceptIntro: "Hypatia taught that we must test ideas with real measurements and geometry, rather than accepting rumors or superstitions.",
         example: "If someone tells you 'It rains because the sky is sad', Hypatia asks you to measure cloud humidity, water evaporation, and rainfall!",
-        videoId: "k0Z4dJ9Vw6k",
+        videoId: "n1mwZrVJ-TI", // TED-Ed: The murder of ancient Alexandria's greatest scholar - Hypatia (5 min)
         activity: {
             title: "Hypatia's Evidence Lab",
             question: "How do we prove if a scientific theory is true?",
@@ -53,7 +53,7 @@ const thinkersData = [
         superpower: "Categorization & Habit Formation",
         conceptIntro: "Aristotle organized all human knowledge into logical categories (animals, plants, ethics) and showed that great character is built by practicing good habits every day.",
         example: "You don't become a master pianist by playing once; you become a master through 100 days of small daily practice habits!",
-        videoId: "O2dEuMFR8kw",
+        videoId: "csIW4W_DYX4", // The School of Life: PHILOSOPHY - Aristotle (7 min)
         activity: {
             title: "Aristotle's Habit & Logic Quest",
             question: "According to Aristotle, how do you become brave?",
@@ -72,7 +72,7 @@ const thinkersData = [
         superpower: "Stoic Mindset & Emotional Resilience",
         conceptIntro: "Marcus Aurelius was a Roman Emperor who wrote a personal diary reminding himself that we cannot control bad weather or mean people, but we CAN control our own reaction!",
         example: "If it rains on your birthday picnic, a Stoic says: 'I can't stop the rain, but I CAN choose to have an awesome indoor board game party instead!'",
-        videoId: "0t9yY59-Vls",
+        videoId: "R9OCA6UFE-0", // TED-Ed: The Philosophy of Stoicism (5 min)
         activity: {
             title: "Marcus Aurelius' Stoic Control Test",
             question: "What is inside your total control?",
@@ -91,7 +91,7 @@ const thinkersData = [
         superpower: "Radical Doubt & First Principles",
         conceptIntro: "Descartes doubted everything he saw to find what was 100% true. He realized: even if a trickster dragon was tricking his senses, he WAS thinking, which proved he existed!",
         example: "When you see a stick looking bent in water, Descartes reminds you that your eyes can be tricked — rely on mathematical logic instead!",
-        videoId: "1RWgn9wjRVs",
+        videoId: "p4vW7B715vQ", // Wireless Philosophy: Descartes' Cogito Argument (5 min)
         activity: {
             title: "Descartes' Certainty Puzzle",
             question: "What is 100% impossible to doubt?",
@@ -110,7 +110,7 @@ const thinkersData = [
         superpower: "Falsification (Finding Black Swans)",
         conceptIntro: "Karl Popper proved that real scientists don't just look for clues that agree with them. They actively hunt for counter-examples ('black swans') to test their theories!",
         example: "Seeing 1,000 white swans doesn't prove all swans are white. Discovering just ONE black swan instantly proves the old rule wrong!",
-        videoId: "g3q-W5FjW9M",
+        videoId: "fM2J525Vn-U", // BBC Radio 4 / Open University: Karl Popper's Falsification (2 min)
         activity: {
             title: "Popper's Black Swan Test",
             question: "How do scientists test a theory?",
