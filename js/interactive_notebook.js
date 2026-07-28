@@ -1,12 +1,12 @@
-// Interactive In-Browser Python Execution Lab
+﻿// Interactive In-Browser Python Execution Lab
 // Engine: Skulpt (real Python interpreter in JS) with Pyodide WASM upgrade path
 
-// â”€â”€â”€ Lab Scripts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Lab Scripts Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const defaultLabNotebooks = {
     1: {
         title: "Lab 01: Python Data Essentials & Pydantic Recoding",
         subtitle: "Modify Pandas recoding logic and Pydantic validation rules. Click 'Run Code' or press Shift+Enter to execute!",
-        initialCode: `# Lab 01 â€” Survey Data Recoding
+        initialCode: `# Lab 01 Ã¢â‚¬â€ Survey Data Recoding
 # Try changing recode_cutoff to 3 or 5 and re-running!
 
 data = [
@@ -49,7 +49,7 @@ print("(Recode Cutoff >= " + str(recode_cutoff) + ")")
     2: {
         title: "Lab 02: Supervised ML & PROC LOGISTIC Bridge",
         subtitle: "Tune train/test split ratio or decision threshold and see accuracy change live!",
-        initialCode: `# Lab 02 â€” Logistic Regression (no sklearn needed)
+        initialCode: `# Lab 02 Ã¢â‚¬â€ Logistic Regression (no sklearn needed)
 # Simulates a trained model with adjustable decision threshold
 
 # --- EDIT THESE VALUES ---
@@ -86,7 +86,7 @@ for r in test_set:
     ok = predicted == r["actual"]
     if ok:
         correct += 1
-    print(r["id"] + "  " + str(round(prob, 3)) + "  " + str(predicted) + "  " + str(r["actual"]) + "  " + ("âœ“" if ok else "âœ—"))
+    print(r["id"] + "  " + str(round(prob, 3)) + "  " + str(predicted) + "  " + str(r["actual"]) + "  " + ("Ã¢Å“â€œ" if ok else "Ã¢Å“â€”"))
 
 accuracy = correct / len(test_set) * 100
 print("")
@@ -98,7 +98,7 @@ print("Test Accuracy:  " + str(round(accuracy, 1)) + "%")
     3: {
         title: "Lab 03: Google TabFM Zero-Shot Survey Classifier",
         subtitle: "Test how TabFM classifies respondents without manual dummy coding!",
-        initialCode: `# Lab 03 â€” Google TabFM Zero-Shot Simulation
+        initialCode: `# Lab 03 Ã¢â‚¬â€ Google TabFM Zero-Shot Simulation
 # Demonstrates why TabFM doesn't need one-hot encoding
 
 # --- EDIT THE RESPONDENT PROFILE BELOW ---
@@ -144,7 +144,7 @@ print("Final Classification: " + predicted)
     4: {
         title: "Lab 04: LangChain & Tool Calling for Survey Analysis",
         subtitle: "Edit the @tool function and watch an LLM decide which tool to call!",
-        initialCode: `# Lab 04 â€” LangChain @tool Function Calling Simulation
+        initialCode: `# Lab 04 Ã¢â‚¬â€ LangChain @tool Function Calling Simulation
 # In real LangChain, the LLM reads your tool docstrings and
 # calls the right function with JSON parameters automatically.
 
@@ -186,7 +186,7 @@ run_crosstab("Age_Group", "High_AI_Trust")
     5: {
         title: "Lab 05: LangGraph State Machines for Survey Pipelines",
         subtitle: "Modify the router threshold and trace state transitions!",
-        initialCode: `# Lab 05 â€” LangGraph State Machine Router
+        initialCode: `# Lab 05 Ã¢â‚¬â€ LangGraph State Machine Router
 # LangGraph adds cyclic edges so agents can RETRY if accuracy is too low
 
 state = {
@@ -237,7 +237,7 @@ print("Final Accuracy: " + str(round(state["accuracy"], 3)))
     6: {
         title: "Lab 06: WatSPEED Capstone Autonomous Survey Assistant",
         subtitle: "Modify the user prompt and adjust report thresholds!",
-        initialCode: `# Lab 06 â€” WatSPEED Capstone Agent
+        initialCode: `# Lab 06 Ã¢â‚¬â€ WatSPEED Capstone Agent
 # Simulates an autonomous multi-agent survey analysis system
 
 # --- EDIT THESE ---
@@ -277,7 +277,7 @@ print("=" * 60)
     }
 };
 
-// â”€â”€â”€ Python Engine â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Python Engine Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 
 // Track initialization promises to avoid duplicate loads
 let _skulptLoaded = null;
@@ -331,7 +331,7 @@ async function loadPyodideEngine() {
     return _pyodideLoading;
 }
 
-// â”€â”€â”€ Run Python via Skulpt â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Run Python via Skulpt Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 
 async function executeLabCode() {
     const editor  = document.getElementById('labCodeEditor');
@@ -340,9 +340,9 @@ async function executeLabCode() {
 
     const code = editor.value;
     outArea.style.color = '#FFF';
-    outArea.innerText = 'â³ Running Python...';
+    outArea.innerText = 'Ã¢ÂÂ³ Running Python...';
 
-    // â”€â”€ Path 1: Pyodide (real CPython WASM) if already loaded â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Path 1: Pyodide (real CPython WASM) if already loaded Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
     if (window.pyodide) {
         try {
             await window.pyodide.runPythonAsync(`
@@ -356,25 +356,25 @@ sys.stdout = _buf
             outArea.innerText = out || '(script ran with no output)';
         } catch (err) {
             outArea.style.color = '#EF4444';
-            outArea.innerText = 'ðŸ”´ Python Error:\n' + String(err);
+            outArea.innerText = 'Ã°Å¸â€Â´ Python Error:\n' + String(err);
         } finally {
             try { await window.pyodide.runPythonAsync('sys.stdout = sys.__stdout__'); } catch(_){}
         }
         return;
     }
 
-    // â”€â”€ Path 2: Skulpt (real Python interpreter, no WASM download needed) â”€â”€â”€â”€
-    updateStatusBadge('â³ Loading Python...', '#FBBF24');
+    // Ã¢â€â‚¬Ã¢â€â‚¬ Path 2: Skulpt (real Python interpreter, no WASM download needed) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+    updateStatusBadge('Ã¢ÂÂ³ Loading Python...', '#FBBF24');
     const skulptOk = await ensureSkulpt();
 
     if (!skulptOk || !window.Sk) {
         outArea.style.color = '#EF4444';
-        outArea.innerText = 'âŒ Could not load Python engine (Skulpt CDN unreachable).\nPlease check your internet connection.';
-        updateStatusBadge('âŒ Engine Error', '#EF4444');
+        outArea.innerText = 'Ã¢ÂÅ’ Could not load Python engine (Skulpt CDN unreachable).\nPlease check your internet connection.';
+        updateStatusBadge('Ã¢ÂÅ’ Engine Error', '#EF4444');
         return;
     }
 
-    updateStatusBadge('ðŸ Skulpt Python Ready', '#4ADE80');
+    updateStatusBadge('Ã°Å¸ÂÂ Skulpt Python Ready', '#4ADE80');
 
     let outputLines = [];
 
@@ -405,51 +405,51 @@ sys.stdout = _buf
         outArea.style.color = '#EF4444';
         const msg = err.toString();
         const friendly = msg.replace('RangeError: Maximum call stack size exceeded', 'RecursionError: maximum recursion depth exceeded');
-        outArea.innerText = '🔴 Python Error:\n' + friendly;
+        outArea.innerText = 'ðŸ”´ Python Error:\n' + friendly;
     }
 }
 
-// ─── Lab Metadata ──────────────────────────────────────────────────────────────
+// â”€â”€â”€ Lab Metadata â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const labMeta = {
     1: {
         title: 'Lab 01: Survey Data Recoding',
-        stage: 'Stage 1 — Data & SAS Bridge',
-        description: 'Handle missing values (-9 → NaN), recode Likert scales, compute population-weighted means, and validate data with Pydantic schemas.',
+        stage: 'Stage 1 â€” Data & SAS Bridge',
+        description: 'Handle missing values (-9 â†’ NaN), recode Likert scales, compute population-weighted means, and validate data with Pydantic schemas.',
         topics: ['pandas', 'numpy', 'pydantic', 'survey weighting'],
         notebookFile: 'lab_01_data_recoding.ipynb',
     },
     2: {
         title: 'Lab 02: Supervised ML & PROC LOGISTIC Bridge',
-        stage: 'Stage 2 — ML & Google TabFM',
-        description: 'Encode categorical variables, train/test split, fit LogisticRegression with survey weights, and interpret Odds Ratios — Python equivalent of SAS PROC LOGISTIC.',
+        stage: 'Stage 2 â€” ML & Google TabFM',
+        description: 'Encode categorical variables, train/test split, fit LogisticRegression with survey weights, and interpret Odds Ratios â€” Python equivalent of SAS PROC LOGISTIC.',
         topics: ['scikit-learn', 'pandas', 'train/test split', 'LogisticRegression', 'ROC-AUC'],
         notebookFile: 'lab_02_supervised_ml.ipynb',
     },
     3: {
         title: 'Lab 03: Google TabFM Zero-Shot Classifier',
-        stage: 'Stage 2 — ML & Google TabFM',
-        description: 'See how a Tabular Foundation Model classifies survey respondents using raw categorical text — no dummy coding required.',
+        stage: 'Stage 2 â€” ML & Google TabFM',
+        description: 'See how a Tabular Foundation Model classifies survey respondents using raw categorical text â€” no dummy coding required.',
         topics: ['TabFM', 'zero-shot', 'in-context learning'],
         notebookFile: '03_the_agent_loop_react.ipynb',
     },
     4: {
         title: 'Lab 04: LangChain & Tool Calling',
-        stage: 'Stage 3 — Agentic AI & LangGraph',
+        stage: 'Stage 3 â€” Agentic AI & LangGraph',
         description: 'Wrap Python survey analysis functions as @tool callables. Watch an LLM agent invoke the right function with JSON parameters.',
         topics: ['LangChain', '@tool', 'function calling', 'JSON schema'],
         notebookFile: '02_tools_and_function_calling.ipynb',
     },
     5: {
         title: 'Lab 05: LangGraph State Machines',
-        stage: 'Stage 3 — Agentic AI & LangGraph',
+        stage: 'Stage 3 â€” Agentic AI & LangGraph',
         description: 'Build a cyclic LangGraph StateGraph with router edges that retry feature engineering when model accuracy is below threshold.',
         topics: ['LangGraph', 'StateGraph', 'router edges', 'self-correcting agents'],
         notebookFile: '06_langgraph_state_machines.ipynb',
     },
     6: {
-        title: 'Lab 06: WatSPEED Capstone — Autonomous Survey Assistant',
-        stage: 'Stage 4 — Capstone',
-        description: 'End-to-end multi-agent pipeline: data cleaning → model fitting → executive report generation, all orchestrated autonomously.',
+        title: 'Lab 06: WatSPEED Capstone â€” Autonomous Survey Assistant',
+        stage: 'Stage 4 â€” Capstone',
+        description: 'End-to-end multi-agent pipeline: data cleaning â†’ model fitting â†’ executive report generation, all orchestrated autonomously.',
         topics: ['multi-agent', 'LangGraph', 'executive reporting', 'sociological analysis'],
         notebookFile: '09_capstone_survey_assistant.ipynb',
     },
@@ -458,119 +458,137 @@ const labMeta = {
 const GITHUB_BLOB = 'https://github.com/p3ji/learn/blob/main/notebooks/';
 const COLAB_BASE  = 'https://colab.research.google.com/github/p3ji/learn/blob/main/notebooks/';
 
-// ─── Modal UI ──────────────────────────────────────────────────────────────────
-
+// --- Modal UI ---
 
 function openInteractiveLabModal(nbIdx) {
-    const lab  = labMeta[nbIdx]  || labMeta[1];
-    const code = (defaultLabNotebooks[nbIdx] || defaultLabNotebooks[1]).initialCode;
+    try {
+        var meta   = labMeta[nbIdx]  || labMeta[1];
+        var nbData = defaultLabNotebooks[nbIdx] || defaultLabNotebooks[1];
+        var code   = nbData.initialCode;
 
-    let modal = document.getElementById('labModal');
-    if (!modal) {
-        modal = document.createElement('div');
-        modal.id = 'labModal';
-        modal.className = 'concept-modal-overlay';
-        document.body.appendChild(modal);
-    }
-
-    // Escape HTML entities in code to prevent XSS via template literal
-    const escapedCode = lab.initialCode
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-
-    modal.innerHTML = `
-        <div class="concept-modal-card" style="max-width:960px;width:95%;">
-            <button class="concept-modal-close" onclick="closeInteractiveLabModal()">&times;</button>
-
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
-                <div class="concept-badge-tag" style="background:var(--gold-primary);color:#000;">âš¡ INTERACTIVE HANDS-ON LAB</div>
-                <span id="pyStatusBadge" style="font-family:var(--font-mono);font-size:0.8rem;padding:4px 12px;border-radius:20px;background:rgba(56,189,248,0.12);color:#38BDF8;border:1px solid rgba(56,189,248,0.3);">
-                    ðŸ Initializing Python Engine...
-                </span>
-            </div>
-
-            <h2 class="concept-title" style="margin-bottom:4px;">${lab.title}</h2>
-            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:18px;">${lab.subtitle}</p>
-
-            <!-- Editor -->
-            <div style="background:#090D16;border:1.5px solid var(--gold-primary);border-radius:14px;padding:14px;margin-bottom:14px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                    <span style="font-family:var(--font-mono);font-size:0.8rem;color:var(--gold-primary);font-weight:700;">In [1]: Editable Python (Skulpt 1.2)</span>
-                    <button class="fb-action-btn gold" style="padding:5px 12px;font-size:0.82rem;" onclick="resetLabCode(${nbIdx})">â†º Reset</button>
-                </div>
-                <textarea id="labCodeEditor"
-                    style="font-family:var(--font-mono);font-size:0.86rem;height:280px;color:#e2e8f0;background:#000;border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px;width:100%;box-sizing:border-box;resize:vertical;line-height:1.55;outline:none;"
-                    spellcheck="false">${escapedCode}</textarea>
-            </div>
-
-            <!-- Run button -->
-            <button class="fb-action-btn gold" style="width:100%;padding:13px;font-size:1rem;font-weight:900;margin-bottom:14px;" onclick="executeLabCode()">
-                â–¶  Run Python Code &nbsp;&nbsp;(or press Shift+Enter)
-            </button>
-
-            <!-- Output terminal -->
-            <div style="background:#000;border:1.5px solid rgba(74,222,128,0.4);border-radius:12px;padding:14px;">
-                <div style="font-family:var(--font-mono);font-size:0.78rem;color:#4ADE80;font-weight:700;margin-bottom:6px;">Out [1]: Terminal Output</div>
-                <pre id="labOutputArea"
-                    style="font-family:var(--font-mono);font-size:0.84rem;color:#e2e8f0;white-space:pre-wrap;word-break:break-word;margin:0;max-height:260px;overflow-y:auto;line-height:1.5;">
-Press â–¶ Run Python Code to execute.</pre>
-            </div>
-        </div>
-    `;
-
-    modal.style.display = 'flex';
-
-    // Shift+Enter shortcut
-    setTimeout(() => {
-        const editor = document.getElementById('labCodeEditor');
-        if (editor) {
-            editor.addEventListener('keydown', (e) => {
-                if (e.shiftKey && e.key === 'Enter') { e.preventDefault(); executeLabCode(); }
-            });
-            // Restore textarea value from unescaped original (innerHTML decodes entities)
-            editor.value = lab.initialCode;
+        var modal = document.getElementById('labModal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'labModal';
+            modal.className = 'concept-modal-overlay';
+            document.body.appendChild(modal);
         }
 
-        // Pre-load Skulpt silently; run initial script once loaded
-        ensureSkulpt().then((ok) => {
-            if (ok) {
-                updateStatusBadge('ðŸ Skulpt Python Ready', '#4ADE80');
-                executeLabCode();
-            } else {
-                updateStatusBadge('âŒ Engine Error (no internet?)', '#EF4444');
+        var colabUrl  = COLAB_BASE  + meta.notebookFile;
+        var githubUrl = GITHUB_BLOB + meta.notebookFile;
+        var topicTags = meta.topics.map(function(t) {
+            return '<span style="background:rgba(56,189,248,0.12);color:#38BDF8;padding:2px 8px;border-radius:8px;font-size:0.78rem;font-family:monospace;">' + t + '</span>';
+        }).join(' ');
+
+        modal.innerHTML = ''
+            + '<div class="concept-modal-card" style="max-width:860px;width:95%;">'
+            +   '<button class="concept-modal-close" onclick="closeInteractiveLabModal()">&times;</button>'
+            +   '<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">'
+            +     '<div class="concept-badge-tag" style="background:var(--gold-primary);color:#000;">&#x1F4D3; HANDS-ON LAB</div>'
+            +     '<span style="font-size:0.82rem;color:var(--text-muted);">' + meta.stage + '</span>'
+            +   '</div>'
+            +   '<h2 class="concept-title" style="margin-bottom:6px;">' + meta.title + '</h2>'
+            +   '<p style="color:var(--text-muted);font-size:0.92rem;line-height:1.55;margin-bottom:12px;">' + meta.description + '</p>'
+            +   '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;">' + topicTags + '</div>'
+            // Launch options
+            +   '<div style="background:rgba(255,199,44,0.05);border:1.5px solid var(--gold-primary);border-radius:18px;padding:24px;margin-bottom:20px;">'
+            +     '<h3 style="color:var(--gold-primary);font-size:1rem;font-weight:800;margin-bottom:18px;text-transform:uppercase;letter-spacing:0.05em;">Open This Lab In:</h3>'
+            +     '<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">'
+            // Colab
+            +       '<a href="' + colabUrl + '" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:10px;background:rgba(15,23,42,0.95);border:2px solid #F9AB00;border-radius:14px;padding:20px;text-decoration:none;">'
+            +         '<div style="display:flex;align-items:center;gap:10px;">'
+            +           '<div style="font-size:1.8rem;">&#x1F525;</div>'
+            +           '<div>'
+            +             '<div style="font-weight:900;color:#F9AB00;font-size:1rem;">Google Colab</div>'
+            +             '<div style="font-size:0.78rem;color:var(--text-muted);">RECOMMENDED &mdash; Free, no install</div>'
+            +           '</div>'
+            +         '</div>'
+            +         '<ul style="font-size:0.83rem;color:var(--text-main);line-height:1.7;padding-left:16px;margin:0;">'
+            +           '<li>Real Python 3 + pandas, sklearn, pydantic</li>'
+            +           '<li>All data pre-loaded in cells</li>'
+            +           '<li>Save a copy to your Google Drive</li>'
+            +         '</ul>'
+            +         '<div style="text-align:center;background:#F9AB00;color:#000;font-weight:900;padding:10px 16px;border-radius:10px;font-size:0.95rem;margin-top:auto;">Open in Google Colab &#x2192;</div>'
+            +       '</a>'
+            // VS Code / GitHub
+            +       '<a href="' + githubUrl + '" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:10px;background:rgba(15,23,42,0.95);border:1.5px solid rgba(255,255,255,0.15);border-radius:14px;padding:20px;text-decoration:none;">'
+            +         '<div style="display:flex;align-items:center;gap:10px;">'
+            +           '<div style="font-size:1.8rem;">&#x1F4BB;</div>'
+            +           '<div>'
+            +             '<div style="font-weight:800;color:#FFF;font-size:1rem;">VS Code / Jupyter</div>'
+            +             '<div style="font-size:0.78rem;color:var(--text-muted);">Full local IDE</div>'
+            +           '</div>'
+            +         '</div>'
+            +         '<ul style="font-size:0.83rem;color:var(--text-main);line-height:1.7;padding-left:16px;margin:0;">'
+            +           '<li>Download .ipynb notebook</li>'
+            +           '<li>Open in VS Code or Jupyter Lab</li>'
+            +           '<li>Debugger, autocomplete, extensions</li>'
+            +         '</ul>'
+            +         '<div style="text-align:center;background:rgba(255,255,255,0.08);color:#FFF;font-weight:700;padding:10px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);font-size:0.92rem;margin-top:auto;">View / Download Notebook &#x2192;</div>'
+            +       '</a>'
+            +     '</div>'
+            +   '</div>'
+            // In-browser preview collapsible
+            +   '<details style="background:rgba(15,23,42,0.8);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:16px;">'
+            +     '<summary style="cursor:pointer;font-weight:700;color:var(--text-muted);font-size:0.9rem;">&#x25B8; Quick In-Browser Preview (basic Python only &mdash; no pandas/sklearn)</summary>'
+            +     '<div style="margin-top:14px;">'
+            +       '<p style="font-size:0.83rem;color:var(--text-muted);margin-bottom:10px;">&#x26A0;&#xFE0F; Uses Skulpt. No pandas or sklearn. For the full experience use Google Colab.</p>'
+            +       '<div style="background:#000;border:1px solid rgba(56,189,248,0.2);border-radius:10px;padding:10px;margin-bottom:10px;">'
+            +         '<div style="display:flex;justify-content:space-between;margin-bottom:6px;">'
+            +           '<span style="font-family:monospace;font-size:0.75rem;color:#38BDF8;">In [1]:</span>'
+            +           '<span id="pyStatusBadge" style="font-size:0.75rem;color:var(--text-muted);">Loading...</span>'
+            +         '</div>'
+            +         '<textarea id="labCodeEditor" style="font-family:monospace;font-size:0.82rem;height:200px;color:#e2e8f0;background:transparent;border:none;width:100%;box-sizing:border-box;resize:vertical;line-height:1.5;outline:none;" spellcheck="false"></textarea>'
+            +       '</div>'
+            +       '<div style="display:flex;gap:8px;margin-bottom:10px;">'
+            +         '<button class="fb-action-btn gold" style="flex:1;padding:9px;" onclick="executeLabCode()">&#x25B6; Run (Shift+Enter)</button>'
+            +         '<button class="fb-action-btn outline" style="padding:9px 14px;" onclick="resetLabCode(' + nbIdx + ')">&#x21BA; Reset</button>'
+            +       '</div>'
+            +       '<div style="background:#000;border:1px solid rgba(74,222,128,0.25);border-radius:10px;padding:10px;">'
+            +         '<div style="font-family:monospace;font-size:0.75rem;color:#4ADE80;margin-bottom:4px;">Out [1]:</div>'
+            +         '<pre id="labOutputArea" style="font-family:monospace;font-size:0.82rem;color:#e2e8f0;white-space:pre-wrap;margin:0;max-height:180px;overflow-y:auto;">Press &#x25B6; Run to execute.</pre>'
+            +       '</div>'
+            +     '</div>'
+            +   '</details>'
+            + '</div>';
+
+        modal.style.display = 'flex';
+
+        setTimeout(function() {
+            var editor = document.getElementById('labCodeEditor');
+            if (editor) {
+                editor.value = code;
+                editor.addEventListener('keydown', function(e) {
+                    if (e.shiftKey && e.key === 'Enter') { e.preventDefault(); executeLabCode(); }
+                });
             }
-        });
-    }, 50);
+            ensureSkulpt().then(function(ok) {
+                updateStatusBadge(ok ? 'Skulpt Ready' : 'Unavailable', ok ? '#4ADE80' : '#EF4444');
+            });
+        }, 50);
+
+    } catch(err) {
+        console.error('[openInteractiveLabModal] Error:', err);
+        alert('Lab could not open: ' + err.message);
+    }
 }
 
 function resetLabCode(nbIdx) {
-    const lab = defaultLabNotebooks[nbIdx] || defaultLabNotebooks[1];
-    const editor = document.getElementById('labCodeEditor');
+    var nbData = defaultLabNotebooks[nbIdx] || defaultLabNotebooks[1];
+    var editor = document.getElementById('labCodeEditor');
     if (editor) {
-        editor.value = lab.initialCode;
+        editor.value = nbData.initialCode;
         executeLabCode();
     }
 }
 
 function closeInteractiveLabModal() {
-    const modal = document.getElementById('labModal');
+    var modal = document.getElementById('labModal');
     if (modal) modal.style.display = 'none';
 }
 
-// ─── Self-test: confirm this script loaded ────────────────────────────────────
-console.log('[interactive_notebook.js] ✅ Loaded. openInteractiveLabModal is', typeof openInteractiveLabModal);
+console.log('[interactive_notebook.js] Loaded OK');
 
-// ─── Delegated click listener: fallback for dynamically rendered buttons ──────
-document.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-lab-idx]');
-    if (btn) {
-        const idx = parseInt(btn.dataset.labIdx, 10);
-        if (!isNaN(idx)) openInteractiveLabModal(idx);
-    }
-});
-
-// Close modal on backdrop click
-document.addEventListener('click', (e) => {
+document.addEventListener('click', function(e) {
     if (e.target && e.target.id === 'labModal') closeInteractiveLabModal();
 });
