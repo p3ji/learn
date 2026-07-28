@@ -409,79 +409,127 @@
             <div class="stage-header-banner">
                 <div>
                     <div style="color: var(--cyan-magic); font-weight:800; font-size:0.85rem; text-transform:uppercase;">STAGE 4 OF 4</div>
-                    <h2 class="stage-header-title">📘 Stage 4: Executable Jupyter Notebooks & Capstone</h2>
-                    <p class="stage-header-desc">6 complete executable notebooks with interactive in-browser Python execution & code editing!</p>
+                    <h2 class="stage-header-title">📘 Stage 4: Executable Jupyter Notebooks</h2>
+                    <p class="stage-header-desc">9 complete notebooks — all run offline with saved outputs. No API key needed. Click "View Cells" to preview, or open in Colab / VS Code to edit and run.</p>
                 </div>
                 <button class="fb-action-btn outline" onclick="showStage(3)">◄ Back to Stage 3</button>
             </div>
 
             <section class="section-card">
+                <div style="background:rgba(255,199,44,0.07);border:1px solid var(--gold-primary);border-radius:14px;padding:16px;margin-bottom:24px;font-size:0.88rem;color:var(--text-main);line-height:1.6;">
+                    <strong style="color:var(--gold-primary);">How to use these notebooks:</strong>
+                    Click <strong>View Cells</strong> to see a live preview (requires the local server — <code>python -m http.server 8000</code>).
+                    Click <strong>Open in Colab</strong> to run in Google Colab with real pandas/sklearn.
+                    Every notebook runs offline — <code>agentkit.py</code> provides a deterministic stub LLM so you see results before installing anything.
+                </div>
+
                 <div class="notebooks-grid">
+
+                    <!-- Notebook 01 -->
                     <div class="nb-card">
-                        <div class="nb-badge">Notebook 01 (Stage 1)</div>
-                        <h3 class="nb-title">Python Data Essentials for SAS & Stata Users</h3>
-                        <p class="nb-desc">Pandas recoding, handling missing values (-9 ➔ None), survey weighting, and Pydantic schema validation.</p>
+                        <div class="nb-badge">Notebook 01 · Prerequisite</div>
+                        <h3 class="nb-title">Python Data Essentials for SAS &amp; Stata Users</h3>
+                        <p class="nb-desc">Pandas recoding, missing value handling (-9 → NaN), population-weighted means, and Pydantic schema validation. Bridge from SAS DATA steps.</p>
                         <div style="display:flex; flex-direction:column; gap:8px;">
-                            <button onclick="openInteractiveLabModal(1)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Run Live Code Lab 1 ➔</button>
-                            <button onclick="openNotebookViewer(1)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cell Preview</button>
+                            <button onclick="openInteractiveLabModal(1)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Open Lab ➔</button>
+                            <button onclick="openNotebookViewer(1)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cells</button>
                         </div>
                     </div>
 
+                    <!-- Notebook 02 -->
                     <div class="nb-card">
-                        <div class="nb-badge">Notebook 02 (Stage 2)</div>
-                        <h3 class="nb-title">Supervised ML & PROC LOGISTIC Bridge</h3>
-                        <p class="nb-desc">Scikit-learn LogisticRegression, Train/Test splitting, confusion matrices, and ROC-AUC curves on survey datasets.</p>
+                        <div class="nb-badge">Notebook 02 · Week 1</div>
+                        <h3 class="nb-title">Tools &amp; Function Calling</h3>
+                        <p class="nb-desc">Wrap Python survey functions as JSON-schema tool definitions. Watch the LLM select and call the right function from a tool registry — the foundation of every agent.</p>
                         <div style="display:flex; flex-direction:column; gap:8px;">
-                            <button onclick="openInteractiveLabModal(2)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Run Live Code Lab 2 ➔</button>
-                            <button onclick="openNotebookViewer(2)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cell Preview</button>
+                            <button onclick="openInteractiveLabModal(2)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Open Lab ➔</button>
+                            <button onclick="openNotebookViewer(2)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cells</button>
                         </div>
                     </div>
 
+                    <!-- Notebook 03 -->
                     <div class="nb-card">
-                        <div class="nb-badge">Notebook 03 (Stage 2)</div>
-                        <h3 class="nb-title">Google TabFM Zero-Shot Survey Classifier</h3>
-                        <p class="nb-desc">In-context zero-shot classification on raw categorical survey columns without manual one-hot recoding.</p>
+                        <div class="nb-badge">Notebook 03 · Week 1–2</div>
+                        <h3 class="nb-title">The Agent Loop (ReAct)</h3>
+                        <p class="nb-desc">Build the Reason + Act loop in ~15 lines of Python — tools, observations, max_steps guard. Then see how <code>create_react_agent</code> replaces it in one call.</p>
                         <div style="display:flex; flex-direction:column; gap:8px;">
-                            <button onclick="openInteractiveLabModal(3)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Run Live Code Lab 3 ➔</button>
-                            <button onclick="openNotebookViewer(3)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cell Preview</button>
+                            <button onclick="openInteractiveLabModal(3)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Open Lab ➔</button>
+                            <button onclick="openNotebookViewer(3)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cells</button>
                         </div>
                     </div>
 
+                    <!-- Notebook 04 -->
                     <div class="nb-card">
-                        <div class="nb-badge">Notebook 04 (Stage 3)</div>
-                        <h3 class="nb-title">LangChain & Tool Calling for Survey Analysis</h3>
-                        <p class="nb-desc">Wrapping Scikit-learn models and Pandas crosstabs as AI tools (@tool) callable by LLMs.</p>
+                        <div class="nb-badge">Notebook 04 · Week 2</div>
+                        <h3 class="nb-title">Context Engineering</h3>
+                        <p class="nb-desc">System prompt design, token budgeting, and dynamic context injection for survey analysis. Understand how context window management affects agent accuracy.</p>
                         <div style="display:flex; flex-direction:column; gap:8px;">
-                            <button onclick="openInteractiveLabModal(4)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Run Live Code Lab 4 ➔</button>
-                            <button onclick="openNotebookViewer(4)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cell Preview</button>
+                            <button onclick="openInteractiveLabModal(4)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Open Lab ➔</button>
+                            <button onclick="openNotebookViewer(4)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cells</button>
                         </div>
                     </div>
 
+                    <!-- Notebook 05 -->
                     <div class="nb-card">
-                        <div class="nb-badge">Notebook 05 (Stage 3)</div>
-                        <h3 class="nb-title">LangGraph State Machines for Survey Pipelines</h3>
-                        <p class="nb-desc">Building cyclic state graphs with memory persistence, error correction loops, and human-in-the-loop approvals.</p>
+                        <div class="nb-badge">Notebook 05 · Week 3</div>
+                        <h3 class="nb-title">Agent Memory, Vector Stores &amp; RAG</h3>
+                        <p class="nb-desc">Build a working RAG pipeline: chunk survey docs, embed with a deterministic stub, retrieve relevant rows, and inject as context. No external API needed.</p>
                         <div style="display:flex; flex-direction:column; gap:8px;">
-                            <button onclick="openInteractiveLabModal(5)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Run Live Code Lab 5 ➔</button>
-                            <button onclick="openNotebookViewer(5)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cell Preview</button>
+                            <button onclick="openInteractiveLabModal(5)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Open Lab ➔</button>
+                            <button onclick="openNotebookViewer(5)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cells</button>
                         </div>
                     </div>
 
+                    <!-- Notebook 06 -->
                     <div class="nb-card">
-                        <div class="nb-badge">Notebook 06 (Capstone)</div>
-                        <h3 class="nb-title">WatSPEED Capstone: Autonomous Survey Assistant</h3>
-                        <p class="nb-desc">End-to-end multi-agent system analyzing the Kaggle AI Trust Insights dataset and drafting sociological summaries.</p>
+                        <div class="nb-badge">Notebook 06 · Week 3–4</div>
+                        <h3 class="nb-title">LangGraph State Machines</h3>
+                        <p class="nb-desc">Write a cyclic StateGraph by hand — nodes, edges, router functions — then replace it with LangGraph. Build the survey pipeline that retries when model accuracy is below threshold.</p>
                         <div style="display:flex; flex-direction:column; gap:8px;">
-                            <button onclick="openInteractiveLabModal(6)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Run Live Code Lab 6 ➔</button>
-                            <button onclick="openNotebookViewer(6)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cell Preview</button>
+                            <button onclick="openInteractiveLabModal(6)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Open Lab ➔</button>
+                            <button onclick="openNotebookViewer(6)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cells</button>
                         </div>
                     </div>
+
+                    <!-- Notebook 07 -->
+                    <div class="nb-card">
+                        <div class="nb-badge">Notebook 07 · Week 4</div>
+                        <h3 class="nb-title">Model Context Protocol (MCP)</h3>
+                        <p class="nb-desc">Write a JSON-RPC MCP server from scratch, expose survey tools as MCP resources, then see how <code>FastMCP</code> replaces the boilerplate. The standard that connects agents to everything.</p>
+                        <div style="display:flex; flex-direction:column; gap:8px;">
+                            <button onclick="openInteractiveLabModal(7)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Open Lab ➔</button>
+                            <button onclick="openNotebookViewer(7)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cells</button>
+                        </div>
+                    </div>
+
+                    <!-- Notebook 08 -->
+                    <div class="nb-card">
+                        <div class="nb-badge">Notebook 08 · Week 4–5</div>
+                        <h3 class="nb-title">Multi-Agent Systems &amp; AutoGen</h3>
+                        <p class="nb-desc">Orchestrate a Planner → Analyst → Writer pipeline. Build message passing by hand, then replace with AutoGen. Covers task decomposition, delegation, and result aggregation.</p>
+                        <div style="display:flex; flex-direction:column; gap:8px;">
+                            <button onclick="openInteractiveLabModal(8)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Open Lab ➔</button>
+                            <button onclick="openNotebookViewer(8)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cells</button>
+                        </div>
+                    </div>
+
+                    <!-- Notebook 09 -->
+                    <div class="nb-card" style="border-color:var(--gold-primary);background:rgba(255,199,44,0.04);">
+                        <div class="nb-badge" style="background:var(--gold-primary);color:#000;">Notebook 09 · Capstone</div>
+                        <h3 class="nb-title">Autonomous Survey Assistant — Capstone</h3>
+                        <p class="nb-desc">End-to-end: data cleaning → feature engineering → model fitting → RAG retrieval → executive report. All orchestrated autonomously on the AI Trust Insights dataset.</p>
+                        <div style="display:flex; flex-direction:column; gap:8px;">
+                            <button onclick="openInteractiveLabModal(9)" class="fb-action-btn gold" style="width:100%; text-align:center;">⚡ Open Lab ➔</button>
+                            <button onclick="openNotebookViewer(9)" class="fb-action-btn outline" style="width:100%; text-align:center;">📖 View Cells</button>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
             <div class="stage-nav-footer">
                 <button class="fb-action-btn outline" onclick="showStage(3)">◄ Back to Stage 3</button>
-                <div style="color: var(--gold-primary); font-weight:800;">🎉 Congratulations! You completed the 4-Stage WatSPEED Prep Learning Path!</div>
+                <div style="color: var(--gold-primary); font-weight:800;">🎉 All 9 notebooks — run offline, no API key needed.</div>
             </div>
         </div>
 

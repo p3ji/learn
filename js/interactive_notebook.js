@@ -1,4 +1,4 @@
-﻿// Interactive In-Browser Python Execution Lab
+// Interactive In-Browser Python Execution Lab
 // Engine: Skulpt (real Python interpreter in JS) with Pyodide WASM upgrade path
 
 // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Lab Scripts Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
@@ -356,25 +356,25 @@ sys.stdout = _buf
             outArea.innerText = out || '(script ran with no output)';
         } catch (err) {
             outArea.style.color = '#EF4444';
-            outArea.innerText = 'Ã°Å¸â€Â´ Python Error:\n' + String(err);
+            outArea.innerText = 'Ã°Å¸â€ Â´ Python Error:\n' + String(err);
         } finally {
             try { await window.pyodide.runPythonAsync('sys.stdout = sys.__stdout__'); } catch(_){}
         }
         return;
     }
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬ Path 2: Skulpt (real Python interpreter, no WASM download needed) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
-    updateStatusBadge('Ã¢ÂÂ³ Loading Python...', '#FBBF24');
+    // Ã¢â€ â‚¬Ã¢â€ â‚¬ Path 2: Skulpt (real Python interpreter, no WASM download needed) Ã¢â€ â‚¬Ã¢â€ â‚¬Ã¢â€ â‚¬Ã¢â€ â‚¬
+    updateStatusBadge('Ã¢Â Â³ Loading Python...', '#FBBF24');
     const skulptOk = await ensureSkulpt();
 
     if (!skulptOk || !window.Sk) {
         outArea.style.color = '#EF4444';
-        outArea.innerText = 'Ã¢ÂÅ’ Could not load Python engine (Skulpt CDN unreachable).\nPlease check your internet connection.';
-        updateStatusBadge('Ã¢ÂÅ’ Engine Error', '#EF4444');
+        outArea.innerText = 'Ã¢Â Å’ Could not load Python engine (Skulpt CDN unreachable).\nPlease check your internet connection.';
+        updateStatusBadge('Ã¢Â Å’ Engine Error', '#EF4444');
         return;
     }
 
-    updateStatusBadge('Ã°Å¸ÂÂ Skulpt Python Ready', '#4ADE80');
+    updateStatusBadge('Ã°Å¸Â Â  Skulpt Python Ready', '#4ADE80');
 
     let outputLines = [];
 
@@ -412,11 +412,11 @@ sys.stdout = _buf
 // â”€â”€â”€ Lab Metadata â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const labMeta = {
     1: {
-        title: 'Lab 01: Survey Data Recoding',
-        stage: 'Stage 1 â€” Data & SAS Bridge',
-        description: 'Handle missing values (-9 â†’ NaN), recode Likert scales, compute population-weighted means, and validate data with Pydantic schemas.',
+        title: 'Notebook 01: Python Data Essentials for SAS & Stata Users',
+        stage: 'Prerequisite',
+        description: 'Handle missing values (-9 to NaN), recode Likert scales, compute population-weighted means, and validate data with Pydantic schemas.',
         topics: ['pandas', 'numpy', 'pydantic', 'survey weighting'],
-        notebookFile: 'lab_01_data_recoding.ipynb',
+        notebookFile: '01_python_for_sas_stata_users.ipynb',
     },
     2: {
         title: 'Lab 02: Supervised ML & PROC LOGISTIC Bridge',
