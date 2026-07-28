@@ -124,6 +124,17 @@
                 <button class="fb-launch-btn" onclick="openSectionFeedback('Supervised ML & Google TabFM')">📝 Notes & AI Assistant</button>
             </div>
 
+            <!-- Bridge Explanation Card: Why TabFM? -->
+            <div style="background: rgba(255, 199, 44, 0.08); border: 1.5px solid var(--gold-primary); border-radius: 16px; padding: 20px; margin-bottom: 24px;">
+                <h3 style="color: var(--gold-primary); font-size: 1.15rem; margin-bottom: 8px;">🤔 Why Google TabFM? (Connecting Traditional ML to Agentic AI)</h3>
+                <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.6; margin-bottom: 12px;">
+                    <strong>In Traditional SAS or Python ML:</strong> Before fitting a model, you must write manual code to clean missing values, convert text columns (like <code>"Master's"</code>) into numerical 0/1 dummy matrices, split data into 80/20 train/test sets, and run iterative fitting loops.
+                </p>
+                <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.6;">
+                    <strong>Why Google TabFM changes the game for AI Agents:</strong> Google TabFM is a <strong>Tabular Foundation Model</strong>. It takes <strong>raw, un-coded survey CSV files with text columns</strong> and predicts classification targets in a single forward pass—without manual one-hot encoding or gradient training delays! This allows autonomous conversational AI agents to classify survey respondents in real-time.
+                </p>
+            </div>
+
             <div class="viz-container">
                 <div class="viz-controls">
                     <button class="viz-step-btn active" id="vizStepBtn1" onclick="setVizStep(1)">Step 1: Raw Survey Input</button>
