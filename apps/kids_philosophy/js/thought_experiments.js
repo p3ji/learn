@@ -84,14 +84,14 @@ const experimentData = {
             { term: "Formal Cause", icon: "✨", definition: "The design, structure, and continuous identity form of an object." }
         ],
         inDepth: {
-            history: "Plutarch recorded this ancient paradox, which was debated by Heraclitus, Socrates, and Aristotle regarding identity over time.",
+            history: "The Greek writer Plutarch wrote this puzzle down around 100 CE in his 'Life of Theseus', saying philosophers of his day already argued about it. About 1,500 years later Thomas Hobbes made it harder by asking what happens if someone rebuilds a second ship out of all the old planks.",
             whyItMatters: "It helps us understand how things (and people!) retain their identity even as their physical parts change over time.",
-            funFact: "Your human body replaces almost all of its cells every 7 to 10 years! You are physically made of completely different material than when you were born!"
+            funFact: "Some parts of you renew constantly - skin about every month, red blood cells about every 4 months. But some parts are never replaced: most of the neurons in your brain, the clear lenses in your eyes, and most of your heart muscle are the same ones you were born with. So you are partly new and partly original, which makes this puzzle even trickier! (Spalding et al., Cell, 2005)"
         },
-        example: "Your body replaces almost all its skin cells every month! Are you still the same person as when you were 5 years old? Yes, because your form, memory, and consciousness continue!",
-        videoId: "UHwVyplU3Pg", // TED-Ed Ship of Theseus
+        example: "Your skin cells really do renew about every month, so almost none of your skin is the same as when you were 5. Some people say you are still the same person because your memories and your story carry on. Others say the you of age 5 and the you of today are more like two chapters of one book than one unchanging thing. Which answer feels right to you?",
+        videoId: "SGAnLY46zAk", // SRF filosofix: Thought experiment THESEUS (English)
         videoQuiz: [
-            { question: "Why are you still the same person even though your human cells replace themselves every 7 years?", options: [{ text: "Because your consciousness, memory, and structural form continue over time", correct: true }, { text: "Because you never change", correct: false }] }
+            { question: "Which of these is true about the cells in your body?", options: [{ text: "Some renew often, like skin - but most brain neurons and heart cells stay with you for life", correct: true }, { text: "Every single cell in your body is replaced every 7 years", correct: false }] }
         ],
         caseStudies: [
             { title: "Grandfather's Axe", text: "You replace the wooden handle twice and the metal head once. Is it still 'Grandfather's Axe'? It carries the same family history and design form!" }
@@ -144,7 +144,7 @@ const experimentData = {
             { term: "Deontology", icon: "⚖️", definition: "An ethical theory based on strict moral duties and rules, regardless of consequences." }
         ],
         inDepth: { history: "Formulated by Philippa Foot in 1967 and expanded by Judith Jarvis Thomson, it is the world's most famous ethics thought experiment.", whyItMatters: "Self-driving AI cars face this exact programming dilemma today when designing collision avoidance systems!", funFact: "Modern moral psychologists study the Trolley Problem using fMRI brain scans to see how emotions vs logic compete in decision-making!" },
-        videoId: "bOpf6KcWYyw", videoQuiz: [{ question: "Why do AI self-driving car engineers study the Trolley Problem?", options: [{ text: "To program emergency collision avoidance logic in impossible scenarios", correct: true }, { text: "To teach cars how to play soccer", correct: false }] }],
+        videoId: "yg16u_bzjPE", videoQuiz: [{ question: "Why do AI self-driving car engineers study the Trolley Problem?", options: [{ text: "To program emergency collision avoidance logic in impossible scenarios", correct: true }, { text: "To teach cars how to play soccer", correct: false }] }],
         caseStudies: [{ title: "Autonomous Vehicle Design", text: "If a self-driving car faces an unavoidable obstacle, should it protect its passenger or pedestrians? Engineers use ethical models to decide!" }],
         multiLevelGame: [{ shortName: "Level 1: Novice", levelTitle: "Ethical Analyzer", scenario: "What does Utilitarianism suggest in the Trolley Dilemma?", options: [{ text: "📊 Pull the lever to save 5 lives instead of 1 (greater good math)", correct: true, feedback: "Utilitarian logic analyzed!" }, { text: "❌ Run away without thinking", correct: false, feedback: "Ethics requires reflection." }] }],
         chatResponses: [{ prompt: "Why is the Trolley Problem so famous?", answer: "Because it pits Utilitarian math (greatest good for greatest number) against Kantian moral rules!" }]
@@ -162,8 +162,8 @@ const experimentData = {
             { term: "Hedonism", icon: "🍩", definition: "The belief that pleasure is the ultimate and only goal in life." },
             { term: "Authenticity", icon: "🌟", definition: "Living a genuine, real life with real actions, real struggles, and real accomplishments." }
         ],
-        inDepth: { history: "Robert Nozick proposed this thought experiment in 1974 to challenge Hedonism.", whyItMatters: "Most people refuse to plug in for life because we value REALLY doing things and REALLY being connected to real people!", funFact: "This thought experiment inspired the plot of 'The Matrix' (Red Pill vs Blue Pill)!" },
-        videoId: "1RWOpQXTltA", videoQuiz: [{ question: "Why do most people refuse to plug into the Experience Machine for life?", options: [{ text: "Because we value real accomplishments, real relationships, and authentic living", correct: true }, { text: "Because electricity is expensive", correct: false }] }],
+        inDepth: { history: "Robert Nozick proposed this thought experiment in 1974 to challenge Hedonism.", whyItMatters: "When Nozick asked people, most said they would NOT plug in - which suggests we want to really do things, not just feel like we did. But here is a twist: when researchers instead told people 'you are already in the machine, want to come out?', most chose to stay in. What we say we want may depend a lot on how the question is asked. (De Brigard, 2010)", funFact: "The Matrix asks a very similar question with its red pill and blue pill - though the film's makers pointed to a different philosopher, Jean Baudrillard, whose book appears on screen in the opening scene!" },
+        videoId: "yJ1dsNauhGE", videoQuiz: [{ question: "Why do most people refuse to plug into the Experience Machine for life?", options: [{ text: "Because we value real accomplishments, real relationships, and authentic living", correct: true }, { text: "Because electricity is expensive", correct: false }] }],
         caseStudies: [{ title: "Video Games vs Real Life", text: "Winning a trophy in a video game feels fun, but scoring a goal in a real match with real teammates carries deep real-world meaning!" }],
         multiLevelGame: [{ shortName: "Level 1: Novice", levelTitle: "Authenticity Choice", scenario: "Would you plug into a VR tank forever to feel fake happiness?", options: [{ text: "🌟 No! I choose real life with real struggles, real friends, and authentic success!", correct: true, feedback: "Authenticity Master!" }, { text: "🔮 Plug in forever", correct: false, feedback: "You miss out on real human connection." }] }],
         chatResponses: [{ prompt: "What does the Experience Machine teach us?", answer: "It proves that life is about more than just feeling pleasure—we want to REALLY do things and connect with real people!" }]
@@ -191,15 +191,15 @@ function renderSingleExperimentTopic(expKey) {
             </div>
 
             <!-- 4-Step Flow Controls -->
-            <div class="viz-controls" style="margin-bottom: 24px;">
-                <button class="viz-step-btn active" id="topicTabBtn1" onclick="switchTopicTab(1)">1. Story & Flashcards</button>
-                <button class="viz-step-btn" id="topicTabBtn2" onclick="switchTopicTab(2)">2. Video & Case Studies</button>
-                <button class="viz-step-btn" id="topicTabBtn3" onclick="switchTopicTab(3)">3. Open P4C Inquiry</button>
-                <button class="viz-step-btn" id="topicTabBtn4" onclick="switchTopicTab(4)">4. Socratic Journal & Vault</button>
+            <div class="viz-controls" role="tablist" aria-label="Deep-dive steps" style="margin-bottom: 24px;">
+                <button role="tab" aria-selected="true" aria-controls="topicTabContent1" class="viz-step-btn active" id="topicTabBtn1" onclick="switchTopicTab(1)">1. Story & Flashcards</button>
+                <button role="tab" aria-selected="false" aria-controls="topicTabContent2" class="viz-step-btn" id="topicTabBtn2" onclick="switchTopicTab(2)">2. Video & Case Studies</button>
+                <button role="tab" aria-selected="false" aria-controls="topicTabContent3" class="viz-step-btn" id="topicTabBtn3" onclick="switchTopicTab(3)">3. Open P4C Inquiry</button>
+                <button role="tab" aria-selected="false" aria-controls="topicTabContent4" class="viz-step-btn" id="topicTabBtn4" onclick="switchTopicTab(4)">4. Socratic Journal & Vault</button>
             </div>
 
             <!-- Tab 1: Storybook & Flashcards -->
-            <div id="topicTabContent1" class="flow-content-block">
+            <div id="topicTabContent1" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn1" tabindex="0">
                 ${renderStorybookReader(exp.id, exp.storyScenes)}
                 ${renderVocabularyFlashcards(exp.id, exp.vocabCards)}
                 <div style="margin-top: 24px;">
@@ -208,7 +208,7 @@ function renderSingleExperimentTopic(expKey) {
             </div>
 
             <!-- Tab 2: Video & Case Studies -->
-            <div id="topicTabContent2" class="flow-content-block" style="display:none;">
+            <div id="topicTabContent2" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn2" tabindex="0" style="display:none;">
                 <h3 style="color: var(--cyan-magic); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 14px;">Real-World Example & Video Lesson</h3>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
@@ -237,19 +237,19 @@ function renderSingleExperimentTopic(expKey) {
 
                 <!-- Responsive Embedded YouTube Player -->
                 <div style="background: #000; border-radius: 16px; overflow: hidden; margin-bottom: 16px; position: relative; padding-top: 56.25%; border: 2px solid var(--purple-primary); box-shadow: 0 8px 24px rgba(0,0,0,0.6);">
-                    <iframe src="https://www.youtube.com/embed/${exp.videoId}?rel=0" title="${exp.title}" style="position: absolute; top:0; left:0; width:100%; height:100%; border:none;" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube-nocookie.com/embed/${exp.videoId}?rel=0" title="${exp.title}" style="position: absolute; top:0; left:0; width:100%; height:100%; border:none;" allowfullscreen></iframe>
                 </div>
 
                 ${renderVideoQuizComponent(exp.id, exp.videoQuiz)}
 
                 <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: 20px;">
-                    <a href="https://www.youtube.com/watch?v=${exp.videoId}" target="_blank" class="fb-action-btn outline" style="text-decoration:none;">▶ Watch Full Lesson Video on YouTube (New Tab)</a>
+                    <a href="https://www.youtube.com/watch?v=${exp.videoId}" target="_blank" rel="noopener noreferrer" class="fb-action-btn outline" style="text-decoration:none;">▶ Watch Full Lesson Video on YouTube (New Tab)</a>
                     <button class="fb-action-btn gold" onclick="switchTopicTab(3)">Continue to Step 3: Try Open P4C Inquiry ➔</button>
                 </div>
             </div>
 
             <!-- Tab 3: Open P4C Dialectic Inquiry -->
-            <div id="topicTabContent3" class="flow-content-block" style="display:none;">
+            <div id="topicTabContent3" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn3" tabindex="0" style="display:none;">
                 ${typeof renderP4CInquiryEngine === 'function' ? renderP4CInquiryEngine(exp.id, exp.p4cInquiry || [
                     {
                         title: "Open Paradox Dialectic",
@@ -264,7 +264,7 @@ function renderSingleExperimentTopic(expKey) {
             </div>
 
             <!-- Tab 4: Socratic Discussion Journal & Upgrade Vault -->
-            <div id="topicTabContent4" class="flow-content-block" style="display:none;">
+            <div id="topicTabContent4" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn4" tabindex="0" style="display:none;">
                 ${typeof renderSocraticDiscussionJournal === 'function' ? renderSocraticDiscussionJournal(exp.id, exp.name, exp.avatar, exp.discussionPrompts || [
                     { prompt: "Why are thought experiments so powerful?", context: "Discuss how imaginary paradoxes help us discover what we truly value." }
                 ]) : ''}
@@ -274,15 +274,15 @@ function renderSingleExperimentTopic(expKey) {
 
                 <div style="background: rgba(0,0,0,0.4); border: 1.5px solid var(--pink-energy); border-radius: 16px; padding: 20px; margin-bottom: 20px;">
                     <div style="display: flex; gap: 12px; margin-bottom: 12px;">
-                        <select id="feedbackType_${exp.id}" class="sandbox-input" style="max-width: 180px;">
+                        <select id="feedbackType_${exp.id}" class="sandbox-input" aria-label="Type of message" style="max-width: 180px;">
                             <option value="question">❓ Ask a Question</option>
                             <option value="suggestion">💡 Upgrade Idea</option>
                         </select>
-                        <input type="text" id="feedbackInput_${exp.id}" class="sandbox-input" placeholder="Type your question or suggestion here..." style="flex:1;">
+                        <input type="text" id="feedbackInput_${exp.id}" class="sandbox-input" aria-label="Your question or idea" placeholder="Type your question or suggestion here..." style="flex:1;">
                     </div>
-                    <button class="fb-action-btn gold" style="width: 100%;" onclick="submitTopicFeedback('${exp.id}', '${exp.name}', '${exp.avatar}')">Submit to Upgrade Vault</button>
+                    <button class="fb-action-btn gold" style="width: 100%;" onclick="submitTopicFeedback('${exp.id}', '${escapeJsString(exp.name)}', '${exp.avatar}')">Submit to Upgrade Vault</button>
                     
-                    <div id="feedbackResult_${exp.id}" style="display:none; margin-top: 14px; padding: 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--green-hero); color: #FFF;"></div>
+                    <div id="feedbackResult_${exp.id}" role="status" aria-live="polite" style="display:none; margin-top: 14px; padding: 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--green-hero); color: #FFF;"></div>
                 </div>
 
                 <h4 style="color: var(--gold-star); font-size: 1rem; margin-bottom: 10px;">Saved Entries for ${exp.name}:</h4>

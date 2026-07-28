@@ -279,8 +279,9 @@ print("=" * 60)
 
 // Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Python Engine Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 
-// Track initialization promises to avoid duplicate loads
-let _skulptLoaded = null;
+// Pyodide is the ONLY engine. Skulpt was removed: it has no pandas/sklearn, which
+// made Stage 1 and Stage 2 labs ("run live ML models in your browser") impossible.
+// The tradeoff is a ~10MB first load, surfaced honestly via the status badge.
 let _pyodideLoading = null;
 
 function updateStatusBadge(text, color) {
@@ -291,43 +292,47 @@ function updateStatusBadge(text, color) {
     }
 }
 
-async function ensureSkulpt() {
-    if (_skulptLoaded) return _skulptLoaded;
-    _skulptLoaded = new Promise((resolve) => {
-        // Check if already on page
-        if (window.Sk) { resolve(true); return; }
-        // Dynamically inject Skulpt scripts
-        const s1 = document.createElement('script');
-        s1.src = 'https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js';
-        s1.onload = () => {
-            const s2 = document.createElement('script');
-            s2.src = 'https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js';
-            s2.onload = () => resolve(true);
-            s2.onerror = () => resolve(false);
-            document.head.appendChild(s2);
-        };
-        s1.onerror = () => resolve(false);
-        document.head.appendChild(s1);
+// Wait for the deferred CDN script to define loadPyodide (bounded, ~10s).
+function awaitLoadPyodideGlobal(timeoutMs) {
+    return new Promise((resolve) => {
+        if (typeof loadPyodide !== 'undefined') { resolve(true); return; }
+        const started = Date.now();
+        const tick = setInterval(() => {
+            if (typeof loadPyodide !== 'undefined') { clearInterval(tick); resolve(true); }
+            else if (Date.now() - started > timeoutMs) { clearInterval(tick); resolve(false); }
+        }, 100);
     });
-    return _skulptLoaded;
 }
 
-// Optional: also try to load Pyodide in background for heavier libs
-async function loadPyodideEngine() {
+// Loads the WASM runtime + scientific stack. Safe to call repeatedly.
+async function ensurePyodide() {
     if (window.pyodide) return window.pyodide;
     if (_pyodideLoading) return _pyodideLoading;
+
     _pyodideLoading = (async () => {
-        try {
-            if (typeof loadPyodide !== 'undefined') {
-                window.pyodide = await loadPyodide();
-                await window.pyodide.loadPackage(['pandas', 'scikit-learn', 'micropip']);
-                return window.pyodide;
-            }
-        } catch (e) {
-            console.warn('Pyodide unavailable, using Skulpt.', e);
+        updateStatusBadge('⏳ Downloading Python runtime (~10MB, first time only)…', '#FBBF24');
+
+        const available = await awaitLoadPyodideGlobal(10000);
+        if (!available) {
+            updateStatusBadge('❌ Python engine unavailable', '#EF4444');
+            _pyodideLoading = null;   // allow a retry on the next Run click
+            return null;
         }
-        return null;
+
+        try {
+            window.pyodide = await loadPyodide();
+            updateStatusBadge('⏳ Loading pandas, scikit-learn, numpy…', '#FBBF24');
+            await window.pyodide.loadPackage(['pandas', 'scikit-learn', 'numpy']);
+            updateStatusBadge('🐍 Python 3.11 + pandas + sklearn ready', '#4ADE80');
+            return window.pyodide;
+        } catch (e) {
+            console.error('Pyodide failed to initialise:', e);
+            updateStatusBadge('❌ Python engine failed to load', '#EF4444');
+            _pyodideLoading = null;
+            return null;
+        }
     })();
+
     return _pyodideLoading;
 }
 

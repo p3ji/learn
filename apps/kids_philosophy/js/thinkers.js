@@ -5,7 +5,7 @@ const thinkersData = [
         name: "Socrates",
         era: "Ancient Greece (469 - 399 BCE)",
         avatar: "🦉",
-        quote: "The unexamined life is not worth living.",
+        quote: "The unexamined life is not worth living. (Plato, Apology 38a)",
         superpower: "The Socratic Questioning Method",
         conceptIntro: "Socrates believed that true wisdom begins when we admit we don't know everything. Instead of giving boring lectures, he asked deep 'Why?' questions to help people discover truth themselves!",
         storyScenes: [
@@ -25,7 +25,7 @@ const thinkersData = [
                 title: "Scene 3: The Gift of Inquiry",
                 heading: "Admitting What We Don't Know",
                 imageEmoji: "🦉",
-                text: "Socrates famously said: 'All I know is that I know nothing.' By questioning assumptions, you break free from rumors and find true understanding for yourself!"
+                text: "Socrates was told he was the wisest person in Greece - and he was baffled, because he felt he knew nothing important. After questioning lots of clever people he worked out why: they thought they knew things they didn't. He at least knew when he didn't know. As he put it: 'What I do not know, I do not think I know either.' (Plato, Apology 21d)"
             }
         ],
         vocabCards: [
@@ -43,7 +43,7 @@ const thinkersData = [
             { title: "Gaming Dilemma", text: "Someone claims: 'Cheating in games is smart!' Socratic Question: 'If everyone cheated, would winning have any meaning anymore?'" },
             { title: "Science Inquiry", text: "Someone says: 'The sun moves because the sky wants to.' Socratic Question: 'How can we measure planetary orbits to test if that is true?'" }
         ],
-        videoId: "yW6hL9dD7Vw", // TED-Ed Socratic Method
+        videoId: "vNDYUlxNIAA", // TED-Ed Socratic Method
         videoQuiz: [
             { question: "What was Socrates' main goal when asking questions?", options: [{ text: "To help people examine their beliefs and discover truth", correct: true }, { text: "To win prize money", correct: false }] },
             { question: "How did Socrates feel about claiming to know everything?", options: [{ text: "True wisdom begins by admitting you don't know everything", correct: true }, { text: "He claimed to be the smartest human alive", correct: false }] }
@@ -86,9 +86,9 @@ const thinkersData = [
     {
         id: "hypatia",
         name: "Hypatia of Alexandria",
-        era: "Ancient Egypt/Greece (360 - 415 CE)",
+        era: "Roman Egypt (born c. 355 CE - died 415 CE)",
         avatar: "📐",
-        quote: "Reserve your right to think, for even to think wrongly is better than not to think at all.",
+        quote: "No writing by Hypatia has survived. Her student Synesius wrote to her for help with astronomy and called her 'my mother, sister, teacher'. (Synesius, Letter 16)",
         superpower: "Mathematical Truth & Clear Evidence",
         conceptIntro: "Hypatia taught that we must test ideas with real measurements and geometry, rather than accepting rumors or superstitions.",
         storyScenes: [
@@ -96,19 +96,19 @@ const thinkersData = [
                 title: "Scene 1: The Library of Alexandria",
                 heading: "Center of Ancient World Knowledge",
                 imageEmoji: "📚",
-                text: "Hypatia studied at the Great Library of Alexandria. She became head of the Neoplatonic school, teaching geometry, astronomy, and mathematics to eager students."
+                text: "Hypatia lived and taught in Alexandria, Egypt - for centuries the greatest centre of learning in the ancient world. She led a school of Neoplatonic philosophy there, teaching geometry, astronomy and mathematics to students who travelled a long way to hear her."
             },
             {
                 title: "Scene 2: Testing Rumors with Data",
                 heading: "Astrolabes and Astronomical Maps",
                 imageEmoji: "🔭",
-                text: "While others believed rumors about stars being magical creatures, Hypatia constructed astrolabes—devices used to measure the exact positions of stars and planets in the sky!"
+                text: "While others told stories about the stars being magic, Hypatia taught the geometry needed to work out exactly where stars and planets sit in the sky. One of her students, Synesius, used what she taught him to have a star-measuring instrument called an astrolabe made."
             },
             {
                 title: "Scene 3: Standing Up for Truth",
                 heading: "The Right to Think for Yourself",
                 imageEmoji: "📐",
-                text: "Hypatia urged everyone to double-check claims with physical proof. She proved that critical thinking and geometry belong to every curious person!"
+                text: "Hypatia urged everyone to double-check claims with real proof, and showed that careful thinking and geometry belong to every curious person. Her courage came at a real cost - you can learn what happened to her in the video below."
             }
         ],
         vocabCards: [
@@ -117,17 +117,18 @@ const thinkersData = [
             { term: "Hypothesis", icon: "💡", definition: "A testable prediction or explanation for how something works in nature." }
         ],
         inDepth: {
-            history: "Hypatia was the world's leading mathematician and astronomer in the ancient city of Alexandria, teaching students from around the world.",
+            history: "Hypatia taught mathematics, astronomy and philosophy in Alexandria around 400 CE. She is the first woman mathematician whose life and work we have solid historical records for.",
             whyItMatters: "Testing hypotheses with hard evidence prevents us from being fooled by bad assumptions.",
-            funFact: "She edited and preserved Ptolemy's astronomical maps and built astrolabes used for navigating by the stars!"
+            funFact: "Scholars think Hypatia helped prepare the version of Book III of Ptolemy's great astronomy book, the Almagest, that we still read today - the surviving manuscript credits 'the edition of Theon, with Hypatia the philosopher'."
         },
         caseStudies: [
             { title: "Weather Inquiry", text: "Someone says: 'It only rains when the sky is sad.' Hypatia's Method: Measure cloud humidity, temperature, and evaporation!" },
             { title: "Plant Growth", text: "Someone says: 'Plants grow because of magic spells.' Hypatia's Method: Run an experiment measuring sunlight, soil, and water!" }
         ],
         videoId: "n1mwZrVJ-TI", // TED-Ed Hypatia
+        contentNote: "Before you watch: Hypatia lived in dangerous times. Some powerful people in Alexandria were angry that a woman taught science and questioned old beliefs, and in 415 CE a mob killed her. The video tells that part of her story. It is sad, and it is real history - people have not always been safe when they told the truth. You might like to watch it with a grown-up you can talk to afterwards.",
         videoQuiz: [
-            { question: "What instruments did Hypatia build?", options: [{ text: "Astrolabes and astronomical charts", correct: true }, { text: "Steam engines", correct: false }] }
+            { question: "What is Hypatia best known for teaching?", options: [{ text: "Geometry and astronomy - including how to work out star positions with maths", correct: true }, { text: "Steam engines", correct: false }] }
         ],
         multiLevelGame: [
             {
@@ -168,7 +169,7 @@ const thinkersData = [
         name: "Aristotle",
         era: "Ancient Greece (384 - 322 BCE)",
         avatar: "📜",
-        quote: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
+        quote: "We become builders by building, and musicians by playing music. In the same way we become fair by doing fair things, and brave by doing brave things. (Nicomachean Ethics, Book II)",
         superpower: "Categorization & Habit Formation",
         conceptIntro: "Aristotle organized all human knowledge into logical categories (animals, plants, ethics) and showed that great character is built by practicing good habits every day.",
         storyScenes: [
@@ -247,7 +248,7 @@ const thinkersData = [
         name: "Marcus Aurelius",
         era: "Roman Empire (121 - 180 CE)",
         avatar: "🏛️",
-        quote: "You have power over your mind - not outside events. Realize this, and you will find strength.",
+        quote: "If you are distressed by something outside yourself, the pain is not from the thing itself but from your own judgement about it - and that you have the power to change right now. (Meditations 8.47)",
         superpower: "Stoic Mindset & Emotional Resilience",
         conceptIntro: "Marcus Aurelius was a Roman Emperor who wrote a personal diary reminding himself that we cannot control bad weather or mean people, but we CAN control our own reaction!",
         storyScenes: [
@@ -360,7 +361,7 @@ const thinkersData = [
         caseStudies: [
             { title: "Magic Show", text: "At a magic show, a coin appears to vanish into thin air. Radical Doubt reminds you: your eyes are being tricked—matter cannot disappear!" }
         ],
-        videoId: "p4vW7B715vQ", // Wireless Philosophy Descartes
+        videoId: "7iGjiSbEp9c", // Wireless Philosophy Descartes
         videoQuiz: [
             { question: "What is the one thing Descartes realized was 100% impossible to doubt?", options: [{ text: "The fact that he was currently thinking", correct: true }, { text: "Everything his eyes saw at a magic show", correct: false }] }
         ],
@@ -403,7 +404,7 @@ const thinkersData = [
         name: "Karl Popper",
         era: "Austria/UK (1902 - 1994)",
         avatar: "🦢",
-        quote: "A theory that explains everything explains nothing.",
+        quote: "A theory which is not refutable by any conceivable event is non-scientific. Irrefutability is not a virtue of a theory but a vice. (Conjectures and Refutations, 1963)",
         superpower: "Falsification (Finding Black Swans)",
         conceptIntro: "Karl Popper proved that real scientists don't just look for clues that agree with them. They actively hunt for counter-examples ('black swans') to test their theories!",
         storyScenes: [
@@ -438,7 +439,7 @@ const thinkersData = [
         caseStudies: [
             { title: "Scientific Testing", text: "A scientist claims: 'All rocks float!' Popper's test: Drop 100 rocks in water. Dropping 1 heavy granite rock and watching it sink falsifies the claim!" }
         ],
-        videoId: "fM2J525Vn-U", // BBC Radio 4 Popper
+        videoId: "wf-sGqBsWv4", // BBC Radio 4 Popper
         videoQuiz: [
             { question: "How do true scientists test a new theory according to Karl Popper?", options: [{ text: "By actively hunting for counter-examples that could prove it wrong", correct: true }, { text: "By ignoring evidence that disagrees", correct: false }] }
         ],
@@ -518,7 +519,7 @@ const thinkersData = [
             { title: "Choosing Your Passions", text: "Instead of following whatever video game or sport everyone else plays, Mill urges you to explore unique hobbies like painting, astronomy, or coding to cultivate your own individuality!" },
             { title: "Personal Integrity", text: "When facing peer pressure to make a bad choice, exercising your autonomy to say 'No' strengthens your inner character muscle!" }
         ],
-        videoId: "R9OCA6UFE-0", // TED-Ed Liberty & Choice
+        videoId: "dItUGF8GdTw", // TED-Ed: 5 tips to improve your critical thinking (Mill: judging ideas for yourself)
         videoQuiz: [
             { question: "How did John Stuart Mill describe human nature?", options: [{ text: "Like a living tree that grows by making its own choices", correct: true }, { text: "Like a factory machine", correct: false }] },
             { question: "What happens when you make your own thoughtful choices?", options: [{ text: "It exercises and strengthens your mental & moral muscles", correct: true }, { text: "It makes you copy everyone else", correct: false }] }
@@ -544,7 +545,7 @@ const thinkersData = [
         name: "Confucius",
         era: "Ancient China (551 - 479 BCE)",
         avatar: "☯️",
-        quote: "Do not impose on others what you yourself do not desire.",
+        quote: "Do not impose on others what you yourself do not desire. (Analects 15.24)",
         superpower: "The Silver Rule & Ritual Respect",
         conceptIntro: "Confucius taught that harmony in a family or society begins with empathy and respect. By practicing the Silver Rule, we build a peaceful world!",
         storyScenes: [
@@ -554,7 +555,7 @@ const thinkersData = [
             { term: "Ren (Empathy)", icon: "❤️", definition: "Humaneness, benevolence, and loving kindness toward all people." }
         ],
         inDepth: { history: "Confucius was an ancient Chinese teacher whose ethical teachings shaped Asian civilization.", whyItMatters: "Empathy is the foundation of true friendship and strong communities.", funFact: "His ideas were recorded by his students in a famous book called the Analects." },
-        videoId: "tUhGRh4vhi8",
+        videoId: "tUhGRh4vdb8",
         videoQuiz: [{ question: "What is Confucius' Silver Rule?", options: [{ text: "Do not impose on others what you yourself do not desire", correct: true }, { text: "Always win arguments", correct: false }] }],
         p4cInquiry: [
             {
@@ -577,7 +578,7 @@ const thinkersData = [
         name: "Lao Tzu",
         era: "Ancient China (6th Century BCE)",
         avatar: "🌊",
-        quote: "Water is fluid, soft, and yielding. But water will wear away rock... What is soft is strong.",
+        quote: "Nothing in the world is softer or weaker than water. Yet nothing is better at wearing down what is hard and strong. (Tao Te Ching, ch. 78)",
         superpower: "Wu Wei & Flowing Harmony",
         conceptIntro: "Lao Tzu wrote the 'Tao Te Ching', teaching the principle of Wu Wei ('effortless action')—working with nature like water flowing around rocks!",
         storyScenes: [
@@ -610,7 +611,7 @@ const thinkersData = [
         name: "Immanuel Kant",
         era: "Germany (1724 - 1804)",
         avatar: "⚖️",
-        quote: "Act only according to that maxim whereby you can at the same time will that it should become a universal law.",
+        quote: "Act only according to that maxim whereby you can at the same time will that it should become a universal law. (Groundwork of the Metaphysics of Morals, 1785)",
         superpower: "The Categorical Imperative & Universal Duty",
         conceptIntro: "Kant taught that before doing an action, ask: 'What if EVERYONE in the world did this all the time?' If the world breaks, don't do it!",
         storyScenes: [
@@ -620,7 +621,7 @@ const thinkersData = [
             { term: "Deontology", icon: "📜", definition: "An ethical theory that uses rules to distinguish right from wrong, focusing on moral duty." }
         ],
         inDepth: { history: "Kant lived in Königsberg, Prussia, and wrote major works on ethics and human reason.", whyItMatters: "Universal thinking reminds us that we shouldn't make selfish exceptions for ourselves.", funFact: "Kant was so punctual that neighbors set their pocket watches by his daily afternoon walks!" },
-        videoId: "nsgA4hzo06U",
+        videoId: "nsgAsw4XGvU",
         videoQuiz: [{ question: "What is Kant's Categorical Imperative test?", options: [{ text: "Ask what would happen if everyone in the world did the action", correct: true }, { text: "Do whatever is easiest", correct: false }] }],
         p4cInquiry: [
             {
@@ -643,7 +644,7 @@ const thinkersData = [
         name: "Ada Lovelace",
         era: "UK (1815 - 1852)",
         avatar: "💻",
-        quote: "The Analytical Engine weaves algebraic patterns just as the Jacquard loom weaves flowers.",
+        quote: "The Analytical Engine weaves algebraic patterns, just as the Jacquard-loom weaves flowers and leaves. (Note A, 1843)",
         superpower: "Poetic Science & First Algorithms",
         conceptIntro: "Ada Lovelace saw that computing machines could go beyond numbers to process music, art, and symbols—writing the world's very first computer algorithm!",
         storyScenes: [
@@ -653,7 +654,7 @@ const thinkersData = [
             { term: "Algorithm", icon: "⚙️", definition: "A step-by-step set of rules or instructions to solve a problem or perform a task." }
         ],
         inDepth: { history: "Daughter of poet Lord Byron, Ada worked with Charles Babbage on the Analytical Engine.", whyItMatters: "Imagination and logic together unlock revolutionary inventions.", funFact: "The programming language 'Ada', created by the US Department of Defense, was named in her honor!" },
-        videoId: "J34k52xP4D4",
+        videoId: "uOkmyICUW_c",
         videoQuiz: [{ question: "What did Ada Lovelace create?", options: [{ text: "The world's first computer algorithm", correct: true }, { text: "The steam engine", correct: false }] }],
         p4cInquiry: [
             {
@@ -699,15 +700,15 @@ function renderSingleThinkerTopic(thinkerId) {
             </div>
 
             <!-- 4-Step Flow Tabs -->
-            <div class="viz-controls" style="margin-bottom: 24px;">
-                <button class="viz-step-btn active" id="topicTabBtn1" onclick="switchTopicTab(1)">1. Story & Flashcards</button>
-                <button class="viz-step-btn" id="topicTabBtn2" onclick="switchTopicTab(2)">2. Video & Case Studies</button>
-                <button class="viz-step-btn" id="topicTabBtn3" onclick="switchTopicTab(3)">3. Open P4C Inquiry</button>
-                <button class="viz-step-btn" id="topicTabBtn4" onclick="switchTopicTab(4)">4. Socratic Journal & Vault</button>
+            <div class="viz-controls" role="tablist" aria-label="Deep-dive steps" style="margin-bottom: 24px;">
+                <button role="tab" aria-selected="true" aria-controls="topicTabContent1" class="viz-step-btn active" id="topicTabBtn1" onclick="switchTopicTab(1)">1. Story & Flashcards</button>
+                <button role="tab" aria-selected="false" aria-controls="topicTabContent2" class="viz-step-btn" id="topicTabBtn2" onclick="switchTopicTab(2)">2. Video & Case Studies</button>
+                <button role="tab" aria-selected="false" aria-controls="topicTabContent3" class="viz-step-btn" id="topicTabBtn3" onclick="switchTopicTab(3)">3. Open P4C Inquiry</button>
+                <button role="tab" aria-selected="false" aria-controls="topicTabContent4" class="viz-step-btn" id="topicTabBtn4" onclick="switchTopicTab(4)">4. Socratic Journal & Vault</button>
             </div>
 
             <!-- Tab 1: Storybook & Flashcards -->
-            <div id="topicTabContent1" class="flow-content-block">
+            <div id="topicTabContent1" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn1" tabindex="0">
                 ${renderStorybookReader(t.id, t.storyScenes)}
                 ${renderVocabularyFlashcards(t.id, t.vocabCards)}
                 <div style="margin-top: 24px;">
@@ -716,7 +717,7 @@ function renderSingleThinkerTopic(thinkerId) {
             </div>
 
             <!-- Tab 2: Video & Case Studies -->
-            <div id="topicTabContent2" class="flow-content-block" style="display:none;">
+            <div id="topicTabContent2" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn2" tabindex="0" style="display:none;">
                 <h3 style="color: var(--cyan-magic); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 14px;">Historical Background & Real Case Studies</h3>
                 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
@@ -743,21 +744,27 @@ function renderSingleThinkerTopic(thinkerId) {
                     </div>
                 </div>
 
+                ${t.contentNote ? `
+                <div role="note" style="background: rgba(245,158,11,0.12); border: 1.5px solid var(--gold-star); border-radius: 14px; padding: 16px; margin-bottom: 16px;">
+                    <div style="color: var(--gold-star); font-weight: 800; font-size: 0.95rem; margin-bottom: 6px;">⚠️ A heads-up about this video</div>
+                    <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.6; margin: 0;">${t.contentNote}</p>
+                </div>` : ''}
+
                 <!-- Responsive Embedded YouTube Player -->
                 <div style="background: #000; border-radius: 16px; overflow: hidden; margin-bottom: 16px; position: relative; padding-top: 56.25%; border: 2px solid var(--purple-primary); box-shadow: 0 8px 24px rgba(0,0,0,0.6);">
-                    <iframe src="https://www.youtube.com/embed/${t.videoId}?rel=0" title="${t.name} Educational Lesson" style="position: absolute; top:0; left:0; width:100%; height:100%; border:none;" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube-nocookie.com/embed/${t.videoId}?rel=0" title="${t.name} Educational Lesson" style="position: absolute; top:0; left:0; width:100%; height:100%; border:none;" allowfullscreen></iframe>
                 </div>
 
                 ${renderVideoQuizComponent(t.id, t.videoQuiz)}
 
                 <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: 20px;">
-                    <a href="https://www.youtube.com/watch?v=${t.videoId}" target="_blank" class="fb-action-btn outline" style="text-decoration:none;">▶ Watch Full Lesson on YouTube (New Tab)</a>
+                    <a href="https://www.youtube.com/watch?v=${t.videoId}" target="_blank" rel="noopener noreferrer" class="fb-action-btn outline" style="text-decoration:none;">▶ Watch Full Lesson on YouTube (New Tab)</a>
                     <button class="fb-action-btn gold" onclick="switchTopicTab(3)">Continue to Step 3: Try Open P4C Inquiry ➔</button>
                 </div>
             </div>
 
             <!-- Tab 3: Open P4C Dialectic Inquiry -->
-            <div id="topicTabContent3" class="flow-content-block" style="display:none;">
+            <div id="topicTabContent3" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn3" tabindex="0" style="display:none;">
                 ${typeof renderP4CInquiryEngine === 'function' ? renderP4CInquiryEngine(t.id, t.p4cInquiry || [
                     {
                         title: "Open Socratic Dialectic",
@@ -772,7 +779,7 @@ function renderSingleThinkerTopic(thinkerId) {
             </div>
 
             <!-- Tab 4: Socratic Discussion Journal & Upgrade Vault -->
-            <div id="topicTabContent4" class="flow-content-block" style="display:none;">
+            <div id="topicTabContent4" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn4" tabindex="0" style="display:none;">
                 ${typeof renderSocraticDiscussionJournal === 'function' ? renderSocraticDiscussionJournal(t.id, t.name, t.avatar, t.discussionPrompts || [
                     { prompt: "What makes a decision truly fair?", context: "Discuss with a parent or friend whether fairness means treating everyone identically or giving people what they need." },
                     { prompt: "How do we know when we are wrong about something?", context: "Explore how admitting what we do not know is the first step toward true wisdom." }
@@ -783,15 +790,15 @@ function renderSingleThinkerTopic(thinkerId) {
 
                 <div style="background: rgba(0,0,0,0.4); border: 1.5px solid var(--pink-energy); border-radius: 16px; padding: 20px; margin-bottom: 20px;">
                     <div style="display: flex; gap: 12px; margin-bottom: 12px;">
-                        <select id="feedbackType_${t.id}" class="sandbox-input" style="max-width: 180px;">
+                        <select id="feedbackType_${t.id}" class="sandbox-input" aria-label="Type of message" style="max-width: 180px;">
                             <option value="question">❓ Ask a Question</option>
                             <option value="suggestion">💡 Upgrade Idea</option>
                         </select>
-                        <input type="text" id="feedbackInput_${t.id}" class="sandbox-input" placeholder="Type your question or suggestion here..." style="flex:1;">
+                        <input type="text" id="feedbackInput_${t.id}" class="sandbox-input" aria-label="Your question or idea" placeholder="Type your question or suggestion here..." style="flex:1;">
                     </div>
-                    <button class="fb-action-btn gold" style="width: 100%;" onclick="submitTopicFeedback('${t.id}', '${t.name}', '${t.avatar}')">Submit to Upgrade Vault</button>
+                    <button class="fb-action-btn gold" style="width: 100%;" onclick="submitTopicFeedback('${t.id}', '${escapeJsString(t.name)}', '${t.avatar}')">Submit to Upgrade Vault</button>
                     
-                    <div id="feedbackResult_${t.id}" style="display:none; margin-top: 14px; padding: 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--green-hero); color: #FFF;"></div>
+                    <div id="feedbackResult_${t.id}" role="status" aria-live="polite" style="display:none; margin-top: 14px; padding: 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--green-hero); color: #FFF;"></div>
                 </div>
 
                 <h4 style="color: var(--gold-star); font-size: 1rem; margin-bottom: 10px;">Saved Entries for ${t.name}:</h4>

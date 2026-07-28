@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/kids_styles.css">
 </head>
 <body>
+    <a href="#unifiedFocusStage" class="skip-link">Skip to the lesson</a>
 
     <!-- Header Navigation with RTS Account Login -->
     <header class="kids-header">
@@ -23,7 +24,7 @@
                 </a>
             </div>
 
-            <nav class="kids-nav-links">
+            <nav class="kids-nav-links" aria-label="Main">
                 <a href="../../index.html" class="kids-nav-item">🏠 Suite Home</a>
                 <button onclick="selectCategory('thinkers')" class="kids-nav-item" style="background:none; border:none; cursor:pointer;">🏛️ Thinkers</button>
                 <button onclick="selectCategory('mental_models')" class="kids-nav-item" style="background:none; border:none; cursor:pointer;">🔮 Mental Models</button>
@@ -35,7 +36,7 @@
             <!-- RTS Commander Profile & Login -->
             <div style="display: flex; align-items: center; gap: 10px;">
                 <button class="fb-action-btn outline" onclick="openFeedbackVaultModal()" style="padding: 6px 12px; font-size: 0.82rem;">📥 Upgrade Vault</button>
-                <div class="xp-pill" onclick="openAccountLoginModal()" style="cursor: pointer;">
+                <button type="button" class="xp-pill" onclick="openAccountLoginModal()" aria-label="Open profile and account settings" style="cursor: pointer; font: inherit; text-align: left;">
                     <span id="rtsUserAvatar" style="font-size: 1.2rem;">🦉</span>
                     <span id="rtsUserName" style="font-weight: 800; color: #FFF; font-size: 0.9rem;">Cadet Thinker</span>
                     <span class="xp-level-badge" id="xpLevelBadge">Lvl 1: Cadet</span>
@@ -43,7 +44,7 @@
                         <div class="xp-bar-inner" id="xpBarFill" style="width: 25%;"></div>
                     </div>
                     <span class="xp-text" id="xpTextDisplay">150 XP</span>
-                </div>
+                </button>
                 <button class="fb-action-btn gold" onclick="openGoldenCertificateModal()" style="padding: 6px 12px; font-size: 0.82rem; margin-right: 8px;">🎓 Certificate</button>
                 <button class="fb-action-btn outline" onclick="openAccountLoginModal()" style="padding: 6px 12px; font-size: 0.82rem;">👤 Account</button>
             </div>
@@ -51,7 +52,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container">
+    <main class="container" id="main">
 
         <!-- Hero Card -->
         <section class="kids-hero">
@@ -61,14 +62,14 @@
                 Welcome to Philosopher's Quest! Select any topic below to dive into a focused <strong>4-Part Deep-Dive Experience</strong>: 
                 <span style="color: var(--gold-star); font-weight:700;">1) Concept Story</span> ➔ 
                 <span style="color: var(--cyan-magic); font-weight:700;">2) In-Depth Video & Context</span> ➔ 
-                <span style="color: var(--purple-glow); font-weight:700;">3) Related Game</span> ➔ 
+                <span style="color: var(--purple-glow); font-weight:700;">3) Open Inquiry</span> ➔ 
                 <span style="color: var(--pink-energy); font-weight:700;">4) Q&A & Upgrade Vault!</span>
             </p>
 
             <!-- Badge Trophy Showcase -->
             <div class="badge-showcase">
                 <span class="badge-showcase-title">🏆 Trophy Showcase:</span>
-                <div class="badge-item unlocked" data-badge-id="young_thinker">🌱 Young Thinker</div>
+                <div class="badge-item" data-badge-id="young_thinker">🌱 Young Thinker</div>
                 <div class="badge-item" data-badge-id="socratic_master">🦉 Socratic Master</div>
                 <div class="badge-item" data-badge-id="first_principles">⚡ First Principles</div>
                 <div class="badge-item" data-badge-id="occams_razor">🗡️ Razor Sharp</div>
@@ -120,5 +121,6 @@
     <script src="js/thought_experiments.js"></script>
     <script src="js/fallacy_detective.js"></script>
     <script src="js/app_controller.js"></script>
+    <script src="js/a11y.js"></script>
 </body>
 </html>

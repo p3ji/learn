@@ -106,7 +106,7 @@ test.describe("Philosopher's Quest & Mental Models - Playwright E2E Suite", () =
         await page.click('button:has-text("Save Reflection to Journal")');
 
         // Assert feedback message appears
-        await expect(page.locator('#p4cJournalFeedback_socrates')).toContainText('Reflection Saved to Journal');
+        await expect(page.locator('#p4cJournalFeedback_socrates')).toContainText('saved to your journal');
 
         // Reload page to verify persistence
         await page.reload();

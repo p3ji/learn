@@ -90,7 +90,7 @@ function openAccountLoginModal() {
                 </div>
 
                 <div class="sandbox-input-group" style="margin-bottom: 12px;">
-                    <label class="sandbox-label" style="color: var(--gold-star); font-weight:700;">Edit Username / Call-Sign:</label>
+                    <label class="sandbox-label" for="rtsInputUsername" style="color: var(--gold-star); font-weight:700;">Edit Username / Call-Sign:</label>
                     <input type="text" id="rtsInputUsername" class="sandbox-input" value="${escapeHtml(currentProfile.username)}">
                 </div>
 
@@ -110,7 +110,7 @@ function openAccountLoginModal() {
             <div style="background: rgba(6, 182, 212, 0.08); border: 1.5px solid var(--cyan-magic); border-radius: 16px; padding: 18px; margin-bottom: 20px;">
                 <h3 style="color: var(--cyan-magic); font-size: 1.05rem; margin-bottom: 10px;">➕ Create New Cadet Account:</h3>
                 <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-                    <input type="text" id="newCadetUsername" class="sandbox-input" placeholder="Type new Cadet name..." style="flex:1;">
+                    <input type="text" id="newCadetUsername" class="sandbox-input" aria-label="New cadet name" placeholder="Type new Cadet name..." style="flex:1;">
                     <button class="fb-action-btn gold" onclick="createNewCadetProfile()">Create & Log In</button>
                 </div>
             </div>
@@ -133,8 +133,8 @@ function openAccountLoginModal() {
                                     ${isCurrent ? `
                                         <span class="nb-badge" style="background: var(--gold-star); color: #000; font-size: 0.75rem;">Active</span>
                                     ` : `
-                                        <button class="fb-action-btn gold" style="padding: 4px 12px; font-size: 0.8rem;" onclick="switchActiveProfile('${escapeJsString(k)}')">Log In</button>
-                                        <button class="fb-action-btn outline" style="padding: 4px 8px; font-size: 0.8rem; border-color:#EF4444; color:#EF4444;" onclick="deleteCadetProfile('${escapeJsString(k)}')">🗑️</button>
+                                        <button class="fb-action-btn gold" style="padding: 4px 12px; font-size: 0.8rem;" data-switch-profile="${escapeHtml(k)}">Log In</button>
+                                        <button class="fb-action-btn outline" style="padding: 4px 8px; font-size: 0.8rem; border-color:#EF4444; color:#EF4444;" data-delete-profile="${escapeHtml(k)}" aria-label="Delete profile ${escapeHtml(k)}">🗑️</button>
                                     `}
                                 </div>
                             </div>
@@ -144,6 +144,13 @@ function openAccountLoginModal() {
             </div>
         </div>
     `;
+
+    // Bound as listeners, not inline onclick: a profile name containing a quote
+    // would otherwise terminate the attribute and kill both buttons.
+    modal.querySelectorAll('[data-switch-profile]').forEach(b =>
+        b.addEventListener('click', () => switchActiveProfile(b.dataset.switchProfile)));
+    modal.querySelectorAll('[data-delete-profile]').forEach(b =>
+        b.addEventListener('click', () => deleteCadetProfile(b.dataset.deleteProfile)));
 
     modal.style.display = 'flex';
 }
@@ -179,13 +186,13 @@ function saveCurrentProfileEdits() {
 
     updateProfileUI();
     openAccountLoginModal();
-    alert("Commander Profile Updated!");
+    showToast("Profile updated!", "green");
 }
 
 function createNewCadetProfile() {
     const input = document.getElementById('newCadetUsername');
     if (!input || !input.value.trim()) {
-        alert("Please enter a username for the new Cadet!");
+        showToast("Please enter a name for the new Cadet.", "red");
         return;
     }
     const name = input.value.trim();
@@ -206,7 +213,7 @@ function createNewCadetProfile() {
 
     updateProfileUI();
     openAccountLoginModal();
-    alert(`Welcome to Philosopher's Quest, Cadet ${name}! Account created & logged in!`);
+    showToast(`Welcome, ${name}! Profile created.`, "green");
 }
 
 function switchActiveProfile(username) {
@@ -216,7 +223,7 @@ function switchActiveProfile(username) {
         localStorage.setItem('kids_active_profile', username);
         updateProfileUI();
         openAccountLoginModal();
-        alert(`Logged in as Commander ${username}!`);
+        showToast(`Now playing as ${username}.`, "green");
     }
 }
 
@@ -229,28 +236,32 @@ function deleteCadetProfile(username) {
     }
 }
 
-function addXP(amount) {
-    currentProfile.xp += amount;
-    updateProfileUI();
-    showFloatingXP(amount);
-}
+// NOTE: addXP and unlockBadge live in quest_app.js, which loads after this file
+// and is the single source of truth. Duplicating them here previously meant the
+// copy that ran was decided by script order.
 
 function showFloatingXP(amount) {
     const pop = document.createElement('div');
     pop.className = 'xp-popup-floating';
+    pop.setAttribute('role', 'status');
+    pop.setAttribute('aria-live', 'polite');
     pop.innerHTML = `+${amount} XP ✨`;
     document.body.appendChild(pop);
     setTimeout(() => pop.remove(), 1800);
 }
 
-function unlockBadge(badgeId) {
-    if (!currentProfile.badges.includes(badgeId)) {
-        currentProfile.badges.push(badgeId);
-        saveProfileState();
-        updateBadgeDisplay();
-        showFloatingXP(150);
-        alert(`🏆 BADGE UNLOCKED! You earned the '${badgeId.toUpperCase().replace('_', ' ')}' Commander Badge!`);
-    }
+// Non-blocking replacement for alert(): a styled toast that screen readers announce.
+function showToast(message, tone = 'gold') {
+    const colours = { gold: 'var(--gold-star)', green: 'var(--green-hero)', red: '#F87171' };
+    const toast = document.createElement('div');
+    toast.className = 'kids-toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    toast.style.borderColor = colours[tone] || colours.gold;
+    toast.style.color = colours[tone] || colours.gold;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3600);
 }
 
 function openTrophyDetailModal(badgeId) {
@@ -302,12 +313,28 @@ function updateBadgeDisplay() {
     });
 }
 
+// Escapes quotes too: without them a value can break out of an HTML attribute
+// and graft a live event handler onto the element.
 function escapeHtml(text) {
-    return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    return String(text == null ? '' : text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
 }
 
+// For a JS string literal that itself sits inside an HTML attribute, e.g.
+//   onclick="fn('${escapeJsString(name)}')"
+// A bare " must become &quot; (the HTML parser decodes it before JS sees it);
+// escaping it as \" would still terminate the attribute. See "Occam's Razor".
 function escapeJsString(text) {
-    return text.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/"/g, '\\"');
+    return String(text == null ? '' : text)
+        .replace(/\\/g, "\\\\")
+        .replace(/'/g, "\\'")
+        .replace(/</g, "\\u003C")
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;");
 }
 
 document.addEventListener('DOMContentLoaded', () => {

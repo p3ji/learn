@@ -24,7 +24,7 @@ const mentalModelsData = {
                 title: "Scene 3: Inventing the Snowmobile",
                 heading: "Redesigning Transportation",
                 imageEmoji: "🛷",
-                text: "Instead of putting giant wheels on a bicycle for deep snow, inventors broke snow travel down to 3 needs: propulsion, snow treads, and steering—inventing the snowmobile from scratch!"
+                text: "Instead of putting giant wheels on a bicycle for deep snow, break snow travel down to 3 needs - propulsion, snow treads and steering - and you end up designing something very like a snowmobile."
             }
         ],
         vocabCards: [
@@ -33,12 +33,12 @@ const mentalModelsData = {
             { term: "Deconstruction", icon: "🧱", definition: "Breaking a complex system down into its basic individual parts." }
         ],
         inDepth: {
-            history: "Philosophers like Aristotle and inventors like Thomas Edison and Elon Musk used First Principles thinking to create inventions people thought were impossible.",
+            history: "Aristotle called the most basic truths - the ones you cannot break down any further - 'first principles' (archai), and said real understanding starts there. Scientists still work this way: instead of asking 'what does everyone else do?', they ask 'what do we actually know for certain, and what can we build from that?'",
             whyItMatters: "Instead of following a rigid recipe or copying others, understanding fundamental building blocks gives you the freedom to invent completely new things.",
-            funFact: "The snowmobile was invented using First Principles! Instead of adding bigger tires to a bicycle for snow, the inventor broke travel down to 3 basic needs: propulsion, snow treads, and steering!"
+            funFact: "Try it yourself: how would you cross deep snow? A bike's wheels sink. Break the problem into what you actually need - a way to push forward, something wide so you do not sink, and a way to steer - and you have designed something very like a snowmobile from scratch."
         },
         example: "A recipe follower can only bake a cake if they have a pre-made boxed mix. But a First Principles Chef understands raw flour, sugar, eggs, and heat. If they run out of cake mix, they build a brand new delicious pastry from scratch using fundamental ingredients!",
-        videoId: "g918y-DkW9M",
+        videoId: "ZqhN2YWTw0M",
         videoQuiz: [
             { question: "What is the key difference between a recipe follower and a first principles chef?", options: [{ text: "A chef understands raw ingredients and can create new recipes from scratch", correct: true }, { text: "A chef only buys store mixes", correct: false }] }
         ],
@@ -124,7 +124,7 @@ const mentalModelsData = {
             funFact: "In medicine, doctors say: 'When you hear hooves behind you, think horses, not zebras!' (unless you're on a safari in Africa!)."
         },
         example: "If you find your trash can knocked over, option A is 'A raccoon knocked it over', option B is 'Aliens landed, searched for batteries, and flew to Mars'. Occam's Razor trims away the alien theory!",
-        videoId: "S-tS45R13oQ", // Explified: Occam's Razor
+        videoId: "B94BmViQEwo", // Explified: Occam's Razor
         videoQuiz: [
             { question: "What does Occam's Razor tell us to trim away?", options: [{ text: "Wild explanations requiring unproven assumptions", correct: true }, { text: "The correct answer", correct: false }] }
         ],
@@ -200,7 +200,7 @@ const mentalModelsData = {
             funFact: "Nassim Nicholas Taleb popularized 'Black Swan Events' to describe unexpected global events (like the invention of the Internet) that change everything!"
         },
         example: "Seeing 1,000 white swans doesn't prove all swans are white. Discovering just ONE black swan instantly proves the old rule wrong!",
-        videoId: "fM2J525Vn-U", // BBC Radio 4 Popper
+        videoId: "wf-sGqBsWv4", // BBC Radio 4 Popper
         videoQuiz: [
             { question: "What does 1 single Black Swan prove?", options: [{ text: "That the old rule 'all swans are white' is false", correct: true }, { text: "That all swans are white", correct: false }] }
         ],
@@ -271,12 +271,12 @@ const mentalModelsData = {
             { term: "Territory", icon: "🏞️", definition: "The actual, full, complex real-world reality." }
         ],
         inDepth: {
-            history: "Coined by mathematician Alfred Korzybski, this mental model reminds us that words, diagrams, and financial models are reductions of reality.",
+            history: "Coined in 1931 by Alfred Korzybski, a thinker who studied how language shapes thought. It reminds us that words, diagrams and models are simplified pictures of reality, never the thing itself.",
             whyItMatters: "Never confuse a weather forecast app (map) with the actual rain outside (territory)! Always double-check real-world data.",
             funFact: "If a map were 100% detailed down to every blade of grass, it would have to be the exact same size as the real world, making it useless as a map!"
         },
         example: "A simplified map of a zoo shows 3 animal icons, but the real zoo has 400 animals, sounds, smells, and zookeepers!",
-        videoId: "kS2LQSpZTDE", // Mental Models Map vs Territory
+        videoId: "BCqX1zPLRXE", // Mental Models Map vs Territory
         videoQuiz: [
             { question: "Why can't a map be 100% identical to the real territory?", options: [{ text: "Because a map must simplify reality to be useful", correct: true }, { text: "Because maps are printed on paper", correct: false }] }
         ],
@@ -352,7 +352,7 @@ const mentalModelsData = {
             funFact: "Aerospace engineers use Inversion in 'pre-mortems'—they imagine a rocket launch has ALREADY failed, so they can fix flaws before launching!"
         },
         example: "Want to be a great soccer teammate? Ask 'What makes someone a terrible teammate?' (screaming, refusing to pass, quitting early). Now just avoid those 3 things!",
-        videoId: "yW6hL9dD7Vw", // Critical Thinking Inversion
+        videoId: "dItUGF8GdTw", // TED-Ed: 5 tips to improve your critical thinking
         videoQuiz: [
             { question: "What question does Inversion ask us to consider?", options: [{ text: "What would guarantee failure so we can avoid those traps?", correct: true }, { text: "How to copy others", correct: false }] }
         ],
@@ -403,7 +403,7 @@ const mentalModelsData = {
                 title: "Scene 1: The Garden Discovery",
                 heading: "Pea Pods and Land",
                 imageEmoji: "🌱",
-                text: "In 1896, Italian economist Vilfredo Pareto noticed that 20% of the pea pods in his garden produced 80% of the healthy peas."
+                text: "In 1896, Italian economist Vilfredo Pareto studied who owned the land in Italy and found something lopsided: a small group of people owned most of it. Things were nowhere near evenly shared."
             },
             {
                 title: "Scene 2: Unequal Distributions",
@@ -423,12 +423,12 @@ const mentalModelsData = {
             { term: "Vital Few", icon: "🌟", definition: "The small 20% subset of inputs that drive the majority of value." }
         ],
         inDepth: {
-            history: "Italian economist Vilfredo Pareto noticed in 1896 that 20% of pea pods in his garden produced 80% of the peas, and 20% of people owned 80% of land.",
+            history: "Vilfredo Pareto found in 1896 that about 20% of Italians owned about 80% of the land. Much later a quality engineer named Joseph Juran noticed the same lopsided pattern turning up everywhere else and nicknamed it the 'Pareto Principle'. (The story about Pareto's pea pods is a fun legend, but nobody has found it in his writings!)",
             whyItMatters: "It teaches you to focus your energy on the most important 20% of activities that bring the biggest success.",
             funFact: "Language scientists found that learning just 20% of a foreign language's core vocabulary lets you understand 80% of daily conversations!"
         },
         example: "Out of 50 toys in your room, you likely play with your top 10 favorite toys (20%) about 80% of the time!",
-        videoId: "f2nB8Y47hX8", // Sprouts Pareto
+        videoId: "lsGwqk_agcQ", // Sprouts: Pareto Principle Explained
         videoQuiz: [
             { question: "What does the 80/20 rule suggest?", options: [{ text: "20% of core efforts often generate 80% of results", correct: true }, { text: "Everything is equal", correct: false }] }
         ],
@@ -504,7 +504,7 @@ const mentalModelsData = {
             funFact: "Chess grandmasters think 5 to 10 moves ahead (second, third, and fourth-order thinking) before moving a single piece!"
         },
         example: "Eating 5 ice cream cones right now feels delicious (1st order). But 2 hours later, you get a bad stomach ache and miss your friends' party (2nd order)!",
-        videoId: "R9OCA6UFE-0", // TED-Ed Decision Thinking
+        videoId: "qp0ybabZMD4", // Productivity Guy: What is Second Order Thinking
         videoQuiz: [
             { question: "What question does a Second-Order Thinker ask?", options: [{ text: "'And then what happens next in 2 hours or 2 days?'", correct: true }, { text: "'What gives me pleasure right now?'", correct: false }] }
         ],
@@ -575,12 +575,12 @@ const mentalModelsData = {
             { term: "Loss Aversion", icon: "🛑", definition: "The psychological tendency to strongly prefer avoiding losses over acquiring gains." }
         ],
         inDepth: {
-            history: "Psychologists Kahneman and Tversky proved that humans hate losing things so much that we irrationally double-down on bad decisions.",
+            history: "Psychologists Daniel Kahneman and Amos Tversky showed in 1979 that people hate losing things far more than they enjoy gaining them. In 1985 Hal Arkes and Catherine Blumer ran experiments showing this makes us stick with bad choices just because we already paid for them - they called it the sunk cost effect.",
             whyItMatters: "Past time or money spent is gone forever (sunk). Always make decisions based on your FUTURE happiness!",
             funFact: "The Concorde supersonic jet lost millions of dollars, but governments kept funding it for years just because they felt bad stopping!"
         },
         example: "You buy a $10 movie ticket, but 15 minutes in you realize the movie is terrible. Staying for 2 hours wastes your time AND your money. Leaving frees up your afternoon!",
-        videoId: "f2nB8Y47hX8", // Sprouts Sunk Cost
+        videoId: "jJajz9n9Oi4", // Sprouts: Sunk Cost Fallacy
         videoQuiz: [
             { question: "What should guide your decisions according to Sunk Cost theory?", options: [{ text: "Your FUTURE happiness and value", correct: true }, { text: "Past money that is gone forever", correct: false }] }
         ],
@@ -635,7 +635,7 @@ const mentalModelsData = {
         ],
         inDepth: { history: "Formulated by Robert J. Hanlon in 1980, this mental model promotes empathy and prevents unnecessary social drama.", whyItMatters: "Assuming good intentions keeps your mind calm and preserves great friendships.", funFact: "Similar to Occam's Razor, Hanlon's Razor 'trims' away paranoid assumptions!" },
         example: "A friend doesn't reply to your text for 2 hours. Paranoid assumption: 'They hate me!' Hanlon's Razor: 'Their phone battery died or they are eating dinner!'",
-        videoId: "f2nB8Y47hX8", videoQuiz: [{ question: "What does Hanlon's Razor suggest when someone makes a mistake?", options: [{ text: "Assume it was an innocent accident or phone distraction first", correct: true }, { text: "Assume they are an evil villain", correct: false }] }],
+        videoId: "IBYH2zwO0zM", videoQuiz: [{ question: "What does Hanlon's Razor suggest when someone makes a mistake?", options: [{ text: "Assume it was an innocent accident or phone distraction first", correct: true }, { text: "Assume they are an evil villain", correct: false }] }],
         caseStudies: [{ title: "Unanswered Text", text: "Phone battery died vs secret villain plan!" }],
         multiLevelGame: [{ shortName: "Level 1: Novice", levelTitle: "Empathy Test", scenario: "Someone steps on your shoe in a crowded hallway.", options: [{ text: "🤝 Assume it was an accidental stumble in a crowd and say 'No worries!'", correct: true, feedback: "Hanlon's Razor Master!" }, { text: "👿 Yell 'You did that on purpose to ruin my shoes!'", correct: false, feedback: "That assumes malice without evidence." }] }],
         chatResponses: [{ prompt: "Why is Hanlon's Razor useful?", answer: "It stops unnecessary drama! Most mistakes come from accidents or distraction, not bad intentions." }]
@@ -654,7 +654,7 @@ const mentalModelsData = {
         ],
         inDepth: { history: "Studied extensively by psychologist Peter Wason in 1960, confirmation bias is one of the most common cognitive traps.", whyItMatters: "Actively seeking facts that challenge your view helps you discover real truth.", funFact: "Warren Buffett deliberately listens to people who DISAGREE with his stock ideas to defeat confirmation bias!" },
         example: "If you think your cat is lazy, you notice her sleeping 4 hours and ignore her catching a mouse outside!",
-        videoId: "yW6hL9dD7Vw", videoQuiz: [{ question: "What is Confirmation Bias?", options: [{ text: "Only noticing clues that agree with your existing belief", correct: true }, { text: "Testing all facts equally", correct: false }] }],
+        videoId: "Kho5KvPBDSw", videoQuiz: [{ question: "What is Confirmation Bias?", options: [{ text: "Only noticing clues that agree with your existing belief", correct: true }, { text: "Testing all facts equally", correct: false }] }],
         caseStudies: [{ title: "Sports Predictions", text: "Only remembering the games your favorite team won while forgetting their losses!" }],
         multiLevelGame: [{ shortName: "Level 1: Novice", levelTitle: "Bias Detective", scenario: "You believe 'All video games are bad for sleep.' How do you test this without bias?", options: [{ text: "🔬 Read studies showing both sleep impacts AND cognitive spatial benefits!", correct: true, feedback: "Bias Defeated!" }, { text: "🙈 Only read articles that agree with you", correct: false, feedback: "That's Confirmation Bias!" }] }],
         chatResponses: [{ prompt: "How do I beat Confirmation Bias?", answer: "Deliberately search for evidence that could prove your theory wrong! (Karl Popper style!)" }]
@@ -682,15 +682,15 @@ function renderSingleMentalModelTopic(modelKey) {
             </div>
 
             <!-- 4-Step Flow Controls -->
-            <div class="viz-controls" style="margin-bottom: 24px;">
-                <button class="viz-step-btn active" id="topicTabBtn1" onclick="switchTopicTab(1)">1. Story & Flashcards</button>
-                <button class="viz-step-btn" id="topicTabBtn2" onclick="switchTopicTab(2)">2. Video & Case Studies</button>
-                <button class="viz-step-btn" id="topicTabBtn3" onclick="switchTopicTab(3)">3. Open P4C Inquiry</button>
-                <button class="viz-step-btn" id="topicTabBtn4" onclick="switchTopicTab(4)">4. Socratic Journal & Vault</button>
+            <div class="viz-controls" role="tablist" aria-label="Deep-dive steps" style="margin-bottom: 24px;">
+                <button role="tab" aria-selected="true" aria-controls="topicTabContent1" class="viz-step-btn active" id="topicTabBtn1" onclick="switchTopicTab(1)">1. Story & Flashcards</button>
+                <button role="tab" aria-selected="false" aria-controls="topicTabContent2" class="viz-step-btn" id="topicTabBtn2" onclick="switchTopicTab(2)">2. Video & Case Studies</button>
+                <button role="tab" aria-selected="false" aria-controls="topicTabContent3" class="viz-step-btn" id="topicTabBtn3" onclick="switchTopicTab(3)">3. Open P4C Inquiry</button>
+                <button role="tab" aria-selected="false" aria-controls="topicTabContent4" class="viz-step-btn" id="topicTabBtn4" onclick="switchTopicTab(4)">4. Socratic Journal & Vault</button>
             </div>
 
             <!-- Tab 1: Storybook & Flashcards -->
-            <div id="topicTabContent1" class="flow-content-block">
+            <div id="topicTabContent1" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn1" tabindex="0">
                 ${renderStorybookReader(mm.id, mm.storyScenes)}
                 ${renderVocabularyFlashcards(mm.id, mm.vocabCards)}
                 <div style="margin-top: 24px;">
@@ -699,7 +699,7 @@ function renderSingleMentalModelTopic(modelKey) {
             </div>
 
             <!-- Tab 2: Video & Case Studies -->
-            <div id="topicTabContent2" class="flow-content-block" style="display:none;">
+            <div id="topicTabContent2" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn2" tabindex="0" style="display:none;">
                 <h3 style="color: var(--cyan-magic); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 14px;">Real-World Example & In-Depth Insight</h3>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
@@ -728,19 +728,19 @@ function renderSingleMentalModelTopic(modelKey) {
 
                 <!-- Responsive Embedded YouTube Player -->
                 <div style="background: #000; border-radius: 16px; overflow: hidden; margin-bottom: 16px; position: relative; padding-top: 56.25%; border: 2px solid var(--purple-primary); box-shadow: 0 8px 24px rgba(0,0,0,0.6);">
-                    <iframe src="https://www.youtube.com/embed/${mm.videoId}?rel=0" style="position: absolute; top:0; left:0; width:100%; height:100%; border:none;" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube-nocookie.com/embed/${mm.videoId}?rel=0" style="position: absolute; top:0; left:0; width:100%; height:100%; border:none;" allowfullscreen></iframe>
                 </div>
 
                 ${renderVideoQuizComponent(mm.id, mm.videoQuiz)}
 
                 <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: 20px;">
-                    <a href="https://www.youtube.com/watch?v=${mm.videoId}" target="_blank" class="fb-action-btn outline" style="text-decoration:none;">▶ Watch Full Lesson Video on YouTube (New Tab)</a>
+                    <a href="https://www.youtube.com/watch?v=${mm.videoId}" target="_blank" rel="noopener noreferrer" class="fb-action-btn outline" style="text-decoration:none;">▶ Watch Full Lesson Video on YouTube (New Tab)</a>
                     <button class="fb-action-btn gold" onclick="switchTopicTab(3)">Continue to Step 3: Try Open P4C Inquiry ➔</button>
                 </div>
             </div>
 
             <!-- Tab 3: Open P4C Dialectic Inquiry -->
-            <div id="topicTabContent3" class="flow-content-block" style="display:none;">
+            <div id="topicTabContent3" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn3" tabindex="0" style="display:none;">
                 ${typeof renderP4CInquiryEngine === 'function' ? renderP4CInquiryEngine(mm.id, mm.p4cInquiry || [
                     {
                         title: "Open Mental Model Dialectic",
@@ -755,7 +755,7 @@ function renderSingleMentalModelTopic(modelKey) {
             </div>
 
             <!-- Tab 4: Socratic Discussion Journal & Upgrade Vault -->
-            <div id="topicTabContent4" class="flow-content-block" style="display:none;">
+            <div id="topicTabContent4" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn4" tabindex="0" style="display:none;">
                 ${typeof renderSocraticDiscussionJournal === 'function' ? renderSocraticDiscussionJournal(mm.id, mm.name, mm.avatar, mm.discussionPrompts || [
                     { prompt: "When does a mental model fail?", context: "Discuss a scenario where relying too strictly on a single mental model caused a blindspot." }
                 ]) : ''}
@@ -765,15 +765,15 @@ function renderSingleMentalModelTopic(modelKey) {
 
                 <div style="background: rgba(0,0,0,0.4); border: 1.5px solid var(--pink-energy); border-radius: 16px; padding: 20px; margin-bottom: 20px;">
                     <div style="display: flex; gap: 12px; margin-bottom: 12px;">
-                        <select id="feedbackType_${mm.id}" class="sandbox-input" style="max-width: 180px;">
+                        <select id="feedbackType_${mm.id}" class="sandbox-input" aria-label="Type of message" style="max-width: 180px;">
                             <option value="question">❓ Ask a Question</option>
                             <option value="suggestion">💡 Upgrade Idea</option>
                         </select>
-                        <input type="text" id="feedbackInput_${mm.id}" class="sandbox-input" placeholder="Type your question or suggestion here..." style="flex:1;">
+                        <input type="text" id="feedbackInput_${mm.id}" class="sandbox-input" aria-label="Your question or idea" placeholder="Type your question or suggestion here..." style="flex:1;">
                     </div>
-                    <button class="fb-action-btn gold" style="width: 100%;" onclick="submitTopicFeedback('${mm.id}', '${mm.name}', '${mm.avatar}')">Submit to Upgrade Vault</button>
+                    <button class="fb-action-btn gold" style="width: 100%;" onclick="submitTopicFeedback('${mm.id}', '${escapeJsString(mm.name)}', '${mm.avatar}')">Submit to Upgrade Vault</button>
                     
-                    <div id="feedbackResult_${mm.id}" style="display:none; margin-top: 14px; padding: 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--green-hero); color: #FFF;"></div>
+                    <div id="feedbackResult_${mm.id}" role="status" aria-live="polite" style="display:none; margin-top: 14px; padding: 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--green-hero); color: #FFF;"></div>
                 </div>
 
                 <h4 style="color: var(--gold-star); font-size: 1rem; margin-bottom: 10px;">Saved Entries for ${mm.name}:</h4>

@@ -727,46 +727,195 @@ body {
     color: var(--text-muted);
 }
 
-/* Accessibility & Mobile Responsive Adjustments */
+
+/* ============================================================
+   ACCESSIBILITY & RESPONSIVE
+   ============================================================ */
+
+/* --- Focus visibility -------------------------------------- */
 *:focus-visible {
     outline: 3px solid var(--gold-star) !important;
     outline-offset: 3px !important;
+    border-radius: 4px;
 }
+/* Gold ring on a gold control is invisible - use white with a dark halo. */
+.fb-action-btn.gold:focus-visible,
+.badge-item.unlocked:focus-visible,
+.viz-step-btn.active:focus-visible,
+.cat-nav-btn.active:focus-visible {
+    outline-color: #FFFFFF !important;
+    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.85) !important;
+}
+*:focus:not(:focus-visible) { outline: none !important; }
 
-button, a, input, select, textarea {
+/* --- Touch targets ----------------------------------------- */
+button, a[href], input, select, textarea, [role="button"], [tabindex="0"] {
     min-height: 44px;
 }
+.carousel-scroll-btn { width: 48px; height: 48px; }   /* was 42px wide */
+.badge-item, .topic-carousel-btn, .vocab-card { min-height: 44px; }
+.topic-carousel-bar { gap: 14px; }
 
+/* --- Contrast ----------------------------------------------
+   Replacements measured against the actual composited background.
+   --text-muted (#94A3B8) already passes at 5.8:1 and is left alone. */
+:root {
+    --pink-energy-text: #F472B6;   /* 5.88:1 on #1A2436 (was #EC4899, 4.41) */
+    --red-streak-text:  #F87171;   /* 5.60:1 on #311E2E (was #EF4444, 4.12) */
+    --purple-badge-bg:  #6D28D9;   /* white on it = 7.10:1 (was #8B5CF6, 4.23) */
+    --cyan-magic-text:  #22D3EE;   /* 8.61:1 on #1A2436 */
+    --text-dim:         #CBD5E1;
+}
+.kids-hero-badge { color: var(--cyan-magic-text); }
+.nb-badge { background-color: var(--purple-badge-bg); }
+
+/* Locked badges were dimmed to opacity .5 (2.53:1) and signalled by colour
+   alone. Now readable, and the state is also carried by border + icon. */
+.badge-item {
+    opacity: 0.8;
+    color: var(--text-dim);
+    border-style: dashed;
+}
+.badge-item.unlocked { opacity: 1; border-style: solid; }
+.badge-item.unlocked::after { content: " ✓"; font-weight: 900; }
+.badge-item:not(.unlocked)::after { content: " 🔒"; }
+
+/* Disabled buttons measured 1.41:1 - unreadable. */
+button:disabled, .fb-action-btn:disabled, .fb-action-btn[disabled] {
+    opacity: 1 !important;
+    background: #334155 !important;
+    color: #CBD5E1 !important;
+    border-color: #64748B !important;
+    cursor: not-allowed;
+}
+
+/* --- Toast (replaces blocking alert dialogs) ---------------- */
+.kids-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 28px;
+    transform: translateX(-50%);
+    z-index: 10000;
+    max-width: min(90vw, 460px);
+    background: #0F172A;
+    border: 2px solid var(--gold-star);
+    border-radius: 14px;
+    padding: 14px 22px;
+    font-weight: 800;
+    font-size: 1rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* --- Skip link ---------------------------------------------- */
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus {
+    left: 16px; top: 16px; z-index: 10001;
+    background: var(--gold-star); color: #000;
+    padding: 12px 20px; border-radius: 12px; font-weight: 800;
+}
+
+/* --- Reduced motion ----------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .topic-carousel-bar { scroll-behavior: auto !important; }
+    /* Kill the transform bounce itself, not just its duration. */
+    .viz-step-btn:hover, .viz-step-btn.active,
+    .cat-nav-btn:hover, .cat-nav-btn.active,
+    .topic-carousel-btn:hover, .topic-carousel-btn.active,
+    .thinker-card:hover, .badge-item:hover, .carousel-scroll-btn:hover {
+        transform: none !important;
+    }
+    .xp-popup-floating { animation: none !important; opacity: 1; transform: none; }
+}
+
+/* --- Overflow guards (all widths) ---------------------------
+   The header previously overflowed 773px at tablet width while
+   body{overflow-x:hidden} hid the scrollbar, so controls were
+   unreachable rather than merely off-screen. */
+.kids-header-container { flex-wrap: wrap; gap: 12px; row-gap: 12px; }
+.kids-nav-links { flex-wrap: wrap; gap: 12px; }
+
+/* minmax(220px,…) floors the track ABOVE the container width on a phone,
+   which forces overflow. min() lets it shrink. */
+.thinkers-grid   { grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); }
+.fallacy-options { grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); }
+#unifiedFocusStage [style*="grid-template-columns"] {
+    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)) !important;
+}
+
+/* --- Tablet: <= 1024px --------------------------------------- */
+@media (max-width: 1024px) {
+    .container { padding: 0 20px; }
+    .kids-header-container { justify-content: center; }
+    .kids-hero { padding: 28px; }
+    .kids-hero-title { font-size: 2.25rem; }
+    .spotlight-card { padding: 24px; }
+    .viz-step-btn { min-width: 140px; font-size: 1rem; }
+
+    /* Nothing interactive below 14px for this age group. */
+    .badge-item, .nb-badge, .xp-level-badge, .cat-count-badge,
+    .fallacy-opt-btn, .topic-carousel-btn, .viz-step-btn,
+    .fb-action-btn, .sandbox-input, option, textarea, select, input {
+        font-size: 1rem !important;
+        line-height: 1.5;
+    }
+    textarea.sandbox-input { min-height: 120px; }
+}
+
+/* --- Tablet portrait / large phone: <= 768px ------------------
+   NOTE: this block used to target `.kids-header-content`, which does not
+   exist in index.html (the class is `.kids-header-container`), so the whole
+   mobile header rule was dead. */
 @media (max-width: 768px) {
-    .kids-header-content {
+    .kids-header { position: static; }
+    .kids-header-container {
         flex-direction: column;
+        align-items: stretch;
         gap: 12px;
         text-align: center;
     }
-
-    .master-cat-nav {
-        flex-direction: column;
-        width: 100%;
+    .kids-header-container > div:last-child {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
     }
+    .kids-nav-links { justify-content: center; gap: 8px 16px; }
 
-    .cat-nav-btn {
-        width: 100%;
-    }
+    .xp-pill { flex-wrap: wrap; justify-content: center; padding: 8px 14px; }
+    .xp-bar-outer { width: 80px; }
 
-    .topic-carousel-bar {
-        padding: 8px;
-    }
+    .master-cat-nav { flex-direction: column; width: 100%; }
+    .cat-nav-btn { width: 100%; justify-content: center; }
 
-    .viz-controls {
-        flex-direction: column;
-    }
+    .topic-carousel-bar { padding: 8px 4px 16px; }
+    .viz-controls { flex-direction: column; padding: 8px; gap: 8px; }
+    .viz-step-btn { width: 100%; min-width: 0; }
 
-    .viz-step-btn {
-        width: 100%;
-    }
-
-    .spotlight-card {
-        padding: 16px;
-    }
+    .kids-hero { padding: 20px; border-radius: 18px; margin: 20px 0 32px; }
+    .kids-hero-title { font-size: 1.9rem; }
+    .kids-hero-desc { font-size: 1.05rem; }
+    .spotlight-card { padding: 16px; border-radius: 18px; }
+    .fallacy-card { padding: 18px; }
+    .monster-box { flex-direction: column; text-align: center; padding: 16px; }
+    .concept-modal-card { padding: 24px 18px; max-height: 88vh; overflow-y: auto; }
 }
 
+/* --- Phone: <= 480px ----------------------------------------- */
+@media (max-width: 480px) {
+    .container { padding: 0 14px; }
+    .kids-hero-title { font-size: 1.6rem; }
+    .kids-logo-title { font-size: 1.1rem; }
+    .badge-showcase { gap: 10px; padding: 12px 14px; }
+    .monster-icon { font-size: 2.5rem; }
+    .concept-modal-overlay { padding: 10px; align-items: flex-start; padding-top: 24px; }
+}
+
+/* --- Line length --------------------------------------------- */
+p, li, .kids-hero-desc { max-width: 66ch; }

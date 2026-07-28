@@ -2,6 +2,7 @@
 
 let activeCategory = 'thinkers'; // 'thinkers', 'mental_models', 'experiments', 'fallacies'
 let activeTopicId = 'socrates';
+let activeTopicTab = 1;          // remembered across re-renders so a redraw doesn't dump you back to tab 1
 
 // Unified Topic Catalog Registry
 const TOPIC_CATALOG = {
@@ -14,7 +15,7 @@ const TOPIC_CATALOG = {
         { id: 'popper', title: 'Karl Popper', avatar: '🦢', category: 'thinkers', badge: 'first_principles' },
         { id: 'mill', title: 'John Stuart Mill', avatar: '🌿', category: 'thinkers', badge: 'young_thinker' },
         { id: 'confucius', title: 'Confucius', avatar: '☯️', category: 'thinkers', badge: 'young_thinker' },
-        { id: 'laotzu', title: 'Lao Tzu', avatar: '🌊', category: 'thinkers', badge: 'young_thinker' },
+        { id: 'lao_tzu', title: 'Lao Tzu', avatar: '🌊', category: 'thinkers', badge: 'young_thinker' },
         { id: 'kant', title: 'Immanuel Kant', avatar: '⚖️', category: 'thinkers', badge: 'young_thinker' },
         { id: 'lovelace', title: 'Ada Lovelace', avatar: '💻', category: 'thinkers', badge: 'young_thinker' }
     ],
@@ -47,6 +48,7 @@ function selectCategory(categoryKey) {
     if (categoryTopics && categoryTopics.length > 0) {
         activeTopicId = categoryTopics[0].id;
     }
+    activeTopicTab = 1;
     renderTopicNavigation();
     renderActiveTopicStage();
 }
@@ -54,6 +56,7 @@ function selectCategory(categoryKey) {
 function selectTopic(topicId, categoryKey) {
     if (categoryKey) activeCategory = categoryKey;
     activeTopicId = topicId;
+    activeTopicTab = 1;
     renderTopicNavigation();
     renderActiveTopicStage();
     
@@ -126,20 +129,54 @@ function renderActiveTopicStage() {
         if (typeof renderSavedFeedbackList === 'function') {
             renderSavedFeedbackList(activeTopicId);
         }
+
+        window.__lastRenderError = null;
+
+        // A redraw (story slide, scenario pill) must not silently send the child back to tab 1.
+        if (activeTopicTab !== 1) switchTopicTab(activeTopicTab);
     } catch (err) {
+        // Never leave the previous topic on screen pretending to be this one.
         console.error("Error rendering active topic stage:", err);
+        window.__lastRenderError = String(err);
+        stageContainer.innerHTML = `
+            <div class="spotlight-card" style="text-align:center;" role="alert">
+                <div style="font-size:3rem;" aria-hidden="true">🛠️</div>
+                <h2 style="color: var(--gold-star);">This topic is taking a quick break!</h2>
+                <p style="color: var(--text-main);">Pick another topic from the bar above and try again in a moment.</p>
+            </div>`;
     }
 }
 
 function switchTopicTab(tabNum) {
-    document.querySelectorAll('#unifiedFocusStage .flow-content-block').forEach(b => b.style.display = 'none');
-    document.querySelectorAll('#unifiedFocusStage .viz-step-btn').forEach(b => b.classList.remove('active'));
+    activeTopicTab = tabNum;
+
+    document.querySelectorAll('#unifiedFocusStage .flow-content-block').forEach(b => {
+        b.style.display = 'none';
+        b.setAttribute('hidden', '');
+    });
+    document.querySelectorAll('#unifiedFocusStage [role="tab"], #unifiedFocusStage .viz-step-btn').forEach(b => {
+        b.classList.remove('active');
+        if (b.hasAttribute('role')) b.setAttribute('aria-selected', 'false');
+    });
 
     const btn = document.getElementById(`topicTabBtn${tabNum}`);
     const content = document.getElementById(`topicTabContent${tabNum}`);
 
-    if (btn) btn.classList.add('active');
-    if (content) content.style.display = 'block';
+    if (btn) {
+        btn.classList.add('active');
+        if (btn.hasAttribute('role')) btn.setAttribute('aria-selected', 'true');
+    }
+    if (content) {
+        content.style.display = 'block';
+        content.removeAttribute('hidden');
+    }
+}
+
+let appStageInitialized = false;
+function bootAppStage() {
+    if (appStageInitialized) return;   // DOMContentLoaded and load both fire; render once
+    appStageInitialized = true;
+    initAppStage();
 }
 
 function initAppStage() {
@@ -147,5 +184,5 @@ function initAppStage() {
     renderActiveTopicStage();
 }
 
-document.addEventListener('DOMContentLoaded', initAppStage);
-window.addEventListener('load', initAppStage);
+document.addEventListener('DOMContentLoaded', bootAppStage);
+window.addEventListener('load', bootAppStage);

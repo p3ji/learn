@@ -80,6 +80,7 @@ function renderStorybookReader(topicId, scenes) {
 function changeStorySlide(topicId, delta) {
     if (activeStorySlide[topicId] === undefined) activeStorySlide[topicId] = 0;
     activeStorySlide[topicId] += delta;
+    if (typeof markDailyQuest === 'function') markDailyQuest('story');
     if (typeof renderActiveTopicStage === 'function') renderActiveTopicStage();
 }
 
@@ -92,7 +93,7 @@ function renderVocabularyFlashcards(topicId, vocabList) {
             <h4 style="color: var(--cyan-magic); font-size: 1.15rem; margin-bottom: 14px;">🎴 Key Vocabulary Flashcards (Click Card to Flip!):</h4>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
                 ${vocabList.map((v, i) => `
-                    <div class="vocab-card" id="vocabCard_${topicId}_${i}" onclick="flipVocabCard('${topicId}', ${i})" style="background: rgba(6, 182, 212, 0.08); border: 1.5px solid var(--cyan-magic); border-radius: 16px; padding: 20px; cursor: pointer; min-height: 140px; display: flex; flex-direction: column; justify-content: center; text-align: center; transition: all 0.3s ease;">
+                    <div class="vocab-card" id="vocabCard_${topicId}_${i}" role="button" tabindex="0" aria-label="Flashcard: ${escapeHtml(v.term)}. Activate to flip." onclick="flipVocabCard('${topicId}', ${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipVocabCard('${topicId}', ${i});}" style="background: rgba(6, 182, 212, 0.08); border: 1.5px solid var(--cyan-magic); border-radius: 16px; padding: 20px; cursor: pointer; min-height: 140px; display: flex; flex-direction: column; justify-content: center; text-align: center; transition: all 0.3s ease;">
                         <div id="vocabFront_${topicId}_${i}">
                             <div style="font-size: 2rem; margin-bottom: 6px;">${v.icon}</div>
                             <div style="font-weight: 800; color: #FFF; font-size: 1.1rem;">${v.term}</div>
@@ -144,12 +145,15 @@ function renderVideoQuizComponent(topicId, videoQuizData) {
                             <button class="fallacy-opt-btn" onclick="checkVideoQuizAnswer('${topicId}', ${i}, ${optIdx}, ${opt.correct})">${opt.text}</button>
                         `).join('')}
                     </div>
-                    <div id="videoQuizFeedback_${topicId}_${i}" style="display:none; margin-top: 10px; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 0.9rem;"></div>
+                    <div id="videoQuizFeedback_${topicId}_${i}" role="status" aria-live="polite" aria-atomic="true" style="display:none; margin-top: 10px; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 0.9rem;"></div>
                 </div>
             `).join('')}
         </div>
     `;
 }
+
+// Questions already paid out, so re-clicking a correct answer cannot farm XP.
+const awardedVideoQuiz = new Set();
 
 function checkVideoQuizAnswer(topicId, qIdx, optIdx, isCorrect) {
     const feedback = document.getElementById(`videoQuizFeedback_${topicId}_${qIdx}`);
@@ -157,11 +161,16 @@ function checkVideoQuizAnswer(topicId, qIdx, optIdx, isCorrect) {
     feedback.style.display = 'block';
 
     if (isCorrect) {
+        const awardKey = `${topicId}_${qIdx}`;
+        const isFirstCorrect = !awardedVideoQuiz.has(awardKey);
         feedback.style.background = 'rgba(16, 185, 129, 0.2)';
         feedback.style.border = '1px solid var(--green-hero)';
         feedback.style.color = 'var(--green-hero)';
-        feedback.innerHTML = '🎉 CORRECT! Excellent video observation skills! (+50 XP)';
-        if (typeof addXP === 'function') addXP(50);
+        feedback.innerHTML = '🎉 CORRECT! Nice noticing.' + (isFirstCorrect ? ' (+10 XP)' : '');
+        if (isFirstCorrect) {
+            awardedVideoQuiz.add(awardKey);
+            if (typeof addXP === 'function') addXP(10);
+        }
     } else {
         feedback.style.background = 'rgba(239, 68, 68, 0.2)';
         feedback.style.border = '1px solid #EF4444';
@@ -263,7 +272,7 @@ function renderP4CInquiryEngine(topicId, inquiryData) {
                 </div>
             </div>
 
-            <div id="p4cJournalFeedback_${topicId}" style="${savedEntry.text ? 'display:block;' : 'display:none;'} padding: 14px; border-radius: 12px; background: rgba(16, 185, 129, 0.15); border: 1.5px solid var(--green-hero); color: #FFF; font-weight: 700; font-size: 0.92rem; margin-top: 14px;">
+            <div id="p4cJournalFeedback_${topicId}" role="status" aria-live="polite" aria-atomic="true" style="${savedEntry.text ? 'display:block;' : 'display:none;'} padding: 14px; border-radius: 12px; background: rgba(16, 185, 129, 0.15); border: 1.5px solid var(--green-hero); color: #FFF; font-weight: 700; font-size: 0.92rem; margin-top: 14px;">
                 ${savedEntry.text ? `✍️ <strong>Saved in Journal:</strong> "${escapeHtml(savedEntry.text)}"` : ''}
             </div>
         </div>
@@ -279,8 +288,19 @@ function submitP4CReflection(topicId, idx, scenarioTitle) {
     const userText = input.value.trim();
     const userChoice = choiceSelect ? choiceSelect.value : 'Perspective A';
 
-    if (!userText && userChoice !== 'Still Thinking') {
-        alert("Please write down a sentence explaining your reasoning before saving!");
+    // Every save needs a reason, including "Still Thinking" - saying WHY something
+    // is hard to decide is philosophy, and a blank save is what used to mint the
+    // certificate for nothing.
+    if (!userText) {
+        feedback.style.display = 'block';
+        feedback.setAttribute('role', 'alert');
+        feedback.style.background = 'rgba(239, 68, 68, 0.15)';
+        feedback.style.border = '1.5px solid #F87171';
+        feedback.style.color = '#F87171';
+        feedback.textContent = userChoice === 'Still Thinking'
+            ? "That's a great answer! Write one line about what makes it hard to decide."
+            : 'Write one sentence about why you picked that, then save.';
+        input.focus();
         return;
     }
 
@@ -293,17 +313,22 @@ function submitP4CReflection(topicId, idx, scenarioTitle) {
         scenarioIdx: idx,
         scenarioTitle: scenarioTitle || `Scenario ${idx + 1}`,
         choice: userChoice,
-        text: userText || '(Still thinking about this scenario)',
+        text: userText,
         timestamp: new Date().toLocaleDateString()
     });
 
     feedback.style.display = 'block';
-    feedback.innerHTML = `✍️ <strong>Reflection Saved to Journal!</strong> Saved under '${userChoice}'. ${isNewSubmission ? '(+25 Reflective XP)' : '(Updated)'}`;
+    feedback.removeAttribute('role');
+    feedback.style.background = 'rgba(16, 185, 129, 0.15)';
+    feedback.style.border = '1.5px solid var(--green-hero)';
+    feedback.style.color = '#FFF';
+    // Writing is the most valuable thing a child does here, so it pays the most.
+    feedback.innerHTML = `✍️ <strong>Reflection saved to your journal.</strong> Saved under '${escapeHtml(userChoice)}'. ${isNewSubmission ? '(+100 XP)' : '(Updated)'}`;
 
-    // Dedup XP: award +25 XP ONCE per scenario entry
     if (isNewSubmission && typeof addXP === 'function') {
-        addXP(25);
+        addXP(100);
     }
+    if (typeof markDailyQuest === 'function') markDailyQuest('reflect');
 }
 
 // 5. Honest Socratic Discussion Journal Component
@@ -339,7 +364,7 @@ function renderSocraticDiscussionJournal(topicId, thinkerName, avatarEmoji, disc
                     <input type="text" id="socraticQuestionInput_${topicId}" class="sandbox-input" value="${escapeHtml(savedQ)}" placeholder="Type your question here..." style="flex:1;">
                     <button class="fb-action-btn gold" onclick="saveSocraticQuestion('${topicId}')">Save Question</button>
                 </div>
-                <div id="socraticSaveFeedback_${topicId}" style="${savedQ ? 'display:block;' : 'display:none;'} margin-top: 10px; color: var(--green-hero); font-weight: 700; font-size: 0.88rem;">
+                <div id="socraticSaveFeedback_${topicId}" role="status" aria-live="polite" style="${savedQ ? 'display:block;' : 'display:none;'} margin-top: 10px; color: var(--green-hero); font-weight: 700; font-size: 0.88rem;">
                     ${savedQ ? `✓ Saved: "${escapeHtml(savedQ)}"` : ''}
                 </div>
             </div>
@@ -354,9 +379,15 @@ function saveSocraticQuestion(topicId) {
 
     const text = input.value.trim();
     if (!text) {
-        alert("Please write down your question before saving!");
+        feedback.style.display = 'block';
+        feedback.setAttribute('role', 'alert');
+        feedback.style.color = '#F87171';
+        feedback.textContent = 'Type your question first, then save it.';
+        input.focus();
         return;
     }
+    feedback.removeAttribute('role');
+    feedback.style.color = 'var(--green-hero)';
 
     const savedQuestionKey = `soc_q_${topicId}`;
     const journal = getP4CJournal();
@@ -365,11 +396,23 @@ function saveSocraticQuestion(topicId) {
     saveP4CJournalEntry(savedQuestionKey, text);
 
     feedback.style.display = 'block';
-    feedback.innerText = `✓ Question saved to your journal! Take this question to a parent, teacher, or friend to discuss together. ${isNew ? '(+25 XP)' : ''}`;
+    feedback.innerText = `✓ Question saved to your journal! Take this question to a parent, teacher, or friend to discuss together. ${isNew ? '(+50 XP)' : ''}`;
 
     if (isNew && typeof addXP === 'function') {
-        addXP(25);
+        addXP(50);
     }
+    if (typeof markDailyQuest === 'function') markDailyQuest('question');
+}
+
+// Counts only real written reflections - not saved questions, not blank saves.
+// This is what the certificate is allowed to gate on.
+function countWrittenReflections() {
+    const journal = getP4CJournal();
+    return Object.keys(journal).filter(k => {
+        const e = journal[k];
+        return k.startsWith('ref_') && e && typeof e === 'object' &&
+               typeof e.text === 'string' && e.text.trim().length >= 15;
+    }).length;
 }
 
 // Export Full Printable Parent / Teacher Reflection Journal
@@ -456,59 +499,79 @@ function openGoldenCertificateModal() {
         document.body.appendChild(modal);
     }
 
-    const journal = JSON.parse(localStorage.getItem('kids_p4c_journal') || '{}');
-    const journalCount = Object.keys(journal).length;
+    const journal = getP4CJournal();
     const activeUser = (typeof currentProfile !== 'undefined' && currentProfile.username) ? currentProfile.username : 'Cadet Thinker';
-    const xp = (typeof currentProfile !== 'undefined') ? currentProfile.xp : 150;
-    const level = (typeof currentProfile !== 'undefined') ? currentProfile.level : 1;
 
-    if (journalCount < 3) {
+    // Only real written reflections count. A dropdown selection is not a reflection.
+    const written = Object.keys(journal)
+        .filter(k => k.startsWith('ref_'))
+        .map(k => journal[k])
+        .filter(e => e && typeof e === 'object' && typeof e.text === 'string' && e.text.trim().length >= 15);
+    const topics = new Set(written.map(e => e.topicId));
+    const questions = Object.keys(journal).filter(k => k.startsWith('soc_q_')).map(k => journal[k]);
+
+    if (written.length === 0) {
         modal.innerHTML = `
-            <div class="concept-modal-card" style="max-width: 550px; text-align: center;">
+            <div class="concept-modal-card" style="max-width: 560px; text-align: center;">
                 <button class="concept-modal-close" onclick="document.getElementById('goldenCertificateModal').style.display='none'">&times;</button>
-                <div style="font-size: 3.5rem; margin-bottom: 8px;">🔒</div>
-                <h2 style="font-family: var(--font-heading); color: var(--gold-star); font-size: 1.6rem; font-weight: 900; margin-bottom: 8px;">Certificate Locked</h2>
-                <p style="color: var(--text-main); font-size: 1rem; line-height: 1.5; margin-bottom: 20px;">
-                    Complete and save at least <strong>3 Topic Journal Reflections</strong> to earn your Official Certificate of Philosophical Mastery!
+                <div style="font-size: 3.5rem; margin-bottom: 8px;" aria-hidden="true">📓</div>
+                <h2 style="font-family: var(--font-heading); color: var(--gold-star); font-size: 1.6rem; font-weight: 900; margin-bottom: 8px;">Your Reflection Portfolio</h2>
+                <p style="color: var(--text-main); font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
+                    Nothing here yet. Open any topic, go to <strong>Open Inquiry</strong>, pick the idea you find
+                    most convincing and write a line about why. Your writing gets collected here so you can
+                    read it back and talk it over with someone.
                 </p>
-                <div style="background: rgba(255,255,255,0.04); border: 1.5px dashed var(--cyan-magic); padding: 16px; border-radius: 14px; margin-bottom: 20px;">
-                    <span style="color: var(--cyan-magic); font-weight: 800; font-size: 1.1rem;">Journal Reflections Saved: ${journalCount} / 3</span>
-                </div>
-                <button class="fb-action-btn gold" onclick="document.getElementById('goldenCertificateModal').style.display='none'">Continue Exploring Topics ➔</button>
+                <button class="fb-action-btn gold" onclick="document.getElementById('goldenCertificateModal').style.display='none'">Go and think about something ➔</button>
             </div>
         `;
     } else {
         modal.innerHTML = `
-            <div class="concept-modal-card" style="max-width: 650px; text-align: center; background: radial-gradient(circle at center, #1E293B, #0F172A) !important; border: 3px solid var(--gold-star) !important; box-shadow: 0 0 40px rgba(245, 158, 11, 0.4) !important;">
+            <div class="concept-modal-card" style="max-width: 700px; max-height: 88vh; overflow-y: auto; background: radial-gradient(circle at center, #1E293B, #0F172A) !important; border: 3px solid var(--gold-star) !important;">
                 <button class="concept-modal-close" onclick="document.getElementById('goldenCertificateModal').style.display='none'">&times;</button>
 
-                <div style="font-size: 3.5rem; margin-bottom: 8px;">🎓</div>
-                <h2 style="font-family: var(--font-heading); color: var(--gold-star); font-size: 1.8rem; font-weight: 900; margin-bottom: 4px; text-transform: uppercase;">Official Certificate of Philosophical Mastery</h2>
-                <p style="color: var(--cyan-magic); font-size: 0.9rem; font-weight: 700; margin-bottom: 20px;">Issued by Philosopher's Quest & Mental Models Academy</p>
-
-                <div style="background: rgba(255,255,255,0.03); border: 1.5px dashed var(--gold-star); padding: 24px; border-radius: 16px; margin-bottom: 20px;">
-                    <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 8px;">This certifies that</p>
-                    <h3 style="font-family: var(--font-heading); color: #FFF; font-size: 2.2rem; font-weight: 900; margin-bottom: 12px;">Cadet ${escapeHtml(activeUser)}</h3>
-                    <p style="color: var(--text-main); font-size: 1.05rem; line-height: 1.5; margin: 0;">
-                        has demonstrated outstanding critical thinking, ethical reasoning, and mastery of <strong>First Principles, Socratic Questioning, and Open Dialectics</strong>.
-                    </p>
-                    
-                    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap;">
-                        <div style="background: rgba(245, 158, 11, 0.15); border: 1px solid var(--gold-star); padding: 8px 18px; border-radius: 12px; color: var(--gold-star); font-weight: 800;">
-                            Level ${level} Thinker
-                        </div>
-                        <div style="background: rgba(6, 182, 212, 0.15); border: 1px solid var(--cyan-magic); padding: 8px 18px; border-radius: 12px; color: var(--cyan-magic); font-weight: 800;">
-                            ${xp} Total Reflective XP
-                        </div>
-                        <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid var(--green-hero); padding: 8px 18px; border-radius: 12px; color: var(--green-hero); font-weight: 800;">
-                            ${journalCount} Journal Reflections Completed
-                        </div>
-                    </div>
+                <div style="text-align:center;">
+                    <div style="font-size: 3rem; margin-bottom: 8px;" aria-hidden="true">📓</div>
+                    <h2 style="font-family: var(--font-heading); color: var(--gold-star); font-size: 1.7rem; font-weight: 900; margin-bottom: 4px;">Reflection Portfolio</h2>
+                    <p style="color: var(--cyan-magic); font-size: 0.9rem; font-weight: 700; margin-bottom: 20px;">A record of work — not a grade.</p>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 0.8rem; color: var(--text-muted);">Date: ${new Date().toLocaleDateString()}</span>
-                    <button class="fb-action-btn gold" onclick="window.print()">🖨️ Print Certificate</button>
+                <div style="background: rgba(255,255,255,0.03); border: 1.5px dashed var(--gold-star); padding: 22px; border-radius: 16px; margin-bottom: 20px;">
+                    <p style="color: var(--text-main); font-size: 1.05rem; line-height: 1.6; margin: 0 0 6px;">
+                        <strong style="color:#FFF;">${escapeHtml(activeUser)}</strong> has written
+                        <strong style="color: var(--gold-star);">${written.length}</strong>
+                        reflection${written.length === 1 ? '' : 's'} across
+                        <strong style="color: var(--gold-star);">${topics.size}</strong>
+                        topic${topics.size === 1 ? '' : 's'}${questions.length ? `, and saved <strong style="color: var(--gold-star);">${questions.length}</strong> question${questions.length === 1 ? '' : 's'} to discuss` : ''}.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">
+                        Their own words are below. Reading these together is worth more than any score.
+                    </p>
+                </div>
+
+                <div style="text-align:left; margin-bottom: 20px;">
+                    ${written.map(e => `
+                        <div style="background: rgba(0,0,0,0.35); border-left: 4px solid var(--cyan-magic); border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;">
+                            <div style="color: var(--cyan-magic); font-weight: 800; font-size: 0.85rem; margin-bottom: 2px;">${escapeHtml(e.scenarioTitle)}</div>
+                            <div style="color: var(--text-muted); font-size: 0.78rem; margin-bottom: 8px;">Leaned towards: ${escapeHtml(e.choice)} &middot; ${escapeHtml(e.timestamp)}</div>
+                            <div style="color: #FFF; font-size: 0.98rem; line-height: 1.6;">&ldquo;${escapeHtml(e.text)}&rdquo;</div>
+                        </div>
+                    `).join('')}
+                    ${questions.length ? `
+                        <h3 style="color: var(--gold-star); font-size: 1rem; margin: 18px 0 8px;">Questions they want to talk about</h3>
+                        ${questions.map(q => `
+                            <div style="background: rgba(6,182,212,0.08); border-left: 4px solid var(--gold-star); border-radius: 10px; padding: 12px 16px; margin-bottom: 8px; color:#FFF; font-size: 0.95rem;">
+                                &ldquo;${escapeHtml(q)}&rdquo;
+                            </div>
+                        `).join('')}
+                    ` : ''}
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">${new Date().toLocaleDateString()}</span>
+                    <div style="display:flex; gap:10px;">
+                        <button class="fb-action-btn outline" onclick="exportStudentReflectionJournal()">💾 Save for a grown-up</button>
+                        <button class="fb-action-btn gold" onclick="window.print()">🖨️ Print</button>
+                    </div>
                 </div>
             </div>
         `;

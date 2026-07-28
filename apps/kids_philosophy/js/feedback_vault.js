@@ -22,7 +22,7 @@ function submitTopicFeedback(topicId, topicName, avatarEmoji) {
     const resultBox = document.getElementById(`feedbackResult_${topicId}`);
 
     if (!inputEl || !inputEl.value.trim()) {
-        alert('Please enter a question or suggestion before submitting!');
+        showToast('Please type a question or suggestion first.', 'red');
         return;
     }
 
@@ -46,10 +46,13 @@ function submitTopicFeedback(topicId, topicName, avatarEmoji) {
     // Simulated Smart Response from Thinker Avatar
     let simulatedReply = '';
     if (type === 'question') {
-        simulatedReply = `${avatarEmoji} <strong>${topicName} says:</strong> "Fantastic inquiry, ${escapeHtml(activeUser)}! Questioning is the foundation of wisdom. Your question has been saved into our upgrade vault!"`;
+        simulatedReply = `📓 <strong>Question saved to your notebook.</strong> Nobody has read it yet - take it to a parent, teacher, or friend and talk it through.`;
     } else {
-        simulatedReply = `🚀 <strong>App Developer & ${topicName} say:</strong> "Awesome idea! Suggestions like '${escapeHtml(content.substring(0, 40))}...' help us build future upgrades. Saved to vault (+25 XP)!"`;
-        if (typeof addXP === 'function') addXP(25);
+        const priorSuggestion = getSavedFeedback().some(
+            f => f.topicId === topicId && f.type === 'suggestion' && f.id !== feedbackEntry.id);
+        const earnsXP = content.length >= 15 && !priorSuggestion;
+        simulatedReply = `💡 <strong>Idea saved to your notebook.</strong> Nobody has read it yet - show it to a grown-up if you want it built!${earnsXP ? ' (+10 XP)' : ''}`;
+        if (earnsXP && typeof addXP === 'function') addXP(10);
     }
 
     if (resultBox) {
@@ -88,7 +91,7 @@ function renderSavedFeedbackList(topicId) {
 function exportFeedbackJSON() {
     const allFeedback = getSavedFeedback();
     if (allFeedback.length === 0) {
-        alert("The feedback vault is currently empty! Submit a question or suggestion first.");
+        showToast('Your notebook is empty - save a question first.', 'red');
         return;
     }
 
