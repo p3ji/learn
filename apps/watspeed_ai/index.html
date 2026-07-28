@@ -414,42 +414,42 @@
                         <div class="nb-badge">Notebook 01 (Stage 1)</div>
                         <h3 class="nb-title">Python Data Essentials for SAS & Stata Users</h3>
                         <p class="nb-desc">Pandas recoding, handling missing values (-9 ➔ None), survey weighting, and Pydantic schema validation.</p>
-                        <a href="../../notebooks/01_python_for_sas_stata_users.ipynb" class="nb-link">View Notebook 01 ➔</a>
+                        <button onclick="openNotebookViewer(1)" class="fb-action-btn gold" style="width:100%; text-align:center;">Interactive Viewer / Launch ➔</button>
                     </div>
 
                     <div class="nb-card">
                         <div class="nb-badge">Notebook 02 (Stage 2)</div>
                         <h3 class="nb-title">Supervised ML & PROC LOGISTIC Bridge</h3>
                         <p class="nb-desc">Scikit-learn LogisticRegression, Train/Test splitting, confusion matrices, and ROC-AUC curves on survey datasets.</p>
-                        <a href="../../notebooks/02_supervised_ml_proc_logistic.ipynb" class="nb-link">View Notebook 02 ➔</a>
+                        <button onclick="openNotebookViewer(2)" class="fb-action-btn gold" style="width:100%; text-align:center;">Interactive Viewer / Launch ➔</button>
                     </div>
 
                     <div class="nb-card">
                         <div class="nb-badge">Notebook 03 (Stage 2)</div>
                         <h3 class="nb-title">Google TabFM Zero-Shot Survey Classifier</h3>
                         <p class="nb-desc">In-context zero-shot classification on raw categorical survey columns without manual one-hot recoding.</p>
-                        <a href="../../notebooks/03_google_tabfm_zero_shot.ipynb" class="nb-link">View Notebook 03 ➔</a>
+                        <button onclick="openNotebookViewer(3)" class="fb-action-btn gold" style="width:100%; text-align:center;">Interactive Viewer / Launch ➔</button>
                     </div>
 
                     <div class="nb-card">
                         <div class="nb-badge">Notebook 04 (Stage 3)</div>
                         <h3 class="nb-title">LangChain & Tool Calling for Survey Analysis</h3>
                         <p class="nb-desc">Wrapping Scikit-learn models and Pandas crosstabs as AI tools (@tool) callable by LLMs.</p>
-                        <a href="../../notebooks/04_langchain_tool_calling_survey.ipynb" class="nb-link">View Notebook 04 ➔</a>
+                        <button onclick="openNotebookViewer(4)" class="fb-action-btn gold" style="width:100%; text-align:center;">Interactive Viewer / Launch ➔</button>
                     </div>
 
                     <div class="nb-card">
                         <div class="nb-badge">Notebook 05 (Stage 3)</div>
                         <h3 class="nb-title">LangGraph State Machines for Survey Pipelines</h3>
                         <p class="nb-desc">Building cyclic state graphs with memory persistence, error correction loops, and human-in-the-loop approvals.</p>
-                        <a href="../../notebooks/05_langgraph_survey_state_machine.ipynb" class="nb-link">View Notebook 05 ➔</a>
+                        <button onclick="openNotebookViewer(5)" class="fb-action-btn gold" style="width:100%; text-align:center;">Interactive Viewer / Launch ➔</button>
                     </div>
 
                     <div class="nb-card">
                         <div class="nb-badge">Notebook 06 (Capstone)</div>
                         <h3 class="nb-title">WatSPEED Capstone: Autonomous Survey Assistant</h3>
                         <p class="nb-desc">End-to-end multi-agent system analyzing the Kaggle AI Trust Insights dataset and drafting sociological summaries.</p>
-                        <a href="../../notebooks/06_watspeed_capstone_survey_assistant.ipynb" class="nb-link">View Notebook 06 ➔</a>
+                        <button onclick="openNotebookViewer(6)" class="fb-action-btn gold" style="width:100%; text-align:center;">Interactive Viewer / Launch ➔</button>
                     </div>
                 </div>
             </section>
@@ -526,6 +526,7 @@
     <script src="../../js/ds_activities.js"></script>
     <script src="../../js/visualizers.js"></script>
     <script src="../../js/sandbox.js"></script>
+    <script src="../../js/notebook_viewer.js"></script>
 
     <!-- Stage Navigation Controller Script -->
     <script>
