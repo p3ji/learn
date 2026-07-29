@@ -1,56 +1,56 @@
 // Interactive In-Browser Python Execution Lab
-// Engine: Skulpt (real Python interpreter in JS) with Pyodide WASM upgrade path
+// Engine: Pyodide (real CPython 3.11 compiled to WebAssembly) with pandas + sklearn
 
-// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Lab Scripts Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+// ─── Lab Scripts ────────────────────────────────────────────────────────────
 const defaultLabNotebooks = {
     1: {
         title: 'Lab 01: Python Data Essentials',
         subtitle: 'Modify Pandas recoding logic and Pydantic validation rules.',
-        initialCode: `# Lab 01 — Survey Data Recoding\ndata = [\n    {"id": "RESP_01", "age_group": "30-44", "ai_risk": 4, "weight": 1.25},\n    {"id": "RESP_02", "age_group": "18-29", "ai_risk": -9, "weight": 0.95},\n]\nmissing_code = -9\nprint("Recoding missing values...")\nfor row in data:\n    if row["ai_risk"] == missing_code: row["ai_risk"] = None\n    print(row)\n`
+        initialCode: `# Lab 01 - Survey Data Recoding (REAL pandas on the real 1,200-row dataset)\nimport pandas as pd, numpy as np\nfrom pyodide.http import open_url\n\ndf = pd.read_csv(open_url("../../data/ai_trust_insights.csv"))\nprint("Loaded", len(df), "respondents")\n\n# SAS: if Perceived_AI_Risk = -9 then Perceived_AI_Risk = .;\n# The whole point: see what the missing code does to your estimate.\nraw_mean = df["Perceived_AI_Risk"].mean()\ndf["risk_clean"] = df["Perceived_AI_Risk"].replace(-9, np.nan)\nclean_mean = df["risk_clean"].mean()\n\nprint(f"\\nMean WITH -9 still in:  {raw_mean:.3f}   <-- wrong, -9 drags it down")\nprint(f"Mean with -9 -> NaN:    {clean_mean:.3f}   <-- correct")\nprint(f"Missing values found:   {df['risk_clean'].isna().sum()} of {len(df)}")\n\n# SAS: weight Survey_Weight;  -- population-weighted mean, NaN excluded\nvalid = df.dropna(subset=["risk_clean"])\nw_mean = np.average(valid["risk_clean"], weights=valid["Survey_Weight"])\nprint(f"\\nUnweighted mean: {clean_mean:.3f}")\nprint(f"Weighted mean:   {w_mean:.3f}")\n\n# TRY IT: change the threshold and watch the flag count move.\nTHRESHOLD = 4\ndf["high_risk"] = (df["risk_clean"] >= THRESHOLD).astype("Int64")\nprint(f"\\nHigh risk (>= {THRESHOLD}): {df['high_risk'].sum()} respondents")\n`
     },
     2: {
         title: 'Lab 02: Tools & Function Calling',
         subtitle: 'Wrap a SAS-like PROC MEANS as an AI Tool.',
-        initialCode: `# Lab 02 — Tools & Function Calling\ndef run_crosstab(row_var, col_var):\n    '''Calculates cross-tabulation between two survey variables.'''\n    table = {"18-29": {"High Trust": 67.0}, "30-44": {"High Trust": 50.0}}\n    print(f"Crosstab: {row_var} vs {col_var}")\n    for group, counts in table.items():\n        print(f"{group}: {counts['High Trust']}% High Trust")\n\nprint("LLM selects tool: run_crosstab")\nrun_crosstab("Age_Group", "High_AI_Trust")\n`
+        initialCode: `# Lab 02 - Tools & Function Calling (the tool returns a REAL computed value)\nimport pandas as pd, numpy as np\nfrom pyodide.http import open_url\nfrom scipy.stats import chi2_contingency\n\ndf = pd.read_csv(open_url("../../data/ai_trust_insights.csv"))\n\ndef run_crosstab(row_var, col_var="High_AI_Trust"):\n    """Cross-tabulate two survey variables and test independence."""\n    table = pd.crosstab(df[row_var], df[col_var])\n    chi2, p, dof, _ = chi2_contingency(table)\n    pct = (table[1] / table.sum(axis=1) * 100).round(1)\n    return {"pct_high_trust": pct.to_dict(), "chi2": round(chi2, 2), "p": p, "df": dof}\n\n# An LLM would pick the tool and its arguments. The VALUE it gets back is real.\nprint("LLM selects tool: run_crosstab(row_var='Age_Group')")\nr = run_crosstab("Age_Group")\nprint("  ", r["pct_high_trust"])\nprint(f"   chi2={r['chi2']} df={r['df']} p={r['p']:.4f}")\nprint("   -> age is NOISE by construction; a non-significant p here is CORRECT\\n")\n\nprint("LLM selects tool: run_crosstab(row_var='Education_Level')")\nr = run_crosstab("Education_Level")\nprint("  ", r["pct_high_trust"])\nprint(f"   chi2={r['chi2']} df={r['df']} p={r['p']:.6f}")\nprint("   -> education DOES drive trust, so this one should be significant")\n`
     },
     3: {
         title: 'Lab 03: The Agent Loop (ReAct)',
-        subtitle: 'Watch the agent autonomously recover from a missing variable error.',
+        subtitle: 'A scripted ReAct trace - no model is called. Shows how an agent recovers from a bad column name.',
         initialCode: `# Lab 03 — ReAct Agent Loop\nprint("LLM ACTION 1: Calls 'calculate_group_means(category_col=Educ)'")\nprint("TOOL RESPONSE: Error - Column 'Educ' not found in dataset.")\nprint("---")\nprint("LLM THOUGHT 2: I should check the dataset schema to find the real name.")\nprint("LLM ACTION 2: Calls 'get_dataset_schema()'")\nprint("TOOL RESPONSE: Columns are ['Education_Level', 'Perceived_AI_Risk']")\nprint("---")\nprint("LLM ACTION 3: Calls 'calculate_group_means(category_col=Education_Level)'")\nprint("TOOL RESPONSE: [Success] Means calculated.")\n`
     },
     4: {
         title: 'Lab 04: Context Engineering',
-        subtitle: 'Test in-context learning.',
-        initialCode: `# Lab 04 — Context Engineering\nprompt = "Analyze the survey demographics."\ncontext = "The dataset contains 2041 respondents. Age groups skew heavily towards 18-29."\nprint(f"Final Prompt to LLM:\\n{context}\\n\\n{prompt}")\n`
+        subtitle: 'A scripted illustration of prompt assembly - no model is called.',
+        initialCode: `# Lab 04 — Context Engineering\nprompt = "Analyze the survey demographics."\ncontext = "The dataset contains 1200 respondents. Age groups skew heavily towards 18-29."\nprint(f"Final Prompt to LLM:\\n{context}\\n\\n{prompt}")\n`
     },
     5: {
         title: 'Lab 05: Agent Memory & RAG',
-        subtitle: 'Simulate a vector database lookup.',
+        subtitle: 'A scripted RAG walkthrough - the similarity scores are illustrative, not computed.',
         initialCode: `# Lab 05 — RAG\nquery = "What do respondents say about job loss?"\nprint(f"Searching vector database for: '{query}'")\nprint("Found 2 verbatim comments:")\nprint("1. 'I worry AI will replace my admin job.' (Cosine similarity: 0.92)")\nprint("2. 'Automation is risky for manual labor.' (Cosine similarity: 0.88)")\n`
     },
     6: {
         title: 'Lab 06: LangGraph State Machines',
         subtitle: 'Trace cyclic state transitions.',
-        initialCode: `# Lab 06 — LangGraph Router\nstate = {"accuracy": 0.84, "target_accuracy": 0.85, "retry_count": 0}\nprint("Node: fit_model -> Accuracy = 0.84")\nwhile state["accuracy"] < state["target_accuracy"]:\n    state["retry_count"] += 1\n    state["accuracy"] += 0.02\n    print(f"Router -> re_engineer_features (retry #{state['retry_count']}) -> Accuracy improved to {state['accuracy']}")\nprint("Router -> draft_report")\n`
+        initialCode: `# Lab 06 - LangGraph Router (the retry loop refits a REAL model each pass)\nimport pandas as pd, numpy as np\nfrom pyodide.http import open_url\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import accuracy_score\n\ndf = pd.read_csv(open_url("../../data/ai_trust_insights.csv"))\ndf["risk"] = df["Perceived_AI_Risk"].replace(-9, np.nan).fillna(3)\ndf["benefit"] = df["Perceived_AI_Benefit"].replace(-9, np.nan).fillna(3)\nedu = {"High School": 0, "Bachelor's": 1, "Master's": 2, "PhD": 3}\ntech = {"Novice": 0, "Intermediate": 1, "Advanced": 2}\ndf["edu"] = df["Education_Level"].map(edu)\ndf["tech"] = df["Tech_Familiarity"].map(tech)\n\n# Each retry adds a feature -- the router keeps looping until accuracy clears the bar.\nFEATURE_LADDER = [["risk"], ["risk", "benefit"], ["risk", "benefit", "edu"],\n                  ["risk", "benefit", "edu", "tech"]]\nTARGET_ACC = 0.72\n\ndef fit_model_node(state):\n    feats = FEATURE_LADDER[min(state["retry"], len(FEATURE_LADDER) - 1)]\n    X_tr, X_te, y_tr, y_te = train_test_split(\n        df[feats], df["High_AI_Trust"], test_size=0.2, random_state=42)\n    clf = LogisticRegression(max_iter=1000).fit(X_tr, y_tr)\n    state["accuracy"] = accuracy_score(y_te, clf.predict(X_te))\n    state["features"] = feats\n    print(f"  fit_model -> {feats} = {state['accuracy']:.3f}")\n    return state\n\ndef router(state):\n    return "report" if state["accuracy"] >= TARGET_ACC else "re_engineer"\n\nstate = {"retry": 0, "accuracy": 0.0}\nprint(f"Target accuracy: {TARGET_ACC}\\n")\nwhile True:\n    state = fit_model_node(state)\n    if router(state) == "report" or state["retry"] >= len(FEATURE_LADDER) - 1:\n        break\n    state["retry"] += 1\n    print(f"  router -> re_engineer (retry #{state['retry']})")\n\nprint(f"\\nrouter -> draft_report | final accuracy {state['accuracy']:.3f} "\n      f"using {state['features']}")\n`
     },
     7: {
         title: 'Lab 07: Model Context Protocol (MCP)',
         subtitle: 'Build a FastMCP server and generate a JSON Schema \'Menu\'.',
-        initialCode: `# Lab 07 — Model Context Protocol (FastMCP)\n# Notice how the docstring becomes the JSON schema API!\ndef codebook_lookup(variable: str) -> str:\n    '''\n    Look up a variable definition in the survey codebook.\n    \n    Args:\n        variable: The name of the variable to look up.\n    '''\n    return f"Definition for {variable}"\n\nprint("=== FAST MCP SERVER INITIALIZED ===")\nprint("Generated JSON Schema Menu for LLM:")\nprint('{')\nprint('  "name": "codebook_lookup",')\nprint('  "description": "Look up a variable definition in the survey codebook.",')\nprint('  "parameters": {')\nprint('    "variable": {"type": "string", "description": "The name of the variable to look up."}')\nprint('  }')\nprint('}')\n`
+        initialCode: `# Lab 07 - MCP: BUILD the JSON schema by introspection (do not print a fake one)\nimport inspect, json\n\ndef codebook_lookup(variable: str, include_values: bool = False) -> str:\n    """Look up a variable definition in the survey codebook.\n\n    Args:\n        variable: The name of the variable to look up.\n        include_values: Whether to include the allowed value list.\n    """\n    return f"Definition for {variable}"\n\nJSON_TYPES = {str: "string", int: "integer", float: "number", bool: "boolean"}\n\ndef build_schema(fn):\n    """Turn a Python function into the tool schema an LLM API expects."""\n    sig = inspect.signature(fn)\n    doc = inspect.getdoc(fn) or ""\n    summary = doc.split("\\n")[0]\n\n    props, required = {}, []\n    for name, param in sig.parameters.items():\n        props[name] = {"type": JSON_TYPES.get(param.annotation, "string")}\n        if param.default is inspect.Parameter.empty:\n            required.append(name)\n\n    # A bare property map is NOT valid - it must be wrapped in an object schema.\n    return {\n        "name": fn.__name__,\n        "description": summary,\n        "input_schema": {\n            "type": "object",\n            "properties": props,\n            "required": required,\n        },\n    }\n\nprint("=== SCHEMA GENERATED FROM THE FUNCTION ITSELF ===")\nprint(json.dumps(build_schema(codebook_lookup), indent=2))\nprint()\nprint("Change the signature above and re-run - the schema follows automatically.")\n`
     },
     8: {
         title: 'Lab 08: Multi-Agent AutoGen',
-        subtitle: 'Simulate a Senior Analyst delegating to a Junior Analyst.',
+        subtitle: 'A scripted multi-agent message exchange - no models are called.',
         initialCode: `# Lab 08 — Multi-Agent Systems\nprint("=== AUTO-GEN MESSAGE EXCHANGE ===")\nprint("Planner (Senior Analyst): @Analyst, please run the cross-tabulation on Age vs AI Trust.")\nprint("---")\nprint("Analyst (Junior): Running tool 'crosstab'...")\nprint("Analyst (Junior): @Planner, the results are ready. 18-29 is 67% High Trust.")\nprint("---")\nprint("Planner (Senior Analyst): @Writer, please draft the executive summary based on the Analyst's results.")\nprint("---")\nprint("Writer: Drafting report...")\nprint("Final Output: 'The survey reveals a stark generational divide...'")\n`
     },
     9: {
         title: 'Lab 09: Capstone Survey Assistant',
         subtitle: 'End-to-end multi-agent pipeline.',
-        initialCode: `# Lab 09 — Capstone\nfindings = [\n    {"age": "18-29", "trust_pct": 67.0, "p_value": 0.0004},\n    {"age": "60+",   "trust_pct": 12.0, "p_value": 0.00003},\n]\nprint("=== WATSPEED CAPSTONE EXECUTIVE REPORT ===")\nprint("KEY SOCIOLOGICAL FINDINGS:")\nfor f in findings:\n    sig = "***" if f["p_value"] < 0.05 else "(ns)"\n    print(f"  {f['age']}: {f['trust_pct']}% High Trust (p={f['p_value']} {sig})")\n`
+        initialCode: `# Lab 09 - Capstone: report generated FROM COMPUTED NUMBERS, not typed ones\nimport pandas as pd, numpy as np\nfrom pyodide.http import open_url\nfrom scipy.stats import chi2_contingency\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import roc_auc_score\n\ndf = pd.read_csv(open_url("../../data/ai_trust_insights.csv"))\n\n# 1. Clean\nfor c in ["Perceived_AI_Risk", "Perceived_AI_Benefit"]:\n    df[c] = df[c].replace(-9, np.nan)\nn_missing = df[["Perceived_AI_Risk", "Perceived_AI_Benefit"]].isna().sum().sum()\ndf = df.fillna({"Perceived_AI_Risk": 3, "Perceived_AI_Benefit": 3})\n\n# 2. Test each predictor honestly\nfindings = []\nfor var in ["Age_Group", "Gender", "Education_Level", "Tech_Familiarity"]:\n    t = pd.crosstab(df[var], df["High_AI_Trust"])\n    chi2, p, dof, _ = chi2_contingency(t)\n    findings.append({"var": var, "chi2": chi2, "p": p})\n\n# 3. Model\nedu = {"High School": 0, "Bachelor's": 1, "Master's": 2, "PhD": 3}\ntech = {"Novice": 0, "Intermediate": 1, "Advanced": 2}\nX = pd.DataFrame({"risk": df["Perceived_AI_Risk"], "benefit": df["Perceived_AI_Benefit"],\n                  "edu": df["Education_Level"].map(edu),\n                  "tech": df["Tech_Familiarity"].map(tech)})\nX_tr, X_te, y_tr, y_te = train_test_split(X, df["High_AI_Trust"],\n                                          test_size=0.2, random_state=42)\nclf = LogisticRegression(max_iter=1000).fit(X_tr, y_tr)\nauc = roc_auc_score(y_te, clf.predict_proba(X_te)[:, 1])\n\n# 4. Report\nprint("=== WATSPEED CAPSTONE EXECUTIVE REPORT ===")\nprint(f"Respondents: {len(df)} | missing values imputed: {n_missing}\\n")\nprint("PREDICTORS TESTED:")\nfor f in sorted(findings, key=lambda d: d["p"]):\n    verdict = "SIGNIFICANT" if f["p"] < 0.05 else "not significant"\n    print(f"  {f['var']:<20} chi2={f['chi2']:7.2f}  p={f['p']:.4f}  {verdict}")\nprint(f"\\nMODEL: logistic regression, held-out ROC-AUC = {auc:.3f}")\nprint("\\nNOTE: age and gender are noise by construction in this synthetic data.")\nprint("Finding them non-significant is the correct result, not a failed analysis.")\n`
     }
 };
 
-// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Python Engine Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+// ─── Python Engine ──────────────────────────────────────────────────────────
 
 // Pyodide is the ONLY engine. Skulpt was removed: it has no pandas/sklearn, which
 // made Stage 1 and Stage 2 labs ("run live ML models in your browser") impossible.
@@ -94,8 +94,9 @@ async function ensurePyodide() {
 
         try {
             window.pyodide = await loadPyodide();
-            updateStatusBadge('⏳ Loading pandas, scikit-learn, numpy…', '#FBBF24');
-            await window.pyodide.loadPackage(['pandas', 'scikit-learn', 'numpy']);
+            updateStatusBadge('⏳ Loading pandas, numpy, scipy, scikit-learn…', '#FBBF24');
+            // scipy is required by the labs that run chi2_contingency.
+            await window.pyodide.loadPackage(['pandas', 'numpy', 'scipy', 'scikit-learn']);
             updateStatusBadge('🐍 Python 3.11 + pandas + sklearn ready', '#4ADE80');
             return window.pyodide;
         } catch (e) {
@@ -109,7 +110,7 @@ async function ensurePyodide() {
     return _pyodideLoading;
 }
 
-// Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Run Python via Skulpt Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+// ─── Run Python via Pyodide ────────────────────────────────────────
 
 async function executeLabCode() {
     const editor  = document.getElementById('labCodeEditor');
@@ -118,72 +119,44 @@ async function executeLabCode() {
 
     const code = editor.value;
     outArea.style.color = '#FFF';
-    outArea.innerText = 'Ã¢ÂÂ³ Running Python...';
+    outArea.innerText = '⏳ Starting Python…';
 
-    // Ã¢â€â‚¬Ã¢â€â‚¬ Path 1: Pyodide (real CPython WASM) if already loaded Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
-    if (window.pyodide) {
-        try {
-            await window.pyodide.runPythonAsync(`
-import sys, io
-_buf = io.StringIO()
-sys.stdout = _buf
-`);
-            await window.pyodide.runPythonAsync(code);
-            const out = await window.pyodide.runPythonAsync('_buf.getvalue()');
-            outArea.style.color = '#FFF';
-            outArea.innerText = out || '(script ran with no output)';
-        } catch (err) {
-            outArea.style.color = '#EF4444';
-            outArea.innerText = 'Ã°Å¸â€ Â´ Python Error:\n' + String(err);
-        } finally {
-            try { await window.pyodide.runPythonAsync('sys.stdout = sys.__stdout__'); } catch(_){}
-        }
-        return;
-    }
-
-    // Ã¢â€ â‚¬Ã¢â€ â‚¬ Path 2: Skulpt (real Python interpreter, no WASM download needed) Ã¢â€ â‚¬Ã¢â€ â‚¬Ã¢â€ â‚¬Ã¢â€ â‚¬
-    updateStatusBadge('Ã¢Â Â³ Loading Python...', '#FBBF24');
-    const skulptOk = await ensureSkulpt();
-
-    if (!skulptOk || !window.Sk) {
+    const py = await ensurePyodide();
+    if (!py) {
         outArea.style.color = '#EF4444';
-        outArea.innerText = 'Ã¢Â Å’ Could not load Python engine (Skulpt CDN unreachable).\nPlease check your internet connection.';
-        updateStatusBadge('Ã¢Â Å’ Engine Error', '#EF4444');
+        outArea.innerText =
+            '❌ Could not load the Python engine.\n\n' +
+            'This lab downloads the Pyodide runtime from a CDN on first use.\n' +
+            'Check your connection and click Run Code again, or open the\n' +
+            'notebook in Google Colab using the button above.';
         return;
     }
 
-    updateStatusBadge('Ã°Å¸Â Â  Skulpt Python Ready', '#4ADE80');
-
-    let outputLines = [];
-
-    Sk.configure({
-        output: (text) => { outputLines.push(text); },
-        read: (x) => {
-            if (Sk.builtinFiles && Sk.builtinFiles["files"][x]) {
-                return Sk.builtinFiles["files"][x];
-            }
-            // Stub missing C-extension modules so import doesn't crash
-            if (x.endsWith('.py') || x.includes('pandas') || x.includes('sklearn')) {
-                return '';
-            }
-            throw new Error("Module not found: " + x);
-        },
-        __future__: Sk.python3,
-    });
+    outArea.innerText = '⏳ Running Python…';
 
     try {
-        await Sk.misceval.asyncToPromise(() =>
-            Sk.importMainWithBody('<lab>', false, code, true)
+        // Capture stdout AND stderr so tracebacks and warnings both surface.
+        await py.runPythonAsync(
+            'import sys, io\n' +
+            '_buf = io.StringIO()\n' +
+            'sys.stdout = _buf\n' +
+            'sys.stderr = _buf\n'
         );
-        const output = outputLines.join('');
+        await py.runPythonAsync(code);
+        const out = await py.runPythonAsync('_buf.getvalue()');
         outArea.style.color = '#FFF';
-        outArea.innerText = output || '(script ran with no output)';
+        outArea.innerText = out || '(script ran with no output)';
     } catch (err) {
-        // Skulpt throws real SyntaxError / NameError / TypeError etc.
+        // Show the real CPython traceback unmodified, so what students see here
+        // matches what they would see in Google Colab.
+        let partial = '';
+        try { partial = await py.runPythonAsync('_buf.getvalue()'); } catch (_) {}
         outArea.style.color = '#EF4444';
-        const msg = err.toString();
-        const friendly = msg.replace('RangeError: Maximum call stack size exceeded', 'RecursionError: maximum recursion depth exceeded');
-        outArea.innerText = 'ðŸ”´ Python Error:\n' + friendly;
+        outArea.innerText = (partial ? partial + '\n' : '') + '🔴 Python Error:\n' + String(err);
+    } finally {
+        try {
+            await py.runPythonAsync('sys.stdout = sys.__stdout__\nsys.stderr = sys.__stderr__\n');
+        } catch (_) {}
     }
 }
 
@@ -221,7 +194,12 @@ function openInteractiveLabModal(nbIdx) {
 
         var colabUrl  = COLAB_BASE  + meta.notebookFile;
         var githubUrl = GITHUB_BLOB + meta.notebookFile;
-        var topicTags = meta.topics.map(function(t) {
+
+        // labMeta entries carry only title + notebookFile; stage/description/topics
+        // are optional. Default them so a sparse entry cannot throw.
+        var metaStage = meta.stage || (nbData && nbData.subtitle) || '';
+        var metaDesc  = meta.description || (nbData && nbData.subtitle) || '';
+        var topicTags = (meta.topics || []).map(function(t) {
             return '<span style="background:rgba(56,189,248,0.12);color:#38BDF8;padding:2px 8px;border-radius:8px;font-size:0.78rem;font-family:monospace;">' + t + '</span>';
         }).join(' ');
 
@@ -230,10 +208,10 @@ function openInteractiveLabModal(nbIdx) {
             +   '<button class="concept-modal-close" onclick="closeInteractiveLabModal()">&times;</button>'
             +   '<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">'
             +     '<div class="concept-badge-tag" style="background:var(--gold-primary);color:#000;">&#x1F4D3; HANDS-ON LAB</div>'
-            +     '<span style="font-size:0.82rem;color:var(--text-muted);">' + meta.stage + '</span>'
+            +     '<span style="font-size:0.82rem;color:var(--text-muted);">' + metaStage + '</span>'
             +   '</div>'
             +   '<h2 class="concept-title" style="margin-bottom:6px;">' + meta.title + '</h2>'
-            +   '<p style="color:var(--text-muted);font-size:0.92rem;line-height:1.55;margin-bottom:12px;">' + meta.description + '</p>'
+            +   '<p style="color:var(--text-muted);font-size:0.92rem;line-height:1.55;margin-bottom:12px;">' + metaDesc + '</p>'
             +   '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;">' + topicTags + '</div>'
             // Launch options
             +   '<div style="background:rgba(255,199,44,0.05);border:1.5px solid var(--gold-primary);border-radius:18px;padding:24px;margin-bottom:20px;">'
@@ -275,15 +253,15 @@ function openInteractiveLabModal(nbIdx) {
             +   '</div>'
             // In-browser preview collapsible
             +   '<details style="background:rgba(15,23,42,0.8);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:16px;">'
-            +     '<summary style="cursor:pointer;font-weight:700;color:var(--text-muted);font-size:0.9rem;">&#x25B8; Quick In-Browser Preview (basic Python only &mdash; no pandas/sklearn)</summary>'
+            +     '<summary style="cursor:pointer;font-weight:700;color:var(--text-muted);font-size:0.9rem;">&#x25B8; Run In-Browser (real Python 3.11 + pandas + scikit-learn)</summary>'
             +     '<div style="margin-top:14px;">'
-            +       '<p style="font-size:0.83rem;color:var(--text-muted);margin-bottom:10px;">&#x26A0;&#xFE0F; Uses Skulpt. No pandas or sklearn. For the full experience use Google Colab.</p>'
+            +       '<p style="font-size:0.83rem;color:var(--text-muted);margin-bottom:10px;">&#x1F40D; Runs real CPython via Pyodide (WebAssembly), with pandas, numpy and scikit-learn. The first run downloads about 10MB &mdash; after that it is cached by your browser.</p>'
             +       '<div style="background:#000;border:1px solid rgba(56,189,248,0.2);border-radius:10px;padding:10px;margin-bottom:10px;">'
             +         '<div style="display:flex;justify-content:space-between;margin-bottom:6px;">'
             +           '<span style="font-family:monospace;font-size:0.75rem;color:#38BDF8;">In [1]:</span>'
-            +           '<span id="pyStatusBadge" style="font-size:0.75rem;color:var(--text-muted);">Loading...</span>'
+            +           '<span id="pyStatusBadge" role="status" aria-live="polite" style="font-size:0.75rem;color:var(--text-muted);">Python loads on first Run</span>'
             +         '</div>'
-            +         '<textarea id="labCodeEditor" style="font-family:monospace;font-size:0.82rem;height:200px;color:#e2e8f0;background:transparent;border:none;width:100%;box-sizing:border-box;resize:vertical;line-height:1.5;outline:none;" spellcheck="false"></textarea>'
+            +         '<textarea id="labCodeEditor" aria-label="Python code editor" style="font-family:monospace;font-size:0.82rem;height:200px;color:#e2e8f0;background:transparent;border:none;width:100%;box-sizing:border-box;resize:vertical;line-height:1.5;outline:none;" spellcheck="false"></textarea>'
             +       '</div>'
             +       '<div style="display:flex;gap:8px;margin-bottom:10px;">'
             +         '<button class="fb-action-btn gold" style="flex:1;padding:9px;" onclick="executeLabCode()">&#x25B6; Run (Shift+Enter)</button>'
@@ -307,9 +285,13 @@ function openInteractiveLabModal(nbIdx) {
                     if (e.shiftKey && e.key === 'Enter') { e.preventDefault(); executeLabCode(); }
                 });
             }
-            ensureSkulpt().then(function(ok) {
-                updateStatusBadge(ok ? 'Skulpt Ready' : 'Unavailable', ok ? '#4ADE80' : '#EF4444');
-            });
+            // Reflect current engine state without forcing a 10MB download until
+            // the student actually clicks Run.
+            if (window.pyodide) {
+                updateStatusBadge('🐍 Python 3.11 ready', '#4ADE80');
+            } else {
+                updateStatusBadge('Python loads on first Run', 'var(--text-muted)');
+            }
         }, 50);
 
     } catch(err) {

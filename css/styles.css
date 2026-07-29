@@ -8,6 +8,9 @@
     --accent-purple: #8B5CF6;
     --accent-blue: #38BDF8;
     --accent-green: #4ADE80;
+    /* Used ~72x across the app but was never declared, so every cyan
+       accent silently rendered as inherited white. 14.4:1 on --card-bg. */
+    --cyan-magic: #22D3EE;
     
     --text-main: #F8FAFC;
     --text-muted: #94A3B8;
@@ -106,7 +109,9 @@ body {
 /* Stage Stepper Bar */
 .stage-stepper-bar {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    /* auto-fit + minmax lets the bar reflow instead of forcing N fixed tracks
+       that overflow the viewport on phones. */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 12px;
     margin: 32px 0;
 }
@@ -400,7 +405,9 @@ body {
 }
 
 .viz-step-btn.active {
-    background: var(--accent-purple);
+    /* was #8B5CF6 with white text = 4.23:1, under the 4.5 AA threshold for
+       bold 14px (which is not "large text"). #6D28D9 gives 7.6:1. */
+    background: #6D28D9;
     color: #FFF;
     border-color: var(--accent-purple);
 }
@@ -638,4 +645,124 @@ body {
     text-align: center;
     color: var(--text-muted);
     font-size: 0.9rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ACCESSIBILITY & RESPONSIVE LAYER
+   Added after an audit found zero @media queries, zero :focus rules and no
+   prefers-reduced-motion support anywhere in this stylesheet.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Visible focus ────────────────────────────────────────────────────────── */
+/* Gold on the dark background measures 12.27:1, well past the 3:1 minimum
+   for non-text indicators. border-radius: inherit keeps the ring hugging
+   the rounded controls instead of cutting across their corners. */
+:focus-visible {
+    outline: 3px solid var(--gold-primary);
+    outline-offset: 2px;
+    border-radius: inherit;
+}
+
+/* ── Touch targets (WCAG 2.5.5 — minimum 44x44) ───────────────────────────── */
+.fb-action-btn,
+.viz-step-btn,
+.ds-tab-btn,
+.sandbox-select,
+.sandbox-send-btn,
+.fb-launch-btn {
+    min-height: 44px;
+}
+
+.concept-modal-close {
+    /* was 17x33px — a 6% hit area on the control users most need to escape */
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The stage stepper items are real buttons now; strip UA button chrome. */
+.stage-step-item {
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Scrollable regions need to be keyboard-reachable (WCAG 2.1.1). */
+[data-scroll-region]:focus-visible {
+    outline: 3px solid var(--gold-primary);
+    outline-offset: -3px;
+}
+
+/* ── Tablet ───────────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .sandbox-container {
+        grid-template-columns: 1fr;
+    }
+    .sandbox-main {
+        height: auto;
+        min-height: 400px;
+    }
+}
+
+/* ── Phone ────────────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+    html, body {
+        overflow-x: hidden;   /* body alone did not clip; html must be included */
+    }
+
+    .stage-stepper-bar {
+        grid-template-columns: 1fr;   /* one stage per row */
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .hero-title {
+        font-size: clamp(1.75rem, 7vw, 2.75rem);
+    }
+
+    .hero-card,
+    .section-card {
+        padding: 20px;
+    }
+
+    .concept-modal-card {
+        padding: 20px;
+        width: 95%;
+        max-height: 92vh;
+    }
+
+    /* Wide content scrolls inside its own container, never the page. */
+    .rosetta-grid,
+    .sandbox-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Respect reduced motion ───────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .stage-step-item:hover,
+    .nb-card:hover,
+    .fb-action-btn.gold:hover {
+        transform: none;
+    }
 }

@@ -21,7 +21,8 @@ langchain-core>=0.2
 langchain-openai>=0.1
 langgraph>=0.1
 mcp>=1.0
-pyautogen>=0.2
+autogen-agentchat>=0.4
+autogen-core>=0.4
 
 # --- optional: swap the stub model for a real one -------------------------
 openai>=1.0

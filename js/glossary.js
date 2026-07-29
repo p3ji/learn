@@ -16,7 +16,9 @@ from typing import Optional
 class SurveyRespondent(BaseModel):
     respondent_id: str
     age_group: str
-    risk_score: Optional[int] = Field(ge=1, le=5, description="1-5 Likert scale score")
+    # default=None is REQUIRED: Field() without a default makes the field
+    # mandatory in Pydantic v2, and passing None would then fail the ge/le check.
+    risk_score: Optional[int] = Field(default=None, ge=1, le=5, description="1-5 Likert scale score")
     high_ai_trust: bool
 
 # If an LLM passes risk_score="invalid", Pydantic throws a ValidationError!`,
@@ -37,10 +39,12 @@ class SurveyRespondent(BaseModel):
 # TabFM: In-context zero-shot evaluation directly on raw survey columns!
 
 from tabfm import TabFMClassifier
+from tabfm import tabfm_v1_0_0_jax as tabfm_v1_0_0
 
-model = TabFMClassifier()
-model.fit(train_df, target_column='High_AI_Trust') # Loads context
-predictions = model.predict_proba(test_df)          # Instant zero-shot forward pass`,
+# The pretrained weights must be passed explicitly via model=
+clf = TabFMClassifier(model=tabfm_v1_0_0.load())
+clf.fit(X_train, y_train)                  # Loads context rows, no gradient training
+predictions = clf.predict_proba(X_test)    # Zero-shot forward pass`,
         useCases: [
             "Instant zero-shot benchmarking on new survey datasets",
             "Predicting outcomes on small survey sub-samples where standard models overfit",
@@ -50,20 +54,26 @@ predictions = model.predict_proba(test_df)          # Instant zero-shot forward 
     mcp: {
         term: "Model Context Protocol (MCP)",
         category: "Agent Standards",
-        summary: "Anthropic's open standard for connecting AI models to data sources and tools.",
+        summary: "An open standard for connecting AI models to data sources and tools. Created at Anthropic, now under neutral foundation stewardship.",
         sasAnalogy: "Like a universal SAS LIBNAME system that any LLM client (Claude, ChatGPT, Gemini) can connect to via standard URI handles.",
         whatIsIt: "MCP is an open protocol (using JSON-RPC 2.0) that standardizes how AI applications connect to external data (Resources), tools (Tools), and prompt templates (Prompts).",
         whyAgentsNeedIt: "Without MCP, every AI tool needs custom integration code. With MCP, you write an MCP Server once for your survey dataset, and any MCP-compatible AI client can immediately inspect codebooks and query stats.",
-        codeExample: `from mcp.server import Server
+        codeExample: `# FastMCP is the high-level server API — the decorators below
+# turn your docstring and type hints into the JSON schema the LLM sees.
+from mcp.server.fastmcp import FastMCP
+import pandas as pd
 
-app = Server("survey-mcp-server")
+mcp = FastMCP("survey-mcp-server")
+df = pd.read_csv("data/ai_trust_insights.csv")
 
-@app.read_resource("survey://codebook")
-def read_codebook():
-    return open("ai_trust_codebook.json").read()
+@mcp.resource("survey://codebook")
+def read_codebook() -> str:
+    """Expose the survey codebook as a readable resource."""
+    return open("data/ai_trust_codebook.json").read()
 
-@app.call_tool("crosstab")
-def execute_crosstab(var1, var2):
+@mcp.tool()
+def crosstab(var1: str, var2: str) -> dict:
+    """Cross-tabulate two survey variables."""
     return pd.crosstab(df[var1], df[var2]).to_dict()`,
         useCases: [
             "Exposing survey data dictionaries securely to LLMs",
@@ -78,7 +88,9 @@ def execute_crosstab(var1, var2):
         sasAnalogy: "An interactive, cyclic Stata .do file script that can inspect its own results, loop back to previous steps, and branching based on conditional logic.",
         whatIsIt: "LangGraph builds agentic workflows as graph networks. Nodes are Python functions, edges are state transitions, and State keeps track of execution history.",
         whyAgentsNeedIt: "Complex survey analysis requires multiple steps (Clean -> Split -> Fit -> Evaluate -> Report). LangGraph provides state persistence, human-in-the-loop approvals, and recovery from failures.",
-        codeExample: `from langgraph.graph import StateGraph
+        codeExample: `from typing import TypedDict
+import pandas as pd
+from langgraph.graph import StateGraph, START, END
 
 # 1. Define State
 class State(TypedDict):
@@ -89,7 +101,13 @@ class State(TypedDict):
 builder = StateGraph(State)
 builder.add_node("ingest", node_ingest)
 builder.add_node("fit_model", node_fit)
+
+# START and END edges are REQUIRED — without an entrypoint,
+# compile() raises ValueError: Graph must have an entrypoint.
+builder.add_edge(START, "ingest")
 builder.add_edge("ingest", "fit_model")
+builder.add_edge("fit_model", END)
+
 graph = builder.compile()`,
         useCases: [
             "Automated multi-step survey data analysis pipelines",
@@ -126,8 +144,8 @@ Final Answer: In healthcare workers, education and risk perception drive 81% AUC
         category: "Python Essentials",
         summary: "Asynchronous I/O framework for running concurrent non-blocking tasks.",
         sasAnalogy: "Like running multiple SAS jobs in batch mode concurrently rather than waiting for job 1 to finish before submitting job 2.",
-        whatIsIt: "Asyncio allows Python code to perform non-blocking network requests using `async` and `await` keywords, running hundreds of API queries concurrently.",
-        whyAgentsNeedIt: "LLM API calls take 1-3 seconds. If you need qualitative LLM coding for 100 survey open-ended responses, synchronous code takes 300s, while `asyncio` takes 3s!",
+        whatIsIt: "Asyncio allows Python code to perform non-blocking network requests using `async` and `await` keywords, running many API queries concurrently on a single thread. Note: this is concurrency, not parallelism — nothing runs on two CPU cores at once, but while one request waits on the network, others proceed.",
+        whyAgentsNeedIt: "LLM API calls take 1-3 seconds, almost all of it spent waiting on the network. Coding 100 survey open-ended responses one at a time takes several minutes; with asyncio the same work overlaps and finishes far faster. The real speedup is bounded by the provider's rate limits and your connection pool, so expect a large improvement rather than a clean 100x.",
         codeExample: `import asyncio
 
 async def call_llm(respondent_text):
@@ -135,7 +153,7 @@ async def call_llm(respondent_text):
 
 async def main():
     tasks = [call_llm(text) for text in survey_responses]
-    results = await asyncio.gather(*tasks) # Runs all in parallel!
+    results = await asyncio.gather(*tasks) # Runs concurrently (overlapped I/O)
 
 asyncio.run(main())`,
         useCases: [

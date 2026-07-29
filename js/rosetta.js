@@ -80,19 +80,40 @@ class SurveyRespondentSchema(BaseModel):
         sas: `/* SAS PROC LOGISTIC */
 proc logistic data=clean_survey;
     class Education_Level Tech_Familiarity;
-    model High_AI_Trust(event='1') = Age_Group Education_Level Perceived_AI_Risk;
+    model High_AI_Trust(event='1') = Age_Group Education_Level Tech_Familiarity Perceived_AI_Risk;
     weight Survey_Weight;
 run;`,
         stata: `* Stata Logistic Regression
 svyset [pw=Survey_Weight]
 svy: logit High_AI_Trust i.Education_Level i.Tech_Familiarity Perceived_AI_Risk`,
         python: `# --- USE CASE A: SOCIOLOGIST / INFERENCE PATH (statsmodels) ---
-# Goal: p-values, Odds Ratios, standard errors, survey weights for academic research
+# Goal: p-values, Odds Ratios, standard errors, survey weights
 import statsmodels.formula.api as smf
+import statsmodels.api as sm
 
-model_soc = smf.logit("High_AI_Trust ~ Age_Group + C(Education_Level) + Perceived_AI_Risk", 
-                      data=df).fit()
-print(model_soc.summary())  # Exact SAS PROC LOGISTIC output table!
+# ⚠️ TWO REAL GOTCHAS FOR SAS USERS — read before trusting the coefficients:
+#
+# 1. CLASS PARAMETERIZATION. SAS PROC LOGISTIC defaults to PARAM=EFFECT
+#    (deviation coding against the grand mean). Patsy's C() uses TREATMENT
+#    (reference) coding. The coefficients will NOT match SAS unless you write
+#       class Education_Level / param=ref ref=first;
+#    in SAS, or set the contrast explicitly in Python.
+#
+# 2. smf.logit() HAS NO weights ARGUMENT. It silently ignores survey weights.
+#    Use GLM with freq_weights to apply them:
+
+model_soc = smf.glm(
+    "High_AI_Trust ~ C(Age_Group, Treatment) + C(Education_Level, Treatment) + Perceived_AI_Risk",
+    data=df,
+    family=sm.families.Binomial(),
+    freq_weights=df["Survey_Weight"],      # the SAS WEIGHT statement
+).fit()
+print(model_soc.summary())
+
+# NOTE: freq_weights reproduces the weighted point estimates, but NOT the
+# design-based standard errors that SAS PROC SURVEYLOGISTIC or Stata's
+# svy: prefix give you. For proper design-based inference you need
+# clustering/strata support that base statsmodels does not provide.
 
 # --- USE CASE B: DATA SCIENTIST / AI AGENT PATH (scikit-learn) ---
 # Goal: Out-of-sample prediction accuracy (ROC-AUC), L2 regularization, agent @tool
@@ -147,7 +168,7 @@ print(f"Agent Test ROC-AUC: {roc_auc_score(y_te, clf.predict_proba(X_te)[:, 1]):
         agenticNote: "An agentic survey assistant can invoke statsmodels when asked 'Are education levels statistically significant?' and scikit-learn when asked 'Classify these 50 new incoming survey rows'."
     },
     graph: {
-        title: "4. Stata .do File / SAS Macros ➔ LangGraph State Machines (StateGraph)",
+        title: "3. Stata .do File / SAS Macros ➔ LangGraph State Machines (StateGraph)",
         sas: `/* SAS Macro Chain with Conditional Logic */
 %macro run_survey_pipeline();
     %clean_data();
@@ -167,18 +188,26 @@ if _rc == 0 {
     do "02_models.do"
 }`,
         python: `# LangGraph State Machine (StateGraph) with Dynamic Router Edges
-from langgraph.graph import StateGraph, END
+from langgraph.graph import StateGraph, START, END
 
 def router_node(state):
     if state["accuracy"] >= 0.85:
         return "report"
-    return "re_engineer_features" # Cyclic self-correction loop!
+    return "re_engineer"   # Cyclic self-correction loop!
 
 builder = StateGraph(SurveyState)
 builder.add_node("clean", node_clean_data)
+builder.add_node("re_engineer", node_re_engineer)   # must exist — the router names it
 builder.add_node("tabfm", node_run_tabfm)
 builder.add_node("report", node_draft_report)
-builder.add_conditional_edges("tabfm", router_node)`,
+
+builder.add_edge(START, "clean")
+builder.add_edge("clean", "tabfm")
+builder.add_edge("re_engineer", "tabfm")            # the cycle back
+builder.add_conditional_edges("tabfm", router_node)
+builder.add_edge("report", END)
+
+graph = builder.compile()`,
         explanation: `
             <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">🔍 Code & Execution Breakdown:</h4>
             <ul style="color: var(--text-muted); font-size: 0.88rem; padding-left: 18px; margin-bottom: 12px;">
@@ -256,6 +285,5 @@ function renderRosettaContent(key, targetContainerId) {
     `;
 }
 
-function escapeHtml(text) {
-    return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
+// escapeHtml lives in js/feedback.js (loaded first). Duplicate definitions
+// here silently shadowed it depending on script order.

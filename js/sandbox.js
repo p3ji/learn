@@ -1,24 +1,28 @@
 // Interactive ReAct Tool Calling Agent Sandbox with Safe Event Handling
 
 const sandboxPresets = [
+    // NOTE: every OBSERVATION below must match what the real dataset actually
+    // shows. Age and gender are noise by construction, so no trace may claim an
+    // age effect — an earlier version did, and it contradicted the app's own
+    // data dictionary.
     {
-        userPrompt: "Find which age group has highest perceived AI risk and fit a regression model.",
+        userPrompt: "Does age predict AI trust? Check it and fit a model.",
         steps: [
-            { type: "THOUGHT", content: "I need to inspect the survey dataset columns and summarize 'Perceived_AI_Risk' grouped by 'Age_Group'." },
-            { type: "ACTION", content: "Calling tool: `pandas_crosstab(var1='Age_Group', var2='Perceived_AI_Risk')`" },
-            { type: "OBSERVATION", content: "Age 60+ has 64% high perceived risk. Age 18-29 has 21% high perceived risk." },
-            { type: "THOUGHT", content: "Now fitting Scikit-Learn Logistic Regression to predict High_AI_Trust from Age_Group and Perceived_AI_Risk." },
-            { type: "ACTION", content: "Calling tool: `fit_logistic_regression(features=['Age_Group', 'Perceived_AI_Risk'], target='High_AI_Trust')`" },
-            { type: "FINAL_ANSWER", content: "Analysis complete! Respondents aged 60+ have the highest perceived AI risk (Odds Ratio: 0.14 vs 18-29 baseline). Logistic model achieved 84.2% test accuracy." }
+            { type: "THOUGHT", content: "The user assumes an age effect. I should test it rather than assume it. I'll cross-tabulate 'Age_Group' against 'High_AI_Trust' and run a chi-square." },
+            { type: "ACTION", content: "Calling tool: `chi_square_crosstab(row='Age_Group', col='High_AI_Trust')`" },
+            { type: "OBSERVATION", content: "χ² = 1.32 (df = 3), p = 0.72. Trust is roughly 48-52% in every age band. No significant association." },
+            { type: "THOUGHT", content: "That is a null result, and I should report it as such rather than hunting for a significant variable to replace it. But the user also asked for a model, so I'll fit one on the variables that do carry signal." },
+            { type: "ACTION", content: "Calling tool: `fit_logistic_regression(features=['Education_Level', 'Tech_Familiarity', 'Perceived_AI_Risk'], target='High_AI_Trust')`" },
+            { type: "FINAL_ANSWER", content: "Age does NOT predict AI trust in this dataset (χ² = 1.32, p = 0.72) — a genuine null finding. Education level and tech familiarity do predict it, and a model using those reaches far better than chance. Reporting the null on age is the correct call here." }
         ]
     },
     {
         userPrompt: "Run zero-shot TabFM classification on tech familiarity vs AI trust.",
         steps: [
-            { type: "THOUGHT", content: "I will use Google TabFM transformer foundation model for zero-shot classification directly on raw text columns without dummy encoding." },
+            { type: "THOUGHT", content: "I will use the Google TabFM tabular foundation model for zero-shot classification. It handles the categorical columns itself, so no manual dummy encoding is needed." },
             { type: "ACTION", content: "Calling tool: `tabfm_zero_shot_predict(train_df, test_df, target='High_AI_Trust')`" },
-            { type: "OBSERVATION", content: "TabFM loaded 128 in-context survey rows. Zero-shot test accuracy: 89.4%." },
-            { type: "FINAL_ANSWER", content: "Google TabFM completed zero-shot classification in 0.00 seconds. High Tech Familiarity strongly predicts AI Trust with 89.4% ROC-AUC accuracy." }
+            { type: "OBSERVATION", content: "TabFM loaded 100 in-context survey rows and returned predictions in a single forward pass (about 0.4s on CPU)." },
+            { type: "FINAL_ANSWER", content: "TabFM classified the held-out rows without any gradient training. Tech familiarity is one of the variables that genuinely drives trust in this dataset, and the model picks it up. Note accuracy and ROC-AUC are different metrics — report whichever you actually computed." }
         ]
     },
     {
@@ -58,7 +62,26 @@ function runSandboxAgent(presetIdx) {
     userMsg.innerHTML = `<strong>You:</strong> ${escapeHtml(query)}`;
     history.appendChild(userMsg);
 
-    const preset = (presetIdx !== undefined && sandboxPresets[presetIdx]) ? sandboxPresets[presetIdx] : sandboxPresets[0];
+    // This is a SCRIPTED REPLAY, not a live agent. If the learner types their own
+    // question there is no script for it — say so plainly rather than silently
+    // replaying preset 0, which used to answer every question with the age-group trace.
+    const preset = (presetIdx !== undefined && sandboxPresets[presetIdx])
+        ? sandboxPresets[presetIdx]
+        : null;
+
+    if (!preset) {
+        const noScript = document.createElement('div');
+        noScript.className = 'sandbox-msg agent';
+        noScript.innerHTML =
+            '<strong>Replay:</strong> There is no recorded trace for that question. ' +
+            'This sandbox <em>replays pre-recorded ReAct traces</em> — no model is called, ' +
+            'so it cannot answer free-form questions. Pick one of the sample prompts on the ' +
+            'left to watch a trace, or open <strong>Notebook 03 (The Agent Loop)</strong> to ' +
+            'run a real agent loop yourself.';
+        history.appendChild(noScript);
+        history.scrollTop = history.scrollHeight;
+        return;
+    }
 
     // Simulate Step-by-Step ReAct Agent Loop
     preset.steps.forEach((step, idx) => {
@@ -78,6 +101,5 @@ function runSandboxAgent(presetIdx) {
     });
 }
 
-function escapeHtml(text) {
-    return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-}
+// escapeHtml lives in js/feedback.js (loaded first). Duplicate definitions
+// here silently shadowed it depending on script order.

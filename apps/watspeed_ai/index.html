@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WatSPEED Agentic AI Prep Hub | Guided 4-Stage Learning Path</title>
+    <title>WatSPEED Agentic AI Prep Hub | Guided 5-Stage Learning Path</title>
     <meta name="description" content="Interactive learning path preparing students for University of Waterloo's WatSPEED Agentic AI certificate course. Bridge SAS experience to Python, Supervised ML, Google TabFM, and LangGraph.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,10 +51,11 @@
 
             <nav class="nav-links">
                 <a href="../../index.html" class="nav-item">🏠 Suite Home</a>
-                <a href="#stage1" class="nav-item" onclick="showStage(1); return false;">Stage 1: Data &amp; SAS</a>
-                <a href="#stage2" class="nav-item" onclick="showStage(2); return false;">Stage 2: ML &amp; TabFM</a>
-                <a href="#stage3" class="nav-item" onclick="showStage(3); return false;">Stage 3: Agentic AI</a>
-                <a href="#stage4" class="nav-item" onclick="showStage(4); return false;">Stage 4: Notebooks</a>
+                <a href="#stage1" class="nav-item" onclick="showStage(1); return false;">1. Data Essentials</a>
+                <a href="#stage2" class="nav-item" onclick="showStage(2); return false;">2. Statistics</a>
+                <a href="#stage3" class="nav-item" onclick="showStage(3); return false;">3. ML &amp; TabFM</a>
+                <a href="#stage4" class="nav-item" onclick="showStage(4); return false;">4. Agent Tools</a>
+                <a href="#stage5" class="nav-item" onclick="showStage(5); return false;">5. Notebooks</a>
             </nav>
         </div>
     </header>
@@ -68,51 +69,53 @@
             <div class="hero-badge">Guided Sequential Learning Path & In-Browser Python Lab</div>
             <h1 class="hero-title">Bridge SAS Experience to <span class="gold-gradient">Agentic AI</span> & <span class="accent-gradient">Supervised ML</span></h1>
             <p class="hero-desc">
-                Follow this step-by-step 4-stage learning path with <strong>interactive in-browser Python labs</strong>. Modify code, tweak parameters, and run live machine learning models directly inside your browser!
+                Follow this step-by-step 5-stage learning path with <strong>interactive in-browser Python labs</strong>. Modify code, tweak parameters, and run live machine learning models directly inside your browser!
             </p>
 
             <!-- 5-Stage Guided Learning Path Progress Stepper -->
-            <div class="stage-stepper-bar" style="grid-template-columns: repeat(5, 1fr);">
-                <div class="stage-step-item active" id="stepperItem1" onclick="showStage(1)">
+            <nav aria-label="Learning path stages">
+            <div class="stage-stepper-bar">
+                <button type="button" class="stage-step-item active" id="stepperItem1" aria-current="step" onclick="showStage(1)">
                     <div class="stage-num-badge">1</div>
                     <div>
                         <div class="stage-step-title">Stage 1: Data Essentials</div>
                         <div class="stage-step-sub">SAS DATA Step ➔ Pandas</div>
                     </div>
-                </div>
+                </button>
 
-                <div class="stage-step-item" id="stepperItem2" onclick="showStage(2)">
+                <button type="button" class="stage-step-item" id="stepperItem2" onclick="showStage(2)">
                     <div class="stage-num-badge">2</div>
                     <div>
                         <div class="stage-step-title">Stage 2: Statistics &amp; Inference</div>
                         <div class="stage-step-sub">PROC LOGISTIC ➔ statsmodels</div>
                     </div>
-                </div>
+                </button>
 
-                <div class="stage-step-item" id="stepperItem3" onclick="showStage(3)">
+                <button type="button" class="stage-step-item" id="stepperItem3" onclick="showStage(3)">
                     <div class="stage-num-badge">3</div>
                     <div>
                         <div class="stage-step-title">Stage 3: Predictive ML &amp; TabFM</div>
                         <div class="stage-step-sub">scikit-learn &amp; Google TabFM</div>
                     </div>
-                </div>
+                </button>
 
-                <div class="stage-step-item" id="stepperItem4" onclick="showStage(4)">
+                <button type="button" class="stage-step-item" id="stepperItem4" onclick="showStage(4)">
                     <div class="stage-num-badge">4</div>
                     <div>
                         <div class="stage-step-title">Stage 4: Agent Tools &amp; Schemas</div>
                         <div class="stage-step-sub">Pydantic &amp; ReAct Sandbox</div>
                     </div>
-                </div>
+                </button>
 
-                <div class="stage-step-item" id="stepperItem5" onclick="showStage(5)">
+                <button type="button" class="stage-step-item" id="stepperItem5" onclick="showStage(5)">
                     <div class="stage-num-badge">5</div>
                     <div>
                         <div class="stage-step-title">Stage 5: LangGraph &amp; Notebooks</div>
                         <div class="stage-step-sub">StateGraph &amp; 9 Notebooks</div>
                     </div>
-                </div>
+                </button>
             </div>
+            </nav>
         </section>
 
         <!-- STAGE 1: Data Essentials & Pandas Bridge -->
@@ -121,7 +124,7 @@
                 <div>
                     <div style="color: var(--cyan-magic); font-weight:800; font-size:0.85rem; text-transform:uppercase;">STAGE 1 OF 5</div>
                     <h2 class="stage-header-title">📊 Stage 1: Survey Data Essentials &amp; Pandas Bridge</h2>
-                    <p class="stage-header-desc">Understand the Kaggle AI Trust dataset, map SAS DATA steps to Pandas, and handle survey missing values (-9 ➔ NaN).</p>
+                    <p class="stage-header-desc">Understand the synthetic AI Trust survey dataset, map SAS DATA steps to Pandas, and handle survey missing values (-9 ➔ NaN).</p>
                 </div>
                 <div style="display:flex; gap:10px;">
                     <button class="fb-action-btn gold" onclick="openInteractiveLabModal(1)">⚡ Run Live Code Lab 1 ➔</button>
@@ -138,7 +141,7 @@
                     </div>
                 </div>
                 <div id="datasetProvenance" style="background: rgba(255,199,44,0.08); border-left: 4px solid var(--gold-primary); padding: 16px; border-radius: 12px; margin-bottom: 20px;"></div>
-                <div id="dataDictionary" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; overflow-x: auto; margin-bottom: 20px;"></div>
+                <div id="dataDictionary" data-scroll-region tabindex="0" role="region" aria-label="Data dictionary (scrollable)" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; overflow-x: auto; margin-bottom: 20px;"></div>
             </section>
 
             <!-- Stage 1 Component B: SAS DATA Step Rosetta Stone -->
@@ -242,7 +245,7 @@
                         <strong>What Google TabFM changes:</strong> As a <strong>Tabular Foundation Model</strong>, TabFM reads <strong>raw text categories directly as transformer context memory</strong> in a single forward pass—eliminating manual 0/1 dummy encoding and training loops.
                     </p>
                     <div style="background: rgba(56, 189, 248, 0.1); border-left: 4px solid var(--accent-blue); padding: 12px 16px; border-radius: 6px; font-size: 0.88rem; color: var(--text-main); margin-top: 10px;">
-                        <strong>💡 Crucial Survey Data Nuance:</strong> Does TabFM eliminate survey data cleaning? <strong>No!</strong> You still need to map numeric survey codes like <code>-9</code> or <code>99</code> into clear text strings like <code>"Don't Know"</code>, <code>"Not Applicable"</code>, or <code>"Valid Skip"</code>. TabFM then uses its language model tokenization to treat <code>"Valid Skip"</code> as a distinct, meaningful semantic category automatically!
+                        <strong>💡 Crucial Survey Data Nuance:</strong> Does TabFM eliminate survey data cleaning? <strong>No!</strong> You still need to map numeric survey codes like <code>-9</code> or <code>99</code> into clear text strings like <code>"Don't Know"</code>, <code>"Not Applicable"</code>, or <code>"Valid Skip"</code>. TabFM encodes each distinct string as its own category, so <code>"Valid Skip"</code> is kept separate from a real answer instead of being averaged in as the number -9. Note that TabFM applies <strong>ordinal encoding</strong> to categories &mdash; it does not read the words semantically, so the label you choose matters for <em>you</em>, not for the model.
                     </div>
                 </div>
             </section>
@@ -304,7 +307,7 @@
                 <div class="section-header">
                     <div>
                         <h3 class="section-title">🤖 Interactive Agent Sandbox (ReAct Tool Loop)</h3>
-                        <p class="section-subtitle">Watch an autonomous LLM agent process survey prompts, select Python tools, and formulate answers.</p>
+                        <p class="section-subtitle">Replay pre-recorded ReAct traces to see how an agent interleaves Thought, Action and Observation. <strong>No model is called</strong> &mdash; these are scripted traces.</p>
                     </div>
                     <button class="fb-launch-btn" onclick="openSectionFeedback('Interactive Agent Sandbox')">📝 Notes &amp; AI Assistant</button>
                 </div>
@@ -313,31 +316,27 @@
                     <div class="sandbox-sidebar">
                         <h4 style="font-size: 0.95rem; color: var(--gold-primary); margin-bottom: 12px;">Sample Prompts</h4>
                         <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <button class="sandbox-preset-btn" onclick="loadSandboxPreset(0)">"Find which age group has highest perceived AI risk and fit regression model."</button>
+                            <button class="sandbox-preset-btn" onclick="loadSandboxPreset(0)">"Does age predict AI trust? Check it and fit a model."</button>
                             <button class="sandbox-preset-btn" onclick="loadSandboxPreset(1)">"Run zero-shot TabFM classification on tech familiarity vs AI trust."</button>
                             <button class="sandbox-preset-btn" onclick="loadSandboxPreset(2)">"Check for missing values (-9) and export Pydantic validated summary."</button>
                         </div>
 
-                        <h4 style="font-size: 0.95rem; color: var(--gold-primary); margin: 20px 0 12px;">Agent Settings</h4>
-                        <div class="sandbox-input-group">
-                            <label class="sandbox-label">Select LLM Engine:</label>
-                            <select id="agentEngine" class="sandbox-select">
-                                <option value="claude-3-5-sonnet">Claude 3.5 Sonnet (Anthropic)</option>
-                                <option value="gemini-1-5-pro">Gemini 1.5 Pro (Google)</option>
-                                <option value="gpt-4o">GPT-4o (OpenAI)</option>
-                            </select>
+                        <div style="margin-top:20px;padding:12px;background:rgba(251,191,36,0.08);border-left:3px solid #FBBF24;border-radius:8px;font-size:0.82rem;color:var(--text-main);">
+                            <strong>What this is:</strong> a replay of recorded agent traces, so the
+                            reasoning steps are fixed. To run a real agent loop against a live model,
+                            use <strong>Notebook 03 &mdash; The Agent Loop (ReAct)</strong>.
                         </div>
                     </div>
 
                     <div class="sandbox-main">
                         <div class="sandbox-chat-history" id="sandboxChatHistory">
                             <div class="sandbox-msg agent">
-                                <strong>Agent Assistant:</strong> Welcome! Enter a natural language request to see how an Agentic LLM selects Python survey tools and builds analysis pipelines.
+                                <strong>Trace Replay:</strong> Pick a sample prompt on the left to step through a recorded ReAct trace &mdash; Thought, Action, Observation, Final Answer. No model is called.
                             </div>
                         </div>
 
                         <div class="sandbox-input-bar">
-                            <input type="text" id="sandboxInput" class="sandbox-input" placeholder="Type a natural language survey request (e.g. 'Fit a logistic model on AI trust')...">
+                            <input type="text" id="sandboxInput" aria-label="Survey analysis request" class="sandbox-input" placeholder="Type a natural language survey request (e.g. 'Fit a logistic model on AI trust')...">
                             <button class="sandbox-send-btn" onclick="runSandboxAgent()">Run Agent ➔</button>
                         </div>
                     </div>
@@ -360,6 +359,36 @@
                 </div>
                 <button class="fb-action-btn outline" onclick="showStage(4)">◄ Back to Stage 4</button>
             </div>
+
+            <!-- Stage <-> Notebook <-> course-week map. The 5 on-page stages and the
+                 9 notebooks are two different structures; state the relationship
+                 rather than leaving a learner to infer it. -->
+            <section class="section-card">
+                <div class="section-header">
+                    <div>
+                        <h3 class="section-title">🗺️ How the Stages Map to the Notebooks</h3>
+                        <p class="section-subtitle">Stages 1&ndash;3 are the Python prerequisite. Stages 4&ndash;5 shadow the WatSPEED course itself.</p>
+                    </div>
+                </div>
+                <div data-scroll-region tabindex="0" role="region" aria-label="Stage to notebook map (scrollable)" style="overflow-x:auto;">
+                    <table style="width:100%;min-width:520px;border-collapse:collapse;text-align:left;font-size:0.88rem;">
+                        <thead>
+                            <tr style="background:rgba(255,199,44,0.15);color:var(--gold-primary);border-bottom:1px solid rgba(255,255,255,0.2);">
+                                <th style="padding:12px;">On-page Stage</th>
+                                <th style="padding:12px;">Notebook</th>
+                                <th style="padding:12px;">Course Week</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px;">1 &middot; Data Essentials</td><td style="padding:10px;">01 &mdash; Python for SAS/Stata users</td><td style="padding:10px;color:var(--text-muted);">Prerequisite</td></tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px;">2 &middot; Statistics &amp; Inference</td><td style="padding:10px;">lab_01, lab_02 (SAS bridge labs)</td><td style="padding:10px;color:var(--text-muted);">Prerequisite</td></tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px;">3 &middot; Predictive ML &amp; TabFM</td><td style="padding:10px;">lab_02 &mdash; Supervised ML</td><td style="padding:10px;color:var(--text-muted);">Prerequisite</td></tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.08);"><td style="padding:10px;">4 &middot; Agent Tools &amp; Schemas</td><td style="padding:10px;">02 Tools &middot; 03 Agent Loop &middot; 04 Context</td><td style="padding:10px;color:var(--text-muted);">Weeks 1&ndash;2</td></tr>
+                            <tr><td style="padding:10px;">5 &middot; LangGraph &amp; Notebooks</td><td style="padding:10px;">05 RAG &middot; 06 LangGraph &middot; 07 MCP &middot; 08 Multi-agent &middot; 09 Capstone</td><td style="padding:10px;color:var(--text-muted);">Weeks 3&ndash;5</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
             <!-- Stage 5 Component A: LangGraph Rosetta Stone -->
             <section class="section-card">
@@ -493,6 +522,18 @@
             </div>
         </div>
 
+        <!-- Concept Glossary — makes the six deep-dives in js/glossary.js reachable.
+             Previously renderGlossaryPage() bailed because #glossaryGrid did not exist. -->
+        <section class="section-card" id="glossarySection">
+            <div class="section-header">
+                <div>
+                    <h3 class="section-title">📖 Concept Deep-Dives</h3>
+                    <p class="section-subtitle">The jargon that blocks a new-to-agentic learner, each with a SAS analogy. Click any card.</p>
+                </div>
+            </div>
+            <div id="glossaryGrid" class="notebooks-grid"></div>
+        </section>
+
     </main>
 
     <!-- Footer -->
@@ -502,16 +543,8 @@
         </div>
     </footer>
 
-    <!-- Concept Deep-Dive Modal System -->
-    <div id="glossaryModal" class="concept-modal-overlay">
-        <div class="concept-modal-card">
-            <button class="concept-modal-close" onclick="closeConceptModal()">&times;</button>
-            <div id="glossaryModalBody"></div>
-        </div>
-    </div>
-
     <!-- Section Feedback & AI Assistant Modal -->
-    <div id="feedbackModal" class="concept-modal-overlay">
+    <div id="feedbackModal" class="concept-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="fbSectionTitle">
         <div class="concept-modal-card">
             <button class="concept-modal-close" onclick="closeFeedbackModal()">&times;</button>
             <div class="concept-badge-tag">📝 NOTES & AI ASSISTANT</div>
@@ -526,7 +559,7 @@
             <!-- Tab 1: Ask Question -->
             <div id="fbTabContent1" class="fb-tab-content">
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Type a question about terms in this section (e.g. <em>"What is Pydantic?"</em> or <em>"How does Google TabFM work?"</em>):</p>
-                <textarea id="fbQuestionInput" class="sandbox-input" style="height: 100px; margin-bottom: 12px;" placeholder="Ask your question here..."></textarea>
+                <textarea id="fbQuestionInput" aria-label="Your question about this section" class="sandbox-input" style="height: 100px; margin-bottom: 12px;" placeholder="Ask your question here..."></textarea>
                 <button class="fb-action-btn gold" onclick="generateAiQuestionPrompt()">Generate AI Prompt ➔</button>
                 <div id="fbQuestionPromptOut" class="fb-prompt-box" style="display:none;"></div>
             </div>
@@ -534,7 +567,7 @@
             <!-- Tab 2: Suggest Additions -->
             <div id="fbTabContent2" class="fb-tab-content" style="display:none;">
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Suggest a feature, dataset, or topic addition you'd like built into this app:</p>
-                <textarea id="fbAdditionInput" class="sandbox-input" style="height: 100px; margin-bottom: 12px;" placeholder="Describe what you want added..."></textarea>
+                <textarea id="fbAdditionInput" aria-label="Describe the feature or topic to add" class="sandbox-input" style="height: 100px; margin-bottom: 12px;" placeholder="Describe what you want added..."></textarea>
                 <button class="fb-action-btn gold" onclick="generateAiAdditionPrompt()">Generate Feature Request Prompt ➔</button>
                 <div id="fbAdditionPromptOut" class="fb-prompt-box" style="display:none;"></div>
             </div>
@@ -542,7 +575,7 @@
             <!-- Tab 3: Personal Notes Manager -->
             <div id="fbTabContent3" class="fb-tab-content" style="display:none;">
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Save personal study notes for this section. Notes are saved to your browser storage and can be exported as a markdown study guide!</p>
-                <textarea id="fbNoteInput" class="sandbox-input" style="height: 120px; margin-bottom: 12px;" placeholder="Type your personal study notes here..."></textarea>
+                <textarea id="fbNoteInput" aria-label="Your personal study notes" class="sandbox-input" style="height: 120px; margin-bottom: 12px;" placeholder="Type your personal study notes here..."></textarea>
                 <div style="display: flex; gap: 10px;">
                     <button class="fb-action-btn gold" onclick="savePersonalNote()">Save Note</button>
                     <button class="fb-action-btn outline" onclick="exportNotesToMarkdown()">Export Study Guide (.md)</button>
@@ -554,6 +587,8 @@
 
     <!-- JavaScript Files -->
     <script src="../../js/dataset_config.js"></script>
+    <script src="../../js/survey_stats.js"></script>
+    <script src="../../js/a11y_modal.js"></script>
     <script src="../../js/glossary.js"></script>
     <script src="../../js/feedback.js"></script>
     <script src="../../js/rosetta.js"></script>
