@@ -42,9 +42,21 @@ function renderStorybookReader(topicId, scenes) {
     if (!scenes || scenes.length === 0) return '';
     if (activeStorySlide[topicId] === undefined) activeStorySlide[topicId] = 0;
     const currentIdx = activeStorySlide[topicId];
+
+    // Thinkers get one extra slide at the end: a real public-domain portrait
+    // (or, where none exists, an honest explanation why - see portraits.js).
+    const photoEntry = (typeof PORTRAIT_PHOTOS !== 'undefined') ? PORTRAIT_PHOTOS[topicId] : undefined;
+    const hasPhotoSlide = !!photoEntry;
+    const totalSlides = scenes.length + (hasPhotoSlide ? 1 : 0);
+    const isPhotoSlide = hasPhotoSlide && currentIdx === scenes.length;
+
+    if (isPhotoSlide) {
+        return renderThinkerPhotoSlide(topicId, photoEntry, currentIdx, totalSlides, scenes.length);
+    }
+
     const sc = scenes[currentIdx];
 
-    // Thinkers get a drawn portrait; other topics keep the scene emoji.
+    // Drawn portrait for thinkers; other topics keep the scene emoji.
     const portrait = (typeof renderThinkerPortrait === 'function' &&
                       typeof PORTRAIT_SPEC !== 'undefined' && PORTRAIT_SPEC[topicId])
         ? renderThinkerPortrait(topicId, 180)
@@ -54,11 +66,11 @@ function renderStorybookReader(topicId, scenes) {
         <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid var(--purple-primary); border-radius: 20px; padding: 24px; margin-bottom: 24px; position: relative;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
                 <span class="nb-badge" style="background: var(--purple-primary); color: #FFF; font-size: 0.82rem;">
-                    📖 Story Scene ${currentIdx + 1} of ${scenes.length}: ${sc.title}
+                    📖 Story Scene ${currentIdx + 1} of ${totalSlides}: ${sc.title}
                 </span>
                 <div style="display: flex; gap: 10px; align-items: center;">
                     <button class="fb-action-btn outline" style="padding: 4px 10px; font-size: 0.8rem;" onclick="speakStoryText('${escapeJsString(sc.text + (sc.factBox ? ' How we know: ' + sc.factBox : ''))}')">🔊 Read Aloud</button>
-                    <span style="color: var(--gold-star); font-weight: 800; font-size: 0.9rem;">Slide ${currentIdx + 1}/${scenes.length}</span>
+                    <span style="color: var(--gold-star); font-weight: 800; font-size: 0.9rem;">Slide ${currentIdx + 1}/${totalSlides}</span>
                 </div>
             </div>
 
@@ -80,13 +92,70 @@ function renderStorybookReader(topicId, scenes) {
             </div>
 
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <button class="fb-action-btn outline" ${currentIdx === 0 ? 'disabled style="opacity:0.4; cursor:not-allowed;"' : ''} onclick="changeStorySlide('${topicId}', -1)">◀ Previous Scene</button>
+                <button class="fb-action-btn outline story-prev-btn" ${currentIdx === 0 ? 'disabled style="opacity:0.4; cursor:not-allowed;"' : ''} onclick="changeStorySlide('${topicId}', -1)">◀ Previous Scene</button>
                 <div style="display: flex; gap: 6px;">
-                    ${scenes.map((_, i) => `
+                    ${Array.from({ length: totalSlides }, (_, i) => `
                         <span style="width: 12px; height: 12px; border-radius: 50%; background: ${i === currentIdx ? 'var(--gold-star)' : 'rgba(255,255,255,0.2)'}; display: inline-block;"></span>
                     `).join('')}
                 </div>
-                <button class="fb-action-btn gold" ${currentIdx === scenes.length - 1 ? 'disabled style="opacity:0.4; cursor:not-allowed;"' : ''} onclick="changeStorySlide('${topicId}', 1)">Next Scene ▶</button>
+                <button class="fb-action-btn gold story-next-btn" ${(!hasPhotoSlide && currentIdx === scenes.length - 1) ? 'disabled style="opacity:0.4; cursor:not-allowed;"' : ''} onclick="changeStorySlide('${topicId}', 1)">
+                    ${currentIdx === scenes.length - 1 && hasPhotoSlide ? 'See a Real Portrait ▶' : 'Next Scene ▶'}
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+/** Final slide: a real public-domain portrait, or an honest note when none exists. */
+function renderThinkerPhotoSlide(topicId, entry, currentIdx, totalSlides, scenesLength) {
+    const readAloudText = entry.noPhoto
+        ? entry.caption
+        : `${entry.caption} ${entry.credit}`;
+
+    const figure = entry.noPhoto
+        ? (typeof renderThinkerPortrait === 'function' ? renderThinkerPortrait(topicId, 180) : '')
+        : `<img src="${entry.file}" alt="A public domain portrait" loading="lazy"
+                style="width: 100%; max-width: 220px; border-radius: 12px; display: block; box-shadow: 0 6px 18px rgba(0,0,0,0.5);">`;
+
+    return `
+        <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid var(--gold-star); border-radius: 20px; padding: 24px; margin-bottom: 24px; position: relative;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                <span class="nb-badge" style="background: var(--gold-star); color: #000; font-size: 0.82rem;">
+                    ${entry.noPhoto ? '🔍' : '🖼️'} Story Scene ${currentIdx + 1} of ${totalSlides}: ${entry.noPhoto ? 'Why No Photo?' : 'A Real Portrait'}
+                </span>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <button class="fb-action-btn outline" style="padding: 4px 10px; font-size: 0.8rem;" onclick="speakStoryText('${escapeJsString(readAloudText)}')">🔊 Read Aloud</button>
+                    <span style="color: var(--gold-star); font-weight: 800; font-size: 0.9rem;">Slide ${currentIdx + 1}/${totalSlides}</span>
+                </div>
+            </div>
+
+            <div class="story-scene-grid" style="display: grid; grid-template-columns: 180px 1fr; gap: 22px; align-items: start; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 16px; margin-bottom: 20px;">
+                <div class="story-scene-figure">${figure}</div>
+                <div>
+                    <h4 style="color: var(--gold-star); font-size: 1.25rem; margin-bottom: 10px;">
+                        <span aria-hidden="true">${entry.noPhoto ? '🔍' : '🖼️'}</span>
+                        ${entry.noPhoto ? 'No photo yet - and here is why' : 'What did they really look like?'}
+                    </h4>
+                    <p style="color: var(--text-main); font-size: 1.08rem; line-height: 1.65; margin: 0;">${escapeHtml(entry.caption)}</p>
+                    ${!entry.noPhoto ? `
+                        <div style="margin-top: 14px; background: rgba(245,158,11,0.09); border-left: 3px solid var(--gold-star); border-radius: 10px; padding: 11px 14px;">
+                            <div style="color: var(--gold-star); font-weight: 800; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 3px;">Source</div>
+                            <div style="color: var(--text-main); font-size: 0.95rem; line-height: 1.55;">
+                                ${escapeHtml(entry.credit)} Public domain.
+                                ${entry.commonsUrl ? `<a href="${entry.commonsUrl}" target="_blank" rel="noopener noreferrer" style="color: var(--cyan-magic);">See it on Wikimedia Commons ↗</a>` : ''}
+                            </div>
+                        </div>` : ''}
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <button class="fb-action-btn outline story-prev-btn" onclick="changeStorySlide('${topicId}', -1)">◀ Previous Scene</button>
+                <div style="display: flex; gap: 6px;">
+                    ${Array.from({ length: totalSlides }, (_, i) => `
+                        <span style="width: 12px; height: 12px; border-radius: 50%; background: ${i === currentIdx ? 'var(--gold-star)' : 'rgba(255,255,255,0.2)'}; display: inline-block;"></span>
+                    `).join('')}
+                </div>
+                <button class="fb-action-btn gold story-next-btn" disabled style="opacity:0.4; cursor:not-allowed;">Next Scene ▶</button>
             </div>
         </div>
     `;
@@ -94,9 +163,32 @@ function renderStorybookReader(topicId, scenes) {
 
 function changeStorySlide(topicId, delta) {
     if (activeStorySlide[topicId] === undefined) activeStorySlide[topicId] = 0;
-    activeStorySlide[topicId] += delta;
+
+    // Clamp rather than trusting the caller. An out-of-range index would make
+    // renderStorybookReader read past the scenes array and throw, which the
+    // stage's catch turns into a "this topic is taking a break" card.
+    const scenes = storySlideCount(topicId);
+    activeStorySlide[topicId] = Math.max(0, Math.min(activeStorySlide[topicId] + delta, scenes - 1));
+
     if (typeof markDailyQuest === 'function') markDailyQuest('story');
     if (typeof renderActiveTopicStage === 'function') renderActiveTopicStage();
+}
+
+/** Total slides for a topic: authored scenes, plus the portrait slide for thinkers. */
+function storySlideCount(topicId) {
+    let scenes = 0;
+    if (typeof thinkersData !== 'undefined') {
+        const t = thinkersData.find(x => x.id === topicId);
+        if (t) scenes = t.storyScenes.length;
+    }
+    if (!scenes && typeof mentalModelsData !== 'undefined' && mentalModelsData[topicId]) {
+        scenes = (mentalModelsData[topicId].storyScenes || []).length;
+    }
+    if (!scenes && typeof experimentData !== 'undefined' && experimentData[topicId]) {
+        scenes = (experimentData[topicId].storyScenes || []).length;
+    }
+    const hasPhoto = typeof PORTRAIT_PHOTOS !== 'undefined' && !!PORTRAIT_PHOTOS[topicId];
+    return scenes + (hasPhoto ? 1 : 0);
 }
 
 // 2. Interactive Vocabulary Flashcard Component

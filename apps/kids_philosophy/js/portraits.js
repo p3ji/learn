@@ -150,6 +150,104 @@ const PORTRAIT_PROPS = {
     punchcard: `<g transform="translate(150,182)"><rect x="-18" y="-13" width="36" height="26" rx="2" fill="#FDF2F8" stroke="#BE185D" stroke-width="2"/><path d="M-18 -13 l6 0 l-6 6 Z" fill="#BE185D"/>${[-10, -2, 6, 12].map((x, i) => [-5, 2].map(y => `<rect x="${x}" y="${y + (i % 2) * 3}" width="4" height="4" rx="1" fill="#BE185D"/>`).join('')).join('')}</g>`
 };
 
+// Real public-domain portraits, one per thinker, shown as the final story slide.
+//
+// Every file was checked individually against the Wikimedia Commons API before
+// being vendored into img/portraits/ - each page explicitly carries a "Public
+// domain" license (old work, expired copyright), not a Creative Commons or
+// permission-only grant. Two deliberate exceptions:
+//
+//   - Karl Popper (d. 1994) has no PORTRAIT_PHOTOS entry. He lived recently
+//     enough that photographs of him are still under copyright in most
+//     countries - the images findable online are permission-granted or
+//     CC-BY-SA, not public domain, so none is vendored. His slide explains why
+//     instead of silently differing from the other ten.
+//   - Hypatia's entry is a mid-19th-century engraving by an unknown artist,
+//     not the famous 1885 Charles Mitchell painting. That painting is also
+//     public domain, but depicts her nude, which is not appropriate here.
+//
+// `lifetime: true` means the image was made from or near life (a photograph,
+// or a painting of a living sitter); `lifetime: false` means it was made
+// substantially after the person's death and is a later artist's idea of
+// their appearance. Both are worth saying out loud to a child - "how do we
+// know what someone looked like" is itself part of the app's theme.
+const PORTRAIT_PHOTOS = {
+    socrates: {
+        file: 'img/portraits/socrates.jpg',
+        lifetime: false,
+        caption: 'No portrait of Socrates from his own lifetime survives. This marble head, carved centuries later, is a Roman copy of an earlier Greek sculptor’s idea of what a wise old philosopher should look like - not a likeness taken from life.',
+        credit: 'Roman marble copy, after a Greek original. Louvre Museum, Paris.',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/File:Socrates_Louvre.jpg'
+    },
+    hypatia: {
+        file: 'img/portraits/hypatia.jpg',
+        lifetime: false,
+        caption: 'Nobody drew or painted Hypatia while she was alive. This engraving was made about 1,400 years after her death - an artist imagining her from the little that was written about her.',
+        credit: 'Unknown engraver, mid-19th century.',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/Category:Hypatia'
+    },
+    aristotle: {
+        file: 'img/portraits/aristotle.jpg',
+        lifetime: false,
+        caption: 'Like the Socrates bust, this is a later copy - Roman stonecutters carving a Greek sculptor’s imagined portrait of Aristotle, not a likeness made while he was alive.',
+        credit: 'Roman marble copy, after a Greek original attributed to Lysippos. Palazzo Altemps, Rome.',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/File:Aristotle_Altemps_Inv8575.jpg'
+    },
+    aurelius: {
+        file: 'img/portraits/aurelius.jpg',
+        lifetime: true,
+        caption: 'As emperor, Marcus Aurelius had his portrait carved often and sent across the empire, so this bust was very likely made from or close to life.',
+        credit: 'Roman marble bust, 2nd century CE. Metropolitan Museum of Art, New York.',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/File:Marcus_Aurelius_Metropolitan_Museum.png'
+    },
+    descartes: {
+        file: 'img/portraits/descartes.jpg',
+        lifetime: true,
+        caption: 'This is a later copy of a portrait originally painted from life in the 1640s, while Descartes was alive.',
+        credit: 'After Frans Hals. Louvre Museum, Paris.',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/File:Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg'
+    },
+    popper: {
+        noPhoto: true,
+        caption: 'Karl Popper died in 1994 - recently enough that photographs of him are still under copyright in most countries, so we cannot show a real one here yet. That is worth knowing: not everything true and well-documented is free to copy and share. If a museum or copyright holder ever releases a photo of him into the public domain, we will add it.'
+    },
+    mill: {
+        file: 'img/portraits/mill.jpg',
+        lifetime: true,
+        caption: 'A real photograph, taken of Mill himself in 1865, eight years before he died.',
+        credit: 'Photograph by John Watkins, 1865.',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/File:John_Stuart_Mill_by_John_Watkins,_1865.jpg'
+    },
+    confucius: {
+        file: 'img/portraits/confucius.jpg',
+        lifetime: false,
+        caption: 'This painting was made roughly 1,200 years after Confucius lived. No image from his own time survives - this is a later artist’s idea of him, though it became the standard way he has been pictured ever since.',
+        credit: 'Traditionally attributed to Wu Daozi, Tang Dynasty (8th century CE).',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/File:Confucius_Tang_Dynasty.jpg'
+    },
+    lao_tzu: {
+        file: 'img/portraits/lao_tzu.jpg',
+        lifetime: false,
+        caption: 'Remember Scene 1: historians are not even sure Lao Tzu was one real person. This traditional painting, artist unknown, is a much later imagining - not a record of an actual face.',
+        credit: 'Traditional Chinese painting, artist unknown.',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/File:Laozi.jpg'
+    },
+    kant: {
+        file: 'img/portraits/kant.jpg',
+        lifetime: true,
+        caption: 'Painted during Kant’s lifetime, in the circle of artists who painted the other thinkers and nobles of his city.',
+        credit: 'Artist uncertain (school of Anton Graff), 18th century.',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/File:Immanuel_Kant_(painted_portrait).jpg'
+    },
+    lovelace: {
+        file: 'img/portraits/lovelace.jpg',
+        lifetime: true,
+        caption: 'Painted from life in 1836, when Ada was 21 - sixteen years before she met Babbage’s Analytical Engine.',
+        credit: 'Margaret Sarah Carpenter, 1836. Government Art Collection, UK.',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/File:Carpenter_portrait_of_Ada_Lovelace_-_detailFXD.jpg'
+    }
+};
+
 /**
  * Build one portrait as a self-contained inline SVG string.
  * @param {string} thinkerId  key in PORTRAIT_SPEC
