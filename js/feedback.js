@@ -48,7 +48,7 @@ function generateAiQuestionPrompt() {
         return;
     }
 
-    const promptStr = `[AI QUESTION / CLARIFICATION REQUEST]\nSection: ${activeSectionTitle}\nUser Query: "${qText}"\nInstruction: Please explain this concept thoroughly or update the WatSPEED Prep Hub codebase to incorporate this request.`;
+    const promptStr = `[AI QUESTION / CLARIFICATION REQUEST]\nSection: ${activeSectionTitle}\nUser Query: "${qText}"\nInstruction: Please explain this concept thoroughly or update the Sociology ➔ AI Hub codebase to incorporate this request.`;
 
     out.style.display = 'block';
     out.innerHTML = `
@@ -69,7 +69,7 @@ function generateAiAdditionPrompt() {
         return;
     }
 
-    const promptStr = `[AI FEATURE / ADDITION REQUEST]\nSection: ${activeSectionTitle}\nUser Suggestion: "${aText}"\nInstruction: Please build this feature, dataset, or visualization into the WatSPEED Prep Hub codebase.`;
+    const promptStr = `[AI FEATURE / ADDITION REQUEST]\nSection: ${activeSectionTitle}\nUser Suggestion: "${aText}"\nInstruction: Please build this feature, dataset, or visualization into the Sociology ➔ AI Hub codebase.`;
 
     out.style.display = 'block';
     out.innerHTML = `
@@ -132,7 +132,7 @@ function exportNotesToMarkdown() {
         return;
     }
 
-    let mdStr = `# WatSPEED Agentic AI Study Guide & Personal Notes\n\n`;
+    let mdStr = `# Sociology ➔ AI & Data Science Bridge | Study Guide & Personal Notes\n\n`;
     allNotes.forEach((n, idx) => {
         mdStr += `### Note ${idx + 1}: ${n.section}\n`;
         mdStr += `**Date:** ${n.timestamp}\n\n`;

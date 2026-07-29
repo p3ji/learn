@@ -1,4 +1,4 @@
-// Jupyter Notebook Viewer & Terminal Launch Assistant for WatSPEED Prep Hub
+// Jupyter Notebook Viewer & Terminal Launch Assistant for Sociology ➔ AI Hub
 //
 // Previews are read from the real .ipynb files at runtime rather than being
 // hand-copied into this file. That means the hub can never show a cell or an
