@@ -40,7 +40,7 @@ const mentalModelsData = {
         example: "A recipe follower can only bake a cake if they have a pre-made boxed mix. But a First Principles Chef understands raw flour, sugar, eggs, and heat. If they run out of cake mix, they build a brand new delicious pastry from scratch using fundamental ingredients!",
         videoId: "ZqhN2YWTw0M",
         videoQuiz: [
-            { question: "What is the key difference between a recipe follower and a first principles chef?", options: [{ text: "A chef understands raw ingredients and can create new recipes from scratch", correct: true }, { text: "A chef only buys store mixes", correct: false }] }
+            { question: "What is the key difference between a recipe follower and a first principles chef?", options: [{ text: "A chef understands raw ingredients and can create new recipes from scratch", correct: true }, { text: "A chef follows the recipe more carefully", correct: false }] }
         ],
         p4cInquiry: [
             {
@@ -60,39 +60,6 @@ const mentalModelsData = {
         caseStudies: [
             { title: "Electric Bikes", text: "Instead of buying a $2,000 electric bicycle, an engineer breaks it down into lithium cells ($80), metal tube frame ($30), and copper motor ($50)." }
         ],
-        multiLevelGame: [
-            {
-                shortName: "Level 1: Novice",
-                levelTitle: "Raw Ingredient Builder",
-                scenario: "You want to create a new dessert, but the store is out of cake mix. What is the First Principles choice?",
-                options: [
-                    { text: "🥐 Combine raw flour, eggs, sugar, and cocoa to bake fresh brownies!", correct: true, feedback: "Chef Master choice! Built from first principles." },
-                    { text: "😭 Give up and go home", correct: false, feedback: "That's being trapped by analogy." }
-                ]
-            },
-            {
-                shortName: "Level 2: Scholar",
-                levelTitle: "Snowmobile Inventor",
-                scenario: "How do you solve deep snow travel using First Principles?",
-                options: [
-                    { text: "🛷 Combine gasoline engine + snow treads + steering skis to invent a snowmobile!", correct: true, feedback: "Invention unlocked! Snowmobile created!" },
-                    { text: "🚲 Put slightly bigger tires on a 2-wheel bicycle", correct: false, feedback: "That still gets stuck in deep snow." }
-                ]
-            },
-            {
-                shortName: "Level 3: Master",
-                levelTitle: "Grand Master Space Architect",
-                scenario: "Building a space habitat costs $100M in pre-built parts. How do you reduce the cost by 90%?",
-                options: [
-                    { text: "🚀 Buy raw aluminum-lithium alloy & solar panels directly and manufacture in-house!", correct: true, feedback: "FIRST PRINCIPLES SPACE ARCHITECT!" },
-                    { text: "❌ Pay $100M retail price", correct: false, feedback: "That accepts the high retail markup." }
-                ]
-            }
-        ],
-        chatResponses: [
-            { prompt: "How do I use First Principles in homework?", answer: "Don't just memorize answers! Break the math or science problem down to its basic core rules." },
-            { prompt: "What is reasoning by analogy?", answer: "Reasoning by analogy is just copying what everyone else does instead of thinking for yourself!" }
-        ]
     },
     occams_razor: {
         id: "occams_razor",
@@ -126,43 +93,26 @@ const mentalModelsData = {
         example: "If you find your trash can knocked over, option A is 'A raccoon knocked it over', option B is 'Aliens landed, searched for batteries, and flew to Mars'. Occam's Razor trims away the alien theory!",
         videoId: "B94BmViQEwo", // Explified: Occam's Razor
         videoQuiz: [
-            { question: "What does Occam's Razor tell us to trim away?", options: [{ text: "Wild explanations requiring unproven assumptions", correct: true }, { text: "The correct answer", correct: false }] }
+            { question: "What does Occam's Razor tell us to trim away?", options: [{ text: "Wild explanations requiring unproven assumptions", correct: true }, { text: "The explanation that sounds most impressive", correct: false }] }
+        ],
+        p4cInquiry: [
+            {
+                title: "When Simple Is Wrong",
+                shortTitle: "Simplest Answer",
+                dilemma: "Your friend did not sit with you at lunch. The simplest explanation is 'they were busy'. Is the simplest explanation always the one to go with?",
+                perspectives: {
+                    a: { name: "Start Simple", argument: "Most of the time the boring explanation is the true one. Jumping to the dramatic version costs you a friendship over nothing." },
+                    b: { name: "Simple Can Hide Things", argument: "Sometimes the complicated explanation is the true one - someone really is being left out. 'Keep it simple' can become an excuse not to notice." },
+                    c: { name: "Simple First, Then Ask", argument: "Assume the simple thing, but actually go and ask them. That beats guessing either way." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "When has the simplest explanation turned out to be wrong?", context: "Talk about a time the obvious answer was not the real one, and what the clue was." }
         ],
         caseStudies: [
             { title: "Lost Keys", text: "You can't find your keys. Option A: You left them on the kitchen counter. Option B: A wizard teleported them to Jupiter!" }
         ],
-        multiLevelGame: [
-            {
-                shortName: "Level 1: Novice",
-                levelTitle: "Trash Can Mystery",
-                scenario: "Trash is spilled in the yard. Which explanation uses Occam's Razor?",
-                options: [
-                    { text: "🦝 A hungry raccoon knocked it over", correct: true, feedback: "Correct! Fewest assumptions." },
-                    { text: "🛸 Flying aliens landed and searched for batteries", correct: false, feedback: "Too many crazy assumptions!" }
-                ]
-            },
-            {
-                shortName: "Level 2: Scholar",
-                levelTitle: "Strange Noise Detective",
-                scenario: "You hear a squeak in the attic at night.",
-                options: [
-                    { text: "🐭 A tiny house mouse is scurrying across the floorboard", correct: true, feedback: "Simplest logical answer!" },
-                    { text: "👻 A ghost wearing tap shoes is dancing", correct: false, feedback: "Trimming away the ghost theory!" }
-                ]
-            },
-            {
-                shortName: "Level 3: Master",
-                levelTitle: "Grand Master Science Inspector",
-                scenario: "A computer program produces an error code. Option A: A missing semicolon on line 12. Option B: Cosmic rays mutated the microchip.",
-                options: [
-                    { text: "💻 Missing semicolon on line 12", correct: true, feedback: "OCCAM'S RAZOR CODE MASTER!" },
-                    { text: "🌌 Cosmic ray mutation", correct: false, feedback: "Check the simple code error first!" }
-                ]
-            }
-        ],
-        chatResponses: [
-            { prompt: "Does Occam's Razor mean the simplest answer is ALWAYS right?", answer: "Not always 100%, but it means we should start with the simplest explanation with the fewest assumptions before making up crazy theories!" }
-        ]
     },
     black_swan: {
         id: "black_swan",
@@ -202,43 +152,26 @@ const mentalModelsData = {
         example: "Seeing 1,000 white swans doesn't prove all swans are white. Discovering just ONE black swan instantly proves the old rule wrong!",
         videoId: "wf-sGqBsWv4", // BBC Radio 4 Popper
         videoQuiz: [
-            { question: "What does 1 single Black Swan prove?", options: [{ text: "That the old rule 'all swans are white' is false", correct: true }, { text: "That all swans are white", correct: false }] }
+            { question: "What does 1 single Black Swan prove?", options: [{ text: "That the old rule 'all swans are white' is false", correct: true }, { text: "That most swans are white, so the rule was close enough", correct: false }] }
+        ],
+        p4cInquiry: [
+            {
+                title: "One Bird Changes Everything",
+                shortTitle: "The Surprise Bird",
+                dilemma: "For hundreds of years Europeans said 'all swans are white', because every swan they had ever seen was white. Then explorers found black swans in Australia. How much should one surprise change what you believe?",
+                perspectives: {
+                    a: { name: "One Is Enough", argument: "A single black swan proves 'all swans are white' false, forever. No number of white swans could ever prove it true. Surprises count more than confirmations." },
+                    b: { name: "Rules Still Work", argument: "Nearly all swans really are white, so the rule was useful even though it was not perfect. A rare exception does not make a good rule worthless." },
+                    c: { name: "Change the Wording", argument: "Maybe the fix is to say 'most swans are white, so far as we have seen'. Then the rule is honest about what we do not know." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "What is something everyone around you assumes is always true?", context: "Try to imagine what the black swan would look like - what single thing would prove it wrong?" }
         ],
         caseStudies: [
             { title: "Floating Rocks", text: "Theory: 'All rocks sink in water!' Black Swan: Pumice stone (volcanic rock full of air pockets) floats!" }
         ],
-        multiLevelGame: [
-            {
-                shortName: "Level 1: Novice",
-                levelTitle: "Swan Hunter",
-                scenario: "Theory: 'No dog ever likes water!' How do you test this?",
-                options: [
-                    { text: "🐕 Find 1 water-loving retriever (Black Swan)", correct: true, feedback: "Falsified!" },
-                    { text: "🙈 Ignore swimming dogs", correct: false, feedback: "Ignoring data is wrong!" }
-                ]
-            },
-            {
-                shortName: "Level 2: Scholar",
-                levelTitle: "Floating Rock Mystery",
-                scenario: "Theory: 'All rocks sink in water.' What is the Black Swan?",
-                options: [
-                    { text: "🌋 Pumice volcanic rock that floats on water!", correct: true, feedback: "Black Swan found!" },
-                    { text: "🪨 Heavy granite rock that sinks", correct: false, feedback: "That agrees with the theory." }
-                ]
-            },
-            {
-                shortName: "Level 3: Master",
-                levelTitle: "Grand Master Bug Hunter",
-                scenario: "Your code runs fine on 10 simple inputs. How do you find Black Swan bugs?",
-                options: [
-                    { text: "🤖 Test extreme edge-cases (negative numbers, empty strings, offline mode)", correct: true, feedback: "BLACK SWAN BUG HUNTER!" },
-                    { text: "❌ Re-run the easy test 100 times", correct: false, feedback: "Easy tests miss black swan bugs!" }
-                ]
-            }
-        ],
-        chatResponses: [
-            { prompt: "Why do we hunt for Black Swans?", answer: "Because 1 counter-example teaches us more about truth than 1,000 confirming examples!" }
-        ]
     },
     map_territory: {
         id: "map_territory",
@@ -278,43 +211,26 @@ const mentalModelsData = {
         example: "A simplified map of a zoo shows 3 animal icons, but the real zoo has 400 animals, sounds, smells, and zookeepers!",
         videoId: "BCqX1zPLRXE", // Mental Models Map vs Territory
         videoQuiz: [
-            { question: "Why can't a map be 100% identical to the real territory?", options: [{ text: "Because a map must simplify reality to be useful", correct: true }, { text: "Because maps are printed on paper", correct: false }] }
+            { question: "Why can't a map be 100% identical to the real territory?", options: [{ text: "Because a map must simplify reality to be useful", correct: true }, { text: "Because maps are sometimes out of date", correct: false }] }
+        ],
+        p4cInquiry: [
+            {
+                title: "The Map Is Not the Place",
+                shortTitle: "Map vs Real Place",
+                dilemma: "A map of your town leaves almost everything out - the smells, the noise, which street feels scary at night. Does that make the map bad?",
+                perspectives: {
+                    a: { name: "Leaving Things Out Is the Point", argument: "A map that showed everything would be the size of the town and useless. Simplifying is exactly what makes it work." },
+                    b: { name: "What Gets Left Out Matters", argument: "The map cannot tell you the shortcut is flooded or the shop has closed. If you only trust the map you will get things wrong." },
+                    c: { name: "Know Which One You Are Holding", argument: "Use the map to plan, then keep your eyes open when you get there. The mistake is forgetting which one is which." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "What is a 'map' you use that leaves important things out?", context: "Think about school reports, game stats, or a photo - what do they miss about the real thing?" }
         ],
         caseStudies: [
             { title: "Weather Forecast", text: "Your weather app says '0% chance of rain', but dark storm clouds gather outside. Trust the territory (look outside)!" }
         ],
-        multiLevelGame: [
-            {
-                shortName: "Level 1: Novice",
-                levelTitle: "Zoo Map Inspector",
-                scenario: "The zoo map shows 1 lion icon. Does the real zoo territory have only 1 lion?",
-                options: [
-                    { text: "🏞️ The real territory might have 5 lions, zookeepers, trees, and sounds!", correct: true, feedback: "Map is not territory!" },
-                    { text: "🗺️ The map shows everything in 100% detail", correct: false, feedback: "Maps are simplified models!" }
-                ]
-            },
-            {
-                shortName: "Level 2: Scholar",
-                levelTitle: "Weather Reality Check",
-                scenario: "Your phone app says 'Sunny 25°C', but you step outside and it's pouring rain. What do you wear?",
-                options: [
-                    { text: "☔ Put on a raincoat (Trust the real territory!)", correct: true, feedback: "Correct! Reality beats the map model!" },
-                    { text: "🕶️ Wear sunglasses and pretend it isn't raining", correct: false, feedback: "Don't trust an outdated map over reality!" }
-                ]
-            },
-            {
-                shortName: "Level 3: Master",
-                levelTitle: "Grand Master Reality Checker",
-                scenario: "A business spreadsheet (map) predicts $1,000 profit, but customer demand (territory) drops. What do you do?",
-                options: [
-                    { text: "📊 Adjust the business strategy to fit real customer feedback!", correct: true, feedback: "MAP VS TERRITORY MASTER!" },
-                    { text: "❌ Ignore customers and stare at the spreadsheet", correct: false, feedback: "The spreadsheet is just a map!" }
-                ]
-            }
-        ],
-        chatResponses: [
-            { prompt: "What is the Map and what is the Territory?", answer: "The Map is a simplified drawing or idea. The Territory is the rich, complex real world!" }
-        ]
     },
     inversion: {
         id: "inversion",
@@ -354,43 +270,26 @@ const mentalModelsData = {
         example: "Want to be a great soccer teammate? Ask 'What makes someone a terrible teammate?' (screaming, refusing to pass, quitting early). Now just avoid those 3 things!",
         videoId: "dItUGF8GdTw", // TED-Ed: 5 tips to improve your critical thinking
         videoQuiz: [
-            { question: "What question does Inversion ask us to consider?", options: [{ text: "What would guarantee failure so we can avoid those traps?", correct: true }, { text: "How to copy others", correct: false }] }
+            { question: "What question does Inversion ask us to consider?", options: [{ text: "What would guarantee failure so we can avoid those traps?", correct: true }, { text: "How to argue the opposite of what you believe", correct: false }] }
+        ],
+        p4cInquiry: [
+            {
+                title: "Working Backwards",
+                shortTitle: "Turning It Around",
+                dilemma: "You want your birthday party to go brilliantly. Is it more useful to plan how to make it great, or to list everything that could ruin it and stop those?",
+                perspectives: {
+                    a: { name: "Plan the Good", argument: "If you only think about disasters you end up anxious and cautious, and you never come up with the fun ideas that make it special." },
+                    b: { name: "Prevent the Bad", argument: "Most parties are not ruined by a lack of brilliance - they are ruined by one thing going wrong. Remove those and it is hard for it NOT to go well." },
+                    c: { name: "Do Both, Separately", argument: "Spend ten minutes dreaming, then ten minutes being gloomy on purpose. Mixing them means neither gets done properly." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "Think of something you want to go well. What would guarantee it goes badly?", context: "Then talk about whether avoiding those things is easier than chasing the perfect version." }
         ],
         caseStudies: [
             { title: "Team Project", text: "Want a team project to go great? Inversion asks: What would ruin it? (Not communicating, missing deadlines). Avoid those!" }
         ],
-        multiLevelGame: [
-            {
-                shortName: "Level 1: Novice",
-                levelTitle: "Failure Trap Spotter",
-                scenario: "Goal: Have a fun birthday party. What would GUARANTEE it gets ruined?",
-                options: [
-                    { text: "❌ Hiding all the games and yelling at guests", correct: true, feedback: "Inversion trap identified! Avoid this!" },
-                    { text: "🎂 Serving cake and playing music", correct: false, feedback: "That makes a party fun!" }
-                ]
-            },
-            {
-                shortName: "Level 2: Scholar",
-                levelTitle: "Pre-Mortem Engineer",
-                scenario: "Before launching a new class website, you run an Inversion Pre-Mortem. What do you check?",
-                options: [
-                    { text: "💻 Check if the server crashes when 30 students log in at once!", correct: true, feedback: "Pre-Mortem success! Found the bug early!" },
-                    { text: "❌ Assume nothing can ever go wrong", correct: false, feedback: "Inversion requires checking failure modes." }
-                ]
-            },
-            {
-                shortName: "Level 3: Master",
-                levelTitle: "Grand Master Inversion Solver",
-                scenario: "Goal: Maintain strong health. How do you apply Charlie Munger's Inversion Rule?",
-                options: [
-                    { text: "🛡️ Avoid junk food binges, lack of sleep, and zero exercise!", correct: true, feedback: "INVERSION MASTER!" },
-                    { text: "❌ Wait until getting sick to think about health", correct: false, feedback: "That's reactive, not inverted planning." }
-                ]
-            }
-        ],
-        chatResponses: [
-            { prompt: "What does 'Invert, always invert' mean?", answer: "It means whenever you want to solve a problem, flip it around and figure out how to avoid failure first!" }
-        ]
     },
     pareto: {
         id: "pareto",
@@ -430,43 +329,26 @@ const mentalModelsData = {
         example: "Out of 50 toys in your room, you likely play with your top 10 favorite toys (20%) about 80% of the time!",
         videoId: "lsGwqk_agcQ", // Sprouts: Pareto Principle Explained
         videoQuiz: [
-            { question: "What does the 80/20 rule suggest?", options: [{ text: "20% of core efforts often generate 80% of results", correct: true }, { text: "Everything is equal", correct: false }] }
+            { question: "What does the 80/20 rule suggest?", options: [{ text: "20% of core efforts often generate 80% of results", correct: true }, { text: "Effort always matches results exactly", correct: false }] }
+        ],
+        p4cInquiry: [
+            {
+                title: "A Few Things Matter Most",
+                shortTitle: "The 80/20 Idea",
+                dilemma: "In lots of situations a small number of things cause most of the result - a few players score most goals, a few pages hold most of the homework marks. If that is true, should you just ignore the rest?",
+                perspectives: {
+                    a: { name: "Focus on the Vital Few", argument: "Your time is limited. Putting it where it makes the biggest difference is simply sensible - doing everything equally means doing everything badly." },
+                    b: { name: "The Small Stuff Adds Up", argument: "The 'unimportant' 80% includes being kind, tidying up, and helping people. Ignore it and you get good marks and no friends." },
+                    c: { name: "It Depends What You Are Measuring", argument: "The pattern shows up in scores and results, but not in everything. Some things - like being trustworthy - do not work at 20%." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "What is the one thing that, if you did it well, would make the biggest difference this week?", context: "Then ask: what would you have to give up to make room for it?" }
         ],
         caseStudies: [
             { title: "Studying for Tests", text: "Focusing on the 20% core formulas and concepts gives you 80% of test points!" }
         ],
-        multiLevelGame: [
-            {
-                shortName: "Level 1: Novice",
-                levelTitle: "80/20 Toy Box",
-                scenario: "You have 50 toys, but 30 minutes to play. What is the Pareto choice?",
-                options: [
-                    { text: "🎯 Play with your top 10 favorite toys (the 20% that give 80% of fun!)", correct: true, feedback: "Pareto Focus!" },
-                    { text: "📦 Spend 30 minutes unpacking all 50 toys without playing", correct: false, feedback: "Wastes time on minor items." }
-                ]
-            },
-            {
-                shortName: "Level 2: Scholar",
-                levelTitle: "Language Learner",
-                scenario: "You have 1 week to learn basic Spanish phrases before a trip.",
-                options: [
-                    { text: "🗣️ Learn the top 100 most common words (the 20% used in 80% of conversations)", correct: true, feedback: "Smart Pareto Language Focus!" },
-                    { text: "📖 Memorize the entire dictionary from Z to A", correct: false, feedback: "Impractical!" }
-                ]
-            },
-            {
-                shortName: "Level 3: Master",
-                levelTitle: "Grand Master App Creator",
-                scenario: "An app developer has 10 feature requests. 2 features are requested by 80% of users.",
-                options: [
-                    { text: "🚀 Build the top 2 requested features first (the vital 20%)!", correct: true, feedback: "PARETO PRODUCTIVITY MASTER!" },
-                    { text: "❌ Build the least requested feature first", correct: false, feedback: "Ignore high-impact features?" }
-                ]
-            }
-        ],
-        chatResponses: [
-            { prompt: "How can 20% cause 80% of results?", answer: "Because in nature and human life, inputs are rarely equal! A few vital factors carry huge impact." }
-        ]
     },
     second_order: {
         id: "second_order",
@@ -506,43 +388,26 @@ const mentalModelsData = {
         example: "Eating 5 ice cream cones right now feels delicious (1st order). But 2 hours later, you get a bad stomach ache and miss your friends' party (2nd order)!",
         videoId: "qp0ybabZMD4", // Productivity Guy: What is Second Order Thinking
         videoQuiz: [
-            { question: "What question does a Second-Order Thinker ask?", options: [{ text: "'And then what happens next in 2 hours or 2 days?'", correct: true }, { text: "'What gives me pleasure right now?'", correct: false }] }
+            { question: "What question does a Second-Order Thinker ask?", options: [{ text: "'And then what happens next in 2 hours or 2 days?'", correct: true }, { text: "'What worked last time?'", correct: false }] }
+        ],
+        p4cInquiry: [
+            {
+                title: "And Then What Happens?",
+                shortTitle: "What Happens Next",
+                dilemma: "Your school is thinking of banning phones completely. The first effect is obvious - less distraction in lessons. But what happens after that?",
+                perspectives: {
+                    a: { name: "Think It Through", argument: "Every rule has knock-on effects. How do people contact home? What do children do instead at break? Good decisions look past the first result." },
+                    b: { name: "You Cannot Predict Everything", argument: "If you try to imagine every consequence you never decide anything. Sometimes you have to try it and see, then fix what breaks." },
+                    c: { name: "Try It Small First", argument: "Test it with one year group for a term. That way you find the second effects for real, without betting the whole school on a guess." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "Think of a rule at home or school. What happened AFTER it was introduced that nobody expected?", context: "Talk about whether it could have been predicted, or only discovered." }
         ],
         caseStudies: [
             { title: "Late Night Gaming", text: "1st Order: Fun video game right now! 2nd Order: Exhausted during math test tomorrow morning." }
         ],
-        multiLevelGame: [
-            {
-                shortName: "Level 1: Novice",
-                levelTitle: "Domino Predictor",
-                scenario: "You want to eat 6 chocolate donuts right before soccer practice.",
-                options: [
-                    { text: "⏳ 2nd Order Effect: Stomach ache & sluggish running 30 mins later!", correct: true, feedback: "Second-Order Master!" },
-                    { text: "🍦 1st Order Effect: Yummy taste for 10 seconds", correct: false, feedback: "That's only first-order thinking!" }
-                ]
-            },
-            {
-                shortName: "Level 2: Scholar",
-                levelTitle: "Chess Grandmaster Move",
-                scenario: "You practice piano for 20 minutes instead of scrolling on a phone.",
-                options: [
-                    { text: "🎹 2nd Order Effect: In 3 months, you can play your favorite songs effortlessly!", correct: true, feedback: "Long-term mastery unlocked!" },
-                    { text: "📱 1st Order Effect: Phone scrolling gives instant cheap dopamine", correct: false, feedback: "First order trap." }
-                ]
-            },
-            {
-                shortName: "Level 3: Master",
-                levelTitle: "Grand Master Policy Thinker",
-                scenario: "A city wants to build a giant parking lot over a park to solve parking.",
-                options: [
-                    { text: "🌳 2nd Order Effect: Loss of trees ➔ hotter city temperature & no playground for kids 1 year later!", correct: true, feedback: "DOMINO EFFECT MASTER!" },
-                    { text: "🚗 1st Order Effect: 5 more cars can park today", correct: false, feedback: "Fails to see long term effects." }
-                ]
-            }
-        ],
-        chatResponses: [
-            { prompt: "Why is second-order thinking hard?", answer: "Because our brains prefer instant short-term rewards! Asking 'And then what?' takes extra reflection." }
-        ]
     },
     sunk_cost: {
         id: "sunk_cost",
@@ -582,43 +447,26 @@ const mentalModelsData = {
         example: "You buy a $10 movie ticket, but 15 minutes in you realize the movie is terrible. Staying for 2 hours wastes your time AND your money. Leaving frees up your afternoon!",
         videoId: "jJajz9n9Oi4", // Sprouts: Sunk Cost Fallacy
         videoQuiz: [
-            { question: "What should guide your decisions according to Sunk Cost theory?", options: [{ text: "Your FUTURE happiness and value", correct: true }, { text: "Past money that is gone forever", correct: false }] }
+            { question: "What should guide your decisions according to Sunk Cost theory?", options: [{ text: "Your FUTURE happiness and value", correct: true }, { text: "Money you still have left to spend", correct: false }] }
+        ],
+        p4cInquiry: [
+            {
+                title: "When To Quit",
+                shortTitle: "Quitting vs Sticking",
+                dilemma: "You have been learning an instrument for two years and you do not enjoy it any more. Do you stop, or does stopping waste the two years?",
+                perspectives: {
+                    a: { name: "Stop Now", argument: "The two years are gone whatever you do. The only real question is whether the NEXT year is worth it - and if it is not, staying wastes that too." },
+                    b: { name: "Keep Going", argument: "Lots of worthwhile things feel rubbish in the middle. If you quit every time it got boring you would never get good at anything." },
+                    c: { name: "Change How, Not Whether", argument: "Maybe it is the lessons or the pieces, not the instrument. Try changing something before deciding it is over." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "Is quitting always a bad thing?", context: "Talk about a time quitting was the right call, and a time sticking with it was." }
         ],
         caseStudies: [
             { title: "Moldy Food", text: "You bought an expensive $8 sandwich, but it tastes spoiled. Eating it makes you sick—throw it away! The $8 is already gone." }
         ],
-        multiLevelGame: [
-            {
-                shortName: "Level 1: Novice",
-                levelTitle: "Movie Escape",
-                scenario: "You paid $10 for a boring movie ticket. 15 minutes in, it's terrible. What do you do?",
-                options: [
-                    { text: "🏃 Leave and play in the sun! The $10 is gone either way, save your afternoon!", correct: true, feedback: "Trap Escaped! Future value saved!" },
-                    { text: "😫 Suffer for 2 hours to get your money's worth", correct: false, feedback: "Sunk cost trap!" }
-                ]
-            },
-            {
-                shortName: "Level 2: Scholar",
-                levelTitle: "Video Game Trap",
-                scenario: "You bought a $30 video game, but after 1 hour you hate it. Should you force yourself to play 40 hours?",
-                options: [
-                    { text: "🎮 Switch to a fun game! 40 hours of suffering won't bring back $30.", correct: true, feedback: "Smart choice! Don't waste future time." },
-                    { text: "❌ Suffer for 40 hours", correct: false, feedback: "Double loss of money AND time!" }
-                ]
-            },
-            {
-                shortName: "Level 3: Master",
-                levelTitle: "Grand Master Concorde Project",
-                scenario: "A project has lost $5M and will lose another $10M if continued. The team says 'We already spent $5M, we can't stop!'",
-                options: [
-                    { text: "🛑 Cancel the project now! Cut losses and protect future funds!", correct: true, feedback: "SUNK COST MASTER!" },
-                    { text: "❌ Waste another $10M", correct: false, feedback: "Classic Concorde fallacy." }
-                ]
-            }
-        ],
-        chatResponses: [
-            { prompt: "Why do people fall for Sunk Cost?", answer: "Because humans hate admitting a past mistake! But wise thinkers focus on future happiness." }
-        ]
     },
     hanlons_razor: {
         id: "hanlons_razor",
@@ -635,10 +483,23 @@ const mentalModelsData = {
         ],
         inDepth: { history: "Formulated by Robert J. Hanlon in 1980, this mental model promotes empathy and prevents unnecessary social drama.", whyItMatters: "Assuming good intentions keeps your mind calm and preserves great friendships.", funFact: "Similar to Occam's Razor, Hanlon's Razor 'trims' away paranoid assumptions!" },
         example: "A friend doesn't reply to your text for 2 hours. Paranoid assumption: 'They hate me!' Hanlon's Razor: 'Their phone battery died or they are eating dinner!'",
-        videoId: "IBYH2zwO0zM", videoQuiz: [{ question: "What does Hanlon's Razor suggest when someone makes a mistake?", options: [{ text: "Assume it was an innocent accident or phone distraction first", correct: true }, { text: "Assume they are an evil villain", correct: false }] }],
+        videoId: "IBYH2zwO0zM", videoQuiz: [{ question: "What does Hanlon's Razor suggest when someone makes a mistake?", options: [{ text: "Assume it was an innocent accident or phone distraction first", correct: true }, { text: "Assume they will do it again on purpose", correct: false }] }],
+        p4cInquiry: [
+            {
+                title: "Mean, or Just Careless?",
+                shortTitle: "Why People Slip Up",
+                dilemma: "Someone bumps into you in the corridor and your books go everywhere. Should you assume they did it on purpose, or that they just were not looking?",
+                perspectives: {
+                    a: { name: "Assume Carelessness", argument: "Most bumps really are accidents. Assuming the worst means you get angry all day over something nobody meant, and you may hurt an innocent person's feelings." },
+                    b: { name: "Sometimes It Is Deliberate", argument: "If it keeps happening to the same person, 'they weren't looking' stops being believable. Always assuming innocence can leave someone being bullied with no one noticing." },
+                    c: { name: "Start Kind, Keep Track", argument: "Give the benefit of the doubt the first time. If there is a pattern, that pattern is itself evidence - and worth telling an adult about." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "When has someone assumed the worst about something you did by accident?", context: "Talk about how it felt, and what you wish they had done instead." }
+        ],
         caseStudies: [{ title: "Unanswered Text", text: "Phone battery died vs secret villain plan!" }],
-        multiLevelGame: [{ shortName: "Level 1: Novice", levelTitle: "Empathy Test", scenario: "Someone steps on your shoe in a crowded hallway.", options: [{ text: "🤝 Assume it was an accidental stumble in a crowd and say 'No worries!'", correct: true, feedback: "Hanlon's Razor Master!" }, { text: "👿 Yell 'You did that on purpose to ruin my shoes!'", correct: false, feedback: "That assumes malice without evidence." }] }],
-        chatResponses: [{ prompt: "Why is Hanlon's Razor useful?", answer: "It stops unnecessary drama! Most mistakes come from accidents or distraction, not bad intentions." }]
     },
     confirmation_bias: {
         id: "confirmation_bias",
@@ -654,10 +515,23 @@ const mentalModelsData = {
         ],
         inDepth: { history: "Studied extensively by psychologist Peter Wason in 1960, confirmation bias is one of the most common cognitive traps.", whyItMatters: "Actively seeking facts that challenge your view helps you discover real truth.", funFact: "Warren Buffett deliberately listens to people who DISAGREE with his stock ideas to defeat confirmation bias!" },
         example: "If you think your cat is lazy, you notice her sleeping 4 hours and ignore her catching a mouse outside!",
-        videoId: "Kho5KvPBDSw", videoQuiz: [{ question: "What is Confirmation Bias?", options: [{ text: "Only noticing clues that agree with your existing belief", correct: true }, { text: "Testing all facts equally", correct: false }] }],
+        videoId: "Kho5KvPBDSw", videoQuiz: [{ question: "What is Confirmation Bias?", options: [{ text: "Only noticing clues that agree with your existing belief", correct: true }, { text: "Believing whatever you were told first", correct: false }] }],
+        p4cInquiry: [
+            {
+                title: "Noticing What Fits",
+                shortTitle: "Seeing What You Expect",
+                dilemma: "You have decided someone in your class is annoying. After that, do you notice them fairly - or only notice the annoying bits?",
+                perspectives: {
+                    a: { name: "You Stop Seeing Straight", argument: "Once you have decided, your brain collects proof. You will remember every annoying thing and not even register the kind ones." },
+                    b: { name: "You Noticed For a Reason", argument: "You did not invent the opinion out of nowhere - something happened. Ignoring your own experience is not fair to you either." },
+                    c: { name: "Run a Test", argument: "Spend one day deliberately looking for the opposite. If you find nothing, fine. If you find things, that tells you something." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "What is something you believe that you have only ever looked for evidence FOR?", context: "Pick one and go looking for the other side together - then talk about how it felt." }
+        ],
         caseStudies: [{ title: "Sports Predictions", text: "Only remembering the games your favorite team won while forgetting their losses!" }],
-        multiLevelGame: [{ shortName: "Level 1: Novice", levelTitle: "Bias Detective", scenario: "You believe 'All video games are bad for sleep.' How do you test this without bias?", options: [{ text: "🔬 Read studies showing both sleep impacts AND cognitive spatial benefits!", correct: true, feedback: "Bias Defeated!" }, { text: "🙈 Only read articles that agree with you", correct: false, feedback: "That's Confirmation Bias!" }] }],
-        chatResponses: [{ prompt: "How do I beat Confirmation Bias?", answer: "Deliberately search for evidence that could prove your theory wrong! (Karl Popper style!)" }]
     }
 };
 
@@ -741,24 +615,12 @@ function renderSingleMentalModelTopic(modelKey) {
 
             <!-- Tab 3: Open P4C Dialectic Inquiry -->
             <div id="topicTabContent3" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn3" tabindex="0" style="display:none;">
-                ${typeof renderP4CInquiryEngine === 'function' ? renderP4CInquiryEngine(mm.id, mm.p4cInquiry || [
-                    {
-                        title: "Open Mental Model Dialectic",
-                        shortTitle: "P4C Inquiry",
-                        dilemma: "Should we always simplify models (Occam's / Map vs Territory), or do complex systems require complex, multi-layered models?",
-                        perspectives: {
-                            a: { name: "Model Parsimony & Simplification", argument: "Simplified models filter out noise, making decision-making fast and actionable." },
-                            b: { name: "Complex System Realism", argument: "Over-simplifying complex systems can hide critical edge-case risks and blind spots." }
-                        }
-                    }
-                ]) : ''}
+                ${typeof renderP4CInquiryEngine === 'function' ? renderP4CInquiryEngine(mm.id, mm.p4cInquiry) : ''}
             </div>
 
             <!-- Tab 4: Socratic Discussion Journal & Upgrade Vault -->
             <div id="topicTabContent4" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn4" tabindex="0" style="display:none;">
-                ${typeof renderSocraticDiscussionJournal === 'function' ? renderSocraticDiscussionJournal(mm.id, mm.name, mm.avatar, mm.discussionPrompts || [
-                    { prompt: "When does a mental model fail?", context: "Discuss a scenario where relying too strictly on a single mental model caused a blindspot." }
-                ]) : ''}
+                ${typeof renderSocraticDiscussionJournal === 'function' ? renderSocraticDiscussionJournal(mm.id, mm.name, mm.avatar, mm.discussionPrompts) : ''}
 
                 <h3 style="color: var(--pink-energy); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 8px;">Ask a Question or Suggest an Upgrade</h3>
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">Have a question about ${mm.name} or an idea to upgrade this app? Submit it below!</p>

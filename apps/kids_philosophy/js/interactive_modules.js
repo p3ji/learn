@@ -44,6 +44,12 @@ function renderStorybookReader(topicId, scenes) {
     const currentIdx = activeStorySlide[topicId];
     const sc = scenes[currentIdx];
 
+    // Thinkers get a drawn portrait; other topics keep the scene emoji.
+    const portrait = (typeof renderThinkerPortrait === 'function' &&
+                      typeof PORTRAIT_SPEC !== 'undefined' && PORTRAIT_SPEC[topicId])
+        ? renderThinkerPortrait(topicId, 180)
+        : '';
+
     return `
         <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid var(--purple-primary); border-radius: 20px; padding: 24px; margin-bottom: 24px; position: relative;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
@@ -51,16 +57,25 @@ function renderStorybookReader(topicId, scenes) {
                     📖 Story Scene ${currentIdx + 1} of ${scenes.length}: ${sc.title}
                 </span>
                 <div style="display: flex; gap: 10px; align-items: center;">
-                    <button class="fb-action-btn outline" style="padding: 4px 10px; font-size: 0.8rem;" onclick="speakStoryText('${escapeJsString(sc.text)}')">🔊 Read Aloud</button>
+                    <button class="fb-action-btn outline" style="padding: 4px 10px; font-size: 0.8rem;" onclick="speakStoryText('${escapeJsString(sc.text + (sc.factBox ? ' How we know: ' + sc.factBox : ''))}')">🔊 Read Aloud</button>
                     <span style="color: var(--gold-star); font-weight: 800; font-size: 0.9rem;">Slide ${currentIdx + 1}/${scenes.length}</span>
                 </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 100px 1fr; gap: 20px; align-items: center; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 16px; margin-bottom: 20px;">
-                <div style="font-size: 4rem; text-align: center;">${sc.imageEmoji}</div>
+            <div class="story-scene-grid" style="display: grid; grid-template-columns: 180px 1fr; gap: 22px; align-items: start; background: rgba(0,0,0,0.4); padding: 20px; border-radius: 16px; margin-bottom: 20px;">
+                <div class="story-scene-figure">
+                    ${portrait || `<div style="font-size: 4rem; text-align: center;" aria-hidden="true">${sc.imageEmoji}</div>`}
+                </div>
                 <div>
-                    <h4 style="color: var(--gold-star); font-size: 1.2rem; margin-bottom: 8px;">${sc.heading}</h4>
-                    <p style="color: var(--text-main); font-size: 1.05rem; line-height: 1.6; margin: 0;">${sc.text}</p>
+                    <h4 style="color: var(--gold-star); font-size: 1.25rem; margin-bottom: 10px;">
+                        <span aria-hidden="true">${sc.imageEmoji}</span> ${sc.heading}
+                    </h4>
+                    <p style="color: var(--text-main); font-size: 1.08rem; line-height: 1.65; margin: 0;">${sc.text}</p>
+                    ${sc.factBox ? `
+                        <div style="margin-top: 14px; background: rgba(6,182,212,0.09); border-left: 3px solid var(--cyan-magic); border-radius: 10px; padding: 11px 14px;">
+                            <div style="color: var(--cyan-magic); font-weight: 800; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 3px;">How we know</div>
+                            <div style="color: var(--text-main); font-size: 0.95rem; line-height: 1.55;">${sc.factBox}</div>
+                        </div>` : ''}
                 </div>
             </div>
 

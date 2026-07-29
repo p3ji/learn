@@ -919,3 +919,10 @@ button:disabled, .fb-action-btn:disabled, .fb-action-btn[disabled] {
 
 /* --- Line length --------------------------------------------- */
 p, li, .kids-hero-desc { max-width: 66ch; }
+
+/* --- Story scene: portrait beside the text, stacked on small screens ------- */
+.story-scene-figure svg { border-radius: 14px; }
+@media (max-width: 640px) {
+    .story-scene-grid { grid-template-columns: 1fr !important; justify-items: center; }
+    .story-scene-figure { max-width: 200px; }
+}

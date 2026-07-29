@@ -40,7 +40,7 @@ const experimentData = {
         example: "Watching a CGI movie of a dragon on TV is like looking at cave shadows. The movie is a 2D projection, but real life has 3D physics, weather, and real animals!",
         videoId: "1RWOpQXTltA",
         videoQuiz: [
-            { question: "What do the dark flickering shadows represent in Plato's Cave?", options: [{ text: "Surface illusions and 2D projections of reality", correct: true }, { text: "Real 3D animals", correct: false }] }
+            { question: "What do the dark flickering shadows represent in Plato's Cave?", options: [{ text: "Surface illusions and 2D projections of reality", correct: true }, { text: "Things that are hard to see clearly", correct: false }] }
         ],
         p4cInquiry: [
             {
@@ -93,41 +93,24 @@ const experimentData = {
         videoQuiz: [
             { question: "Which of these is true about the cells in your body?", options: [{ text: "Some renew often, like skin - but most brain neurons and heart cells stay with you for life", correct: true }, { text: "Every single cell in your body is replaced every 7 years", correct: false }] }
         ],
+        p4cInquiry: [
+            {
+                title: "Two Identical Ships",
+                shortTitle: "Which Is Real?",
+                dilemma: "Every plank of the ship is replaced one by one. Meanwhile someone collects all the old planks and rebuilds them into a second ship. Now there are two. Which one is the real Ship of Theseus?",
+                perspectives: {
+                    a: { name: "The Repaired One", argument: "It never stopped being the ship. It sat in the same harbour, kept the same name, and was mended bit by bit - like your body replacing its cells." },
+                    b: { name: "The Rebuilt One", argument: "It is made of the actual original wood. The other one is a copy that happens to have been made slowly." },
+                    c: { name: "Neither, or Both", argument: "Maybe 'the real one' is not a fact waiting to be found - it is a decision people make about which one to care about." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "If everything about you changed slowly over ten years, would you still be you?", context: "Talk about what would have to stay the same for the answer to be yes." }
+        ],
         caseStudies: [
             { title: "Grandfather's Axe", text: "You replace the wooden handle twice and the metal head once. Is it still 'Grandfather's Axe'? It carries the same family history and design form!" }
         ],
-        multiLevelGame: [
-            {
-                shortName: "Level 1: Novice",
-                levelTitle: "Plank Rebuilder",
-                scenario: "Replace 100% of the wooden planks with golden materials. Is it still Theseus' Ship?",
-                options: [
-                    { text: "⛵ Yes! Its identity is defined by its continuous history, form, and purpose!", correct: true, feedback: "Identity Paradox understood!" },
-                    { text: "❌ It instantly disappeared into nothingness", correct: false, feedback: "It is still a ship." }
-                ]
-            },
-            {
-                shortName: "Level 2: Scholar",
-                levelTitle: "Human Body Paradox",
-                scenario: "Your body replaces almost all skin and bone cells every 7 years. Are you still you?",
-                options: [
-                    { text: "🧠 Yes, because your consciousness, memories, and form continue seamlessly!", correct: true, feedback: "Human Identity Master!" },
-                    { text: "❌ No, you become a completely different stranger", correct: false, feedback: "Your memory and mind continue." }
-                ]
-            },
-            {
-                shortName: "Level 3: Master",
-                levelTitle: "Grand Master Aristotle 4 Causes",
-                scenario: "What gives an object its true identity according to Aristotle?",
-                options: [
-                    { text: "📜 Its Formal Cause (Design) & Final Cause (Purpose), not just raw materials!", correct: true, feedback: "ARISTOTLE 4 CAUSES MASTER!" },
-                    { text: "❌ Only its raw wooden atoms", correct: false, feedback: "Raw matter changes, form stays!" }
-                ]
-            }
-        ],
-        chatResponses: [
-            { prompt: "What is the Ship of Theseus paradox?", answer: "If every single plank of a ship is replaced over time, is it still the same ship or a brand new one?" }
-        ]
     },
     trolley_problem: {
         id: "trolley_problem",
@@ -144,10 +127,24 @@ const experimentData = {
             { term: "Deontology", icon: "⚖️", definition: "An ethical theory based on strict moral duties and rules, regardless of consequences." }
         ],
         inDepth: { history: "Formulated by Philippa Foot in 1967 and expanded by Judith Jarvis Thomson, it is the world's most famous ethics thought experiment.", whyItMatters: "Self-driving AI cars face this exact programming dilemma today when designing collision avoidance systems!", funFact: "Modern moral psychologists study the Trolley Problem using fMRI brain scans to see how emotions vs logic compete in decision-making!" },
-        videoId: "yg16u_bzjPE", videoQuiz: [{ question: "Why do AI self-driving car engineers study the Trolley Problem?", options: [{ text: "To program emergency collision avoidance logic in impossible scenarios", correct: true }, { text: "To teach cars how to play soccer", correct: false }] }],
+        videoId: "yg16u_bzjPE", videoQuiz: [{ question: "Why do AI self-driving car engineers study the Trolley Problem?", options: [{ text: "To program emergency collision avoidance logic in impossible scenarios", correct: true }, { text: "To decide who is legally to blame after a crash", correct: false }] }],
+        p4cInquiry: [
+            {
+                title: "Doing vs Letting Happen",
+                shortTitle: "Acting or Not",
+                dilemma: "Pulling the lever saves five people but causes one person's death. Not pulling it means five die and you did nothing. Is there a difference between causing harm and allowing it?",
+                perspectives: {
+                    a: { name: "There Is a Real Difference", argument: "If you act, you chose it and it is on you. If you stand back, it was already happening. That is why we treat pushing someone very differently from failing to catch them." },
+                    b: { name: "No Difference That Matters", argument: "If you could have stopped it and you knew, then choosing not to IS a choice. 'I did nothing' is still something you did." },
+                    c: { name: "Depends What It Costs You", argument: "You are more responsible when helping was easy and safe. Not diving into a river you cannot swim in is not the same as not shouting a warning." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "Is it worse to break a promise, or to keep one when keeping it hurts someone?", context: "Discuss whether rules should ever bend, and who gets to decide when." },
+            { prompt: "Should a self-driving car protect the person inside it, or the people outside?", context: "Talk about who should get to make that decision - the engineer, the buyer, or the government." }
+        ],
         caseStudies: [{ title: "Autonomous Vehicle Design", text: "If a self-driving car faces an unavoidable obstacle, should it protect its passenger or pedestrians? Engineers use ethical models to decide!" }],
-        multiLevelGame: [{ shortName: "Level 1: Novice", levelTitle: "Ethical Analyzer", scenario: "What does Utilitarianism suggest in the Trolley Dilemma?", options: [{ text: "📊 Pull the lever to save 5 lives instead of 1 (greater good math)", correct: true, feedback: "Utilitarian logic analyzed!" }, { text: "❌ Run away without thinking", correct: false, feedback: "Ethics requires reflection." }] }],
-        chatResponses: [{ prompt: "Why is the Trolley Problem so famous?", answer: "Because it pits Utilitarian math (greatest good for greatest number) against Kantian moral rules!" }]
     },
     experience_machine: {
         id: "experience_machine",
@@ -163,10 +160,23 @@ const experimentData = {
             { term: "Authenticity", icon: "🌟", definition: "Living a genuine, real life with real actions, real struggles, and real accomplishments." }
         ],
         inDepth: { history: "Robert Nozick proposed this thought experiment in 1974 to challenge Hedonism.", whyItMatters: "When Nozick asked people, most said they would NOT plug in - which suggests we want to really do things, not just feel like we did. But here is a twist: when researchers instead told people 'you are already in the machine, want to come out?', most chose to stay in. What we say we want may depend a lot on how the question is asked. (De Brigard, 2010)", funFact: "The Matrix asks a very similar question with its red pill and blue pill - though the film's makers pointed to a different philosopher, Jean Baudrillard, whose book appears on screen in the opening scene!" },
-        videoId: "yJ1dsNauhGE", videoQuiz: [{ question: "Why do most people refuse to plug into the Experience Machine for life?", options: [{ text: "Because we value real accomplishments, real relationships, and authentic living", correct: true }, { text: "Because electricity is expensive", correct: false }] }],
+        videoId: "yJ1dsNauhGE", videoQuiz: [{ question: "Why do most people refuse to plug into the Experience Machine for life?", options: [{ text: "Because we value real accomplishments, real relationships, and authentic living", correct: true }, { text: "Because the machine might break down", correct: false }] }],
+        p4cInquiry: [
+            {
+                title: "Real Happiness vs Feeling Happy",
+                shortTitle: "The Machine",
+                dilemma: "A machine could give you every feeling of a wonderful life - winning, friendship, adventure - but none of it would really be happening. Would you plug in?",
+                perspectives: {
+                    a: { name: "No, I Want It Real", argument: "I do not just want to FEEL like I have friends, I want to actually have them. A feeling with nothing behind it is missing the point." },
+                    b: { name: "Feelings Are What We're After", argument: "Every good thing we chase, we chase because of how it feels. If the feeling is identical, it is genuinely hard to say what is missing." },
+                    c: { name: "A Short Visit", argument: "A little while might be fine - like a holiday, or a really good book. It is a whole life in there that seems like the problem." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "Would winning a game you knew was rigged in your favour still feel like winning?", context: "Talk about whether the effort is part of the reward, or just the price of it." }
+        ],
         caseStudies: [{ title: "Video Games vs Real Life", text: "Winning a trophy in a video game feels fun, but scoring a goal in a real match with real teammates carries deep real-world meaning!" }],
-        multiLevelGame: [{ shortName: "Level 1: Novice", levelTitle: "Authenticity Choice", scenario: "Would you plug into a VR tank forever to feel fake happiness?", options: [{ text: "🌟 No! I choose real life with real struggles, real friends, and authentic success!", correct: true, feedback: "Authenticity Master!" }, { text: "🔮 Plug in forever", correct: false, feedback: "You miss out on real human connection." }] }],
-        chatResponses: [{ prompt: "What does the Experience Machine teach us?", answer: "It proves that life is about more than just feeling pleasure—we want to REALLY do things and connect with real people!" }]
     }
 };
 
@@ -250,24 +260,12 @@ function renderSingleExperimentTopic(expKey) {
 
             <!-- Tab 3: Open P4C Dialectic Inquiry -->
             <div id="topicTabContent3" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn3" tabindex="0" style="display:none;">
-                ${typeof renderP4CInquiryEngine === 'function' ? renderP4CInquiryEngine(exp.id, exp.p4cInquiry || [
-                    {
-                        title: "Open Paradox Dialectic",
-                        shortTitle: "P4C Inquiry",
-                        dilemma: "Is identity defined by physical material atoms over time, or by continuous form, memory, and purpose?",
-                        perspectives: {
-                            a: { name: "Material Atomism", argument: "An object is defined strictly by its physical constituent parts." },
-                            b: { name: "Formal & Continuous Purpose", argument: "An object is defined by its ongoing structure, continuous design, and functional role." }
-                        }
-                    }
-                ]) : ''}
+                ${typeof renderP4CInquiryEngine === 'function' ? renderP4CInquiryEngine(exp.id, exp.p4cInquiry) : ''}
             </div>
 
             <!-- Tab 4: Socratic Discussion Journal & Upgrade Vault -->
             <div id="topicTabContent4" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn4" tabindex="0" style="display:none;">
-                ${typeof renderSocraticDiscussionJournal === 'function' ? renderSocraticDiscussionJournal(exp.id, exp.name, exp.avatar, exp.discussionPrompts || [
-                    { prompt: "Why are thought experiments so powerful?", context: "Discuss how imaginary paradoxes help us discover what we truly value." }
-                ]) : ''}
+                ${typeof renderSocraticDiscussionJournal === 'function' ? renderSocraticDiscussionJournal(exp.id, exp.name, exp.avatar, exp.discussionPrompts) : ''}
 
                 <h3 style="color: var(--pink-energy); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 8px;">Ask a Question or Suggest an Upgrade</h3>
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">Have a question about ${exp.name} or an idea to upgrade this app? Submit it below!</p>
