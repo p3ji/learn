@@ -109,16 +109,22 @@ test.describe('Pass-3 regressions', () => {
         }
         expect(await xp() - beforeQuiz, 'repeat video-quiz XP').toBeLessThanOrEqual(10);
 
-        // Solve once first. That legitimately pays 25 for the argument plus a
-        // one-time 150 badge award, so measure only what REPEATS cost.
-        await page.evaluate(() => { selectTopic('monster_spotter', 'fallacies'); switchTopicTab(3); });
-        await page.evaluate(() => checkFallacyAnswer(currentOptions.findIndex(o => o.correct)));
+        // Solve once, then hammer the SAME question. Both the first solve and
+        // the repeats happen inside one evaluate: a correct answer schedules
+        // the next scenario on a 3.2s timer, and awaiting between clicks lets
+        // that fire, so the repeats would land on a fresh question and score.
+        const repeatGain = await page.evaluate(() => {
+            selectTopic('monster_spotter', 'fallacies');
+            switchTopicTab(3);
+            checkFallacyAnswer(currentOptions.findIndex(o => o.correct));
 
-        const afterFirstSolve = await xp();
-        for (let i = 0; i < 5; i++) {
-            await page.evaluate(() => checkFallacyAnswer(currentOptions.findIndex(o => o.correct)));
-        }
-        expect(await xp() - afterFirstSolve, 'XP for re-answering the same argument').toBe(0);
+            const afterFirstSolve = currentProfile.xp;
+            for (let i = 0; i < 5; i++) {
+                checkFallacyAnswer(currentOptions.findIndex(o => o.correct));
+            }
+            return currentProfile.xp - afterFirstSolve;
+        });
+        expect(repeatGain, 'XP for re-answering the same argument').toBe(0);
     });
 
     test('a blank save is not a reflection, and nothing claims mastery', async ({ page }) => {

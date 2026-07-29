@@ -203,7 +203,7 @@ function renderFallacyMonsterStage() {
                 <button role="tab" aria-selected="true" aria-controls="topicTabContent1" class="viz-step-btn active" id="topicTabBtn1" onclick="switchTopicTab(1)">1. Core Intro</button>
                 <button role="tab" aria-selected="false" aria-controls="topicTabContent2" class="viz-step-btn" id="topicTabBtn2" onclick="switchTopicTab(2)">2. The ${types} Tricks</button>
                 <button role="tab" aria-selected="false" aria-controls="topicTabContent3" class="viz-step-btn" id="topicTabBtn3" onclick="switchTopicTab(3)">3. Monster Battle Game</button>
-                <button role="tab" aria-selected="false" aria-controls="topicTabContent4" class="viz-step-btn" id="topicTabBtn4" onclick="switchTopicTab(4)">4. Ask &amp; Suggest Upgrade</button>
+                <button role="tab" aria-selected="false" aria-controls="topicTabContent4" class="viz-step-btn" id="topicTabBtn4" onclick="switchTopicTab(4)">4. Questions &amp; Ideas</button>
             </div>
 
             <div id="topicTabContent1" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn1" tabindex="0">
@@ -246,7 +246,7 @@ function renderFallacyMonsterStage() {
                         </select>
                         <input type="text" id="feedbackInput_monster_spotter" class="sandbox-input" aria-label="Your question or idea" placeholder="Type your question or new monster idea here..." style="flex:1;">
                     </div>
-                    <button class="fb-action-btn gold" style="width: 100%;" onclick="submitTopicFeedback('monster_spotter', 'Fallacy Monster Spotter', '🕵️')">Save to My Notebook</button>
+                    <button class="fb-action-btn gold" style="width: 100%;" onclick="submitTopicFeedback('monster_spotter', 'Fallacy Monster Spotter', '🕵️')">Save to My Questions</button>
                     <div id="feedbackResult_monster_spotter" role="status" aria-live="polite" style="display:none; margin-top: 14px; padding: 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--green-hero); color: #FFF;"></div>
                 </div>
 
