@@ -15,7 +15,7 @@ notebook outputs trustworthy and makes the notebooks diffable in git.
 Switching to a real model
 -------------------------
     import os
-    os.environ["OPENAI_API_KEY"] = "sk-..."     # or ANTHROPIC_API_KEY
+    os.environ["OPENAI_API_KEY"] = "sk-..."     # only OPENAI_API_KEY is read
     llm = get_llm()          # returns a real client wrapper if a key is present
 
 With no key set, get_llm() returns StubLLM and says so.
@@ -44,7 +44,12 @@ class Tool:
     fn: Callable[..., Any]
 
     def to_openai_schema(self) -> dict[str, Any]:
-        """The exact JSON shape OpenAI/Anthropic tool-calling APIs expect."""
+        """The JSON shape the OpenAI Chat Completions API expects.
+
+        NOTE: Anthropic's Messages API uses a DIFFERENT, flatter shape:
+            {"name": ..., "description": ..., "input_schema": {...}}
+        with no "type"/"function" wrapper. Use to_anthropic_schema() for that.
+        """
         return {
             "type": "function",
             "function": {
@@ -52,6 +57,18 @@ class Tool:
                 "description": self.description,
                 "parameters": self.parameters,
             },
+        }
+
+    def to_anthropic_schema(self) -> dict[str, Any]:
+        """The JSON shape the Anthropic Messages API expects.
+
+        Flat, and the schema key is `input_schema` rather than `parameters`.
+        Passing the OpenAI shape here returns a 400.
+        """
+        return {
+            "name": self.name,
+            "description": self.description,
+            "input_schema": self.parameters,
         }
 
     def __call__(self, **kwargs: Any) -> Any:
@@ -153,7 +170,7 @@ class StubLLM:
 class RealLLM:
     """Thin wrapper over the OpenAI SDK so notebooks can switch with one line."""
 
-    def __init__(self, model: str = "gpt-4o-mini") -> None:
+    def __init__(self, model: str = "gpt-4.1-mini") -> None:
         from openai import OpenAI          # imported lazily; optional dependency
         self._client = OpenAI()
         self.model = model

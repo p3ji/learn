@@ -26,7 +26,7 @@ function renderVizStage(stepNum) {
         stage.innerHTML = `
             <div>
                 <h3 style="color: var(--gold-primary); font-family: var(--font-heading); margin-bottom: 8px;">Step 1: Raw Survey Dataset Input</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">Raw survey response rows from Kaggle AI Trust Insights dataset containing Likert scales and text demographics.</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">Raw survey response rows from the synthetic AI Trust dataset (modeled on the Kaggle AI Trust Insights structure), containing Likert scales and text demographics.</p>
                 
                 <div style="background: rgba(6, 182, 212, 0.1); border-left: 4px solid var(--cyan-magic); padding: 12px; border-radius: 6px; margin-bottom: 16px; font-size: 0.88rem;">
                     <strong>Notice:</strong> This raw survey data contains string text (<code>"30-44"</code>, <code>"Master's"</code>) and missing code numbers (<code>-9</code>). Traditional SAS and Scikit-Learn cannot fit equations until these are manually transformed!
@@ -35,9 +35,9 @@ function renderVizStage(stepNum) {
                 <div style="background: #000; padding: 14px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.82rem; color: #38BDF8; overflow-x: auto;">
                     Respondent_ID | Age_Group | Education_Level | Perceived_AI_Risk | Tech_Familiarity | High_AI_Trust<br>
                     -----------------------------------------------------------------------------------------------<br>
-                    RESP_00101    | 30-44     | Master's        | 4                 | High             | 1<br>
-                    RESP_00102    | 18-29     | Bachelor's      | -9 (Missing)      | Very High        | 1<br>
-                    RESP_00103    | 45-60     | High School     | 5                 | Low              | 0
+                    RESP_1000     | 30-44     | Master's        | 4                 | Advanced         | 1<br>
+                    RESP_1001     | 18-29     | Bachelor's      | -9 (Missing)      | Advanced         | 1<br>
+                    RESP_1002     | 45-59     | High School     | 5                 | Novice           | 0
                 </div>
             </div>
         `;
@@ -48,7 +48,7 @@ function renderVizStage(stepNum) {
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">Traditional SAS (<code>CLASS</code> statement) and Python (<code>pd.get_dummies</code>) require converting text columns into 0/1 matrices before model fitting.</p>
                 <div style="background: #000; padding: 14px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.82rem; color: #4ADE80; overflow-x: auto;">
                     # Pandas Manual Preprocessing (Required for traditional ML)<br>
-                    df['Perceived_AI_Risk_Clean'] = df['Perceived_AI_Risk'].replace(-9, None)<br>
+                    df['Perceived_AI_Risk_Clean'] = df['Perceived_AI_Risk'].replace(-9, np.nan)<br>
                     df_encoded = pd.get_dummies(df, columns=['Age_Group', 'Education_Level'])
                 </div>
             </div>
@@ -61,7 +61,8 @@ function renderVizStage(stepNum) {
                 <div style="background: #000; padding: 14px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.82rem; color: #C084FC; overflow-x: auto;">
                     clf = LogisticRegression()<br>
                     clf.fit(X_train, y_train)<br>
-                    # Model Accuracy: 84.2% | ROC-AUC: 0.865 | Requires manual preprocessing!
+                    # Requires manual preprocessing before this line will even run.<br>
+                    # For real numbers on this dataset, run Lab 02 or the Stage 3 benchmark.
                 </div>
             </div>
         `;
@@ -72,14 +73,17 @@ function renderVizStage(stepNum) {
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">Google TabFM takes <strong>raw survey CSVs directly</strong> without manual dummy recoding or gradient training delays!</p>
                 
                 <div style="background: rgba(255, 199, 44, 0.15); border-left: 4px solid var(--gold-primary); padding: 12px; border-radius: 6px; margin-bottom: 16px; font-size: 0.88rem;">
-                    <strong>Why TabFM is Revolutionary for AI Agents:</strong> An AI assistant can classify new survey rows on the fly in 0.00 seconds because TabFM reads raw text categories directly as transformer context memory!
+                    <strong>Why TabFM matters for AI Agents:</strong> An agent can classify new survey rows without a training loop &mdash; TabFM handles the categorical columns itself (ordinal encoding internally, so you skip the manual dummy-coding step) and predicts in a single forward pass. That pass is real transformer inference over the context rows, so expect it to take a fraction of a second rather than being free.
                 </div>
 
                 <div style="background: #000; padding: 14px; border-radius: 8px; font-family: var(--font-mono); font-size: 0.82rem; color: var(--gold-primary); overflow-x: auto;">
-                    tabfm = TabFMClassifier()<br>
-                    tabfm.fit(raw_survey_df, target='High_AI_Trust') # Loads raw text table as context memory<br>
-                    preds = tabfm.predict_proba(test_df) # Instant zero-shot predictions!<br>
-                    # TabFM Accuracy: 89.4% | ZERO manual dummy coding required!
+                    from tabfm import TabFMClassifier<br>
+                    from tabfm import tabfm_v1_0_0_jax as tabfm_v1_0_0<br>
+                    <br>
+                    clf = TabFMClassifier(model=tabfm_v1_0_0.load())<br>
+                    clf.fit(X_train, y_train) # Loads context rows &mdash; no gradient training<br>
+                    preds = clf.predict_proba(X_test) # Zero-shot forward pass<br>
+                    # No manual dummy coding required.
                 </div>
             </div>
         `;

@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Secrets — never commit
+.env
+.env.*
+kaggle.json
+*.pem
+*.key
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local scratch
+scratch/
