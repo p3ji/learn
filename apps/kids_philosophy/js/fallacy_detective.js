@@ -1,234 +1,257 @@
-// Logical Fallacy Monster Battle Arena Mini-Game - Single Topic Stage Renderer
+// Logical Fallacy Monster Spotter
+//
+// Three things this game deliberately avoids, because each of them let a child
+// win without reading the argument:
+//   1. The monster's name used to BE the answer ("The Ad Hominem Goblin").
+//      Names are now just names. The fallacy is only revealed after answering.
+//   2. The correct option used to be first in all ten questions. Options are
+//      now shuffled per question.
+//   3. Ten questions in a fixed cycle. There are now 30, in a shuffled order.
+//
+// Wrong answers explain why THAT fallacy does not fit, rather than saying
+// "try again" - so a miss teaches something.
 
-const fallacyMonsters = [
-    {
-        name: "The Strawman Monster 👹",
-        hp: 100,
-        argument: "Person A: 'We should eat more vegetables.' \nMonster: 'So you want to ban all pizza forever and starve everyone?!'",
-        options: [
-            { text: "🛡️ Strawman Fallacy (Exaggerating & twisting words into something silly!)", correct: true },
-            { text: "🛡️ Ad Hominem (Insulting their shoes)", correct: false },
-            { text: "🛡️ Bandwagon (Doing it because everyone else does)", correct: false }
-        ],
-        explanation: "CRITICAL HIT! A Strawman Fallacy replaces the real argument with a fake, extreme version that is easy to knock down!"
-    },
-    {
-        name: "The Ad Hominem Goblin 👺",
-        hp: 100,
-        argument: "Person A: 'We need to recycle paper to save trees.' \nGoblin: 'Don't listen to him, he smells like old cheese and plays video games!'",
-        options: [
-            { text: "🛡️ Ad Hominem Attack (Attacking the person instead of their argument!)", correct: true },
-            { text: "🛡️ Strawman Fallacy", correct: false },
-            { text: "🛡️ Slippery Slope", correct: false }
-        ],
-        explanation: "CRITICAL HIT! Ad Hominem means 'against the person'. Calling names doesn't prove an argument wrong!"
-    },
-    {
-        name: "The Bandwagon Dragon 🐉",
-        hp: 100,
-        argument: "Dragon: '10 million people buy this sugary cereal, so it MUST be the healthiest breakfast on Earth!'",
-        options: [
-            { text: "🛡️ Bandwagon Fallacy (Claiming something is true just because it's popular!)", correct: true },
-            { text: "🛡️ Strawman Fallacy", correct: false },
-            { text: "🛡️ Ad Hominem", correct: false }
-        ],
-        explanation: "CRITICAL HIT! Just because lots of people do or believe something doesn't automatically make it true or healthy!"
-    },
-    {
-        name: "The Slippery Slope Yeti 🛷",
-        hp: 100,
-        argument: "Yeti: 'If we allow 5 extra minutes of recess today, tomorrow no one will study, and by next week the entire school will collapse!'",
-        options: [
-            { text: "🛡️ Slippery Slope (Claiming one small action automatically triggers a disaster without proof!)", correct: true },
-            { text: "🛡️ Circular Reasoning", correct: false },
-            { text: "🛡️ Red Herring", correct: false }
-        ],
-        explanation: "CRITICAL HIT! Slippery Slope assumes a chain reaction of terrible events will happen without showing evidence!"
-    },
-    {
-        name: "The Either-Or Specter 🔀",
-        hp: 100,
-        argument: "Specter: 'Either you eat spinach for every single meal, or you hate healthy food completely and want to get sick!'",
-        options: [
-            { text: "🛡️ False Dilemma / Either-Or (Pretending there are only 2 extreme options!)", correct: true },
-            { text: "🛡️ Bandwagon Fallacy", correct: false },
-            { text: "🛡️ Ad Hominem", correct: false }
-        ],
-        explanation: "CRITICAL HIT! False Dilemma forces you to choose between two extremes while ignoring middle options!"
-    },
-    {
-        name: "The Red Herring Fox 🦊",
-        hp: 100,
-        argument: "Parent: 'Why didn't you clean your bedroom today?' \nFox: 'Why talk about my room when the kitchen sink has dirty dishes in it?!'",
-        options: [
-            { text: "🛡️ Red Herring (Changing the subject suddenly to distract from the real question!)", correct: true },
-            { text: "🛡️ Strawman Fallacy", correct: false },
-            { text: "🛡️ False Cause", correct: false }
-        ],
-        explanation: "CRITICAL HIT! Red Herring pulls a smelly fish across the path to distract everyone from the topic!"
-    },
-    {
-        name: "The Crowned Authority Owl 👑",
-        hp: 100,
-        argument: "Owl: 'A famous video game streamer said this soda cures colds, so science has proven it works!'",
-        options: [
-            { text: "🛡️ Appeal to Authority (Assuming something is true because a famous person said it outside their field!)", correct: true },
-            { text: "🛡️ Slippery Slope", correct: false },
-            { text: "🛡️ No True Scotsman", correct: false }
-        ],
-        explanation: "CRITICAL HIT! Being famous or great at gaming doesn't make someone a medical science authority!"
-    },
-    {
-        name: "The Circular Reasoning Snake 🐍",
-        hp: 100,
-        argument: "Snake: 'This storybook is 100% true and factual because page 1 states that it never tells a lie!'",
-        options: [
-            { text: "🛡️ Circular Reasoning (Using the claim itself as the proof for the claim!)", correct: true },
-            { text: "🛡️ Red Herring", correct: false },
-            { text: "🛡️ Bandwagon Fallacy", correct: false }
-        ],
-        explanation: "CRITICAL HIT! Circular reasoning goes in circles—saying 'X is true because X says it's true' proves nothing!"
-    },
-    {
-        name: "The False Cause Rooster 🐓",
-        hp: 100,
-        argument: "Rooster: 'I wore my lucky socks today and scored a goal, so wearing these socks caused me to score!'",
-        options: [
-            { text: "🛡️ False Cause / Post Hoc (Assuming A caused B just because B happened after A!)", correct: true },
-            { text: "🛡️ False Dilemma", correct: false },
-            { text: "🛡️ Ad Hominem", correct: false }
-        ],
-        explanation: "CRITICAL HIT! Just because two events happen one after the other doesn't mean one caused the other!"
-    },
-    {
-        name: "The No True Scotsman Gatekeeper 🚪",
-        hp: 100,
-        argument: "Gatekeeper: 'No kid likes broccoli.' \nChild: 'My sister loves broccoli!' \nGatekeeper: 'Well, no TRUE kid likes broccoli!'",
-        options: [
-            { text: "🛡️ No True Scotsman (Changing definitions or moving goalposts when proven wrong!)", correct: true },
-            { text: "🛡️ Strawman Fallacy", correct: false },
-            { text: "🛡️ Circular Reasoning", correct: false }
-        ],
-        explanation: "CRITICAL HIT! Changing the rules of the group when shown a real counter-example is moving the goalposts!"
-    }
+const FALLACY_LIBRARY = {
+    strawman:      { name: "Strawman",            short: "Twisting someone's argument into a sillier version, then attacking that" },
+    ad_hominem:    { name: "Ad Hominem",          short: "Attacking the person instead of their argument" },
+    bandwagon:     { name: "Bandwagon",           short: "Saying it must be true because lots of people believe it" },
+    slippery:      { name: "Slippery Slope",      short: "Claiming one small step must lead to disaster, with no proof" },
+    false_dilemma: { name: "False Dilemma",       short: "Pretending there are only two options when there are more" },
+    red_herring:   { name: "Red Herring",         short: "Changing the subject to distract from the real question" },
+    authority:     { name: "Appeal to Authority", short: "Trusting a famous person on something outside what they know about" },
+    circular:      { name: "Circular Reasoning",  short: "Using the claim itself as the proof for the claim" },
+    false_cause:   { name: "False Cause",         short: "Assuming A caused B just because B happened after A" },
+    no_true:       { name: "No True Scotsman",    short: "Changing your definition when someone proves you wrong" },
+    hasty:         { name: "Hasty Generalisation", short: "Drawing a big conclusion from one or two examples" },
+    tradition:     { name: "Appeal to Tradition", short: "Saying it must be right because it has always been done that way" },
+    tu_quoque:     { name: "Whataboutism",        short: "Dodging a criticism by pointing at someone else's faults" },
+    loaded_q:      { name: "Loaded Question",     short: "A question that sneaks in an accusation you never agreed to" },
+    popularity:    { name: "Appeal to Novelty",   short: "Assuming newer automatically means better" }
+};
+
+// Names carry no hint about the answer. That is the point.
+const fallacyScenarios = [
+    { monster: "Grubbin", emoji: "👺", fallacy: "strawman", distractors: ["ad_hominem", "red_herring"],
+      argument: "Maya: 'I think we should have a bit more time for reading in class.'\nGrubbin: 'So you want to cancel maths forever and let everyone grow up unable to count!'",
+      explanation: "Maya asked for a bit more reading time. Grubbin swapped that for a wild version nobody said, then knocked the wild version down." },
+
+    { monster: "Snagtooth", emoji: "👹", fallacy: "ad_hominem", distractors: ["strawman", "slippery"],
+      argument: "Ben: 'We should recycle the paper from the art room - it saves trees.'\nSnagtooth: 'Don't listen to him. His jumper is stained and he can't even ride a bike.'",
+      explanation: "Snagtooth never mentioned paper, trees or recycling. Attacking Ben tells you nothing about whether Ben is right." },
+
+    { monster: "Mizzle", emoji: "🐉", fallacy: "bandwagon", distractors: ["authority", "tradition"],
+      argument: "Mizzle: 'Ten million people bought this sugary cereal last year. That proves it must be the healthiest breakfast there is!'",
+      explanation: "Lots of people buying something tells you it sells well. It does not tell you what is in it." },
+
+    { monster: "Old Thistlewick", emoji: "🛷", fallacy: "slippery", distractors: ["false_cause", "hasty"],
+      argument: "Thistlewick: 'If we allow five extra minutes of break today, tomorrow nobody will study, and by next month the school will fall down.'",
+      explanation: "Each step is just asserted. Nobody has shown that five extra minutes actually leads to any of it." },
+
+    { monster: "The Fen Wraith", emoji: "🔀", fallacy: "false_dilemma", distractors: ["slippery", "strawman"],
+      argument: "Fen Wraith: 'Either you let me copy your homework, or you are admitting you don't care about our friendship at all.'",
+      explanation: "There are obviously other options - like helping without copying. Being handed two choices does not mean there are only two." },
+
+    { monster: "Ferrin Foxglove", emoji: "🦊", fallacy: "red_herring", distractors: ["strawman", "tu_quoque"],
+      argument: "Teacher: 'Your homework is three days late.'\nFerrin: 'But have you SEEN how expensive school lunches have got? It's outrageous!'",
+      explanation: "Lunch prices might be a real problem. They are still not an answer to the question that was asked." },
+
+    { monster: "Quillby", emoji: "👑", fallacy: "authority", distractors: ["bandwagon", "circular"],
+      argument: "Quillby: 'My favourite footballer says this vitamin drink cures colds, and he's the best striker in the league - so it must work.'",
+      explanation: "He may well be a brilliant striker. Being good at football is not evidence about medicine." },
+
+    { monster: "Sable the Snake", emoji: "🐍", fallacy: "circular", distractors: ["authority", "no_true"],
+      argument: "Sable: 'This book tells the truth.'\nAsker: 'How do you know?'\nSable: 'Because it says so on the first page.'",
+      explanation: "The proof and the claim are the same thing. Any book at all could pass that test." },
+
+    { monster: "Barnaby Bogwhistle", emoji: "🐓", fallacy: "false_cause", distractors: ["hasty", "slippery"],
+      argument: "Barnaby: 'I wore my lucky socks and we won the match. The socks won us the game.'",
+      explanation: "The socks came first and the win came after - but that is only an order of events, not a cause." },
+
+    { monster: "The Gatekeeper", emoji: "🚪", fallacy: "no_true", distractors: ["circular", "strawman"],
+      argument: "Gatekeeper: 'No real fan of this band skips a single song.'\nFriend: 'I've loved them for years and I skip one.'\nGatekeeper: 'Then you were never a real fan.'",
+      explanation: "Rather than accept the counter-example, the Gatekeeper quietly rewrote what 'real fan' means so he could never be wrong." },
+
+    { monster: "Nettle", emoji: "🌿", fallacy: "hasty", distractors: ["false_cause", "bandwagon"],
+      argument: "Nettle: 'I met two people from that town and both were rude. Everyone from there is rude.'",
+      explanation: "Two people is not enough to know anything about a whole town." },
+
+    { monster: "Grandmother Bramble", emoji: "🕰️", fallacy: "tradition", distractors: ["authority", "bandwagon"],
+      argument: "Bramble: 'We have always made the youngest child carry all the bags. That is how it has been for a hundred years, so it must be fair.'",
+      explanation: "Something can be very old and still unfair. Age is not the same as fairness." },
+
+    { monster: "Pipkin", emoji: "🔁", fallacy: "tu_quoque", distractors: ["red_herring", "ad_hominem"],
+      argument: "Parent: 'You left your bike out in the rain again.'\nPipkin: 'Well YOU left the car window open last week!'",
+      explanation: "The parent may well have done that. It still does not make the bike less rusty." },
+
+    { monster: "Mimsy the Meddler", emoji: "❓", fallacy: "loaded_q", distractors: ["red_herring", "false_dilemma"],
+      argument: "Mimsy: 'So, have you stopped cheating at cards yet? Just answer yes or no.'",
+      explanation: "Both answers admit you were cheating. The accusation is smuggled into the question itself." },
+
+    { monster: "Cogsworth", emoji: "✨", fallacy: "popularity", distractors: ["bandwagon", "authority"],
+      argument: "Cogsworth: 'This tablet came out last month, so it is obviously better than the one that came out two years ago.'",
+      explanation: "Newer things are sometimes better and sometimes worse. The date on the box is not evidence either way." },
+
+    { monster: "Wobblejack", emoji: "🎭", fallacy: "strawman", distractors: ["false_dilemma", "loaded_q"],
+      argument: "Sam: 'I don't think eight-year-olds should have phones at the dinner table.'\nWobblejack: 'Sam thinks children should be banned from all technology and live in a cave!'",
+      explanation: "Sam said one specific thing about dinner. Wobblejack replaced it with something much bigger and easier to mock." },
+
+    { monster: "The Puddle Troll", emoji: "🪣", fallacy: "false_cause", distractors: ["circular", "tradition"],
+      argument: "Puddle Troll: 'Ice cream sales go up in the same weeks that more people get sunburnt. Ice cream must cause sunburn.'",
+      explanation: "Both go up in hot sunny weather. Something else is causing both - which is why 'they happen together' is not enough." },
+
+    { monster: "Thatcher Crane", emoji: "🗞️", fallacy: "ad_hominem", distractors: ["authority", "tu_quoque"],
+      argument: "Scientist: 'My measurements show the river is polluted.'\nThatcher: 'She's only twenty-six. Far too young to know anything about rivers.'",
+      explanation: "Her age is not a measurement. If the numbers are wrong, show that they are wrong." },
+
+    { monster: "Skarrow", emoji: "🐦‍⬛", fallacy: "false_dilemma", distractors: ["bandwagon", "slippery"],
+      argument: "Skarrow: 'You're either with our team completely, or you're against us. There's no middle.'",
+      explanation: "Most real situations have a middle. Removing it is a way of making you pick fast instead of think." },
+
+    { monster: "Tansy Twill", emoji: "🎣", fallacy: "red_herring", distractors: ["ad_hominem", "loaded_q"],
+      argument: "Coach: 'You missed three training sessions this month.'\nTansy: 'Why does nobody ever talk about how bad the changing room smells?'",
+      explanation: "The changing rooms may be grim. That is a different conversation from the one the coach started." },
+
+    { monster: "Hoggle Brassbutton", emoji: "📣", fallacy: "bandwagon", distractors: ["tradition", "popularity"],
+      argument: "Hoggle: 'Everybody in our year is saying the new teacher is unfair, so she definitely is.'",
+      explanation: "A rumour repeated by thirty people is still the same rumour. Popularity is not evidence." },
+
+    { monster: "The Chalk Golem", emoji: "🧱", fallacy: "circular", distractors: ["no_true", "tradition"],
+      argument: "Chalk Golem: 'Our rules are the fairest rules.'\nAsker: 'Why?'\nGolem: 'Because we only make fair rules.'",
+      explanation: "It walks in a circle and lands back where it started, without ever touching the outside world." },
+
+    { monster: "Murkwood Mick", emoji: "🌫️", fallacy: "slippery", distractors: ["false_dilemma", "false_cause"],
+      argument: "Mick: 'If you let one person bring a dog to school, next term there'll be horses in the corridor and the whole place will be a zoo.'",
+      explanation: "One dog to a corridor full of horses, with nothing in between except confident predicting." },
+
+    { monster: "Prunella Prim", emoji: "🏅", fallacy: "authority", distractors: ["tradition", "hasty"],
+      argument: "Prunella: 'A famous actor said this diet is the healthiest way to eat. He has won three awards, so it must be true.'",
+      explanation: "Awards for acting are awards for acting. On food, he is just a person with an opinion." },
+
+    { monster: "Bellows", emoji: "🐸", fallacy: "hasty", distractors: ["false_cause", "no_true"],
+      argument: "Bellows: 'The first two chapters of this book were boring, so the whole book is rubbish and so is everything the author has ever written.'",
+      explanation: "Two chapters is a small sample, and it certainly says nothing about the author's other books." },
+
+    { monster: "The Lantern Ghost", emoji: "🏮", fallacy: "loaded_q", distractors: ["strawman", "ad_hominem"],
+      argument: "Lantern Ghost: 'Why are you always so lazy about your chores? I'm just asking a simple question.'",
+      explanation: "It is not simple. It assumes you are always lazy, and any answer accepts that." },
+
+    { monster: "Wisp", emoji: "🌬️", fallacy: "no_true", distractors: ["hasty", "circular"],
+      argument: "Wisp: 'Nobody who is truly kind ever gets angry.'\nFriend: 'My gran is the kindest person I know and she got angry yesterday.'\nWisp: 'Then she isn't truly kind.'",
+      explanation: "Every counter-example gets pushed outside the definition, so the claim can never be tested." },
+
+    { monster: "Rooktoe", emoji: "⚡", fallacy: "false_cause", distractors: ["slippery", "bandwagon"],
+      argument: "Rooktoe: 'Ever since the new bins arrived, the school has been colder. The bins are making it cold.'",
+      explanation: "The bins arrived and then it got colder - in autumn. Order of events is not cause." },
+
+    { monster: "Gristle", emoji: "🪞", fallacy: "tu_quoque", distractors: ["strawman", "false_dilemma"],
+      argument: "Friend: 'You promised to keep my secret and you told two people.'\nGristle: 'You told someone MY secret in Year 3!'",
+      explanation: "Perhaps they did. Two broken promises do not add up to one kept promise." },
+
+    { monster: "Fenwick Drear", emoji: "🕯️", fallacy: "tradition", distractors: ["circular", "popularity"],
+      argument: "Fenwick: 'Our club has never let anyone under twelve join. That's the tradition, so it must be the right rule.'",
+      explanation: "A rule being old tells you it is old. Whether it is a good rule is a separate question you still have to answer." }
 ];
 
-let currentMonsterIdx = 0;
+// Question order and option order are both shuffled, so neither position nor
+// the monster's name can be used as a shortcut.
+let scenarioOrder = [];
+let currentScenarioPos = 0;
+let currentOptions = [];
 let monsterCurrentHP = 100;
-// Monsters already beaten, so re-clearing the fixed monster cycle cannot farm XP.
-const defeatedMonsters = new Set();
+let questionAnswered = false;
+const solvedScenarios = new Set();   // XP is paid once per scenario
+
+function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+function currentScenario() {
+    if (scenarioOrder.length === 0) scenarioOrder = shuffle(fallacyScenarios.map((_, i) => i));
+    return fallacyScenarios[scenarioOrder[currentScenarioPos]];
+}
+
+function buildOptions(scenario) {
+    return shuffle([
+        { key: scenario.fallacy, correct: true },
+        ...scenario.distractors.map(k => ({ key: k, correct: false }))
+    ]);
+}
 
 function renderFallacyMonsterStage() {
+    const total = fallacyScenarios.length;
+    const types = Object.keys(FALLACY_LIBRARY).length;
+
     return `
         <div class="spotlight-card">
-            <!-- Header Banner -->
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
                 <div style="display: flex; align-items: center; gap: 16px;">
-                    <div class="thinker-avatar" style="width:70px; height:70px; font-size:2.2rem; margin:0;">🕵️</div>
+                    <div class="thinker-avatar" style="width:70px; height:70px; font-size:2.2rem; margin:0;" aria-hidden="true">🕵️</div>
                     <div>
                         <h2 style="font-family: var(--font-heading); color: var(--gold-star); font-size: 1.8rem; font-weight: 900; margin:0;">Logical Fallacy Monster Spotter</h2>
-                        <span style="color: var(--cyan-magic); font-weight:700; font-size:0.9rem;">Defeat 10 Trick Arguments with Logic Shields</span>
+                        <span style="color: var(--cyan-magic); font-weight:700; font-size:0.9rem;">Read the argument. The monster's name won't help you.</span>
                     </div>
                 </div>
-                <div class="nb-badge" style="font-size:0.85rem; padding: 6px 14px;">🕵️ Fallacy Detective (10 Monsters)</div>
+                <div class="nb-badge" style="font-size:0.85rem; padding: 6px 14px;">🕵️ ${total} arguments &middot; ${types} tricks</div>
             </div>
 
-            <!-- 4-Step Flow Controls -->
             <div class="viz-controls" role="tablist" aria-label="Deep-dive steps" style="margin-bottom: 24px;">
                 <button role="tab" aria-selected="true" aria-controls="topicTabContent1" class="viz-step-btn active" id="topicTabBtn1" onclick="switchTopicTab(1)">1. Core Intro</button>
-                <button role="tab" aria-selected="false" aria-controls="topicTabContent2" class="viz-step-btn" id="topicTabBtn2" onclick="switchTopicTab(2)">2. 10 Fallacy Types</button>
+                <button role="tab" aria-selected="false" aria-controls="topicTabContent2" class="viz-step-btn" id="topicTabBtn2" onclick="switchTopicTab(2)">2. The ${types} Tricks</button>
                 <button role="tab" aria-selected="false" aria-controls="topicTabContent3" class="viz-step-btn" id="topicTabBtn3" onclick="switchTopicTab(3)">3. Monster Battle Game</button>
-                <button role="tab" aria-selected="false" aria-controls="topicTabContent4" class="viz-step-btn" id="topicTabBtn4" onclick="switchTopicTab(4)">4. Ask & Suggest Upgrade</button>
+                <button role="tab" aria-selected="false" aria-controls="topicTabContent4" class="viz-step-btn" id="topicTabBtn4" onclick="switchTopicTab(4)">4. Ask &amp; Suggest Upgrade</button>
             </div>
 
-            <!-- Tab 1: Intro -->
             <div id="topicTabContent1" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn1" tabindex="0">
                 <h3 style="color: var(--gold-star); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 10px;">What is a Logical Fallacy?</h3>
-                <p style="color: var(--text-main); font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; background: rgba(255,255,255,0.03); padding: 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-                    A <strong>logical fallacy</strong> is a flaw in reasoning. Logical fallacies are like trick traps in an argument — they sound convincing at first, but when you inspect them closely, they break down! Learning to spot fallacies gives you a <strong>Logic Shield</strong> against bad arguments.
+                <p style="color: var(--text-main); font-size: 1.1rem; line-height: 1.6; margin-bottom: 16px; background: rgba(255,255,255,0.03); padding: 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                    A <strong>logical fallacy</strong> is a flaw in reasoning. They are like trick traps in an argument: convincing at first, but they fall apart when you look closely. Spotting them gives you a <strong>Logic Shield</strong>.
                 </p>
-                <button class="fb-action-btn gold" onclick="switchTopicTab(2)">Continue to Step 2: Learn 10 Fallacy Monsters ➔</button>
+                <p style="color: var(--text-main); font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px; background: rgba(6,182,212,0.08); border-left: 3px solid var(--cyan-magic); padding: 16px; border-radius: 12px;">
+                    <strong>The hard part:</strong> real fallacies do not come with a label. They come from people you like, in arguments you agree with. In this game the monsters have ordinary names on purpose &mdash; the only way to win is to read what they actually said.
+                </p>
+                <button class="fb-action-btn gold" onclick="switchTopicTab(2)">Continue to Step 2: Learn the ${types} Tricks ➔</button>
             </div>
 
-            <!-- Tab 2: 10 Fallacy Types Showcase -->
             <div id="topicTabContent2" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn2" tabindex="0" style="display:none;">
-                <h3 style="color: var(--cyan-magic); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 14px;">Meet the 10 Fallacy Monsters</h3>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px;">
-                    <div style="background: rgba(236,72,153,0.1); border: 1px solid var(--pink-energy); border-radius: 12px; padding: 16px;">
-                        <h4 style="color: var(--pink-energy); margin-bottom: 6px;">👹 Strawman Monster</h4>
-                        <p style="font-size: 0.88rem; color: var(--text-main);">Exaggerates your argument into something silly that you never actually said, then attacks that fake argument!</p>
-                    </div>
-                    <div style="background: rgba(6,182,212,0.1); border: 1px solid var(--cyan-magic); border-radius: 12px; padding: 16px;">
-                        <h4 style="color: var(--cyan-magic); margin-bottom: 6px;">👺 Ad Hominem Goblin</h4>
-                        <p style="font-size: 0.88rem; color: var(--text-main);">Attacks the person making the argument (calling names) instead of addressing the actual facts!</p>
-                    </div>
-                    <div style="background: rgba(245,158,11,0.1); border: 1px solid var(--gold-star); border-radius: 12px; padding: 16px;">
-                        <h4 style="color: var(--gold-star); margin-bottom: 6px;">🐉 Bandwagon Dragon</h4>
-                        <p style="font-size: 0.88rem; color: var(--text-main);">Claims something must be true or good just because a lot of people or celebrities do it!</p>
-                    </div>
-                    <div style="background: rgba(59,130,246,0.1); border: 1px solid #3B82F6; border-radius: 12px; padding: 16px;">
-                        <h4 style="color: #3B82F6; margin-bottom: 6px;">🛷 Slippery Slope Yeti</h4>
-                        <p style="font-size: 0.88rem; color: var(--text-main);">Claims one small action will trigger a crazy chain reaction of disasters without any proof!</p>
-                    </div>
-                    <div style="background: rgba(168,85,247,0.1); border: 1px solid #A855F7; border-radius: 12px; padding: 16px;">
-                        <h4 style="color: #A855F7; margin-bottom: 6px;">🔀 Either-Or Specter</h4>
-                        <p style="font-size: 0.88rem; color: var(--text-main);">Pretends there are only TWO extreme choices when middle options exist!</p>
-                    </div>
-                    <div style="background: rgba(249,115,22,0.1); border: 1px solid #F97316; border-radius: 12px; padding: 16px;">
-                        <h4 style="color: #F97316; margin-bottom: 6px;">🦊 Red Herring Fox</h4>
-                        <p style="font-size: 0.88rem; color: var(--text-main);">Suddenly changes the topic to a completely different subject to distract from the question!</p>
-                    </div>
-                    <div style="background: rgba(234,179,8,0.1); border: 1px solid #EAB308; border-radius: 12px; padding: 16px;">
-                        <h4 style="color: #EAB308; margin-bottom: 6px;">👑 Crowned Authority Owl</h4>
-                        <p style="font-size: 0.88rem; color: var(--text-main);">Claims something is true just because a famous person said it outside their expertise!</p>
-                    </div>
-                    <div style="background: rgba(16,185,129,0.1); border: 1px solid var(--green-hero); border-radius: 12px; padding: 16px;">
-                        <h4 style="color: var(--green-hero); margin-bottom: 6px;">🐍 Circular Reasoning Snake</h4>
-                        <p style="font-size: 0.88rem; color: var(--text-main);">Goes in circles: claims X is true simply because X states that it is true!</p>
-                    </div>
-                    <div style="background: rgba(239,68,68,0.1); border: 1px solid #EF4444; border-radius: 12px; padding: 16px;">
-                        <h4 style="color: #EF4444; margin-bottom: 6px;">🐓 False Cause Rooster</h4>
-                        <p style="font-size: 0.88rem; color: var(--text-main);">Assumes event A caused event B simply because B happened after A!</p>
-                    </div>
-                    <div style="background: rgba(99,102,241,0.1); border: 1px solid #6366F1; border-radius: 12px; padding: 16px;">
-                        <h4 style="color: #6366F1; margin-bottom: 6px;">🚪 No True Scotsman Gatekeeper</h4>
-                        <p style="font-size: 0.88rem; color: var(--text-main);">Moves the goalposts and changes rules when shown a real counter-example!</p>
-                    </div>
+                <h3 style="color: var(--cyan-magic); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 14px;">The ${types} Tricks</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); gap: 14px; margin-bottom: 20px;">
+                    ${Object.values(FALLACY_LIBRARY).map(f => `
+                        <div style="background: rgba(139,92,246,0.09); border: 1px solid var(--purple-primary); border-radius: 12px; padding: 14px;">
+                            <h4 style="color: var(--purple-glow); margin: 0 0 6px; font-size: 1rem;">${f.name}</h4>
+                            <p style="font-size: 0.92rem; color: var(--text-main); margin: 0; line-height: 1.5;">${f.short}</p>
+                        </div>
+                    `).join('')}
                 </div>
-
-                <button class="fb-action-btn gold" onclick="switchTopicTab(3)">Continue to Step 3: Battle the 10 Monsters! ➔</button>
+                <button class="fb-action-btn gold" onclick="switchTopicTab(3)">Continue to Step 3: Battle the Monsters! ➔</button>
             </div>
 
-            <!-- Tab 3: Monster Battle Game -->
             <div id="topicTabContent3" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn3" tabindex="0" style="display:none;">
-                <div id="fallacyGameBox">
-                    <!-- Loaded dynamically below -->
-                </div>
+                <div id="fallacyGameBox"></div>
             </div>
 
-            <!-- Tab 4: Question & Upgrade Vault -->
             <div id="topicTabContent4" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn4" tabindex="0" style="display:none;">
                 <h3 style="color: var(--pink-energy); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 8px;">Ask a Question or Suggest a New Monster</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">Have a question about logical fallacies or want to suggest a new fallacy monster to add to this app? Submit it below!</p>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">Spotted a trick argument in real life? Write it down here.</p>
 
                 <div style="background: rgba(0,0,0,0.4); border: 1.5px solid var(--pink-energy); border-radius: 16px; padding: 20px; margin-bottom: 20px;">
-                    <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+                    <div style="display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap;">
                         <select id="feedbackType_monster_spotter" class="sandbox-input" aria-label="Type of message" style="max-width: 180px;">
                             <option value="question">❓ Ask a Question</option>
                             <option value="suggestion">💡 Upgrade Idea</option>
                         </select>
                         <input type="text" id="feedbackInput_monster_spotter" class="sandbox-input" aria-label="Your question or idea" placeholder="Type your question or new monster idea here..." style="flex:1;">
                     </div>
-                    <button class="fb-action-btn gold" style="width: 100%;" onclick="submitTopicFeedback('monster_spotter', 'Fallacy Monster Spotter', '🕵️')">Submit to Upgrade Vault</button>
-                    
+                    <button class="fb-action-btn gold" style="width: 100%;" onclick="submitTopicFeedback('monster_spotter', 'Fallacy Monster Spotter', '🕵️')">Save to My Notebook</button>
                     <div id="feedbackResult_monster_spotter" role="status" aria-live="polite" style="display:none; margin-top: 14px; padding: 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--green-hero); color: #FFF;"></div>
                 </div>
 
                 <h4 style="color: var(--gold-star); font-size: 1rem; margin-bottom: 10px;">Saved Entries for Fallacy Monsters:</h4>
-                <div id="savedFeedbackList_monster_spotter">
-                    <!-- Dynamically populated by feedback_vault.js -->
-                </div>
+                <div id="savedFeedbackList_monster_spotter"></div>
             </div>
         </div>
     `;
@@ -238,15 +261,19 @@ function renderFallacyGame() {
     const container = document.getElementById('fallacyGameBox');
     if (!container) return;
 
-    const m = fallacyMonsters[currentMonsterIdx];
+    const sc = currentScenario();
+    if (currentOptions.length === 0) currentOptions = buildOptions(sc);
+    questionAnswered = false;
 
     container.innerHTML = `
         <div class="fallacy-card">
-            <!-- Monster Health & Title -->
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
                 <div>
-                    <div style="font-weight: 900; font-size: 1.3rem; color: var(--pink-energy);">${m.name}</div>
-                    <span style="color: var(--cyan-magic); font-weight: 800; font-size: 0.85rem;">Monster ${currentMonsterIdx + 1} of ${fallacyMonsters.length}</span>
+                    <div style="font-weight: 900; font-size: 1.3rem; color: var(--pink-energy);">${escapeHtml(sc.monster)} <span aria-hidden="true">${sc.emoji}</span></div>
+                    <span style="color: var(--cyan-magic); font-weight: 800; font-size: 0.85rem;">
+                        Argument ${currentScenarioPos + 1} of ${fallacyScenarios.length}
+                        &middot; ${solvedScenarios.size} solved
+                    </span>
                 </div>
                 <div style="background: rgba(0,0,0,0.5); padding: 6px 14px; border-radius: 12px; border: 1px solid var(--pink-energy);">
                     <span style="font-weight: 800; color: #FFF; font-size: 0.85rem;">Monster HP:</span>
@@ -256,60 +283,86 @@ function renderFallacyGame() {
                 </div>
             </div>
 
-            <!-- Monster Speech Bubble -->
             <div class="monster-box">
-                <div class="monster-icon">${m.name.slice(-2)}</div>
+                <div class="monster-icon" aria-hidden="true">${sc.emoji}</div>
                 <div>
-                    <div style="font-size: 0.8rem; color: var(--gold-star); font-weight: 800; text-transform: uppercase; margin-bottom: 4px;">Monster's Trick Argument:</div>
-                    <div class="monster-dialogue">"${escapeHtml(m.argument)}"</div>
+                    <div style="font-size: 0.8rem; color: var(--gold-star); font-weight: 800; text-transform: uppercase; margin-bottom: 4px;">The trick argument:</div>
+                    <div class="monster-dialogue" style="white-space: pre-line;">${escapeHtml(sc.argument)}</div>
                 </div>
             </div>
 
-            <div style="font-weight:800; color: var(--gold-star); margin-bottom: 12px;">Select the Logic Shield to Defeat the Monster:</div>
+            <div style="font-weight:800; color: var(--gold-star); margin: 16px 0 12px;">Which trick is this?</div>
             <div class="fallacy-options">
-                ${m.options.map((opt, idx) => `
-                    <button class="fallacy-opt-btn" onclick="checkFallacyAnswer(${idx})">${opt.text}</button>
+                ${currentOptions.map((opt, idx) => `
+                    <button class="fallacy-opt-btn" onclick="checkFallacyAnswer(${idx})">
+                        🛡️ ${FALLACY_LIBRARY[opt.key].name} <span style="opacity:0.85; font-weight:500;">(${FALLACY_LIBRARY[opt.key].short})</span>
+                    </button>
                 `).join('')}
             </div>
 
-            <div id="fallacyFeedback" style="display:none; margin-top:20px; padding:16px; border-radius:12px; font-weight:700; font-size: 1rem;"></div>
+            <div id="fallacyFeedback" role="status" aria-live="polite" style="display:none; margin-top:20px; padding:16px; border-radius:12px; font-weight:700; font-size: 1rem;"></div>
+
+            <div style="display:flex; justify-content:flex-end; margin-top:16px;">
+                <button class="fb-action-btn outline" onclick="skipFallacyScenario()">Different argument ▶</button>
+            </div>
         </div>
     `;
 }
 
-function checkFallacyAnswer(optIdx) {
-    const m = fallacyMonsters[currentMonsterIdx];
-    const feedback = document.getElementById('fallacyFeedback');
-    const selected = m.options[optIdx];
+function nextFallacyScenario() {
+    currentScenarioPos += 1;
+    if (currentScenarioPos >= fallacyScenarios.length) {
+        currentScenarioPos = 0;
+        scenarioOrder = shuffle(fallacyScenarios.map((_, i) => i));   // reshuffle each lap
+    }
+    currentOptions = [];
+    monsterCurrentHP = 100;
+    renderFallacyGame();
+}
 
-    if (!feedback) return;
+function skipFallacyScenario() {
+    nextFallacyScenario();
+}
+
+function checkFallacyAnswer(optIdx) {
+    const sc = currentScenario();
+    const feedback = document.getElementById('fallacyFeedback');
+    const selected = currentOptions[optIdx];
+    if (!feedback || !selected || questionAnswered) return;
+
     feedback.style.display = 'block';
 
     if (selected.correct) {
+        questionAnswered = true;
         monsterCurrentHP = 0;
         const hpBar = document.getElementById('monsterHpBar');
         if (hpBar) hpBar.style.width = '0%';
 
+        const scenarioId = scenarioOrder[currentScenarioPos];
+        const isFirstSolve = !solvedScenarios.has(scenarioId);
+
         feedback.style.background = 'rgba(16, 185, 129, 0.2)';
         feedback.style.border = '1.5px solid var(--green-hero)';
         feedback.style.color = 'var(--green-hero)';
-        const isFirstDefeat = !defeatedMonsters.has(currentMonsterIdx);
-        feedback.innerHTML = `⚔️ ${m.explanation} MONSTER DEFEATED${isFirstDefeat ? ' (+25 XP)' : ''}!`;
-        if (isFirstDefeat) {
-            defeatedMonsters.add(currentMonsterIdx);
+        feedback.innerHTML =
+            `⚔️ <strong>Yes - that was ${FALLACY_LIBRARY[sc.fallacy].name}.</strong> ` +
+            `${escapeHtml(sc.explanation)}${isFirstSolve ? ' (+25 XP)' : ''}`;
+
+        if (isFirstSolve) {
+            solvedScenarios.add(scenarioId);
             if (typeof addXP === 'function') addXP(25);
         }
         if (typeof unlockBadge === 'function') unlockBadge('fallacy_detective');
 
-        setTimeout(() => {
-            currentMonsterIdx = (currentMonsterIdx + 1) % fallacyMonsters.length;
-            monsterCurrentHP = 100;
-            renderFallacyGame();
-        }, 2500);
+        setTimeout(nextFallacyScenario, 3200);
     } else {
-        feedback.style.background = 'rgba(239, 68, 68, 0.2)';
-        feedback.style.border = '1.5px solid #EF4444';
-        feedback.style.color = '#EF4444';
-        feedback.innerHTML = `🛡️ Monster blocked your shield! Think carefully: Is this attacking the person, exaggerating, changing the subject, or assuming false causes? Try again!`;
+        // Say why THIS wrong answer does not fit, rather than "try again".
+        const picked = FALLACY_LIBRARY[selected.key];
+        feedback.style.background = 'rgba(239, 68, 68, 0.15)';
+        feedback.style.border = '1.5px solid #F87171';
+        feedback.style.color = '#F87171';
+        feedback.innerHTML =
+            `🛡️ Not this time. <strong>${picked.name}</strong> means: ${picked.short.toLowerCase()}. ` +
+            `Read what ${escapeHtml(sc.monster)} actually said - is that what is happening here?`;
     }
 }

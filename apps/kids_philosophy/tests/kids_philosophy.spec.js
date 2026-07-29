@@ -47,7 +47,14 @@ test.describe("Philosopher's Quest & Mental Models - Playwright E2E Suite", () =
         const scenario1Btn = page.locator('button.viz-step-btn', { hasText: 'Scenario 1' });
         await expect(scenario1Btn).toBeVisible();
         await scenario1Btn.click();
-        await expect(page.locator('#topicTabContent3')).toContainText('Open Socratic Dialectic');
+
+        // Socrates has his OWN authored inquiry. Asserting the old generic
+        // fallback title here is what let 18 topics ship the same dilemma.
+        await expect(page.locator('#topicTabContent3')).toContainText("Knowing You Don't Know");
+        // toBeVisible, not toContainText: a re-render used to silently drop the
+        // child back to tab 1, which a text assertion cannot detect.
+        await expect(page.locator('#topicTabContent3')).toBeVisible();
+        await expect(page.locator('#topicTabContent1')).toBeHidden();
     });
 
     test('3. Category Switcher: All 4 Master Categories Render Relevant Carousel Items', async ({ page }) => {
