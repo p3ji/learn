@@ -1,6 +1,13 @@
-// Interactive Question & App Upgrade Suggestion Vault with Persistence and JSON Export
+// Questions & Upgrade Ideas notebook.
+//
+// Everything is saved locally first (localStorage), so nothing is ever lost by
+// not sending. Sending uses a mailto: draft rather than posting to a server:
+// no third-party service, no data leaves the device automatically, and an adult
+// sees the message in their own mail app and presses send themselves. That
+// matters in an app used by 8-12 year olds.
 
 const FEEDBACK_STORAGE_KEY = 'kids_quest_feedback_vault';
+const FEEDBACK_EMAIL = 'modularsurveytools@gmail.com';
 
 function getSavedFeedback() {
     try {
@@ -43,24 +50,103 @@ function submitTopicFeedback(topicId, topicName, avatarEmoji) {
     saveFeedback(feedbackEntry);
     inputEl.value = '';
 
-    // Simulated Smart Response from Thinker Avatar
-    let simulatedReply = '';
+    let reply = '';
     if (type === 'question') {
-        simulatedReply = `📓 <strong>Question saved to your notebook.</strong> Nobody has read it yet - take it to a parent, teacher, or friend and talk it through.`;
+        reply = `📓 <strong>Question saved to your notebook.</strong> Nobody has read it yet.`;
     } else {
         const priorSuggestion = getSavedFeedback().some(
             f => f.topicId === topicId && f.type === 'suggestion' && f.id !== feedbackEntry.id);
         const earnsXP = content.length >= 15 && !priorSuggestion;
-        simulatedReply = `💡 <strong>Idea saved to your notebook.</strong> Nobody has read it yet - show it to a grown-up if you want it built!${earnsXP ? ' (+10 XP)' : ''}`;
+        reply = `💡 <strong>Idea saved to your notebook.</strong> Nobody has read it yet.${earnsXP ? ' (+10 XP)' : ''}`;
         if (earnsXP && typeof addXP === 'function') addXP(10);
     }
 
     if (resultBox) {
         resultBox.style.display = 'block';
-        resultBox.innerHTML = simulatedReply;
+        resultBox.innerHTML = `
+            ${reply}
+            <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.15);">
+                <p style="color: var(--text-main); font-size: 0.9rem; margin: 0 0 10px; font-weight: 500;">
+                    Want the people who made this app to see it? Ask a grown-up to send it &mdash;
+                    it opens their email app so they can check it first. Nothing is sent on its own.
+                </p>
+                <button class="fb-action-btn gold" style="font-size: 0.85rem;"
+                        onclick="emailFeedbackEntry('${feedbackEntry.id}')">✉️ Send this to the app makers</button>
+            </div>`;
     }
 
     renderSavedFeedbackList(topicId);
+}
+
+/** Open a pre-filled email draft for one saved entry. Nothing sends by itself. */
+function emailFeedbackEntry(entryId) {
+    const entry = getSavedFeedback().find(f => f.id === entryId);
+    if (!entry) {
+        showToast('Could not find that note.', 'red');
+        return;
+    }
+    openFeedbackEmailDraft([entry]);
+}
+
+/** Open a draft containing every saved note. */
+function emailAllFeedback() {
+    const all = getSavedFeedback();
+    if (all.length === 0) {
+        showToast('Your notebook is empty - save a question first.', 'red');
+        return;
+    }
+    openFeedbackEmailDraft(all);
+}
+
+/**
+ * Build the mailto: URL for a set of notes. Pure - builds a string, sends
+ * nothing. Kept separate from the navigation so it can be asserted on.
+ */
+function buildFeedbackMailto(entries) {
+    const label = entries.length === 1
+        ? (entries[0].type === 'question' ? 'Question' : 'Idea') + ' about ' + entries[0].topicName
+        : `${entries.length} notes from Philosopher's Quest`;
+
+    const lines = [
+        "Sent from Philosopher's Quest (a philosophy app for children).",
+        '',
+        'Please note: this message was written by a child using the app.',
+        '',
+        '----------------------------------------',
+        ''
+    ];
+
+    entries.forEach((e, i) => {
+        lines.push(`${i + 1}. ${e.type === 'question' ? 'QUESTION' : 'UPGRADE IDEA'} - ${e.topicName}`);
+        lines.push(`   "${e.content}"`);
+        lines.push(`   Saved ${new Date(e.timestamp).toLocaleDateString()} by profile name: ${e.userName}`);
+        lines.push('');
+    });
+
+    lines.push('----------------------------------------');
+    lines.push('');
+    lines.push('You can edit or delete anything above before sending.');
+
+    // encodeURIComponent, not escape: subject/body must survive quotes and newlines.
+    return `mailto:${FEEDBACK_EMAIL}` +
+        `?subject=${encodeURIComponent("Philosopher's Quest - " + label)}` +
+        `&body=${encodeURIComponent(lines.join('\n'))}`;
+}
+
+/** Hand the draft to the device's mail app. This is the only step that navigates. */
+function openFeedbackEmailDraft(entries) {
+    const href = buildFeedbackMailto(entries);
+
+    if (href.length > 1900) {
+        // Some mail clients silently truncate long mailto: URLs. Rather than
+        // send a half-message, fall back to the file export.
+        showToast('That is a lot of notes - saving them as a file instead.', 'gold');
+        exportFeedbackJSON();
+        return;
+    }
+
+    window.location.href = href;
+    showToast('Opening your email app. Check it, then press send.', 'green');
 }
 
 function renderSavedFeedbackList(topicId) {
@@ -118,13 +204,23 @@ function openFeedbackVaultModal() {
     modal.innerHTML = `
         <div class="concept-modal-card" style="max-width: 650px;">
             <button class="concept-modal-close" onclick="closeFeedbackVaultModal()">&times;</button>
-            <div class="concept-badge-tag">PERSISTENT FEEDBACK & UPGRADE VAULT</div>
-            <h2 class="concept-title" style="margin-bottom: 6px;">App Upgrade & Questions Vault</h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Review all questions and app upgrade ideas submitted by users. You can export these to JSON for incorporating into future app versions!</p>
+            <div class="concept-badge-tag">MY QUESTIONS NOTEBOOK</div>
+            <h2 class="concept-title" style="margin-bottom: 6px;">My Questions &amp; Ideas</h2>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                <span style="color: var(--gold-star); font-weight: 800;">Total Saved Entries: ${allFeedback.length}</span>
-                <button class="fb-action-btn gold" onclick="exportFeedbackJSON()" style="padding: 8px 16px; font-size: 0.85rem;">📥 Export All to JSON</button>
+            <div style="background: rgba(6,182,212,0.08); border-left: 3px solid var(--cyan-magic); border-radius: 10px; padding: 12px 14px; margin-bottom: 18px;">
+                <p style="color: var(--text-main); font-size: 0.9rem; margin: 0; line-height: 1.55;">
+                    These are saved <strong>on this device only</strong>, in this browser. They are not
+                    sent anywhere unless you choose to send them, and they will disappear if someone
+                    clears the browsing data or you switch to a different device.
+                </p>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+                <span style="color: var(--gold-star); font-weight: 800;">Saved notes: ${allFeedback.length}</span>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="fb-action-btn outline" onclick="exportFeedbackJSON()" style="padding: 8px 16px; font-size: 0.85rem;">📥 Save as a file</button>
+                    <button class="fb-action-btn gold" onclick="emailAllFeedback()" style="padding: 8px 16px; font-size: 0.85rem;">✉️ Send to the app makers</button>
+                </div>
             </div>
 
             <div style="max-height: 350px; overflow-y: auto; padding-right: 6px;">

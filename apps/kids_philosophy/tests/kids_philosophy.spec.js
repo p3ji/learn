@@ -135,7 +135,7 @@ test.describe("Philosopher's Quest & Mental Models - Playwright E2E Suite", () =
         await expect(accountModal).toBeHidden();
 
         // 2. Golden Certificate Modal (Gated check)
-        await page.click('button:has-text("Certificate")');
+        await page.click('header button:has-text("My Journal")');
         const certModal = page.locator('#goldenCertificateModal');
         await expect(certModal).toBeVisible();
         await page.evaluate(() => document.getElementById('goldenCertificateModal').style.display = 'none');
