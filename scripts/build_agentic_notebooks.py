@@ -1,5 +1,5 @@
 """
-Build the WatSPEED Agentic AI prep notebooks (02-09).
+Build the Sociology ➔ AI & Data Science notebooks (02-09).
 
 Run:  python scripts/build_agentic_notebooks.py
 Then: python scripts/execute_notebooks.py     # fills in saved outputs
@@ -34,7 +34,7 @@ def code(text: str) -> nbf.NotebookNode:
 def build(filename: str, title: str, week: str, cells: list) -> None:
     nb = nbf.v4.new_notebook()
     nb.cells = [
-        md(f"# {title}\n\n**WatSPEED Agentic AI prep — {week}**\n\n"
+        md(f"# {title}\n\n**Sociology ➔ AI & Data Science — {week}**\n\n"
            "Runs offline. Set `OPENAI_API_KEY` to swap the stub model for a real one."),
         code(PREAMBLE),
         *cells,

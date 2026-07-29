@@ -4,7 +4,8 @@ const path = require('path');
 const indexPath = 'file:///' + path.resolve(__dirname, '../index.html').replace(/\\/g, '/');
 
 const THINKERS = ['socrates', 'hypatia', 'aristotle', 'aurelius', 'descartes', 'popper',
-                  'mill', 'confucius', 'lao_tzu', 'kant', 'lovelace'];
+                  'mill', 'confucius', 'lao_tzu', 'kant', 'lovelace',
+                  'buddha', 'zhuangzi', 'ibn_sina', 'zera_yacob', 'wollstonecraft', 'du_bois'];
 
 test.describe('Thinker story scenes', () => {
     test.beforeEach(async ({ page }) => {
@@ -79,7 +80,7 @@ test.describe('Real portrait slide (5th slide)', () => {
     });
 
     test('every thinker with a real portrait entry shows a real image and a source link', async ({ page }) => {
-        const WITH_PHOTO = THINKERS.filter(id => id !== 'popper');
+        const WITH_PHOTO = THINKERS.filter(id => !['popper', 'zera_yacob'].includes(id));
         const bad = await page.evaluate((ids) => {
             const out = [];
             ids.forEach(id => {

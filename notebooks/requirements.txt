@@ -1,4 +1,4 @@
-# WatSPEED Agentic AI prep notebooks
+# Sociology ➔ AI & Data Science notebooks
 #
 # Notebooks 02-09 run with ONLY the "core" block below - no API key, no network.
 # The rest is for porting each notebook to the real framework the course teaches.

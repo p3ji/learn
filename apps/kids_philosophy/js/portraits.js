@@ -133,6 +133,36 @@ const PORTRAIT_SPEC = {
         accent: '#BE185D', skin: '#EBC8A4', hair: '#3B2A1F', garment: '#7E2A54', trim: '#FBCFE8',
         hairStyle: 'updo', beard: 'none', moustache: 'none', collar: 'lace',
         prop: 'punchcard', alt: 'Ada Lovelace: a Victorian woman with dark hair in ringlets, wearing a lace collar and a rose gown.'
+    },
+    buddha: {
+        accent: '#B45309', skin: '#D9A066', hair: '#2B211B', garment: '#C2410C', trim: '#FCD34D',
+        hairStyle: 'topknot', beard: 'none', moustache: 'none',
+        prop: 'lotus', alt: 'Siddhartha Gautama, the Buddha: a seated figure from ancient India with a topknot and a saffron robe, eyes lowered in calm.'
+    },
+    zhuangzi: {
+        accent: '#0D9488', skin: '#E0B48C', hair: '#3B2A1F', garment: '#134E4A', trim: '#5EEAD4',
+        hairStyle: 'topknot', beard: 'wispy', moustache: 'thin',
+        prop: 'butterfly', alt: 'Zhuangzi: an ancient Chinese philosopher with a topknot and wispy beard, wearing a plain teal robe.'
+    },
+    ibn_sina: {
+        accent: '#047857', skin: '#C68642', hair: '#241C16', garment: '#065F46', trim: '#6EE7B7',
+        hairStyle: 'cap', beard: 'full', moustache: 'wide',
+        prop: 'crescent', alt: 'Ibn Sina, also called Avicenna: a Persian scholar in a green robe and scholar cap, with a full dark beard.'
+    },
+    zera_yacob: {
+        accent: '#7C2D12', skin: '#8D5524', hair: '#1C1512', garment: '#78350F', trim: '#FDBA74',
+        hairStyle: 'balding', beard: 'full', moustache: 'wide',
+        prop: 'scrollQuill', alt: 'Zera Yacob: a 17th-century Ethiopian philosopher with a full beard, wearing a simple earth-coloured robe.'
+    },
+    wollstonecraft: {
+        accent: '#9D174D', skin: '#EBC8A4', hair: '#6B4423', garment: '#831843', trim: '#FBCFE8',
+        hairStyle: 'updo', beard: 'none', moustache: 'none', collar: 'lace',
+        prop: 'quill', alt: 'Mary Wollstonecraft: an 18th-century English writer with hair pinned up, wearing a dark red gown with a white collar.'
+    },
+    du_bois: {
+        accent: '#1E40AF', skin: '#7A4B28', hair: '#1C1512', garment: '#1E293B', trim: '#F8FAFC',
+        hairStyle: 'balding', beard: 'goatee', moustache: 'wide', collar: 'victorian',
+        prop: 'book', alt: 'W. E. B. Du Bois: an American scholar in a dark suit and high collar, with a neat moustache and pointed beard.'
     }
 };
 
@@ -147,7 +177,12 @@ const PORTRAIT_PROPS = {
     bambooBook: `<g transform="translate(150,182)">${[-12, -6, 0, 6, 12].map(x => `<rect x="${x - 2}" y="-15" width="4.5" height="30" rx="2" fill="#CA8A04"/>`).join('')}<line x1="-16" y1="-6" x2="16" y2="-6" stroke="#78350F" stroke-width="2"/><line x1="-16" y1="8" x2="16" y2="8" stroke="#78350F" stroke-width="2"/></g>`,
     water: `<g transform="translate(150,184)" stroke="#7DD3FC" stroke-width="3.5" fill="none" stroke-linecap="round"><path d="M-17 -6 q8 -7 17 0 t17 0"/><path d="M-17 3 q8 -7 17 0 t17 0"/><path d="M-17 12 q8 -7 17 0 t17 0"/></g>`,
     clock: `<g transform="translate(150,182)"><circle r="17" fill="#F8FAFC" stroke="#6D28D9" stroke-width="3"/><line x1="0" y1="0" x2="0" y2="-10" stroke="#1F2937" stroke-width="2.5" stroke-linecap="round"/><line x1="0" y1="0" x2="7" y2="4" stroke="#1F2937" stroke-width="2.5" stroke-linecap="round"/></g>`,
-    punchcard: `<g transform="translate(150,182)"><rect x="-18" y="-13" width="36" height="26" rx="2" fill="#FDF2F8" stroke="#BE185D" stroke-width="2"/><path d="M-18 -13 l6 0 l-6 6 Z" fill="#BE185D"/>${[-10, -2, 6, 12].map((x, i) => [-5, 2].map(y => `<rect x="${x}" y="${y + (i % 2) * 3}" width="4" height="4" rx="1" fill="#BE185D"/>`).join('')).join('')}</g>`
+    punchcard: `<g transform="translate(150,182)"><rect x="-18" y="-13" width="36" height="26" rx="2" fill="#FDF2F8" stroke="#BE185D" stroke-width="2"/><path d="M-18 -13 l6 0 l-6 6 Z" fill="#BE185D"/>${[-10, -2, 6, 12].map((x, i) => [-5, 2].map(y => `<rect x="${x}" y="${y + (i % 2) * 3}" width="4" height="4" rx="1" fill="#BE185D"/>`).join('')).join('')}</g>`,
+    lotus: `<g transform="translate(150,184)"><ellipse cx="0" cy="4" rx="18" ry="6" fill="#FBBF24" opacity="0.5"/>${[-14,-7,0,7,14].map((x,i)=>`<ellipse cx="${x}" cy="${-2-Math.abs(i-2)*2}" rx="5" ry="12" fill="#FDA4AF" transform="rotate(${(i-2)*22} ${x} ${-2})"/>`).join('')}<circle cy="-2" r="4" fill="#FBBF24"/></g>`,
+    butterfly: `<g transform="translate(150,182)"><ellipse cx="-9" cy="-4" rx="9" ry="12" fill="#5EEAD4" transform="rotate(-20 -9 -4)"/><ellipse cx="9" cy="-4" rx="9" ry="12" fill="#5EEAD4" transform="rotate(20 9 -4)"/><ellipse cx="-7" cy="9" rx="7" ry="8" fill="#2DD4BF" transform="rotate(-15 -7 9)"/><ellipse cx="7" cy="9" rx="7" ry="8" fill="#2DD4BF" transform="rotate(15 7 9)"/><rect x="-1.5" y="-12" width="3" height="26" rx="1.5" fill="#134E4A"/></g>`,
+    crescent: `<g transform="translate(150,182)"><path d="M6 -16 A16 16 0 1 0 6 16 A13 13 0 1 1 6 -16 Z" fill="#6EE7B7"/><path d="M13 -6 l2 5 l5 1 l-4 4 l1 5 l-4 -3 l-4 3 l1 -5 l-4 -4 l5 -1 Z" fill="#FBBF24"/></g>`,
+    scrollQuill: `<g transform="translate(150,182)"><rect x="-17" y="-12" width="30" height="24" rx="3" fill="#F5EEDC"/><line x1="-11" y1="-4" x2="7" y2="-4" stroke="#9CA3AF" stroke-width="2"/><line x1="-11" y1="3" x2="7" y2="3" stroke="#9CA3AF" stroke-width="2"/><path d="M8 12 Q18 -2 21 -14 Q17 0 11 13 Z" fill="#FDBA74"/></g>`,
+    book: `<g transform="translate(150,182)"><path d="M-17 -13 h15 v27 h-15 Z" fill="#E2E8F0"/><path d="M2 -13 h15 v27 h-15 Z" fill="#F8FAFC"/><rect x="-2" y="-14" width="4" height="29" rx="1" fill="#1E40AF"/><line x1="-13" y1="-5" x2="-5" y2="-5" stroke="#94A3B8" stroke-width="2"/><line x1="5" y1="-5" x2="13" y2="-5" stroke="#94A3B8" stroke-width="2"/></g>`
 };
 
 // Real public-domain portraits, one per thinker, shown as the final story slide.
@@ -245,6 +280,45 @@ const PORTRAIT_PHOTOS = {
         caption: 'Painted from life in 1836, when Ada was 21 - sixteen years before she met Babbage’s Analytical Engine.',
         credit: 'Margaret Sarah Carpenter, 1836. Government Art Collection, UK.',
         commonsUrl: 'https://commons.wikimedia.org/wiki/File:Carpenter_portrait_of_Ada_Lovelace_-_detailFXD.jpg'
+    },
+    buddha: {
+        file: 'img/portraits/buddha.jpg',
+        lifetime: false,
+        caption: 'Painted more than 2,000 years after he lived. Nobody drew the Buddha while he was alive - for centuries afterwards artists did not show him as a person at all, only as an empty seat or a pair of footprints.',
+        credit: 'Shakyamuni Buddha with Avadana legend scenes, 19th century, artist unknown.',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/File:Shakyamuni_Buddha_with_Avadana_Legend_Scenes_-_Google_Art_Project.jpg'
+    },
+    zhuangzi: {
+        file: 'img/portraits/zhuangzi.jpg',
+        lifetime: false,
+        caption: 'A much later Chinese painting - an artist’s idea of him, made long after his death. Fitting, for a man who wondered whether he was a butterfly dreaming it was a man.',
+        credit: 'Traditional Chinese painting, artist and date unknown.',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/File:Zhuangzi.gif'
+    },
+    ibn_sina: {
+        file: 'img/portraits/ibn_sina.jpg',
+        lifetime: false,
+        caption: 'An imagined portrait made centuries after his death. We have around 240 of his books but no picture drawn by anyone who met him.',
+        credit: 'Later portrait of Avicenna, artist unknown.',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/File:Avicenna.jpg'
+    },
+    zera_yacob: {
+        noPhoto: true,
+        caption: 'There is no picture of Zera Yacob anywhere in the world - not a painting, not a drawing, nothing. This is a different problem from Karl Popper, whose photographs exist but are still under copyright. Here, no one ever made one. We have his book and his arguments from 1667, and no idea what his face looked like. Being remembered for your ideas and forgotten as a face is a real thing that happens to people.'
+    },
+    wollstonecraft: {
+        file: 'img/portraits/wollstonecraft.jpg',
+        lifetime: true,
+        caption: 'Painted from life around 1797, the year she died. She was about 38, and had just finished the book she is best known for.',
+        credit: 'John Opie, c. 1797. National Portrait Gallery, London.',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/File:Mary_Wollstonecraft_by_John_Opie_(c._1797).jpg'
+    },
+    du_bois: {
+        file: 'img/portraits/du_bois.jpg',
+        lifetime: true,
+        caption: 'A real photograph of Du Bois, taken in 1918 when he was 50. He lived another 45 years after this was taken.',
+        credit: 'Photograph by Cornelius Marion Battey, 1918.',
+        commonsUrl: 'https://commons.wikimedia.org/wiki/File:WEB_DuBois_1918.jpg'
     }
 };
 

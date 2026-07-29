@@ -10,7 +10,8 @@ const indexPath = 'file:///' + path.resolve(__dirname, '../index.html').replace(
 
 const ALL_TOPICS = {
     thinkers: ['socrates', 'hypatia', 'aristotle', 'aurelius', 'descartes', 'popper',
-               'mill', 'confucius', 'lao_tzu', 'kant', 'lovelace'],
+               'mill', 'confucius', 'lao_tzu', 'kant', 'lovelace',
+               'buddha', 'zhuangzi', 'ibn_sina', 'zera_yacob', 'wollstonecraft', 'du_bois'],
     mental_models: ['first_principles', 'occams_razor', 'black_swan', 'map_territory',
                     'inversion', 'pareto', 'second_order', 'sunk_cost', 'hanlons_razor',
                     'confirmation_bias'],

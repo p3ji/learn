@@ -40,7 +40,7 @@ def generate_all_notebooks(output_dir="notebooks"):
 
     # NOTEBOOK 1
     nb1_cells = [
-        md_cell("""# WatSPEED Prep Module 1: Python Data & API Essentials for SAS/Stata Veterans
+        md_cell("""# Sociology ➔ AI Module 1: Python Data & API Essentials for SAS/Stata Veterans
 
 Welcome! As a sociologist experienced in **SAS** (`DATA` steps, `PROC` procedures) and **Stata** (`.do` files, `recode`), this notebook bridges your analytical intuition to **Python, Pandas, Pydantic, and Async LLM APIs**.
 
@@ -150,7 +150,7 @@ for res in results:
 
     # NOTEBOOK 2
     nb2_cells = [
-        md_cell("""# WatSPEED Prep Module 2: Supervised ML Tools, ReAct Prompting & Google TabFM
+        md_cell("""# Sociology ➔ AI Module 2: Supervised ML Tools, ReAct Prompting & Google TabFM
 
 ---
 
@@ -230,7 +230,7 @@ print(agent.run("Compare Logistic Regression, Random Forest, and Google TabFM Ze
 
     # NOTEBOOK 3
     nb3_cells = [
-        md_cell("""# WatSPEED Prep Module 3: LangGraph State Graphs for Survey Workflows
+        md_cell("""# Sociology ➔ AI Module 3: LangGraph State Graphs for Survey Workflows
 
 ---
 
@@ -289,7 +289,7 @@ print(s3['summary'])
 
     # NOTEBOOK 4
     nb4_cells = [
-        md_cell("""# WatSPEED Prep Module 4: Model Context Protocol (MCP) for Tabular Datasets
+        md_cell("""# Sociology ➔ AI Module 4: Model Context Protocol (MCP) for Tabular Datasets
 
 ---
 
@@ -333,7 +333,7 @@ print(server.call_tool("crosstab", {"var1": "Education_Level", "var2": "High_AI_
 
     # NOTEBOOK 5
     nb5_cells = [
-        md_cell("""# WatSPEED Prep Module 5: Multi-Agent Sociological Research Systems"""),
+        md_cell("""# Sociology ➔ AI Module 5: Multi-Agent Sociological Research Systems"""),
         code_cell("""import pandas as pd
 
 class DataAgent:
@@ -359,7 +359,7 @@ print(sa.run(ma.run(da.run("../data/ai_trust_insights.csv"))))
 
     # NOTEBOOK 6
     nb6_cells = [
-        md_cell("""# WatSPEED Prep Module 6: Capstone Autonomous Survey Assistant"""),
+        md_cell("""# Sociology ➔ AI Module 6: Capstone Autonomous Survey Assistant"""),
         code_cell("""import pandas as pd
 
 class CapstoneAssistant:

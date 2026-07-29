@@ -17,7 +17,13 @@ const TOPIC_CATALOG = {
         { id: 'confucius', title: 'Confucius', avatar: '☯️', category: 'thinkers', badge: 'young_thinker' },
         { id: 'lao_tzu', title: 'Lao Tzu', avatar: '🌊', category: 'thinkers', badge: 'young_thinker' },
         { id: 'kant', title: 'Immanuel Kant', avatar: '⚖️', category: 'thinkers', badge: 'young_thinker' },
-        { id: 'lovelace', title: 'Ada Lovelace', avatar: '💻', category: 'thinkers', badge: 'young_thinker' }
+        { id: 'lovelace', title: 'Ada Lovelace', avatar: '💻', category: 'thinkers', badge: 'young_thinker' },
+        { id: 'buddha', title: 'Siddhartha Gautama (the Buddha)', avatar: '🪷', category: 'thinkers', badge: 'young_thinker' },
+        { id: 'zhuangzi', title: 'Zhuangzi', avatar: '🦋', category: 'thinkers', badge: 'young_thinker' },
+        { id: 'ibn_sina', title: 'Ibn Sina (Avicenna)', avatar: '🪄', category: 'thinkers', badge: 'young_thinker' },
+        { id: 'zera_yacob', title: 'Zera Yacob', avatar: '🗻', category: 'thinkers', badge: 'young_thinker' },
+        { id: 'wollstonecraft', title: 'Mary Wollstonecraft', avatar: '🪶', category: 'thinkers', badge: 'young_thinker' },
+        { id: 'du_bois', title: 'W. E. B. Du Bois', avatar: '✒️', category: 'thinkers', badge: 'young_thinker' }
     ],
     mental_models: [
         { id: 'first_principles', title: 'First Principles Thinking', avatar: '⚡', category: 'mental_models', badge: 'first_principles' },

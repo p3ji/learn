@@ -1,10 +1,7 @@
-# WatSPEED Agentic AI — Prep Notebooks
+# Sociology ➔ AI & Data Science — Executable Notebooks
 
-Preparation for [WatSPEED Agentic AI](https://watspeed.uwaterloo.ca/programs-and-courses/course-ai-certificate-agentic-ai.html)
-(6 weeks, 8–10 hrs/week, starts **October 5, 2026**).
-
-The course lists these prerequisites: *Python familiarity, basic ML/LLM concepts, Jupyter
-familiarity, and access to a reasoning LLM API.* These notebooks close that gap.
+Hands-on learning path for sociologists and quantitative researchers bridging SAS/Stata experience into Data Science, Machine Learning, and Agentic AI.
+These notebooks close the gap between traditional social science methods and modern AI engineering.
 
 ## The design rule
 

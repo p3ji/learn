@@ -743,6 +743,432 @@ const thinkersData = [
         discussionPrompts: [
             { prompt: "How do art and math connect in your favorite video game?", context: "Talk about how code, music, and graphics come together in computer games." }
         ]
+    },
+    {
+        id: "buddha",
+        name: "Siddhartha Gautama (the Buddha)",
+        era: "Ancient India / Nepal (c. 480 - c. 400 BCE)",
+        avatar: "🪷",
+        quote: "All that we are is the result of what we have thought. (Dhammapada, verse 1)",
+        superpower: "Looking Suffering Straight In The Face",
+        conceptIntro: "Siddhartha grew up with everything anyone could want, and it did not make him happy. He spent the rest of his life working out where unhappiness actually comes from - and concluded it comes from wanting things to be different than they are.",
+        storyScenes: [
+            {
+                title: "Scene 1: The Sheltered Prince",
+                heading: "A palace with the gates shut",
+                imageEmoji: "🏯",
+                text: "Siddhartha was born a prince in the foothills of the Himalayas. The story goes that his father, warned his son might leave home to become a wandering teacher, tried to prevent it by giving him everything: gardens, music, comfort, and walls high enough that he never saw anything sad.",
+                factBox: "The oldest written accounts of his life come from centuries after his death, so historians treat the palace details as legend built around a real person."
+            },
+            {
+                title: "Scene 2: Four Things He Was Not Meant To See",
+                heading: "Old age, sickness, death, and a calm face",
+                imageEmoji: "🚶",
+                text: "In his twenties he went outside. He saw an old person, a sick person, and a dead body - and understood for the first time that this happens to everyone, including him. Then he saw a wandering holy man who looked completely at peace. He left the palace that night.",
+                factBox: "This is called the Four Sights. Whether or not it happened in one day, it frames the question his whole philosophy answers."
+            },
+            {
+                title: "Scene 3: Nearly Starving To Death",
+                heading: "Trying the opposite extreme",
+                imageEmoji: "🌿",
+                text: "He tried the hardest version of giving things up - eating almost nothing, for years, until he could feel his spine through his stomach. It did not work either. He accepted a bowl of rice from a village girl and decided that punishing yourself is just as much a trap as spoiling yourself.",
+                factBox: "He called what he found instead the Middle Way: not indulgence, not self-torture."
+            },
+            {
+                title: "Scene 4: Wanting Things To Be Different",
+                heading: "Sitting under the tree",
+                imageEmoji: "🌸",
+                text: "His answer was uncomfortable and simple. Life contains suffering. Much of that suffering comes not from what happens, but from craving that things be otherwise. Loosen the craving and the suffering loosens too - and that can be practised, like any skill.",
+                factBox: "Those are the first two of the Four Noble Truths, the core of what he taught for about 45 years."
+            }
+        ],
+        vocabCards: [
+            { term: "Dukkha", icon: "😔", definition: "Often translated 'suffering', but closer to 'unsatisfactoriness' - the feeling that things are not quite right." },
+            { term: "The Middle Way", icon: "⚖️", definition: "Avoiding both extremes: neither spoiling yourself nor punishing yourself." },
+            { term: "Craving", icon: "🧲", definition: "Wanting things to be different from how they are, so strongly that it hurts." }
+        ],
+        inDepth: {
+            history: "Siddhartha Gautama taught in northern India around 2,500 years ago. 'Buddha' is not a name but a title meaning 'the awakened one'.",
+            whyItMatters: "A lot of unhappiness comes from wishing a situation were different rather than from the situation itself. Noticing which is which is a genuinely useful skill.",
+            funFact: "He asked his followers not to take his word for anything, but to test his ideas the way you would test gold: by working on them yourself."
+        },
+        p4cInquiry: [
+            {
+                title: "Is Wanting Things Bad?",
+                shortTitle: "Wanting Things",
+                dilemma: "You really want a new bike. Is wanting it a problem, or is wanting things just part of being alive?",
+                perspectives: {
+                    a: { name: "Wanting Causes The Ache", argument: "The wanting is what makes you restless now. You were fine before you knew the bike existed - and you will want something else the week after you get it." },
+                    b: { name: "Wanting Is What Moves You", argument: "Nobody ever learned an instrument or saved up for anything without wanting it first. Take away wanting and you take away trying." },
+                    c: { name: "It Is How Tightly You Hold It", argument: "Wanting the bike is fine. Being miserable every day until you get it is the part that costs you something." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "What is something you wanted badly and then got? How long did it feel special for?", context: "Talk about whether the wanting or the having was the bigger part of it." },
+            { prompt: "Is it possible to want something and still be happy while you wait?", context: "Try to work out together what would have to be true for that to work." }
+        ],
+        caseStudies: [
+            { title: "The Ruined Afternoon", text: "It rains on the day of your trip. The rain lasts an hour; being furious about the rain can last all day. Which one actually spoiled the afternoon?" },
+            { title: "The Thing You Wanted", text: "Think of something you really wanted and finally got. How long did the happy feeling last before you started wanting the next thing?" }
+        ],
+        videoId: "tilBs32zN7I",
+        videoQuiz: [
+            { question: "What did Siddhartha conclude after trying both a life of luxury and a life of extreme hardship?", options: [{ text: "Neither extreme worked - he chose a middle path between them", correct: true }, { text: "Luxury was the answer after all", correct: false }] }
+        ]
+    },
+    {
+        id: "zhuangzi",
+        name: "Zhuangzi",
+        era: "Ancient China (c. 369 - c. 286 BCE)",
+        avatar: "🦋",
+        quote: "Once I dreamt I was a butterfly... Suddenly I woke, and there I was, myself again. Now I do not know whether I was a man dreaming I was a butterfly, or whether I am now a butterfly dreaming I am a man. (Zhuangzi, ch. 2)",
+        superpower: "Turning Certainty Upside Down With A Joke",
+        conceptIntro: "Zhuangzi wrote the funniest philosophy in the ancient world. He used silly stories - talking trees, useless carpenters, a butterfly - to knock the confidence out of people who were very sure they knew how things are.",
+        storyScenes: [
+            {
+                title: "Scene 1: The Man Who Turned Down The Job",
+                heading: "Offered the top position, said no",
+                imageEmoji: "🎣",
+                text: "The story goes that the King of Chu sent officials to offer Zhuangzi the job of prime minister. He was fishing at the time. He asked whether they knew about the sacred tortoise the king kept, dead, wrapped in silk in a box of honour - and asked whether the tortoise would rather be honoured and dead, or alive and dragging its tail in the mud. Then he told them to go away.",
+                factBox: "The Zhuangzi is a collection; scholars think only the first seven chapters are likely by him."
+            },
+            {
+                title: "Scene 2: The Butterfly",
+                heading: "Which one is the dream?",
+                imageEmoji: "🦋",
+                text: "He dreamt he was a butterfly - not a man dreaming, but simply a butterfly, going wherever it liked. Then he woke up, and was unmistakably himself. And he could not work out which way round it was: a man who had dreamt of being a butterfly, or a butterfly now dreaming it was a man.",
+                factBox: "Descartes used almost the same argument 2,000 years later. Zhuangzi got there first, and was less worried about it."
+            },
+            {
+                title: "Scene 3: The Useless Tree",
+                heading: "Too crooked to cut down",
+                imageEmoji: "🌳",
+                text: "A carpenter passes an enormous old tree and does not even glance at it - the wood is knotted and useless for building. Zhuangzi points out that this is exactly why the tree got to be enormous and old. Every straight, useful tree in the forest was cut down young.",
+                factBox: "He is asking a real question: useful to whom, and at what price?"
+            },
+            {
+                title: "Scene 4: The Fish Argument",
+                heading: "How do you know what a fish enjoys?",
+                imageEmoji: "🐟",
+                text: "Walking over a river, Zhuangzi says the fish are enjoying themselves. His friend Huizi says: you are not a fish, how would you know? Zhuangzi replies: you are not me, so how do you know that I do not know? It is a joke and an argument at the same time - about the limits of being certain what is going on inside anyone else.",
+                factBox: "Huizi was a real logician and Zhuangzi's actual friend. Their arguments run right through the book."
+            }
+        ],
+        vocabCards: [
+            { term: "Relativism", icon: "🔄", definition: "The idea that what looks 'big', 'useful' or 'normal' depends on where you are standing." },
+            { term: "Wu Wei", icon: "🌊", definition: "Acting with the grain of a situation instead of forcing it - a term he shares with Lao Tzu." },
+            { term: "Paradox", icon: "🌀", definition: "A statement that seems to contradict itself but makes you think, like the butterfly dream." }
+        ],
+        inDepth: {
+            history: "Zhuangzi lived during China's Warring States period, when philosophers competed for the ear of rulers. He is one of the few who consistently refused the job.",
+            whyItMatters: "Being very certain feels good and is often where mistakes come from. Zhuangzi is a professional at loosening certainty without making you cynical.",
+            funFact: "He is one of the very few ancient philosophers who is genuinely funny on purpose. The jokes are the argument, not decoration."
+        },
+        p4cInquiry: [
+            {
+                title: "How Do You Know You Are Awake?",
+                shortTitle: "The Butterfly",
+                dilemma: "Right now, how do you know you are awake and not dreaming? What would you check?",
+                perspectives: {
+                    a: { name: "Waking Life Hangs Together", argument: "Dreams jump about and forget their own rules. Real life keeps going in order - and everyone else confirms it. That difference is your evidence." },
+                    b: { name: "You Cannot Check From Inside", argument: "Everything you would use to check is also part of the experience. In the dream you were completely convinced too. There is no test that works from in here." },
+                    c: { name: "It May Not Matter", argument: "If you can never tell, perhaps the question to ask is not 'is this real?' but 'what should I do next?' - which has the same answer either way." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "Have you ever had a dream so convincing that you were surprised to wake up?", context: "Talk about what finally told you it had been a dream - and whether that test would always work." },
+            { prompt: "Can you ever really know what someone else is feeling?", context: "This is Zhuangzi's fish argument. Try it on each other." }
+        ],
+        caseStudies: [
+            { title: "The 'Useless' Subject", text: "Someone says a school subject is useless. Useless for what, and according to whom? The crooked tree survived precisely by being useless to a carpenter." },
+            { title: "Arguing About Someone Else's Feelings", text: "'You're not even upset.' 'How would you know?' That is the fish argument, happening at lunchtime." }
+        ]
+    },
+    {
+        id: "ibn_sina",
+        name: "Ibn Sina (Avicenna)",
+        era: "Persia / Central Asia (980 - 1037 CE)",
+        avatar: "🪄",
+        quote: "The knowledge of anything, since all things have causes, is not acquired unless it is known by its causes. (The Book of Healing)",
+        superpower: "Proving You Exist While Floating In The Dark",
+        conceptIntro: "Ibn Sina was a doctor, an astronomer and a philosopher who wrote a medical textbook used across Europe and Asia for six hundred years. He also invented a thought experiment that Descartes would arrive at, independently, six centuries later.",
+        storyScenes: [
+            {
+                title: "Scene 1: The Boy Who Read Everything",
+                heading: "Bukhara, in what is now Uzbekistan",
+                imageEmoji: "📚",
+                text: "Ibn Sina was a spectacular child scholar. By his teens he was reading medicine, and by about eighteen he was treating patients - including, the story goes, the local ruler, which got him access to one of the finest libraries in the world.",
+                factBox: "He wrote a short autobiography, which is unusual for the period and is where most of these details come from."
+            },
+            {
+                title: "Scene 2: The Book That Taught Europe Medicine",
+                heading: "The Canon of Medicine, 1025",
+                imageEmoji: "⚕️",
+                text: "He gathered Greek, Persian, Indian and Arabic medical knowledge into one enormous organised book. Translated into Latin, it was still a standard university text in Europe five hundred years later - a Persian Muslim scholar teaching Christian Europe how to practise medicine.",
+                factBox: "Roughly 240 of his works survive. He wrote much of it while working full time as a court physician and administrator."
+            },
+            {
+                title: "Scene 3: The Floating Man",
+                heading: "Imagine you cannot feel anything at all",
+                imageEmoji: "🌬️",
+                text: "Imagine you were created this instant, fully grown, floating in warm still air. Blindfolded. Limbs apart, touching nothing - not even yourself. No sight, no sound, no smell, no pressure anywhere. Ibn Sina asks: would you still know that you exist?",
+                factBox: "He says yes - and concludes that your awareness of yourself does not depend on your body reporting in."
+            },
+            {
+                title: "Scene 4: Six Hundred Years Before Descartes",
+                heading: "The same move, a different road",
+                imageEmoji: "💭",
+                text: "Look at the Descartes card in this app. He doubted everything and found one thing left standing: something had to be doing the doubting. Ibn Sina had reached a very similar place in about 1020, from a different direction and a different tradition - and Latin translations of his work were circulating in Europe long before Descartes was born.",
+                factBox: "Historians still debate whether Descartes read him. What is certain is that Ibn Sina was there first."
+            }
+        ],
+        vocabCards: [
+            { term: "Thought Experiment", icon: "🧪", definition: "A test you run in your imagination when you cannot run it for real." },
+            { term: "Self-awareness", icon: "🪞", definition: "Knowing that you exist and that you are the one thinking these thoughts." },
+            { term: "The Canon", icon: "📖", definition: "His medical encyclopaedia - 'canon' here means the standard, authoritative book on a subject." }
+        ],
+        inDepth: {
+            history: "Ibn Sina worked during the Islamic Golden Age, when scholars in Baghdad, Bukhara and Cordoba preserved, translated and pushed forward Greek learning that had been lost in western Europe.",
+            whyItMatters: "Ideas do not belong to one place. The chain runs Greek to Arabic to Latin and back again - and this app's own thinkers are links in it.",
+            funFact: "He is said to have written parts of his great works from memory while travelling, or in hiding, without access to his library."
+        },
+        p4cInquiry: [
+            {
+                title: "Are You Just Your Body?",
+                shortTitle: "The Floating Man",
+                dilemma: "In the floating man experiment you feel nothing at all - no body, no senses. Ibn Sina thinks you would still know you exist. Would you?",
+                perspectives: {
+                    a: { name: "Yes - Thinking Is Enough", argument: "Something is doing the wondering. Even with nothing to see or touch, that wondering is still happening, and it is happening to you." },
+                    b: { name: "No - You Need A Body", argument: "You have never once existed without a body. Imagining it does not prove it is possible, any more than imagining a dragon proves dragons." },
+                    c: { name: "The Experiment Is Rigged", argument: "He asks you to imagine yourself with no senses - but you can only imagine it using a brain built by having senses. The test may not be a fair one." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "If you could not see, hear or feel anything, what would be left of you?", context: "Try it for thirty seconds with eyes closed and ears covered, then talk about what remained." },
+            { prompt: "Why do you think the same idea can occur to people in different centuries and different countries?", context: "Discuss whether ideas are invented or discovered." }
+        ],
+        caseStudies: [
+            { title: "Float Test", text: "Lie still with your eyes shut and try to notice as little as possible. Are you still sure you exist? That is the experiment." },
+            { title: "Who Taught Whom", text: "Europe learned medicine from a Persian textbook. Trace one thing you use daily back through the places it came from." }
+        ]
+    },
+    {
+        id: "zera_yacob",
+        name: "Zera Yacob",
+        era: "Ethiopia (1599 - 1692)",
+        avatar: "🗻",
+        quote: "He who investigates with the pure intelligence set in the heart of each of us... will discover the truth. (Hatata, 1667)",
+        superpower: "Reasoning From Scratch, Alone, In A Cave",
+        conceptIntro: "Zera Yacob had to flee for his life because of what he believed. He spent two years hiding in a cave, and used the time to think his way from first principles to conclusions about tolerance and equality that were centuries ahead of nearly everyone.",
+        storyScenes: [
+            {
+                title: "Scene 1: The Wrong Answer To A Dangerous Question",
+                heading: "Ethiopia, 1630",
+                imageEmoji: "🔥",
+                text: "Zera Yacob was a teacher during a period when the Ethiopian king had converted to Catholicism and was forcing others to follow. Zera Yacob would not say that any one religion was obviously the correct one. He was accused to the king and had to run.",
+                factBox: "He tells this himself in the Hatata, the book he wrote in 1667."
+            },
+            {
+                title: "Scene 2: Two Years In A Cave",
+                heading: "Nothing to read, and time to think",
+                imageEmoji: "🪏",
+                text: "He hid in a cave by a river at the foot of a cliff, and stayed for about two years. With no library and no teacher, he did the only thing available: he reasoned, from the beginning, about what he could actually justify believing.",
+                factBox: "Descartes shut himself in a warm room for a day and started from doubt. Zera Yacob had two years and no choice."
+            },
+            {
+                title: "Scene 3: The Test He Invented",
+                heading: "Ask whether every group can be right",
+                imageEmoji: "⚖️",
+                text: "He noticed that every religion he knew of taught that it alone was true, and that people mostly believed whichever one they had been born into. Since they contradicted each other, they could not all be right - so being told something by your own community is no proof at all. What was left, he argued, was the reasoning ability every person has.",
+                factBox: "He applies the same test to himself, not only to others - which is the part most people skip."
+            },
+            {
+                title: "Scene 4: The Conclusions Nobody Was Ready For",
+                heading: "1667, well ahead of schedule",
+                imageEmoji: "🕊️",
+                text: "Using that method he argued that all human beings are equal, that men and women are equal, that slavery is wrong, and that no one should be forced into a belief. He was writing this in 1667, while the transatlantic slave trade was expanding and most European philosophers had not got there.",
+                factBox: "Some scholars have questioned the Hatata's authorship; most Ethiopian and a growing number of international scholars accept it as genuine."
+            }
+        ],
+        vocabCards: [
+            { term: "Hatata", icon: "📜", definition: "His book. The word means 'inquiry' or 'investigation' in Ge'ez, the classical Ethiopian language." },
+            { term: "Reason", icon: "🧠", definition: "Working something out by thinking carefully, rather than accepting it because you were told." },
+            { term: "Tolerance", icon: "🤝", definition: "Letting other people hold beliefs you disagree with, without forcing them to change." }
+        ],
+        inDepth: {
+            history: "Zera Yacob wrote the Hatata in Ge'ez in 1667, at the request of a student. It was largely unknown outside Ethiopia until the 20th century.",
+            whyItMatters: "It is often said that certain ideas 'came from Europe at a certain date'. Zera Yacob is a direct counter-example, and worth knowing for exactly that reason.",
+            funFact: "He and Descartes were almost exact contemporaries, using strikingly similar methods, and neither ever knew the other existed."
+        },
+        p4cInquiry: [
+            {
+                title: "Can You Work It Out By Yourself?",
+                shortTitle: "Thinking Alone",
+                dilemma: "Zera Yacob decided that being told something by your own community is not proof it is true. Is he right?",
+                perspectives: {
+                    a: { name: "Work It Out Yourself", argument: "Everyone thinks their own group is the right one, and they cannot all be. The only thing left that is really yours is your own reasoning." },
+                    b: { name: "You Cannot Start From Nothing", argument: "He used a language, ideas and arguments he learned from other people. Nobody reasons from scratch - even alone in a cave, you bring your teachers with you." },
+                    c: { name: "Trust, But Check", argument: "Start with what you were taught, because you have to start somewhere - then test the parts that matter instead of accepting all of it." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "What is something you believe mainly because the people around you believe it?", context: "Pick one and talk about how you would test it, without deciding in advance what the answer is." },
+            { prompt: "Is it braver to say 'I am not sure' or to pick a side?", context: "Zera Yacob's refusal to pick a side is what got him exiled." }
+        ],
+        caseStudies: [
+            { title: "Where Did Your Beliefs Come From?", text: "Most people share the beliefs of the place they grew up. Zera Yacob asks: is that a reason to think they are true?" },
+            { title: "Two Cave Thinkers", text: "Compare with Plato's Cave in this app. Plato's prisoner has to leave the cave to find truth. Zera Yacob finds it inside one." }
+        ]
+    },
+    {
+        id: "wollstonecraft",
+        name: "Mary Wollstonecraft",
+        era: "England (1759 - 1797)",
+        avatar: "🪶",
+        quote: "I do not wish them to have power over men; but over themselves. (A Vindication of the Rights of Woman, 1792)",
+        superpower: "Spotting A Bad Argument Dressed As Common Sense",
+        conceptIntro: "Everyone in her time agreed that women were sillier than men. Wollstonecraft agreed that many women behaved that way - and then pointed out that this is exactly what you would expect if you gave someone no education and no responsibility.",
+        storyScenes: [
+            {
+                title: "Scene 1: Guarding The Bedroom Door",
+                heading: "London, a difficult house",
+                imageEmoji: "🚪",
+                text: "Her father drank and was violent towards her mother. As a girl, Mary sometimes slept on the landing outside her mother's bedroom to get in the way if he came up. She had almost no formal schooling; her brother was sent to be educated.",
+                factBox: "That gap - a brother taught, a sister not - is the exact thing her most famous book is about."
+            },
+            {
+                title: "Scene 2: Earning Her Own Living",
+                heading: "One of the very few options",
+                imageEmoji: "✍️",
+                text: "She worked as a lady's companion, ran a school, and was a governess - and then did something almost unheard of for a woman without money: she became a full-time professional writer, reviewing books and learning French and German to translate them.",
+                factBox: "She told her sister she intended to be 'the first of a new genus' - a new kind of person."
+            },
+            {
+                title: "Scene 3: The Argument Nobody Had Made",
+                heading: "1792",
+                imageEmoji: "📕",
+                text: "Her opponents said women were naturally frivolous. She turned it round: teach someone nothing but how to be charming, give them no serious work, reward them only for looking nice - and frivolous is precisely what you have trained them to be. The behaviour is evidence about the education, not about the nature.",
+                factBox: "A Vindication of the Rights of Woman was written in about six weeks."
+            },
+            {
+                title: "Scene 4: What She Actually Asked For",
+                heading: "Not power over anyone",
+                imageEmoji: "⚖️",
+                text: "She did not ask for women to rule men. She asked for education, so a woman could think for herself, earn her own living, and be a real friend to her husband instead of a decoration. She died at 38, days after giving birth to her daughter Mary - who grew up to write Frankenstein.",
+                factBox: "Her husband published her private letters after her death, which damaged her reputation for a century."
+            }
+        ],
+        vocabCards: [
+            { term: "Reason", icon: "🧠", definition: "The ability to work things out for yourself - which she argued women have exactly as much of as men." },
+            { term: "Vindication", icon: "📢", definition: "Defending something against an accusation, by showing the accusation is wrong." },
+            { term: "Prejudice", icon: "👁️", definition: "Judging someone before you have any evidence, usually because of the group they belong to." }
+        ],
+        inDepth: {
+            history: "She wrote during the French Revolution, when Europe was arguing about the rights of man. She asked the obvious follow-up question that almost nobody else was asking.",
+            whyItMatters: "Her move - 'you caused the thing you are complaining about' - is one of the most useful arguments there is, and it works far beyond her subject.",
+            funFact: "Her daughter, Mary Shelley, wrote Frankenstein at 18. Mary Wollstonecraft never met her; she died eleven days after the birth."
+        },
+        p4cInquiry: [
+            {
+                title: "Nature Or Treatment?",
+                shortTitle: "Why People Turn Out",
+                dilemma: "If a group of people is treated as though they cannot do something, and then they do not do it - what has that actually proved?",
+                perspectives: {
+                    a: { name: "It Proves Nothing", argument: "You never ran the real test. Until they get the same teaching and the same chances, the result tells you about the treatment, not the people." },
+                    b: { name: "People Do Differ", argument: "People genuinely are different from one another. Insisting every difference must come from unfairness can be its own way of not looking properly." },
+                    c: { name: "Change It And See", argument: "Stop arguing and run the experiment: give the same chances, wait, and look at what happens. That is the only thing that would settle it." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "Has anyone ever assumed you would be bad at something before you tried?", context: "Talk about what that did to how hard you tried." },
+            { prompt: "Is it fair to judge how good someone is at something if they were never taught it?", context: "Discuss what a fair test would actually need." }
+        ],
+        caseStudies: [
+            { title: "The Self-Fulfilling Rule", text: "Tell someone they are bad at maths, give them less help, then point at their marks as proof. Where did the evidence really come from?" },
+            { title: "Kant, Next Door", text: "Kant said every rational being deserves respect. Wollstonecraft, writing eight years later, asked him a hard question: so who exactly counts as rational, and who decides?" }
+        ],
+        videoId: "6bNUmd-I680",
+        videoQuiz: [
+            { question: "What did Wollstonecraft argue was the real cause of women appearing less capable in her time?", options: [{ text: "They were denied education and serious responsibility", correct: true }, { text: "They were naturally less able", correct: false }] }
+        ]
+    },
+    {
+        id: "du_bois",
+        name: "W. E. B. Du Bois",
+        era: "United States (1868 - 1963)",
+        avatar: "📐",
+        quote: "It is a peculiar sensation, this double-consciousness, this sense of always looking at one's self through the eyes of others. (The Souls of Black Folk, 1903)",
+        superpower: "Describing Something Everyone Felt And Nobody Had Named",
+        conceptIntro: "Du Bois gave a name to an experience millions of people were having and had no word for: the feeling of seeing yourself through the eyes of people who look down on you, and never being able to fully switch it off.",
+        storyScenes: [
+            {
+                title: "Scene 1: The Visiting Card",
+                heading: "A schoolroom in Massachusetts",
+                imageEmoji: "📇",
+                text: "As a boy, his class swapped visiting cards. One girl refused his, with a glance, because he was Black. He wrote later that in that moment he realised he was shut out of their world by a vast veil - and that he was about ten years old.",
+                factBox: "He tells this story at the opening of The Souls of Black Folk, published in 1903."
+            },
+            {
+                title: "Scene 2: Counting Instead Of Arguing",
+                heading: "Philadelphia, 1896",
+                imageEmoji: "📊",
+                text: "People made confident claims about Black city life. Du Bois went and knocked on around 5,000 households, asking about work, rent, health and schooling, and published the numbers. It is one of the first pieces of proper empirical sociology done anywhere.",
+                factBox: "He was the first African American to earn a doctorate from Harvard, in 1895."
+            },
+            {
+                title: "Scene 3: Two Sets Of Eyes",
+                heading: "The idea he is best known for",
+                imageEmoji: "🪞",
+                text: "He called it double consciousness: always seeing yourself twice over - once as you are, and once through the eyes of a society that has already decided what you are. He described it as two thoughts, two warring ideals in one body.",
+                factBox: "The Souls of Black Folk, chapter 1. The phrase entered ordinary language and is still used."
+            },
+            {
+                title: "Scene 4: A Very Long Argument",
+                heading: "Ninety-five years of it",
+                imageEmoji: "✊",
+                text: "He helped found the NAACP, edited its magazine for 24 years, and kept publishing into his nineties. He died in Ghana on 27 August 1963 - the day before the March on Washington, where the crowd was told of his death.",
+                factBox: "He was 95. His work spans from just after slavery ended to the modern civil rights movement."
+            }
+        ],
+        vocabCards: [
+            { term: "Double Consciousness", icon: "🪞", definition: "Seeing yourself both as you are and as a prejudiced society sees you, at the same time." },
+            { term: "Sociology", icon: "📊", definition: "Studying how societies actually work by gathering evidence, rather than guessing." },
+            { term: "The Veil", icon: "🎭", definition: "His image for the barrier that separates people by race - you can see through it, but not step past it." }
+        ],
+        inDepth: {
+            history: "Du Bois was born three years after slavery was abolished in the United States and died the day before the March on Washington.",
+            whyItMatters: "Naming an experience precisely is a real philosophical achievement. Before 1903 people lived this; afterwards they could point at it and discuss it.",
+            funFact: "For the 1900 Paris Exposition he designed striking hand-drawn data charts about Black American life - work that looks strikingly modern today."
+        },
+        p4cInquiry: [
+            {
+                title: "Whose Eyes Do You See Yourself Through?",
+                shortTitle: "Two Sets Of Eyes",
+                dilemma: "How much should it matter what other people think of you?",
+                perspectives: {
+                    a: { name: "It Should Not Matter", argument: "You know yourself better than anyone watching does. Living by other people's opinions means never being anyone in particular." },
+                    b: { name: "You Cannot Switch It Off", argument: "Du Bois' point is that this is not a choice you get to make. If a whole society treats you a certain way, you see it whether you want to or not." },
+                    c: { name: "Some Eyes, Not All", argument: "Caring what a good friend thinks helps you. Caring what a stranger who has already judged you thinks only costs you. The skill is telling them apart." }
+                }
+            }
+        ],
+        discussionPrompts: [
+            { prompt: "Do you behave differently depending on who is watching? Is that dishonest, or just normal?", context: "Talk about the difference between adapting and pretending." },
+            { prompt: "Is it possible to stop caring what people think? Should you want to?", context: "Discuss whether some caring is actually necessary for living with others." }
+        ],
+        caseStudies: [
+            { title: "Two Audiences At Once", text: "Ever been aware of how you sound to one group while talking to another? That doubling is what he is describing, in a much sharper form." },
+            { title: "Socrates, Applied Outward", text: "Socrates examined himself. Du Bois used the same examining attention on a whole society - and on what that society was doing to how people saw themselves." }
+        ],
+        videoId: "BNoRIvJJKBY",
+        videoQuiz: [
+            { question: "What did Du Bois mean by 'double consciousness'?", options: [{ text: "Always seeing yourself partly through the eyes of a society that judges you", correct: true }, { text: "Being able to concentrate on two things at once", correct: false }] }
+        ]
     }
 ];
 
@@ -822,15 +1248,27 @@ function renderSingleThinkerTopic(thinkerId) {
                     <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.6; margin: 0;">${t.contentNote}</p>
                 </div>` : ''}
 
+                ${t.videoId ? `
                 <!-- Responsive Embedded YouTube Player -->
                 <div style="background: #000; border-radius: 16px; overflow: hidden; margin-bottom: 16px; position: relative; padding-top: 56.25%; border: 2px solid var(--purple-primary); box-shadow: 0 8px 24px rgba(0,0,0,0.6);">
                     <iframe src="https://www.youtube-nocookie.com/embed/${t.videoId}?rel=0" title="${t.name} Educational Lesson" style="position: absolute; top:0; left:0; width:100%; height:100%; border:none;" allowfullscreen></iframe>
                 </div>
 
                 ${renderVideoQuizComponent(t.id, t.videoQuiz)}
+                ` : `
+                <!-- No video: better an honest gap than an unvetted one. -->
+                <div role="note" style="background: rgba(6,182,212,0.08); border: 1.5px solid var(--cyan-magic); border-radius: 14px; padding: 18px; margin-bottom: 16px;">
+                    <div style="color: var(--cyan-magic); font-weight: 800; font-size: 0.95rem; margin-bottom: 6px;">📹 No video for this thinker yet</div>
+                    <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                        We could not find a video about ${escapeHtml(t.name)} made for your age group by a source we trust.
+                        Rather than show you one we have not checked properly, we have left this empty.
+                        The story, the ideas and the big question are all still here.
+                    </p>
+                </div>
+                `}
 
                 <div style="display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: 20px;">
-                    <a href="https://www.youtube.com/watch?v=${t.videoId}" target="_blank" rel="noopener noreferrer" class="fb-action-btn outline" style="text-decoration:none;">▶ Watch Full Lesson on YouTube (New Tab)</a>
+                    ${t.videoId ? `<a href="https://www.youtube.com/watch?v=${t.videoId}" target="_blank" rel="noopener noreferrer" class="fb-action-btn outline" style="text-decoration:none;">▶ Watch Full Lesson on YouTube (New Tab)</a>` : '<span></span>'}
                     <button class="fb-action-btn gold" onclick="switchTopicTab(3)">Continue to Step 3: Try Open P4C Inquiry ➔</button>
                 </div>
             </div>

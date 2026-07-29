@@ -1,11 +1,9 @@
 """
-agentkit.py — shared helpers for the WatSPEED Agentic AI prep notebooks.
+agentkit.py — shared helpers for the Sociology ➔ AI & Data Science notebooks.
 
 Why this exists
 ---------------
-The WatSPEED course requires "access to a reasoning language model API (may
-require a paid subscription)". These notebooks are for the weeks *before* the
-course, so every concept here runs with **no API key and no network**, using a
+Every concept here runs with **no API key and no network**, using a
 deterministic stub model. Every notebook then shows the real provider call in a
 clearly-marked cell you can switch on later.
 
