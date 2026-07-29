@@ -776,7 +776,7 @@ function renderSingleThinkerTopic(thinkerId) {
                 <button role="tab" aria-selected="true" aria-controls="topicTabContent1" class="viz-step-btn active" id="topicTabBtn1" onclick="switchTopicTab(1)">1. Story & Flashcards</button>
                 <button role="tab" aria-selected="false" aria-controls="topicTabContent2" class="viz-step-btn" id="topicTabBtn2" onclick="switchTopicTab(2)">2. Video & Case Studies</button>
                 <button role="tab" aria-selected="false" aria-controls="topicTabContent3" class="viz-step-btn" id="topicTabBtn3" onclick="switchTopicTab(3)">3. Open P4C Inquiry</button>
-                <button role="tab" aria-selected="false" aria-controls="topicTabContent4" class="viz-step-btn" id="topicTabBtn4" onclick="switchTopicTab(4)">4. Socratic Journal & Vault</button>
+                <button role="tab" aria-selected="false" aria-controls="topicTabContent4" class="viz-step-btn" id="topicTabBtn4" onclick="switchTopicTab(4)">4. Questions &amp; Discussion</button>
             </div>
 
             <!-- Tab 1: Storybook & Flashcards -->
@@ -840,7 +840,7 @@ function renderSingleThinkerTopic(thinkerId) {
                 ${typeof renderP4CInquiryEngine === 'function' ? renderP4CInquiryEngine(t.id, t.p4cInquiry) : ''}
             </div>
 
-            <!-- Tab 4: Socratic Discussion Journal & Upgrade Vault -->
+            <!-- Tab 4: Socratic Discussion Journal & Questions -->
             <div id="topicTabContent4" class="flow-content-block" role="tabpanel" aria-labelledby="topicTabBtn4" tabindex="0" style="display:none;">
                 ${typeof renderSocraticDiscussionJournal === 'function' ? renderSocraticDiscussionJournal(t.id, t.name, t.avatar, t.discussionPrompts) : ''}
 
@@ -855,7 +855,7 @@ function renderSingleThinkerTopic(thinkerId) {
                         </select>
                         <input type="text" id="feedbackInput_${t.id}" class="sandbox-input" aria-label="Your question or idea" placeholder="Type your question or suggestion here..." style="flex:1;">
                     </div>
-                    <button class="fb-action-btn gold" style="width: 100%;" onclick="submitTopicFeedback('${t.id}', '${escapeJsString(t.name)}', '${t.avatar}')">Submit to Upgrade Vault</button>
+                    <button class="fb-action-btn gold" style="width: 100%;" onclick="submitTopicFeedback('${t.id}', '${escapeJsString(t.name)}', '${t.avatar}')">Save to My Questions</button>
                     
                     <div id="feedbackResult_${t.id}" role="status" aria-live="polite" style="display:none; margin-top: 14px; padding: 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--green-hero); color: #FFF;"></div>
                 </div>
