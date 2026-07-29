@@ -282,8 +282,12 @@ function renderP4CInquiryEngine(topicId, inquiryData) {
                     
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                         <button class="fb-action-btn gold" onclick="submitP4CReflection('${topicId}', ${currentIdx}, '${escapeJsString(item.title)}')">Save Reflection to Journal ✨</button>
-                        <button class="fb-action-btn outline" onclick="exportStudentReflectionJournal()">📄 Export Journal for Parents & Teachers</button>
+                        <button class="fb-action-btn outline" onclick="exportStudentReflectionJournal()">📄 Export Journal for Parents &amp; Teachers</button>
                     </div>
+                    <p style="color: var(--text-muted); font-size: 0.86rem; margin: 10px 0 0; line-height: 1.5;">
+                        Saved writing stays on this device. Read it all back any time from
+                        <strong>🎓 My Journal</strong> at the top of the page.
+                    </p>
                 </div>
             </div>
 
