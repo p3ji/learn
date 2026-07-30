@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Warm-Up: Collaborative Document Editing | RAP Studio</title>
+    <meta name="description" content="A step-by-step interactive exercise and click-by-click guide to setting up and using GitHub for collaborative document editing.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo-group">
+                <a href="../../index.html" class="logo-badge" style="text-decoration:none;">SUITE HOME</a>
+                <div class="logo-text">
+                    <span class="logo-title">GitHub <span class="gold-text">Warm-Up</span></span>
+                    <span class="logo-subtitle">Collaborative Document & Manuscript Editing Guide</span>
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="index.html" class="nav-item" style="color: var(--cyan-magic);">📦 RAP Studio Workspace</a>
+                <a href="../../index.html" class="nav-item">🏠 Suite Portal Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="container">
+
+        <!-- Hero Section -->
+        <section class="hero-card" style="margin-top: 40px; margin-bottom: 24px;">
+            <div class="hero-glow"></div>
+            <div class="hero-badge">Prerequisite Step-by-Step Exercise</div>
+            <h1 class="hero-title">Master <span class="gold-gradient">GitHub Version Control</span> Step-by-Step</h1>
+            <p class="hero-desc">
+                Learn how to set up a free GitHub account, create repositories, make commits, branch alternate drafts, submit Pull Requests, and resolve conflicts by co-authoring a novel manuscript—100% inside your web browser.
+            </p>
+        </section>
+
+        <!-- Standalone Exercise Card Container -->
+        <section class="section-card" style="border-color: rgba(56, 189, 248, 0.4);">
+            <div id="githubNovelCard"></div>
+        </section>
+
+        <!-- Back to RAP Studio Link Banner -->
+        <div style="margin-top: 20px; margin-bottom: 40px; text-align: center;">
+            <a href="index.html" style="display: inline-block; background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); color: #000; font-weight: 800; text-decoration: none; padding: 14px 28px; border-radius: 12px; font-size: 1rem; box-shadow: 0 4px 20px rgba(255, 199, 44, 0.3);">
+                ➔ Ready to Refactor Scripts? Return to RAP Studio Main Page
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>GitHub Warm-Up | Part of RAP Studio & Learning Tools Suite</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../../js/github_novel_exercise.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.GitHubNovelModule) {
+                window.GitHubNovelModule.init('githubNovelCard');
+            }
+        });
+    </script>
+</body>
+</html>

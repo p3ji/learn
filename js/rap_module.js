@@ -26,7 +26,9 @@ import pandas as pd
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 RAW_DATA_PATH = PROJECT_ROOT / "data" / "raw" / "survey_insights.csv"
 
-df = pd.read_csv(RAW_DATA_PATH)</pre>
+                <div style="margin-top: 14px; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); padding: 10px 14px; border-radius: 8px; font-size: 0.84rem; color: var(--text-main);">
+                    <strong>💡 Non-Technical & Hands-On Warm-up:</strong> New to Git and GitHub? Take our step-by-step <a href="github_warmup.html" style="color: var(--cyan-magic); font-weight: 700; text-decoration: underline;">GitHub Warm-Up Guide</a> first to master Repositories, Commits, Branches, and Pull Requests before starting script refactoring!
+                </div>
             </div>
         `,
         rapUpgrade: "Organize code into standard project folders and replace all absolute hardcoded paths with pathlib relative paths."
