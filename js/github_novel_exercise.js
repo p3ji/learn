@@ -1,6 +1,7 @@
-// GitHub Warm-Up: Collaborative Novel Editing Module
-// Designed to be super accessible, intuitive, and fun for young novelists & beginners!
-// Includes live story customization, gamified progress, friendly jargon decoders, and a completion badge.
+// GitHub Humanities Warm-Up: Collaborative Novel Editing Module
+// Designed for learners with humanities/non-technical backgrounds.
+// Translates Git & GitHub concepts into familiar editorial terms using a novel manuscript.
+// Provides both CONCEPTUAL explanations and EXACT REAL-WORLD CLICK-BY-CLICK instructions.
 
 (function() {
     'use strict';
@@ -9,9 +10,7 @@
     const state = {
         currentStep: 1,
         activeTab: 'practical', // 'practical' or 'conceptual'
-        authorName: 'Maya',
-        coauthorName: 'Leo',
-        bookTitle: 'The Mysterious Cipher',
+        repoName: 'the-mysterious-cipher',
         currentBranch: 'main',
         chapters: {
             'chapter_01.md': {
@@ -19,9 +18,9 @@
                 lines: [
                     '# Chapter 1: The Discovery in the Archives',
                     '',
-                    'Professor Vance blew a layer of dust off the ancient leather ledger.',
-                    'The room was cold, lit only by a single flickering candle in the corner.',
-                    'Inside the manuscript lay a hidden cipher that no writer had managed to crack for over a century.'
+                    'Professor Evelyn Vance blew a layer of dust off the leather-bound ledger.',
+                    'The room was cold, lit only by a faint lamp tucked in the corner of the library.',
+                    'Inside the manuscript lay a hidden cipher that no historian had managed to crack for over three centuries.'
                 ]
             }
         },
@@ -30,208 +29,190 @@
             {
                 hash: '1a9e3f0',
                 branch: 'main',
-                author: 'Maya (Lead Author)',
+                author: 'Evelyn (Lead Author)',
                 message: 'Initial manuscript draft for Chapter 1',
-                timestamp: 'Just now'
+                timestamp: '2 hours ago',
+                diff: 'Initial creation of chapter_01.md'
             }
-        ],
-        completedSteps: new Set([1])
+        ]
     };
 
-    const levels = [
+    // Prerequisites guide for complete beginners
+    const setupGuide = `
+        <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 18px; margin-bottom: 24px;">
+            <h4 style="color: var(--cyan-magic); font-size: 1.05rem; margin-top: 0; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                <span>🏁</span> Prerequisites: Getting Set Up on GitHub (No Coding Required!)
+            </h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; font-size: 0.86rem; color: var(--text-main);">
+                <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid #38BDF8;">
+                    <strong style="color: #38BDF8; display: block; margin-bottom: 4px;">Step A: Create a Free Account</strong>
+                    Go to <a href="https://github.com/signup" target="_blank" style="color: var(--gold-primary); text-decoration: underline;">github.com/signup</a>. Pick a username (e.g. <code>evelyn-vance-writer</code>), enter your email, and create a password.
+                </div>
+                <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border-left: 3px solid #FBBF24;">
+                    <strong style="color: #FBBF24; display: block; margin-bottom: 4px;">Step B: Choose How You'll Work</strong>
+                    <strong>For Humanities Beginners:</strong> You can do 100% of your editing directly inside your web browser on GitHub.com! No terminal or command line needed.
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Step descriptions, conceptual guides & click-by-click practical instructions
+    const steps = [
         {
             number: 1,
-            title: "Level 1: Your Digital Bookshelf (The Repository)",
-            badge: "📁 LEVEL 1",
+            title: "1. Create the Manuscript Repository (Your Digital Bookshelf)",
+            badge: "📁 Step 1: Setup Repo",
             badgeColor: "#38BDF8",
-            shortName: "1. Digital Bookshelf",
-            conceptTitle: "What is a Repository?",
-            conceptExplanation: "Think of a <strong>Repository (or 'Repo')</strong> as your master digital bookshelf stored online on GitHub. Instead of emailing messy Word files like <code>my_book_final_v2_edit3.docx</code> back and forth, you and your co-authors work from one single, shared online folder.",
-            gitCommand: "GitHub.com ➔ Click '+' ➔ 'New repository'",
+            humanitiesConcept: "In publishing, a <strong>Repository (Repo)</strong> is your project's master folder stored on GitHub. Instead of emailing Word docs like <code>novel_v2_FINAL_edit.docx</code> back and forth, everyone works from this single, central digital bookshelf.",
+            gitCommand: "Click '+' ➔ 'New repository' on GitHub.com",
             practicalSteps: `
                 <ol style="margin: 0; padding-left: 20px; line-height: 1.8; color: var(--text-main); font-size: 0.88rem;">
-                    <li>Go to <a href="https://github.com" target="_blank" style="color: var(--gold-primary); font-weight: 700;">GitHub.com</a> and sign in.</li>
-                    <li>In the top right corner, click the friendly <strong><code>+</code> button</strong> and select <strong>New repository</strong>.</li>
-                    <li>Under <strong>Repository name</strong>, type your book's name (e.g. <code id="guideRepoName">the-mysterious-cipher</code>).</li>
-                    <li>Check the box that says: <strong style="color: #4ADE80;">☑ Add a README file</strong> (this creates your book's front cover page).</li>
-                    <li>Click the green <strong>Create repository</strong> button!</li>
+                    <li>Log into your account at <a href="https://github.com" target="_blank" style="color: var(--gold-primary); font-weight: 700;">GitHub.com</a>.</li>
+                    <li>In the top-right corner of the webpage, click the <strong><code>+</code> icon</strong> and select <strong>New repository</strong>.</li>
+                    <li>Under <strong>Repository name</strong>, type: <code>the-mysterious-cipher</code>.</li>
+                    <li>Under <strong>Description</strong>, write: <code>Collaborative novel project</code>.</li>
+                    <li>Choose <strong>Public</strong> (anyone can read) or <strong>Private</strong> (only invited collaborators can view).</li>
+                    <li>Check the box that says: <strong style="color: #4ADE80;">☑ Add a README file</strong> (this initializes the repository with a front page).</li>
+                    <li>Click the green <strong>Create repository</strong> button at the bottom.</li>
                 </ol>
                 <div style="margin-top: 12px; background: rgba(56, 189, 248, 0.1); padding: 10px; border-radius: 6px; font-size: 0.82rem; color: var(--text-muted);">
-                    🎉 <strong>You did it!</strong> You now have an official online bookshelf at <code>github.com/yourname/<span id="guideRepoSlug">the-mysterious-cipher</span></code>!
+                    🎉 <strong>Result:</strong> You now have a live online repository hosted at <code>https://github.com/your-username/the-mysterious-cipher</code>!
                 </div>
             `
         },
         {
             number: 2,
-            title: "Level 2: Sticky Note Snapshots (Commits)",
-            badge: "🏷️ LEVEL 2",
+            title: "2. Adding Files & Committing Changes (Tracked Snapshots)",
+            badge: "📝 Step 2: Commits",
             badgeColor: "#FBBF24",
-            shortName: "2. Sticky Snapshots",
-            conceptTitle: "What is a Commit?",
-            conceptExplanation: "A <strong>Commit</strong> is like taking a permanent Polaroid photo of your story chapter, with a sticky note attached explaining what you changed (e.g. <em>'Added plot twist in line 5'</em>). You can time-travel back to any snapshot whenever you want!",
+            humanitiesConcept: "A <strong>Commit</strong> is like taking a permanent snapshot of your manuscript with a sticky note attached explaining what you changed. Every commit keeps a complete audit trail so you can always see who changed what and why.",
             gitCommand: "Click 'Add file' ➔ 'Create new file' ➔ 'Commit changes...'",
             practicalSteps: `
                 <ol style="margin: 0; padding-left: 20px; line-height: 1.8; color: var(--text-main); font-size: 0.88rem;">
-                    <li>On your repository webpage, click <strong>Add file</strong> ➔ <strong>Create new file</strong>.</li>
-                    <li>Type the file name: <code>chapter_01.md</code>.</li>
-                    <li>Type your chapter story text in the big box.</li>
-                    <li>Click the green <strong>Commit changes...</strong> button.</li>
-                    <li>In the popup sticky note box, write what you changed (e.g., <code>Draft Chapter 1 opening scene</code>).</li>
-                    <li>Click <strong>Commit changes</strong>!</li>
+                    <li>Inside your repository page on GitHub.com, click <strong>Add file</strong> ➔ <strong>Create new file</strong>.</li>
+                    <li>In the file name box at the top, type: <code>chapter_01.md</code>.</li>
+                    <li>In the main text editing area below, type or paste your chapter text (e.g. <em># Chapter 1: The Discovery in the Archives...</em>).</li>
+                    <li>Click the green <strong>Commit changes...</strong> button in the top right.</li>
+                    <li>In the popup modal, write a short sticky note in the <strong>Commit message</strong> box (e.g., <code>Draft Chapter 1 initial discovery scene</code>).</li>
+                    <li>Leave <strong>Commit directly to the main branch</strong> selected, and click <strong>Commit changes</strong>.</li>
                 </ol>
                 <div style="margin-top: 12px; background: rgba(251, 191, 36, 0.1); padding: 10px; border-radius: 6px; font-size: 0.82rem; color: var(--text-muted);">
-                    📸 <strong>Snapshot Saved!</strong> GitHub gives your edit a unique 7-letter secret code (like <code>#1a9e3f0</code>) so it's saved forever.
+                    📜 <strong>Result:</strong> GitHub permanently saves this version snapshot with a unique 7-character code (e.g. <code>#1a9e3f0</code>) and timestamp!
                 </div>
             `
         },
         {
             number: 3,
-            title: "Level 3: Secret Sandbox Draft (Branching)",
-            badge: "🌿 LEVEL 3",
+            title: "3. Branching for Alternate Storylines (Safe Sandboxes)",
+            badge: "🌿 Step 3: Branching",
             badgeColor: "#A855F7",
-            shortName: "3. Secret Draft",
-            conceptTitle: "What is a Branch?",
-            conceptExplanation: "A <strong>Branch</strong> is a secret parallel sandbox copy of your book. If your co-author wants to test a crazy plot twist without ruining the main manuscript, they create a branch. The original story stays 100% safe!",
+            humanitiesConcept: "A <strong>Branch</strong> creates a safe parallel draft of your manuscript. If a co-author wants to test a brand new ending or rewrite a chapter, they create a branch so the primary manuscript (<code>main</code>) remains completely safe and untouched.",
             gitCommand: "Click branch dropdown ('main') ➔ Type new branch name",
             practicalSteps: `
                 <ol style="margin: 0; padding-left: 20px; line-height: 1.8; color: var(--text-main); font-size: 0.88rem;">
-                    <li>On your repository page, find the button that says <strong><code>main</code></strong> (with a tiny branch icon).</li>
-                    <li>Click it, and type your co-author's draft branch name: <code id="guideBranchName">leo-alternate-ending</code>.</li>
-                    <li>Click <strong>Create branch: <span id="guideBranchSlug">leo-alternate-ending</span> from main</strong>.</li>
+                    <li>Go to the main page of your repository on GitHub.com.</li>
+                    <li>Near the top left above the file list, find the button that says <strong><code>main</code></strong> with a branch icon next to it. Click it.</li>
+                    <li>In the search box that pops up, type your new draft branch name: <code>alice-alternate-ending</code>.</li>
+                    <li>Click on the blue text that appears below: <strong>Create branch: alice-alternate-ending from main</strong>.</li>
                 </ol>
                 <div style="margin-top: 12px; background: rgba(168, 85, 247, 0.1); padding: 10px; border-radius: 6px; font-size: 0.82rem; color: var(--text-muted);">
-                    🌱 <strong>Safe Sandbox Active!</strong> You are now editing inside a separate draft space. The main story won't change until you approve it!
+                    🌱 <strong>Result:</strong> You are now safely inside the <code>alice-alternate-ending</code> branch! Any edits you make here won't touch the official <code>main</code> manuscript until you explicitly merge them.
                 </div>
             `
         },
         {
             number: 4,
-            title: "Level 4: Co-Author Proposal (Pull Requests)",
-            badge: "📩 LEVEL 4",
+            title: "4. Opening a Pull Request (Editorial Review Submission)",
+            badge: "🔍 Step 4: Pull Request",
             badgeColor: "#4ADE80",
-            shortName: "4. Story Proposal",
-            conceptTitle: "What is a Pull Request?",
-            conceptExplanation: "A <strong>Pull Request (PR)</strong> is an official letter to your lead editor saying: <em>'Hey! I finished my draft branch. Please check out my text changes and merge them into the real book if you like them!'</em>",
+            humanitiesConcept: "A <strong>Pull Request (PR)</strong> is an editorial proposal. When a co-author finishes a draft on their branch, they open a PR asking the lead author or editor: <em>'Please review my changes and merge them into the master manuscript if you approve.'</em>",
             gitCommand: "Click 'Pull requests' tab ➔ 'New pull request'",
             practicalSteps: `
                 <ol style="margin: 0; padding-left: 20px; line-height: 1.8; color: var(--text-main); font-size: 0.88rem;">
-                    <li>After editing your branch, click the <strong>Pull requests</strong> tab at the top.</li>
+                    <li>While on your branch (<code>alice-alternate-ending</code>), edit <code>chapter_01.md</code> and commit your changes.</li>
+                    <li>Click on the <strong>Pull requests</strong> tab near the top of the repository page.</li>
                     <li>Click the green <strong>New pull request</strong> button.</li>
-                    <li>Look at the colorful text inspector: <span style="color: #4ADE80;">+ Green text</span> shows new additions, <span style="color: #F87171;">- Red text</span> shows deleted words.</li>
-                    <li>Click <strong>Create pull request</strong>, write a short message to your lead author, and click submit!</li>
+                    <li>Ensure <code>base: main</code> is on the left and <code>compare: alice-alternate-ending</code> is on the right.</li>
+                    <li>GitHub will display a line-by-line diff inspector: <span style="color: #4ADE80;">+ Green lines</span> are additions, <span style="color: #F87171;">- Red lines</span> are deletions.</li>
+                    <li>Click <strong>Create pull request</strong>, write a note to your co-author/editor, and click <strong>Create pull request</strong> again.</li>
                 </ol>
                 <div style="margin-top: 12px; background: rgba(74, 222, 128, 0.1); padding: 10px; border-radius: 6px; font-size: 0.82rem; color: var(--text-muted);">
-                    📩 <strong>Proposal Sent!</strong> Authors can now comment on individual lines of text just like Google Docs comments!
+                    📩 <strong>Result:</strong> A formal review thread is opened where editors can leave comments on specific lines of text!
                 </div>
             `
         },
         {
             number: 5,
-            title: "Level 5: Combine & Publish (Merging)",
-            badge: "🤝 LEVEL 5",
+            title: "5. Merging Approved Drafts into Main (Publication)",
+            badge: "🤝 Step 5: Merging",
             badgeColor: "#22D3EE",
-            shortName: "5. Combine & Publish",
-            conceptTitle: "What is Merging?",
-            conceptExplanation: "<strong>Merging</strong> is accepting your co-author's proposal! GitHub automatically glues the approved sentences from the draft branch back into the main book.",
+            humanitiesConcept: "<strong>Merging</strong> is accepting the editorial proposal. GitHub automatically weaves the approved changes from the branch back into the <code>main</code> branch, publishing the updated manuscript for the whole team.",
             gitCommand: "Click green 'Merge pull request' ➔ 'Confirm merge'",
             practicalSteps: `
                 <ol style="margin: 0; padding-left: 20px; line-height: 1.8; color: var(--text-main); font-size: 0.88rem;">
-                    <li>Open the Pull Request from the <strong>Pull requests</strong> tab.</li>
-                    <li>Read your co-author's new sentences and diffs.</li>
-                    <li>Click the big green <strong>Merge pull request</strong> button at the bottom.</li>
-                    <li>Click <strong>Confirm merge</strong>!</li>
+                    <li>As the lead editor, open the Pull Request from the <strong>Pull requests</strong> tab.</li>
+                    <li>Review the proposed text changes and discussion comments.</li>
+                    <li>If everything looks great, scroll to the bottom of the PR page and click the green <strong>Merge pull request</strong> button.</li>
+                    <li>Click <strong>Confirm merge</strong>.</li>
+                    <li>(Optional) Click the grey <strong>Delete branch</strong> button to keep your repository tidy now that the edits are merged into main.</li>
                 </ol>
                 <div style="margin-top: 12px; background: rgba(34, 211, 238, 0.1); padding: 10px; border-radius: 6px; font-size: 0.82rem; color: var(--text-muted);">
-                    🎉 <strong>Published!</strong> Your co-author's awesome new chapter ending is now officially part of the main book!
+                    🎉 <strong>Result:</strong> The <code>main</code> branch manuscript is now officially updated!
                 </div>
             `
         },
         {
             number: 6,
-            title: "Level 6: Disagreement Solver (Merge Conflicts)",
-            badge: "⚔️ LEVEL 6",
+            title: "6. Resolving Co-Author Merge Conflicts",
+            badge: "⚡ Step 6: Conflicts",
             badgeColor: "#EF4444",
-            shortName: "6. Solve Conflicts",
-            conceptTitle: "What is a Merge Conflict?",
-            conceptExplanation: "A <strong>Merge Conflict</strong> happens when two co-authors edit the exact same sentence at the same time! GitHub pauses and places 'fence post' markers (<code><<<<<<<</code> and <code>>>>>>>></code>) around both versions so you can pick the winner or blend them into something epic.",
+            humanitiesConcept: "A <strong>Merge Conflict</strong> happens when two co-authors edit the exact same sentence simultaneously. Git pauses and highlights both versions so the lead editor can choose the best version or blend them together.",
             gitCommand: "Click 'Resolve conflicts' button on GitHub.com",
             practicalSteps: `
                 <ol style="margin: 0; padding-left: 20px; line-height: 1.8; color: var(--text-main); font-size: 0.88rem;">
-                    <li>If two authors change the same sentence, GitHub displays a warning: <em>"This branch has conflicts."</em></li>
-                    <li>Click the grey <strong>Resolve conflicts</strong> button.</li>
-                    <li>Look for Git's secret fence post markers:
+                    <li>If two authors edit the same sentence, GitHub will show a yellow warning box on the Pull Request: <em>"This branch has conflicts that must be resolved."</em></li>
+                    <li>Click the grey <strong>Resolve conflicts</strong> button right on GitHub.com.</li>
+                    <li>GitHub opens an in-browser text editor showing conflict markers:
                         <div style="background: #000; border: 1px solid rgba(239,68,68,0.4); padding: 8px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.76rem; margin: 6px 0; color: #FFF;">
-                            <<<<<<< main (Maya's sentence)<br/>
-                            ======= (Separator)<br/>
-                            >>>>>>> draft-branch (Leo's sentence)
+                            <<<<<<< main<br/>
+                            Evelyn's version of the sentence...<br/>
+                            =======<br/>
+                            Bob's version of the sentence...<br/>
+                            >>>>>>> bob-branch
                         </div>
                     </li>
-                    <li>Delete the weird symbol lines (<code><<<<<<<</code>, <code>=======</code>, <code>>>>>>>></code>) and keep or blend the best text!</li>
-                    <li>Click <strong>Mark as resolved</strong> ➔ <strong>Commit merge</strong>.</li>
+                    <li>Delete the conflict markers (<code><<<<<<<</code>, <code>=======</code>, <code>>>>>>>></code>) and edit the text to keep the version or blend you prefer.</li>
+                    <li>Click <strong>Mark as resolved</strong> in the top right, then click <strong>Commit merge</strong>.</li>
                 </ol>
                 <div style="margin-top: 12px; background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 6px; font-size: 0.82rem; color: var(--text-muted);">
-                    🏆 <strong>Conflict Solved!</strong> You just resolved a real version control conflict like a pro software engineer!
+                    🛡️ <strong>Result:</strong> The conflict is resolved cleanly without losing anyone's work!
                 </div>
             `
         }
     ];
 
-    function renderSetupBar() {
-        return `
-            <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid var(--gold-primary); border-radius: 16px; padding: 20px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 14px;">
-                    <div>
-                        <span style="background: var(--gold-primary); color: #000; font-weight: 900; font-size: 0.72rem; padding: 3px 8px; border-radius: 8px; text-transform: uppercase;">✨ STORY FORGE CUSTOMIZER</span>
-                        <h3 style="color: #FFF; font-family: var(--font-heading); margin: 6px 0 0; font-size: 1.2rem;">Customize Your Novel & Authors</h3>
-                    </div>
-                    <div style="font-size: 0.82rem; color: var(--text-muted);">
-                        Progress: <strong style="color: var(--cyan-magic); font-size: 1rem;">${state.completedSteps.size} / 6 Levels Completed</strong>
-                    </div>
-                </div>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
-                    <div>
-                        <label style="font-size: 0.75rem; color: var(--gold-primary); font-weight: 700; display: block; margin-bottom: 4px;">YOUR NAME (LEAD AUTHOR):</label>
-                        <input type="text" id="custAuthor" value="${escapeHtml(state.authorName)}" onchange="window.GitHubNovelModule.updateCustomizers()" style="width: 100%; background: #000; color: #38BDF8; border: 1px solid rgba(56,189,248,0.4); padding: 8px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.82rem;" />
-                    </div>
-                    <div>
-                        <label style="font-size: 0.75rem; color: var(--gold-primary); font-weight: 700; display: block; margin-bottom: 4px;">CO-AUTHOR'S NAME:</label>
-                        <input type="text" id="custCoauthor" value="${escapeHtml(state.coauthorName)}" onchange="window.GitHubNovelModule.updateCustomizers()" style="width: 100%; background: #000; color: #C084FC; border: 1px solid rgba(168,85,247,0.4); padding: 8px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.82rem;" />
-                    </div>
-                    <div>
-                        <label style="font-size: 0.75rem; color: var(--gold-primary); font-weight: 700; display: block; margin-bottom: 4px;">BOOK TITLE:</label>
-                        <input type="text" id="custBookTitle" value="${escapeHtml(state.bookTitle)}" onchange="window.GitHubNovelModule.updateCustomizers()" style="width: 100%; background: #000; color: #4ADE80; border: 1px solid rgba(74,222,128,0.4); padding: 8px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.82rem;" />
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
     function renderStepContent(container, stepNum) {
-        state.completedSteps.add(stepNum);
-        const level = levels[stepNum - 1];
-        const activeTab = state.activeTab;
-
+        const step = steps[stepNum - 1];
+        
         let workspaceHtml = '';
 
         if (stepNum === 1) {
-            const slug = state.bookTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-');
             workspaceHtml = `
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
                     <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(56,189,248,0.3); padding: 18px; border-radius: 12px;">
-                        <h4 style="color: #38BDF8; font-size: 0.95rem; margin-bottom: 8px;">📚 Live Bookshelf Inspector</h4>
+                        <h4 style="color: #38BDF8; font-size: 0.95rem; margin-bottom: 8px;">📚 Interactive Repo Visualizer</h4>
                         <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-main); line-height: 1.8;">
-                            <div>📁 <strong>github.com/${escapeHtml(state.authorName.toLowerCase())}/${slug}</strong></div>
-                            <div style="padding-left: 16px; color: #4ADE80;">├── 📄 README.md <span style="color: var(--text-muted); font-size: 0.75rem;">(${escapeHtml(state.bookTitle)} Cover & Synopsis)</span></div>
+                            <div>📁 <strong>github.com/humanities-lab/the-mysterious-cipher</strong></div>
+                            <div style="padding-left: 16px; color: #4ADE80;">├── 📄 README.md <span style="color: var(--text-muted); font-size: 0.75rem;">(Book Synopsis)</span></div>
                             <div style="padding-left: 16px; color: #FBBF24;">└── 📄 chapter_01.md <span style="color: var(--text-muted); font-size: 0.75rem;">(Manuscript Text)</span></div>
                         </div>
                         <div style="margin-top: 14px; background: rgba(56,189,248,0.1); padding: 10px; border-radius: 6px; font-size: 0.8rem; color: var(--text-muted);">
-                            <strong>Active Branch:</strong> <span style="color: #38BDF8; font-weight: 700;">main</span> (${escapeHtml(state.authorName)}'s Official Manuscript)
+                            <strong>Branch:</strong> <span style="color: #38BDF8; font-weight: 700;">main</span> (The Official Manuscript)
                         </div>
                     </div>
 
                     <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 18px; border-radius: 12px;">
-                        <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">📖 Live Chapter Text (chapter_01.md)</h4>
+                        <h4 style="color: var(--gold-primary); font-size: 0.95rem; margin-bottom: 8px;">📖 Live Manuscript Preview (chapter_01.md)</h4>
                         <div style="background: #000; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #E2E8F0; max-height: 160px; overflow-y: auto;">
                             ${state.chapters['chapter_01.md'].lines.map(line => `<div>${escapeHtml(line)}</div>`).join('')}
                         </div>
@@ -240,35 +221,35 @@
 
                 <div style="margin-top: 18px; text-align: right;">
                     <button onclick="window.GitHubNovelModule.setStep(2)" style="background: linear-gradient(135deg, #38BDF8, #0284C7); color: #000; font-weight: 800; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.88rem;">
-                        Proceed to Level 2: Sticky Snapshots ➔
+                        Proceed to Step 2: Adding Files & Committing ➔
                     </button>
                 </div>
             `;
         } else if (stepNum === 2) {
             workspaceHtml = `
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                    <!-- Lined Notebook Editor -->
+                    <!-- Editor Box -->
                     <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(251,191,36,0.3); padding: 18px; border-radius: 12px;">
-                        <h4 style="color: #FBBF24; font-size: 0.95rem; margin-bottom: 8px;">✏️ Lined Notebook Editor Simulator</h4>
+                        <h4 style="color: #FBBF24; font-size: 0.95rem; margin-bottom: 8px;">✏️ Try Making a Commit in this Simulator</h4>
                         <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 10px;">
-                            Edit line 5 of your story, write a sticky note snapshot message, and click save.
+                            Add a plot twist to line 5 of Chapter 1, enter a commit sticky note message, and click save.
                         </p>
                         <div style="margin-bottom: 12px;">
-                            <label style="font-size: 0.78rem; color: var(--gold-primary); font-weight: 700; display: block; margin-bottom: 4px;">EDIT LINE 5:</label>
-                            <input type="text" id="novelLineEdit" value="Inside the manuscript lay a brass key wrapped in silk with a mysterious crest." style="width: 100%; background: #000; color: #4ADE80; border: 1px solid rgba(74,222,128,0.4); padding: 8px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.8rem;" />
+                            <label style="font-size: 0.78rem; color: var(--gold-primary); font-weight: 700; display: block; margin-bottom: 4px;">MANUSCRIPT EDIT (LINE 5):</label>
+                            <input type="text" id="novelLineEdit" value="Inside the manuscript lay a hidden cipher that revealed a forgotten royal lineage." style="width: 100%; background: #000; color: #4ADE80; border: 1px solid rgba(74,222,128,0.4); padding: 8px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.8rem;" />
                         </div>
                         <div style="margin-bottom: 14px;">
-                            <label style="font-size: 0.78rem; color: var(--gold-primary); font-weight: 700; display: block; margin-bottom: 4px;">STICKY NOTE MESSAGE:</label>
-                            <input type="text" id="novelCommitMsg" value="Add silk-wrapped brass key twist to line 5" style="width: 100%; background: #000; color: #FBBF24; border: 1px solid rgba(251,191,36,0.4); padding: 8px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.8rem;" />
+                            <label style="font-size: 0.78rem; color: var(--gold-primary); font-weight: 700; display: block; margin-bottom: 4px;">COMMIT STICKY NOTE MESSAGE:</label>
+                            <input type="text" id="novelCommitMsg" value="Add plot twist revealing forgotten royal lineage" style="width: 100%; background: #000; color: #FBBF24; border: 1px solid rgba(251,191,36,0.4); padding: 8px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.8rem;" />
                         </div>
                         <button onclick="window.GitHubNovelModule.makeCommit()" style="background: linear-gradient(135deg, #FBBF24, #D97706); color: #000; font-weight: 800; padding: 10px 18px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.85rem; width: 100%;">
-                            🏷️ Save Sticky Note Snapshot (git commit)
+                            💾 Save Commit Snapshot (Simulated git commit)
                         </button>
                     </div>
 
                     <!-- Commit History Timeline -->
                     <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 18px; border-radius: 12px;">
-                        <h4 style="color: var(--cyan-magic); font-size: 0.95rem; margin-bottom: 8px;">📸 Snapshot Timeline</h4>
+                        <h4 style="color: var(--cyan-magic); font-size: 0.95rem; margin-bottom: 8px;">📜 Git Commit History Timeline</h4>
                         <div id="novelCommitHistory" style="display: flex; flex-direction: column; gap: 10px; max-height: 240px; overflow-y: auto;">
                             ${renderCommitList()}
                         </div>
@@ -277,23 +258,22 @@
 
                 <div style="margin-top: 18px; text-align: right;">
                     <button onclick="window.GitHubNovelModule.setStep(3)" style="background: linear-gradient(135deg, #A855F7, #7E22CE); color: #FFF; font-weight: 800; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.88rem;">
-                        Proceed to Level 3: Secret Sandbox Draft ➔
+                        Proceed to Step 3: Branching Alternate Storylines ➔
                     </button>
                 </div>
             `;
         } else if (stepNum === 3) {
-            const defaultBranch = `${state.coauthorName.toLowerCase()}-alternate-ending`;
             workspaceHtml = `
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                     <!-- Branch Controls -->
                     <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(168,85,247,0.3); padding: 18px; border-radius: 12px;">
-                        <h4 style="color: #C084FC; font-size: 0.95rem; margin-bottom: 8px;">🌿 Create ${escapeHtml(state.coauthorName)}'s Sandbox Branch</h4>
+                        <h4 style="color: #C084FC; font-size: 0.95rem; margin-bottom: 8px;">🌿 Create Co-Author Branch Simulator</h4>
                         <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
-                            ${escapeHtml(state.coauthorName)} wants to test a brand new ending without changing ${escapeHtml(state.authorName)}'s main book text.
+                            Imagine co-author <strong>Alice</strong> wants to experiment with an alternate ending without changing Evelyn's official <code>main</code> manuscript.
                         </p>
                         <div style="margin-bottom: 12px;">
-                            <label style="font-size: 0.78rem; color: #C084FC; font-weight: 700; display: block; margin-bottom: 4px;">NEW BRANCH NAME:</label>
-                            <input type="text" id="novelBranchName" value="${escapeHtml(defaultBranch)}" style="width: 100%; background: #000; color: #C084FC; border: 1px solid rgba(168,85,247,0.4); padding: 8px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.8rem;" />
+                            <label style="font-size: 0.78rem; color: #C084FC; font-weight: 700; display: block; margin-bottom: 4px;">BRANCH NAME:</label>
+                            <input type="text" id="novelBranchName" value="alice-alternate-ending" style="width: 100%; background: #000; color: #C084FC; border: 1px solid rgba(168,85,247,0.4); padding: 8px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.8rem;" />
                         </div>
                         <button onclick="window.GitHubNovelModule.createBranch()" style="background: linear-gradient(135deg, #A855F7, #7E22CE); color: #FFF; font-weight: 800; padding: 10px 18px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.85rem; width: 100%;">
                             🌿 Create & Switch to Branch (Simulated)
@@ -311,7 +291,7 @@
 
                 <div style="margin-top: 18px; text-align: right;">
                     <button onclick="window.GitHubNovelModule.setStep(4)" style="background: linear-gradient(135deg, #4ADE80, #16A34A); color: #000; font-weight: 800; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.88rem;">
-                        Proceed to Level 4: Story Proposal ➔
+                        Proceed to Step 4: Open a Pull Request ➔
                     </button>
                 </div>
             `;
@@ -321,23 +301,23 @@
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
                         <div>
                             <span style="background: #4ADE80; color: #000; font-weight: 800; font-size: 0.7rem; padding: 2px 8px; border-radius: 6px;">PULL REQUEST #1</span>
-                            <h4 style="color: #4ADE80; font-size: 1.1rem; margin-top: 4px;">Propose New Ending for Chapter 1</h4>
+                            <h4 style="color: #4ADE80; font-size: 1.1rem; margin-top: 4px;">Propose Alternate Ending for Chapter 1</h4>
                         </div>
                         <div style="font-size: 0.8rem; color: var(--text-muted);">
-                            <strong>Branch:</strong> <span style="color: #C084FC;">${escapeHtml(state.coauthorName.toLowerCase())}-draft</span> ➔ <span style="color: #38BDF8;">main</span>
+                            <strong>Branch:</strong> <span style="color: #C084FC;">alice-alternate-ending</span> ➔ <span style="color: #38BDF8;">main</span>
                         </div>
                     </div>
 
                     <!-- PR Description & Diffs -->
                     <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.1); padding: 14px; border-radius: 8px; margin-bottom: 16px;">
                         <p style="font-size: 0.85rem; color: var(--text-main); margin-bottom: 12px;">
-                            <strong>${escapeHtml(state.coauthorName)} wrote:</strong> <em>"Hey ${escapeHtml(state.authorName)}! Check out my proposed text change for line 5 below. Green is what I added!"</em>
+                            <strong>Alice (Co-Author) wrote:</strong> <em>"Hey Evelyn! I edited the ending of Chapter 1 to introduce a mysterious encoded compass instead of a royal lineage ledger. Check out the text diff below!"</em>
                         </p>
 
                         <!-- Line Diff Inspector -->
                         <div style="font-family: var(--font-mono); font-size: 0.78rem; border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
                             <div style="background: rgba(239, 68, 68, 0.15); color: #F87171; padding: 6px 10px; border-left: 3px solid #EF4444;">
-                                - Inside the manuscript lay a hidden cipher that no writer had managed to crack.
+                                - Inside the manuscript lay a hidden cipher that revealed a forgotten royal lineage.
                             </div>
                             <div style="background: rgba(74, 222, 128, 0.15); color: #4ADE80; padding: 6px 10px; border-left: 3px solid #4ADE80;">
                                 + Inside the manuscript lay a brass compass with coordinates leading to an underground alchemy vault.
@@ -347,7 +327,7 @@
 
                     <div style="display: flex; gap: 12px; justify-content: flex-end;">
                         <button onclick="window.GitHubNovelModule.setStep(5)" style="background: linear-gradient(135deg, #22D3EE, #0891B2); color: #000; font-weight: 800; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.88rem;">
-                            Approve & Proceed to Level 5: Combine & Publish ➔
+                            Approve & Proceed to Step 5: Merge PR ➔
                         </button>
                     </div>
                 </div>
@@ -358,15 +338,15 @@
                     <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(34,211,238,0.3); padding: 18px; border-radius: 12px;">
                         <h4 style="color: #22D3EE; font-size: 0.95rem; margin-bottom: 8px;">🤝 Merge Pull Request Simulator</h4>
                         <p style="font-size: 0.84rem; color: var(--text-main); line-height: 1.6; margin-bottom: 14px;">
-                            ${escapeHtml(state.authorName)} loves ${escapeHtml(state.coauthorName)}'s brass compass idea and clicks <strong>Merge Pull Request</strong>!
+                            Evelyn reviews Alice's proposed brass compass twist, loves it, and clicks <strong>Merge Pull Request</strong>. Git automatically incorporates Alice's changes into the official <code>main</code> manuscript!
                         </p>
                         <button onclick="window.GitHubNovelModule.executeMerge()" style="background: linear-gradient(135deg, #22D3EE, #0891B2); color: #000; font-weight: 800; padding: 10px 18px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.85rem; width: 100%;">
-                            ⚡ Combine Draft into Main Manuscript
+                            ⚡ Execute Git Merge into Main
                         </button>
                     </div>
 
                     <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 18px; border-radius: 12px;">
-                        <h4 style="color: #4ADE80; font-size: 0.95rem; margin-bottom: 8px;">📖 Official Published Manuscript (main)</h4>
+                        <h4 style="color: #4ADE80; font-size: 0.95rem; margin-bottom: 8px;">📖 Updated Official Manuscript (main)</h4>
                         <div id="novelMergedText" style="background: #000; border: 1px solid rgba(74,222,128,0.3); border-radius: 8px; padding: 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #4ADE80; max-height: 160px; overflow-y: auto;">
                             ${renderMergedText()}
                         </div>
@@ -375,44 +355,36 @@
 
                 <div style="margin-top: 18px; text-align: right;">
                     <button onclick="window.GitHubNovelModule.setStep(6)" style="background: linear-gradient(135deg, #EF4444, #DC2626); color: #FFF; font-weight: 800; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.88rem;">
-                        Proceed to Final Level 6: Disagreement Solver ➔
+                        Proceed to Final Step 6: Handle a Co-Author Conflict ➔
                     </button>
                 </div>
             `;
         } else if (stepNum === 6) {
             workspaceHtml = `
                 <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(239,68,68,0.3); padding: 20px; border-radius: 12px;">
-                    <h4 style="color: #F87171; font-size: 1.05rem; margin-bottom: 8px;">⚔️ Interactive Disagreement Resolver</h4>
+                    <h4 style="color: #F87171; font-size: 1.05rem; margin-bottom: 8px;">⚡ Interactive Conflict Resolver: Overlapping Edits</h4>
                     <p style="font-size: 0.84rem; color: var(--text-main); line-height: 1.6; margin-bottom: 14px;">
-                        Both <strong>${escapeHtml(state.authorName)}</strong> and <strong>${escapeHtml(state.coauthorName)}</strong> edited line 4 simultaneously! Git flagged a <strong>Merge Conflict</strong>:
+                        Both <strong>Evelyn (Lead Author)</strong> and <strong>Bob (Co-Author)</strong> edited line 4 simultaneously! Git flagged a <strong>Merge Conflict</strong>:
                     </p>
-
-                    <!-- Friendly Decoder Callout -->
-                    <div style="background: rgba(239,68,68,0.1); border-left: 3px solid #EF4444; padding: 10px 14px; border-radius: 6px; font-size: 0.82rem; color: var(--text-main); margin-bottom: 14px;">
-                        🔍 <strong>Git Fence Post Decoder:</strong><br/>
-                        • <code><<<<<<< main</code> = Start of ${escapeHtml(state.authorName)}'s text.<br/>
-                        • <code>=======</code> = Divider line.<br/>
-                        • <code>>>>>>>> draft</code> = End of ${escapeHtml(state.coauthorName)}'s text.
-                    </div>
 
                     <!-- Conflict Box -->
                     <div style="background: #000; border: 1px solid rgba(239,68,68,0.4); border-radius: 8px; padding: 14px; font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 16px;">
-                        <div style="color: #38BDF8; font-weight: 700; margin-bottom: 4px;"><<<<<<< main (${escapeHtml(state.authorName)}'s Version)</div>
+                        <div style="color: #38BDF8; font-weight: 700; margin-bottom: 4px;"><<<<<<< main (Evelyn's Version)</div>
                         <div style="color: #FFF; background: rgba(56,189,248,0.15); padding: 6px; border-radius: 4px;">"The library room was freezing, lit only by a single flickering oil lamp."</div>
                         <div style="color: var(--text-muted); text-align: center; margin: 6px 0;">=======</div>
                         <div style="color: #FBBF24; background: rgba(251,191,36,0.15); padding: 6px; border-radius: 4px;">"Rain pelted the stained-glass windows as a candle illuminated the corner."</div>
-                        <div style="color: #C084FC; font-weight: 700; margin-top: 4px;">>>>>>>> ${escapeHtml(state.coauthorName.toLowerCase())}-edit</div>
+                        <div style="color: #C084FC; font-weight: 700; margin-top: 4px;">>>>>>>> bob-atmospheric-edit</div>
                     </div>
 
                     <!-- Resolution Options -->
                     <div style="margin-bottom: 16px;">
                         <label style="font-size: 0.82rem; color: var(--gold-primary); font-weight: 700; display: block; margin-bottom: 8px;">SELECT EDITORIAL RESOLUTION:</label>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-                            <button onclick="window.GitHubNovelModule.resolveConflict('author')" style="background: rgba(56,189,248,0.15); border: 1px solid #38BDF8; color: #38BDF8; padding: 10px; border-radius: 8px; font-weight: 700; cursor: pointer; text-align: left;">
-                                👤 Keep ${escapeHtml(state.authorName)}'s Version
+                            <button onclick="window.GitHubNovelModule.resolveConflict('evelyn')" style="background: rgba(56,189,248,0.15); border: 1px solid #38BDF8; color: #38BDF8; padding: 10px; border-radius: 8px; font-weight: 700; cursor: pointer; text-align: left;">
+                                👤 Keep Evelyn's Version
                             </button>
-                            <button onclick="window.GitHubNovelModule.resolveConflict('coauthor')" style="background: rgba(251,191,36,0.15); border: 1px solid #FBBF24; color: #FBBF24; padding: 10px; border-radius: 8px; font-weight: 700; cursor: pointer; text-align: left;">
-                                👤 Keep ${escapeHtml(state.coauthorName)}'s Version
+                            <button onclick="window.GitHubNovelModule.resolveConflict('bob')" style="background: rgba(251,191,36,0.15); border: 1px solid #FBBF24; color: #FBBF24; padding: 10px; border-radius: 8px; font-weight: 700; cursor: pointer; text-align: left;">
+                                👤 Keep Bob's Version
                             </button>
                             <button onclick="window.GitHubNovelModule.resolveConflict('blend')" style="background: rgba(74,222,128,0.15); border: 1px solid #4ADE80; color: #4ADE80; padding: 10px; border-radius: 8px; font-weight: 700; cursor: pointer; text-align: left;">
                                 🤝 Blend Both Versions (Recommended)
@@ -424,52 +396,62 @@
                     </div>
                 </div>
 
-                <!-- Celebration Certificate Banner -->
-                <div id="celebrationBanner" style="margin-top: 24px; display: none; background: linear-gradient(135deg, rgba(255, 199, 44, 0.2), rgba(74, 222, 128, 0.2)); border: 2px solid var(--gold-primary); padding: 22px; border-radius: 16px; text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 6px;">🏆🎉</div>
-                    <h3 style="color: var(--gold-primary); font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 6px;">
-                        Congratulations ${escapeHtml(state.authorName)}! You're an Official Master Co-Author!
+                <!-- Bridge to RAP Banner -->
+                <div style="margin-top: 24px; background: linear-gradient(135deg, rgba(255, 199, 44, 0.15), rgba(56, 189, 248, 0.15)); border: 2px solid var(--gold-primary); padding: 20px; border-radius: 14px;">
+                    <h3 style="color: var(--gold-primary); font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                        <span>🎓</span> Bridge to RAP (Reproducible Analytical Pipelines)
                     </h3>
-                    <p style="color: var(--text-main); font-size: 0.9rem; margin-bottom: 14px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                        You have mastered Repos, Commits, Branches, Pull Requests, and Merge Conflicts! You are now fully prepared to use GitHub for writing novels or building Reproducible Analytical Pipelines (RAP).
+                    <p style="color: var(--text-main); font-size: 0.9rem; line-height: 1.7; margin-bottom: 12px;">
+                        Congratulations! You've mastered collaborative version control on a novel. Now apply this exact workflow to data science and analytical pipelines:
                     </p>
-                    <a href="index.html" style="display: inline-block; background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); color: #000; font-weight: 800; text-decoration: none; padding: 12px 24px; border-radius: 10px; font-size: 0.92rem;">
-                        🚀 Return to RAP Studio & Start Script Pipeline Refactoring ➔
-                    </a>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; font-size: 0.82rem;">
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px;">
+                            <strong style="color: #38BDF8;">chapter_01.md</strong> ➔ <span style="color: var(--text-muted);">clean_survey_data.py</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px;">
+                            <strong style="color: #FBBF24;">Editorial Review</strong> ➔ <span style="color: var(--text-muted);">Peer Code Review for Statistical Models</span>
+                        </div>
+                        <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px;">
+                            <strong style="color: #4ADE80;">Commit History</strong> ➔ <span style="color: var(--text-muted);">100% Audit Trail for Reports</span>
+                        </div>
+                    </div>
                 </div>
             `;
         }
 
-        container.innerHTML = `
-            ${renderSetupBar()}
+        const activeTab = state.activeTab;
 
+        container.innerHTML = `
             <div style="background: rgba(15, 23, 42, 0.95); border: 2px solid rgba(56, 189, 248, 0.4); border-radius: 20px; padding: 28px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); margin-bottom: 40px;">
+                
+                ${setupGuide}
+
                 <!-- Header -->
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
                     <div>
-                        <span style="background: ${level.badgeColor}; color: #000; font-weight: 900; font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; text-transform: uppercase;">${level.badge}</span>
-                        <h3 style="color: var(--text-main); font-family: var(--font-heading); margin: 6px 0 0; font-size: 1.3rem;">${level.title}</h3>
+                        <span style="background: ${step.badgeColor}; color: #000; font-weight: 900; font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; text-transform: uppercase;">${step.badge}</span>
+                        <h3 style="color: var(--text-main); font-family: var(--font-heading); margin: 6px 0 0; font-size: 1.3rem;">${step.title}</h3>
                     </div>
                     <div style="font-family: var(--font-mono); font-size: 0.78rem; background: rgba(0,0,0,0.5); padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); color: var(--gold-primary);">
-                        <code>${level.gitCommand}</code>
+                        <code>${step.gitCommand}</code>
                     </div>
                 </div>
 
-                <!-- Level Buttons -->
+                <!-- Stepper Buttons -->
                 <div style="display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 20px;">
-                    ${levels.map(l => `
-                        <button onclick="window.GitHubNovelModule.setStep(${l.number})" 
-                                style="padding: 8px 14px; font-size: 0.82rem; border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s; white-space: nowrap; ${l.number === state.currentStep ? 'background: var(--gold-primary); color: #000; font-weight: 800;' : 'background: rgba(255,255,255,0.05); color: var(--text-muted);'}">
-                            ${l.shortName}
+                    ${steps.map(s => `
+                        <button onclick="window.GitHubNovelModule.setStep(${s.number})" 
+                                style="padding: 8px 14px; font-size: 0.82rem; border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s; white-space: nowrap; ${s.number === state.currentStep ? 'background: var(--gold-primary); color: #000; font-weight: 800;' : 'background: rgba(255,255,255,0.05); color: var(--text-muted);'}">
+                            Step ${s.number}
                         </button>
                     `).join('')}
                 </div>
 
-                <!-- Dual View Toggle Tabs -->
+                <!-- Dual View Toggle Tabs (Practical vs Conceptual) -->
                 <div style="display: flex; gap: 10px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">
                     <button onclick="window.GitHubNovelModule.setActiveTab('practical')" 
                             style="background: ${activeTab === 'practical' ? '#38BDF8' : 'rgba(255,255,255,0.05)'}; color: ${activeTab === 'practical' ? '#000' : 'var(--text-muted)'}; font-weight: 800; padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 6px;">
-                        <span>🖱️</span> What You Click on GitHub.com (Practical Guide)
+                        <span>🖱️</span> What You Actually Do on GitHub.com (Practical Guide)
                     </button>
                     <button onclick="window.GitHubNovelModule.setActiveTab('conceptual')" 
                             style="background: ${activeTab === 'conceptual' ? 'var(--gold-primary)' : 'rgba(255,255,255,0.05)'}; color: ${activeTab === 'conceptual' ? '#000' : 'var(--text-muted)'}; font-weight: 800; padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 6px;">
@@ -481,16 +463,16 @@
                 ${activeTab === 'practical' ? `
                     <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 18px; margin-bottom: 22px;">
                         <h4 style="color: #38BDF8; font-size: 0.98rem; margin-top: 0; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-                            <span>🎯</span> Real-World Click-by-Click Instructions:
+                            <span>🎯</span> Real-World Click-by-Click Instructions for GitHub.com:
                         </h4>
-                        ${level.practicalSteps}
+                        ${step.practicalSteps}
                     </div>
                 ` : `
                     <div style="background: rgba(255, 199, 44, 0.06); border: 1px solid rgba(255, 199, 44, 0.3); border-radius: 12px; padding: 18px; margin-bottom: 22px; font-size: 0.92rem; color: var(--text-main); line-height: 1.7;">
                         <h4 style="color: var(--gold-primary); font-size: 0.98rem; margin-top: 0; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                            <span>📖</span> ${level.conceptTitle}
+                            <span>📖</span> Concept Mental Model:
                         </h4>
-                        ${level.conceptExplanation}
+                        ${step.humanitiesConcept}
                     </div>
                 `}
 
@@ -521,12 +503,12 @@
             <div style="font-family: var(--font-mono); font-size: 0.8rem; line-height: 2; color: var(--text-main);">
                 <div style="display: flex; align-items: center; gap: 8px;">
                     <span style="color: #38BDF8; font-weight: 700;">● main</span>
-                    <span style="color: var(--text-muted); font-size: 0.75rem;">── (${escapeHtml(state.authorName)}'s Book)</span>
+                    <span style="color: var(--text-muted); font-size: 0.75rem;">── (Official Manuscript)</span>
                 </div>
-                ${state.branches.length > 1 ? `
+                ${state.branches.includes('alice-alternate-ending') ? `
                 <div style="display: flex; align-items: center; gap: 8px; padding-left: 20px;">
-                    <span style="color: #C084FC;">└── 🌿 ${escapeHtml(state.branches[1])}</span>
-                    <span style="color: #4ADE80; font-size: 0.75rem;">[ACTIVE DRAFT]</span>
+                    <span style="color: #C084FC;">└── 🌿 alice-alternate-ending</span>
+                    <span style="color: #4ADE80; font-size: 0.75rem;">[ACTIVE BRANCH]</span>
                 </div>` : ''}
             </div>
         `;
@@ -535,8 +517,8 @@
     function renderMergedText() {
         return `1: # Chapter 1: The Discovery in the Archives
 2: 
-3: Professor Vance blew a layer of dust off the ancient leather ledger.
-4: The room was cold, lit only by a single flickering candle in the corner.
+3: Professor Evelyn Vance blew a layer of dust off the leather-bound ledger.
+4: The room was cold, lit only by a faint lamp tucked in the corner of the library.
 5: Inside the manuscript lay a brass compass with coordinates leading to an underground alchemy vault.`;
     }
 
@@ -562,16 +544,6 @@
             const el = document.getElementById('githubNovelCard');
             if (el) renderStepContent(el, state.currentStep);
         },
-        updateCustomizers: function() {
-            const a = document.getElementById('custAuthor')?.value;
-            const c = document.getElementById('custCoauthor')?.value;
-            const b = document.getElementById('custBookTitle')?.value;
-            if (a) state.authorName = a.trim();
-            if (c) state.coauthorName = c.trim();
-            if (b) state.bookTitle = b.trim();
-            const el = document.getElementById('githubNovelCard');
-            if (el) renderStepContent(el, state.currentStep);
-        },
         makeCommit: function() {
             const editVal = document.getElementById('novelLineEdit')?.value;
             const msgVal = document.getElementById('novelCommitMsg')?.value || 'Update manuscript line';
@@ -582,15 +554,16 @@
             state.commits.unshift({
                 hash: newHash,
                 branch: state.currentBranch,
-                author: `${state.authorName} (Lead Author)`,
+                author: 'Evelyn (Lead Author)',
                 message: msgVal,
-                timestamp: 'Just now'
+                timestamp: 'Just now',
+                diff: editVal
             });
             const listEl = document.getElementById('novelCommitHistory');
             if (listEl) listEl.innerHTML = renderCommitList();
         },
         createBranch: function() {
-            const branchName = document.getElementById('novelBranchName')?.value || `${state.coauthorName.toLowerCase()}-draft`;
+            const branchName = document.getElementById('novelBranchName')?.value || 'alice-draft';
             if (!state.branches.includes(branchName)) {
                 state.branches.push(branchName);
             }
@@ -609,16 +582,13 @@
             if (!box) return;
             box.style.display = 'block';
 
-            if (choice === 'author') {
-                box.innerHTML = `<strong style="color: #38BDF8;">Resolved using ${escapeHtml(state.authorName)}'s Version:</strong><br/><em>"The library room was freezing, lit only by a single flickering oil lamp."</em><br/><br/>Commit created: <code>Resolved merge conflict in chapter_01.md</code>`;
-            } else if (choice === 'coauthor') {
-                box.innerHTML = `<strong style="color: #FBBF24;">Resolved using ${escapeHtml(state.coauthorName)}'s Version:</strong><br/><em>"Rain pelted the stained-glass windows as a candle illuminated the corner."</em><br/><br/>Commit created: <code>Resolved merge conflict in chapter_01.md</code>`;
+            if (choice === 'evelyn') {
+                box.innerHTML = `<strong style="color: #38BDF8;">Resolved using Evelyn's Version:</strong><br/><em>"The library room was freezing, lit only by a single flickering oil lamp."</em><br/><br/>Commit created: <code>Resolved merge conflict in chapter_01.md</code>`;
+            } else if (choice === 'bob') {
+                box.innerHTML = `<strong style="color: #FBBF24;">Resolved using Bob's Version:</strong><br/><em>"Rain pelted the stained-glass windows as a candle illuminated the corner."</em><br/><br/>Commit created: <code>Resolved merge conflict in chapter_01.md</code>`;
             } else {
                 box.innerHTML = `<strong style="color: #4ADE80;">Resolved using Blended Version:</strong><br/><em>"Rain pelted the stained-glass windows of the freezing library as a flickering lamp illuminated the corner."</em><br/><br/>Commit created: <code>Blended co-author edits in chapter_01.md</code>`;
             }
-
-            const cert = document.getElementById('celebrationBanner');
-            if (cert) cert.style.display = 'block';
         }
     };
 

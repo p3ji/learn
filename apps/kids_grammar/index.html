@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar Gym — Kids Grammar Studio | Kids Learning Suite</title>
+    <meta name="description" content="A grammar checker and teaching toolkit for kids aged 8 to 12. Learn and fix spelling, punctuation, parts of speech and sentence structure—offline and private.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/grammar_styles.css">
+</head>
+<body>
+    <a href="#kgStage" class="skip-link">Skip to the grammar desk</a>
+
+    <header class="kids-header">
+        <div class="container kids-header-container">
+            <a href="../../index.html" style="text-decoration:none;" class="kids-logo-group">
+                <div class="kids-logo-badge">LEARN</div>
+                <div class="kids-logo-title">Grammar <span class="gold-star-text">Gym</span></div>
+            </a>
+
+            <nav class="kids-nav-links" aria-label="Main">
+                <button class="kids-nav-item" data-view="check">✏️ Check</button>
+                <button class="kids-nav-item" data-view="pos">🧩 Parts of Speech</button>
+                <button class="kids-nav-item" data-view="rules">📖 Rules</button>
+                <button class="kids-nav-item" data-view="doctor">🏥 Doctor</button>
+                <a href="../kids_philosophy/index.html" class="kids-nav-item" style="color:var(--purple-glow);">🏛️ Philosopher's Quest</a>
+                <a href="../kids_writing/index.html" class="kids-nav-item" style="color:#EC4899;">✍️ Story Forge</a>
+            </nav>
+
+            <div style="display:flex; align-items:center; gap:10px;">
+                <button type="button" class="xp-pill" style="cursor:default;">
+                    <span id="kgUserAvatar" style="font-size:1.2rem;">📚</span>
+                    <span id="kgUserName" style="font-weight:800; color:#FFF; font-size:.9rem;">Student</span>
+                    <span class="xp-level-badge" id="kgLevelBadge">Lvl 1</span>
+                    <span class="xp-bar-outer"><span class="xp-bar-inner" id="kgXpBar" style="display:block; width:0%;"></span></span>
+                    <span class="xp-text" id="kgXpDisplay">0 XP</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" id="main">
+        <section class="kids-hero">
+            <div class="kids-hero-badge">For curious learners aged 8 to 12</div>
+            <h1 class="kids-hero-title">Your <span class="gold-star-text">grammar gym</span> — <span class="cyan-text">private</span>, offline, instant.</h1>
+            <p class="kids-hero-desc">
+                Paste any writing and the <span class="cyan-text">Grammar Checker</span> names every mistake with the rule you need.
+                Then drill with <span class="gold-star-text">Confusable Words</span>, master the
+                <span class="cyan-text">Parts of Speech</span>, read <span class="purple-glow-text">Rule Cards</span>, or fix broken sentences in the
+                <span class="gold-star-text">Sentence Doctor</span>.
+            </p>
+
+            <div class="badge-showcase">
+                <span class="badge-showcase-title">🏆 Badges:</span>
+                <span class="badge-item" data-badge-id="confusable_champ">🔑 Confusable Champ</span>
+                <span class="badge-item" data-badge-id="agreement_ace">🤝 Agreement Ace</span>
+                <span class="badge-item" data-badge-id="punctuation_pro">❜ Punctuation Pro</span>
+                <span class="badge-item" data-badge-id="sentence_surgeon">🧩 Sentence Surgeon</span>
+            </div>
+        </section>
+
+        <nav class="master-cat-nav" aria-label="Sections">
+            <button class="cat-nav-btn active" data-view="check">✏️ Grammar Check</button>
+            <button class="cat-nav-btn" data-view="pos">🧩 Parts of Speech</button>
+            <button class="cat-nav-btn" data-view="rules">📖 Rule Cards</button>
+            <button class="cat-nav-btn" data-view="doctor">🏥 Sentence Doctor</button>
+        </nav>
+
+        <section id="kgStage"><!-- rendered by app.js --></section>
+    </main>
+
+    <footer class="kids-footer">
+        <div class="container">
+            <p>Grammar Gym — Kids Grammar Studio | Part of the Learning Tools Suite</p>
+            <p style="margin-top:4px;">Everything you type stays on this device. Nothing is uploaded anywhere.</p>
+        </div>
+    </footer>
+
+    <script src="js/grammar_data.js"></script>
+    <script src="js/checker.js"></script>
+    <script src="js/views.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Forge — Kids Writing Studio | Kids Learning Suite</title>
+    <meta name="description" content="A writing coach and toolkit for young authors aged 8 to 12 who are already writing their own books. Offline, private, no accounts.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/writing_styles.css">
+</head>
+<body>
+    <a href="#kwStage" class="skip-link">Skip to the writing desk</a>
+
+    <header class="kids-header">
+        <div class="container kids-header-container">
+            <a href="../../index.html" style="text-decoration:none;" class="kids-logo-group">
+                <div class="kids-logo-badge">LEARN</div>
+                <div class="kids-logo-title">Story <span class="gold-star-text">Forge</span></div>
+            </a>
+
+            <nav class="kids-nav-links" aria-label="Main">
+                <button class="kids-nav-item" data-view="library">📚 My Books</button>
+                <button class="kids-nav-item" data-view="write">✍️ Writing Desk</button>
+                <button class="kids-nav-item" data-view="craft">🎓 Craft Cards</button>
+                <button class="kids-nav-item" data-view="drills">🎯 Practice Range</button>
+                <button class="kids-nav-item" data-view="tools">🧰 Story Tools</button>
+                <a href="../kids_philosophy/index.html" class="kids-nav-item" style="color:var(--purple-glow);">🏛️ Philosopher's Quest</a>
+            </nav>
+
+            <div style="display:flex; align-items:center; gap:10px;">
+                <button type="button" class="xp-pill" id="kwProfilePill" aria-label="Open writer profile" style="cursor:pointer; font:inherit; text-align:left;">
+                    <span id="kwUserAvatar" style="font-size:1.2rem;">✍️</span>
+                    <span id="kwUserName" style="font-weight:800; color:#FFF; font-size:.9rem;">New Writer</span>
+                    <span class="xp-level-badge" id="xpLevelBadge">Lvl 1</span>
+                    <span class="xp-bar-outer"><span class="xp-bar-inner" id="xpBarFill" style="display:block; width:0%;"></span></span>
+                    <span class="xp-text" id="xpTextDisplay">0 XP</span>
+                </button>
+                <button class="fb-action-btn outline" id="kwAccountBtn" style="padding:6px 12px; font-size:.82rem;">👤 Account</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" id="main">
+        <section class="kids-hero">
+            <div class="kids-hero-badge">For young authors aged 8 to 12 who are already writing</div>
+            <h1 class="kids-hero-title">You've started the book.<br><span class="pink-text">Now make it</span> <span class="gold-star-text">brilliant.</span></h1>
+            <p class="kids-hero-desc">
+                Story Forge isn't a place to do writing exercises instead of your book — it's a workshop for
+                <strong>the book you're already writing</strong>. Paste in a chapter and the
+                <span class="cyan-text">Revision Lab</span> shows you exactly which words are letting you down and how to fix them.
+                Then learn one technique at a time in <span class="purple-glow-text">Craft Cards</span>, drill it in the
+                <span class="gold-star-text">Practice Range</span>, and take it straight back to your manuscript.
+            </p>
+
+            <div class="badge-showcase">
+                <span class="badge-showcase-title">🏆 Badges:</span>
+                <span class="badge-item" data-badge-id="first_words">🌱 First Words</span>
+                <span class="badge-item" data-badge-id="strong_verbs">💪 Verb Power</span>
+                <span class="badge-item" data-badge-id="show_dont_tell">🎬 Show, Don't Tell</span>
+                <span class="badge-item" data-badge-id="dialogue_pro">💬 Dialogue Pro</span>
+                <span class="badge-item" data-badge-id="reviser">🔍 Brave Reviser</span>
+                <span class="badge-item" data-badge-id="planner">🗺️ Story Architect</span>
+                <span class="badge-item" data-badge-id="streak_5">🔥 Five-Day Streak</span>
+                <span class="badge-item" data-badge-id="novelist">📚 Novelist</span>
+            </div>
+        </section>
+
+        <nav class="master-cat-nav" aria-label="Sections">
+            <button class="cat-nav-btn active" data-view="library">📚 My Books</button>
+            <button class="cat-nav-btn" data-view="write">✍️ Writing Desk</button>
+            <button class="cat-nav-btn" data-view="craft">🎓 Craft Cards</button>
+            <button class="cat-nav-btn" data-view="drills">🎯 Practice Range</button>
+            <button class="cat-nav-btn" data-view="tools">🧰 Story Tools</button>
+        </nav>
+
+        <section id="kwStage"><!-- rendered by app_controller.js --></section>
+    </main>
+
+    <footer class="kids-footer">
+        <div class="container">
+            <p>Story Forge — Kids Writing Studio | Part of the Learning Tools Suite</p>
+            <p style="margin-top:4px;">Everything you write stays on this device. Nothing is uploaded anywhere.</p>
+        </div>
+    </footer>
+
+    <script src="js/profile.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/word_data.js"></script>
+    <script src="js/analyzer.js"></script>
+    <script src="js/craft_cards.js"></script>
+    <script src="js/drills.js"></script>
+    <script src="js/tools.js"></script>
+    <script src="js/coach_ui.js"></script>
+    <script src="js/app_controller.js"></script>
+    <script src="js/a11y.js"></script>
+</body>
+</html>

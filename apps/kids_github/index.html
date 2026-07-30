@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Warm-Up: Collaborative Document Editing | RAP Studio</title>
-    <meta name="description" content="A step-by-step interactive exercise and click-by-click guide to setting up and using GitHub for collaborative document editing.">
+    <title>Story Forge: GitHub Quest for Young Authors</title>
+    <meta name="description" content="A gamified interactive GitHub guide for young authors and kids. Learn repositories, commits, branching, pull requests, and merge conflicts by co-authoring a novel!">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,14 +20,14 @@
             <div class="logo-group">
                 <a href="../../index.html" class="logo-badge" style="text-decoration:none;">SUITE HOME</a>
                 <div class="logo-text">
-                    <span class="logo-title">GitHub <span class="gold-text">Warm-Up</span></span>
-                    <span class="logo-subtitle">Collaborative Document & Manuscript Editing Guide</span>
+                    <span class="logo-title">Story <span class="gold-text">Forge Quest</span></span>
+                    <span class="logo-subtitle">GitHub Quest for Young Authors & Kids</span>
                 </div>
             </div>
             
             <nav class="nav-links">
-                <a href="index.html" class="nav-item" style="color: var(--cyan-magic);">📦 RAP Studio Workspace</a>
                 <a href="../../index.html" class="nav-item">🏠 Suite Portal Home</a>
+                <a href="../rap_studio/index.html" class="nav-item">📦 RAP Studio</a>
             </nav>
         </div>
     </header>
@@ -38,40 +38,33 @@
         <!-- Hero Section -->
         <section class="hero-card" style="margin-top: 40px; margin-bottom: 24px;">
             <div class="hero-glow"></div>
-            <div class="hero-badge">Prerequisite Step-by-Step Exercise</div>
-            <h1 class="hero-title">Master <span class="gold-gradient">GitHub Version Control</span> Step-by-Step</h1>
+            <div class="hero-badge">🎮 Story Forge Quest • Interactive GitHub Guide</div>
+            <h1 class="hero-title">Co-Author Your Novel with <span class="gold-gradient">GitHub Superpowers!</span></h1>
             <p class="hero-desc">
-                Learn how to set up a free GitHub account, create repositories, make commits, branch alternate drafts, submit Pull Requests, and resolve conflicts by co-authoring a novel manuscript—100% inside your web browser.
+                No coding experience needed! Learn how to create free GitHub book folders, save sticky note snapshots, branch secret alternate drafts, submit editorial proposals, and solve writer disagreements—100% in your web browser.
             </p>
         </section>
 
         <!-- Standalone Exercise Card Container -->
         <section class="section-card" style="border-color: rgba(56, 189, 248, 0.4);">
-            <div id="githubNovelCard"></div>
+            <div id="kidsGithubCard"></div>
         </section>
-
-        <!-- Back to RAP Studio Link Banner -->
-        <div style="margin-top: 20px; margin-bottom: 40px; text-align: center;">
-            <a href="index.html" style="display: inline-block; background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark)); color: #000; font-weight: 800; text-decoration: none; padding: 14px 28px; border-radius: 12px; font-size: 1rem; box-shadow: 0 4px 20px rgba(255, 199, 44, 0.3);">
-                ➔ Ready to Refactor Scripts? Return to RAP Studio Main Page
-            </a>
-        </div>
 
     </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-content">
-            <p>GitHub Warm-Up | Part of RAP Studio & Learning Tools Suite</p>
+            <p>Story Forge Quest: GitHub for Young Authors | Part of the Learning Tools Suite</p>
         </div>
     </footer>
 
     <!-- JavaScript Files -->
-    <script src="../../js/github_novel_exercise.js"></script>
+    <script src="../../js/kids_github.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            if (window.GitHubNovelModule) {
-                window.GitHubNovelModule.init('githubNovelCard');
+            if (window.KidsGitHubModule) {
+                window.KidsGitHubModule.init('kidsGithubCard');
             }
         });
     </script>
