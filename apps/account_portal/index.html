@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learner Account Portal & Passport Hub | Learning Suite</title>
+  <meta name="description" content="Central Learner Passport, Trophy Cabinet, and Saved Inputs Journal Manager across the Learning Suite.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="header">
+    <div class="container header-flex">
+      <a href="../../index.html" class="back-link">← Back to Suite Portal</a>
+      <div class="portal-title">
+        <span>🌐</span> Learner Passport &amp; Account Portal
+      </div>
+      <div id="passport-pill-container"></div>
+    </div>
+  </header>
+
+  <!-- Main Portal Workspace -->
+  <main class="container" style="padding-top: 32px;" id="portal-main-area"></main>
+
+  <!-- Modal Container -->
+  <div id="modal-container"></div>
+
+  <!-- Scripts -->
+  <script src="../../js/suite_passport.js"></script>
+  <script src="js/portal_view.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.SuitePassport) {
+        window.SuitePassport.renderPassportPill('passport-pill-container', '../../');
+      }
+    });
+  </script>
+</body>
+</html>

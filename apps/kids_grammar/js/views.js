@@ -341,6 +341,8 @@ function gradeCaseChoice(pick, options) {
             <div class="finding-body">${escapeHtml(c.why)}</div>
             ${(c.accept && c.accept.length) ? `<div class="finding-body" style="margin-top:8px; font-style:italic;">Also correct: ${c.accept.map(a => `"${escapeHtml(a)}"`).join(', ')}</div>` : ''}
             ${c.rule ? `<button class="fb-action-btn outline" style="padding:6px 12px; font-size:.8rem; margin-top:8px;" data-rule="${escapeHtml(c.rule)}">Read the rule</button>` : ''}
+            <button class="fb-action-btn outline" style="padding:6px 12px; font-size:.8rem; margin-top:8px; margin-left:8px;" onclick="if(window.SuitePassport) window.SuitePassport.openFeedbackModal({ appId: 'kids_grammar', appName: 'Grammar Gym', topicTitle: '${escapeHtml(set.title)}' })">🙋 Not comfortable yet?</button>
+            <button class="fb-action-btn outline" style="padding:6px 12px; font-size:.8rem; margin-top:8px; margin-left:8px; ${window.SuitePassport && window.SuitePassport.isTopicMastered('kids_grammar', set.title) ? 'background: rgba(245,158,11,0.25); border-color: #F59E0B; color: #F59E0B;' : ''}" onclick="if(window.SuitePassport) window.SuitePassport.toggleMasteredTopic('kids_grammar', '${escapeHtml(set.title)}', this)">${window.SuitePassport && window.SuitePassport.isTopicMastered('kids_grammar', set.title) ? '🌟 Mastered!' : '⭐ Mark Mastered'}</button>
         </div>
         <button class="fb-action-btn ${correct ? 'green' : 'gold'}" id="kgDoctorNext" style="margin-top:10px;">Next →</button>`;
 

@@ -432,7 +432,9 @@ function finishQuestion(right, headline, why) {
             <div class="finding-title">${right ? '✅ ' : '🔧 '}${escapeHtml(headline)}</div>
             <div class="finding-body">${escapeHtml(why)}</div>
         </div>
-        <button class="fb-action-btn ${right ? 'green' : 'gold'}" id="kwDrillNext" style="margin-top:10px;">Next →</button>`;
+        <button class="fb-action-btn ${right ? 'green' : 'gold'}" id="kwDrillNext" style="margin-top:10px;">Next →</button>
+        <button class="fb-action-btn outline" style="padding:6px 12px; font-size:.8rem; margin-top:10px; margin-left:8px;" onclick="if(window.SuitePassport) window.SuitePassport.openFeedbackModal({ appId: 'kids_writing', appName: 'Story Forge', topicTitle: '${escapeHtml(kwCurrentSet() ? kwCurrentSet().title : 'Drills')}' })">🙋 Not comfortable yet?</button>
+        <button class="fb-action-btn outline" style="padding:6px 12px; font-size:.8rem; margin-top:10px; margin-left:8px; ${window.SuitePassport && window.SuitePassport.isTopicMastered('kids_writing', kwCurrentSet() ? kwCurrentSet().title : 'Drills') ? 'background: rgba(245,158,11,0.25); border-color: #F59E0B; color: #F59E0B;' : ''}" onclick="if(window.SuitePassport) window.SuitePassport.toggleMasteredTopic('kids_writing', '${escapeHtml(kwCurrentSet() ? kwCurrentSet().title : 'Drills')}', this)">${window.SuitePassport && window.SuitePassport.isTopicMastered('kids_writing', kwCurrentSet() ? kwCurrentSet().title : 'Drills') ? '🌟 Mastered!' : '⭐ Mark Mastered'}</button>`;
 
     const next = document.getElementById('kwDrillNext');
     next.addEventListener('click', () => { kwDrill.index++; renderDrillQuestion(); });

@@ -14,6 +14,9 @@
 - `apps/kids_grammar` (Grammar Gym): `node apps/kids_grammar/test/checker_probe.js` — grammar
   checker precision and recall against confusables, agreement, punctuation and fragments. Run
   after editing `checker.js` rules or `grammar_data.js` content.
+- `apps/kids_math` (MathForge Ottawa): `node apps/kids_math/test/smoke.js` — curriculum schema
+  integrity and procedural question generator math checks. Run after editing `curriculum_data.js`
+  or `math_engine.js`.
 
 ## Conventions & gotchas
 - Keep this file short; put goals/backlog in the linked Brain note, not here.

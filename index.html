@@ -100,6 +100,9 @@
                 <a href="apps/kids_writing/index.html" class="nav-item" style="color: #EC4899; font-weight:700;">✍️ Story Forge (8-12)</a>
                 <a href="apps/kids_grammar/index.html" class="nav-item" style="color: #06B6D4; font-weight:700;">✏️ Grammar Gym (8-12)</a>
                 <a href="apps/kids_github/index.html" class="nav-item" style="color: #38BDF8; font-weight:700;">🎮 GitHub Quest (8-12)</a>
+                <a href="apps/kids_math/index.html" class="nav-item" style="color: #F59E0B; font-weight:700;">🧮 OCDSB Math (Gr 3 &amp; 8)</a>
+                <a href="apps/account_portal/index.html" class="nav-item" style="color: var(--gold-primary); font-weight:800;">🌐 Account Portal &amp; Passport</a>
+                <div id="passport-pill-container" style="display:inline-block;"></div>
             </nav>
         </div>
     </header>
@@ -117,11 +120,18 @@
             </p>
         </section>
 
+        <!-- Filter Tabs -->
+        <div class="filter-tabs" style="display: flex; gap: 12px; margin-top: 40px; justify-content: center; flex-wrap: wrap;">
+            <button class="filter-btn active" data-filter="all" style="padding: 8px 16px; border-radius: 20px; border: 1px solid var(--gold-primary); background: rgba(255,199,44,0.1); color: #FFF; font-weight: bold; cursor: pointer;">All Courses</button>
+            <button class="filter-btn" data-filter="adult" style="padding: 8px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: var(--text-muted); font-weight: bold; cursor: pointer;">Adults & Professionals</button>
+            <button class="filter-btn" data-filter="kids" style="padding: 8px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: var(--text-muted); font-weight: bold; cursor: pointer;">Kids Arcade (8-12)</button>
+        </div>
+
         <!-- Suite Apps Launcher Grid -->
         <section class="suite-grid">
 
             <!-- App 1 Card: Sociology ➔ AI & Data Science Bridge -->
-            <div class="suite-card">
+            <div class="suite-card" data-category="adult">
                 <div>
                     <span class="suite-badge" style="background: rgba(255, 199, 44, 0.15); color: var(--gold-primary); border: 1px solid var(--gold-primary);">For Sociologists &amp; Researchers</span>
                     <h2 class="suite-app-title">🎓 Sociology ➔ AI &amp; Data Science Bridge</h2>
@@ -141,7 +151,7 @@
             </div>
 
             <!-- App 2 Card: Reproducible Analytical Pipelines (RAP) Studio -->
-            <div class="suite-card" style="border-color: rgba(56, 189, 248, 0.4);">
+            <div class="suite-card" style="border-color: rgba(56, 189, 248, 0.4);" data-category="adult">
                 <div>
                     <span class="suite-badge" style="background: rgba(56, 189, 248, 0.15); color: var(--cyan-magic); border: 1px solid var(--cyan-magic);">Data Engineering &amp; Architecture</span>
                     <h2 class="suite-app-title" style="color: var(--cyan-magic);">📦 RAP Studio: Analytical Pipelines</h2>
@@ -161,7 +171,7 @@
             </div>
 
             <!-- App 3 Card: Philosopher's Quest for Kids -->
-            <div class="suite-card" style="border-color: rgba(139, 92, 246, 0.4);">
+            <div class="suite-card" style="border-color: rgba(139, 92, 246, 0.4);" data-category="kids">
                 <div>
                     <span class="suite-badge" style="background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); border: 1px solid var(--accent-purple);">For Kids Aged 8 to 12</span>
                     <h2 class="suite-app-title" style="color: var(--accent-purple);">🚀 Philosopher's Quest &amp; Mental Models</h2>
@@ -181,7 +191,7 @@
             </div>
 
             <!-- App 4 Card: Story Forge writing studio for kids -->
-            <div class="suite-card" style="border-color: rgba(236, 72, 153, 0.4);">
+            <div class="suite-card" style="border-color: rgba(236, 72, 153, 0.4);" data-category="kids">
                 <div>
                     <span class="suite-badge" style="background: rgba(236, 72, 153, 0.2); color: #EC4899; border: 1px solid #EC4899;">For Young Authors Aged 8 to 12</span>
                     <h2 class="suite-app-title" style="color: #EC4899;">✍️ Story Forge &mdash; Kids Writing Studio</h2>
@@ -201,7 +211,7 @@
             </div>
 
             <!-- App 5 Card: Grammar Gym for grammar and language mechanics -->
-            <div class="suite-card" style="border-color: rgba(6, 182, 212, 0.4);">
+            <div class="suite-card" style="border-color: rgba(6, 182, 212, 0.4);" data-category="kids">
                 <div>
                     <span class="suite-badge" style="background: rgba(6, 182, 212, 0.2); color: #06B6D4; border: 1px solid #06B6D4;">For Learners Aged 8 to 12</span>
                     <h2 class="suite-app-title" style="color: #06B6D4;">✏️ Grammar Gym &mdash; Kids Grammar Studio</h2>
@@ -221,7 +231,7 @@
             </div>
 
             <!-- App 6 Card: Story Forge GitHub Quest for Kids -->
-            <div class="suite-card" style="border-color: rgba(56, 189, 248, 0.4);">
+            <div class="suite-card" style="border-color: rgba(56, 189, 248, 0.4);" data-category="kids">
                 <div>
                     <span class="suite-badge" style="background: rgba(56, 189, 248, 0.2); color: #38BDF8; border: 1px solid #38BDF8;">For Young Authors Aged 8 to 12</span>
                     <h2 class="suite-app-title" style="color: #38BDF8;">🎮 Story Forge &mdash; GitHub Quest for Kids</h2>
@@ -240,6 +250,46 @@
                 <a href="apps/kids_github/index.html" class="launch-btn" style="background: linear-gradient(135deg, #38BDF8, #A855F7); color: #FFF;">Launch Kids GitHub Quest ➔</a>
             </div>
 
+            <!-- App 7 Card: MathForge Ottawa (OCDSB Math Lab) -->
+            <div class="suite-card" style="border-color: rgba(245, 158, 11, 0.4);" data-category="kids">
+                <div>
+                    <span class="suite-badge" style="background: rgba(245, 158, 11, 0.2); color: #F59E0B; border: 1px solid #F59E0B;">OCDSB Curriculum Grades 3 &amp; 8</span>
+                    <h2 class="suite-app-title" style="color: #F59E0B;">🧮 MathForge &mdash; OCDSB Math Lab</h2>
+                    <p class="suite-app-desc">
+                        Interactive mathematics app built strictly for Grade 3 and Grade 8 following the Ottawa-Carleton District School Board (OCDSB) curriculum. Features core lessons, Khan Academy modules, dynamic exercises, hints, and diagnostic strand quizzes.
+                    </p>
+
+                    <ul class="suite-app-features">
+                        <li><span>📐</span> 5 Ontario Math Strands (Number, Algebra, Data, Spatial, Financial)</li>
+                        <li><span>📖</span> In-App Visual Cheat Sheets + Direct Khan Academy Links</li>
+                        <li><span>🎯</span> Infinite Dynamic Math Question Generators &amp; 3-Tier Hints</li>
+                        <li><span>✏️</span> Digital Canvas Scratchpad &amp; OCDSB Diagnostic Strand Quizzes</li>
+                    </ul>
+                </div>
+
+                <a href="apps/kids_math/index.html" class="launch-btn" style="background: linear-gradient(135deg, #F59E0B, #6366F1); color: #FFF;">Launch OCDSB Math Lab ➔</a>
+            </div>
+
+            <!-- App 8 Card: Learner Account Portal & Passport Hub -->
+            <div class="suite-card" style="border-color: rgba(99, 102, 241, 0.4);" data-category="both">
+                <div>
+                    <span class="suite-badge" style="background: rgba(99, 102, 241, 0.2); color: var(--accent-blue); border: 1px solid var(--accent-blue);">Central Passport &amp; Saved Inputs Hub</span>
+                    <h2 class="suite-app-title" style="color: var(--accent-blue);">🌐 Learner Account Portal &amp; Passport</h2>
+                    <p class="suite-app-desc">
+                        Manage your avatar profile, global level XP progress, trophy cabinet badges, and central journal repo for saved inputs across all learning apps (Story drafts, math quiz reports, philosophy reflections, and grammar doctor rewrites).
+                    </p>
+
+                    <ul class="suite-app-features">
+                        <li><span>👤</span> Customize Avatar, Name &amp; Primary Grade Preference</li>
+                        <li><span>📓</span> Central Journal Repository for All Saved Inputs &amp; Drafts</li>
+                        <li><span>🏆</span> Cross-App Trophy Cabinet &amp; Achievement Badges</li>
+                        <li><span>💾</span> 100% Client-Side Privacy with One-Click JSON Backup &amp; Restore</li>
+                    </ul>
+                </div>
+
+                <a href="apps/account_portal/index.html" class="launch-btn" style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan)); color: #FFF;">Launch Account Portal ➔</a>
+            </div>
+
         </section>
 
     </main>
@@ -250,6 +300,39 @@
             <p>Learning Tools Suite | Multi-App Educational Platform</p>
         </div>
     </footer>
+
+    <script src="js/suite_passport.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.SuitePassport) {
+                window.SuitePassport.renderPassportPill('passport-pill-container', './');
+            }
+
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.classList.remove('active');
+                        b.style.background = 'transparent';
+                        b.style.borderColor = 'rgba(255,255,255,0.2)';
+                        b.style.color = 'var(--text-muted)';
+                    });
+                    btn.classList.add('active');
+                    btn.style.background = 'rgba(255,199,44,0.1)';
+                    btn.style.borderColor = 'var(--gold-primary)';
+                    btn.style.color = '#FFF';
+
+                    const filter = btn.dataset.filter;
+                    document.querySelectorAll('.suite-card').forEach(card => {
+                        if (filter === 'all' || card.dataset.category === filter || card.dataset.category === 'both') {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
