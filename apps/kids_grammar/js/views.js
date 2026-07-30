@@ -100,44 +100,87 @@ function renderPosView(container) {
     container.innerHTML = `
         <div class="panel">
             <h2 class="panel-title">🧩 Parts of Speech Lab</h2>
-            <p class="panel-sub">Click each word to tag it. Click again to change or clear.</p>
+            <p class="panel-sub">Click a word, then choose which part of speech it is. Get every word in a sentence right to finish it.</p>
 
             ${shuffled.map((s, idx) => `
-                <div class="pos-sentence">
+                <div class="pos-sentence" data-sent="${idx}">
+                    <div style="font-weight:700; color:var(--cyan-magic); font-size:.9rem; margin-bottom:12px;">Sentence ${idx + 1} of ${shuffled.length}
+                        <span id="kgPosCount${idx}" style="float:right; color:var(--text-muted); font-weight:600;">0 / ${s.tags.length} tagged</span>
+                    </div>
+                    <div style="font-size:1.1rem; line-height:2; margin-bottom:16px; font-family:Georgia,serif;">${escapeHtml(s.text)}</div>
                     <div class="pos-tokens" id="kgPosSent${idx}">
                         ${s.text.split(/\s+/).map((word, wi) => {
                             const clean = word.replace(/[.,!?;:—""'']/g, '');
                             const tag = s.tags[wi];
-                            return `<button class="pos-token" data-word="${escapeHtml(clean)}" data-tag="${escapeHtml(tag)}" data-sent="${idx}" data-word-idx="${wi}">${escapeHtml(word)}</button>`;
+                            return `<button class="pos-token" data-word="${escapeHtml(clean)}" data-tag="${escapeHtml(tag)}" data-sent="${idx}" data-word-idx="${wi}" title="Click to tag this word">${escapeHtml(word)}</button>`;
                         }).join('')}
                     </div>
+                    <div id="kgPosMenu${idx}" style="display:none; background:rgba(0,0,0,.4); border:1.5px solid var(--card-border); border-radius:12px; padding:12px; margin-top:14px;">
+                        <div style="font-weight:700; font-size:.85rem; color:var(--text-muted); margin-bottom:8px;">What part of speech is <span id="kgPosWord${idx}" style="color:var(--gold-star);"></span>?</div>
+                        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(90px, 1fr)); gap:6px;">
+                            ${Object.entries(PARTS_OF_SPEECH).map(([k, v]) => `
+                                <button class="fb-action-btn outline" data-pos-choice="${k}" style="padding:8px; font-size:.8rem; border-radius:8px;">${v.icon}<br>${v.label}</button>`).join('')}
+                        </div>
+                    </div>
+                    <div id="kgPosFeedback${idx}" style="margin-top:12px;"></div>
                 </div>`).join('')}
 
-            <div class="pos-legend">
+            <div class="pos-legend" style="margin-top:28px; padding-top:20px; border-top:1px solid var(--card-border);">
+                <div style="font-weight:700; font-size:.9rem; margin-bottom:12px; color:var(--text-muted);">Parts of speech reference:</div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px;">
                 ${Object.entries(PARTS_OF_SPEECH).map(([k, v]) => `
                     <div class="pos-legend-item" style="border-left-color:${v.colour}; background:rgba(255,255,255,.03);">
-                        <div style="font-weight:800; color:${v.colour};">${v.icon} ${v.label}</div>
-                        <div style="color:var(--text-muted); font-size:.75rem;">${v.short}</div>
+                        <div style="font-weight:800; color:${v.colour}; font-size:.9rem;">${v.icon} ${v.label}</div>
+                        <div style="color:var(--text-muted); font-size:.75rem; margin-top:4px;">${v.short}</div>
+                        <div style="color:var(--text-muted); font-size:.7rem; margin-top:6px; font-style:italic;">${v.test}</div>
                     </div>`).join('')}
+                </div>
             </div>
         </div>`;
 
-    const tokens = document.querySelectorAll('.pos-token');
-    tokens.forEach(t => {
-        const isCorrect = t.dataset.tag === t.getAttribute('data-correct');
-        if (t.getAttribute('data-correct') === t.dataset.tag) t.classList.add('selected');
+    // One shared click handler per token: open that sentence's menu, remember
+    // which token opened it, and grade whichever choice the child taps.
+    document.querySelectorAll('.pos-token').forEach(t => {
         t.addEventListener('click', () => {
-            const tag = t.dataset.tag;
-            const myTag = t.getAttribute('data-correct');
-            if (myTag === tag) {
-                t.classList.remove('selected');
-                t.removeAttribute('data-correct');
-            } else {
-                tokens.forEach(x => x.classList.remove('selected'));
-                t.setAttribute('data-correct', tag);
-                t.classList.add('selected');
-                if (tag === t.dataset.tag) { addXP(5); }
-            }
+            document.querySelectorAll('.pos-sentence > div[id^="kgPosMenu"]').forEach(m => m.style.display = 'none');
+            const sent = t.dataset.sent;
+            const menu = document.getElementById(`kgPosMenu${sent}`);
+            document.getElementById(`kgPosWord${sent}`).textContent = t.dataset.word;
+            menu.style.display = 'block';
+            menu.dataset.activeWordIdx = t.dataset.wordIdx;
+        });
+    });
+
+    document.querySelectorAll('[id^="kgPosMenu"]').forEach(menu => {
+        const sent = menu.id.replace('kgPosMenu', '');
+        menu.querySelectorAll('[data-pos-choice]').forEach(b => {
+            b.addEventListener('click', () => {
+                const wordIdx = menu.dataset.activeWordIdx;
+                const token = document.querySelector(`.pos-token[data-sent="${sent}"][data-word-idx="${wordIdx}"]`);
+                if (!token) return;
+                const correct = b.dataset.posChoice === token.dataset.tag;
+                menu.style.display = 'none';
+
+                if (correct) {
+                    token.classList.remove('wrong');
+                    token.classList.add('selected');
+                    token.dataset.solved = '1';
+                    addXP(5);
+                } else {
+                    token.classList.add('wrong');
+                    setTimeout(() => token.classList.remove('wrong'), 700);
+                }
+
+                const total = document.querySelectorAll(`.pos-token[data-sent="${sent}"]`).length;
+                const solved = document.querySelectorAll(`.pos-token[data-sent="${sent}"][data-solved="1"]`).length;
+                document.getElementById(`kgPosCount${sent}`).textContent = `${solved} / ${total} tagged`;
+
+                if (solved === total) {
+                    document.getElementById(`kgPosFeedback${sent}`).innerHTML =
+                        `<div class="finding good" style="margin:0;"><div class="finding-title">✅ Sentence complete!</div><div class="finding-body">Every word tagged correctly.</div></div>`;
+                    addXP(30);
+                }
+            });
         });
     });
 }
@@ -246,7 +289,11 @@ function renderDoctorCase() {
         </div>`;
 
     const opts = document.getElementById('kgDoctorOptions');
-    const options = [c.fix, ...([c.accept||[]].flat().slice(0, 2) || [])].sort(() => Math.random() - 0.5);
+    // Always exactly one correct answer plus its real wrong distractors — never
+    // a menu where every option happens to be correct, which makes the choice
+    // meaningless. `accept` alternatives live in the answer key, not on screen.
+    const wrongs = (c.distractors || []).slice(0, 2);
+    const options = [c.fix, ...wrongs].sort(() => Math.random() - 0.5);
     opts.innerHTML = options.map((o, i) => `<button class="drill-option" data-opt="${i}">${escapeHtml(o)}</button>`).join('');
     opts.querySelectorAll('[data-opt]').forEach(b =>
         b.addEventListener('click', () => gradeCaseChoice(parseInt(b.dataset.opt, 10), options)));
@@ -255,11 +302,11 @@ function renderDoctorCase() {
 function gradeCaseChoice(pick, options) {
     const set = kgCurrentSet();
     const c = set.cases[kgDoctor.index];
-    const correct = options[pick] === c.fix || (c.accept || []).includes(options[pick]);
+    const correct = options[pick] === c.fix;
 
     document.querySelectorAll('[data-opt]').forEach(b => {
         const i = parseInt(b.dataset.opt, 10);
-        if (options[i] === c.fix || (c.accept || []).includes(options[i])) b.classList.add('correct');
+        if (options[i] === c.fix) b.classList.add('correct');
         else if (i === pick) b.classList.add('wrong');
         b.disabled = true;
     });
@@ -272,6 +319,7 @@ function gradeCaseChoice(pick, options) {
         <div class="finding ${correct ? 'good' : 'warn'}" style="margin-top:14px;">
             <div class="finding-title">${correct ? '✅ Right!' : '🔧 Not quite.'}</div>
             <div class="finding-body">${escapeHtml(c.why)}</div>
+            ${(c.accept && c.accept.length) ? `<div class="finding-body" style="margin-top:8px; font-style:italic;">Also correct: ${c.accept.map(a => `"${escapeHtml(a)}"`).join(', ')}</div>` : ''}
             ${c.rule ? `<button class="fb-action-btn outline" style="padding:6px 12px; font-size:.8rem; margin-top:8px;" data-rule="${escapeHtml(c.rule)}">Read the rule</button>` : ''}
         </div>
         <button class="fb-action-btn ${correct ? 'green' : 'gold'}" id="kgDoctorNext" style="margin-top:10px;">Next →</button>`;

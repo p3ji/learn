@@ -220,6 +220,10 @@ const RULE_CARDS = [
 // `fix` is the accepted answer; `accept` holds extra valid alternatives, because
 // most of these have more than one correct repair and marking a correct answer
 // wrong is the fastest way to make a child distrust the app.
+//
+// `distractors` are genuinely WRONG repairs — plausible mistakes, not the right
+// answer reworded. Every case needs at least one; without a real distractor,
+// every option on screen is technically correct and there is nothing to decide.
 
 const DOCTOR_SETS = [
     {
@@ -229,12 +233,18 @@ const DOCTOR_SETS = [
         blurb: "its/it's, there/their, your/you're",
         badge: 'confusable_champ',
         cases: [
-            { broken: "The cat licked it's paw.",              fix: "The cat licked its paw.",                    rule: 'its',        why: "Belonging to it = its, no apostrophe. \"It is paw\" makes no sense." },
-            { broken: "Its going to rain later.",              fix: "It's going to rain later.",                  rule: 'its',        why: "\"It is going to rain\" works, so you need the apostrophe." },
-            { broken: "Their going to be late again.",         fix: "They're going to be late again.",            rule: 'there',      why: "\"They are going to be late\" — so they're." },
-            { broken: "Put you're coat over their.",           fix: "Put your coat over there.",                  rule: 'your',       why: "The coat belongs to you (your), and \"over there\" is a place." },
-            { broken: "I could of told you that.",             fix: "I could have told you that.",                rule: 'could_have', why: "Never \"could of\". The verb is have.", accept: ["I could've told you that."] },
-            { broken: "We saw a elephant at the zoo.",         fix: "We saw an elephant at the zoo.",             rule: 'a_an',       why: "\"Elephant\" starts with a vowel sound, so it takes an." }
+            { broken: "The cat licked it's paw.",              fix: "The cat licked its paw.",                    rule: 'its',        why: "Belonging to it = its, no apostrophe. \"It is paw\" makes no sense.",
+              distractors: ["The cat licked its' paw.", "The cat licked it is paw."] },
+            { broken: "Its going to rain later.",              fix: "It's going to rain later.",                  rule: 'its',        why: "\"It is going to rain\" works, so you need the apostrophe.",
+              distractors: ["Its' going to rain later.", "It's going to rain later's."] },
+            { broken: "Their going to be late again.",         fix: "They're going to be late again.",            rule: 'there',      why: "\"They are going to be late\" — so they're.",
+              distractors: ["There going to be late again.", "Their're going to be late again."] },
+            { broken: "Put you're coat over their.",           fix: "Put your coat over there.",                  rule: 'your',       why: "The coat belongs to you (your), and \"over there\" is a place.",
+              distractors: ["Put your coat over they're.", "Put you're coat over there."] },
+            { broken: "I could of told you that.",             fix: "I could have told you that.",                rule: 'could_have', why: "Never \"could of\". The verb is have.", accept: ["I could've told you that."],
+              distractors: ["I could off told you that.", "I could had told you that."] },
+            { broken: "We saw a elephant at the zoo.",         fix: "We saw an elephant at the zoo.",             rule: 'a_an',       why: "\"Elephant\" starts with a vowel sound, so it takes an.",
+              distractors: ["We saw the elephant at the zoo.", "We saw a elephants at the zoo."] }
         ]
     },
     {
@@ -244,11 +254,16 @@ const DOCTOR_SETS = [
         blurb: 'Making the verb match the subject',
         badge: 'agreement_ace',
         cases: [
-            { broken: "They was waiting at the gate.",         fix: "They were waiting at the gate.",             rule: 'sv_agree', why: "\"They\" is plural, so the verb is were." },
-            { broken: "She were the first one there.",         fix: "She was the first one there.",               rule: 'sv_agree', why: "\"She\" is singular, so the verb is was." },
-            { broken: "The box of apples are heavy.",          fix: "The box of apples is heavy.",                rule: 'sv_agree', why: "The subject is \"box\" (one box), not \"apples\"." },
-            { broken: "My brother don't like olives.",         fix: "My brother doesn't like olives.",            rule: 'sv_agree', why: "One brother → doesn't. Many brothers → don't." },
-            { broken: "There is six eggs left.",               fix: "There are six eggs left.",                   rule: 'sv_agree', why: "Six eggs is plural, so it takes are." }
+            { broken: "They was waiting at the gate.",         fix: "They were waiting at the gate.",             rule: 'sv_agree', why: "\"They\" is plural, so the verb is were.",
+              distractors: ["They is waiting at the gate.", "They was wait at the gate."] },
+            { broken: "She were the first one there.",         fix: "She was the first one there.",               rule: 'sv_agree', why: "\"She\" is singular, so the verb is was.",
+              distractors: ["She were the first one their.", "She be the first one there."] },
+            { broken: "The box of apples are heavy.",          fix: "The box of apples is heavy.",                rule: 'sv_agree', why: "The subject is \"box\" (one box), not \"apples\".",
+              distractors: ["The boxes of apples are heavy.", "The box of apple is heavy."] },
+            { broken: "My brother don't like olives.",         fix: "My brother doesn't like olives.",            rule: 'sv_agree', why: "One brother → doesn't. Many brothers → don't.",
+              distractors: ["My brother don't likes olives.", "My brothers doesn't like olives."] },
+            { broken: "There is six eggs left.",               fix: "There are six eggs left.",                   rule: 'sv_agree', why: "Six eggs is plural, so it takes are.",
+              distractors: ["Their are six eggs left.", "There is six egg left."] }
         ]
     },
     {
@@ -258,11 +273,16 @@ const DOCTOR_SETS = [
         blurb: 'Commas, apostrophes and capitals',
         badge: 'punctuation_pro',
         cases: [
-            { broken: "it was tuesday and priya was late.",    fix: "It was Tuesday and Priya was late.",         rule: 'capitals',    why: "Sentence start, day of the week, and a person's name all take capitals." },
-            { broken: "my friend and i went to spain in july.",fix: "My friend and I went to Spain in July.",      rule: 'capitals',    why: "The word I is always a capital, and Spain and July are proper nouns." },
-            { broken: "The dogs bowl was empty.",              fix: "The dog's bowl was empty.",                  rule: 'apostrophe',  why: "The bowl belongs to the dog, so it needs an apostrophe.", accept: ["The dogs' bowl was empty."] },
-            { broken: "I bought three banana's.",              fix: "I bought three bananas.",                    rule: 'apostrophe',  why: "Apostrophes never make a word plural." },
-            { broken: "After the film we bought chips drinks and ice cream.", fix: "After the film, we bought chips, drinks and ice cream.", rule: 'commas_list', why: "A comma after the opening phrase, and commas between the list items.", accept: ["After the film, we bought chips, drinks, and ice cream."] }
+            { broken: "it was tuesday and priya was late.",    fix: "It was Tuesday and Priya was late.",         rule: 'capitals',    why: "Sentence start, day of the week, and a person's name all take capitals.",
+              distractors: ["It was tuesday and Priya was late.", "It Was Tuesday And Priya Was Late."] },
+            { broken: "my friend and i went to spain in july.",fix: "My friend and I went to Spain in July.",      rule: 'capitals',    why: "The word I is always a capital, and Spain and July are proper nouns.",
+              distractors: ["My friend and I went to spain in july.", "My Friend and I went to Spain in July."] },
+            { broken: "The dogs bowl was empty.",              fix: "The dog's bowl was empty.",                  rule: 'apostrophe',  why: "The bowl belongs to the dog, so it needs an apostrophe.", accept: ["The dogs' bowl was empty."],
+              distractors: ["The dog's's bowl was empty.", "The dogs' bowls was empty."] },
+            { broken: "I bought three banana's.",              fix: "I bought three bananas.",                    rule: 'apostrophe',  why: "Apostrophes never make a word plural.",
+              distractors: ["I bought three banana's's.", "I bought three bananas'."] },
+            { broken: "After the film we bought chips drinks and ice cream.", fix: "After the film, we bought chips, drinks and ice cream.", rule: 'commas_list', why: "A comma after the opening phrase, and commas between the list items.", accept: ["After the film, we bought chips, drinks, and ice cream."],
+              distractors: ["After the film we bought, chips, drinks and ice cream.", "After, the film we bought chips drinks and ice cream."] }
         ]
     },
     {
@@ -272,11 +292,16 @@ const DOCTOR_SETS = [
         blurb: 'Fragments, run-ons and comma splices',
         badge: 'sentence_surgeon',
         cases: [
-            { broken: "Because it was raining.",               fix: "We stayed inside because it was raining.",   rule: 'fragment',     why: "\"Because...\" cannot stand alone — it needs a main clause.", loose: true },
-            { broken: "It was late, we went home.",            fix: "It was late, so we went home.",              rule: 'comma_splice', why: "A comma is too weak to join two full sentences. Add a joining word or use a full stop.", accept: ["It was late. We went home.", "It was late; we went home."] },
-            { broken: "The bell rang we ran outside.",          fix: "The bell rang, so we ran outside.",          rule: 'run_on',       why: "Two complete sentences shoved together. Separate or join them properly.", accept: ["The bell rang. We ran outside.", "The bell rang and we ran outside.", "The bell rang, and we ran outside."] },
-            { broken: "I didn't see nothing in the shed.",      fix: "I didn't see anything in the shed.",         rule: 'double_neg',   why: "Two negatives cancel out. Use one.", accept: ["I saw nothing in the shed."] },
-            { broken: "She walked into the room and sees the letter.", fix: "She walked into the room and saw the letter.", rule: 'tense', why: "Stay in one tense — \"walked\" is past, so \"saw\" is too.", accept: ["She walks into the room and sees the letter."] }
+            { broken: "Because it was raining.",               fix: "We stayed inside because it was raining.",   rule: 'fragment',     why: "\"Because...\" cannot stand alone — it needs a main clause.", loose: true,
+              distractors: ["Because it was very raining.", "It was raining because."] },
+            { broken: "It was late, we went home.",            fix: "It was late, so we went home.",              rule: 'comma_splice', why: "A comma is too weak to join two full sentences. Add a joining word or use a full stop.", accept: ["It was late. We went home.", "It was late; we went home."],
+              distractors: ["It was late we went home.", "It was late, and, we went home."] },
+            { broken: "The bell rang we ran outside.",          fix: "The bell rang, so we ran outside.",          rule: 'run_on',       why: "Two complete sentences shoved together. Separate or join them properly.", accept: ["The bell rang. We ran outside.", "The bell rang and we ran outside.", "The bell rang, and we ran outside."],
+              distractors: ["The bell rang, we ran outside.", "The bell rang so, we ran outside."] },
+            { broken: "I didn't see nothing in the shed.",      fix: "I didn't see anything in the shed.",         rule: 'double_neg',   why: "Two negatives cancel out. Use one.", accept: ["I saw nothing in the shed."],
+              distractors: ["I didn't seen nothing in the shed.", "I don't saw nothing in the shed."] },
+            { broken: "She walked into the room and sees the letter.", fix: "She walked into the room and saw the letter.", rule: 'tense', why: "Stay in one tense — \"walked\" is past, so \"saw\" is too.", accept: ["She walks into the room and sees the letter."],
+              distractors: ["She walks into the room and saw the letter.", "She was walking into the room and sees the letter."] }
         ]
     }
 ];
