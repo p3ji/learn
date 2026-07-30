@@ -17,6 +17,7 @@
 - `apps/kids_math` (MathForge Ottawa): `node apps/kids_math/test/smoke.js` — curriculum schema
   integrity and procedural question generator math checks. Run after editing `curriculum_data.js`
   or `math_engine.js`.
+- `apps/kids_geo` (Kids Geo Arcade): `node apps/kids_geo/test/smoke.js` — schema integrity, Carmen Sandiego case trails & Bushbuck item/contract tests. Run after editing `geo_data.js`, `carmen_engine.js`, or `bushbuck_engine.js`.
 
 ## Conventions & gotchas
 - Keep this file short; put goals/backlog in the linked Brain note, not here.
