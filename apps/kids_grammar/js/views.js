@@ -94,13 +94,31 @@ function renderCheckView(container) {
 
 // ---------- Parts of Speech Lab ----------
 
+// Draws from the full corpus without repeating a sentence until every one has
+// been seen once, so a big pool (40+) actually gets exercised across rounds
+// instead of the same handful resurfacing by chance.
+let kgPosDeck = [];
+
+function kgDrawPosBatch(n) {
+    if (kgPosDeck.length < n) {
+        kgPosDeck = [...POS_SENTENCES].sort(() => Math.random() - 0.5);
+    }
+    return kgPosDeck.splice(0, n);
+}
+
 function renderPosView(container) {
-    const shuffled = [...POS_SENTENCES].sort(() => Math.random() - 0.5).slice(0, 3);
+    const batchSize = Math.min(5, POS_SENTENCES.length);
+    const shuffled = kgDrawPosBatch(batchSize);
 
     container.innerHTML = `
         <div class="panel">
-            <h2 class="panel-title">🧩 Parts of Speech Lab</h2>
-            <p class="panel-sub">Click a word, then choose which part of speech it is. Get every word in a sentence right to finish it.</p>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap;">
+                <div>
+                    <h2 class="panel-title">🧩 Parts of Speech Lab</h2>
+                    <p class="panel-sub" style="margin:0;">Click a word, then choose which part of speech it is. Get every word in a sentence right to finish it. ${POS_SENTENCES.length} sentences in rotation.</p>
+                </div>
+                <button class="fb-action-btn outline" id="kgPosReshuffle">🔀 New sentences</button>
+            </div>
 
             ${shuffled.map((s, idx) => `
                 <div class="pos-sentence" data-sent="${idx}">
@@ -183,6 +201,8 @@ function renderPosView(container) {
             });
         });
     });
+
+    document.getElementById('kgPosReshuffle').addEventListener('click', () => renderPosView(container));
 }
 
 // ---------- Rule Cards ----------
