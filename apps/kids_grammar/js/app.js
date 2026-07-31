@@ -18,6 +18,13 @@ function unlockBadge(badgeId) {
 }
 
 function updateProfileUI() {
+    if (typeof window !== 'undefined' && window.SuitePassport) {
+        const passportProf = window.SuitePassport.getProfile();
+        if (passportProf && passportProf.name) {
+            currentProfile.username = passportProf.name;
+            currentProfile.avatar = passportProf.avatar || '📚';
+        }
+    }
     const set = (id, fn) => { const el = document.getElementById(id); if (el) fn(el); };
     set('kgUserAvatar', el => el.textContent = currentProfile.avatar);
     set('kgUserName', el => el.textContent = currentProfile.username);

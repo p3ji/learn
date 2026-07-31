@@ -96,6 +96,10 @@
     updateProfile(updates) {
       this.data.profile = { ...this.data.profile, ...updates };
       this.save();
+      if (typeof document !== 'undefined') {
+        const el = document.getElementById('passport-pill-container');
+        if (el) this.renderPassportPill('passport-pill-container');
+      }
     }
 
     calculateLevel(xp) {

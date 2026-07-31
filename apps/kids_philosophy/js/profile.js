@@ -9,6 +9,15 @@ let currentProfile = {
     badges: ["young_thinker"]
 };
 
+function syncPassportProfile() {
+    if (typeof window !== 'undefined' && window.SuitePassport && currentProfile && currentProfile.username) {
+        window.SuitePassport.updateProfile({
+            name: currentProfile.username,
+            avatar: currentProfile.avatar || '🦉'
+        });
+    }
+}
+
 function initProfileSystem() {
     const savedActive = localStorage.getItem('kids_active_profile');
     if (savedActive) {
@@ -16,6 +25,13 @@ function initProfileSystem() {
         if (allProfiles[savedActive]) {
             currentProfile = allProfiles[savedActive];
         }
+    } else if (typeof window !== 'undefined' && window.SuitePassport) {
+        const passportProf = window.SuitePassport.getProfile();
+        if (passportProf && passportProf.name) {
+            currentProfile.username = passportProf.name;
+            currentProfile.avatar = passportProf.avatar || '🦉';
+        }
+        saveProfileState();
     } else {
         saveProfileState();
     }
@@ -27,6 +43,7 @@ function saveProfileState() {
     allProfiles[currentProfile.username] = currentProfile;
     localStorage.setItem('kids_rts_profiles', JSON.stringify(allProfiles));
     localStorage.setItem('kids_active_profile', currentProfile.username);
+    syncPassportProfile();
 }
 
 function updateProfileUI() {

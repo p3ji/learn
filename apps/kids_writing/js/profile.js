@@ -26,16 +26,30 @@ function kwBlankProfile(name) {
 
 let currentProfile = kwBlankProfile('New Writer');
 
+function kwSyncPassportProfile() {
+    if (typeof window !== 'undefined' && window.SuitePassport && currentProfile && currentProfile.username) {
+        window.SuitePassport.updateProfile({
+            name: currentProfile.username,
+            avatar: currentProfile.avatar || '✍️'
+        });
+    }
+}
+
 function initProfileSystem() {
     const active = localStorage.getItem(KW_ACTIVE_KEY);
     const all = kwAllProfiles();
     if (active && all[active]) {
         // Merge over a blank so profiles saved by an older build gain new fields.
         currentProfile = Object.assign(kwBlankProfile(active), all[active]);
+    } else if (typeof window !== 'undefined' && window.SuitePassport) {
+        const passportProf = window.SuitePassport.getProfile();
+        if (passportProf && passportProf.name) {
+            currentProfile = kwBlankProfile(passportProf.name);
+            currentProfile.avatar = passportProf.avatar || '✍️';
+        } else {
+            currentProfile = kwBlankProfile('New Writer');
+        }
     } else {
-        // No saved writer: start genuinely blank. Without this the previous
-        // in-memory profile would be re-persisted, so clearing storage (or
-        // deleting the active writer) left the old streak and XP behind.
         currentProfile = kwBlankProfile('New Writer');
     }
     saveProfileState();
@@ -55,6 +69,7 @@ function saveProfileState() {
     all[currentProfile.username] = currentProfile;
     localStorage.setItem(KW_PROFILES_KEY, JSON.stringify(all));
     localStorage.setItem(KW_ACTIVE_KEY, currentProfile.username);
+    kwSyncPassportProfile();
 }
 
 const KW_XP_PER_LEVEL = 250;

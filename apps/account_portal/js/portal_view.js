@@ -90,16 +90,47 @@ class AccountPortalView {
 
   saveProfile(e) {
     e.preventDefault();
-    const name = document.getElementById('profile-name-input').value;
+    const name = document.getElementById('profile-name-input').value.trim();
     const grade = document.getElementById('profile-grade-input').value;
     const bio = document.getElementById('profile-bio-input').value;
 
-    window.SuitePassport.updateProfile({
-      name: name,
-      avatar: this.selectedAvatar,
-      grade: grade,
-      bio: bio
-    });
+    if (name) {
+      window.SuitePassport.updateProfile({
+        name: name,
+        avatar: this.selectedAvatar,
+        grade: grade,
+        bio: bio
+      });
+
+      // Sync sub-app profile stores if present
+      try {
+        const activePh = localStorage.getItem('kids_active_profile');
+        let phProfiles = JSON.parse(localStorage.getItem('kids_rts_profiles') || '{}');
+        if (activePh && phProfiles[activePh]) {
+          const pData = phProfiles[activePh];
+          delete phProfiles[activePh];
+          pData.username = name;
+          pData.avatar = this.selectedAvatar;
+          phProfiles[name] = pData;
+          localStorage.setItem('kids_rts_profiles', JSON.stringify(phProfiles));
+          localStorage.setItem('kids_active_profile', name);
+        }
+
+        const activeKw = localStorage.getItem('kw_active_writer');
+        let kwProfiles = JSON.parse(localStorage.getItem('kw_writer_profiles') || '{}');
+        if (activeKw && kwProfiles[activeKw]) {
+          const kwData = kwProfiles[activeKw];
+          delete kwProfiles[activeKw];
+          kwData.username = name;
+          kwData.avatar = this.selectedAvatar;
+          kwProfiles[name] = kwData;
+          localStorage.setItem('kw_writer_profiles', JSON.stringify(kwProfiles));
+          localStorage.setItem('kw_active_writer', name);
+        }
+      } catch (err) {
+        console.error('Failed to sync sub-app profile stores', err);
+      }
+    }
 
     this.closeModal();
     this.render();
