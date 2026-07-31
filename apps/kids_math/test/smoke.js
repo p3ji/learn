@@ -101,6 +101,68 @@ const g8Quiz = MathEngine.generateQuiz('grade8', 10);
 assert(g3Quiz.length === 10, 'Grade 3 quiz generates 10 questions');
 assert(g8Quiz.length === 10, 'Grade 8 quiz generates 10 questions');
 
+// 5. Test Number Munchers Arcade Engine
+console.log('\n--- 5. Testing Number Munchers Engine ---');
+require(path.join(__dirname, '../js/munchers_engine.js'));
+const { MunchersEngine } = global;
+
+assert(MunchersEngine !== undefined, 'MunchersEngine exists');
+assert(MunchersEngine.isPrime(97) && !MunchersEngine.isPrime(1) && !MunchersEngine.isPrime(91), 'Prime predicate is correct');
+assert(MunchersEngine.isSquare(144) && !MunchersEngine.isSquare(145), 'Square predicate is correct');
+
+['grade3', 'grade8'].forEach(gKey => {
+  let packsOk = true;
+  let boardsOk = true;
+  let purityOk = true;
+  let uniqueOk = true;
+
+  for (let run = 0; run < 60; run++) {
+    const packs = MunchersEngine.buildRulePacks(gKey);
+    if (!packs.length) { packsOk = false; break; }
+
+    packs.forEach(rule => {
+      if (!rule.id || !rule.title || !rule.prompt || !rule.strandCode) packsOk = false;
+
+      // Correct generators must actually satisfy the rule predicate.
+      for (let i = 0; i < 40; i++) {
+        const c = rule.correct();
+        if (!c || typeof c.text !== 'string' || typeof c.val !== 'number' || isNaN(c.val)) purityOk = false;
+        if (!rule.test(c.val)) purityOk = false;
+        const w = rule.wrong();
+        if (!w || typeof w.text !== 'string' || typeof w.val !== 'number' || isNaN(w.val)) purityOk = false;
+      }
+
+      const grid = MunchersEngine.buildBoard(rule, 5, 6, 8);
+      if (grid.length !== 5 || grid.some(r => r.length !== 6)) boardsOk = false;
+
+      const texts = new Set();
+      let correctCount = 0;
+      grid.forEach(row => row.forEach(cell => {
+        texts.add(cell.text);
+        // The cell's stored flag must match the rule predicate exactly.
+        if (cell.correct !== !!rule.test(cell.val)) purityOk = false;
+        if (cell.correct) correctCount++;
+      }));
+      if (texts.size !== 30) uniqueOk = false;
+      if (correctCount < 1) boardsOk = false;
+      if (MunchersEngine.countRemainingCorrect(grid) !== correctCount) boardsOk = false;
+    });
+  }
+
+  assert(packsOk, `${gKey} rule packs have complete metadata`);
+  assert(boardsOk, `${gKey} boards are 5x6 with at least one correct cell`);
+  assert(purityOk, `${gKey} cell correctness always matches the rule predicate`);
+  assert(uniqueOk, `${gKey} boards contain 30 unique cell labels`);
+});
+
+let levelsOk = true;
+for (let lvl = 1; lvl <= 8; lvl++) {
+  const r3 = MunchersEngine.ruleForLevel('grade3', lvl);
+  const r8 = MunchersEngine.ruleForLevel('grade8', lvl);
+  if (!r3 || !r8 || typeof r3.test !== 'function' || typeof r8.test !== 'function') levelsOk = false;
+}
+assert(levelsOk, 'ruleForLevel returns a playable rule for levels 1-8');
+
 console.log(`\n========================================`);
 console.log(`RESULTS: Passed: ${passed} | Failed: ${failed}`);
 console.log(`========================================\n`);

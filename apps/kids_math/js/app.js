@@ -81,6 +81,7 @@ class KidsMathApp {
   }
 
   setGrade(gradeKey) {
+    if (this.munchers) this.munchers.quit();
     this.currentGrade = gradeKey;
     localStorage.setItem('kids_math_grade', gradeKey);
     this.selectedStrand = 'all';
@@ -266,6 +267,19 @@ class KidsMathApp {
     }
   }
 
+  startMunchers() {
+    this.closeModal();
+    if (!this.munchers) this.munchers = new window.MunchersGame(this);
+    this.viewMode = 'munchers';
+    this.munchers.start(this.currentGrade);
+    this.render();
+  }
+
+  exitMunchers() {
+    if (this.munchers) this.munchers.quit();
+    this.showMainView();
+  }
+
   startDiagnosticQuiz() {
     this.quizState = {
       questions: window.MathEngine.generateQuiz(this.currentGrade, 8),
@@ -318,6 +332,8 @@ class KidsMathApp {
         }
       } else if (this.viewMode === 'quiz') {
         main.innerHTML = window.Views.renderQuizView(this.quizState);
+      } else if (this.viewMode === 'munchers') {
+        main.innerHTML = this.munchers.render();
       }
     }
   }

@@ -21,6 +21,9 @@
 
 ## Conventions & gotchas
 - Keep this file short; put goals/backlog in the linked Brain note, not here.
+- `kids_math` Number Munchers (`js/munchers_engine.js`): a cell is correct **only** if
+  `rule.test(val)` says so — the `wrong()` generators are distractor hints, never truth. Any new
+  rule pack needs >30 distinct labels or `buildBoard` can't fill the 5×6 grid (smoke test catches it).
 
 ## Do NOT
 - Commit secrets (`.env`) or large build artifacts.

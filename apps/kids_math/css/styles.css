@@ -590,3 +590,138 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   Number Munchers Arcade
+   ============================================================ */
+
+.munch-launch {
+  margin-top: 10px;
+  background: linear-gradient(135deg, var(--accent-emerald), var(--accent-cyan));
+}
+
+.munch-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.munch-goal {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin: 6px 0 2px;
+}
+
+.munch-prompt {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.munch-stats {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.munch-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.munch-cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-family: var(--font-code);
+  font-weight: 700;
+  font-size: clamp(0.8rem, 2.6vw, 1.15rem);
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+.munch-cell:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
+
+.munch-cell.is-eaten {
+  background: rgba(16, 185, 129, 0.12);
+  border-style: dashed;
+  border-color: rgba(16, 185, 129, 0.45);
+}
+
+.munch-cell.is-player {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+}
+
+.munch-cell.is-troggle {
+  border-color: var(--accent-red);
+}
+
+.munch-sprite {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: clamp(1rem, 3.4vw, 1.5rem);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.munch-hero {
+  left: 4px;
+  right: auto;
+  filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.7));
+}
+
+.munch-controls {
+  margin-top: 12px;
+}
+
+.munch-dpad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.munch-dpad > div {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.munch-dpad button {
+  min-width: 56px;
+  min-height: 48px;
+  font-size: 1rem;
+}
+
+.munch-eat {
+  min-width: 120px;
+  letter-spacing: 0.08em;
+}
+
+.munch-help {
+  margin-top: 12px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 520px) {
+  .munch-grid { gap: 5px; }
+  .munch-cell { border-radius: var(--radius-sm); }
+}

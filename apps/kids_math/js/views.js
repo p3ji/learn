@@ -91,6 +91,9 @@
             <button class="btn-primary" onclick="app.startDiagnosticQuiz()">
               ⚡ OCDSB Strand Diagnostic Quiz
             </button>
+            <button class="btn-primary munch-launch" onclick="app.startMunchers()">
+              🐛 Number Munchers Arcade
+            </button>
           </div>
         </div>
 
