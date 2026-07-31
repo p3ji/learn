@@ -379,12 +379,16 @@
   }
 
   /**
-   * Pick the rule for a level. Levels cycle through a freshly randomised pack
-   * list so consecutive plays are not identical.
+   * Pick the rule for a level. Level 1 is curated per grade (easier starts);
+   * later levels cycle through a freshly randomised pack list.
    */
   function ruleForLevel(grade, level) {
+    if (level === 1) {
+      if (grade === 'grade8') return primesRule();
+      return multiplesRule(2);
+    }
     const packs = buildRulePacks(grade);
-    return packs[(level - 1) % packs.length];
+    return packs[(level - 2) % packs.length];
   }
 
   /**

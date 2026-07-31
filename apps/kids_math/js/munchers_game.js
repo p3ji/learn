@@ -119,16 +119,9 @@
       this.draw();
     }
 
-    /** Tap handler: move to a cell, or munch it if already standing there. */
+    /** Tap handler: keyboard only, no mouse support. */
     tapCell(r, c) {
-      if (!this.active || this.gameOver) return;
-      if (this.player.r === r && this.player.c === c) {
-        this.munch();
-      } else {
-        this.player = { r, c };
-        this.checkCollision();
-        this.draw();
-      }
+      // no-op: keyboard controls only
     }
 
     /* ---------------- gameplay ---------------- */
@@ -240,9 +233,8 @@
           if (isPlayer) classes.push('is-player');
           if (troggle) classes.push('is-troggle');
           cellsHtml += `
-            <button type="button" class="${classes.join(' ')}"
-              aria-label="Row ${r + 1} column ${c + 1}: ${cell.eaten ? 'eaten' : cell.text}${isPlayer ? ', your muncher' : ''}${troggle ? ', Troggle here' : ''}"
-              onclick="app.munchers.tapCell(${r}, ${c})">
+            <button type="button" class="${classes.join(' ')}" disabled
+              aria-label="Row ${r + 1} column ${c + 1}: ${cell.eaten ? 'eaten' : cell.text}${isPlayer ? ', your muncher' : ''}${troggle ? ', Troggle here' : ''}">
               <span class="munch-value">${cell.eaten ? '' : cell.text}</span>
               ${troggle ? `<span class="munch-sprite">${troggle.emoji}</span>` : ''}
               ${isPlayer ? '<span class="munch-sprite munch-hero">🐛</span>' : ''}
@@ -287,7 +279,7 @@
                 <button class="btn-secondary" onclick="app.munchers.move(1,0)">▼</button>
               </div>
               <p class="munch-help">
-                Arrow keys or WASD to move · Space to munch · tap a square on touch screens.
+                Arrow keys or WASD to move · Space or Enter to munch.
                 Dodge the Troggles ${TROGGLE_EMOJI.join(' ')} — they cost a life.
               </p>
             </div>
