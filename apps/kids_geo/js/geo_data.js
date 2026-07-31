@@ -601,11 +601,21 @@ window.GeoData = {
         { id: 'platinum_paula', name: 'Platinum Paula', gender: 'Female', hair: 'Silver', vehicle: 'Motorcycle', food: 'Koshary', hobby: 'Rock Climbing', feature: 'Platinum chain', eyewear: 'Goggles', bio: 'Speedway racer.' },
 
         // BROWN HAIR GROUP (5)
-        { id: 'captain_barnaby', name: 'Captain Barnaby', gender: 'Male', hair: 'Brown', vehicle: 'Submarine', food: 'Fish & Chips', hobby: 'Sailing', feature: 'Sailor cap', eyewear: 'None', bio: 'Ex-naval officer.' },
-        { id: 'bronze_brunhilda', name: 'Bronze Brunhilda', gender: 'Female', hair: 'Brown', vehicle: 'Convertible', food: 'Croissants', hobby: 'Fencing', feature: 'Bronze shield pin', eyewear: 'Sunglasses', bio: 'Highway speedster.' },
-        { id: 'burl_benny', name: 'Burl Benny', gender: 'Male', hair: 'Brown', vehicle: 'Helicopter', food: 'Pizza', hobby: 'Chess', feature: 'Leather jacket', eyewear: 'Monocle', bio: 'Airborne strategist.' },
-        { id: 'bella_bambina', name: 'Bella Bambina', gender: 'Female', hair: 'Brown', vehicle: 'Speedboat', food: 'Sushi', hobby: 'Scuba Diving', feature: 'Pearl necklace', eyewear: 'Sunglasses', bio: 'Coral reef raider.' },
-        { id: 'brown_buster', name: 'Brown Buster', gender: 'Male', hair: 'Brown', vehicle: 'Jetpack', food: 'Ramen', hobby: 'Rock Climbing', feature: 'Climbing carabiner', eyewear: 'Goggles', bio: 'Mountain leap specialist.' }
+        { id: 'captain_barnaby', name: 'Captain Barnaby', gender: 'Male', hair: 'Brown', vehicle: 'Submarine', food: 'Fish & Chips', hobby: 'Sailing', feature: 'Sailor cap', eyewear: 'None', bio: 'Ex-naval officer turned relic smuggler.' },
+        { id: 'bronze_brunhilda', name: 'Bronze Brunhilda', gender: 'Female', hair: 'Brown', vehicle: 'Convertible', food: 'Croissants', hobby: 'Fencing', feature: 'Bronze shield pin', eyewear: 'Sunglasses', bio: 'Highway speedster and blade expert.' },
+        { id: 'burl_benny', name: 'Burl Benny', gender: 'Male', hair: 'Brown', vehicle: 'Helicopter', food: 'Pizza', hobby: 'Chess', feature: 'Leather jacket', eyewear: 'Monocle', bio: 'Airborne chess grandmaster.' },
+        { id: 'bella_bambina', name: 'Bella Bambina', gender: 'Female', hair: 'Brown', vehicle: 'Speedboat', food: 'Sushi', hobby: 'Scuba Diving', feature: 'Pearl necklace', eyewear: 'Sunglasses', bio: 'Coral reef vault raider.' },
+        { id: 'brown_buster', name: 'Brown Buster', gender: 'Male', hair: 'Brown', vehicle: 'Jetpack', food: 'Ramen', hobby: 'Rock Climbing', feature: 'Climbing carabiner', eyewear: 'Goggles', bio: 'Mountain leap specialist.' },
+
+        // WHITE HAIR GROUP — 3 new suspects (includes Non-binary)
+        { id: 'frost_phoenix', name: 'Frost Phoenix', gender: 'Non-binary', hair: 'White', vehicle: 'Hovercraft', food: 'Dim Sum', hobby: 'Origami', feature: 'Frost-blue cape', eyewear: 'Sunglasses', bio: 'Arctic heist phantom with a taste for paper arts.' },
+        { id: 'ivory_iris', name: 'Ivory Iris', gender: 'Female', hair: 'White', vehicle: 'Glider', food: 'Pho', hobby: 'Calligraphy', feature: 'Ivory brooch', eyewear: 'None', bio: 'Silent glider thief inspired by East Asian art.' },
+        { id: 'blanche_cipher', name: 'Blanche Cipher', gender: 'Male', hair: 'White', vehicle: 'Submarine', food: 'Dim Sum', hobby: 'Cryptography', feature: 'Cipher tattoo on wrist', eyewear: 'Goggles', bio: 'Code-breaker who vanishes beneath the waves.' },
+
+        // AUBURN HAIR GROUP — 3 new suspects (includes Non-binary)
+        { id: 'vale_vortex', name: 'Vale Vortex', gender: 'Non-binary', hair: 'Auburn', vehicle: 'Glider', food: 'Pho', hobby: 'Parkour', feature: 'Iridescent scarf', eyewear: 'Goggles', bio: 'Free-runner who leaps rooftops across three continents.' },
+        { id: 'copperton_claire', name: 'Copperton Claire', gender: 'Female', hair: 'Auburn', vehicle: 'Motorcycle', food: 'Tacos', hobby: 'Origami', feature: 'Copper ring', eyewear: 'Sunglasses', bio: 'Speedway origami artist, wanted on five continents.' },
+        { id: 'rex_russet', name: 'Rex Russet', gender: 'Male', hair: 'Auburn', vehicle: 'Hovercraft', food: 'Tacos', hobby: 'Parkour', feature: 'Russet trench coat', eyewear: 'None', bio: 'Hovercraft chase specialist.' }
     ],
 
     // 25 Stolen Landmark Artifacts

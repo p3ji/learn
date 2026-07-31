@@ -310,8 +310,8 @@ window.CarmenEngine = class CarmenEngine {
                 // Library witness reveals: hobby (reading interests)
                 return `[HOBBY INTEL] A librarian said the person was researching ${suspect.hobby}.`;
             case 'airport':
-                // Airport witness reveals: hair + eyewear (physical appearance)
-                return `[APPEARANCE INTEL] The gate agent noted ${suspect.hair} hair and ${eyewear !== 'None' ? eyewear : 'no eyewear'}.`;
+                // Airport witness reveals: gender + hair + eyewear (physical appearance)
+                return `[APPEARANCE INTEL] The gate agent described a ${suspect.gender || 'unknown gender'} individual with ${suspect.hair} hair and ${eyewear !== 'None' ? eyewear : 'no eyewear'}.`;
             case 'chef':
                 // Chef witness reveals: food (dietary preference)
                 return `[FOOD INTEL] The chef said the stranger only ordered ${suspect.food}.`;
