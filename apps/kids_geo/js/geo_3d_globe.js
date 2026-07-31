@@ -303,12 +303,12 @@ window.Geo3DGlobe = class Geo3DGlobe {
             const pos = this.latLngToVector3(city.lat, city.lng, 80);
 
             const pinGeo = new THREE.SphereGeometry(2.2, 16, 16);
-            const pinMat = new THREE.MeshBasicMaterial({ color: 0xf59e0b });
+            const pinMat = new THREE.MeshBasicMaterial({ color: 0x475569 });
             const pinMesh = new THREE.Mesh(pinGeo, pinMat);
             pinMesh.position.copy(pos);
 
             const ringGeo = new THREE.RingGeometry(2.8, 4.2, 32);
-            const ringMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, side: THREE.DoubleSide, transparent: true, opacity: 0.8 });
+            const ringMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, side: THREE.DoubleSide, transparent: true, opacity: 0.3 });
             const ringMesh = new THREE.Mesh(ringGeo, ringMat);
             ringMesh.position.copy(pos);
             ringMesh.lookAt(new THREE.Vector3(0, 0, 0));
@@ -316,11 +316,82 @@ window.Geo3DGlobe = class Geo3DGlobe {
             const pinGroup = new THREE.Group();
             pinGroup.add(pinMesh);
             pinGroup.add(ringMesh);
-            pinGroup.userData = { city: city };
+            pinGroup.userData = { city: city, pinMesh: pinMesh, ringMesh: ringMesh };
 
             this.globeGroup.add(pinGroup);
             this.cityPins[city.id] = pinGroup;
         });
+    }
+
+    updateCityPinHighlights(currentCityId, destinationCityIds = []) {
+        if (!this.cityPins) return;
+
+        // Draw multiple flight trajectory arcs to all available destinations
+        if (currentCityId && destinationCityIds.length > 0) {
+            this.drawDestinationArcs(currentCityId, destinationCityIds);
+        }
+
+        Object.keys(this.cityPins).forEach(cityId => {
+            const pinGroup = this.cityPins[cityId];
+            if (!pinGroup) return;
+
+            const { pinMesh, ringMesh } = pinGroup.userData;
+            const isCurrent = cityId === currentCityId;
+            const isDestination = destinationCityIds.includes(cityId);
+
+            if (isCurrent) {
+                // Neon Green Pulse for Current Location (Departure)
+                pinMesh.material.color.setHex(0x10b981);
+                ringMesh.material.color.setHex(0x10b981);
+                ringMesh.material.opacity = 0.95;
+                pinGroup.scale.set(1.7, 1.7, 1.7);
+            } else if (isDestination) {
+                // Neon Pink & Cyan Target Reticle for Destination Cities
+                pinMesh.material.color.setHex(0xec4899);
+                ringMesh.material.color.setHex(0x06b6d4);
+                ringMesh.material.opacity = 0.9;
+                pinGroup.scale.set(1.4, 1.4, 1.4);
+            } else {
+                // Dimmed Slate Blue for Inactive Background Cities
+                pinMesh.material.color.setHex(0x475569);
+                ringMesh.material.color.setHex(0x334155);
+                ringMesh.material.opacity = 0.25;
+                pinGroup.scale.set(0.85, 0.85, 0.85);
+            }
+        });
+    }
+
+    drawDestinationArcs(fromCityId, destinationCityIds = []) {
+        if (this.destinationArcsGroup) {
+            this.globeGroup.remove(this.destinationArcsGroup);
+        }
+        this.destinationArcsGroup = new THREE.Group();
+        this.globeGroup.add(this.destinationArcsGroup);
+
+        destinationCityIds.forEach(destId => {
+            const arc = this.createArcMesh(fromCityId, destId, 0x06b6d4);
+            if (arc) this.destinationArcsGroup.add(arc);
+        });
+    }
+
+    createArcMesh(fromCityId, toCityId, colorHex = 0xec4899) {
+        const fromCity = this.data.cities.find(c => c.id === fromCityId);
+        const toCity = this.data.cities.find(c => c.id === toCityId);
+        if (!fromCity || !toCity || !THREE) return null;
+
+        const p1 = this.latLngToVector3(fromCity.lat, fromCity.lng, 80);
+        const p2 = this.latLngToVector3(toCity.lat, toCity.lng, 80);
+
+        const mid = new THREE.Vector3().addVectors(p1, p2).multiplyScalar(0.5);
+        const distance = p1.distanceTo(p2);
+        mid.setLength(80 + distance * 0.25);
+
+        const curve = new THREE.QuadraticBezierCurve3(p1, mid, p2);
+        const points = curve.getPoints(50);
+        const geometry = new THREE.BufferGeometry().setFromPoints(points);
+
+        const material = new THREE.LineBasicMaterial({ color: colorHex, linewidth: 3, transparent: true, opacity: 0.85 });
+        return new THREE.Line(geometry, material);
     }
 
     setupMouseEvents() {

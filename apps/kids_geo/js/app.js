@@ -415,9 +415,10 @@ class KidsGeoApp {
         }
 
         const destContainer = document.getElementById('carmen-flight-destinations');
+        let destinations = [];
         if (destContainer) {
             destContainer.innerHTML = '';
-            const destinations = this.carmenEngine.getDestinationCities();
+            destinations = this.carmenEngine.getDestinationCities();
             destinations.forEach(dest => {
                 const btn = document.createElement('button');
                 btn.className = 'flight-btn';
@@ -425,6 +426,11 @@ class KidsGeoApp {
                 btn.onclick = () => this.handleCarmenFly(dest.id);
                 destContainer.appendChild(btn);
             });
+        }
+
+        // Highlight Current Departure City (Neon Green) & Flight Destinations (Neon Pink/Cyan) on 3D Globe
+        if (this.globe3D && c.currentCity) {
+            this.globe3D.updateCityPinHighlights(c.currentCity.id, destinations.map(d => d.id));
         }
     }
 
