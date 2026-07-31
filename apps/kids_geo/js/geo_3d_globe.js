@@ -65,6 +65,42 @@ window.Geo3DGlobe = class Geo3DGlobe {
         const earthMesh = new THREE.Mesh(sphereGeo, earthMat);
         this.globeGroup.add(earthMesh);
 
+        // Load 8K High-Res Local Satellite Texture from earth/textures/Material.002_diffuse.jpeg
+        const textureLoader = new THREE.TextureLoader();
+        textureLoader.load('earth/textures/Material.002_diffuse.jpeg', (diffuseTex) => {
+            diffuseTex.anisotropy = 8;
+            earthMesh.material.map = diffuseTex;
+            earthMesh.material.needsUpdate = true;
+        }, undefined, (err) => {
+            console.log('Using procedural canvas Earth texture fallback.');
+        });
+
+        // Load 3D Earth Model scene.gltf from local earth/ directory
+        const GLTF = THREE.GLTFLoader || (window.THREE && window.THREE.GLTFLoader);
+        if (GLTF) {
+            const gltfLoader = new GLTF();
+            gltfLoader.load('earth/scene.gltf', (gltf) => {
+                const model = gltf.scene;
+                const box = new THREE.Box3().setFromObject(model);
+                const size = box.getSize(new THREE.Vector3());
+                const maxDim = Math.max(size.x, size.y, size.z);
+                if (maxDim > 0) {
+                    const scale = 160 / maxDim; // Scale to radius 80
+                    model.scale.set(scale, scale, scale);
+                }
+                model.traverse(child => {
+                    if (child.isMesh && child.material) {
+                        child.material.side = THREE.DoubleSide;
+                        child.material.needsUpdate = true;
+                    }
+                });
+                this.globeGroup.add(model);
+                earthMesh.visible = false;
+            }, undefined, (err) => {
+                console.log('Loaded Earth texture map on sphere geometry.');
+            });
+        }
+
         // 5. Rotating Cloud Sphere
         const cloudCanvas = this.createCloudsTextureCanvas();
         const cloudTexture = new THREE.CanvasTexture(cloudCanvas);
