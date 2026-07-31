@@ -261,20 +261,25 @@ window.CarmenEngine = class CarmenEngine {
         const pathIndex = this.currentCase.currentIndex;
         const nextCity = this.currentCase.path[pathIndex + 1];
 
+        let cityClueText = "";
+        let suspectClueText = "";
         let clueText = "";
 
         if (nextCity) {
-            // Next city exists -> give clues about next city & suspect trait hint
-            const cityClue = nextCity.clues[source] || `They were asking about ${nextCity.country} and ${nextCity.landform}.`;
-            const suspectTrait = this.getSuspectTraitHint(this.currentCase.suspect, source);
-            clueText = `${cityClue} ${suspectTrait}`;
+            // Next city exists: give clue about next city geography AND suspect trait for this source
+            cityClueText = nextCity.clues[source] || `They were asking about ${nextCity.country} and ${nextCity.landform}.`;
+            suspectClueText = this.getSuspectTraitHint(this.currentCase.suspect, source);
+            clueText = `${cityClueText} ${suspectClueText}`;
         } else {
-            // Final city -> criminal is lurking here!
-            clueText = `A local witness saw someone matching an infamous thief lurking near ${currentCity.landform}!`;
+            // Final city — criminal is lurking here!
+            cityClueText = `A local witness saw someone matching an infamous thief lurking near ${currentCity.landform}!`;
+            clueText = cityClueText;
         }
 
         const clueEntry = {
             source,
+            cityClue: cityClueText,
+            suspectClue: suspectClueText,
             text: clueText,
             timestampHoursLeft: this.currentCase.hoursLeft
         };
@@ -285,6 +290,8 @@ window.CarmenEngine = class CarmenEngine {
             success: true,
             source: source,
             clueText: clueText,
+            cityClueText: cityClueText,
+            suspectClueText: suspectClueText,
             hoursSpent: timeCost,
             hoursLeft: this.currentCase.hoursLeft,
             timeRemaining: this.formatTimeRemaining(this.currentCase.hoursLeft),
@@ -297,15 +304,19 @@ window.CarmenEngine = class CarmenEngine {
         const eyewear = suspect.eyewear || this.getSuspectEyewear(suspect);
         switch (source) {
             case 'bank':
-                return `They drove off in a sleek ${suspect.vehicle}.`;
+                // Bank witness reveals: vehicle (getaway transport)
+                return `[VEHICLE INTEL] The teller noticed they sped off in a ${suspect.vehicle}.`;
             case 'library':
-                return `They were reading a book about ${suspect.hobby}.`;
+                // Library witness reveals: hobby (reading interests)
+                return `[HOBBY INTEL] A librarian said the person was researching ${suspect.hobby}.`;
             case 'airport':
-                return `The passenger had distinct ${suspect.hair} hair and wore ${eyewear !== 'None' ? eyewear : 'no eyewear'}.`;
+                // Airport witness reveals: hair + eyewear (physical appearance)
+                return `[APPEARANCE INTEL] The gate agent noted ${suspect.hair} hair and ${eyewear !== 'None' ? eyewear : 'no eyewear'}.`;
             case 'chef':
-                return `They mentioned their favorite food was ${suspect.food}.`;
+                // Chef witness reveals: food (dietary preference)
+                return `[FOOD INTEL] The chef said the stranger only ordered ${suspect.food}.`;
             default:
-                return `They mentioned liking ${suspect.hobby} while wearing ${eyewear !== 'None' ? eyewear : 'no distinct eyewear'}.`;
+                return `[GENERAL INTEL] They seemed interested in ${suspect.hobby}.`;
         }
     }
 

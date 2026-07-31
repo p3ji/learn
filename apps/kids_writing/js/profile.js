@@ -52,6 +52,21 @@ function initProfileSystem() {
     } else {
         currentProfile = kwBlankProfile('New Writer');
     }
+    if (typeof window !== 'undefined' && window.addEventListener) {
+        window.addEventListener('passport:profile-changed', (e) => {
+            if (e && e.detail && e.detail.name) {
+                const allProfs = kwAllProfiles();
+                if (allProfs[e.detail.name]) {
+                    currentProfile = Object.assign(kwBlankProfile(e.detail.name), allProfs[e.detail.name]);
+                } else {
+                    currentProfile = kwBlankProfile(e.detail.name);
+                }
+                currentProfile.avatar = e.detail.avatar || '✍️';
+                saveProfileState();
+                updateProfileUI();
+            }
+        });
+    }
     saveProfileState();
     updateProfileUI();
 }
@@ -185,6 +200,10 @@ function kwStreakLength() {
 // ---------- Account modal ----------
 
 function openAccountLoginModal() {
+    if (typeof window !== 'undefined' && window.SuitePassport && typeof window.SuitePassport.openAccountModal === 'function') {
+        window.SuitePassport.openAccountModal('../../');
+        return;
+    }
     const all = kwAllProfiles();
     const names = Object.keys(all);
 

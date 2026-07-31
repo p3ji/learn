@@ -9,12 +9,17 @@ let currentProfile = {
     badges: ["young_thinker"]
 };
 
+let isSyncingPassport = false;
+
 function syncPassportProfile() {
+    if (isSyncingPassport) return;
     if (typeof window !== 'undefined' && window.SuitePassport && currentProfile && currentProfile.username) {
+        isSyncingPassport = true;
         window.SuitePassport.updateProfile({
             name: currentProfile.username,
             avatar: currentProfile.avatar || '🦉'
         });
+        isSyncingPassport = false;
     }
 }
 
@@ -35,10 +40,32 @@ function initProfileSystem() {
     } else {
         saveProfileState();
     }
+    if (typeof window !== 'undefined' && window.addEventListener) {
+        window.addEventListener('passport:profile-changed', (e) => {
+            if (isSyncingPassport) return;
+            if (e && e.detail && e.detail.name) {
+                isSyncingPassport = true;
+                const allProfiles = JSON.parse(localStorage.getItem('kids_rts_profiles') || '{}');
+                if (allProfiles[e.detail.name]) {
+                    currentProfile = allProfiles[e.detail.name];
+                } else {
+                    currentProfile.username = e.detail.name;
+                }
+                currentProfile.avatar = e.detail.avatar || '🦉';
+                let profilesMap = JSON.parse(localStorage.getItem('kids_rts_profiles') || '{}');
+                profilesMap[currentProfile.username] = currentProfile;
+                localStorage.setItem('kids_rts_profiles', JSON.stringify(profilesMap));
+                localStorage.setItem('kids_active_profile', currentProfile.username);
+                updateProfileUI();
+                isSyncingPassport = false;
+            }
+        });
+    }
     updateProfileUI();
 }
 
 function saveProfileState() {
+    if (isSyncingPassport) return;
     let allProfiles = JSON.parse(localStorage.getItem('kids_rts_profiles') || '{}');
     allProfiles[currentProfile.username] = currentProfile;
     localStorage.setItem('kids_rts_profiles', JSON.stringify(allProfiles));
@@ -76,6 +103,10 @@ function updateProfileUI() {
 let selectedNewAvatar = "🦉";
 
 function openAccountLoginModal() {
+    if (typeof window !== 'undefined' && window.SuitePassport && typeof window.SuitePassport.openAccountModal === 'function') {
+        window.SuitePassport.openAccountModal('../../');
+        return;
+    }
     let modal = document.getElementById('rtsLoginModal');
     if (!modal) {
         modal = document.createElement('div');

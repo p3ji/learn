@@ -21,6 +21,9 @@ class KidsGeoApp {
         if (window.SuitePassport) {
             window.SuitePassport.renderPassportPill('passport-pill-container', '../../');
         }
+        window.addEventListener('passport:profile-changed', () => {
+            if (window.SuitePassport) window.SuitePassport.renderPassportPill('passport-pill-container', '../../');
+        });
 
         // Initialize Real Earth 3D Globe
         if (window.Geo3DGlobe) {
@@ -199,6 +202,7 @@ class KidsGeoApp {
         const c = this.carmenEngine.startNewCase(difficulty);
 
         this.resetWitnessDialog();
+        this.resetWarrantComputer();
 
         const arrestBtn = document.getElementById('carmen-arrest-btn');
         if (arrestBtn) arrestBtn.classList.remove('btn-arrest-glowing');
@@ -220,6 +224,42 @@ class KidsGeoApp {
         this.logCarmenMessage(`🚨 ACME HQ ALERT: Stolen Artifact "${c.artifact}" taken from ${c.currentCity.name}! The suspect was last seen fleeing the scene.`);
     }
 
+    resetWarrantComputer() {
+        // Reset all warrant filter dropdowns to blank
+        ['warrant-gender', 'warrant-hair', 'warrant-vehicle', 'warrant-food', 'warrant-hobby',
+         'warrant-gender-inline', 'warrant-hair-inline', 'warrant-vehicle-inline', 'warrant-food-inline', 'warrant-hobby-inline'
+        ].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = '';
+        });
+
+        // Clear status messages
+        ['warrant-status-msg', 'warrant-status-msg-inline'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.textContent = '';
+                el.className = 'status-box';
+            }
+        });
+
+        // Clear suspect mugshots
+        if (window.CarmenVisuals) {
+            window.CarmenVisuals.drawSuspectMugshot('suspect-mugshot-canvas', null);
+            window.CarmenVisuals.drawSuspectMugshot('warrant-preview-canvas', null);
+        }
+
+        // Hide track warrant button
+        const trackBtn = document.getElementById('carmen-track-warrant-btn');
+        if (trackBtn) trackBtn.style.display = 'none';
+
+        // Reset warrant issued label
+        const warrantEl = document.getElementById('carmen-warrant-issued');
+        if (warrantEl) {
+            warrantEl.textContent = 'No Warrant Issued';
+            warrantEl.style.color = 'var(--accent-pink)';
+        }
+    }
+
     handleCarmenInvestigate(source) {
         this.playSound('click');
         const res = this.carmenEngine.investigate(source);
@@ -230,7 +270,21 @@ class KidsGeoApp {
         }
 
         this.renderCarmenUI();
-        this.logCarmenMessage(`🔎 [${source.toUpperCase()}] ${res.clueText}`);
+
+        // Log the city/location clue first
+        if (res.cityClueText) {
+            const sourceLabels = { bank: '🏦 BANK', library: '📚 LIBRARY', airport: '✈️ AIRPORT', chef: '🍽️ CHEF' };
+            const label = sourceLabels[source] || source.toUpperCase();
+            this.logCarmenMessage(`🔎 [${label} — LOCATION CLUE] ${res.cityClueText}`);
+        }
+        // Log the suspect intel separately so the two types of info are never mixed up
+        if (res.suspectClueText) {
+            this.logCarmenMessage(`🕵️ [SUSPECT INTEL] ${res.suspectClueText}`);
+        }
+        // Fallback: if no structured clues (e.g. final city), log the combined text
+        if (!res.cityClueText && !res.suspectClueText) {
+            this.logCarmenMessage(`🔎 [${source.toUpperCase()}] ${res.clueText}`);
+        }
 
         if (this.carmenEngine.currentCase.status === 'TIME_EXPIRED') {
             this.playSound('alarm');

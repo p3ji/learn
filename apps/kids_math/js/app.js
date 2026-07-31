@@ -38,6 +38,7 @@ class KidsMathApp {
 
   init() {
     this.applyTheme();
+    window.addEventListener('passport:profile-changed', () => this.render());
     this.render();
   }
 

@@ -28,6 +28,7 @@
             <nav class="nav-links">
                 <a href="../../index.html" class="nav-item">🏠 Suite Portal Home</a>
                 <a href="../rap_studio/index.html" class="nav-item">📦 RAP Studio</a>
+                <div id="passport-pill-container" style="display:inline-block;"></div>
             </nav>
         </div>
     </header>
@@ -60,9 +61,13 @@
     </footer>
 
     <!-- JavaScript Files -->
+    <script src="../../js/suite_passport.js"></script>
     <script src="../../js/kids_github.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            if (window.SuitePassport) {
+                window.SuitePassport.renderPassportPill('passport-pill-container', '../../');
+            }
             if (window.KidsGitHubModule) {
                 window.KidsGitHubModule.init('kidsGithubCard');
             }

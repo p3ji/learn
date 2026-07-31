@@ -89,17 +89,125 @@
       }
     }
 
+    getAccounts() {
+      try {
+        if (typeof localStorage !== 'undefined') {
+          const raw = localStorage.getItem('SUITE_PROFILES_V1');
+          if (raw) return JSON.parse(raw);
+        }
+      } catch (e) {}
+      const cur = this.data.profile.name || 'Learner';
+      return { [cur]: { ...this.data.profile } };
+    }
+
+    saveAccounts(accountsObj) {
+      try {
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem('SUITE_PROFILES_V1', JSON.stringify(accountsObj));
+        }
+      } catch (e) {}
+    }
+
+    notifyProfileChange() {
+      if (this._isNotifying) return;
+      this._isNotifying = true;
+      try {
+        this.save();
+        const accounts = this.getAccounts();
+        accounts[this.data.profile.name] = { ...this.data.profile };
+        this.saveAccounts(accounts);
+
+        if (typeof localStorage !== 'undefined') {
+          localStorage.setItem('kids_active_profile', this.data.profile.name);
+          try {
+            let rtsProfiles = JSON.parse(localStorage.getItem('kids_rts_profiles') || '{}');
+            rtsProfiles[this.data.profile.name] = {
+              username: this.data.profile.name,
+              avatar: this.data.profile.avatar,
+              xp: this.data.profile.xp,
+              level: this.data.profile.level,
+              rank: `Lvl ${this.data.profile.level} Learner`,
+              badges: []
+            };
+            localStorage.setItem('kids_rts_profiles', JSON.stringify(rtsProfiles));
+          } catch (e) {}
+        }
+
+        if (typeof window !== 'undefined') {
+          if (typeof window.dispatchEvent === 'function') {
+            window.dispatchEvent(new CustomEvent('passport:profile-changed', { detail: this.data.profile }));
+          }
+          if (typeof document !== 'undefined') {
+            const el = document.getElementById('passport-pill-container');
+            if (el) this.renderPassportPill('passport-pill-container', this.currentRootPrefix || '');
+          }
+        }
+      } finally {
+        this._isNotifying = false;
+      }
+    }
+
     getProfile() {
       return this.data.profile;
     }
 
     updateProfile(updates) {
       this.data.profile = { ...this.data.profile, ...updates };
-      this.save();
-      if (typeof document !== 'undefined') {
-        const el = document.getElementById('passport-pill-container');
-        if (el) this.renderPassportPill('passport-pill-container');
+      this.notifyProfileChange();
+    }
+
+    switchAccount(accountName) {
+      const accounts = this.getAccounts();
+      if (accounts[accountName]) {
+        this.data.profile = { ...DEFAULT_PASSPORT.profile, ...accounts[accountName] };
+        this.notifyProfileChange();
+        return true;
       }
+      return false;
+    }
+
+    createAccount(name, avatar = '🦉', grade = 'grade3') {
+      const trimmed = (name || '').trim();
+      if (!trimmed) return false;
+
+      const accounts = this.getAccounts();
+      const newProfile = {
+        name: trimmed,
+        avatar: avatar || '🦉',
+        grade: grade || 'grade3',
+        bio: 'Exploring math, writing, philosophy, and technology!',
+        xp: 0,
+        level: 1,
+        streak: 1,
+        lastActiveDate: new Date().toISOString().split('T')[0]
+      };
+      accounts[trimmed] = newProfile;
+      this.saveAccounts(accounts);
+
+      this.data.profile = newProfile;
+      this.notifyProfileChange();
+      return true;
+    }
+
+    deleteAccount(accountName) {
+      const accounts = this.getAccounts();
+      if (accounts[accountName]) {
+        delete accounts[accountName];
+        this.saveAccounts(accounts);
+
+        const remainingNames = Object.keys(accounts);
+        if (this.data.profile.name === accountName) {
+          if (remainingNames.length > 0) {
+            this.switchAccount(remainingNames[0]);
+          } else {
+            this.createAccount('Learner', '🦉', 'grade3');
+          }
+        } else {
+          this.notifyProfileChange();
+        }
+        return true;
+      }
+      return false;
     }
 
     calculateLevel(xp) {
@@ -119,7 +227,7 @@
       this.data.appStats[appId].count += 1;
 
       this.checkAchievements();
-      this.save();
+      this.notifyProfileChange();
       return { xp: this.data.profile.xp, level: newLevel };
     }
 
@@ -198,7 +306,7 @@
         const parsed = JSON.parse(jsonStr);
         if (parsed.profile && parsed.journal) {
           this.data = parsed;
-          this.save();
+          this.notifyProfileChange();
           return true;
         }
       } catch (e) {
@@ -208,17 +316,180 @@
     }
 
     renderPassportPill(containerId, rootPathPrefix = '') {
+      this.currentRootPrefix = rootPathPrefix;
       const el = document.getElementById(containerId);
       if (!el) return;
 
       const p = this.getProfile();
       el.innerHTML = `
-        <a href="${rootPathPrefix}apps/account_portal/index.html" class="passport-pill-link" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 4px 12px; border-radius: 20px; color: #FFF; font-weight: 700; font-size: 0.85rem; transition: all 0.2s ease;">
-          <span style="font-size: 1.1rem;">${p.avatar}</span>
-          <span>${p.name}</span>
-          <span style="background: linear-gradient(135deg, #F59E0B, #6366F1); padding: 2px 8px; border-radius: 10px; font-size: 0.75rem;">Lvl ${p.level}</span>
-          <span style="color: #FCD34D;">⭐ ${p.xp} XP</span>
-        </a>
+        <div style="display:inline-flex; align-items:center; gap:8px;">
+          <button type="button" onclick="window.SuitePassport.openAccountModal('${rootPathPrefix}')" title="Manage account / switch profile" style="cursor:pointer; border:none; background:none; padding:0; font:inherit; text-align:left;">
+            <div style="display:inline-flex; align-items:center; gap:8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); padding: 4px 12px; border-radius: 20px; color: #FFF; font-weight: 700; font-size: 0.85rem; transition: all 0.2s ease;">
+              <span style="font-size: 1.1rem;">${p.avatar}</span>
+              <span>${p.name}</span>
+              <span style="background: linear-gradient(135deg, #F59E0B, #6366F1); padding: 2px 8px; border-radius: 10px; font-size: 0.75rem;">Lvl ${p.level}</span>
+              <span style="color: #FCD34D;">⭐ ${p.xp} XP</span>
+            </div>
+          </button>
+          <button type="button" onclick="window.SuitePassport.openAccountModal('${rootPathPrefix}')" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); color: #FFF; padding: 4px 12px; border-radius: 12px; font-weight: 700; font-size: 0.82rem; cursor: pointer;">
+            👤 Sign In / Account
+          </button>
+        </div>
+      `;
+    }
+
+    selectModalAvatar(avatar) {
+      this.selectedModalAvatar = avatar;
+      const display = document.getElementById('sp-active-avatar-display');
+      if (display) display.innerText = avatar;
+    }
+
+    saveActiveAccountEdits() {
+      const nameInput = document.getElementById('sp-edit-name-input');
+      const newName = nameInput ? nameInput.value.trim() : '';
+      if (newName) {
+        const oldName = this.data.profile.name;
+        const accounts = this.getAccounts();
+        if (oldName !== newName && accounts[oldName]) {
+          delete accounts[oldName];
+        }
+        this.data.profile.name = newName;
+        if (this.selectedModalAvatar) {
+          this.data.profile.avatar = this.selectedModalAvatar;
+        }
+        this.saveAccounts(accounts);
+        this.notifyProfileChange();
+        this.openAccountModal(this.currentRootPrefix || '');
+      }
+    }
+
+    handleCreateAccountFromModal() {
+      const nameInput = document.getElementById('sp-new-account-name');
+      const name = nameInput ? nameInput.value.trim() : '';
+      if (name) {
+        this.createAccount(name, '🦉', 'grade3');
+        this.openAccountModal(this.currentRootPrefix || '');
+      }
+    }
+
+    handleSwitchAccount(accountName) {
+      this.switchAccount(accountName);
+      this.openAccountModal(this.currentRootPrefix || '');
+    }
+
+    handleDeleteAccount(accountName) {
+      this.deleteAccount(accountName);
+      this.openAccountModal(this.currentRootPrefix || '');
+    }
+
+    closeAccountModal() {
+      const modalContainer = document.getElementById('sp-account-modal-container') || document.getElementById('rtsLoginModal');
+      if (modalContainer) modalContainer.remove();
+    }
+
+    openAccountModal(rootPathPrefix = '') {
+      this.currentRootPrefix = rootPathPrefix;
+      let modalContainer = document.getElementById('sp-account-modal-container') || document.getElementById('rtsLoginModal');
+      if (!modalContainer) {
+        modalContainer = document.createElement('div');
+        modalContainer.id = 'rtsLoginModal';
+        document.body.appendChild(modalContainer);
+      }
+      modalContainer.className = 'concept-modal-overlay sp-modal-overlay';
+
+      if (typeof window !== 'undefined') {
+        window.closeAccountLoginModal = () => this.closeAccountModal();
+      }
+
+      const p = this.getProfile();
+      this.selectedModalAvatar = p.avatar;
+      const accountsMap = this.getAccounts();
+      const accountNames = Object.keys(accountsMap);
+      const avatars = ['🦉', '🧮', '✍️', '🚀', '✏️', '🎮', '🤖', '👑', '🌌', '🦊', '🐲', '🎨'];
+
+      modalContainer.innerHTML = `
+        <div class="sp-modal-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 99999; padding: 20px; font-family: 'Plus Jakarta Sans', sans-serif;" onclick="if(event.target === this) window.SuitePassport.closeAccountModal()">
+          <div class="sp-modal-card" style="background: #0F172A; border: 2px solid #334155; border-radius: 20px; width: 100%; max-width: 620px; max-height: 90vh; overflow-y: auto; padding: 26px; color: #F8FAFC; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7); position: relative;">
+            
+            <button onclick="window.SuitePassport.closeAccountModal()" style="position: absolute; top: 18px; right: 18px; background: rgba(255,255,255,0.1); border: none; color: #94A3B8; font-size: 1.4rem; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Close">&times;</button>
+            
+            <div style="background: linear-gradient(135deg, #6366F1, #8B5CF6); color: #FFF; font-size: 0.75rem; font-weight: 800; padding: 4px 12px; border-radius: 12px; display: inline-block; margin-bottom: 8px; text-transform: uppercase;">👤 LEARNER PASSPORT & ACCOUNT MANAGER</div>
+            <h2 style="font-size: 1.6rem; font-weight: 900; margin: 0 0 6px 0; color: #FFF;">Thinker Cadet Profiles & Learner Sign In</h2>
+            <p style="font-size: 0.9rem; color: #94A3B8; margin-bottom: 20px;">Sign in, create a new learner account, or switch profiles across the Learning Suite!</p>
+
+            <!-- Active Account Settings Card -->
+            <div style="background: rgba(139, 92, 246, 0.12); border: 1.5px solid #8B5CF6; border-radius: 16px; padding: 18px; margin-bottom: 20px;">
+              <h3 style="color: #FCD34D; font-size: 1.05rem; font-weight: 800; margin: 0 0 12px 0;">Active Account Settings:</h3>
+              
+              <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
+                <div style="font-size: 2.8rem; background: rgba(0,0,0,0.4); padding: 8px 14px; border-radius: 16px; border: 1px solid #F59E0B;" id="sp-active-avatar-display">${p.avatar}</div>
+                <div>
+                  <div style="font-weight: 900; font-size: 1.25rem; color: #FFF;">${p.name}</div>
+                  <div style="color: #38BDF8; font-weight: 700; font-size: 0.9rem;">Level ${p.level} Scholar • ${p.xp} Total XP</div>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 12px;">
+                <label for="sp-edit-name-input" style="font-size: 0.85rem; font-weight: 700; color: #FCD34D; display: block; margin-bottom: 6px;">Learner Name / Call-Sign:</label>
+                <input type="text" id="sp-edit-name-input" value="${p.name}" style="width: 100%; background: #1E293B; border: 1px solid #475569; border-radius: 10px; color: #FFF; padding: 10px 14px; font-size: 0.95rem; font-weight: 600;">
+              </div>
+
+              <div style="margin-bottom: 12px;">
+                <label style="font-size: 0.85rem; font-weight: 700; color: #38BDF8; display: block; margin-bottom: 6px;">Choose Avatar Icon:</label>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                  ${avatars.map(a => `
+                    <button type="button" onclick="window.SuitePassport.selectModalAvatar('${a}')" style="font-size: 1.4rem; padding: 6px 12px; border-radius: 10px; border: 1.5px solid ${a === p.avatar ? '#F59E0B' : 'rgba(255,255,255,0.15)'}; background: ${a === p.avatar ? 'rgba(245, 158, 11, 0.25)' : 'rgba(255,255,255,0.05)'}; cursor: pointer;">${a}</button>
+                  `).join('')}
+                </div>
+              </div>
+
+              <button type="button" onclick="window.SuitePassport.saveActiveAccountEdits()" style="width: 100%; background: linear-gradient(135deg, #F59E0B, #D97706); border: none; color: #000; font-weight: 900; padding: 10px 16px; border-radius: 10px; font-size: 0.95rem; cursor: pointer; margin-top: 6px;">💾 Save Profile Changes</button>
+            </div>
+
+            <!-- Create New Account Card -->
+            <div style="background: rgba(6, 182, 212, 0.1); border: 1.5px solid #06B6D4; border-radius: 16px; padding: 18px; margin-bottom: 20px;">
+              <h3 style="color: #38BDF8; font-size: 1.05rem; font-weight: 800; margin: 0 0 10px 0;">➕ Create New Learner Account (Sign Up):</h3>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <input type="text" id="sp-new-account-name" placeholder="Type new Learner name..." style="flex: 1; min-width: 180px; background: #1E293B; border: 1px solid #475569; border-radius: 10px; color: #FFF; padding: 10px 14px; font-size: 0.95rem;">
+                <button type="button" onclick="window.SuitePassport.handleCreateAccountFromModal()" style="background: linear-gradient(135deg, #06B6D4, #3B82F6); border: none; color: #FFF; font-weight: 800; padding: 10px 18px; border-radius: 10px; font-size: 0.92rem; cursor: pointer;">Create & Sign In</button>
+              </div>
+            </div>
+
+            <!-- Switch Accounts Card -->
+            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid #334155; border-radius: 16px; padding: 18px; margin-bottom: 18px;">
+              <h3 style="color: #FCD34D; font-size: 1.05rem; font-weight: 800; margin: 0 0 10px 0;">👥 Switch Between Saved Accounts:</h3>
+              <div style="display: flex; flex-direction: column; gap: 8px; max-height: 180px; overflow-y: auto;">
+                ${accountNames.map(accName => {
+                  const acc = accountsMap[accName];
+                  const isCurrent = accName === p.name;
+                  return `
+                    <div style="display: flex; justify-content: space-between; align-items: center; background: ${isCurrent ? 'rgba(245, 158, 11, 0.15)' : 'rgba(255,255,255,0.04)'}; border: 1px solid ${isCurrent ? '#F59E0B' : 'rgba(255,255,255,0.1)'}; padding: 10px 14px; border-radius: 10px;">
+                      <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 1.4rem;">${acc.avatar || '🦉'}</span>
+                        <div>
+                          <span style="font-weight: 800; color: #FFF; font-size: 0.95rem;">${accName}</span>
+                          <span style="color: #94A3B8; font-size: 0.8rem; margin-left: 8px;">Lvl ${acc.level || 1} • ${acc.xp || 0} XP</span>
+                        </div>
+                      </div>
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        ${isCurrent ? 
+                          '<span style="color: #4ADE80; font-weight: 800; font-size: 0.85rem; padding: 4px 10px; background: rgba(74,222,128,0.15); border-radius: 8px;">✓ Active</span>' :
+                          `<button type="button" onclick="window.SuitePassport.handleSwitchAccount('${accName.replace(/'/g, "\\'")}')" style="background: rgba(59,130,246,0.2); border: 1px solid #3B82F6; color: #60A5FA; padding: 4px 12px; border-radius: 8px; font-weight: 700; font-size: 0.82rem; cursor: pointer;">Sign In</button>`
+                        }
+                        ${accountNames.length > 1 ? `<button type="button" onclick="window.SuitePassport.handleDeleteAccount('${accName.replace(/'/g, "\\'")}')" style="background: rgba(239,68,68,0.15); border: 1px solid #EF4444; color: #F87171; padding: 4px 8px; border-radius: 8px; font-size: 0.8rem; cursor: pointer;" title="Delete account">🗑️</button>` : ''}
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+
+            <div style="text-align: center;">
+              <a href="${rootPathPrefix}apps/account_portal/index.html" style="color: #A78BFA; font-weight: 700; font-size: 0.9rem; text-decoration: none;">📓 Open Full Central Account Portal & Journal ➔</a>
+            </div>
+
+          </div>
+        </div>
       `;
     }
 

@@ -119,6 +119,12 @@ function escapeHtml(text) {
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-view]').forEach(b =>
         b.addEventListener('click', () => goToView(b.dataset.view)));
+    if (window.SuitePassport) {
+        window.SuitePassport.renderPassportPill('passport-pill-container', '../../');
+    }
+    window.addEventListener('passport:profile-changed', () => {
+        updateProfileUI();
+    });
     updateProfileUI();
     renderCurrentView();
 });

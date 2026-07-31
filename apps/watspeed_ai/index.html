@@ -56,6 +56,7 @@
                 <a href="#stage3" class="nav-item" onclick="showStage(3); return false;">3. ML &amp; TabFM</a>
                 <a href="#stage4" class="nav-item" onclick="showStage(4); return false;">4. Agent Tools</a>
                 <a href="#stage5" class="nav-item" onclick="showStage(5); return false;">5. Notebooks</a>
+                <div id="passport-pill-container" style="display:inline-block;"></div>
             </nav>
         </div>
     </header>
@@ -632,7 +633,12 @@
             window.scrollTo({ top: 250, behavior: 'smooth' });
         }
 
+    <script src="../../js/suite_passport.js"></script>
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
+            if (window.SuitePassport) {
+                window.SuitePassport.renderPassportPill('passport-pill-container', '../../');
+            }
             try { showStage(1); } catch(e) { console.error('showStage(1) error:', e); }
         });
     </script>

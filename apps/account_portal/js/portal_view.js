@@ -455,3 +455,4 @@ class AccountPortalView {
 
 window.portal = new AccountPortalView();
 window.addEventListener('DOMContentLoaded', () => window.portal.init());
+window.addEventListener('passport:profile-changed', () => window.portal.render());
