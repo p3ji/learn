@@ -57,7 +57,7 @@
             </div>
             <div class="topic-actions">
               <button class="btn-learn" onclick="app.openLesson('${topic.id}')">📖 Learn & Khan</button>
-              <button class="btn-practice" onclick="app.startPractice('${topic.id}')">🎯 Practice</button>
+              <button class="btn-practice" onclick="${topic.id === 'gr8_f4' ? "app.startCompoundingGame()" : `app.startPractice('${topic.id}')`}">🎯 ${topic.id === 'gr8_f4' ? 'Play Compounding Game' : 'Practice'}</button>
               <button class="btn-secondary" style="font-size: 0.8rem; padding: 4px 8px; margin-top: 4px;" onclick="app.requestTopicHelp('${topic.id}', '${topic.title.replace(/'/g, "\\'")}')">🙋 Not comfortable yet?</button>
               <button class="btn-secondary" style="font-size: 0.8rem; padding: 4px 8px; margin-top: 4px; ${window.SuitePassport && window.SuitePassport.isTopicMastered('kids_math', topic.title) ? 'background: rgba(245,158,11,0.25); border-color: #F59E0B; color: #F59E0B;' : ''}" onclick="if(window.SuitePassport) window.SuitePassport.toggleMasteredTopic('kids_math', '${topic.title.replace(/'/g, "\\'")}', this)">${window.SuitePassport && window.SuitePassport.isTopicMastered('kids_math', topic.title) ? '🌟 Mastered!' : '⭐ Mark Mastered'}</button>
             </div>
@@ -87,9 +87,12 @@
             <h1 class="hero-title">${data.title}</h1>
             <p class="hero-subtitle">${data.description}</p>
           </div>
-          <div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
             <button class="btn-primary" onclick="app.startDiagnosticQuiz()">
               ⚡ OCDSB Strand Diagnostic Quiz
+            </button>
+            <button class="btn-primary compound-launch" onclick="app.startCompoundingGame()" style="background: linear-gradient(135deg, #EC4899, #8B5CF6); border-color: #EC4899;">
+              🏝️ Compounding Island Game
             </button>
             <button class="btn-primary munch-launch" onclick="app.startMunchers()">
               🐛 Number Munchers Arcade

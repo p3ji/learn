@@ -606,6 +606,18 @@ window.KIDS_MATH_CURRICULUM = {
               example: "$500 deposit at 5% rate for 3 years ➔ I = 500 × 0.05 × 3 = $75. Total = $575.",
               tip: "Convert percentage rate to decimal (5% = 0.05)."
             }
+          },
+          {
+            id: "gr8_f4",
+            code: "F1.5",
+            title: "The Magic of Compounding Interest: The Island Game",
+            summary: "Discover how small differences in interest rates compound exponentially over time (A = P(1 + r)^t).",
+            khanUrl: "https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-ratio-proportion",
+            cheatSheet: {
+              rule: "Compound interest calculates interest on initial principal plus all accumulated interest: A = P(1 + r/n)^(nt).",
+              example: "$24 invested for 401 years at 8% compound interest = $914 Trillion!",
+              tip: "Use the Rule of 72 to estimate doubling time: 72 ÷ interest rate = years to double."
+            }
           }
         ]
       }

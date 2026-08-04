@@ -163,6 +163,33 @@ for (let lvl = 1; lvl <= 8; lvl++) {
 }
 assert(levelsOk, 'ruleForLevel returns a playable rule for levels 1-8');
 
+// 6. Test Compounding Game Engine Math
+console.log('\n--- 6. Testing Compounding Game Engine Math ---');
+require(path.join(__dirname, '../js/compounding_game.js'));
+const { CompoundingGame } = global;
+
+assert(CompoundingGame !== undefined, 'CompoundingGame class exists');
+const game = new CompoundingGame(null);
+
+// Test 1624 Island Purchase Calculations (402 Years: Jan 1, 1624 to Dec 31, 2025)
+const c4 = game.calculateCompound(24, 4, 402);
+const c6 = game.calculateCompound(24, 6, 402);
+const c8 = game.calculateCompound(24, 8, 402);
+
+assert(c4 > 160000000 && c4 < 180000000, '4% compounding gives ~$168.9M');
+assert(c6 > 350000000000 && c6 < 370000000000, '6% compounding gives ~$357.4B');
+assert(c8 > 650000000000000 && c8 < 670000000000000, '8% compounding gives ~$655.5T');
+
+// Test Simple vs Compound divergence
+const s8 = game.calculateSimple(24, 8, 402);
+assert(s8 === 24 + (24 * 0.08 * 402), 'Simple interest is linear');
+assert(c8 > s8 * 100000000, 'Compound interest exponentially dominates simple interest over time');
+
+// Test Money Formatter
+assert(game.formatMoney(168893773.82).includes('Million'), 'Formats Millions correctly');
+assert(game.formatMoney(357411957558.31).includes('Billion'), 'Formats Billions correctly');
+assert(game.formatMoney(655482267614032.10).includes('Trillion'), 'Formats Trillions correctly');
+
 console.log(`\n========================================`);
 console.log(`RESULTS: Passed: ${passed} | Failed: ${failed}`);
 console.log(`========================================\n`);

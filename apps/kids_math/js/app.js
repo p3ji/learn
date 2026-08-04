@@ -34,11 +34,21 @@ class KidsMathApp {
     // Canvas drawing state
     this.isDrawing = false;
     this.canvasCtx = null;
+
+    // Compounding Island Game
+    this.compoundingGame = new window.CompoundingGame(this);
   }
 
   init() {
     this.applyTheme();
     window.addEventListener('passport:profile-changed', () => this.render());
+    this.render();
+  }
+
+  startCompoundingGame() {
+    if (this.munchers) this.munchers.quit();
+    this.viewMode = 'compounding';
+    this.compoundingGame.setMode('story');
     this.render();
   }
 
@@ -335,6 +345,8 @@ class KidsMathApp {
         main.innerHTML = window.Views.renderQuizView(this.quizState);
       } else if (this.viewMode === 'munchers') {
         main.innerHTML = this.munchers.render();
+      } else if (this.viewMode === 'compounding') {
+        main.innerHTML = this.compoundingGame.render();
       }
     }
   }
