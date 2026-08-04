@@ -18,6 +18,9 @@
       this.endYear = 2025;
       this.years = 402; // Jan 1, 1624 to Dec 31, 2025 = 402 years
 
+      // Time machine scrubber state
+      this.scrubberYear = 2025;
+
       // User guesses
       this.guesses = { rate4: '', rate6: '', rate8: '' };
 
@@ -63,6 +66,19 @@
       return '$' + val.toLocaleString('en-US', { maximumFractionDigits: 2 });
     }
 
+    getMilestone(year) {
+      if (year <= 1650) return "🏝️ 1624: Dutch purchase Manhattan Island for $24.";
+      if (year <= 1720) return "📜 1687: Isaac Newton publishes Principia Mathematica.";
+      if (year <= 1790) return "🇺🇸 1776: US Declaration of Independence signed.";
+      if (year <= 1840) return "⚙️ 1804: Industrial Revolution accelerates; World Pop reaches 1 Billion.";
+      if (year <= 1890) return "🚂 1865: Transatlantic Telegraph Cable completed.";
+      if (year <= 1920) return "✈️ 1903: Wright Brothers achieve first powered flight.";
+      if (year <= 1955) return "📻 1929: Golden Age of Science & Early Electronic Computing.";
+      if (year <= 1990) return "🌕 1969: Apollo 11 Moon Landing.";
+      if (year <= 2015) return "📱 2007: Release of the modern Smartphone & Web 2.0.";
+      return "🚀 2025: Present Day (402 years of exponential compounding!).";
+    }
+
     /* ---------------- Navigation & View Handlers ---------------- */
 
     setMode(mode) {
@@ -85,6 +101,26 @@
       this.setMode('reveal');
     }
 
+    updateScrubber(val) {
+      this.scrubberYear = parseInt(val, 10);
+      const yearEl = document.getElementById('tm-year-label');
+      const milestoneEl = document.getElementById('tm-milestone');
+      const v4El = document.getElementById('tm-v4');
+      const v6El = document.getElementById('tm-v6');
+      const v8El = document.getElementById('tm-v8');
+
+      const t = this.scrubberYear - 1624;
+      const v4 = this.calculateCompound(24, 4, t);
+      const v6 = this.calculateCompound(24, 6, t);
+      const v8 = this.calculateCompound(24, 8, t);
+
+      if (yearEl) yearEl.textContent = `${this.scrubberYear} AD (${t} years elapsed)`;
+      if (milestoneEl) milestoneEl.textContent = this.getMilestone(this.scrubberYear);
+      if (v4El) v4El.textContent = this.formatMoney(v4);
+      if (v6El) v6El.textContent = this.formatMoney(v6);
+      if (v8El) v8El.textContent = this.formatMoney(v8);
+    }
+
     updateSandbox() {
       const p = parseFloat(document.getElementById('sb-principal')?.value || 1000);
       const r = parseFloat(document.getElementById('sb-rate')?.value || 7);
@@ -95,7 +131,87 @@
       if (this.app) this.app.render();
     }
 
-    /* ---------------- SVG Exponential Chart Generator ---------------- */
+    /* ---------------- Multi-Rate SVG Visualization (4% vs 6% vs 8%) ---------------- */
+
+    renderMultiRateChartSVG() {
+      const width = 640;
+      const height = 320;
+      const padding = 45;
+      const steps = 100;
+      const years = 402;
+      const yearStep = years / steps;
+
+      const pts4 = [];
+      const pts6 = [];
+      const pts8 = [];
+
+      for (let i = 0; i <= steps; i++) {
+        const t = i * yearStep;
+        pts4.push({ t, val: this.calculateCompound(24, 4, t) });
+        pts6.push({ t, val: this.calculateCompound(24, 6, t) });
+        pts8.push({ t, val: this.calculateCompound(24, 8, t) });
+      }
+
+      // Log-scaled Y-axis mapping to make all 3 curves visible & striking
+      const maxVal = pts8[pts8.length - 1].val;
+      const maxLog = Math.log10(maxVal);
+
+      const plotW = width - (padding * 2);
+      const plotH = height - (padding * 2);
+
+      const getX = (t) => padding + (t / years) * plotW;
+      const getY = (v) => {
+        if (v <= 1) return height - padding;
+        const norm = Math.log10(v) / maxLog;
+        return height - padding - (norm * plotH);
+      };
+
+      const path4D = pts4.map((pt, i) => `${i === 0 ? 'M' : 'L'} ${getX(pt.t).toFixed(1)} ${getY(pt.val).toFixed(1)}`).join(' ');
+      const path6D = pts6.map((pt, i) => `${i === 0 ? 'M' : 'L'} ${getX(pt.t).toFixed(1)} ${getY(pt.val).toFixed(1)}`).join(' ');
+      const path8D = pts8.map((pt, i) => `${i === 0 ? 'M' : 'L'} ${getX(pt.t).toFixed(1)} ${getY(pt.val).toFixed(1)}`).join(' ');
+
+      return `
+        <svg viewBox="0 0 ${width} ${height}" style="width:100%; height:auto; background:#0B132B; border-radius:16px; border:1px solid #334155; margin: 20px 0;">
+          <!-- Axes -->
+          <line x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}" stroke="#475569" stroke-width="1.5"/>
+          <line x1="${padding}" y1="${padding}" x2="${padding}" y2="${height - padding}" stroke="#475569" stroke-width="1.5"/>
+
+          <!-- Timeline Year Markers -->
+          <text x="${padding}" y="${height - 15}" fill="#94A3B8" font-size="11">1624</text>
+          <text x="${padding + plotW * 0.25}" y="${height - 15}" fill="#94A3B8" font-size="11">1724</text>
+          <text x="${padding + plotW * 0.5}" y="${height - 15}" fill="#94A3B8" font-size="11">1824</text>
+          <text x="${padding + plotW * 0.75}" y="${height - 15}" fill="#94A3B8" font-size="11">1924</text>
+          <text x="${width - padding - 25}" y="${height - 15}" fill="#FCD34D" font-size="11" font-weight="700">2025</text>
+
+          <!-- 4% Curve (Cyan) -->
+          <path d="${path4D}" fill="none" stroke="#38BDF8" stroke-width="3"/>
+
+          <!-- 6% Curve (Gold) -->
+          <path d="${path6D}" fill="none" stroke="#F59E0B" stroke-width="3.5"/>
+
+          <!-- 8% Curve (Pink) -->
+          <path d="${path8D}" fill="none" stroke="#EC4899" stroke-width="4"/>
+
+          <!-- End Dots -->
+          <circle cx="${getX(402)}" cy="${getY(pts4[steps].val)}" r="5" fill="#38BDF8"/>
+          <circle cx="${getX(402)}" cy="${getY(pts6[steps].val)}" r="6" fill="#F59E0B"/>
+          <circle cx="${getX(402)}" cy="${getY(pts8[steps].val)}" r="7" fill="#EC4899"/>
+
+          <!-- Floating Legend -->
+          <g transform="translate(${padding + 12}, ${padding + 10})">
+            <rect x="0" y="0" width="260" height="70" rx="10" fill="#1E293B" opacity="0.95" stroke="#334155"/>
+            <line x1="12" y1="16" x2="32" y2="16" stroke="#38BDF8" stroke-width="3"/>
+            <text x="38" y="20" fill="#38BDF8" font-size="11" font-weight="700">4% Interest: $168.9 Million</text>
+            <line x1="12" y1="35" x2="32" y2="35" stroke="#F59E0B" stroke-width="3"/>
+            <text x="38" y="39" fill="#FCD34D" font-size="11" font-weight="700">6% Interest: $357.4 Billion</text>
+            <line x1="12" y1="54" x2="32" y2="54" stroke="#EC4899" stroke-width="3.5"/>
+            <text x="38" y="58" fill="#F472B6" font-size="11" font-weight="700">8% Interest: $655.5 Trillion!</text>
+          </g>
+        </svg>
+      `;
+    }
+
+    /* ---------------- Single Curve SVG Sandbox Generator ---------------- */
 
     renderChartSVG(P, rPercent, years, nFreq = 1) {
       const width = 600;
@@ -132,21 +248,15 @@
 
       return `
         <svg viewBox="0 0 ${width} ${height}" class="compounding-svg" style="width:100%; height:auto; background:#0F172A; border-radius:16px; border:1px solid #334155;">
-          <!-- Grid Lines -->
           <line x1="${padding}" y1="${height - padding}" x2="${width - padding}" y2="${height - padding}" stroke="#475569" stroke-width="1.5"/>
           <line x1="${padding}" y1="${padding}" x2="${padding}" y2="${height - padding}" stroke="#475569" stroke-width="1.5"/>
 
-          <!-- Simple Interest Line (Flat/Linear) -->
           <path d="${sPathD}" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-dasharray="4 4"/>
-
-          <!-- Compound Interest Line (Exponential Curve) -->
           <path d="${cPathD}" fill="none" stroke="#EC4899" stroke-width="4"/>
 
-          <!-- End Data Points -->
           <circle cx="${getX(endC.t)}" cy="${getY(endC.val)}" r="6" fill="#EC4899"/>
           <circle cx="${getX(endS.t)}" cy="${getY(endS.val)}" r="4" fill="#38BDF8"/>
 
-          <!-- Legend -->
           <g transform="translate(${padding + 10}, ${padding + 15})">
             <rect x="0" y="0" width="230" height="46" rx="8" fill="#1E293B" opacity="0.9" stroke="#334155"/>
             <line x1="12" y1="15" x2="32" y2="15" stroke="#EC4899" stroke-width="3"/>
@@ -247,6 +357,11 @@
       }
 
       if (this.mode === 'reveal') {
+        const tScrub = this.scrubberYear - 1624;
+        const v4Scrub = this.calculateCompound(24, 4, tScrub);
+        const v6Scrub = this.calculateCompound(24, 6, tScrub);
+        const v8Scrub = this.calculateCompound(24, 8, tScrub);
+
         return `
           <div class="workspace-card" style="background:#0F172A; border:2px solid #F59E0B;">
             <div style="text-align:center; margin-bottom:28px;">
@@ -256,9 +371,9 @@
             </div>
 
             <!-- 3 Outcome Cards -->
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px; margin-bottom:36px;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px; margin-bottom:32px;">
               <!-- 4% Card -->
-              <div style="background:#1E293B; border:1px solid #38BDF8; border-radius:16px; padding:24px; position:relative; overflow:hidden;">
+              <div style="background:#1E293B; border:1px solid #38BDF8; border-radius:16px; padding:24px;">
                 <div style="font-size:0.9rem; font-weight:800; color:#38BDF8; margin-bottom:6px;">a) At 4% Interest Rate</div>
                 <div style="font-size:1.9rem; font-weight:900; color:#FFF; margin-bottom:12px;">${this.formatMoney(val4)}</div>
                 <div style="font-size:0.85rem; color:#94A3B8; line-height:1.5;">
@@ -268,7 +383,7 @@
               </div>
 
               <!-- 6% Card -->
-              <div style="background:#1E293B; border:2px solid #F59E0B; border-radius:16px; padding:24px; position:relative; overflow:hidden;">
+              <div style="background:#1E293B; border:2px solid #F59E0B; border-radius:16px; padding:24px;">
                 <div style="font-size:0.9rem; font-weight:800; color:#F59E0B; margin-bottom:6px;">b) At 6% Interest Rate</div>
                 <div style="font-size:1.9rem; font-weight:900; color:#FCD34D; margin-bottom:12px;">${this.formatMoney(val6)}</div>
                 <div style="font-size:0.85rem; color:#94A3B8; line-height:1.5;">
@@ -278,7 +393,7 @@
               </div>
 
               <!-- 8% Card -->
-              <div style="background:#1E293B; border:2px solid #EC4899; border-radius:16px; padding:24px; position:relative; overflow:hidden;">
+              <div style="background:#1E293B; border:2px solid #EC4899; border-radius:16px; padding:24px;">
                 <div style="font-size:0.9rem; font-weight:800; color:#EC4899; margin-bottom:6px;">c) At 8% Interest Rate</div>
                 <div style="font-size:1.9rem; font-weight:900; color:#F472B6; margin-bottom:12px;">${this.formatMoney(val8)}</div>
                 <div style="font-size:0.85rem; color:#94A3B8; line-height:1.5;">
@@ -288,12 +403,79 @@
               </div>
             </div>
 
-            <!-- Mathematical Lesson Box -->
+            <!-- Visualization 1: Interactive Multi-Curve Graph -->
+            <div style="background:#1E293B; border:1px solid #334155; border-radius:16px; padding:24px; margin-bottom:32px;">
+              <h3 style="font-family:var(--font-heading); color:#FCD34D; font-size:1.3rem; margin-bottom:6px;">📈 Multi-Rate Exponential Growth Comparison (1624 ➔ 2025)</h3>
+              <p style="color:#94A3B8; font-size:0.95rem; margin-bottom:14px;">The curves start almost identically for the first 100 years, then split into exponentially separate orders of magnitude!</p>
+
+              ${this.renderMultiRateChartSVG()}
+            </div>
+
+            <!-- Visualization 2: 1624 ➔ 2025 Interactive Time Machine Scrubber -->
+            <div style="background:linear-gradient(135deg, #1E293B, #0F172A); border:1px solid #38BDF8; border-radius:16px; padding:24px; margin-bottom:32px;">
+              <h3 style="font-family:var(--font-heading); color:#38BDF8; font-size:1.3rem; margin-bottom:6px;">⏳ Interactive Time Machine Scrubber</h3>
+              <p style="color:#94A3B8; font-size:0.95rem; margin-bottom:18px;">Drag the slider to watch how the balance evolves across 402 years of world history!</p>
+
+              <div style="margin-bottom:20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                  <span id="tm-year-label" style="font-size:1.25rem; font-weight:800; color:#FCD34D;">${this.scrubberYear} AD (${tScrub} years elapsed)</span>
+                </div>
+                <input type="range" id="tm-slider" min="1624" max="2025" step="1" value="${this.scrubberYear}" oninput="app.compoundingGame.updateScrubber(this.value)" style="width:100%;">
+              </div>
+
+              <!-- Historical Milestone Callout -->
+              <div id="tm-milestone" style="background:rgba(56,189,248,0.15); border:1px solid #38BDF8; color:#7DD3FC; padding:12px 16px; border-radius:10px; font-weight:700; font-size:1.02rem; margin-bottom:20px;">
+                ${this.getMilestone(this.scrubberYear)}
+              </div>
+
+              <!-- Live Balance Comparison at Scrubber Year -->
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:16px;">
+                <div style="background:#0F172A; padding:16px; border-radius:10px; border:1px solid #38BDF8;">
+                  <div style="font-size:0.8rem; font-weight:700; color:#38BDF8;">4% Value:</div>
+                  <div id="tm-v4" style="font-size:1.3rem; font-weight:800; color:#FFF; margin-top:4px;">${this.formatMoney(v4Scrub)}</div>
+                </div>
+                <div style="background:#0F172A; padding:16px; border-radius:10px; border:1px solid #F59E0B;">
+                  <div style="font-size:0.8rem; font-weight:700; color:#F59E0B;">6% Value:</div>
+                  <div id="tm-v6" style="font-size:1.3rem; font-weight:800; color:#FCD34D; margin-top:4px;">${this.formatMoney(v6Scrub)}</div>
+                </div>
+                <div style="background:#0F172A; padding:16px; border-radius:10px; border:1px solid #EC4899;">
+                  <div style="font-size:0.8rem; font-weight:700; color:#EC4899;">8% Value:</div>
+                  <div id="tm-v8" style="font-size:1.3rem; font-weight:800; color:#F472B6; margin-top:4px;">${this.formatMoney(v8Scrub)}</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Visualization 3: Visual Scale Comparison Infographic -->
             <div style="background:rgba(236,72,153,0.1); border:1px solid #EC4899; border-radius:16px; padding:24px; margin-bottom:32px;">
-              <h3 style="font-family:var(--font-heading); color:#EC4899; font-size:1.3rem; margin-bottom:10px;">💡 Why Does This Happen? (Formula Breakdown)</h3>
-              <p style="color:#E2E8F0; font-size:1.02rem; line-height:1.7; margin-bottom:12px;">
-                Simple interest grows in a straight line: <code style="color:#38BDF8;">A = P + (P × r × t)</code>.<br>
-                Compound interest grows exponentially: <code style="color:#EC4899; font-weight:bold;">A = P × (1 + r)ᵗ</code> because you earn <strong>interest on top of previous interest</strong> every single year!
+              <h3 style="font-family:var(--font-heading); color:#EC4899; font-size:1.3rem; margin-bottom:12px;">📊 Tangible Scale Comparison ("What Does It Buy?")</h3>
+              
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:18px;">
+                <div style="background:#0F172A; padding:18px; border-radius:12px; border:1px solid #38BDF8;">
+                  <div style="font-size:2rem; margin-bottom:8px;">🏰 🏰 🏰</div>
+                  <div style="font-weight:800; color:#38BDF8; font-size:1.1rem; margin-bottom:4px;">4% ➔ $168.9 Million</div>
+                  <div style="font-size:0.88rem; color:#CBD5E1; line-height:1.5;">Equal to 170 luxury estates or a fleet of 5,000 electric vehicles.</div>
+                </div>
+
+                <div style="background:#0F172A; padding:18px; border-radius:12px; border:1px solid #F59E0B;">
+                  <div style="font-size:2rem; margin-bottom:8px;">🚀 🚀 🚀</div>
+                  <div style="font-weight:800; color:#FCD34D; font-size:1.1rem; margin-bottom:4px;">6% ➔ $357.4 Billion</div>
+                  <div style="font-size:0.88rem; color:#CBD5E1; line-height:1.5;">Equal to building 800 Starship space rockets or 2x the richest person on Earth.</div>
+                </div>
+
+                <div style="background:#0F172A; padding:18px; border-radius:12px; border:1px solid #EC4899;">
+                  <div style="font-size:2rem; margin-bottom:8px;">🌍 🌍 🌍</div>
+                  <div style="font-weight:800; color:#F472B6; font-size:1.1rem; margin-bottom:4px;">8% ➔ $655.5 Trillion</div>
+                  <div style="font-size:0.88rem; color:#CBD5E1; line-height:1.5;">Equal to 800 planets made of pure gold — over 6x all existing global wealth!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Formula Breakdown Box -->
+            <div style="background:#1E293B; border:1px solid #475569; border-radius:16px; padding:24px; margin-bottom:32px;">
+              <h3 style="font-family:var(--font-heading); color:#FFF; font-size:1.2rem; margin-bottom:10px;">💡 Mathematical Formula Breakdown</h3>
+              <p style="color:#E2E8F0; font-size:1rem; line-height:1.7; margin-bottom:12px;">
+                Simple interest grows linearly: <code style="color:#38BDF8;">A = P + (P × r × t)</code>.<br>
+                Compound interest grows exponentially: <code style="color:#EC4899; font-weight:bold;">A = P × (1 + r)ᵗ</code> because interest earns interest!
               </p>
               <div style="font-family:var(--font-code); color:#FCD34D; background:rgba(0,0,0,0.4); padding:12px; border-radius:8px; font-size:0.95rem;">
                 At 8%: $24 × (1.08)⁴⁰² = $24 × 27,311,761,150,584.67 = $655,482,267,614,032
@@ -327,7 +509,7 @@
               <!-- Controls Column -->
               <div style="background:#0F172A; border:1px solid #334155; border-radius:16px; padding:24px;">
                 <div style="margin-bottom:20px;">
-                  <label style="display:flex; justify-space-between; font-weight:700; color:#CBD5E1; margin-bottom:8px;">
+                  <label style="display:flex; justify-content:space-between; font-weight:700; color:#CBD5E1; margin-bottom:8px;">
                     <span>Starting Principal (P):</span>
                     <span style="color:#34D399;">$${principal.toLocaleString()}</span>
                   </label>
@@ -335,7 +517,7 @@
                 </div>
 
                 <div style="margin-bottom:20px;">
-                  <label style="display:flex; justify-space-between; font-weight:700; color:#CBD5E1; margin-bottom:8px;">
+                  <label style="display:flex; justify-content:space-between; font-weight:700; color:#CBD5E1; margin-bottom:8px;">
                     <span>Annual Interest Rate (r):</span>
                     <span style="color:#F59E0B;">${rate}%</span>
                   </label>
@@ -343,7 +525,7 @@
                 </div>
 
                 <div style="margin-bottom:20px;">
-                  <label style="display:flex; justify-space-between; font-weight:700; color:#CBD5E1; margin-bottom:8px;">
+                  <label style="display:flex; justify-content:space-between; font-weight:700; color:#CBD5E1; margin-bottom:8px;">
                     <span>Holding Time (t):</span>
                     <span style="color:#EC4899;">${years} years</span>
                   </label>
