@@ -1059,6 +1059,252 @@
         ],
         solution: `Each face is ${s*s} cm². 10 exposed faces = 10 × ${s*s} = ${sa} cm².`
       };
+    },
+
+    "gr8_b6": function(diff) {
+      const type = randInt(1, 2);
+      if (type === 1) {
+        const coef = randInt(2, 8) + (randInt(1, 9) / 10);
+        const exp = randInt(4, 7);
+        const val = Math.round(coef * Math.pow(10, exp));
+        return {
+          question: `Express ${val.toLocaleString()} in scientific notation (a × 10ⁿ).`,
+          answer: `${coef}*10^${exp}`,
+          hints: [
+            `Scientific notation has 1 digit before decimal point: ${coef}.`,
+            `Count decimal places moved to get from ${coef} to ${val}: ${exp} places.`,
+            `Result: ${coef} × 10^${exp}.`
+          ],
+          solution: `${val} = ${coef} × 10^${exp}.`
+        };
+      } else {
+        const numbers = ["√2", "π", "3/4", "-5", "0.333..."];
+        return {
+          question: `Is the number √2 Rational or Irrational?`,
+          answer: "irrational",
+          hints: [
+            "Rational numbers can be written as fractions (a/b).",
+            "Square roots of non-perfect squares cannot be written as simple fractions.",
+            "√2 is irrational."
+          ],
+          solution: "√2 is non-repeating and non-terminating, so it is irrational."
+        };
+      }
+    },
+
+    "gr8_b7": function(diff) {
+      const isMult = Math.random() > 0.5;
+      const num = randInt(12, 98) / 10;
+      const p = pickRandom([10, 100, 1000]);
+      if (isMult) {
+        const ans = round2(num * p);
+        return {
+          question: `Calculate mentally: ${num} × ${p}`,
+          answer: ans,
+          hints: [
+            `Multiplying by ${p} moves decimal point RIGHT by ${Math.log10(p)} places.`,
+            `${num} ➔ ${ans}.`,
+            `Answer is ${ans}.`
+          ],
+          solution: `${num} × ${p} = ${ans}.`
+        };
+      } else {
+        const ans = round2(num / p);
+        return {
+          question: `Calculate mentally: ${num} ÷ ${p}`,
+          answer: ans,
+          hints: [
+            `Dividing by ${p} moves decimal point LEFT by ${Math.log10(p)} places.`,
+            `${num} ➔ ${ans}.`,
+            `Answer is ${ans}.`
+          ],
+          solution: `${num} ÷ ${p} = ${ans}.`
+        };
+      }
+    },
+
+    "gr8_b8": function(diff) {
+      const isAdd = Math.random() > 0.5;
+      if (isAdd) {
+        const a = randInt(1, 3);
+        const b = randInt(2, 5);
+        const c = randInt(1, 3);
+        const d = randInt(2, 5);
+        const num = a * d + c * b;
+        const den = b * d;
+        return {
+          question: `Calculate: (${a}/${b}) + (${c}/${d}) (Format as num/den)`,
+          answer: `${num}/${den}`,
+          hints: [
+            `Find common denominator: ${b} × ${d} = ${den}.`,
+            `Convert numerators: (${a*d}/${den}) + (${c*b}/${den}).`,
+            `Sum = ${num}/${den}.`
+          ],
+          solution: `(${a}/${b}) + (${c}/${d}) = ${num}/${den}.`
+        };
+      } else {
+        const a = randInt(1, 4);
+        const b = randInt(2, 5);
+        const c = randInt(1, 3);
+        const d = randInt(2, 5);
+        const num = a * d;
+        const den = b * c;
+        return {
+          question: `Calculate: (${a}/${b}) ÷ (${c}/${d}) (Format as num/den)`,
+          answer: `${num}/${den}`,
+          hints: [
+            `Multiply by reciprocal: (${a}/${b}) × (${d}/${c}).`,
+            `Multiply numerators (${a} × ${d}) and denominators (${b} × ${c}).`,
+            `Result = ${num}/${den}.`
+          ],
+          solution: `(${a}/${b}) ÷ (${c}/${d}) = (${a*d}) / (${b*c}) = ${num}/${den}.`
+        };
+      }
+    },
+
+    "gr8_c7": function(diff) {
+      const a = randInt(2, 6);
+      const b = randInt(3, 15);
+      const x = randInt(2, 10);
+      const rhs = a * x + b;
+      return {
+        question: `Solve the inequality: ${a}x + ${b} > ${rhs} (Solve for x)`,
+        answer: `${x}`,
+        hints: [
+          `Subtract ${b} from both sides: ${a}x > ${rhs - b}.`,
+          `Divide both sides by ${a}: x > ${x}.`,
+          `Boundary value is ${x}.`
+        ],
+        solution: `${a}x + ${b} > ${rhs} ➔ ${a}x > ${rhs - b} ➔ x > ${x}.`
+      };
+    },
+
+    "gr8_c8": function(diff) {
+      const x = randInt(4, 12);
+      const ans = x > 7 ? x * 2 : x + 5;
+      return {
+        question: `Trace the pseudocode algorithm:\nx = ${x}\nIF x > 7 THEN\n  y = x * 2\nELSE\n  y = x + 5\nEND IF\nWhat is the value of y?`,
+        answer: ans,
+        hints: [
+          `Check condition x > 7 for x = ${x}.`,
+          `Since ${x} ${x > 7 ? '> 7 is TRUE' : '> 7 is FALSE'}, execute ${x > 7 ? 'y = x * 2' : 'y = x + 5'}.`,
+          `y = ${ans}.`
+        ],
+        solution: `Condition x > 7 evaluates to ${x > 7}. Therefore y = ${ans}.`
+      };
+    },
+
+    "gr8_d5": function(diff) {
+      const total = 30;
+      const both = randInt(4, 8);
+      const soccerOnly = randInt(8, 12);
+      const bbOnly = randInt(6, 10);
+      const neither = total - (soccerOnly + bbOnly + both);
+      
+      return {
+        question: `In a class of ${total} students, ${soccerOnly + both} play Soccer, ${bbOnly + both} play Basketball, and ${both} play BOTH sports. How many students play NEITHER sport?`,
+        answer: neither,
+        hints: [
+          `Venn diagram total playing at least one sport = Soccer only (${soccerOnly}) + Basketball only (${bbOnly}) + Both (${both}) = ${soccerOnly + bbOnly + both}.`,
+          `Subtract from total class count: ${total} - ${soccerOnly + bbOnly + both}.`,
+          `Neither count = ${neither}.`
+        ],
+        solution: `Neither = ${total} - (${soccerOnly} + ${bbOnly} + ${both}) = ${neither}.`
+      };
+    },
+
+    "gr8_e6": function(diff) {
+      return {
+        question: `What is the sum of interior angles meeting at any single vertex in a gapless tessellation? (in degrees)`,
+        answer: 360,
+        hints: [
+          "A complete turn around a point forms a full circle.",
+          "Full circle angle = 360°.",
+          "Sum = 360°."
+        ],
+        solution: "Interior angles at any tessellating vertex must sum to 360° to avoid gaps or overlaps."
+      };
+    },
+
+    "gr8_e7": function(diff) {
+      const scale = randInt(2, 6);
+      const len = randInt(4, 10);
+      const actual = len * scale;
+      return {
+        question: `On a scale drawing with scale 1 cm : ${scale} m, a room is ${len} cm long. What is the actual length of the room in meters?`,
+        answer: actual,
+        hints: [
+          `Scale factor is ${scale} meters per cm.`,
+          `Multiply drawing length by scale factor: ${len} × ${scale}.`,
+          `Actual length = ${actual} m.`
+        ],
+        solution: `Actual length = ${len} cm × ${scale} m/cm = ${actual} m.`
+      };
+    },
+
+    "gr8_e8": function(diff) {
+      const x = randInt(1, 6);
+      const y = randInt(1, 6);
+      const k = 2;
+      return {
+        question: `Point P is at (${x}, ${y}). If P is dilated by a scale factor of ${k} centered at the origin (0,0), what are the new coordinates? (Format: x,y)`,
+        answer: `${x*k},${y*k}`,
+        hints: [
+          `Dilation by factor ${k} multiplies both x and y coordinates by ${k}.`,
+          `x' = ${x} × ${k} = ${x*k}, y' = ${y} × ${k} = ${y*k}.`,
+          `New point = (${x*k}, ${y*k}).`
+        ],
+        solution: `P' = (${x} × ${k}, ${y} × ${k}) = (${x*k},${y*k}).`
+      };
+    },
+
+    "gr8_e9": function(diff) {
+      const val = randInt(2, 9);
+      const ans = val * 1000000000;
+      return {
+        question: `Convert ${val} Gigabytes (GB) into Bytes (express as a whole number).`,
+        answer: ans,
+        hints: [
+          "Giga prefix represents 10^9 = 1,000,000,000.",
+          `Multiply ${val} by 1,000,000,000.`,
+          `${val} GB = ${ans} Bytes.`
+        ],
+        solution: `${val} Giga = ${val} × 10⁹ = ${ans} Bytes.`
+      };
+    },
+
+    "gr8_f5": function(diff) {
+      const cad = randInt(5, 20) * 10;
+      const rate = 0.75; // 1 CAD = 0.75 USD
+      const usd = round2(cad * rate);
+      return {
+        question: `If 1 Canadian Dollar (CAD) = $0.75 US Dollar (USD), how much is $${cad} CAD worth in USD?`,
+        answer: usd,
+        hints: [
+          "Multiply CAD amount by exchange rate 0.75.",
+          `$${cad} × 0.75`,
+          `Result = $${usd} USD.`
+        ],
+        solution: `$${cad} CAD × 0.75 = $${usd} USD.`
+      };
+    },
+
+    "gr8_f6": function(diff) {
+      const fee = 99;
+      const spend = 15000;
+      const rate = 0.02; // 2% cashback
+      const cashback = spend * rate; // $300
+      const net = cashback - fee; // $201
+      return {
+        question: `A credit card offers 2% cash back but charges a $${fee} annual fee. If you spend $${spend.toLocaleString()} in a year, what is your net financial gain?`,
+        answer: net,
+        hints: [
+          `Calculate 2% cash back: $${spend} × 0.02 = $${cashback}.`,
+          `Subtract annual fee: $${cashback} - $${fee}.`,
+          `Net gain = $${net}.`
+        ],
+        solution: `Cashback: ${spend} × 0.02 = $${cashback}. Net gain: ${cashback} - ${fee} = $${net}.`
+      };
     }
   };
 

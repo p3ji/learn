@@ -402,6 +402,42 @@ window.KIDS_MATH_CURRICULUM = {
               example: "3/4 = 0.75 = 75%.",
               tip: "To convert % to decimal, move decimal point 2 places left!"
             }
+          },
+          {
+            id: "gr8_b6",
+            code: "B1.1, B1.2",
+            title: "Scientific Notation & Real Number System",
+            summary: "Represent very large and small numbers (a × 10ⁿ) and classify rational vs irrational numbers.",
+            khanUrl: "https://www.khanacademy.org/math/cc-eighth-grade-math/cc-8th-numbers-and-operations",
+            cheatSheet: {
+              rule: "Scientific notation: 1 ≤ a < 10. Large numbers have positive exponents (3.5 × 10⁶), small numbers negative (4.2 × 10⁻⁴).",
+              example: "350,000 = 3.5 × 10⁵. 0.00072 = 7.2 × 10⁻⁴. Rational numbers can be written as a fraction a/b; Irrationals (√2, π) cannot.",
+              tip: "Count decimal jumps to find the exponent n!"
+            }
+          },
+          {
+            id: "gr8_b7",
+            code: "B2.3",
+            title: "Mental Math: Powers of 10 Operations",
+            summary: "Multiply and divide whole numbers and decimals up to thousandths by powers of 10.",
+            khanUrl: "https://www.khanacademy.org/math/cc-fifth-grade-math/imp-place-value-and-decimals",
+            cheatSheet: {
+              rule: "Multiplying by 10ⁿ moves decimal point n places RIGHT. Dividing by 10ⁿ moves decimal point n places LEFT.",
+              example: "4.58 × 1,000 = 4,580. 83.2 ÷ 100 = 0.832.",
+              tip: "Count the zeros in the power of 10!"
+            }
+          },
+          {
+            id: "gr8_b8",
+            code: "B2.5, B2.6",
+            title: "Fraction Operations (+, -, ×, ÷)",
+            summary: "Perform addition, subtraction, multiplication, and division with fractions and mixed numbers.",
+            khanUrl: "https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-fractions-decimals",
+            cheatSheet: {
+              rule: "Add/Sub: Common denominator required. Mult: (a/b) × (c/d) = (ac)/(bd). Div: Multiply by reciprocal (a/b) ÷ (c/d) = (a/b) × (d/c).",
+              example: "(3/4) + (2/3) = (9/12) + (8/12) = 17/12 = 1 5/12. (3/4) ÷ (1/2) = (3/4) × (2/1) = 6/4 = 3/2 = 1 1/2.",
+              tip: "Always convert mixed numbers to improper fractions before multiplying or dividing!"
+            }
           }
         ]
       },
@@ -483,6 +519,30 @@ window.KIDS_MATH_CURRICULUM = {
               example: "1, 4, 9, 16... First differences: 3, 5, 7. Second differences: 2, 2. This is quadratic (n²).",
               tip: "Constant second differences mean it's a quadratic pattern."
             }
+          },
+          {
+            id: "gr8_c7",
+            code: "C2.4",
+            title: "Linear Inequalities & Solution Sets",
+            summary: "Solve and graph 1-step and 2-step linear inequalities involving integers.",
+            khanUrl: "https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-variables-expressions",
+            cheatSheet: {
+              rule: "Solve like an equation, but FLIP the inequality sign (< ➔ >) when multiplying or dividing by a negative number!",
+              example: "-2x + 4 < 10 ➔ -2x < 6 ➔ x > -3.",
+              tip: "Open circle for < or >, solid circle for ≤ or ≥."
+            }
+          },
+          {
+            id: "gr8_c8",
+            code: "C3.1, C3.2",
+            title: "Algorithmic Logic & Data Pseudocode Analysis",
+            summary: "Trace conditional statements, loops, and data analysis code logic.",
+            khanUrl: "https://www.khanacademy.org/math/cc-eighth-grade-math",
+            cheatSheet: {
+              rule: "Follow variable assignments and IF-ELSE branch conditions in step-by-step order.",
+              example: "x = 5; IF x > 3 THEN y = x * 2 ELSE y = x + 1 ➔ y = 10.",
+              tip: "Test branch conditions carefully!"
+            }
           }
         ]
       },
@@ -539,6 +599,18 @@ window.KIDS_MATH_CURRICULUM = {
               rule: "Without replacement: The total number of items decreases for the second draw.",
               example: "3 red, 2 blue marbles. P(red then blue without replacement) = (3/5) × (2/4) = 6/20 = 3/10.",
               tip: "Always check if the first item was put back or kept!"
+            }
+          },
+          {
+            id: "gr8_d5",
+            code: "D2.1",
+            title: "Venn & Tree Diagram Probability",
+            summary: "Model overlapping data sets and sample spaces using Venn diagrams and outcome tree diagrams.",
+            khanUrl: "https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-probability-statistics",
+            cheatSheet: {
+              rule: "Venn Diagram: P(A or B) = P(A) + P(B) - P(A and B). Tree Diagram: Multiply probabilities along branches.",
+              example: "Group of 30 students: 18 play Soccer, 12 play Basketball, 5 play both. P(neither) = 30 - (18+12-5) = 5 ➔ 5/30 = 1/6.",
+              tip: "Subtract the overlapping middle intersection first!"
             }
           }
         ]
@@ -609,6 +681,54 @@ window.KIDS_MATH_CURRICULUM = {
               example: "Cube on top of cylinder: Find both SAs, subtract 2x the contact circle area.",
               tip: "Always remember hidden overlapping faces in surface area!"
             }
+          },
+          {
+            id: "gr8_e6",
+            code: "E1.1",
+            title: "Tessellations & Polygon Symmetry",
+            summary: "Identify geometric properties of regular and semi-regular tessellating shapes.",
+            khanUrl: "https://www.khanacademy.org/math/cc-eighth-grade-math/cc-8th-geometry",
+            cheatSheet: {
+              rule: "Tessellation rule: Interior angles meeting at any vertex must sum to exactly 360° without gaps or overlaps.",
+              example: "Regular Hexagon interior angle = 120° ➔ 120° × 3 = 360° (tessellates!). Regular Pentagon = 108° (does not tessellate alone).",
+              tip: "Only Equilateral Triangles, Squares, and Regular Hexagons tessellate regularly!"
+            }
+          },
+          {
+            id: "gr8_e7",
+            code: "E1.2, E1.3",
+            title: "Scale Drawings, Enlargements & 3D Projections",
+            summary: "Calculate actual lengths/areas from scale factor drawings and interpret Top/Front/Side orthographic views.",
+            khanUrl: "https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-geometry",
+            cheatSheet: {
+              rule: "Scale Factor k: Actual Length = Scale Length × k. Actual Area = Scale Area × k².",
+              example: "1 cm : 5 m scale drawing. Drawing length 4 cm ➔ Actual length = 4 × 5 = 20 m. Drawing area 6 cm² ➔ Actual area = 6 × 5² = 150 m².",
+              tip: "Remember that Area scales by the SQUARE of scale factor (k²)!"
+            }
+          },
+          {
+            id: "gr8_e8",
+            code: "E1.4",
+            title: "Cartesian Transformations & Dilations",
+            summary: "Perform translations, reflections, rotations, and dilations on the 2D coordinate plane.",
+            khanUrl: "https://www.khanacademy.org/math/cc-eighth-grade-math/cc-8th-geometry",
+            cheatSheet: {
+              rule: "Translation (x+a, y+b). Reflection over x-axis (x, -y). Reflection over y-axis (-x, y). Dilation by factor k (kx, ky).",
+              example: "Point (3, 4) dilated by factor 2 ➔ (6, 8). Reflected across y-axis ➔ (-6, 8).",
+              tip: "Dilations change shape size; translations, reflections, and rotations keep size congruent!"
+            }
+          },
+          {
+            id: "gr8_e9",
+            code: "E2.1",
+            title: "Metric Scientific Prefixes & Exponential Units",
+            summary: "Convert and express very large (mega, giga, tera) and small (micro, nano, pico) metric measurements.",
+            khanUrl: "https://www.khanacademy.org/math/cc-eighth-grade-math/cc-8th-numbers-and-operations",
+            cheatSheet: {
+              rule: "Tera (10¹²), Giga (10⁹), Mega (10⁶), Kilo (10³). Micro (10⁻⁶), Nano (10⁻⁹), Pico (10⁻¹²).",
+              example: "5 Gigabytes = 5 × 10⁹ bytes = 5,000,000,000 bytes. 4 Nanometers = 4 × 10⁻⁹ meters.",
+              tip: "Each major metric prefix step is a factor of 1,000 (10³)!"
+            }
           }
         ]
       },
@@ -665,6 +785,30 @@ window.KIDS_MATH_CURRICULUM = {
               rule: "Compound interest calculates interest on initial principal plus all accumulated interest: A = P(1 + r/n)^(nt).",
               example: "$24 invested for 401 years at 8% compound interest = $914 Trillion!",
               tip: "Use the Rule of 72 to estimate doubling time: 72 ÷ interest rate = years to double."
+            }
+          },
+          {
+            id: "gr8_f5",
+            code: "F1.1",
+            title: "Foreign Exchange Rates & Multi-Currency Calculations",
+            summary: "Convert amounts between Canadian Dollars (CAD) and foreign currencies (USD, EUR, GBP).",
+            khanUrl: "https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-ratio-proportion",
+            cheatSheet: {
+              rule: "Target Amount = Base Amount × Exchange Rate. To convert back: Base Amount = Target Amount ÷ Exchange Rate.",
+              example: "1 CAD = 0.75 USD ➔ $200 CAD = 200 × 0.75 = $150 USD.",
+              tip: "Watch out for conversion fees added by payment methods!"
+            }
+          },
+          {
+            id: "gr8_f6",
+            code: "F1.5, F1.6",
+            title: "Credit Cards, APR Interest & Rewards",
+            summary: "Compare high-interest credit card debt, annual fees, and cashback loyalty rewards.",
+            khanUrl: "https://www.khanacademy.org/math/cc-seventh-grade-math/cc-7th-ratio-proportion",
+            cheatSheet: {
+              rule: "Carrying a credit card balance incurs high monthly interest (e.g., 20% APR = ~1.67% monthly). Net value = Rewards earned - Annual fee - Interest paid.",
+              example: "Card A: $0 fee, 1% cashback. Card B: $99 fee, 2% cashback. Spending $15,000/yr: Card A yields $150; Card B yields $300 - $99 = $201 net!",
+              tip: "Paying full statement balance every month avoids interest completely!"
             }
           }
         ]
