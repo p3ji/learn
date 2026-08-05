@@ -182,8 +182,10 @@ function renderPosView(container) {
                 if (correct) {
                     token.classList.remove('wrong');
                     token.classList.add('selected');
-                    token.dataset.solved = '1';
-                    addXP(5);
+                    if (token.dataset.solved !== '1') {
+                        token.dataset.solved = '1';
+                        addXP(5);
+                    }
                 } else {
                     token.classList.add('wrong');
                     setTimeout(() => token.classList.remove('wrong'), 700);
@@ -194,9 +196,12 @@ function renderPosView(container) {
                 document.getElementById(`kgPosCount${sent}`).textContent = `${solved} / ${total} tagged`;
 
                 if (solved === total) {
-                    document.getElementById(`kgPosFeedback${sent}`).innerHTML =
-                        `<div class="finding good" style="margin:0;"><div class="finding-title">✅ Sentence complete!</div><div class="finding-body">Every word tagged correctly.</div></div>`;
-                    addXP(30);
+                    const fbEl = document.getElementById(`kgPosFeedback${sent}`);
+                    if (!fbEl.dataset.completed) {
+                        fbEl.dataset.completed = '1';
+                        fbEl.innerHTML = `<div class="finding good" style="margin:0;"><div class="finding-title">✅ Sentence complete!</div><div class="finding-body">Every word tagged correctly.</div></div>`;
+                        addXP(30);
+                    }
                 }
             });
         });
@@ -346,7 +351,10 @@ function gradeCaseChoice(pick, options) {
         </div>
         <button class="fb-action-btn ${correct ? 'green' : 'gold'}" id="kgDoctorNext" style="margin-top:10px;">Next →</button>`;
 
-    if (correct) addXP(25);
+    if (correct && !c._xpAwarded) {
+        c._xpAwarded = true;
+        addXP(25);
+    }
     document.getElementById('kgDoctorNext').addEventListener('click', () => { kgDoctor.index++; renderDoctorCase(); });
     document.querySelector('[data-rule]')?.addEventListener('click', () => openRuleCard(c.rule));
     document.getElementById('kgDoctorNext').focus();

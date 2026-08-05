@@ -169,6 +169,8 @@ class KidsMathApp {
 
   submitAnswer(e) {
     e.preventDefault();
+    if (this.practiceState.feedback) return; // Prevent re-submitting already evaluated question
+
     const input = document.getElementById('math-answer-input');
     if (!input || !input.value.trim()) return;
 
@@ -182,7 +184,8 @@ class KidsMathApp {
       localStorage.setItem('kids_math_stats', JSON.stringify(this.stats));
 
       if (window.SuitePassport) {
-        window.SuitePassport.addXP(10, 'kids_math');
+        const questionKey = `q_${this.selectedTopic ? this.selectedTopic.id : 'math'}_${this.currentQuestion.question}`;
+        window.SuitePassport.addXP(10, 'kids_math', questionKey);
       }
 
       this.practiceState.feedback = {

@@ -39,10 +39,17 @@ class AccountPortalView {
     const p = window.SuitePassport.getProfile();
     this.selectedAvatar = p.avatar;
 
-    const avatars = ['🦉', '🧙‍♂️', '🤖', '🦊', '🚀', '🦁', '🐲', '👑', '🌌', '🎨', '✏️', '🎮'];
-    const gridHtml = avatars.map(a => `
-      <div class="avatar-option ${a === this.selectedAvatar ? 'selected' : ''}" onclick="portal.selectAvatar('${a}')">${a}</div>
-    `).join('');
+    const catalogSkins = window.SuitePassport.SHOP_CATALOG.skins;
+    const gridHtml = catalogSkins.map(skin => {
+      const isOwned = window.SuitePassport.isItemOwned(skin.id);
+      const isSelected = skin.icon === this.selectedAvatar;
+
+      if (isOwned) {
+        return `<div class="avatar-option ${isSelected ? 'selected' : ''}" onclick="portal.selectAvatar('${skin.icon}', '${skin.id}')" title="${skin.name}">${skin.icon}</div>`;
+      } else {
+        return `<div class="avatar-option locked" style="opacity:0.5; position:relative; cursor:pointer;" onclick="portal.closeModal(); portal.setTab('shop');" title="🔒 ${skin.name} (Unlock in Shop for 🪙 ${skin.price})">${skin.icon}<span style="font-size:0.6rem; position:absolute; bottom:2px; right:2px;">🔒</span></div>`;
+      }
+    }).join('');
 
     const modalHtml = `
       <div class="modal-overlay" onclick="if(event.target === this) portal.closeModal()">
@@ -50,8 +57,8 @@ class AccountPortalView {
           <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 16px;">Customize Learner Passport</h2>
           <form onsubmit="portal.saveProfile(event)">
             <div class="form-group">
-              <label class="form-label">Choose Avatar Icon</label>
-              <div class="avatar-grid" id="avatar-selector-grid">
+              <label class="form-label">Choose Avatar Icon (Unlocked Skins)</label>
+              <div class="avatar-grid" id="avatar-selector-grid" style="max-height: 150px; overflow-y: auto;">
                 ${gridHtml}
               </div>
             </div>
@@ -82,11 +89,14 @@ class AccountPortalView {
     document.getElementById('modal-container').innerHTML = modalHtml;
   }
 
-  selectAvatar(avatar) {
+  selectAvatar(avatar, skinId = null) {
     this.selectedAvatar = avatar;
+    if (skinId && window.SuitePassport) {
+      window.SuitePassport.equipItem('skin', skinId);
+    }
     const options = document.querySelectorAll('.avatar-option');
     options.forEach(opt => {
-      if (opt.textContent === avatar) {
+      if (opt.textContent.trim().startsWith(avatar)) {
         opt.classList.add('selected');
       } else {
         opt.classList.remove('selected');

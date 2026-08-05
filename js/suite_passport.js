@@ -10,11 +10,26 @@
     skins: [
       { id: 'owl_scholar', name: 'Owl Scholar', icon: '🦉', price: 0, desc: 'Wise & observant starting avatar.' },
       { id: 'wizard_math', name: 'Wizard of Logic', icon: '🧙‍♂️', price: 100, desc: 'Master of equations and magic formulas.' },
-      { id: 'robot_tech', name: 'Cyber Bot 3000', icon: '🤖', price: 150, desc: 'Powered by high-speed algorithms.' },
-      { id: 'fox_explorer', name: 'Sly Fox Scholar', icon: '🦊', price: 200, desc: 'Clever, agile, and quick-witted.' },
-      { id: 'astro_cosmic', name: 'Cosmic Astronaut', icon: '🚀', price: 250, desc: 'Exploring the universe of knowledge.' },
+      { id: 'robot_tech', name: 'Cyber Bot 3000', icon: '🤖', price: 125, desc: 'Powered by high-speed algorithms.' },
+      { id: 'fox_explorer', name: 'Sly Fox Scholar', icon: '🦊', price: 150, desc: 'Clever, agile, and quick-witted.' },
+      { id: 'astro_cosmic', name: 'Cosmic Astronaut', icon: '🚀', price: 175, desc: 'Exploring the universe of knowledge.' },
+      { id: 'unicorn_magic', name: 'Mythic Unicorn', icon: '🦄', price: 150, desc: 'Enchanted creature of pure imagination.' },
+      { id: 'pirate_captain', name: 'Cyber Pirate', icon: '🏴‍☠️', price: 175, desc: 'Sailing the high seas of discovery.' },
+      { id: 'ninja_panda', name: 'Kung-Fu Panda', icon: '🐼', price: 125, desc: 'Master of balance and peaceful focus.' },
+      { id: 'trex_scientist', name: 'T-Rex Scientist', icon: '🦖', price: 200, desc: 'Prehistoric giant with a sharp mind.' },
+      { id: 'super_hero', name: 'Super Scholar Hero', icon: '🦸', price: 225, desc: 'Defender of truth and high grades.' },
+      { id: 'mermaid_siren', name: 'Atlantis Siren', icon: '🧜', price: 180, desc: 'Ruler of oceanic mysteries.' },
+      { id: 'shadow_ninja', name: 'Shadow Ninja', icon: '🥷', price: 200, desc: 'Stealthy thinker operating in secret.' },
+      { id: 'arcane_sorceress', name: 'Arcane Sorceress', icon: '🧙‍♀️', price: 225, desc: 'Weaver of mystical knowledge.' },
+      { id: 'bengal_tiger', name: 'Bengal Tiger', icon: '🐯', price: 175, desc: 'Fierce competitor and sharp problem solver.' },
+      { id: 'ottawa_eagle', name: 'Cyber Eagle', icon: '🦅', price: 250, desc: 'Soaring above complex puzzles.' },
+      { id: 'volcano_golem', name: 'Volcanic Golem', icon: '🌋', price: 300, desc: 'Forged in the heat of deep practice.' },
+      { id: 'star_genie', name: 'Starlight Genie', icon: '🌟', price: 350, desc: 'Granting wishes of pure mastery.' },
+      { id: 'pixel_arcade', name: 'Retro Pixel', icon: '👾', price: 150, desc: 'Classic 8-bit gaming spirit.' },
+      { id: 'alien_ufo', name: 'Alien Commander', icon: '🛸', price: 275, desc: 'Intergalactic intelligence officer.' },
       { id: 'lion_king', name: 'Safari Lion', icon: '🦁', price: 300, desc: 'Brave leader of the learning jungle.' },
-      { id: 'dragon_golden', name: 'Golden Dragon', icon: '🐲', price: 400, desc: 'Legendary beast of infinite wisdom.' }
+      { id: 'dragon_golden', name: 'Golden Dragon', icon: '🐲', price: 400, desc: 'Legendary beast of infinite wisdom.' },
+      { id: 'crown_prince', name: 'Crown Royalty', icon: '👑', price: 500, desc: 'Supreme monarch of intellect.' }
     ],
     frames: [
       { id: 'bronze_border', name: 'Bronze Border', icon: '🥉', price: 0, color: '#CD7F32', desc: 'Sturdy bronze avatar border.' },
@@ -347,7 +362,24 @@
       return Math.floor(xp / 100) + 1;
     }
 
-    addXP(amount, appId = 'general') {
+    addXP(amount, appId = 'general', xpKey = null) {
+      if (!this.data.claimedXpKeys) this.data.claimedXpKeys = {};
+
+      if (xpKey) {
+        const fullKey = `${appId}:${xpKey}`;
+        if (this.data.claimedXpKeys[fullKey]) {
+          return { xp: this.data.profile.xp, level: this.data.profile.level, coins: this.getCoins() };
+        }
+        this.data.claimedXpKeys[fullKey] = Date.now();
+      }
+
+      const now = Date.now();
+      const lastCall = this._lastXpCall || { time: 0, appId: '', amount: 0 };
+      if (lastCall.appId === appId && lastCall.amount === amount && (now - lastCall.time) < 400) {
+        return { xp: this.data.profile.xp, level: this.data.profile.level, coins: this.getCoins() };
+      }
+      this._lastXpCall = { time: now, appId, amount };
+
       this.data.profile.xp += amount;
       this.data.profile.coins = (this.getCoins()) + amount; // 1 XP = 1 Coin ratio!
 
@@ -661,7 +693,7 @@
       this.selectedModalAvatar = p.avatar;
       const accountsMap = this.getAccounts();
       const accountNames = Object.keys(accountsMap);
-      const avatars = ['🦉', '🧮', '✍️', '🚀', '✏️', '🎮', '🤖', '👑', '🌌', '🦊', '🐲', '🎨'];
+      const allSkins = SHOP_CATALOG.skins;
 
       modalContainer.innerHTML = `
         <div class="sp-modal-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 99999; padding: 20px; font-family: 'Plus Jakarta Sans', sans-serif;" onclick="if(event.target === this) window.SuitePassport.closeAccountModal()">
@@ -691,11 +723,17 @@
               </div>
 
               <div style="margin-bottom: 12px;">
-                <label style="font-size: 0.85rem; font-weight: 700; color: #38BDF8; display: block; margin-bottom: 6px;">Choose Avatar Icon:</label>
-                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                  ${avatars.map(a => `
-                    <button type="button" onclick="window.SuitePassport.selectModalAvatar('${a}')" style="font-size: 1.4rem; padding: 6px 12px; border-radius: 10px; border: 1.5px solid ${a === p.avatar ? '#F59E0B' : 'rgba(255,255,255,0.15)'}; background: ${a === p.avatar ? 'rgba(245, 158, 11, 0.25)' : 'rgba(255,255,255,0.05)'}; cursor: pointer;">${a}</button>
-                  `).join('')}
+                <label style="font-size: 0.85rem; font-weight: 700; color: #38BDF8; display: block; margin-bottom: 6px;">Choose Avatar Icon (Unlocked Skins):</label>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; max-height: 140px; overflow-y: auto; padding: 4px;">
+                  ${allSkins.map(skin => {
+                    const isOwned = this.isItemOwned(skin.id);
+                    const isSelected = skin.icon === p.avatar;
+                    if (isOwned) {
+                      return `<button type="button" onclick="window.SuitePassport.selectModalAvatar('${skin.icon}'); window.SuitePassport.equipItem('skin', '${skin.id}');" style="font-size: 1.4rem; padding: 6px 12px; border-radius: 10px; border: 1.5px solid ${isSelected ? '#F59E0B' : 'rgba(255,255,255,0.15)'}; background: ${isSelected ? 'rgba(245, 158, 11, 0.25)' : 'rgba(255,255,255,0.05)'}; cursor: pointer;" title="${skin.name}">${skin.icon}</button>`;
+                    } else {
+                      return `<button type="button" onclick="window.SuitePassport.closeAccountModal(); window.SuitePassport.openShopModal('${this.currentRootPrefix || ''}');" style="font-size: 1.1rem; padding: 6px 10px; border-radius: 10px; border: 1px dashed rgba(255,255,255,0.15); background: rgba(0,0,0,0.3); opacity: 0.55; cursor: pointer;" title="🔒 ${skin.name} (Unlock in Shop for 🪙 ${skin.price})">${skin.icon} 🔒</button>`;
+                    }
+                  }).join('')}
                 </div>
               </div>
 
