@@ -166,6 +166,54 @@ function kwScoreColour(v) {
     return 'var(--red-alert)';
 }
 
+function applySuggestionInManuscript(targetWord, replacementWord, startPos = -1, endPos = -1) {
+    const ta = document.getElementById('kwManuscript');
+    if (!ta) return;
+
+    let text = ta.value;
+    let replaced = false;
+
+    if (startPos >= 0 && endPos > startPos) {
+        const sliceWord = text.slice(startPos, endPos);
+        if (!targetWord || sliceWord.toLowerCase().trim() === targetWord.toLowerCase().trim()) {
+            text = text.slice(0, startPos) + (replacementWord || '') + text.slice(endPos);
+            replaced = true;
+        }
+    }
+
+    if (!replaced && targetWord) {
+        const escaped = targetWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const re = new RegExp(`\\b${escaped}\\b`, 'i');
+        if (re.test(text)) {
+            text = text.replace(re, replacementWord || '');
+            replaced = true;
+        }
+    }
+
+    if (replaced) {
+        ta.value = text;
+        const book = getBook(kwState.bookId);
+        if (book && kwState.chapterId) {
+            saveChapterText(book.id, kwState.chapterId, text);
+        }
+
+        if (typeof addXP === 'function') {
+            addXP(5);
+        }
+
+        const msg = replacementWord 
+            ? `✨ Swapped "${targetWord}" for "${replacementWord}"!` 
+            : `✂️ Removed "${targetWord}" from story!`;
+        showToast(msg, 'cyan');
+
+        if (book && kwState.chapterId) {
+            runCoach(text, book.id, kwState.chapterId, true);
+        }
+    } else {
+        showToast(`Could not find "${targetWord}" in chapter text.`, 'gold');
+    }
+}
+
 function renderCoachReport(report) {
     const el = document.getElementById('kwCoachReport');
     if (!el) return;
@@ -216,7 +264,11 @@ function renderCoachReport(report) {
                 ${f.chips && f.chips.length ? `
                     <div class="finding-examples">
                         <span style="font-size:.78rem; color:var(--text-muted); font-weight:700;">${escapeHtml(f.chipLabel || '')}</span>
-                        ${f.chips.map(c => `<span class="chip">${escapeHtml(c)}</span>`).join('')}
+                        <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:4px;">
+                            ${f.chips.map(c => `
+                                <button type="button" class="chip" onclick="applySuggestionInManuscript('${escapeHtml(f.targetWord || '')}', '${escapeHtml(c)}')" style="cursor:pointer; background:rgba(6,182,212,0.15); border:1px solid #06B6D4; color:#38BDF8; font-weight:700;" title="Click to swap '${escapeHtml(f.targetWord || '')}' with '${escapeHtml(c)}' in your story!">⚡ ${escapeHtml(c)}</button>
+                            `).join('')}
+                        </div>
                     </div>` : ''}
             </div>`).join('')}
     `;
@@ -237,9 +289,28 @@ function renderMarkedView(text, marks) {
 
     let html = '';
     let cursor = 0;
-    marks.forEach(m => {
+    marks.forEach((m, idx) => {
         html += escapeHtml(text.slice(cursor, m.start));
-        html += `<span class="mark-hit mark-${escapeHtml(m.kind)}" title="${escapeHtml(m.note)}">${escapeHtml(text.slice(m.start, m.end))}</span>`;
+        const word = text.slice(m.start, m.end);
+        const lowerWord = word.toLowerCase();
+        const swaps = WEAK_VERBS[lowerWord] || WEAK_ADJECTIVES[lowerWord] || [];
+
+        let swapButtonsHtml = '';
+        if (swaps.length > 0) {
+            swapButtonsHtml = `
+                <span class="mark-actions" style="display:inline-flex; gap:3px; margin-left:4px; font-size:0.75rem;">
+                    ${swaps.slice(0, 3).map(s => `<button type="button" onclick="applySuggestionInManuscript('${escapeHtml(word)}', '${escapeHtml(s)}', ${m.start}, ${m.end})" style="background:rgba(59,130,246,0.2); border:1px solid #3B82F6; color:#60A5FA; border-radius:4px; padding:1px 5px; font-weight:800; cursor:pointer;" title="Click to swap with ${escapeHtml(s)}">➔ ${escapeHtml(s)}</button>`).join('')}
+                </span>
+            `;
+        } else if (m.kind === 'adverb' || CRUTCH_WORDS.includes(lowerWord)) {
+            swapButtonsHtml = `
+                <span class="mark-actions" style="display:inline-flex; margin-left:4px; font-size:0.75rem;">
+                    <button type="button" onclick="applySuggestionInManuscript('${escapeHtml(word)}', '', ${m.start}, ${m.end})" style="background:rgba(239,68,68,0.2); border:1px solid #EF4444; color:#F87171; border-radius:4px; padding:1px 5px; font-weight:800; cursor:pointer;" title="Click to remove filler word">✂️ Remove</button>
+                </span>
+            `;
+        }
+
+        html += `<span class="mark-hit mark-${escapeHtml(m.kind)}" title="${escapeHtml(m.note)}">${escapeHtml(word)}${swapButtonsHtml}</span>`;
         cursor = m.end;
     });
     html += escapeHtml(text.slice(cursor));

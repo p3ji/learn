@@ -229,11 +229,15 @@ function analyzeText(rawText) {
     // Weak verbs / adjectives — with swap suggestions drawn from the child's text.
     const weakHits = byKind('weak').filter(m => WEAK_VERBS[m.word.toLowerCase()] || WEAK_ADJECTIVES[m.word.toLowerCase()]);
     if (weakHits.length) {
-        const first = weakHits[0].word.toLowerCase();
-        const swaps = WEAK_VERBS[first] || WEAK_ADJECTIVES[first] || [];
-        add('warn', `${weakHits.length} word${weakHits.length > 1 ? 's' : ''} could work harder`,
-            `You used "${first}". Words like this fit anywhere, which means they show nothing. Pick one that only fits YOUR scene.`,
-            { chips: swaps.slice(0, 5), chipLabel: 'Swap ideas:' });
+        const uniqueWeakWords = [...new Set(weakHits.map(m => m.word.toLowerCase()))];
+        uniqueWeakWords.slice(0, 3).forEach(w => {
+            const swaps = WEAK_VERBS[w] || WEAK_ADJECTIVES[w] || [];
+            if (swaps.length) {
+                add('warn', `Strengthen "${w}"`,
+                    `You wrote "${w}". Click any suggestion below to replace it directly in your story:`,
+                    { chips: swaps.slice(0, 5), chipLabel: `Click to replace "${w}" with:`, targetWord: w });
+            }
+        });
     }
 
     const crutchHits = byKind('weak').filter(m => CRUTCH_WORDS.includes(m.word.toLowerCase()));
