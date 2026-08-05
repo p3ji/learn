@@ -167,6 +167,18 @@ window.KIDS_MATH_CURRICULUM = {
               example: "Row 1: (2, 4, 6), Row 2: (3, 6, 9), Row 3: (4, 8, ?) ➔ Rule: Multiply column by row number ➔ ? = 12.",
               tip: "Compare shapes and numbers horizontally and vertically!"
             }
+          },
+          {
+            id: "gr3_c7",
+            code: "C3.2",
+            title: "Seating Arrangements & Positional Word Logic",
+            summary: "Deduce seating positions, line-up orders, and pet/item pairings using positional clues.",
+            khanUrl: "https://www.khanacademy.org/math/cc-third-grade-math/imp-addition-subtraction-and-estimation",
+            cheatSheet: {
+              rule: "Start with fixed anchor clues (e.g. 'Seat 1'), then use 'beside' or 'between' clues to place the remaining friends.",
+              example: "4 friends in Seats 1 to 4: Tom sits in Seat 1. Sally sits next to Tom (Seat 2). Maya is in Seat 4. ➔ Leo must be in Seat 3!",
+              tip: "Draw a row of 4 boxes on paper to fill in each friend's name!"
+            }
           }
         ]
       },

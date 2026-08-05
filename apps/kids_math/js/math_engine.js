@@ -359,6 +359,52 @@
       }
     },
 
+    "gr3_c7": function(diff) {
+      const namesPool = ["Tom", "Sally", "Maya", "Leo", "Priya", "Alex", "Sam", "Emma", "Ben", "Chloe"];
+      // Shuffle pool
+      const shuffled = namesPool.slice().sort(() => Math.random() - 0.5);
+      const [A, B, C, D] = shuffled;
+
+      const type = randInt(1, 3);
+      if (type === 1) {
+        // Seating Row
+        return {
+          question: `Four friends (${A}, ${B}, ${C}, and ${D}) sit in a row of 4 seats numbered 1 to 4 (left to right):\n• ${A} sits in Seat 1 on the far left.\n• ${B} sits right beside ${A} in Seat 2.\n• ${D} sits in Seat 4 on the far right.\nWho is sitting in Seat 3?`,
+          answer: C,
+          hints: [
+            `Seat 1: ${A}, Seat 2: ${B}, Seat 4: ${D}.`,
+            `The only remaining friend is ${C}.`,
+            `So ${C} must be sitting in Seat 3.`
+          ],
+          solution: `Seat order (1 to 4): ${A}, ${B}, ${C}, ${D}. Seat 3 is occupied by ${C}.`
+        };
+      } else if (type === 2) {
+        // Line-up
+        return {
+          question: `Four friends (${A}, ${B}, ${C}, and ${D}) stand in line for tickets:\n• ${A} is 1st in line.\n• ${B} is standing directly behind ${A} (2nd).\n• ${C} is standing right between ${B} and ${D}.\nWho is standing 3rd in line?`,
+          answer: C,
+          hints: [
+            `1st: ${A}, 2nd: ${B}.`,
+            `${C} stands between ${B} (2nd) and ${D} (4th).`,
+            `This puts ${C} in 3rd place in line.`
+          ],
+          solution: `Line order: 1st ${A}, 2nd ${B}, 3rd ${C}, 4th ${D}. 3rd in line is ${C}.`
+        };
+      } else {
+        // Pet Pairing Logic
+        return {
+          question: `Three friends (${A}, ${B}, and ${C}) each own one pet: a Dog, a Cat, or a Parrot.\n• ${A}'s pet barks.\n• ${B} does not own a bird.\nWhich friend owns the Parrot?`,
+          answer: C,
+          hints: [
+            `A pet that barks is a Dog, so ${A} owns the Dog.`,
+            `${B} does not own a bird, so ${B} must own the Cat.`,
+            `This leaves the Parrot for ${C}.`
+          ],
+          solution: `${A} = Dog, ${B} = Cat, ${C} = Parrot. ${C} owns the Parrot.`
+        };
+      }
+    },
+
     "gr3_d1": function(diff) {
       const cats = ["Apples", "Bananas", "Oranges"];
       const valA = randInt(2, 6) * 2;
