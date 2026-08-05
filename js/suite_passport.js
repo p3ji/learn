@@ -750,12 +750,18 @@
 
     toggleMasteredTopic(appId, topicTitle, btnElement = null) {
       if (!this.data.masteredTopics) this.data.masteredTopics = {};
+      if (!this.data.masteredHistory) this.data.masteredHistory = {};
       const key = `${appId}:${topicTitle}`;
       const isMastered = !this.data.masteredTopics[key];
 
+      let awardedXP = false;
       if (isMastered) {
         this.data.masteredTopics[key] = { date: new Date().toLocaleDateString(), appId, topicTitle };
-        this.addXP(20, appId);
+        if (!this.data.masteredHistory[key]) {
+          this.data.masteredHistory[key] = true;
+          this.addXP(20, appId);
+          awardedXP = true;
+        }
       } else {
         delete this.data.masteredTopics[key];
       }
@@ -776,10 +782,12 @@
         }
       }
 
-      const msg = isMastered ? `🌟 "${topicTitle}" marked as Mastered! (+20 XP) 🏆` : `Un-marked "${topicTitle}".`;
+      const msg = isMastered 
+        ? (awardedXP ? `🌟 "${topicTitle}" marked as Mastered! (+20 XP) 🏆` : `🌟 "${topicTitle}" marked as Mastered!`)
+        : `Un-marked "${topicTitle}".`;
       if (typeof showToast === 'function') {
         showToast(msg, isMastered ? 'green' : 'gold');
-      } else {
+      } else if (typeof alert !== 'undefined') {
         alert(msg);
       }
 
@@ -861,8 +869,18 @@
       if (noteType === 'mastered') {
         category = 'Concept Mastered';
         icon = '🌟';
-        toastMsg = '🌟 Topic marked as Mastered! +20 XP awarded to your Passport! 🏆';
-        this.addXP(20, appId);
+        const key = `${appId}:${topicTitle}`;
+        if (!this.data.masteredHistory) this.data.masteredHistory = {};
+        if (!this.data.masteredTopics) this.data.masteredTopics = {};
+        this.data.masteredTopics[key] = { date: new Date().toLocaleDateString(), appId, topicTitle };
+
+        if (!this.data.masteredHistory[key]) {
+          this.data.masteredHistory[key] = true;
+          this.addXP(20, appId);
+          toastMsg = '🌟 Topic marked as Mastered! (+20 XP awarded to your Passport) 🏆';
+        } else {
+          toastMsg = '🌟 Topic marked as Mastered in your Journal!';
+        }
       } else if (noteType === 'dev_note') {
         category = 'Developer Note';
         icon = '💬';

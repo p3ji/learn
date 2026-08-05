@@ -135,6 +135,22 @@ SuitePassport.equipItem('skin', 'wizard_math');
 assert(SuitePassport.getAvatarConfig().equipped.skin === 'wizard_math', 'Wizard of Logic equipped as active skin');
 assert(SuitePassport.getProfile().avatar === '🧙‍♂️', 'Profile avatar icon updated to 🧙‍♂️');
 
+// 7. Test Topic Mastery One-Time XP Limit (Glitch Prevention)
+console.log('\n--- 7. Testing Topic Mastery Single-XP Limit ---');
+const xpBeforeMastery = SuitePassport.getProfile().xp;
+SuitePassport.toggleMasteredTopic('kids_math', 'Pythagorean Theorem');
+const xpAfterFirstMastery = SuitePassport.getProfile().xp;
+assert(xpAfterFirstMastery === xpBeforeMastery + 20, 'First mastery awards +20 XP');
+
+// Unmark topic
+SuitePassport.toggleMasteredTopic('kids_math', 'Pythagorean Theorem');
+assert(SuitePassport.isTopicMastered('kids_math', 'Pythagorean Theorem') === false, 'Topic unmarked');
+
+// Mark topic again
+SuitePassport.toggleMasteredTopic('kids_math', 'Pythagorean Theorem');
+const xpAfterSecondMastery = SuitePassport.getProfile().xp;
+assert(xpAfterSecondMastery === xpAfterFirstMastery, 'Re-marking topic does NOT award duplicate XP (Glitch Prevented!)');
+
 console.log(`\n========================================`);
 console.log(`RESULTS: Passed: ${passed} | Failed: ${failed}`);
 console.log(`========================================\n`);
