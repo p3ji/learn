@@ -117,6 +117,24 @@ const importSuccess = SuitePassport.importDataJSON(exportJson);
 assert(importSuccess === true, 'Import returned success true');
 assert(SuitePassport.getProfile().name === 'Alex', 'Restored profile name is Alex');
 
+// 6. Test Avatar Shop & Coins Engine
+console.log('\n--- 6. Testing Avatar Shop & Coins Engine ---');
+assert(SuitePassport.getCoins() > 0, 'Coins retroactively assigned commensurate to XP');
+const initialCoins = SuitePassport.getCoins();
+assert(initialCoins === SuitePassport.getProfile().xp, '1 XP = 1 Coin conversion ratio holds');
+
+// Buy an item from shop
+assert(SuitePassport.isItemOwned('wizard_math') === false, 'Wizard of Logic skin not yet owned');
+const buySuccess = SuitePassport.buyItem('wizard_math', 'skin', 100, 'Wizard of Logic');
+assert(buySuccess === true, 'Successfully bought Wizard of Logic skin for 100 coins');
+assert(SuitePassport.getCoins() === initialCoins - 100, 'Coins deducted by 100');
+assert(SuitePassport.isItemOwned('wizard_math') === true, 'Wizard of Logic skin is now owned');
+
+// Equip item
+SuitePassport.equipItem('skin', 'wizard_math');
+assert(SuitePassport.getAvatarConfig().equipped.skin === 'wizard_math', 'Wizard of Logic equipped as active skin');
+assert(SuitePassport.getProfile().avatar === '🧙‍♂️', 'Profile avatar icon updated to 🧙‍♂️');
+
 console.log(`\n========================================`);
 console.log(`RESULTS: Passed: ${passed} | Failed: ${failed}`);
 console.log(`========================================\n`);

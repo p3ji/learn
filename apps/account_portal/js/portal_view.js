@@ -1,5 +1,5 @@
 /**
- * Account Portal UI Controller & View Renderer
+ * Account Portal UI Controller & View Renderer with Avatar Shop Integration
  */
 
 class AccountPortalView {
@@ -8,6 +8,7 @@ class AccountPortalView {
     this.selectedAppFilter = 'all';
     this.searchQuery = '';
     this.selectedAvatar = '🦉';
+    this.shopCategory = 'skins';
   }
 
   init() {
@@ -16,6 +17,11 @@ class AccountPortalView {
 
   setTab(tabName) {
     this.currentTab = tabName;
+    this.render();
+  }
+
+  setShopCategory(catName) {
+    this.shopCategory = catName;
     this.render();
   }
 
@@ -33,7 +39,7 @@ class AccountPortalView {
     const p = window.SuitePassport.getProfile();
     this.selectedAvatar = p.avatar;
 
-    const avatars = ['🦉', '🧮', '✍️', '🚀', '✏️', '🎮', '🤖', '👑', '🌌', '🦊', '🐲', '🎨'];
+    const avatars = ['🦉', '🧙‍♂️', '🤖', '🦊', '🚀', '🦁', '🐲', '👑', '🌌', '🎨', '✏️', '🎮'];
     const gridHtml = avatars.map(a => `
       <div class="avatar-option ${a === this.selectedAvatar ? 'selected' : ''}" onclick="portal.selectAvatar('${a}')">${a}</div>
     `).join('');
@@ -101,73 +107,36 @@ class AccountPortalView {
         grade: grade,
         bio: bio
       });
-
-      // Sync sub-app profile stores if present
-      try {
-        const activePh = localStorage.getItem('kids_active_profile');
-        let phProfiles = JSON.parse(localStorage.getItem('kids_rts_profiles') || '{}');
-        if (activePh && phProfiles[activePh]) {
-          const pData = phProfiles[activePh];
-          delete phProfiles[activePh];
-          pData.username = name;
-          pData.avatar = this.selectedAvatar;
-          phProfiles[name] = pData;
-          localStorage.setItem('kids_rts_profiles', JSON.stringify(phProfiles));
-          localStorage.setItem('kids_active_profile', name);
-        }
-
-        const activeKw = localStorage.getItem('kw_active_writer');
-        let kwProfiles = JSON.parse(localStorage.getItem('kw_writer_profiles') || '{}');
-        if (activeKw && kwProfiles[activeKw]) {
-          const kwData = kwProfiles[activeKw];
-          delete kwProfiles[activeKw];
-          kwData.username = name;
-          kwData.avatar = this.selectedAvatar;
-          kwProfiles[name] = kwData;
-          localStorage.setItem('kw_writer_profiles', JSON.stringify(kwProfiles));
-          localStorage.setItem('kw_active_writer', name);
-        }
-      } catch (err) {
-        console.error('Failed to sync sub-app profile stores', err);
-      }
+      this.closeModal();
     }
-
-    this.closeModal();
-    this.render();
   }
 
   openNewJournalModal() {
     const modalHtml = `
       <div class="modal-overlay" onclick="if(event.target === this) portal.closeModal()">
         <div class="modal-content">
-          <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 16px;">📝 New Saved Journal Entry</h2>
+          <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 16px;">New Journal Entry</h2>
           <form onsubmit="portal.saveNewJournalEntry(event)">
             <div class="form-group">
               <label class="form-label">Title</label>
-              <input type="text" id="journal-title-input" class="form-input" placeholder="e.g. My Reflections on Plato's Cave" required>
+              <input type="text" id="journal-title-input" class="form-input" placeholder="E.g., Today's Reflection or Hard Math Problem" required>
             </div>
             <div class="form-group">
-              <label class="form-label">App Category</label>
-              <select id="journal-app-input" class="form-select">
-                <option value="kids_writing">✍️ Story Forge (Writing)</option>
-                <option value="kids_math">🧮 MathForge (Math)</option>
-                <option value="kids_philosophy">🚀 Philosopher's Quest</option>
-                <option value="kids_grammar">✏️ Grammar Gym</option>
-                <option value="kids_github">🎮 GitHub Quest</option>
-                <option value="general">📓 General Journal</option>
+              <label class="form-label">Category</label>
+              <select id="journal-category-input" class="form-select">
+                <option value="Reflection">Reflection</option>
+                <option value="Notes">Notes</option>
+                <option value="Idea">Idea</option>
+                <option value="Question">Question</option>
               </select>
             </div>
             <div class="form-group">
-              <label class="form-label">Entry Content</label>
-              <textarea id="journal-content-input" class="form-textarea" placeholder="Write your draft, notes, or reflection..." required></textarea>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Tags (comma separated)</label>
-              <input type="text" id="journal-tags-input" class="form-input" placeholder="reflection, chapter1, notes">
+              <label class="form-label">Content</label>
+              <textarea id="journal-content-input" class="form-input" style="height: 120px; resize: vertical;" placeholder="Write your thoughts, solution steps, or notes..." required></textarea>
             </div>
             <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
               <button type="button" class="btn-secondary" onclick="portal.closeModal()">Cancel</button>
-              <button type="submit" class="btn-primary">Save to Passport (+15 XP)</button>
+              <button type="submit" class="btn-primary">Save Entry (+15 XP)</button>
             </div>
           </form>
         </div>
@@ -178,32 +147,22 @@ class AccountPortalView {
 
   saveNewJournalEntry(e) {
     e.preventDefault();
-    const title = document.getElementById('journal-title-input').value;
-    const appId = document.getElementById('journal-app-input').value;
-    const content = document.getElementById('journal-content-input').value;
-    const tagsStr = document.getElementById('journal-tags-input').value;
-    const tags = tagsStr.split(',').map(t => t.trim()).filter(Boolean);
+    const title = document.getElementById('journal-title-input').value.trim();
+    const category = document.getElementById('journal-category-input').value;
+    const content = document.getElementById('journal-content-input').value.trim();
 
-    const appNames = {
-      kids_writing: 'Story Forge',
-      kids_math: 'MathForge Ottawa',
-      kids_philosophy: "Philosopher's Quest",
-      kids_grammar: 'Grammar Gym',
-      kids_github: 'GitHub Quest',
-      general: 'Learner Journal'
-    };
-
-    window.SuitePassport.saveJournalEntry({
-      appId: appId,
-      appName: appNames[appId] || 'Learner Journal',
-      title: title,
-      category: 'Saved Note',
-      content: content,
-      tags: tags
-    });
-
-    this.closeModal();
-    this.render();
+    if (title && content) {
+      window.SuitePassport.saveJournalEntry({
+        appId: 'account_portal',
+        appName: 'Account Portal',
+        title: title,
+        category: category,
+        content: content,
+        tags: ['user_note', category.toLowerCase()]
+      });
+      this.closeModal();
+      this.render();
+    }
   }
 
   openJournalViewModal(entryId) {
@@ -214,28 +173,17 @@ class AccountPortalView {
     const modalHtml = `
       <div class="modal-overlay" onclick="if(event.target === this) portal.closeModal()">
         <div class="modal-content">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
             <span class="journal-app-badge">${entry.appName}</span>
             <span style="font-size: 0.8rem; color: var(--text-muted);">${entry.date}</span>
           </div>
           <h2 style="font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 16px;">${entry.title}</h2>
-          
-          <div style="background: var(--bg-primary); border: 1px solid var(--card-border); padding: 16px; border-radius: var(--radius-md); white-space: pre-line; line-height: 1.6; margin-bottom: 20px; font-family: inherit;">
+          <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--card-border); padding: 16px; border-radius: var(--radius-md); font-size: 0.95rem; line-height: 1.6; white-space: pre-wrap; margin-bottom: 24px;">
             ${entry.content}
           </div>
-
-          ${entry.tags && entry.tags.length > 0 ? `
-            <div style="margin-bottom: 20px;">
-              ${entry.tags.map(t => `<span style="background: rgba(255,255,255,0.08); font-size: 0.8rem; padding: 2px 8px; border-radius: 6px; margin-right: 6px;">#${t}</span>`).join('')}
-            </div>
-          ` : ''}
-
           <div style="display: flex; justify-content: space-between; align-items: center;">
-            <button class="btn-danger" onclick="portal.deleteEntry('${entry.id}')">🗑️ Delete Entry</button>
-            <div style="display: flex; gap: 10px;">
-              <button class="btn-secondary" onclick="navigator.clipboard.writeText(\`${entry.content.replace(/`/g, '\\`')}\`); alert('Content copied to clipboard!');">📋 Copy Text</button>
-              <button class="btn-primary" onclick="portal.closeModal()">Close</button>
-            </div>
+            <button class="btn-secondary" style="color: #EF4444; border-color: #EF4444;" onclick="portal.deleteJournalEntry('${entry.id}')">🗑️ Delete Entry</button>
+            <button class="btn-primary" onclick="portal.closeModal()">Close</button>
           </div>
         </div>
       </div>
@@ -243,7 +191,7 @@ class AccountPortalView {
     document.getElementById('modal-container').innerHTML = modalHtml;
   }
 
-  deleteEntry(entryId) {
+  deleteJournalEntry(entryId) {
     if (confirm('Are you sure you want to delete this journal entry?')) {
       window.SuitePassport.deleteJournalEntry(entryId);
       this.closeModal();
@@ -261,22 +209,23 @@ class AccountPortalView {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `learner_passport_backup_${new Date().toISOString().split('T')[0]}.json`;
+    a.download = `Learner_Passport_${window.SuitePassport.getProfile().name}_${new Date().toISOString().split('T')[0]}.json`;
     a.click();
+    URL.revokeObjectURL(url);
   }
 
-  importData(e) {
-    const file = e.target.files[0];
+  importData(event) {
+    const file = event.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = (event) => {
-      const success = window.SuitePassport.importDataJSON(event.target.result);
+    reader.onload = (e) => {
+      const success = window.SuitePassport.importDataJSON(e.target.result);
       if (success) {
-        alert('Passport data imported successfully!');
+        alert('Passport data successfully restored!');
         this.render();
       } else {
-        alert('Failed to import backup file. Please check file format.');
+        alert('Error: Could not import file. Make sure it is a valid Passport JSON backup.');
       }
     };
     reader.readAsText(file);
@@ -284,30 +233,43 @@ class AccountPortalView {
 
   render() {
     const p = window.SuitePassport.getProfile();
+    const coins = window.SuitePassport.getCoins();
+    const cfg = window.SuitePassport.getAvatarConfig();
+    const catalog = window.SuitePassport.SHOP_CATALOG;
+
+    const currentSkin = catalog.skins.find(s => s.id === cfg.equipped.skin) || catalog.skins[0];
+    const currentFrame = catalog.frames.find(f => f.id === cfg.equipped.frame) || catalog.frames[0];
+    const currentTitle = catalog.titles.find(t => t.id === cfg.equipped.title) || catalog.titles[0];
+
     const nextLevelXP = p.level * 100;
     const currentLevelBase = (p.level - 1) * 100;
     const levelProgress = Math.min(100, Math.max(0, ((p.xp - currentLevelBase) / (nextLevelXP - currentLevelBase)) * 100));
 
     // Render Passport Card Header
     const passportCardHtml = `
-      <div class="passport-card">
-        <div class="avatar-large" onclick="portal.openProfileModal()" title="Click to change avatar">${p.avatar}</div>
+      <div class="passport-card" style="border: 2px solid ${currentFrame.color || 'var(--card-border)'}; box-shadow: 0 0 25px ${currentFrame.color || 'transparent'}35;">
+        <div class="avatar-large" onclick="portal.openProfileModal()" title="Click to change avatar" style="border: 3px solid ${currentFrame.color || '#F59E0B'};">${currentSkin.icon}</div>
         <div class="profile-info">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
             <div>
               <h1 class="profile-name">${p.name}</h1>
+              <p style="color: var(--accent-gold); font-weight: 800; font-size: 1rem; margin-top: 2px;">${currentTitle.icon} ${currentTitle.name}</p>
               <p class="profile-bio">${p.bio}</p>
             </div>
-            <button class="btn-secondary" style="font-size: 0.85rem;" onclick="portal.openProfileModal()">✏️ Edit Profile</button>
+            <div style="display:flex; gap:8px;">
+              <button class="btn-primary" style="background: linear-gradient(135deg, #10B981, #059669);" onclick="portal.setTab('shop')">🛍️ Open Avatar Shop</button>
+              <button class="btn-secondary" style="font-size: 0.85rem;" onclick="portal.openProfileModal()">✏️ Edit Profile</button>
+            </div>
           </div>
 
-          <div style="display: flex; gap: 16px; margin-top: 12px; font-weight: 700; font-size: 0.9rem;">
+          <div style="display: flex; gap: 16px; margin-top: 12px; font-weight: 700; font-size: 0.95rem; flex-wrap: wrap;">
             <span>⭐ Level ${p.level}</span>
             <span>🔥 ${p.streak} Day Streak</span>
             <span style="color: var(--accent-gold);">Total XP: ${p.xp}</span>
+            <span style="color: #34D399; font-weight: 900; background: rgba(52,211,153,0.15); padding: 2px 10px; border-radius: 12px; border: 1px solid #34D399;">🪙 ${coins} Coins</span>
           </div>
 
-          <div class="xp-progress-bar">
+          <div class="xp-progress-bar" style="margin-top:12px;">
             <div class="xp-fill" style="width: ${levelProgress}%;"></div>
           </div>
           <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">
@@ -323,6 +285,9 @@ class AccountPortalView {
       <div class="nav-tabs">
         <button class="tab-btn ${this.currentTab === 'profile' ? 'active' : ''}" onclick="portal.setTab('profile')">
           👤 Profile &amp; Overview
+        </button>
+        <button class="tab-btn ${this.currentTab === 'shop' ? 'active' : ''}" onclick="portal.setTab('shop')">
+          🛍️ Avatar Shop (${coins} 🪙)
         </button>
         <button class="tab-btn ${this.currentTab === 'journal' ? 'active' : ''}" onclick="portal.setTab('journal')">
           📓 Journal &amp; Saved Inputs
@@ -356,6 +321,64 @@ class AccountPortalView {
             <h3 style="font-family: var(--font-heading); margin-bottom: 8px;">✏️ Grammar Gym Progress</h3>
             <p style="font-size: 1.5rem; font-weight: 800; color: var(--accent-blue);">${stats.kids_grammar ? stats.kids_grammar.xp : 0} XP</p>
             <p style="color: var(--text-muted); font-size: 0.88rem;">${stats.kids_grammar ? stats.kids_grammar.count : 0} errors fixed</p>
+          </div>
+        </div>
+      `;
+    } else if (this.currentTab === 'shop') {
+      const activeCat = this.shopCategory || 'skins';
+      const items = catalog[activeCat] || [];
+
+      mainContentHtml = `
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 28px; margin-bottom: 40px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <h2 style="font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 4px;">🛍️ Learner Avatar Shop</h2>
+              <p style="color: var(--text-muted); font-size: 0.95rem;">Spend your hard-earned Coins (1 XP = 1 Coin) to unlock avatars, glowing frames, and badges!</p>
+            </div>
+            <div style="background: rgba(52,211,153,0.15); border: 1.5px solid #34D399; padding: 10px 18px; border-radius: 14px; color: #34D399; font-weight: 900; font-size: 1.25rem;">
+              🪙 ${coins} Coins Available
+            </div>
+          </div>
+
+          <!-- Category Selector Buttons -->
+          <div style="display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap;">
+            <button onclick="portal.setShopCategory('skins')" class="btn-secondary" style="${activeCat === 'skins' ? 'background: #10B981; border-color: #10B981; color: #FFF;' : ''}">🦉 Avatars (${catalog.skins.length})</button>
+            <button onclick="portal.setShopCategory('frames')" class="btn-secondary" style="${activeCat === 'frames' ? 'background: #10B981; border-color: #10B981; color: #FFF;' : ''}">✨ Frames &amp; Auras (${catalog.frames.length})</button>
+            <button onclick="portal.setShopCategory('titles')" class="btn-secondary" style="${activeCat === 'titles' ? 'background: #10B981; border-color: #10B981; color: #FFF;' : ''}">🎓 Titles &amp; Badges (${catalog.titles.length})</button>
+            <button onclick="portal.setShopCategory('themes')" class="btn-secondary" style="${activeCat === 'themes' ? 'background: #10B981; border-color: #10B981; color: #FFF;' : ''}">🎨 App Themes (${catalog.themes.length})</button>
+          </div>
+
+          <!-- Item Grid -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+            ${items.map(item => {
+              const isOwned = window.SuitePassport.isItemOwned(item.id);
+              const categorySingular = activeCat === 'skins' ? 'skin' : activeCat === 'frames' ? 'frame' : activeCat === 'titles' ? 'title' : 'theme';
+              const isEquipped = cfg.equipped[categorySingular] === item.id;
+
+              let btnHtml = '';
+              if (isEquipped) {
+                btnHtml = `<button style="width:100%; background:rgba(16,185,129,0.2); border:1.5px solid #10B981; color:#34D399; font-weight:900; padding:10px 14px; border-radius:10px; cursor:default;">🌟 Equipped</button>`;
+              } else if (isOwned) {
+                btnHtml = `<button onclick="window.SuitePassport.equipItem('${categorySingular}', '${item.id}'); portal.render();" class="btn-primary" style="width:100%;">Equip Item</button>`;
+              } else {
+                const canAfford = coins >= item.price;
+                btnHtml = `<button onclick="window.SuitePassport.buyItem('${item.id}', '${categorySingular}', ${item.price}, '${item.name.replace(/'/g, "\\'")}'); portal.render();" class="btn-primary" style="width:100%; background:${canAfford ? 'linear-gradient(135deg, #F59E0B, #D97706)' : 'rgba(255,255,255,0.1)'}; color:${canAfford ? '#000' : '#94A3B8'}; cursor:${canAfford ? 'pointer' : 'not-allowed'};">${canAfford ? `Buy for 🪙 ${item.price}` : `Need 🪙 ${item.price}`}</button>`;
+              }
+
+              return `
+                <div style="background: rgba(15,23,42,0.6); border: 1.5px solid ${isEquipped ? '#10B981' : item.color || 'var(--card-border)'}; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                      <span style="font-size: 2.2rem;">${item.icon}</span>
+                      <span style="font-weight: 800; font-size: 0.88rem; color: ${item.price === 0 ? '#34D399' : '#FCD34D'}; background: rgba(0,0,0,0.4); padding: 4px 10px; border-radius: 10px;">${item.price === 0 ? 'FREE' : `🪙 ${item.price}`}</span>
+                    </div>
+                    <h4 style="font-size: 1.1rem; font-weight: 800; margin: 0 0 6px 0; color: #FFF;">${item.name}</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5;">${item.desc}</p>
+                  </div>
+                  ${btnHtml}
+                </div>
+              `;
+            }).join('')}
           </div>
         </div>
       `;
@@ -431,7 +454,7 @@ class AccountPortalView {
         <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 32px; max-width: 650px; margin: 0 auto 40px;">
           <h2 style="font-family: var(--font-heading); margin-bottom: 12px;">⚙️ Passport Backup &amp; Portability</h2>
           <p style="color: var(--text-muted); margin-bottom: 24px;">
-            Save your entire profile, achievements, and journal entries to a JSON backup file so you can transfer your progress to another computer or browser.
+            Save your entire profile, coins balance, unlocked avatar items, achievements, and journal entries to a JSON backup file.
           </p>
 
           <div style="display: flex; gap: 16px; flex-wrap: wrap;">
