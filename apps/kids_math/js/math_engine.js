@@ -233,6 +233,132 @@
       };
     },
 
+    "gr3_c4": function(diff) {
+      const items = [
+        { sym: "🍎", name: "Apple" },
+        { sym: "🍌", name: "Banana" },
+        { sym: "🍇", name: "Grape" },
+        { sym: "🍓", name: "Strawberry" },
+        { sym: "💎", name: "Gem" },
+        { sym: "⭐", name: "Star" },
+        { sym: "🐱", name: "Cat" },
+        { sym: "🐶", name: "Dog" }
+      ];
+      const idxA = randInt(0, items.length - 1);
+      let idxB = randInt(0, items.length - 1);
+      while (idxB === idxA) idxB = randInt(0, items.length - 1);
+
+      const symA = items[idxA].sym;
+      const symB = items[idxB].sym;
+      const valA = randInt(3, 12);
+      const valB = randInt(2, 10);
+      const sumAA = valA + valA;
+      const sumAB = valA + valB;
+
+      return {
+        question: `Balance Scale Logic Puzzle:\nLine 1: ${symA} + ${symA} = ${sumAA}\nLine 2: ${symA} + ${symB} = ${sumAB}\nWhat is the numerical value of ${symB}?`,
+        answer: valB,
+        hints: [
+          `From Line 1: 2 identical ${symA} equal ${sumAA}. So 1 ${symA} = ${sumAA} ÷ 2 = ${valA}.`,
+          `Substitute ${symA} = ${valA} into Line 2: ${valA} + ${symB} = ${sumAB}.`,
+          `Subtract to find ${symB}: ${sumAB} - ${valA} = ${valB}.`
+        ],
+        solution: `${symA} = ${valA}. Line 2: ${valA} + ${symB} = ${sumAB} ➔ ${symB} = ${valB}.`
+      };
+    },
+
+    "gr3_c5": function(diff) {
+      const type = randInt(1, 2);
+      if (type === 1) {
+        const h = randInt(3, 8);
+        const t = randInt(1, 5);
+        const o = randInt(1, 6);
+        const sum = h + t + o;
+        const secret = h * 100 + t * 10 + o;
+
+        return {
+          question: `I am a 3-digit secret number:\n• My Hundreds digit is ${h}.\n• My Tens digit is ${t}.\n• The sum of all my digits is ${sum}.\nWhat is my secret number?`,
+          answer: secret,
+          hints: [
+            `Hundreds = ${h}, Tens = ${t}.`,
+            `Find Ones digit: ${sum} - (${h} + ${t}) = ${sum - h - t}.`,
+            `Combine digits (${h}, ${t}, ${o}) ➔ Secret number is ${secret}.`
+          ],
+          solution: `Hundreds = ${h}, Tens = ${t}, Ones = ${sum} - ${h + t} = ${o}. Secret number: ${secret}.`
+        };
+      } else {
+        const t = randInt(2, 8);
+        const o = pickRandom([2, 4, 6, 8]);
+        const sum = t + o;
+        const secret = t * 10 + o;
+
+        return {
+          question: `I am an EVEN 2-digit secret number between ${t * 10} and ${t * 10 + 9}.\nThe sum of my digits is ${sum}.\nWhat is my secret number?`,
+          answer: secret,
+          hints: [
+            `The number is in the ${t * 10}s range, so the Tens digit is ${t}.`,
+            `The Ones digit must equal ${sum} - ${t} = ${o}.`,
+            `Since ${o} is even, the secret number is ${secret}.`
+          ],
+          solution: `Tens = ${t}, Ones = ${sum} - ${t} = ${o} (Even). Secret number: ${secret}.`
+        };
+      }
+    },
+
+    "gr3_c6": function(diff) {
+      const type = randInt(1, 2);
+      if (type === 1) {
+        const k = randInt(2, 5);
+        const ans = 9 * k;
+        return {
+          question: `Look at the Number Pattern Grid:\nRow 1: ${1*k},  ${2*k},  ${3*k}\nRow 2: ${2*k},  ${4*k},  ${6*k}\nRow 3: ${3*k},  ${6*k},  ?\nWhat number replaces ? in the grid?`,
+          answer: ans,
+          hints: [
+            `Row 1 multiplies 1, 2, 3 by ${k}. Row 2 multiplies 2, 4, 6 by ${k}.`,
+            `Row 3 pattern is ${3*k}, ${6*k}, ? (adding ${3*k} each time).`,
+            `${6*k} + ${3*k} = ${ans}.`
+          ],
+          solution: `Grid rule: Row 3 column 3 = ${3*k} × 3 = ${ans}.`
+        };
+      } else {
+        const shapes = ["🟩", "🟦", "⭐", "💎", "🟡", "🔺"];
+        const sA = pickRandom(shapes);
+        let sB = pickRandom(shapes);
+        while (sB === sA) sB = pickRandom(shapes);
+        let sC = pickRandom(shapes);
+        while (sC === sA || sC === sB) sC = pickRandom(shapes);
+
+        const isABC = Math.random() > 0.5;
+        if (isABC) {
+          const pat = [sA, sB, sC, sA, sB];
+          const ans = sC;
+          return {
+            question: `Look at the Repeating Shape Pattern:\n${pat.join(' ')}  ❓\nWhich shape comes next in place of ❓?`,
+            answer: ans,
+            hints: [
+              `Identify the repeating unit: ${sA} ${sB} ${sC}.`,
+              `The pattern repeats every 3 shapes.`,
+              `After ${sA} ${sB}, the next shape is ${ans}.`
+            ],
+            solution: `Repeating 3-shape pattern (${sA} ${sB} ${sC}). Next shape is ${ans}.`
+          };
+        } else {
+          const pat = [sA, sB, sA, sB, sA];
+          const ans = sB;
+          return {
+            question: `Look at the Alternating Shape Pattern:\n${pat.join(' ')}  ❓\nWhich shape comes next in place of ❓?`,
+            answer: ans,
+            hints: [
+              `The pattern alternates between ${sA} and ${sB}.`,
+              `Shape 1: ${sA}, Shape 2: ${sB}, Shape 3: ${sA}, Shape 4: ${sB}, Shape 5: ${sA}.`,
+              `Shape 6 must be ${ans}.`
+            ],
+            solution: `Alternating pattern (${sA} ${sB}). Next shape is ${ans}.`
+          };
+        }
+      }
+    },
+
     "gr3_d1": function(diff) {
       const cats = ["Apples", "Bananas", "Oranges"];
       const valA = randInt(2, 6) * 2;

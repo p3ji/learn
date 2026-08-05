@@ -131,6 +131,42 @@ window.KIDS_MATH_CURRICULUM = {
               example: "Step 1: Start at 10. Step 2: Multiply by 3 (30). Step 3: Subtract 5 (25).",
               tip: "Work through steps one at a time."
             }
+          },
+          {
+            id: "gr3_c4",
+            code: "C2.3",
+            title: "Emoji Balance Scale Logic Puzzles",
+            summary: "Find missing values using balance scale equations and substitution.",
+            khanUrl: "https://www.khanacademy.org/math/cc-third-grade-math/imp-addition-subtraction-and-estimation",
+            cheatSheet: {
+              rule: "Use known item values to solve for unknown items step-by-step.",
+              example: "🍎 + 🍎 = 10 ➔ 🍎 = 5. 🍎 + 🍌 = 9 ➔ 5 + 🍌 = 9 ➔ 🍌 = 4.",
+              tip: "Find the symbol that repeats on its own first!"
+            }
+          },
+          {
+            id: "gr3_c5",
+            code: "C2.4",
+            title: "Number Riddles & Secret Code Logic",
+            summary: "Deduce secret 2-digit and 3-digit numbers using logical clue deduction.",
+            khanUrl: "https://www.khanacademy.org/math/cc-third-grade-math/imp-place-value-and-rounding",
+            cheatSheet: {
+              rule: "Combine digit place value clues (hundreds, tens, ones, sum, even/odd).",
+              example: "Between 400 and 500, Tens = 3, Digits sum to 12 ➔ 4 + 3 + ? = 12 ➔ Ones = 5 ➔ Secret #: 435.",
+              tip: "Test each clue one by one to narrow down possibilities."
+            }
+          },
+          {
+            id: "gr3_c6",
+            code: "C1.3",
+            title: "Visual Pattern Grids & Shape Logic",
+            summary: "Solve matrix grid rules, shape transformations, and visual word logic.",
+            khanUrl: "https://www.khanacademy.org/math/cc-third-grade-math/imp-patterns-in-arithmetic",
+            cheatSheet: {
+              rule: "Look for relationships across rows and down columns in pattern grids.",
+              example: "Row 1: (2, 4, 6), Row 2: (3, 6, 9), Row 3: (4, 8, ?) ➔ Rule: Multiply column by row number ➔ ? = 12.",
+              tip: "Compare shapes and numbers horizontally and vertically!"
+            }
           }
         ]
       },
