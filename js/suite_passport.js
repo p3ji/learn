@@ -195,6 +195,7 @@
         }
 
         if (typeof window !== 'undefined') {
+          this.applyEquippedTheme();
           if (typeof window.dispatchEvent === 'function') {
             window.dispatchEvent(new CustomEvent('passport:profile-changed', { detail: this.data.profile }));
           }
@@ -908,8 +909,120 @@
         alert(toastMsg);
       }
     }
+    applyEquippedTheme() {
+      if (typeof document === 'undefined') return;
+
+      const cfg = this.getAvatarConfig();
+      const themeId = (cfg.equipped && cfg.equipped.theme) || 'default';
+
+      if (document.body) {
+        document.body.classList.remove('theme-theme_space', 'theme-theme_emerald', 'theme-theme_cyber');
+        if (themeId !== 'default') {
+          document.body.classList.add(`theme-${themeId}`);
+        }
+      }
+
+      let styleEl = document.getElementById('sp-dynamic-theme-styles');
+      if (!styleEl && document.head) {
+        styleEl = document.createElement('style');
+        styleEl.id = 'sp-dynamic-theme-styles';
+        document.head.appendChild(styleEl);
+      }
+
+      if (!styleEl) return;
+
+      let css = '';
+      if (themeId === 'theme_space') {
+        css = `
+          body.theme-theme_space {
+            background: radial-gradient(circle at 50% 0%, #2E1065 0%, #0F0728 60%, #050212 100%) !important;
+            background-attachment: fixed !important;
+            color: #F3E8FF !important;
+          }
+          body.theme-theme_space .card,
+          body.theme-theme_space .passport-card,
+          body.theme-theme_space .journal-card,
+          body.theme-theme_space .badge-card,
+          body.theme-theme_space .topic-card,
+          body.theme-theme_space .quiz-card,
+          body.theme-theme_space .header,
+          body.theme-theme_space .munchers-wrapper {
+            background: rgba(30, 16, 60, 0.85) !important;
+            border-color: #8B5CF6 !important;
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.25) !important;
+          }
+          body.theme-theme_space .btn-primary {
+            background: linear-gradient(135deg, #8B5CF6, #6D28D9) !important;
+            color: #FFF !important;
+            border-color: #A78BFA !important;
+          }
+        `;
+      } else if (themeId === 'theme_emerald') {
+        css = `
+          body.theme-theme_emerald {
+            background: radial-gradient(circle at 50% 0%, #064E3B 0%, #062419 60%, #02120C 100%) !important;
+            background-attachment: fixed !important;
+            color: #ECFDF5 !important;
+          }
+          body.theme-theme_emerald .card,
+          body.theme-theme_emerald .passport-card,
+          body.theme-theme_emerald .journal-card,
+          body.theme-theme_emerald .badge-card,
+          body.theme-theme_emerald .topic-card,
+          body.theme-theme_emerald .quiz-card,
+          body.theme-theme_emerald .header,
+          body.theme-theme_emerald .munchers-wrapper {
+            background: rgba(6, 40, 30, 0.85) !important;
+            border-color: #10B981 !important;
+            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.25) !important;
+          }
+          body.theme-theme_emerald .btn-primary {
+            background: linear-gradient(135deg, #10B981, #047857) !important;
+            color: #FFF !important;
+            border-color: #34D399 !important;
+          }
+        `;
+      } else if (themeId === 'theme_cyber') {
+        css = `
+          body.theme-theme_cyber {
+            background: radial-gradient(circle at 50% 0%, #3B0764 0%, #18022E 60%, #0A0014 100%) !important;
+            background-attachment: fixed !important;
+            color: #FDF4FF !important;
+          }
+          body.theme-theme_cyber .card,
+          body.theme-theme_cyber .passport-card,
+          body.theme-theme_cyber .journal-card,
+          body.theme-theme_cyber .badge-card,
+          body.theme-theme_cyber .topic-card,
+          body.theme-theme_cyber .quiz-card,
+          body.theme-theme_cyber .header,
+          body.theme-theme_cyber .munchers-wrapper {
+            background: rgba(25, 5, 45, 0.85) !important;
+            border-color: #FF007F !important;
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.35), 0 0 10px rgba(0, 240, 255, 0.25) !important;
+          }
+          body.theme-theme_cyber .btn-primary {
+            background: linear-gradient(135deg, #FF007F, #00F0FF) !important;
+            color: #FFF !important;
+            border-color: #FF007F !important;
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.8) !important;
+          }
+        `;
+      }
+
+      styleEl.innerHTML = css;
+    }
   }
 
   exports.SuitePassport = new SuitePassportEngine();
+
+  if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    const initTheme = () => exports.SuitePassport.applyEquippedTheme();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initTheme);
+    } else {
+      initTheme();
+    }
+  }
 
 })(typeof window !== 'undefined' ? window : global);
