@@ -932,35 +932,24 @@
       if (!styleEl) return;
 
       let css = '';
-      if (themeId === 'theme_space') {
+      if (themeId === 'theme_emerald') {
         css = `
-          body.theme-theme_space {
-            background: radial-gradient(circle at 50% 0%, #2E1065 0%, #0F0728 60%, #050212 100%) !important;
-            background-attachment: fixed !important;
-            color: #F3E8FF !important;
+          :root, html, body.theme-theme_emerald {
+            --bg-primary: #021B12 !important;
+            --bg-secondary: #063826 !important;
+            --card-bg: rgba(6, 45, 32, 0.9) !important;
+            --card-border: #10B981 !important;
+            --text-main: #ECFDF5 !important;
+            --text-muted: #6EE7B7 !important;
+            --accent-gold: #F59E0B !important;
+            --accent-blue: #34D399 !important;
+            --accent-cyan: #10B981 !important;
+            --accent-emerald: #10B981 !important;
+            --shadow-glow: 0 10px 35px rgba(16, 185, 129, 0.35) !important;
           }
-          body.theme-theme_space .card,
-          body.theme-theme_space .passport-card,
-          body.theme-theme_space .journal-card,
-          body.theme-theme_space .badge-card,
-          body.theme-theme_space .topic-card,
-          body.theme-theme_space .quiz-card,
-          body.theme-theme_space .header,
-          body.theme-theme_space .munchers-wrapper {
-            background: rgba(30, 16, 60, 0.85) !important;
-            border-color: #8B5CF6 !important;
-            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.25) !important;
-          }
-          body.theme-theme_space .btn-primary {
-            background: linear-gradient(135deg, #8B5CF6, #6D28D9) !important;
-            color: #FFF !important;
-            border-color: #A78BFA !important;
-          }
-        `;
-      } else if (themeId === 'theme_emerald') {
-        css = `
-          body.theme-theme_emerald {
-            background: radial-gradient(circle at 50% 0%, #064E3B 0%, #062419 60%, #02120C 100%) !important;
+          html, body.theme-theme_emerald {
+            background-color: #021B12 !important;
+            background-image: radial-gradient(circle at 50% 0%, #064E3B 0%, #063826 60%, #021B12 100%) !important;
             background-attachment: fixed !important;
             color: #ECFDF5 !important;
           }
@@ -971,21 +960,83 @@
           body.theme-theme_emerald .topic-card,
           body.theme-theme_emerald .quiz-card,
           body.theme-theme_emerald .header,
-          body.theme-theme_emerald .munchers-wrapper {
-            background: rgba(6, 40, 30, 0.85) !important;
+          body.theme-theme_emerald .hero-banner,
+          body.theme-theme_emerald .munchers-wrapper,
+          body.theme-theme_emerald .modal-content,
+          body.theme-theme_emerald .sp-modal-card {
+            background: rgba(6, 45, 32, 0.9) !important;
             border-color: #10B981 !important;
-            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.25) !important;
+            box-shadow: 0 8px 32px rgba(16, 185, 129, 0.3) !important;
           }
-          body.theme-theme_emerald .btn-primary {
+          body.theme-theme_emerald .btn-primary,
+          body.theme-theme_emerald button.btn-primary {
             background: linear-gradient(135deg, #10B981, #047857) !important;
             color: #FFF !important;
             border-color: #34D399 !important;
           }
+          body.theme-theme_emerald .tab-btn.active,
+          body.theme-theme_emerald button.tab-btn.active {
+            background: #10B981 !important;
+            color: #FFF !important;
+            border-color: #34D399 !important;
+          }
+        `;
+      } else if (themeId === 'theme_space') {
+        css = `
+          :root, html, body.theme-theme_space {
+            --bg-primary: #0F0728 !important;
+            --bg-secondary: #1A103C !important;
+            --card-bg: rgba(30, 16, 60, 0.9) !important;
+            --card-border: #8B5CF6 !important;
+            --text-main: #F3E8FF !important;
+            --accent-blue: #A78BFA !important;
+            --accent-cyan: #38BDF8 !important;
+            --shadow-glow: 0 10px 35px rgba(139, 92, 246, 0.35) !important;
+          }
+          html, body.theme-theme_space {
+            background-color: #0F0728 !important;
+            background-image: radial-gradient(circle at 50% 0%, #3B0764 0%, #1A103C 60%, #0F0728 100%) !important;
+            background-attachment: fixed !important;
+            color: #F3E8FF !important;
+          }
+          body.theme-theme_space .card,
+          body.theme-theme_space .passport-card,
+          body.theme-theme_space .journal-card,
+          body.theme-theme_space .badge-card,
+          body.theme-theme_space .topic-card,
+          body.theme-theme_space .quiz-card,
+          body.theme-theme_space .header,
+          body.theme-theme_space .hero-banner,
+          body.theme-theme_space .munchers-wrapper,
+          body.theme-theme_space .modal-content,
+          body.theme-theme_space .sp-modal-card {
+            background: rgba(30, 16, 60, 0.9) !important;
+            border-color: #8B5CF6 !important;
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.3) !important;
+          }
+          body.theme-theme_space .btn-primary,
+          body.theme-theme_space button.btn-primary {
+            background: linear-gradient(135deg, #8B5CF6, #6D28D9) !important;
+            color: #FFF !important;
+            border-color: #A78BFA !important;
+          }
         `;
       } else if (themeId === 'theme_cyber') {
         css = `
-          body.theme-theme_cyber {
-            background: radial-gradient(circle at 50% 0%, #3B0764 0%, #18022E 60%, #0A0014 100%) !important;
+          :root, html, body.theme-theme_cyber {
+            --bg-primary: #0A0014 !important;
+            --bg-secondary: #18022E !important;
+            --card-bg: rgba(25, 5, 45, 0.9) !important;
+            --card-border: #FF007F !important;
+            --text-main: #FDF4FF !important;
+            --accent-blue: #00F0FF !important;
+            --accent-cyan: #00F0FF !important;
+            --accent-pink: #FF007F !important;
+            --shadow-glow: 0 10px 35px rgba(255, 0, 127, 0.4) !important;
+          }
+          html, body.theme-theme_cyber {
+            background-color: #0A0014 !important;
+            background-image: radial-gradient(circle at 50% 0%, #3B0764 0%, #18022E 60%, #0A0014 100%) !important;
             background-attachment: fixed !important;
             color: #FDF4FF !important;
           }
@@ -996,12 +1047,16 @@
           body.theme-theme_cyber .topic-card,
           body.theme-theme_cyber .quiz-card,
           body.theme-theme_cyber .header,
-          body.theme-theme_cyber .munchers-wrapper {
-            background: rgba(25, 5, 45, 0.85) !important;
+          body.theme-theme_cyber .hero-banner,
+          body.theme-theme_cyber .munchers-wrapper,
+          body.theme-theme_cyber .modal-content,
+          body.theme-theme_cyber .sp-modal-card {
+            background: rgba(25, 5, 45, 0.9) !important;
             border-color: #FF007F !important;
             box-shadow: 0 0 25px rgba(255, 0, 127, 0.35), 0 0 10px rgba(0, 240, 255, 0.25) !important;
           }
-          body.theme-theme_cyber .btn-primary {
+          body.theme-theme_cyber .btn-primary,
+          body.theme-theme_cyber button.btn-primary {
             background: linear-gradient(135deg, #FF007F, #00F0FF) !important;
             color: #FFF !important;
             border-color: #FF007F !important;

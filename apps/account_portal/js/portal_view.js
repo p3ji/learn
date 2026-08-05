@@ -366,7 +366,7 @@ class AccountPortalView {
               }
 
               return `
-                <div style="background: rgba(15,23,42,0.6); border: 1.5px solid ${isEquipped ? '#10B981' : item.color || 'var(--card-border)'}; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="background: var(--card-bg); border: 1.5px solid ${isEquipped ? '#10B981' : item.color || 'var(--card-border)'}; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
                   <div>
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                       <span style="font-size: 2.2rem;">${item.icon}</span>
